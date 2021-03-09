@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="运行环境Java≥6、Tomcat≥7.0、MySQL≥5.5 开发工具idea&#x2F;eclipse&#x2F;MyEclipse 功能说明登录、注册、退出、管理员、课程、学生、教师模块的增删改查 技术框架JSP SSM(Spring SpringMVC MyBatis) MySQL CSS JavaScript Bootstrap Ajax 适用课程设计，大作业，毕业设计，项目练习，学习演示等 项目截图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java源码社">
+<meta property="og:url" content="http://example.com/008.4%20012121411701%20B%20SSM%E6%95%99%E5%8A%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:description" content="运行环境Java≥6、Tomcat≥7.0、MySQL≥5.5 开发工具idea&#x2F;eclipse&#x2F;MyEclipse 功能说明登录、注册、退出、管理员、课程、学生、教师模块的增删改查 技术框架JSP SSM(Spring SpringMVC MyBatis) MySQL CSS JavaScript Bootstrap Ajax 适用课程设计，大作业，毕业设计，项目练习，学习演示等 项目截图">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/project1/SSMUtil.jpg">
+<meta property="og:image" content="http://example.com/images/project1/2178883824403.jpg">
+<meta property="og:image" content="http://example.com/images/project1/2178883833142.jpg">
+<meta property="og:image" content="http://example.com/images/project1/2178883838738.jpg">
+<meta property="og:image" content="http://example.com/images/project1/2178883844023.jpg">
+<meta property="og:image" content="http://example.com/images/project1/2178883848655.jpg">
+<meta property="og:image" content="http://example.com/images/project1/2178883854501.jpg">
+<meta property="og:image" content="http://example.com/images/project1/2178883859056.jpg">
+<meta property="og:image" content="http://example.com/images/project1/2178883863582.jpg">
+<meta property="og:image" content="http://example.com/images/project1/2178883868374.jpg">
+<meta property="og:image" content="http://example.com/images/project1/2178883873754.jpg">
+<meta property="og:image" content="http://example.com/images/project1/2178883878929.jpg">
+<meta property="og:image" content="http://example.com/images/project1/2178883883136.jpg">
+<meta property="og:image" content="http://example.com/images/project1/2178883887744.jpg">
+<meta property="article:tag" content="SSM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/project1/SSMUtil.jpg">
+
+<link rel="canonical" href="http://example.com/008.4%20012121411701%20B%20SSM%E6%95%99%E5%8A%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/008.4%20012121411701%20B%20SSM%E6%95%99%E5%8A%A1%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="购买方式，见各详情页<b style="color:red">底部</b><br>所有项目均可<b style="color:blue;">免费远程</b>安装<br>可定制或<b style="color:#FF00FF">调整</b>">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            SSM教务管理系统
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time itemprop="dateModified">更新:2021年03月</time>				
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥6、Tomcat≥7.0、MySQL≥5.5</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>idea/eclipse/MyEclipse</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p>登录、注册、退出、管理员、课程、学生、教师模块的增删改查</p>
+<h3 id="技术框架"><a href="#技术框架" class="headerlink" title="技术框架"></a>技术框架</h3><p>JSP SSM(Spring SpringMVC MyBatis) MySQL CSS JavaScript Bootstrap Ajax</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a>项目截图</h3><p><img src="../images/project1/SSMUtil.jpg" alt="ServletUtil"></p>
+<p><img src="../images/project1/2178883824403.jpg" alt="2178883824403"></p>
+<p><img src="../images/project1/2178883833142.jpg" alt="2178883833142"></p>
+<p><img src="../images/project1/2178883838738.jpg" alt="2178883838738"></p>
+<p><img src="../images/project1/2178883844023.jpg" alt="2178883844023"></p>
+<p><img src="../images/project1/2178883848655.jpg" alt="2178883848655"></p>
+<p><img src="../images/project1/2178883854501.jpg" alt="2178883854501"></p>
+<p><img src="../images/project1/2178883859056.jpg" alt="2178883859056"></p>
+<p><img src="../images/project1/2178883863582.jpg" alt="2178883863582"></p>
+<p><img src="../images/project1/2178883868374.jpg" alt="2178883868374"></p>
+<p><img src="../images/project1/2178883873754.jpg" alt="2178883873754"></p>
+<p><img src="../images/project1/2178883878929.jpg" alt="2178883878929"></p>
+<p><img src="../images/project1/2178883883136.jpg" alt="2178883883136"></p>
+<p><img src="../images/project1/2178883887744.jpg" alt="2178883887744"></p>
+<hr>
+<iframe name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/49.html" style="height: 260px;" frameborder="0"></iframe>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SSM/" rel="tag"># SSM</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式，见各详情页<b style="color:red">底部</b><br>所有项目均可<b style="color:blue;">免费远程</b>安装<br>可定制或<b style="color:#FF00FF">调整</b></div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

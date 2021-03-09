@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            text-align: center;
+            max-width: 800px;
+            margin: 1px auto;
+            border-radius: 4px;
+            box-shadow: 0 0 4px 0px rgba(0, 0, 0, .3);
+            padding: 16px;
+        }
+
+        .button {
+            padding: 2px 3px;
+            font-size: 14px;
+            font-weight: 500;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+			background-color: #5cb85c;
+			color: #FFF;
+			border: 1px solid transparent;
+			border-radius: 4px;
+        }
+
+        .button:hover {
+			background-color: #0a990a;
+        }
+
+        .button.primary {
+            background-color: lightskyblue;
+            color: #fff;
+            border: 0;
+        }
+
+        .dialog {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: none;
+            opacity: 0;
+            transition: all .3s;
+        }
+
+        .dialog.appear {
+            opacity: 1;
+        }
+
+        .dialog.show {
+            display: block;
+        }
+
+        .dialog .main {
+            width: 60%;
+            background-color: #fff;
+            margin: 0px auto;
+            padding: 10px;
+            border-radius: 6px;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all .3s;
+        }
+
+        .dialog.appear .main {
+            transform: translateY(40px);
+            opacity: 1;
+        }
+
+        .dialog .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .dialog .header .close {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            /*padding用于增加识别范围*/
+            background: transparent;
+        }
+
+        .dialog .header .close::before, .dialog .header .close::after {
+            width: 20px;
+            height: 1px;
+            content: '';
+            display: block;
+            background: #333;
+            transform: rotate(45deg);
+            position: absolute;
+        }
+
+        .dialog .header .close::after {
+            transform: rotate(-45deg);
+        }
+
+        .dialog .footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .dialog .footer .button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container"><img src="/include/69.htm/locked.gif"><b style="font-size: 14px">查看本付费内容请支付 <b style="color:#f57e42;font-size: 20px;">¥ 69</b> 元人民币</b>
+    <button class="button open-dialog">扫码支付</button>
+    <div style="border: 1px dashed #FF9A9A;padding: 10px;font-size: 13px;margin: 8px 0;line-height: normal;">
+        下载链接：<span style="color: #bf8403;" title="支付成功后自动展示下载链接">[请先购买]</span>
+    </div>
+    <div class="dialog">
+        <div class="main" style="width: 295px">
+            <div class="header"><!--提示--><span style="font-size: 12px;color:#999;width: 100%;text-align: center;">源码+数据库脚本.zip</span>
+                <button class="close"></button>
+            </div>
+            <div class="content">
+                <!--                <p>付款成功，自动显示</p>-->
+                <img src="/include/69.htm/weixin.jpg" style="width: 45%;box-shadow: 1px 1px 3px #888888;border-radius: 3px;">
+                <img src="/include/69.htm/zhifubao.jpg" style="width: 45%;box-shadow: 1px 1px 3px #888888;border-radius: 3px;">
+            </div>
+            <div style="background: #FFF5E2;border: 1px solid #F6D2A4;text-align: center;">
+                <div style="font-size: 14px;">等待付款中...<img style="width: 16px" src="/include/69.htm/loading.gif"></div>
+                <div style="font-size: 12px;color:#999">
+                    有问题请联系 QQ:1742826239
+                </div>
+            </div>
+        </div>
+    </div>
+    <span style="color:grey;font-size: 14px;">本站所有项目都经过严格测试，并提供免费远程运行服务，支付成功后自动展示下载链接。</span>
+</div>
+
+<script>
+    class Dialog {
+        constructor($root, options = {}) {
+            this.$root = $root
+            this.options = options
+            this.onCancel = options.onCancel || function () {
+            }
+            this.onOk = options.onOk || function () {
+            }
+            this.bind()
+        }
+
+        bind() {
+            let self = this
+            this.$root.querySelector('.close').onclick = function () {
+                self.hide()
+                self.onCancel()
+            }
+        }
+
+        hide() {
+            this.$root.classList.remove('appear')
+            setTimeout(() => this.$root.classList.remove('show'), 400)
+        }
+
+        show() {
+            this.$root.classList.add('show')
+            setTimeout(() => this.$root.classList.add('appear'))
+
+        }
+    }
+
+    let dialog = new Dialog(document.querySelector('.dialog'), {
+        onOk() {
+            console.log('用户点了ok')
+        },
+        onCancel() {
+            console.log('用户点了取消')
+        }
+    })
+    document.querySelector('.open-dialog').onclick = function () {
+        dialog.show()
+    }
+</script>
+</body>
+</html>
