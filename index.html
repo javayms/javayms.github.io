@@ -28,7 +28,7 @@ eval(function(a){a=unescape(a);var c=String.fromCharCode(a.charCodeAt(0)-a.lengt
         let mydate = new Date();
         let year = mydate.getFullYear();
         let month = (mydate.getMonth() < 9 ? "0" : "") + (mydate.getMonth() + 1)
-        let date = mydate.getDate();
+        let date = (mydate.getDate() < 10 ? "0" : "") + mydate.getDate();
         let hours = (mydate.getHours() < 10 ? "0" : "") + mydate.getHours();
         let minutes = (mydate.getMinutes() < 10 ? "0" : "") + mydate.getMinutes();
         let seconds = (mydate.getSeconds() < 10 ? "0" : "") + mydate.getSeconds();
