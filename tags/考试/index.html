@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/tags/%E8%80%83%E8%AF%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>标签: 考试 | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content tag">
+            
+
+  
+  
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <h2 class="collection-header">考试
+
+        </h2>
+      </div>
+
+      
+    <div class="collection-year">
+      <span class="collection-header">2024年</span>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/41/412322092805200mr/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM考试在线报名管理系统(java+ssm+js+jsp+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/110023172402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM考试在线报名管理系统(java+ssm+js+jsp+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/40/401422322105200ks/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven课程在线学习与测试系统(java+ssm+bootstrap+html+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/540023252402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven课程在线学习与测试系统(java+ssm+bootstrap+html+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/26/261422282105200cy/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot学生在线考试管理系统(java+springboot+thymleaf+bootstrap+html+mysql+maven)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/560023072402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot学生在线考试管理系统(java+springboot+thymleaf+bootstrap+html+mysql+maven)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/19/191422282105200cs/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven在线高中考试系统(java+ssm+jsp+mysql+maven)<span style="font-size: xx-small;color:#d8373e;">￥79</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/480023072402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven在线高中考试系统(java+ssm+jsp+mysql+maven)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/57/571422302105200hg/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot前台+后台在线考试系统设计和实现(java+springboot+ssm+mysql+thymeleaf+html+maven)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/400023262402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot前台+后台在线考试系统设计和实现(java+springboot+ssm+mysql+thymeleaf+html+maven)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/04/041623412808201cw/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM在线考试系统(java+ssm+jsp+js+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/081623412808.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM在线考试系统(java+ssm+jsp+js+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/23/231222062008200wv/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot考试管理系统(java+springboot+maven+vue+mysql)<span style="font-size: xx-small;color:#d8373e;">￥99</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/330123042402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot考试管理系统(java+springboot+maven+vue+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/53/531122572008200ug/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet学校在线报考系统(java+jsp+javascript+servlet+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/160023592402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的JSP+Servlet学校在线报考系统(java+jsp+javascript+servlet+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/01/011222062008200wb/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot在线考试系统(java+springboot+vue+mysql+maven)<span style="font-size: xx-small;color:#d8373e;">￥99</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/310123072402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot在线考试系统(java+springboot+vue+mysql+maven)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/13/132123460509201em/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM在线考试系统(java+ssm+mysql+jsp+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥79</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/192123460509.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM在线考试系统(java+ssm+mysql+jsp+bootstrap)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/55/551524170701201hf/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot在线考试管理(java+springboot+vue+elementui+layui+mysql)<span style="font-size: xx-small;color:#d8373e;">￥99</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/021424030701.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot在线考试管理(java+springboot+vue+elementui+layui+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/24/241222062008200ww/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于java的Swing+MySQL考试系统java基础gui(java+gui)<span style="font-size: xx-small;color:#d8373e;">￥59</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/370123042402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于java的Swing+MySQL考试系统java基础gui(java+gui)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/02/021222062008200wc/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot在线考试系统(java+springboot+vue+mysql+maven)<span style="font-size: xx-small;color:#d8373e;">￥99</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/360123072402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot在线考试系统(java+springboot+vue+mysql+maven)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/07/071422282105200ci/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot在线考试平台(java+springboot+ssm+mysql+maven+thymeleaf+html+redis)<span style="font-size: xx-small;color:#d8373e;">￥89</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/380023102402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot在线考试平台(java+springboot+ssm+mysql+maven+thymeleaf+html+redis)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/44/441422322105200kw/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSH课程资源教学在线考试平台(java+ssh+mysql+jsp+tomcat)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/220023262402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSH课程资源教学在线考试平台(java+ssh+mysql+jsp+tomcat)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/56/561521112602106ah/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis在线考试系统(教师、学生)(java+springboot+jsp+mysql+maven)<span style="font-size: xx-small;color:#d8373e;">￥59</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project01/570123222502.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot+MyBatis在线考试系统(教师、学生)(java+springboot+jsp+mysql+maven)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/47/472221531905106ai/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis在线教学考试作业系统(后台、前台)(java+springboot+html+freemarker+mysql+maven)<span style="font-size: xx-small;color:#d8373e;">￥79</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/140123232502.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot+MyBatis在线教学考试作业系统(后台、前台)(java+springboot+html+freemarker+mysql+maven)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/52/522321302106102am/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet在线考试系统(java+jsp+servlet+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/320123112502.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的JSP+Servlet在线考试系统(java+jsp+servlet+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/41/411122572008200tw/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet在线考试管理系统(java+jsp+jquery+servlet+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/570023572402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的JSP+Servlet在线考试管理系统(java+jsp+jquery+servlet+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/41/411222052008200vk/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot微服务SpringCloud在线考试系统(java+springboot+springcloud+mysql+maven)<span style="font-size: xx-small;color:#d8373e;">￥99</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/560123022402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot微服务SpringCloud在线考试系统(java+springboot+springcloud+mysql+maven)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/09/091422282105200cj/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM在线考试系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥79</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/430023102402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM在线考试系统(java+ssm+mysql+jsp)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/05/051122542008200rv/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet考试系统(java+jsp+bootstrap+servlet+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/520023452402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的JSP+Servlet考试系统(java+jsp+bootstrap+servlet+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/42/421122572008200tx/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven在线考试系统(java+ssm+bootstrap+jsp+jquery+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/350123002402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven在线考试系统(java+ssm+bootstrap+jsp+jquery+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/03/030023061907201ao/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot在线考试管理系统(java+springboot+vue+elementui+mysql)<span style="font-size: xx-small;color:#d8373e;">￥99</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/512323421807.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot在线考试管理系统(java+springboot+vue+elementui+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/36/362223270309201dz/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot在线考试系统(java+springboot+vue+mysql+maven)<span style="font-size: xx-small;color:#d8373e;">￥99</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/272223270309.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot在线考试系统(java+springboot+vue+mysql+maven)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/10/101422282105200ck/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot在线考试系统(单选,多选,判断,填空,简答题)(java+springboot+ssm+mysql+html+maven)<span style="font-size: xx-small;color:#d8373e;">￥89</span>
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/500023102402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot在线考试系统(单选,多选,判断,填空,简答题)(java+springboot+ssm+mysql+html+maven)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+    </div>
+  </div>
+  
+  
+  
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

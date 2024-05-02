@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot宠物领养寄养商城系统(java+springboot+html+bootstrap+mysql+maven)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/332322092805200mk/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot宠物领养寄养商城系统(java+springboot+html+bootstrap+mysql+maven) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/332322092805200mk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot宠物领养寄养商城系统(java+springboot+html+bootstrap+mysql+maven)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/520023152402.jpg" alt="520023152402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/530023152402.jpg" alt="530023152402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/540023152402.jpg" alt="540023152402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/550023152402.jpg" alt="550023152402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/570023152402.jpg" alt="570023152402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/580023152402.jpg" alt="580023152402"></p>
+<p>基于javaweb的SpringBoot宠物领养寄养商城系统(java+springboot+html+bootstrap+mysql+maven)</p>
+<p>项目介绍</p>
+<p>管理员角色： 用户管理、角色管理、菜单管理、宠物信息、视频管理、在线留言、宠物用品管理、 常见问题管理、购物车、商城订单、领养订单、寄养订单</p>
+<p>用户角色： 领养宠物、寄养宠物、视频秀、买家秀、在线留言、加入购物车、 购买、商城订单、领养订单、寄养订单</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。<br>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;<br>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；<br>4.数据库：MySql 5.7版本；</p>
+<p>技术栈</p>
+<ol>
+<li><p>后端：SpringBoot+Mybatis</p>
+</li>
+<li><p>前端：HTML+CSS+Bootstrap+jQuery</p>
+</li>
+</ol>
+<p>使用说明<br>运行项目，登录地址：<a target="_blank" rel="noopener" href="http://localhost:8089/login">http://localhost:8089/login</a><br>管理员: admin/admin123<br>普通账户: liming/123456</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"> * 新增保存用户</span><br><span class="line"> */</span><br><span class="line"><span class="meta">@RequiresPermissions(&quot;system:user:add&quot;)</span></span><br><span class="line"><span class="meta">@Log(title = &quot;用户管理&quot;, businessType = BusinessType.INSERT)</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/add&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> AjaxResult <span class="title">addSave</span><span class="params">(<span class="meta">@Validated</span> User user)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (UserConstants.USER_NAME_NOT_UNIQUE.equals(userService.checkLoginNameUnique(user.getLoginName())))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> error(<span class="string">&quot;新增用户&#x27;&quot;</span> + user.getLoginName() + <span class="string">&quot;&#x27;失败，登录账号已存在&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (UserConstants.USER_PHONE_NOT_UNIQUE.equals(userService.checkPhoneUnique(user)))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> error(<span class="string">&quot;新增用户&#x27;&quot;</span> + user.getLoginName() + <span class="string">&quot;&#x27;失败，手机号码已存在&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (UserConstants.USER_EMAIL_NOT_UNIQUE.equals(userService.checkEmailUnique(user)))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> error(<span class="string">&quot;新增用户&#x27;&quot;</span> + user.getLoginName() + <span class="string">&quot;&#x27;失败，邮箱账号已存在&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> toAjax(userService.insertUser(user));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改用户</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/edit/&#123;userId&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">edit</span><span class="params">(<span class="meta">@PathVariable(&quot;userId&quot;)</span> Long userId, ModelMap mmap)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    mmap.put(<span class="string">&quot;user&quot;</span>, userService.selectUserById(userId));</span><br><span class="line">    mmap.put(<span class="string">&quot;roles&quot;</span>, roleService.selectRolesByUserId(userId));</span><br><span class="line">    mmap.put(<span class="string">&quot;posts&quot;</span>, postService.selectPostsByUserId(userId));</span><br><span class="line">    <span class="keyword">return</span> prefix + <span class="string">&quot;/edit&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改保存用户</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequiresPermissions(&quot;system:user:edit&quot;)</span></span><br><span class="line"><span class="meta">@Log(title = &quot;用户管理&quot;, businessType = BusinessType.UPDATE)</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/edit&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> AjaxResult <span class="title">editSave</span><span class="params">(<span class="meta">@Validated</span> User user)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    userService.checkUserAllowed(user);</span><br><span class="line">    <span class="keyword">if</span> (UserConstants.USER_PHONE_NOT_UNIQUE.equals(userService.checkPhoneUnique(user)))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> error(<span class="string">&quot;修改用户&#x27;&quot;</span> + user.getLoginName() + <span class="string">&quot;&#x27;失败，手机号码已存在&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (UserConstants.USER_EMAIL_NOT_UNIQUE.equals(userService.checkEmailUnique(user)))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> error(<span class="string">&quot;修改用户&#x27;&quot;</span> + user.getLoginName() + <span class="string">&quot;&#x27;失败，邮箱账号已存在&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 保存角色分配数据权限</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequiresPermissions(&quot;system:role:edit&quot;)</span></span><br><span class="line"><span class="meta">@Log(title = &quot;角色管理&quot;, businessType = BusinessType.UPDATE)</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/authDataScope&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> AjaxResult <span class="title">authDataScopeSave</span><span class="params">(Role role)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    roleService.checkRoleAllowed(role);</span><br><span class="line">    <span class="keyword">if</span> (roleService.authDataScope(role) &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        setSysUser(userService.selectUserById(getSysUser().getUserId()));</span><br><span class="line">        <span class="keyword">return</span> success();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> error();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiresPermissions(&quot;system:role:remove&quot;)</span></span><br><span class="line"><span class="meta">@Log(title = &quot;角色管理&quot;, businessType = BusinessType.DELETE)</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/remove&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> AjaxResult <span class="title">remove</span><span class="params">(String ids)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> toAjax(roleService.deleteRoleByIds(ids));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Exception e)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> error(e.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 校验角色名称</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/checkRoleNameUnique&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">checkRoleNameUnique</span><span class="params">(Role role)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> roleService.checkRoleNameUnique(role);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Exception e)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> error(e.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 校验角色名称</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/checkRoleNameUnique&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">checkRoleNameUnique</span><span class="params">(Role role)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> roleService.checkRoleNameUnique(role);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 校验角色权限</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/checkRoleKeyUnique&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">checkRoleKeyUnique</span><span class="params">(Role role)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> roleService.checkRoleKeyUnique(role);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 选择菜单树</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/selectMenuTree&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">selectMenuTree</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> prefix + <span class="string">&quot;/tree&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 角色状态修改</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Log(title = &quot;角色管理&quot;, businessType = BusinessType.UPDATE)</span></span><br><span class="line"><span class="meta">@RequiresPermissions(&quot;system:role:edit&quot;)</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/changeStatus&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> l;</span><br><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">switch</span> (elements.length)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        l = Long.parseLong(elements[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">if</span> ((l &lt; <span class="number">0L</span>) || (l &gt; <span class="number">4294967295L</span>))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        bytes[<span class="number">0</span>] = (<span class="keyword">byte</span>) (<span class="keyword">int</span>) (l &gt;&gt; <span class="number">24</span> &amp; <span class="number">0xFF</span>);</span><br><span class="line">        bytes[<span class="number">1</span>] = (<span class="keyword">byte</span>) (<span class="keyword">int</span>) ((l &amp; <span class="number">0xFFFFFF</span>) &gt;&gt; <span class="number">16</span> &amp; <span class="number">0xFF</span>);</span><br><span class="line">        bytes[<span class="number">2</span>] = (<span class="keyword">byte</span>) (<span class="keyword">int</span>) ((l &amp; <span class="number">0xFFFF</span>) &gt;&gt; <span class="number">8</span> &amp; <span class="number">0xFF</span>);</span><br><span class="line">        bytes[<span class="number">3</span>] = (<span class="keyword">byte</span>) (<span class="keyword">int</span>) (l &amp; <span class="number">0xFF</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        l = Integer.parseInt(elements[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">if</span> ((l &lt; <span class="number">0L</span>) || (l &gt; <span class="number">255L</span>))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        bytes[<span class="number">0</span>] = (<span class="keyword">byte</span>) (<span class="keyword">int</span>) (l &amp; <span class="number">0xFF</span>);</span><br><span class="line">        l = Integer.parseInt(elements[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span> ((l &lt; <span class="number">0L</span>) || (l &gt; <span class="number">16777215L</span>))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        bytes[<span class="number">1</span>] = (<span class="keyword">byte</span>) (<span class="keyword">int</span>) (l &gt;&gt; <span class="number">16</span> &amp; <span class="number">0xFF</span>);</span><br><span class="line">        bytes[<span class="number">2</span>] = (<span class="keyword">byte</span>) (<span class="keyword">int</span>) ((l &amp; <span class="number">0xFFFF</span>) &gt;&gt; <span class="number">8</span> &amp; <span class="number">0xFF</span>);</span><br><span class="line">        bytes[<span class="number">3</span>] = (<span class="keyword">byte</span>) (<span class="keyword">int</span>) (l &amp; <span class="number">0xFF</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">2</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            l = Integer.parseInt(elements[i]);</span><br><span class="line">            <span class="keyword">if</span> ((l &lt; <span class="number">0L</span>) || (l &gt; <span class="number">255L</span>))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            bytes[i] = (<span class="keyword">byte</span>) (<span class="keyword">int</span>) (l &amp; <span class="number">0xFF</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        l = Integer.parseInt(elements[<span class="number">2</span>]);</span><br><span class="line">        <span class="keyword">if</span> ((l &lt; <span class="number">0L</span>) || (l &gt; <span class="number">65535L</span>))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        bytes[<span class="number">2</span>] = (<span class="keyword">byte</span>) (<span class="keyword">int</span>) (l &gt;&gt; <span class="number">8</span> &amp; <span class="number">0xFF</span>);</span><br><span class="line">        bytes[<span class="number">3</span>] = (<span class="keyword">byte</span>) (<span class="keyword">int</span>) (l &amp; <span class="number">0xFF</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            l = Integer.parseInt(elements[i]);</span><br><span class="line">            <span class="keyword">if</span> ((l &lt; <span class="number">0L</span>) || (l &gt; <span class="number">255L</span>))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (UserConstants.ROLE_NAME_NOT_UNIQUE.equals(roleService.checkRoleNameUnique(role)))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> error(<span class="string">&quot;新增角色&#x27;&quot;</span> + role.getRoleName() + <span class="string">&quot;&#x27;失败，角色名称已存在&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (UserConstants.ROLE_KEY_NOT_UNIQUE.equals(roleService.checkRoleKeyUnique(role)))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> error(<span class="string">&quot;新增角色&#x27;&quot;</span> + role.getRoleName() + <span class="string">&quot;&#x27;失败，角色权限已存在&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> toAjax(roleService.insertRole(role));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改角色</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/edit/&#123;roleId&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">edit</span><span class="params">(<span class="meta">@PathVariable(&quot;roleId&quot;)</span> Long roleId, ModelMap mmap)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    mmap.put(<span class="string">&quot;role&quot;</span>, roleService.selectRoleById(roleId));</span><br><span class="line">    <span class="keyword">return</span> prefix + <span class="string">&quot;/edit&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改保存角色</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequiresPermissions(&quot;system:role:edit&quot;)</span></span><br><span class="line"><span class="meta">@Log(title = &quot;角色管理&quot;, businessType = BusinessType.UPDATE)</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/edit&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> AjaxResult <span class="title">editSave</span><span class="params">(<span class="meta">@Validated</span> Role role)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    roleService.checkRoleAllowed(role);</span><br><span class="line">    <span class="keyword">if</span> (UserConstants.ROLE_NAME_NOT_UNIQUE.equals(roleService.checkRoleNameUnique(role)))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> error(<span class="string">&quot;修改角色&#x27;&quot;</span> + role.getRoleName() + <span class="string">&quot;&#x27;失败，角色名称已存在&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (UserConstants.ROLE_KEY_NOT_UNIQUE.equals(roleService.checkRoleKeyUnique(role)))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> error(<span class="string">&quot;修改角色&#x27;&quot;</span> + role.getRoleName() + <span class="string">&quot;&#x27;失败，角色权限已存在&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> toAjax(roleService.updateRole(role));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 角色分配数据权限</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">            <span class="keyword">return</span> error(<span class="string">&quot;修改岗位&#x27;&quot;</span> + post.getPostName() + <span class="string">&quot;&#x27;失败，岗位编码已存在&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> toAjax(postService.updatePost(post));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 校验岗位名称</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/checkPostNameUnique&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">checkPostNameUnique</span><span class="params">(Post post)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> postService.checkPostNameUnique(post);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 校验岗位编码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/checkPostCodeUnique&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">checkPostCodeUnique</span><span class="params">(Post post)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> postService.checkPostCodeUnique(post);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.ruoyi.project.system.message.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=332322092805200mk<br>https://javayms.gitee.io?id=332322092805200mk</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%AE%A0%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 宠物</a>
+			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

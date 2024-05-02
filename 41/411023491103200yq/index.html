@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SSM房屋销售管理系统(java+ssm+jsp+jquery+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/411023491103200yq/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SSM房屋销售管理系统(java+ssm+jsp+jquery+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/411023491103200yq/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SSM房屋销售管理系统(java+ssm+jsp+jquery+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Tomcat≥8</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/451023021103.jpg" alt="451023021103"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/461023021103.jpg" alt="461023021103"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/471023021103.jpg" alt="471023021103"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/481023021103.jpg" alt="481023021103"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/491023021103.jpg" alt="491023021103"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/501023021103.jpg" alt="501023021103"></p>
+<p>基于javaweb的SSM房屋销售管理系统(java+ssm+jsp+jquery+mysql)</p>
+<p>项目介绍</p>
+<p>本项目包含管理员与买家两种角色；</p>
+<p>管理员角色包含以下功能：</p>
+<p>管理员登录,房源信息管理,合同信息管理,账户管理,申请看房信息管理等功能。</p>
+<p>买家角色包含以下功能：</p>
+<p>用户登录,用户登陆,查看房源信息,查看销售信息,查看申请信息,绑定账户等功能。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可</p>
+<p>4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
+<p>5.是否Maven项目: 否；查看源码目录中是否包含pom.xml；若包含，则为maven项目，否则为非maven项目</p>
+<p>6.数据库：MySql 5.7、8.0等版本均可；</p>
+<p>技术栈</p>
+<ol>
+<li><p>后端：Spring+springmvc+mybatis</p>
+</li>
+<li><p>前端：JSP+css+javascript+jQuery</p>
+</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，配置tomcat；</p>
+</li>
+<li><p>将项目中db.properties配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：<a target="_blank" rel="noopener" href="http://localhost:8080/text2/">http://localhost:8080/text2/</a></p>
+</li>
+</ol>
+<p>用户账号/密码： user/123456</p>
+<p>管理员账号/密码：admin/admin</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>房屋信息控制器：</p>
+<p>/**</p>
+<ul>
+<li>房屋信息控制器</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/leaseinformationmvc”)</p>
+<p>public class LeaseinformationController {</p>
+<p>@Autowired</p>
+<p>LeaseinformationService leaseinformationService;</p>
+<p>@RequestMapping(“/details”)</p>
+<p>public ModelAndView listCategory(@RequestParam int id){</p>
+<p>ModelAndView mav = new ModelAndView(“details”);</p>
+<p>List<leaseinformation> cs= leaseinformationService.allANDimg1(id);</leaseinformation></p>
+<p>for (leaseinformation leaseinformation : cs) {</p>
+<p>System.out.println(leaseinformation.getLeaseimg().getImgroute());</p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“cs”, cs);</p>
+<p>return mav;</p>
+<p>个人中心控制器：</p>
+<p>/**</p>
+<ul>
+<li>个人中心控制器</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/personacentermvc”)</p>
+<p>public class PersonacenterController {</p>
+<p>@Resource</p>
+<p>private RentwithdrawnService rentwithdrawnService;</p>
+<p>@Resource</p>
+<p>private UserlistService userlistService;</p>
+<p>@Resource</p>
+<p>private LeaseinformationService leaseinformationService;</p>
+<p>@Resource</p>
+<p>private CheckoutapplicationService checkoutapplicationService;</p>
+<p>@Resource</p>
+<p>private RentcollectionService rentcollectionService;</p>
+<p>@Resource</p>
+<p>private FaultService faultService;</p>
+<p>@Resource</p>
+<p>private HeadPortraitImgService headPortraitImgService;</p>
+<p>/**</p>
+<ul>
+<li>个人信息切换页面</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/personal_switch”)</p>
+<p>public void temp(String txt, HttpServletResponse response) throws IOException {</p>
+<p>response.setCharacterEncoding(“UTF-8”);</p>
+<p>switch (txt) {</p>
+<p>case “租赁信息”:</p>
+<p>response.getWriter().print(“/jsp/personalInformation/information.jsp”);</p>
+<p>break;</p>
+<p>case “我的申请”:</p>
+<p>response.getWriter().print(“/jsp/personalInformation/myapplication.jsp”);</p>
+<p>break;</p>
+<p>case “代缴租金”:</p>
+<p>response.getWriter().print(“/jsp/personalInformation/rentpayment.jsp”);</p>
+<p>break;</p>
+<p>case “报障模块”:</p>
+<p>response.getWriter().print(“/jsp/personalInformation/faultreportingmodule.jsp”);</p>
+<p>break;</p>
+<p>case “其他操作”:</p>
+<p>response.getWriter().print(“/jsp/personalInformation/otheroperations.jsp”);</p>
+<p>break;</p>
+<p>/**</p>
+<ul>
+<li>我的租赁分页查询</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/myRentalList”)</p>
+<p>@ResponseBody</p>
+<p>public Msg myRentalList(@RequestParam(value = “pn”) Integer pn, HttpSession session) {</p>
+<p>// 查询所有数据</p>
+<p>userlist user = userlistService.selectUserCall((String) session.getAttribute(“user”));</p>
+<p>// 设置分页传输</p>
+<p>PageHelper.startPage(pn, 8);</p>
+<p>List<userlist> leaseuser = userlistService.selectUserNameWith(user.getUsername());</userlist></p>
+<p>// 使用PageInFo封装查询结果</p>
+<p>PageInfo<userlist> pageInfo = new PageInfo<userlist>(leaseuser, 3);</userlist></userlist></p>
+<p>return Msg.success().add(“pageInfo”, pageInfo);</p>
+<p>/**</p>
+<ul>
+<li>已退租赁记录分页查询</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/refundedLeaseList”)</p>
+<p>@ResponseBody</p>
+<p>public Msg refundedLeaseList(@RequestParam(value = “pn”) Integer pn, HttpSession session) {</p>
+<p>// 查询所有数据</p>
+<p>userlist user = userlistService.selectUserCall((String) session.getAttribute(“user”));</p>
+<p>// 设置分页传输</p>
+<p>PageHelper.startPage(pn, 8);</p>
+<p>List<rentwithdrawn> list = rentwithdrawnService.queryAllStateName(“已退租”, “”, user.getUsername());</rentwithdrawn></p>
+<p>// 使用PageInFo封装查询结果</p>
+<p>PageInfo<rentwithdrawn> pageInfo = new PageInfo<rentwithdrawn>(list, 3);</rentwithdrawn></rentwithdrawn></p>
+<p>return Msg.success().add(“pageInfo”, pageInfo);</p>
+<p>/**</p>
+<ul>
+<li>申请状态记录分页查询</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/applicationAtatusList”)</p>
+<p>@ResponseBody</p>
+<p>public Msg applicationAtatusList(@RequestParam(value = “pn”) Integer pn, boolean flag, HttpSession session) {</p>
+<p>List<checkoutapplication> list = null;</checkoutapplication></p>
+<p>userlist user = userlistService.selectUserCall((String) session.getAttribute(“user”));</p>
+<p>// 设置分页传输</p>
+<p>PageHelper.startPage(pn, 8);</p>
+<p>// 查询所有数据</p>
+<p>if (flag) {</p>
+<p>list = checkoutapplicationService.selectStateAll(“看房申请中”, “退房申请中”, “”, user.getUsername());</p>
+<p>} else {</p>
+<p>list = checkoutapplicationService.selectStateAll(“已拒绝”, “已同意”, “已取消”, user.getUsername());</p>
+<p>// 使用PageInFo封装查询结果</p>
+<p>PageInfo<checkoutapplication> pageInfo = new PageInfo<checkoutapplication>(list, 3);</checkoutapplication></checkoutapplication></p>
+<p>return Msg.success().add(“pageInfo”, pageInfo);</p>
+<p>/**</p>
+<ul>
+<li>代缴租金分页查询</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/rentpaymentList”)</p>
+<p>@ResponseBody</p>
+<p>public Msg rentpaymentList(@RequestParam(value = “pn”) Integer pn, String state, HttpSession session) {</p>
+<p>userlist user = userlistService.selectUserCall((String) session.getAttribute(“user”));</p>
+<p>// 设置分页传输</p>
+<p>PageHelper.startPage(pn, 8);</p>
+<p>List<rentcollection> list = rentcollectionService.queryPaidStateAll(state, user.getUsername());</rentcollection></p>
+<p>// 使用PageInFo封装查询结果</p>
+<p>PageInfo<rentcollection> pageInfo = new PageInfo<rentcollection>(list, 3);</rentcollection></rentcollection></p>
+<p>return Msg.success().add(“pageInfo”, pageInfo);</p>
+<p>/**</p>
+<ul>
+<li>缴纳租金</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/payrentmvc”)</p>
+<p>public ModelAndView payrentmvc(String rchousemoney,Integer rcid,String token,HttpServletRequest request,HttpSession session) {</p>
+<p>ModelAndView mav = new ModelAndView(“personacenter”);</p>
+<p>//令牌验证</p>
+<p>if(!new Koken().kokenid(request, session)) {</p>
+<p>return mav;</p>
+<p>Warning news = rentcollectionService.updateState(rcid);</p>
+<p>System.out.println(news.getWarningContent());</p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“news”, news);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>已缴纳租金删除记录</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/paidrent”)</p>
+<p>public ModelAndView paidrent(Integer rcid,HttpServletRequest request,HttpSession session) {</p>
+<p>ModelAndView mav = new ModelAndView(“personacenter”);</p>
+<p>//令牌验证</p>
+<p>if(!new Koken().kokenid(request, session)) {</p>
+<p>return mav;</p>
+<p>Warning news = rentcollectionService.deleteByPrimaryKey(rcid);</p>
+<p>System.out.println(news.getWarningContent());</p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“news”, news);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>共缴费费用</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/copaymentfee”)</p>
+<p>@ResponseBody</p>
+<p>public Msg copaymentfee(String state, HttpSession session) {</p>
+<p>userlist user = userlistService.selectUserCall((String) session.getAttribute(“user”));</p>
+<p>List<rentcollection> list = rentcollectionService.queryPaidStateAll(state, user.getUsername());</rentcollection></p>
+<p>int num = 0;</p>
+<p>for (rentcollection temp : list) {</p>
+<p>num += Float.parseFloat(temp.getRchousemoney());</p>
+<p>return Msg.success().add(“num”, num);</p>
+<p>/**</p>
+<ul>
+<li>报障分页查询</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/repairList”)</p>
+<p>@ResponseBody</p>
+<p>public Msg repairList(@RequestParam(value = “pn”) Integer pn, String str, HttpSession session) {</p>
+<p>// 使用PageInFo封装查询结果</p>
+<p>userlist user = userlistService.selectUserCall((String) session.getAttribute(“user”));</p>
+<p>// 设置分页传输</p>
+<p>PageHelper.startPage(pn, 8);</p>
+<p>if (str.equals(“我要报障”)) {</p>
+<p>List<userlist> leaseuser = userlistService.selectUserNameWith(user.getUsername());</userlist></p>
+<p>PageInfo<userlist> pageInfo = new PageInfo<userlist>(leaseuser, 3);</userlist></userlist></p>
+<p>return Msg.success().add(“pageInfo”, pageInfo);</p>
+<p>List<fault> list = faultService.queryAllState(str, user.getUsername());</fault></p>
+<p>PageInfo<fault> pageInfo = new PageInfo<fault>(list, 3);</fault></fault></p>
+<p>return Msg.success().add(“pageInfo”, pageInfo);</p>
+<p>/**</p>
+<ul>
+<li><p>报障提交内容</p>
+</li>
+<li><p>@throws ParseException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/contentofthereport”)</p>
+<p>public ModelAndView contentofthereport(String date, String housecall, String contentofthe,String token,HttpServletRequest request,HttpSession session) throws ParseException {</p>
+<p>ModelAndView mav = new ModelAndView(“personacenter”);</p>
+<p>//令牌验证</p>
+<p>if(!new Koken().kokenid(request, session)) {</p>
+<p>return mav;</p>
+<p>userlist user = userlistService.selectUserCallWith(housecall);</p>
+<p>fault fault = new fault();</p>
+<p>fault.setFhouseid(housecall);</p>
+<p>fault.setFhouseaddress(user.getLeaseinformation().getHouseaddress());</p>
+<p>fault.setFprice(Double.parseDouble(user.getLeaseinformation().getHousemoney()));</p>
+<p>SimpleDateFormat sdf = new SimpleDateFormat(“yyyy年MM月dd日”);</p>
+<p>Date t1 = sdf.parse(date);</p>
+<p>fault.setFdate(t1);</p>
+<p>fault.setFdatetemp(date);</p>
+<p>fault.setFcontent(contentofthe);</p>
+<p>fault.setFusername(user.getUsername());</p>
+<p>fault.setFuserid(user.getUserid());</p>
+<p>fault.setFuserphone(user.getUserphone());</p>
+<p>fault.setFstate(“未处理”);</p>
+<p>Warning news = faultService.insert(fault);</p>
+<p>System.out.println(news.getWarningContent());</p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“news”, news);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>报障删除记录</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/deleterepair”)</p>
+<p>public ModelAndView deleterepair(Integer fid,String token,HttpServletRequest request,HttpSession session) {</p>
+<p>ModelAndView mav = new ModelAndView(“personacenter”);</p>
+<p>//令牌验证</p>
+<p>if(!new Koken().kokenid(request, session)) {</p>
+<p>return mav;</p>
+<p>Warning news = faultService.deleteByPrimaryKey(fid);</p>
+<p>System.out.println(news.getWarningContent());</p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“news”, news);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li><p>头像上传 用户真实姓名，身份证号，手机号上传</p>
+</li>
+<li><p>@throws FileNotFoundException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/file”)</p>
+<p>public ModelAndView file(String username,String userid,String userphone,HttpServletRequest request,HttpSession session,@RequestParam MultipartFile file) throws Exception {</p>
+<p>System.out.println(username);</p>
+<p>ModelAndView mav = new ModelAndView(“personacenter”);</p>
+<p>userlist usere=userlistService.selectUserName(username);</p>
+<p>if (usere==null) {</p>
+<p>session.setAttribute(“modifyerro”,null);</p>
+<p>System.out.println(“可修改”);</p>
+<p>}else {</p>
+<p>Warning news=new Warning(2, “修改失败!该姓名用户已注册”);</p>
+<p>mav.addObject(“news”, news);</p>
+<p>return mav;</p>
+<p>//令牌验证</p>
+<p>if(!new Koken().kokenid(request, session)) {</p>
+<p>return mav;</p>
+<p>// 获取文件的名称</p>
+<p>String fName = file.getOriginalFilename();</p>
+<p>System.out.println(fName);</p>
+<p>if (!fName.equals(“”)) {</p>
+<p>// 保存图片的目录</p>
+<p>String path = “C://Users/Rain/Desktop/ssm_leaseOfHouses/WebContent/headPortraitImg”;</p>
+<p>File filepath = new File(path);</p>
+<p>// 如果目录不存在，创建</p>
+<p>if (!filepath.exists()) {</p>
+<p>filepath.mkdir();</p>
+<p>File f = new File(path, fName);</p>
+<p>// 更改用户头像</p>
+<p>headportraitimg headportraitimg = new headportraitimg();</p>
+<p>String user = (String) session.getAttribute(“user”);</p>
+<p>headportraitimg.setHeadportraitimgusername(user);</p>
+<p>headportraitimg.setHeadportraitimgaddress(fName);</p>
+<p>// 图片路径上传到数据库</p>
+<p>headPortraitImgService.updatauserimg(headportraitimg);</p>
+<p>// 更换头像</p>
+<p>session.setAttribute(“headportraitimg”, headportraitimg.getHeadportraitimgaddress());</p>
+<p>// 上传文件</p>
+<p>file.transferTo(f);</p>
+<p>userlist user = userlistService.selectUserCall((String) session.getAttribute(“user”));</p>
+<p>//暂时储存需要修改的真实姓名</p>
+<p>String rcusernametemp=user.getUsername();</p>
+<p>//判断，如有真实姓名联表修改，则添加</p>
+<p>if(user.getUsername()==null||””.equals(user.getUsername())) {</p>
+<p>// 上传真实姓名，身份证，手机号</p>
+<p>userlist userlist = new userlist();</p>
+<p>userlist.setUsercall((String) session.getAttribute(“user”));</p>
+<p>userlist.setUsername(username);</p>
+<p>userlist.setUserid(userid);</p>
+<p>userlist.setUserphone(userphone);</p>
+<p>Warning news = userlistService.updateByPrimaryCall(userlist);</p>
+<p>System.out.println(news.getWarningContent());</p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“news”, news);</p>
+<p>}else {</p>
+<p>// 修改真实姓名，身份证，手机号</p>
+<p>userlist userlist = new userlist();</p>
+<p>userlist.setUsername(username);</p>
+<p>userlist.setUserid(userid);</p>
+<p>userlist.setUserphone(userphone);</p>
+<p>userlist.setUsernametemp(user.getUsername());</p>
+<p>Warning news = userlistService.updateJointTableName(userlist);</p>
+<p>//修改租金真实姓名</p>
+<p>System.out.println(rentcollectionService.updateUserName(username,rcusernametemp));</p>
+<p>System.out.println(news.getWarningContent());</p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“news”, news);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>删除已退租记录</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/deleterentrefund”)</p>
+<p>public ModelAndView deleterentrefund(Integer rwid,String token,HttpServletRequest request,HttpSession session) {</p>
+<p>ModelAndView mav = new ModelAndView(“personacenter”);</p>
+<p>//令牌验证</p>
+<p>if(!new Koken().kokenid(request, session)) {</p>
+<p>return mav;</p>
+<p>Warning news = rentwithdrawnService.deleteByPrimaryKey(rwid);</p>
+<p>System.out.println(news.getWarningContent());</p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“news”, news);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>查看合同</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/viewcontract”)</p>
+<p>public ModelAndView viewcontract(String username, String userid, String houseaddress, String housestartingdatetemp,</p>
+<p>String houseclosingdatetemp, String housemoney, String userphone, String houseid,HttpServletRequest request,HttpSession session) {</p>
+<p>ModelAndView mav = new ModelAndView(“personacenter”);</p>
+<p>String arraytemp[] = { username, userid, houseaddress, housestartingdatetemp, houseclosingdatetemp, housemoney,</p>
+<p>userphone, houseid };</p>
+<p>String temp = (arraytemp[0]+arraytemp[7]) + “pdf.pdf”;</p>
+<p>File filetemp = new File(“C://Users/Rain/Desktop/ssm_leaseOfHouses/WebContent/contract/pdf/“ + temp);</p>
+<p>if (!filetemp.exists()) {</p>
+<p>//            System.out.println(new DocumentConversion().DocumentGeneration(arraytemp));</p>
+<p>new DocumentConversion().PdfGeneration((arraytemp[0]+arraytemp[7]));</p>
+<p>filetemp = new File(“C://Users/Rain/Desktop/ssm_leaseOfHouses/WebContent/contract/pdf/“ + temp);</p>
+<p>String pdf = filetemp.getName();</p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“pdftemp”, pdf);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>终止合同</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/termination”)</p>
+<p>public ModelAndView termination(String call,String token,HttpServletRequest request,HttpSession session) {</p>
+<p>ModelAndView mav = new ModelAndView(“personacenter”);</p>
+<p>//令牌验证</p>
+<p>if(!new Koken().kokenid(request, session)) {</p>
+<p>return mav;</p>
+<p>userlist leaseuser = userlistService.selectUserCallWith(call);</p>
+<p>Warning news = checkoutapplicationService.insert(leaseuser);</p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“news”, news);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>终止申请</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/stopapplying”)</p>
+<p>public ModelAndView stopapplying(String call,String token,HttpServletRequest request,HttpSession session) {</p>
+<p>ModelAndView mav = new ModelAndView(“personacenter”);</p>
+<p>//令牌验证</p>
+<p>if(!new Koken().kokenid(request, session)) {</p>
+<p>return mav;</p>
+<p>Warning news = checkoutapplicationService.updateCallState(“已取消”, call);</p>
+<p>System.out.println(news.getWarningContent());</p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“news”, news);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>删除申请记录</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/deleterecord”)</p>
+<p>public ModelAndView deleterecord(Integer coaid,String token,HttpServletRequest request,HttpSession session) {</p>
+<p>ModelAndView mav = new ModelAndView(“personacenter”);</p>
+<p>//令牌验证</p>
+<p>if(!new Koken().kokenid(request, session)) {</p>
+<p>return mav;</p>
+<p>Warning news = checkoutapplicationService.deleteByPrimaryKey(coaid);</p>
+<p>System.out.println(news.getWarningContent());</p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“news”, news);</p>
+<p>return mav;</p>
+<p>后台管理员控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/admin”)</p>
+<p>public class Adminfunctioncontroller {</p>
+<p>@Resource</p>
+<p>private RentwithdrawnService rentwithdrawnService;</p>
+<p>@Resource</p>
+<p>private LeaseinformationService leaseinformationService;</p>
+<p>@Resource</p>
+<p>private CheckoutapplicationService checkoutapplicationService;</p>
+<p>@Resource</p>
+<p>private MydailylifeService mydailylifeService;</p>
+<p>@Resource</p>
+<p>private RentcollectionService rentcollectionService;</p>
+<p>@Resource</p>
+<p>private FaultService faultService;</p>
+<p>@Resource</p>
+<p>private UserlistService userlistService;</p>
+<p>@Resource</p>
+<p>private LeaseimgService leaseimgService;</p>
+<p>@Resource</p>
+<p>private HeadPortraitImgService headPortraitImgService;</p>
+<p>/**</p>
+<ul>
+<li>注销</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/admincancel”)</p>
+<p>public String cancellation(HttpServletRequest request) {</p>
+<p>HttpSession session = request.getSession();</p>
+<p>session.removeAttribute(“admin”);</p>
+<p>System.out.println(“注销成功”);</p>
+<p>return “official”;</p>
+<p>@RequestMapping(“/details”)</p>
+<p>public ModelAndView listCategory(@RequestParam int pn) {</p>
+<p>ModelAndView mav = new ModelAndView(“rentingdel”);</p>
+<p>// 设置分页传输</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>// 查询所有数据</p>
+<p>List<rentwithdrawn> list = rentwithdrawnService.selectRwState(“已退租”);</rentwithdrawn></p>
+<p>// 使用PageInFo封装查询结果</p>
+<p>PageInfo<rentwithdrawn> pageInfo = new PageInfo<rentwithdrawn>(list, 5);</rentwithdrawn></rentwithdrawn></p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“cs”, pageInfo);</p>
+<p>return mav;</p>
+<p>@RequestMapping(“/delect”)</p>
+<p>public ModelAndView delect(@RequestParam int id) {</p>
+<p>ModelAndView mav = new ModelAndView(“rentingdel”);</p>
+<p>rentwithdrawnService.deleteByPrimaryKey(id);</p>
+<p>return mav;</p>
+<p>@RequestMapping(“/rentinglist”)</p>
+<p>public ModelAndView listHouseState(@RequestParam int pn) {</p>
+<p>ModelAndView mav = new ModelAndView(“rentinglist”);</p>
+<p>// 设置分页传输</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>// 查询所有数据</p>
+<p>List<leaseinformation> list = leaseinformationService.selecthousteaseWith(“出租中”);</leaseinformation></p>
+<p>// 使用PageInFo封装查询结果</p>
+<p>PageInfo<leaseinformation> pageInfo = new PageInfo<leaseinformation>(list, 5);</leaseinformation></leaseinformation></p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“cs”, pageInfo);</p>
+<p>return mav;</p>
+<p>@RequestMapping(“/delectcontract”)</p>
+<p>public ModelAndView delectcontract(@RequestParam int id) {</p>
+<p>ModelAndView mav = new ModelAndView(“rentinglist”);</p>
+<p>leaseinformationService.updacontract(id);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>看房申请列表</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/houseapply”)</p>
+<p>public ModelAndView kanfansqing(@RequestParam int pn) {</p>
+<p>ModelAndView mav = new ModelAndView(“houseapply”);</p>
+<p>// 设置分页传输</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>// 查询所有数据</p>
+<p>List<checkoutapplication> list = checkoutapplicationService.selectCoaState();</checkoutapplication></p>
+<p>// 使用PageInFo封装查询结果</p>
+<p>PageInfo<checkoutapplication> pageInfo = new PageInfo<checkoutapplication>(list, 5);</checkoutapplication></checkoutapplication></p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“cs”, pageInfo);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>预约看房申请</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/tonyizp”)</p>
+<p>public ModelAndView tonyizp(@RequestParam int id, String housecall, String name) throws ParseException {</p>
+<p>ModelAndView mav = new ModelAndView(“houseapply”);</p>
+<p>checkoutapplicationService.xgaiCoaState(“已同意”, id);</p>
+<p>leaseinformation house = leaseinformationService.selectHouseCall(housecall).get(0);</p>
+<p>SimpleDateFormat df = new SimpleDateFormat(“yyyy-MM-dd”);// 设置日期格式</p>
+<p>Calendar c = Calendar.getInstance();</p>
+<p>c.add(Calendar.DATE, 30);// 计算30天后的时间</p>
+<p>String t1 = df.format(new Date());</p>
+<p>String t2 = df.format(c.getTime());</p>
+<p>// 格式转换date格式</p>
+<p>Date date1 = df.parse(t1);</p>
+<p>Date date2 = df.parse(t2);</p>
+<p>house.setHousestartingdate(date1);</p>
+<p>house.setHouseclosingdate(date2);</p>
+<p>house.setHousestate(“出租中”);</p>
+<p>house.setUsername(name);</p>
+<p>leaseinformationService.updateByPrimaryKey(house);</p>
+<p>return mav;</p>
+<p>@RequestMapping(“/jujzp”)</p>
+<p>public ModelAndView jujzp(@RequestParam int id) {</p>
+<p>ModelAndView mav = new ModelAndView(“houseapply”);</p>
+<p>checkoutapplicationService.xgaiCoaState(“已拒绝”, id);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>   退房申请</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/tzshenqing”)</p>
+<p>public ModelAndView tzshenqing(@RequestParam int pn) {</p>
+<p>ModelAndView mav = new ModelAndView(“housedel”);</p>
+<p>// 设置分页传输</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>// 查询所有数据</p>
+<p>List<checkoutapplication> list = checkoutapplicationService.selectCoaState1();</checkoutapplication></p>
+<p>// 使用PageInFo封装查询结果</p>
+<p>PageInfo<checkoutapplication> pageInfo = new PageInfo<checkoutapplication>(list, 5);</checkoutapplication></checkoutapplication></p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“cs”, pageInfo);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>删除退房记录</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/delecttzsq”)</p>
+<p>public ModelAndView delecttzsq(@RequestParam int id) {</p>
+<p>ModelAndView mav = new ModelAndView(“housedel”);</p>
+<p>checkoutapplicationService.deleteByPrimaryKey(id);</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>同意退房</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/checkoutmvc”)</p>
+<p>public ModelAndView checkoutmvc(@RequestParam int id,String housecall) {</p>
+<p>ModelAndView mav = new ModelAndView(“housedel”);</p>
+<p>String news=checkoutapplicationService.updateState(“已同意”, id);</p>
+<p>if(news.equals(“同意退租成功!”)) {</p>
+<p>System.out.println(news);</p>
+<p>System.out.println(leaseinformationService.updateCancelForeignKey(housecall));</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>拒绝退房</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/refusemvc”)</p>
+<p>public ModelAndView refusemvc(@RequestParam int id) {</p>
+<p>ModelAndView mav = new ModelAndView(“housedel”);</p>
+<p>System.out.println(checkoutapplicationService.updateState(“已拒绝”, id));</p>
+<p>return mav;</p>
+<p>/**</p>
+<ul>
+<li>分页查找所有用户</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/pagingselectuser”)</p>
+<p>public String pagingselectuser(Model model, @RequestParam(value = “pn”, defaultValue = “1”) Integer pn,</p>
+<p>@RequestParam(required = false, defaultValue = “6”) Integer pageSize) {</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>List<userlist> userlist = userlistService.selectAll();</userlist></p>
+<p>PageInfo<userlist> p = new PageInfo<userlist>(userlist, 3);</userlist></userlist></p>
+<p>model.addAttribute(“p”, p);</p>
+<p>return “account”;</p>
+<p>/**</p>
+<ul>
+<li>删除用户信息</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/deletuser”)</p>
+<p>public String deletuser(int id,String username,HttpServletRequest request) {</p>
+<p>userlistService.updateJointTabledelete(username);</p>
+<p>headPortraitImgService.deletuserimg(userlistService.selectUserId(id).getUsercall());</p>
+<p>userlistService.deleteByPrimaryKey(id);</p>
+<p>return “redirect:pagingselectuser.do”;</p>
+<p>/**</p>
+<ul>
+<li><p>添加房源</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+<li><p>@throws IllegalStateException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/addhouse”)</p>
+<p>public String addhouse(String housecall, String address, String area, String rent, String housetype, String[] state,</p>
+<p>@RequestParam(value = “file”, required = false) MultipartFile file, HttpServletRequest request)</p>
+<p>throws IllegalStateException, IOException {</p>
+<p>if (housecall.equals(“”) || address.equals(“”) || area.equals(“”) || rent.equals(“”) || state.equals(“”)</p>
+<p>|| housetype.equals(“”)) {</p>
+<p>request.setAttribute(“erro”, “输入房源信息不能缺少任意一项!”);</p>
+<p>return “housingadd”;</p>
+<p>List<leaseinformation> list = leaseinformationService.queryAll();</leaseinformation></p>
+<p>for (leaseinformation leaseinformation : list) {</p>
+<p>if (housecall.equals(leaseinformation.getHousecall())) {</p>
+<p>request.setAttribute(“erro”, “该房源编号已存在”);</p>
+<p>return “housingadd”;</p>
+<p>String path = “”;</p>
+<p>String imgname = “”;</p>
+<p>if (!file.isEmpty()) {</p>
+<p>// 生成uuid作为文件名称</p>
+<p>String uuid = UUID.randomUUID().toString().replaceAll(“-“, “”);</p>
+<p>// 获得文件类型（可以判断如果不是图片，禁止上传）</p>
+<p>String contentType = file.getContentType();</p>
+<p>// 获得文件后缀名称</p>
+<p>String imageName = contentType.substring(contentType.indexOf(“/“) + 1);</p>
+<p>path = “C://Users/Rain/Desktop/ssm_leaseOfHouses/WebContent/leaseimg/“ + uuid + “.” + imageName;</p>
+<p>file.transferTo(new File(path));</p>
+<p>imgname = uuid + “.” + imageName;</p>
+<p>leaseimg img = new leaseimg();</p>
+<p>img.setImgname(address);</p>
+<p>img.setImgroute(imgname);</p>
+<p>leaseimgService.insert(img);</p>
+<p>int id = leaseimgService.selectAll().get(leaseimgService.selectAll().size() - 1).getId();</p>
+<p>leaseinformation house = new leaseinformation();</p>
+<p>house.setHouseaddress(address);</p>
+<p>house.setHousesize(Double.valueOf(area));</p>
+<p>house.setHousemoney(rent);</p>
+<p>house.setHousestate(state[0]);</p>
+<p>house.setHousecall(housecall);</p>
+<p>//获取当前时间和一个月后的时间</p>
+<p>Date date = new Date();</p>
+<p>SimpleDateFormat sdf=new SimpleDateFormat(“yyyy-MM-dd”);</p>
+<p>String HouseStartingDate=sdf.format(date);</p>
+<p>Calendar cal = Calendar.getInstance();</p>
+<p>cal.setTime(date);</p>
+<p>cal.add(Calendar.DATE, 30);</p>
+<p>String HouseClosingDate=sdf.format(cal.getTime());</p>
+<p>house.setHousestartingdate(date);</p>
+<p>house.setHouseclosingdate(cal.getTime());</p>
+<p>house.setHousestartingdatetemp(HouseStartingDate);</p>
+<p>house.setHouseclosingdatetemp(HouseClosingDate);</p>
+<p>house.setId(id);</p>
+<p>house.setHousetype(housetype);</p>
+<p>house.setHouserecommend(“未设置”);</p>
+<p>leaseinformationService.addHouse(house);</p>
+<p>request.setAttribute(“sessce”, “添加成功”);</p>
+<p>return “housingadd”;</p>
+<p>/**</p>
+<ul>
+<li>分页展示房源信息</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/pagingselecthouse”)</p>
+<p>public String pagingselecthouse(Model model, @RequestParam(value = “pn”, defaultValue = “1”) Integer pn,</p>
+<p>@RequestParam(required = false, defaultValue = “6”) Integer pageSize) {</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>List<leaseinformation> leaseinformation = leaseinformationService.queryAll();</leaseinformation></p>
+<p>PageInfo<leaseinformation> p = new PageInfo<leaseinformation>(leaseinformation, 3);</leaseinformation></leaseinformation></p>
+<p>model.addAttribute(“p”, p);</p>
+<p>return “housinglist”;</p>
+<p>/**</p>
+<ul>
+<li>获取修改房源信息</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/getupdatehouse”)</p>
+<p>public String getupdatehouse(int houseid, HttpServletRequest request) {</p>
+<p>List<leaseinformation> house = leaseinformationService.queryID(houseid);</leaseinformation></p>
+<p>request.setAttribute(“uphouse”, house);</p>
+<p>return “houseupdate”;</p>
+<p>/**</p>
+<ul>
+<li>修改房源信息</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/updatehouse”)</p>
+<p>public String updatehouse(Integer houseid, String housetype, String address, String area, String rent, String state,</p>
+<p>HttpServletRequest request) {</p>
+<p>leaseinformation house = leaseinformationService.queryID(houseid).get(0);</p>
+<p>request.removeAttribute(“uphouse”);</p>
+<p>house.setHouseaddress(address);</p>
+<p>house.setHousemoney(rent);</p>
+<p>house.setHousetype(housetype);</p>
+<p>house.setHousesize(Double.valueOf(area));</p>
+<p>house.setHousestate(state);</p>
+<p>house.setHouseid(houseid);</p>
+<p>leaseinformationService.updateByPrimaryKey(house);</p>
+<p>request.setAttribute(“sessce”, “修改成功”);</p>
+<p>request.setAttribute(“newhouse”, house);</p>
+<p>return “houseupdate”;</p>
+<p>/**</p>
+<ul>
+<li>删除房源信息</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/delethouse”)</p>
+<p>public String delethouse(int houseid, HttpServletRequest request) {</p>
+<p>if (houseid &gt;= 0) {</p>
+<p>int id = leaseinformationService.queryID(houseid).get(0).getId();</p>
+<p>leaseinformationService.deleteByPrimaryKey(houseid);</p>
+<p>leaseimgService.deleteByPrimaryKey(id);</p>
+<p>return “redirect:pagingselecthouse.do”;</p>
+<p>/*</p>
+<ul>
+<li>推荐房屋列表</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/recommendlist”)</p>
+<p>public String recommendlist(Model model, @RequestParam(value = “pn”, defaultValue = “1”) Integer pn,</p>
+<p>@RequestParam(required = false, defaultValue = “6”) Integer pageSize) {</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>List<leaseinformation> leaseinformation = leaseinformationService.selectAllLeasable();</leaseinformation></p>
+<p>PageInfo<leaseinformation> p = new PageInfo<leaseinformation>(leaseinformation, 3);</leaseinformation></leaseinformation></p>
+<p>model.addAttribute(“p”, p);</p>
+<p>return “recommendhouse”;</p>
+<p>/**</p>
+<ul>
+<li>修改推荐信息</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/updaterecommend”)</p>
+<p>public String updatehouse(Integer houseid) {</p>
+<p>leaseinformation house = leaseinformationService.queryID(houseid).get(0);</p>
+<p>if (house.getHouserecommend().equals(“未推荐”)) {</p>
+<p>house.setHouserecommend(“已推荐”);</p>
+<p>} else {</p>
+<p>house.setHouserecommend(“未推荐”);</p>
+<p>leaseinformationService.updateByPrimaryKey(house);</p>
+<p>return “redirect:recommendlist.do?”;</p>
+<p>/**</p>
+<ul>
+<li>分页查询日程信息</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/schedulelist”)</p>
+<p>public String mydailylifelist(@RequestParam(value = “pn”, defaultValue = “1”) Integer pn, Model model) {</p>
+<p>// 引用PageHelper分页插件</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>List<mydailylife> mydailylifes = mydailylifeService.selectAll();</mydailylife></p>
+<p>PageInfo<mydailylife> page = new PageInfo<mydailylife>(mydailylifes, 3);</mydailylife></mydailylife></p>
+<p>model.addAttribute(“p”, page);</p>
+<p>return “schedulelist”;</p>
+<p>/**</p>
+<ul>
+<li>添加日程</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/addmydailylife”)</p>
+<p>public String mydailylifeadd(mydailylife mydailylife) {</p>
+<p>mydailylifeService.insert(mydailylife);</p>
+<p>return “redirect:/admin/schedulelist.do”;</p>
+<p>/**</p>
+<ul>
+<li>修改日程</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/updatemydailylife”)</p>
+<p>public String mydailylifeupdate1(Integer id, HttpServletRequest request) {</p>
+<p>mydailylife mydailylife = mydailylifeService.selectByPrimaryKey(id);</p>
+<p>request.setAttribute(“mydailylife”, mydailylife);</p>
+<p>return “scheduleupdate”;</p>
+<p>@RequestMapping(“/toupdate”)</p>
+<p>public String mydailylifeupdate2(mydailylife mydailylife) {</p>
+<p>mydailylifeService.updateByPrimaryKey(mydailylife);</p>
+<p>return “redirect:/admin/schedulelist.do”;</p>
+<p>/**</p>
+<ul>
+<li>删除日程</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/delmydailylife”)</p>
+<p>public String mydailylifedel(Integer id) {</p>
+<p>mydailylifeService.deleteByPrimaryKey(id);</p>
+<p>return “redirect:/admin/schedulelist.do”;</p>
+<p>// 报障</p>
+<p>/**</p>
+<ul>
+<li>查询待处理报障</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/Adminselectrepairwait”)</p>
+<p>public String selectrepairwait(String state, @RequestParam(value = “pn”, defaultValue = “1”) Integer pn,</p>
+<p>Model model) {</p>
+<p>state = “未处理”;</p>
+<p>// 引用PageHelper分页插件</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>List<fault> faultlist = faultService.AdminSelectStateAll(state);</fault></p>
+<p>PageInfo<fault> page = new PageInfo<fault>(faultlist, 3);</fault></fault></p>
+<p>model.addAttribute(“p”, page);</p>
+<p>return “repairwait”;</p>
+<p>/**</p>
+<ul>
+<li>已完成全部报障</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/Adminselectrepairdone”)</p>
+<p>public String selectrepairdone(String state, @RequestParam(value = “pn”, defaultValue = “1”) Integer pn,</p>
+<p>Model model) {</p>
+<p>state = “已处理”;</p>
+<p>// 引用PageHelper分页插件</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>List<fault> faultdone = faultService.AdminSelectStateAll(state);</fault></p>
+<p>PageInfo<fault> page = new PageInfo<fault>(faultdone, 3);</fault></fault></p>
+<p>model.addAttribute(“p”, page);</p>
+<p>return “repairdone”;</p>
+<p>/**</p>
+<ul>
+<li>报障状态修改</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminrepairwait”)</p>
+<p>public String updaterepairwait(Integer id) {</p>
+<p>fault fault = faultService.selectByPrimaryKey(id);</p>
+<p>String fhouseid = fault.getFhouseid();</p>
+<p>String fhouseaddress = fault.getFhouseaddress();</p>
+<p>Double fprice = fault.getFprice();</p>
+<p>Date fdate = fault.getFdate();</p>
+<p>String fcontent = fault.getFcontent();</p>
+<p>String fusername = fault.getFusername();</p>
+<p>String fuserid = fault.getFuserid();</p>
+<p>String fuserphone = fault.getFuserphone();</p>
+<p>String fstate = “已处理”;</p>
+<p>fault f = new fault(fhouseid, fhouseaddress, fprice, fdate, fcontent, fusername, fuserid, fuserphone, fstate,</p>
+<p>id);</p>
+<p>faultService.updateByPrimaryKey(f);</p>
+<p>return “redirect:/admin/Adminselectrepairwait.do”;</p>
+<p>/**</p>
+<ul>
+<li>报障删除</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminrepairdone”)</p>
+<p>public String delrepair(Integer id) {</p>
+<p>faultService.deleteByPrimaryKey(id);</p>
+<p>return “redirect:/admin/Adminselectrepairdone.do”;</p>
+<p>/**</p>
+<ul>
+<li>搜索报障</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/repairselect”)</p>
+<p>public String repairselect(QueryVo vo, @RequestParam(value = “pn”, defaultValue = “1”) Integer pn, Model model) {</p>
+<p>// 引用PageHelper分页插件</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>List<fault> faultdone = faultService.repairselect(vo);</fault></p>
+<p>for (fault temp : faultdone) {</p>
+<p>SimpleDateFormat sdf = new SimpleDateFormat(“yyyy-MM-dd”);</p>
+<p>String date = sdf.format(temp.getFdate());</p>
+<p>temp.setFdatetemp(date);</p>
+<p>PageInfo<fault> page = new PageInfo<fault>(faultdone, 3);</fault></fault></p>
+<p>model.addAttribute(“p”, page);</p>
+<p>model.addAttribute(“vo”, vo);</p>
+<p>return “repairdone”;</p>
+<p>/**</p>
+<ul>
+<li>我要收租</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminrentshou”)</p>
+<p>public String rentshou(@RequestParam(value = “pn”, defaultValue = “1”) Integer pn, Model model) {</p>
+<p>// 引用PageHelper分页插件</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>List<userlist> userlists = userlistService.rentSelectAll();</userlist></p>
+<p>PageInfo<userlist> page = new PageInfo<userlist>(userlists, 3);</userlist></userlist></p>
+<p>model.addAttribute(“rent”, page);</p>
+<p>return “rentshou”;</p>
+<p>/**</p>
+<ul>
+<li>获取收租信息</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminrentselect”)</p>
+<p>public String rentadd(String housecall, Model model) {</p>
+<p>userlist userlist = userlistService.selectUserCallWith(housecall);</p>
+<p>model.addAttribute(“addrent”, userlist);</p>
+<p>return “rentadd”;</p>
+<p>/**</p>
+<ul>
+<li>添加代缴租金</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminrentadd”)</p>
+<p>public String rentaddwait(rentcollection rentcollection) {</p>
+<p>rentcollectionService.insert(rentcollection);</p>
+<p>return “redirect:/admin/adminrentshou.do”;</p>
+<p>/**</p>
+<ul>
+<li>代缴租金</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminrentwait”)</p>
+<p>public String rentwait(String rcstate, @RequestParam(value = “pn”, defaultValue = “1”) Integer pn, Model model) {</p>
+<p>rcstate = “未缴纳”;</p>
+<p>// 引用PageHelper分页插件</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>List<rentcollection> rentlists = rentcollectionService.selectPaidStateAll(rcstate);</rentcollection></p>
+<p>PageInfo<rentcollection> page = new PageInfo<rentcollection>(rentlists, 3);</rentcollection></rentcollection></p>
+<p>model.addAttribute(“rent”, page);</p>
+<p>return “rentwait”;</p>
+<p>/**</p>
+<ul>
+<li>删除租金缴纳记录</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/admindelrent”)</p>
+<p>public String delrent(Integer id) {</p>
+<p>rentcollectionService.deleteByPrimaryKey(id);</p>
+<p>return “redirect:/admin/adminselectPaidAll.do”;</p>
+<p>/**</p>
+<ul>
+<li>搜索查询</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminselectPaidAll”)</p>
+<p>public String adminselectPaidAll(QueryVo vo, @RequestParam(value = “pn”, defaultValue = “1”) Integer pn,</p>
+<p>Model model) {</p>
+<p>// 引用PageHelper分页插件</p>
+<p>PageHelper.startPage(pn, 10);</p>
+<p>List<rentcollection> rentlists = rentcollectionService.selectPaidAll(vo);</rentcollection></p>
+<p>for (rentcollection temp : rentlists) {</p>
+<p>SimpleDateFormat sdf = new SimpleDateFormat(“yyyy-MM-dd”);</p>
+<p>String date = sdf.format(temp.getRcdate());</p>
+<p>temp.setRcdatetemp(date);</p>
+<p>if(temp.getRcpaiddate()!=null) {</p>
+<p>String Rcpaiddate = sdf.format(temp.getRcpaiddate());</p>
+<p>temp.setRcpaiddatetemp(Rcpaiddate);</p>
+<p>PageInfo<rentcollection> page = new PageInfo<rentcollection>(rentlists, 3);</rentcollection></rentcollection></p>
+<p>model.addAttribute(“rent”, page);</p>
+<p>model.addAttribute(“vo”, vo);</p>
+<p>return “rentdone”;</p>
+<p>/**</p>
+<ul>
+<li>查看合同</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/viewcontractadmin”)</p>
+<p>public ModelAndView viewcontractadmin(String username, String userid, String houseaddress,</p>
+<p>String housestartingdatetemp, String houseclosingdatetemp, String housemoney, String userphone,</p>
+<p>String houseid, HttpServletRequest request, HttpSession session) {</p>
+<p>ModelAndView mav = new ModelAndView(“rentinglist”);</p>
+<p>String arraytemp[] = { username, userid, houseaddress, housestartingdatetemp, houseclosingdatetemp, housemoney,</p>
+<p>userphone, houseid };</p>
+<p>System.out.println(Arrays.toString(arraytemp));</p>
+<p>String temp = arraytemp[7] + “pdf.pdf”;</p>
+<p>File filetemp = new File(“C://Users/Rain/Desktop/ssm_leaseOfHouses/WebContent/contract/pdf/“ + temp);</p>
+<p>if (!filetemp.exists()) {</p>
+<p>System.out.println(new DocumentConversion().DocumentGeneration(arraytemp));</p>
+<p>new DocumentConversion().PdfGeneration(arraytemp[7]);</p>
+<p>filetemp = new File(“C://Users/Rain/Desktop/ssm_leaseOfHouses/WebContent/contract/pdf/“ + temp);</p>
+<p>String pdf = filetemp.getName();</p>
+<p>// 放入转发参数</p>
+<p>mav.addObject(“pdftemp”, pdf);</p>
+<p>return mav;</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=411023491103200yq<br>https://javayms.gitee.io?id=411023491103200yq</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+			<a href="/tags/%E6%88%BF/" rel="tag"><i class="fa fa-tag"></i> 房</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

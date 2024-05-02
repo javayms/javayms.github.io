@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot送水公司管理系统(java+springboot+html+mybatis+mysql+maven)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/141122542008200sd/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot送水公司管理系统(java+springboot+html+mybatis+mysql+maven) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/141122542008200sd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot送水公司管理系统(java+springboot+html+mybatis+mysql+maven)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/190023472402.jpg" alt="190023472402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/200023472402.jpg" alt="200023472402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/210023472402.jpg" alt="210023472402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/220023472402.jpg" alt="220023472402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/230023472402.jpg" alt="230023472402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/240023472402.jpg" alt="240023472402"></p>
+<p>基于javaweb的SpringBoot送水公司管理系统(java+springboot+html+mybatis+mysql+maven)</p>
+<p>项目介绍</p>
+<p>这个项目是一个基于SpringBoot+MyBatis的送水公司管理系统</p>
+<p>管理员权限包括： 客户管理 送水工管理 送水历史管理 计算工资 统计送水数量</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  4.数据库：MySql 5.7版本； 5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>1.后端：SpringBoot+Mybatis+Mysql 2.前端：html+css+javascript</p>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中application.yml配置文件中的数据库配置改为自己的配置; 4. 运行项目，在浏览器中输入<a target="_blank" rel="noopener" href="http://localhost:8091/">http://localhost:8091/</a> 注意：端口不要修改，否则会有异常 管理员账户：admin/admin</li>
+</ol>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"> * <span class="number">1</span> 上传送水工照片</span><br><span class="line"> * <span class="number">1.1</span> 获取上传文件的名称</span><br><span class="line"> * <span class="number">1.2</span> 获取上传文件后缀的索引</span><br><span class="line"> * <span class="number">1.3</span> 根据索引获取上传的文件名后缀，例如：.png</span><br><span class="line"> * <span class="number">1.4</span> 获取上传文件的前缀，例如：<span class="number">15456435635</span>。注意前缀命名使用<span class="number">1970</span>-<span class="number">01</span>-<span class="number">01</span>距离现在的毫秒数</span><br><span class="line"> * <span class="number">1.5</span> 判断上传路径是否存在，如果不存在创建改路径。例如： D:/upLoad/picture/</span><br><span class="line"> * <span class="number">1.6</span> 拼接上传文件的前缀和后缀名称。例如：<span class="number">15456435635.</span>png。然后创建对应的File对象</span><br><span class="line"> * <span class="number">1.7</span> 上传文件</span><br><span class="line"> * <span class="number">1.8</span> 将凭借的上传文件名称设置到Worker对象中</span><br><span class="line"> * <span class="number">2</span> 调用WorkerService对象的saveWorker方法，将送水工信息保存到数据库中</span><br><span class="line"> * <span class="number">3</span> 重定向到客户列表，显示新添加的送水工信息</span><br><span class="line"> * <span class="meta">@param</span> worker 表单采集的新送水工信息</span><br><span class="line"> * <span class="meta">@param</span> file 封装了浏览器上传的图片数据</span><br><span class="line"> * <span class="meta">@return</span> 重定向到客户列表，显示新添加的送水工信息</span><br><span class="line"> */</span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;/saveWorker&quot;,method = RequestMethod.POST)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">saveWorker</span><span class="params">(Worker worker, MultipartFile file)</span> </span>&#123;</span><br><span class="line">    uploadFile(worker, file);</span><br><span class="line">    <span class="comment">// 将送水工信息持久化到数据库</span></span><br><span class="line">    workerService.saveWorker(worker);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/worker/workerList&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">uploadFile</span><span class="params">(Worker worker, MultipartFile file)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 条件成立：表示客户上传了文件</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> != file) &#123;</span><br><span class="line">        <span class="comment">// 获取上传文件名称。例如：WeChart.png</span></span><br><span class="line">        String fileName = file.getOriginalFilename();</span><br><span class="line">        <span class="comment">// 获取上传文件的后缀索引号</span></span><br><span class="line">        <span class="keyword">int</span> suffixIndex = fileName.lastIndexOf(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">        <span class="comment">// 根据索引获取后缀。例如：.png</span></span><br><span class="line">        String suffix = StringUtils.substring(fileName, suffixIndex);</span><br><span class="line">        <span class="comment">// 获取文件前缀（使用当前系统时间的纳秒）</span></span><br><span class="line">        <span class="keyword">long</span> prefix = System.nanoTime();</span><br><span class="line">        <span class="comment">// 创建服务器上传路径的File对象</span></span><br><span class="line">        File serverPath = <span class="keyword">new</span> File(location);</span><br><span class="line">        <span class="comment">// 条件成立：表示服务器存储上传文件的路径不存在，需要创建</span></span><br><span class="line">        <span class="keyword">if</span> (!serverPath.exists()) &#123;</span><br><span class="line">            serverPath.mkdirs();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 拼接上传的文件。前缀(15456435635)+后缀(.png) 15456435635.png</span></span><br><span class="line">        String uploadFile = prefix + suffix;</span><br><span class="line">        <span class="comment">// 创建上传的文件在服务器磁盘的真实路径</span></span><br><span class="line">        <span class="comment">// 参数1：父路径。例如：D:/upLoad/picture/</span></span><br><span class="line">        <span class="comment">// 参数2：上传的文件名。例如： 15456435635.png</span></span><br><span class="line">        File uploadFilePath = <span class="keyword">new</span> File(serverPath, uploadFile);</span><br><span class="line">        <span class="comment">// 上传文件</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@RequestMapping(value=&quot;/updateHis&quot;,method=RequestMethod.POST)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">updateHistory</span><span class="params">(Integer workerId,Integer custId,History history)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot; update custId id = &quot;</span>+custId);</span><br><span class="line">        log.info(<span class="string">&quot; update worker id = &quot;</span>+workerId);</span><br><span class="line">        log.info(<span class="string">&quot; update History = &quot;</span>+history);</span><br><span class="line">        Worker worker = <span class="keyword">new</span> Worker();</span><br><span class="line">        worker.setWid(workerId);</span><br><span class="line"></span><br><span class="line">        Customer customer = <span class="keyword">new</span> Customer();</span><br><span class="line">        customer.setCid(custId);</span><br><span class="line">        history.setCustomer(customer);</span><br><span class="line">        history.setWorker(worker);</span><br><span class="line">        <span class="comment">// 修改送水历史，返回受影响行数</span></span><br><span class="line">        <span class="keyword">int</span> rows = historyService.updateHistory(history);</span><br><span class="line">        log.info(<span class="string">&quot;update history rows = &quot;</span>+rows);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/history/listHis&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理批量删除请求</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> idList 前端传入的要删除的送水历史id列表</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> OK 批量删除成功，Fail表示批量删除失败</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value=&quot;/batchDeleteHistory&quot;,method = RequestMethod.POST)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">batchDeleteHistory</span><span class="params">(String idList)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 调用业务逻辑层方法进行批量删除</span></span><br><span class="line">        <span class="keyword">int</span> rows = historyService.batchDeleteHistory(idList);</span><br><span class="line">        <span class="keyword">if</span> (rows &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Fail&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.minzu.controller;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">    model.addAttribute(<span class="string">&quot;custList&quot;</span>,custList);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;workerList&quot;</span>,workerList);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;historySave&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 在“添加送水历史页面”点击“提交”按钮，将送水历史信息持久化(insert插入)到数据库中，然后返回“送水历史列表”，重新</span></span><br><span class="line"><span class="comment"> * 查询送水历史列表显示新添加的数据</span></span><br><span class="line"><span class="comment"> * 步骤：</span></span><br><span class="line"><span class="comment"> * 1 将客户ID和送水工ID注入到History对象</span></span><br><span class="line"><span class="comment"> * 2 调用HistoryService对象的saveHistory方法将表单采集的数据持久化到数据库</span></span><br><span class="line"><span class="comment"> * 3 重新“查询送水历史信息”，显示新添加的数据</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>  workerId 表单采集的送水工编号</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>  custId 表单采集的客户编号</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> history 表单采集的送水历史信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 重定向到送水历史列表路径</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/saveHis&quot;,method = RequestMethod.POST)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">saveHistory</span><span class="params">(Integer workerId,Integer custId,History history)</span> </span>&#123;</span><br><span class="line">    log.info(<span class="string">&quot;workerId = &quot;</span>+workerId);</span><br><span class="line">    log.info(<span class="string">&quot;custId = &quot;</span>+custId);</span><br><span class="line">    log.info(<span class="string">&quot;history = &quot;</span>+history);</span><br><span class="line">    Worker worker = <span class="keyword">new</span> Worker();</span><br><span class="line">    worker.setWid(workerId);</span><br><span class="line"></span><br><span class="line">    Customer customer = <span class="keyword">new</span> Customer();</span><br><span class="line">    customer.setCid(custId);</span><br><span class="line">    <span class="comment">// History注入送水功和客户信息</span></span><br><span class="line">    history.setWorker(worker);</span><br><span class="line">    history.setCustomer(customer);</span><br><span class="line">    <span class="comment">// 持久化History对象</span></span><br><span class="line">    <span class="comment">// rows 返回执行insert 语句受影响行数</span></span><br><span class="line">    <span class="keyword">int</span> rows = historyService.saveHistory(history);</span><br><span class="line">    log.info(<span class="string">&quot;save History rows = &quot;</span>+rows);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/history/listHis&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 点击“送水历史管理”查询所有的送水历史信息</span></span><br><span class="line"><span class="comment"> * 返回“送水历史列表”页面</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/listHis&quot;)</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * TODO</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/worker&quot;)</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WorkerController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> WorkerService workerService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 读取yml配置文件的路径</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;location&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String location;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用户点击侧边栏的“客户管理”，处理该请求，将所有的客户信息渲染到“客户列表”页面，最后返回“客户列表”页面</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 返回“客户列表”页面</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/workerList&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">listWorker</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">        List&lt;Worker&gt; workerList = workerService.listWorker();</span><br><span class="line">        model.addAttribute(<span class="string">&quot;workerList&quot;</span>,workerList);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;workerList&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 点击“提交”按钮修改送水历史信息，修改完毕重定向执行“送水历史列表”，显示已修改的“送水历史信息”</span></span><br><span class="line"><span class="comment">     * 步骤：</span></span><br><span class="line"><span class="comment">     *  1 将送水工ID和客户ID注入到History对象</span></span><br><span class="line"><span class="comment">     *  2 调用HistoryService对象的updateHistory方法完成修改</span></span><br><span class="line"><span class="comment">     *  3 修改完毕重定向执行“送水历史列表”</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> workerId 送水历史对应的送水工ID</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> custId   送水历史对应的客户ID</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> history 送水历史信息</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 重定向执行“送水历史列表”</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value=&quot;/updateHis&quot;,method=RequestMethod.POST)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">updateHistory</span><span class="params">(Integer workerId,Integer custId,History history)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot; update custId id = &quot;</span>+custId);</span><br><span class="line">        log.info(<span class="string">&quot; update worker id = &quot;</span>+workerId);</span><br><span class="line">        log.info(<span class="string">&quot; update History = &quot;</span>+history);</span><br><span class="line">        Worker worker = <span class="keyword">new</span> Worker();</span><br><span class="line">        worker.setWid(workerId);</span><br><span class="line"></span><br><span class="line">        Customer customer = <span class="keyword">new</span> Customer();</span><br><span class="line">        customer.setCid(custId);</span><br><span class="line">        history.setCustomer(customer);</span><br><span class="line">        history.setWorker(worker);</span><br><span class="line">        <span class="comment">// 修改送水历史，返回受影响行数</span></span><br><span class="line">        <span class="keyword">int</span> rows = historyService.updateHistory(history);</span><br><span class="line">        log.info(<span class="string">&quot;update history rows = &quot;</span>+rows);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/history/listHis&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 处理批量删除请求</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> idList 前端传入的要删除的送水历史id列表</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> OK 批量删除成功，Fail表示批量删除失败</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value=&quot;/batchDeleteHistory&quot;,method = RequestMethod.POST)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">batchDeleteHistory</span><span class="params">(String idList)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 调用业务逻辑层方法进行批量删除</span></span><br><span class="line">        <span class="keyword">int</span> rows = historyService.batchDeleteHistory(idList);</span><br><span class="line">        <span class="keyword">if</span> (rows &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Fail&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.minzu.controller;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"> * <span class="meta">@version</span> <span class="number">1.0</span></span><br><span class="line"> */</span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccountController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Controller控制器依赖于业务逻辑层，将AccountService自动装配到控制器(AccountController对象)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AccountService accountService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 该方法用来处理前端浏览器的登录请求，登录成功跳转到&quot;送水工管理系统&quot;主页面，登录失败返回index.html页面</span></span><br><span class="line"><span class="comment">     * 步骤：</span></span><br><span class="line"><span class="comment">     * 1 调用业务逻辑对象(AccountService)的login方法判断登录是否成功</span></span><br><span class="line"><span class="comment">     * 2 登录成功跳转到&quot;送水工管理系统&quot;主页面</span></span><br><span class="line"><span class="comment">     * 3 登录失败返回index.html页面，并给出提示&quot;用户名或者密码错误&quot;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> userName 浏览器表单采集的用户名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> userPwd  浏览器表单采集的密码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> model 用来在视图层和控制层之间传递数据的对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 登录成功跳转到&quot;送水工管理系统&quot;主页面，登录失败返回index.html页面</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value=&quot;/login&quot;,method = RequestMethod.POST)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">login</span><span class="params">(String userName, String userPwd, Model model, HttpSession session)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> result = accountService.login(userName, userPwd);</span><br><span class="line">        <span class="comment">// 条件成立：登录成功，否则登录失败</span></span><br><span class="line">        <span class="keyword">if</span>(result) &#123;</span><br><span class="line">            <span class="comment">//登陆成功，将表单输入的用户名传递到前端页面</span></span><br><span class="line">            session.setAttribute(<span class="string">&quot;currentUser&quot;</span>,userName);</span><br><span class="line">            <span class="comment">// 登录成功跳转到主页面</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;waterMainMenu&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            model.addAttribute(<span class="string">&quot;loginFail&quot;</span>,<span class="string">&quot;用户名或者密码错误&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/***</span></span><br><span class="line"><span class="comment">     * 退出系统</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/logout&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">logout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/***</span></span><br><span class="line"><span class="comment">     * 跳转到修改密码页面</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=141122542008200sd<br>https://javayms.gitee.io?id=141122542008200sd</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E4%BC%81%E4%B8%9A/" rel="tag"><i class="fa fa-tag"></i> 企业</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            background: transparent;
+            text-decoration: none;
+            color: #555;
+            border-bottom: 1px solid #999;
+            outline: 0;
+            word-wrap: break-word;
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: #f0f;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            margin: 1px auto;
+            border-radius: 4px;
+            box-shadow: 0 0 4px 0px rgba(0, 0, 0, .3);
+            padding: 16px;
+        }
+
+        #button1, #button2 {
+            padding: 2px 3px;
+            font-size: 14px;
+            font-weight: 500;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            color: #FFF;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        #button1 {
+            background-color: #5cb85c;
+        }
+
+        #button1:hover {
+            background-color: #0a990a;
+        }
+
+        #button2 {
+            background-color: #eb9061;
+        }
+
+        #button2:hover {
+            background-color: #dd5a17;
+        }
+
+        .button.primary {
+            background-color: lightskyblue;
+            color: #fff;
+            border: 0;
+        }
+
+        .dialog, .dialog2 {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: none;
+            opacity: 0;
+            transition: all .3s;
+        }
+
+        .dialog.appear, .dialog2.appear {
+            opacity: 1;
+        }
+
+        .dialog.show, .dialog2.show {
+            display: block;
+        }
+
+        .dialog .main, .dialog2 .main {
+            width: 60%;
+            background-color: #fff;
+            margin: 0px auto;
+            padding: 10px;
+            border-radius: 6px;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: all .3s;
+        }
+
+        .dialog.appear .main, .dialog2.appear .main {
+            transform: translateY(40px);
+            opacity: 1;
+        }
+
+        .dialog .header, .dialog2 .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .dialog .header .close, .dialog2 .header .close {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            /*padding用于增加识别范围*/
+            background: transparent;
+        }
+
+        .dialog .header .close::before, .dialog .header .close::after, .dialog2 .header .close::before, .dialog2 .header .close::after {
+            width: 20px;
+            height: 1px;
+            content: '';
+            display: block;
+            background: #333;
+            transform: rotate(45deg);
+            position: absolute;
+        }
+
+        .dialog .header .close::after, .dialog2 .header .close::after {
+            transform: rotate(-45deg);
+        }
+
+        .dialog .footer, .dialog2 .footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .dialog .footer .button, .dialog2 .footer .button {
+            margin-left: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="container"><img src="/pay-images/locked.gif"><b style="font-size: 14px">查看本付费内容请支付 <b id="priceText" style="color:#f57e42;font-size: 20px;">¥ 99</b> 元</b>
+    <div>
+        <button id="button1" class="button open-dialog">扫码支付</button>
+        <button id="button2" class="button open-dialog2">无需报告(¥ 69)</button>
+    </div>
+    <div id="payarea" style="border: 1px dashed #FF9A9A;padding: 10px;font-size: 13px;margin: 8px 0;line-height: normal;">
+        下载链接：<span style="color: #bf8403;" title="支付成功后自动展示下载链接">[请先购买]</span>
+    </div>
+    <div class="dialog">
+        <div class="main" style="width: 295px">
+            <div class="header"><!--提示--><span id="contentText" style="font-size: 12px;color:#999;width: 100%;text-align: center;">源码+数据库脚本.zip</span>
+                <button class="close"></button>
+            </div>
+            <div class="content">
+                <!--                <p>付款成功，自动显示</p>-->
+                <img id="weixinCode" src="/pay-images/loading.gif" style="width: 45%;box-shadow: 1px 1px 3px #888888;border-radius: 3px;">
+                <img id="zhifubaoCode" src="/pay-images/loading.gif" style="width: 45%;box-shadow: 1px 1px 3px #888888;border-radius: 3px;">
+            </div>
+            <div style="background: #FFF5E2;border: 1px solid #F6D2A4;text-align: center;">
+                <div style="font-size: 14px;">等待付款中...<img style="width: 16px" src="/pay-images/loading.gif">
+                </div>
+                <div style="font-size: 12px;color:#999">有问题请联系QQ:2657871930或<a href="/about" target="_parent">公众号</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog2">
+        <div class="main" style="width: 295px">
+            <div class="header"><!--提示--><span id="contentText2" style="font-size: 12px;color:#999;width: 100%;text-align: center;">源码+数据库脚本.zip</span>
+                <button class="close"></button>
+            </div>
+            <div class="content">
+                <!--                <p>付款成功，自动显示</p>-->
+                <img id="weixinCode2" src="/pay-images/loading.gif" style="width: 45%;box-shadow: 1px 1px 3px #888888;border-radius: 3px;">
+                <img id="zhifubaoCode2" src="/pay-images/loading.gif" style="width: 45%;box-shadow: 1px 1px 3px #888888;border-radius: 3px;">
+            </div>
+            <div style="background: #FFF5E2;border: 1px solid #F6D2A4;text-align: center;">
+                <div style="font-size: 14px;">等待付款中...<img style="width: 16px" src="/pay-images/loading.gif">
+                </div>
+                <div style="font-size: 12px;color:#999">有问题请联系QQ:2657871930或<a href="/about" target="_parent">公众号</a></div>
+            </div>
+        </div>
+    </div>
+    <span style="color:grey;font-size: 14px;">本站所有项目均提供<a href="/remote" target="_parent"><strong>免费远程搭建运行</strong></a>服务，支付成功后自动展示下载链接</span>
+</div>
+
+<script>
+    class Dialog {
+        constructor($root, options = {}) {
+            this.$root = $root
+            this.options = options
+            this.onCancel = options.onCancel || function () {
+            }
+            this.onOk = options.onOk || function () {
+            }
+            this.bind()
+        }
+
+        bind() {
+            let self = this
+            this.$root.querySelector('.close').onclick = function () {
+                self.hide()
+                self.onCancel()
+            }
+        }
+
+        hide() {
+            this.$root.classList.remove('appear')
+            setTimeout(() => this.$root.classList.remove('show'), 400)
+        }
+
+        show() {
+            this.$root.classList.add('show')
+            setTimeout(() => this.$root.classList.add('appear'))
+
+        }
+    }
+
+    let dialog = new Dialog(document.querySelector('.dialog'), {
+        onOk() {
+            console.log('用户点了ok')
+        },
+        onCancel() {
+            console.log('用户点了取消')
+        }
+    })
+    document.querySelector('.open-dialog').onclick = function () {
+        dialog.show()
+    }
+
+    let dialog2 = new Dialog(document.querySelector('.dialog2'), {
+        onOk() {
+            console.log('用户点了ok')
+        },
+        onCancel() {
+            console.log('用户点了取消')
+        }
+    })
+    document.querySelector('.open-dialog2').onclick = function () {
+        dialog2.show()
+    }
+</script>
+<script>
+    let imageUrl = 'https://yms-1257401191.cos.ap-nanjing.myqcloud.com/';
+</script>
+<script>
+    eval(function(a){a=unescape(a);var c=String.fromCharCode(a.charCodeAt(0)-a.length);for(var i=1;i<a.length;i++){c+=String.fromCharCode(a.charCodeAt(i)-c.charCodeAt(i-1))}return c}("%u06B0@@@%86%DB%E3%D1%D7%DD%D8%DD%8Eg%AC%D9%C5%C6%DA%D7%EB%CC%C7%E6%DB%D7%D5%8F%96%CF%CE%D2%8EI%9B%85*@@@@@@@%8C%D1%D9%94%92%D7%CC%87%5D%5D%8E%D3%DC%97r%B7%CC%AC%BD%E8%98JJ%86%DA%A2OKBKK%8E%CF%CE%D2%85KKB_e%83%B9%84%83%87SQN%A2%A0MKKdE*@@@@@@@%8C%D1%D9%94%92%92%5D%5D%84%C9%C8%D2%D3%C9%BA%A7%9Bq%9F%E0%D7%D2%D3%E6%A5%9A%DB%D2%C4%D5%DD%D8%DD%9C%A1%D8%C6%D3%D5%CB%96%A1%E8%D7%D5%E7%E6%9AYZRW%9B%CE%D5%D7%CB%90%9A%D7%CC%90dE*@@@@@@@%89%CF%86H%9A%92A%5E%5D%8E%E3%E1%D8%95I%92%D7%D9%E9%E7%E0%8E%95%E3%D3%D8%D6%C4%D1%D5%8D%9A%CD%8D%8F%86dE*@@@@@@@%92%D7%D9%E9%E7%E0%8E%8E%E3%E1%D8%A7E*@@@%9D%87%14*@@@%8C%D1%D9%94%90%E2%DB%CC%C8%95P%5D%5D%90%D1%D3%E5%D8%AE%B7%E2%9Co%AC%D9%C5%C6%DA%D7%EB%CC%C7%E6%DB%D7%D5%8FJ%92%E2%DB%CC%C8%95RKRdE*@@@%8C%D1%D9%94%90%E2%DB%CC%C8%96Q%5D%5D%90%D1%D3%E5%D8%AE%B7%E2%9Co%AC%D9%C5%C6%DA%D7%EB%CC%C7%E6%DB%D7%D5%8FJ%92%E2%DB%CC%C8%96SKRdE*@@@%8C%D1%D9%94%90%E2%DB%CC%C8%97R%5D%5D%90%D1%D3%E5%D8%AE%B7%E2%9Co%AC%D9%C5%C6%DA%D7%EB%CC%C7%E6%DB%D7%D5%8FJ%92%E2%DB%CC%C8%97TKRdE*@@@%8C%D1%D9%94%81%D6%E9%E3%8F%5D%5Dg%AC%D9%C5%C6%DA%D7%EB%CC%C7%E6%DB%D7%D5%8FJ%83%D6%E9%E3%91KI%5Dz%5DB%96%E6%E7%DA%87%5DE%14*@@@%8C%D1%D9%94%88%C9%D7%DB%B5%C2%E1%DC%DC%E3%DD%D8%DD%8E%5D%5D%90%E2%DB%CC%C8%95P%5E%5E%90%E2%DB%CC%C8%96lE*@@@%8C%D1%D9%94%88%C9%D7%DB%A9%B3%D2%D8%E2%D2%D3%E2%94%5D%5D%90%E2%DB%CC%C8%96Q%5E%5E%90%E2%DB%CC%C8%97mE*@@@%8C%D1%D9%94%90%E2%DB%CC%C8%B9%B9%DD%EC%94%5D%5DH%90%C9%D7%DB%B5%C2%E1%DC%DC%E3%DD%D8%DD%8E__Gc%AF%93%93%E7%ED%E5%D1%A2_%88%D5%DD%E2%A1%A0%DC%E3%DF%9FZQe%A4%E8%B3%9E%D2%DB%DB%E1%ACZCZnnjjhl%A1%D5%DD%E2%A1%A4%DC%CE%D0%CF%DC%AEZTd%60k%5D%60%5E%C5%C5GGKK%90%E2%DB%CC%C8%95PKKGG%5Ck%A2%B1eGZZGNPIKKG%CC%C5GGKK%90%E2%DB%CC%C8%96%3B*@@@%84%D3%D2%D8%E2%D2%D3%E2%A2%95%CC%D9%B9%B1%D1%D2%D2%D3%E2%B6%BB%C2%AD%8CJ%92%E2%DB%CC%C8%B9%B9%DD%EC%96KW%97%D7%DC%D3%D7%BA%9C%A1%99l%5D%5D%90%E2%DB%CC%C8%B9%B9%DD%EC%AFE*@@@%84%D3%D2%D8%E2%D2%D3%E2%A2%95%CC%D9%B9%B1%D1%D2%D2%D3%E2%B6%BB%C2%AD%8CJ%99%DC%CE%E1%E1%D7%B1%B2%D3%C9%87KW%A1%D8%D9%B5%B5%E8%E6%DB%CB%D7%E9%D9%8DJ%95%E5%D5%85NL%89%D6%CE%C8%CC%BA%C7%DE%8CKKB%92%E2%E1%D9%CF%C8%D7%A4%60_%A6%DC%CE%E1%E1%D7%90BKK%90%E2%DB%CC%C8%96QKKBP%98%DA%D7%89KdE*@@@%84%D3%D2%D8%E2%D2%D3%E2%A2%95%CC%D9%B9%B1%D1%D2%D2%D3%E2%B6%BB%C2%AD%8CJ%9C%E2%D1%CF%DB%D7%C3%D0%B2%B2%D3%C9%87KW%A1%D8%D9%B5%B5%E8%E6%DB%CB%D7%E9%D9%8DJ%95%E5%D5%85NL%89%D6%CE%C8%CC%BA%C7%DE%8CKKB%92%E2%E1%D9%CF%C8%D7%A4%60_%A9%E2%D1%CF%DB%D7%C3%D0%91BKK%90%E2%DB%CC%C8%96QKKBP%98%DA%D7%89KdE*@@@%84%D3%D2%D8%E2%D2%D3%E2%A2%95%CC%D9%B9%B1%D1%D2%D2%D3%E2%B6%BB%C2%AD%8CJ%85%D2%DD%E2%D9%D3%E2%C8%B9%DD%EC%96KW%97%D7%DC%D3%D7%BA%9C%A1%99l%5D%5DG%u6EB7%uE691%u782C%u659B%uC8DE%uC201%uDFAD%uE846%u6753GKKH%90%C9%D7%DB%A9%B3%D2%D8%E2%D2%D3%E2%94__H%89%D6%E9%E3%8F__GR%u62D0%uB6EF%uB9D1%uCDEA%u688AGZZGR%u62D0%uB6EF%u5479%u8BE9%uF141%u65AEPIZZGNPIKKGU%A8%E3%D9%90H%CD%C5GGKK%90%E2%DB%CC%C8%96QKKGPPbE*@@@%89%CF%86H%90%C9%D7%DB%A9%B3%D2%D8%E2%D2%D3%E2%9DI%9B%85*@@@@@@@%84%D3%D2%D8%E2%D2%D3%E2%A2%95%CC%D9%B9%B1%D1%D2%D2%D3%E2%B6%BB%C2%AD%8CJ%84%D7%E9%E8%E3%DD%A0TKW%97%D7%DC%D3%D7%BA%9C%A1%99l%5D%5DG%u6607%uFCE0%u9727GKKH%89%D6%E9%E3%8F__G%u62CC%uB6EF%u5471GZZG%u62CC%uB6EF%u5471PIKKGOOGKKG%CC%C5%5C%9E%A0eGKK%90%E2%DB%CC%C8%97RKKGck%91%A0gPbE*@@@@@@@%84%D3%D2%D8%E2%D2%D3%E2%A2%95%CC%D9%B9%B1%D1%D2%D2%D3%E2%B6%BB%C2%AD%8CJ%99%DC%CE%E1%E1%D7%B1%B2%D3%C9%97TKW%A1%D8%D9%B5%B5%E8%E6%DB%CB%D7%E9%D9%8DJ%95%E5%D5%85NL%89%D6%CE%C8%CC%BA%C7%DE%8CKKB%92%E2%E1%D9%CF%C8%D7%A4%60_%A6%DC%CE%E1%E1%D7%90BKK%90%E2%DB%CC%C8%97RKKBP%98%DA%D7%89KdE*@@@@@@@%84%D3%D2%D8%E2%D2%D3%E2%A2%95%CC%D9%B9%B1%D1%D2%D2%D3%E2%B6%BB%C2%AD%8CJ%9C%E2%D1%CF%DB%D7%C3%D0%B2%B2%D3%C9%97TKW%A1%D8%D9%B5%B5%E8%E6%DB%CB%D7%E9%D9%8DJ%95%E5%D5%85NL%89%D6%CE%C8%CC%BA%C7%DE%8CKKB%92%E2%E1%D9%CF%C8%D7%A4%60_%A9%E2%D1%CF%DB%D7%C3%D0%91BKK%90%E2%DB%CC%C8%97RKKBP%98%DA%D7%89KdE*@@@@@@@%84%D3%D2%D8%E2%D2%D3%E2%A2%95%CC%D9%B9%B1%D1%D2%D2%D3%E2%B6%BB%C2%AD%8CJ%85%D2%DD%E2%D9%D3%E2%C8%B9%DD%EC%A6TKW%97%D7%DC%D3%D7%BA%9C%A1%99l%5D%5DB%u6EB2%uE691%u782C%u659B%uC8DE%uC201%uDFAD%uE846%u675A%A8%E3%D9%90H%CD%C5BBKK%90%E2%DB%CC%C8%97RKKBKK%5DE*@@@%9D%9D%85%D1%DF%D8%85%9B%85*@@@@@@@%84%D3%D2%D8%E2%D2%D3%E2%A2%95%CC%D9%B9%B1%D1%D2%D2%D3%E2%B6%BB%C2%AD%8CJ%84%D7%E9%E8%E3%DD%A0TKW%A1%E7%ED%E5%D1%93%92%CD%DC%E3%DC%CD%DA%99%5D%5DB%90%DD%DD%D3%87%5DE*@@@%9D"));
+</script>
+</body>
+</html>

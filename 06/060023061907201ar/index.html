@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SSM宠物商城系统(java+ssm+jsp+jquery+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/060023061907201ar/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SSM宠物商城系统(java+ssm+jsp+jquery+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/060023061907201ar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SSM宠物商城系统(java+ssm+jsp+jquery+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Tomcat≥8</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/092323431807.jpg" alt="092323431807"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/112323431807.jpg" alt="112323431807"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/122323431807.jpg" alt="122323431807"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/132323431807.jpg" alt="132323431807"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/142323431807.jpg" alt="142323431807"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/152323431807.jpg" alt="152323431807"></p>
+<p>基于javaweb的SSM宠物商城系统(java+ssm+jsp+jquery+mysql)</p>
+<p>项目介绍</p>
+<p>该系统主要分为前台和后台两大功能模块，共包含两个角色：用户、管理员。</p>
+<p>具体的系统功能如下： 1.前台功能 前台首页、宠物商品展示、宠物搜索、宠物分类查找、宠物详情、网站公告、特价商品、推荐商品、全部商品、查看更多商品、加入购物车、确认订购信息、修改购物车、 支付结算、清空购物车、提交订单、用户注册、用户登陆、用户中心、修改个人信息、修改密码、我的订单、订单详情、用户留言、我的留言等功能。 2.后台功能 后台系统登陆、用户信息管理、管理员管理、宠物分类管理、宠物信息管理、订单信息管理、订单明细管理、用户留言管理、新闻公告管理等功能。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； 5.是否Maven项目: 否；查看源码目录中是否包含pom.xml；若包含，则为maven项目，否则为非maven项目; 6.数据库：MySql 5.7/8.0等版本均可；</p>
+<p>技术栈</p>
+<p>后台框架：Spring、SpringMVC、MyBatis UI界面：JSP、jQuery 数据库：MySQL</p>
+<p>使用说明</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，修改配置，运行项目；</p>
+</li>
+</ol>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>后台相关接口：</p>
+<p>/**</p>
+<ul>
+<li>后台相关接口</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/admin”)</p>
+<p>public class AdminController {</p>
+<p>private static final int rows = 10;</p>
+<p>@Autowired</p>
+<p>private AdminService adminService;</p>
+<p>@Autowired</p>
+<p>private OrderService orderService;</p>
+<p>@Autowired</p>
+<p>private UserService userService;</p>
+<p>@Autowired</p>
+<p>private GoodService goodService;</p>
+<p>@Autowired</p>
+<p>private TopService topService;</p>
+<p>@Autowired</p>
+<p>private TypeService typeService;</p>
+<p>/**</p>
+<ul>
+<li><p>管理员登录</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/login”)</p>
+<p>public String login(Admins admin, HttpServletRequest request, HttpSession session) {</p>
+<p>if (adminService.checkUser(admin.getUsername(), admin.getPassword())) {</p>
+<p>session.setAttribute(“username”, admin.getUsername());</p>
+<p>return “redirect:index”;</p>
+<p>request.setAttribute(“msg”, “用户名或密码错误!”);</p>
+<p>return “/admin/login.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>退出</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/logout”)</p>
+<p>public String logout(HttpSession session) {</p>
+<p>session.removeAttribute(“admin”);</p>
+<p>return “/admin/login.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>后台首页</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/index”)</p>
+<p>public String index(HttpServletRequest request) {</p>
+<p>request.setAttribute(“msg”, “恭喜你! 登录成功了”);</p>
+<p>return “/admin/index.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>订单列表</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/orderList”)</p>
+<p>public String orderList(@RequestParam(required=false, defaultValue=”0”)byte status, HttpServletRequest request,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>request.setAttribute(“flag”, 1);</p>
+<p>request.setAttribute(“status”, status);</p>
+<p>request.setAttribute(“orderList”, orderService.getList(status, page, rows));</p>
+<p>request.setAttribute(“pageTool”, PageUtil.getPageTool(request, orderService.getTotal(status), page, rows));</p>
+<p>return “/admin/order_list.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>订单发货</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/orderDispose”)</p>
+<p>public String orderDispose(int id, byte status,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>orderService.dispose(id);</p>
+<p>return “redirect:orderList?flag=1&amp;status=”+status+”&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>订单完成</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/orderFinish”)</p>
+<p>public String orderFinish(int id, byte status,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>orderService.finish(id);</p>
+<p>return “redirect:orderList?flag=1&amp;status=”+status+”&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>订单删除</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/orderDelete”)</p>
+<p>public String orderDelete(int id, byte status,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>orderService.delete(id);</p>
+<p>return “redirect:orderList?flag=1&amp;status=”+status+”&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>顾客管理</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/userList”)</p>
+<p>public String userList(HttpServletRequest request,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>request.setAttribute(“flag”, 2);</p>
+<p>request.setAttribute(“userList”, userService.getList(page, rows));</p>
+<p>request.setAttribute(“pageTool”, PageUtil.getPageTool(request, userService.getTotal(), page, rows));</p>
+<p>return “/admin/user_list.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>顾客添加</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/userAdd”)</p>
+<p>public String userAdd(HttpServletRequest request) {</p>
+<p>request.setAttribute(“flag”, 2);</p>
+<p>return “/admin/user_add.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>顾客添加</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/userSave”)</p>
+<p>public String userSave(Users user, HttpServletRequest request,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>if (userService.isExist(user.getUsername())) {</p>
+<p>request.setAttribute(“msg”, “用户名已存在!”);</p>
+<p>return “/admin/user_add.jsp”;</p>
+<p>userService.add(user);</p>
+<p>return “redirect:userList?flag=2&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>顾客密码重置页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/userRe”)</p>
+<p>public String userRe(int id, HttpServletRequest request) {</p>
+<p>request.setAttribute(“flag”, 2);</p>
+<p>request.setAttribute(“user”, userService.get(id));</p>
+<p>return “/admin/user_reset.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>顾客密码重置</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/userReset”)</p>
+<p>public String userReset(Users user,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>String password = SafeUtil.encode(user.getPassword());</p>
+<p>user = userService.get(user.getId());</p>
+<p>user.setPassword(password);</p>
+<p>userService.update(user);</p>
+<p>return “redirect:userList?flag=2&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>顾客更新</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/userEdit”)</p>
+<p>public String userEdit(int id, HttpServletRequest request) {</p>
+<p>request.setAttribute(“flag”, 2);</p>
+<p>request.setAttribute(“user”, userService.get(id));</p>
+<p>return “/admin/user_edit.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>顾客更新</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/userUpdate”)</p>
+<p>public String userUpdate(Users user,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>userService.update(user);</p>
+<p>return “redirect:userList?flag=2&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>顾客删除</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/userDelete”)</p>
+<p>public String userDelete(Users user,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>userService.delete(user);</p>
+<p>return “redirect:userList?flag=2&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>产品列表</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/goodList”)</p>
+<p>public String goodList(@RequestParam(required=false, defaultValue=”0”)byte status, HttpServletRequest request,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>request.setAttribute(“flag”, 3);</p>
+<p>request.setAttribute(“page”, page);</p>
+<p>request.setAttribute(“status”, status);</p>
+<p>request.setAttribute(“goodList”, goodService.getList(status, page, rows));</p>
+<p>request.setAttribute(“pageTool”, PageUtil.getPageTool(request, goodService.getTotal(status), page, rows));</p>
+<p>return “/admin/good_list.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>产品添加</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/goodAdd”)</p>
+<p>public String goodAdd(HttpServletRequest request) {</p>
+<p>request.setAttribute(“flag”, 3);</p>
+<p>request.setAttribute(“typeList”, typeService.getList());</p>
+<p>return “/admin/good_add.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>产品添加</p>
+</li>
+<li><p>@return</p>
+</li>
+<li><p>@throws Exception</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/goodSave”)</p>
+<p>public String goodSave(String name, int price, String intro, int stock, int typeId,</p>
+<p>MultipartFile cover, MultipartFile image1, MultipartFile image2,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) throws Exception {</p>
+<p>Goods good = new Goods();</p>
+<p>good.setName(name);</p>
+<p>good.setPrice(price);</p>
+<p>good.setIntro(intro);</p>
+<p>good.setStock(stock);</p>
+<p>good.setTypeId(typeId);</p>
+<p>good.setCover(UploadUtil.fileUpload(cover));</p>
+<p>good.setImage1(UploadUtil.fileUpload(image1));</p>
+<p>good.setImage2(UploadUtil.fileUpload(image2));</p>
+<p>goodService.add(good);</p>
+<p>return “redirect:goodList?flag=3&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>产品更新</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/goodEdit”)</p>
+<p>public String goodEdit(int id, HttpServletRequest request) {</p>
+<p>request.setAttribute(“flag”, 3);</p>
+<p>request.setAttribute(“typeList”, typeService.getList());</p>
+<p>request.setAttribute(“good”, goodService.get(id));</p>
+<p>return “/admin/good_edit.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>产品更新</p>
+</li>
+<li><p>@return</p>
+</li>
+<li><p>@throws Exception</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/goodUpdate”)</p>
+<p>public String goodUpdate(int id, String name, int price, String intro, int stock, int typeId,</p>
+<p>MultipartFile cover, MultipartFile image1, MultipartFile image2,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) throws Exception {</p>
+<p>Goods good = goodService.get(id);</p>
+<p>good.setName(name);</p>
+<p>good.setPrice(price);</p>
+<p>good.setIntro(intro);</p>
+<p>good.setStock(stock);</p>
+<p>good.setTypeId(typeId);</p>
+<p>if (Objects.nonNull(cover) &amp;&amp; !cover.isEmpty()) {</p>
+<p>good.setCover(UploadUtil.fileUpload(cover));</p>
+<p>if (Objects.nonNull(image1) &amp;&amp; !image1.isEmpty()) {</p>
+<p>good.setImage1(UploadUtil.fileUpload(image1));</p>
+<p>if (Objects.nonNull(image2) &amp;&amp; !image2.isEmpty()) {</p>
+<p>good.setImage2(UploadUtil.fileUpload(image2));</p>
+<p>goodService.update(good);</p>
+<p>return “redirect:goodList?flag=3&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>产品删除</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/goodDelete”)</p>
+<p>public String goodDelete(int id,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>goodService.delete(id);</p>
+<p>return “redirect:goodList?flag=3&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>添加推荐</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/topSave”)</p>
+<p>public @ResponseBody String topSave(Tops tops,</p>
+<p>@RequestParam(required=false, defaultValue=”0”)byte status,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>int id = topService.add(tops);</p>
+<p>return id &gt; 0 ? “ok” : null;</p>
+<p>/**</p>
+<ul>
+<li><p>删除推荐</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/topDelete”)</p>
+<p>public @ResponseBody String topDelete(Tops tops,</p>
+<p>@RequestParam(required=false, defaultValue=”0”)byte status,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>boolean flag = topService.delete(tops);</p>
+<p>return flag ? “ok” : null;</p>
+<p>/**</p>
+<ul>
+<li><p>类目列表</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/typeList”)</p>
+<p>public String typeList(HttpServletRequest request) {</p>
+<p>request.setAttribute(“flag”, 4);</p>
+<p>request.setAttribute(“typeList”, typeService.getList());</p>
+<p>return “/admin/type_list.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>类目添加</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/typeSave”)</p>
+<p>public String typeSave(Types type,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>typeService.add(type);</p>
+<p>return “redirect:typeList?flag=4&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>类目更新</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/typeEdit”)</p>
+<p>public String typeUp(int id, HttpServletRequest request) {</p>
+<p>request.setAttribute(“flag”, 4);</p>
+<p>request.setAttribute(“type”, typeService.get(id));</p>
+<p>return “/admin/type_edit.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>类目更新</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/typeUpdate”)</p>
+<p>public String typeUpdate(Types type,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>typeService.update(type);</p>
+<p>return “redirect:typeList?flag=4&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>类目删除</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/typeDelete”)</p>
+<p>public String typeDelete(Types type,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>typeService.delete(type);</p>
+<p>return “redirect:typeList?flag=4&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>管理员列表</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminList”)</p>
+<p>public String adminList(HttpServletRequest request,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>request.setAttribute(“flag”, 5);</p>
+<p>request.setAttribute(“adminList”, adminService.getList(page, rows));</p>
+<p>request.setAttribute(“pageTool”, PageUtil.getPageTool(request, adminService.getTotal(), page, rows));</p>
+<p>return “/admin/admin_list.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>管理员修改自己密码</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminRe”)</p>
+<p>public String adminRe(HttpServletRequest request, HttpSession session) {</p>
+<p>request.setAttribute(“flag”, 5);</p>
+<p>request.setAttribute(“admin”, adminService.getByUsername(String.valueOf(session.getAttribute(“username”))));</p>
+<p>return “/admin/admin_reset.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>管理员修改自己密码</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminReset”)</p>
+<p>public String adminReset(Admins admin, HttpServletRequest request) {</p>
+<p>request.setAttribute(“flag”, 5);</p>
+<p>if (adminService.get(admin.getId()).getPassword().equals(SafeUtil.encode(admin.getPassword()))) {</p>
+<p>admin.setPassword(SafeUtil.encode(admin.getPasswordNew()));</p>
+<p>adminService.update(admin);</p>
+<p>request.setAttribute(“admin”, admin);</p>
+<p>request.setAttribute(“msg”, “修改成功!”);</p>
+<p>}else {</p>
+<p>request.setAttribute(“msg”, “原密码错误!”);</p>
+<p>return “/admin/admin_reset.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>管理员添加</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminSave”)</p>
+<p>public String adminSave(Admins admin, HttpServletRequest request,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>if (adminService.isExist(admin.getUsername())) {</p>
+<p>request.setAttribute(“msg”, “用户名已存在!”);</p>
+<p>return “/admin/admin_add.jsp”;</p>
+<p>adminService.add(admin);</p>
+<p>return “redirect:adminList?flag=5&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>管理员修改</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminEdit”)</p>
+<p>public String adminEdit(int id, HttpServletRequest request) {</p>
+<p>request.setAttribute(“flag”, 5);</p>
+<p>request.setAttribute(“admin”, adminService.get(id));</p>
+<p>return “/admin/admin_edit.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>管理员更新</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminUpdate”)</p>
+<p>public String adminUpdate(Admins admin,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>admin.setPassword(SafeUtil.encode(admin.getPassword()));</p>
+<p>adminService.update(admin);</p>
+<p>return “redirect:adminList?flag=5&amp;page=”+page;</p>
+<p>/**</p>
+<ul>
+<li><p>管理员删除</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/adminDelete”)</p>
+<p>public String adminDelete(Admins admin,</p>
+<p>@RequestParam(required=false, defaultValue=”1”) int page) {</p>
+<p>adminService.delete(admin);</p>
+<p>return “redirect:adminList?flag=5&amp;page=”+page;</p>
+<p>用户相关接口：</p>
+<p>/**</p>
+<ul>
+<li>用户相关接口</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/index”)</p>
+<p>public class UserController{</p>
+<p>private static final String INDENT_KEY = “order”;</p>
+<p>@Resource</p>
+<p>private UserService userService;</p>
+<p>@Resource</p>
+<p>private OrderService orderService;</p>
+<p>@Resource</p>
+<p>private GoodService goodService;</p>
+<p>@Resource</p>
+<p>private TypeService typeService;</p>
+<p>/**</p>
+<ul>
+<li><p>注册用户</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/register”)</p>
+<p>public String register(@RequestParam(required=false, defaultValue=”0”)int flag, Users user, Model model){</p>
+<p>model.addAttribute(“typeList”, typeService.getList());</p>
+<p>if(flag==-1) {</p>
+<p>model.addAttribute(“flag”, 5); // 注册页面</p>
+<p>return “/index/register.jsp”;</p>
+<p>if (user.getUsername().isEmpty()) {</p>
+<p>model.addAttribute(“msg”, “用户名不能为空!”);</p>
+<p>return “/index/register.jsp”;</p>
+<p>}else if (userService.isExist(user.getUsername())) {</p>
+<p>model.addAttribute(“msg”, “用户名已存在!”);</p>
+<p>return “/index/register.jsp”;</p>
+<p>}else {</p>
+<p>String password = user.getPassword();</p>
+<p>userService.add(user);</p>
+<p>user.setPassword(password);</p>
+<p>return “redirect:login?flag=-1”; // 注册成功后转去登录</p>
+<p>/**</p>
+<ul>
+<li><p>用户登录</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/login”)</p>
+<p>public String login(@RequestParam(required=false, defaultValue=”0”)int flag, Users user, HttpSession session, Model model) {</p>
+<p>model.addAttribute(“typeList”, typeService.getList());</p>
+<p>if(flag==-1) {</p>
+<p>flag = 6; // 登录页面</p>
+<p>return “/index/login.jsp”;</p>
+<p>if(userService.checkUser(user.getUsername(), user.getPassword())){</p>
+<p>session.setAttribute(“user”, userService.get(user.getUsername()));</p>
+<p>return “redirect:index”;</p>
+<p>} else {</p>
+<p>model.addAttribute(“msg”, “用户名或密码错误!”);</p>
+<p>return “/index/login.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>注销登录</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/logout”)</p>
+<p>public String logout(HttpSession session) {</p>
+<p>session.removeAttribute(“user”);</p>
+<p>session.removeAttribute(“order”);</p>
+<p>return “/index/login.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>查看购物车</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/cart”)</p>
+<p>public String cart(Model model) {</p>
+<p>model.addAttribute(“typeList”, typeService.getList());</p>
+<p>return “/index/cart.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>购买</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/buy”)</p>
+<p>public @ResponseBody String buy(int goodid, HttpSession session){</p>
+<p>Goods goods = goodService.get(goodid);</p>
+<p>if (goods .getStock() &lt;= 0) { // 库存不足</p>
+<p>return “empty”;</p>
+<p>Orders order = (Orders) session.getAttribute(INDENT_KEY);</p>
+<p>if (order==null) {</p>
+<p>session.setAttribute(INDENT_KEY, orderService.add(goods));</p>
+<p>}else {</p>
+<p>session.setAttribute(INDENT_KEY, orderService.addOrderItem(order, goods));</p>
+<p>return “ok”;</p>
+<p>/**</p>
+<ul>
+<li>减少</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/lessen”)</p>
+<p>public @ResponseBody String lessen(int goodid, HttpSession session){</p>
+<p>Orders order = (Orders) session.getAttribute(INDENT_KEY);</p>
+<p>if (order != null) {</p>
+<p>session.setAttribute(INDENT_KEY, orderService.lessenIndentItem(order, goodService.get(goodid)));</p>
+<p>return “ok”;</p>
+<p>/**</p>
+<ul>
+<li>删除</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/delete”)</p>
+<p>public @ResponseBody String delete(int goodid, HttpSession session){</p>
+<p>Orders order = (Orders) session.getAttribute(INDENT_KEY);</p>
+<p>if (order != null) {</p>
+<p>session.setAttribute(INDENT_KEY, orderService.deleteIndentItem(order, goodService.get(goodid)));</p>
+<p>return “ok”;</p>
+<p>/**</p>
+<ul>
+<li><p>提交订单</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/save”)</p>
+<p>public String save(ServletRequest request, HttpSession session, Model model){</p>
+<p>model.addAttribute(“typeList”, typeService.getList());</p>
+<p>Users user = (Users) session.getAttribute(“user”);</p>
+<p>if (user == null) {</p>
+<p>request.setAttribute(“msg”, “请登录后提交订单!”);</p>
+<p>return “/index/login.jsp”;</p>
+<p>Orders sessionOrder = (Orders) session.getAttribute(INDENT_KEY);</p>
+<p>if (sessionOrder != null) {</p>
+<p>if (sessionOrder != null) {</p>
+<p>for(Items item : sessionOrder.getItemList()){ // 检测商品库存(防止库存不足)</p>
+<p>Goods product = goodService.get(item.getGoodId());</p>
+<p>if(item.getAmount() &gt; product.getStock()){</p>
+<p>request.setAttribute(“msg”, “商品 [“+product.getName()+”] 库存不足! 当前库存数量: “+product.getStock());</p>
+<p>return “/index/cart.jsp”;</p>
+<p>sessionOrder.setUserId(user.getId());</p>
+<p>sessionOrder.setUser(userService.get(user.getId()));</p>
+<p>int orderid = orderService.save(sessionOrder);    // 保存订单</p>
+<p>session.removeAttribute(INDENT_KEY);    // 清除购物车</p>
+<p>return “redirect:topay?orderid=”+orderid;</p>
+<p>request.setAttribute(“msg”, “处理失败!”);</p>
+<p>return “/index/cart.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>支付页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/topay”)</p>
+<p>public String topay(int orderid, ServletRequest request, Model model) {</p>
+<p>model.addAttribute(“typeList”, typeService.getList());</p>
+<p>request.setAttribute(“order”, orderService.get(orderid));</p>
+<p>return “/index/pay.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>支付(模拟)</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/pay”)</p>
+<p>public String pay(Orders order, Model model) {</p>
+<p>model.addAttribute(“typeList”, typeService.getList());</p>
+<p>orderService.pay(order);</p>
+<p>return “redirect:payok?orderid=”+order.getId();</p>
+<p>/**</p>
+<ul>
+<li><p>支付成功</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/payok”)</p>
+<p>public String payok(int orderid, ServletRequest request, Model model) {</p>
+<p>model.addAttribute(“typeList”, typeService.getList());</p>
+<p>Orders order = orderService.get(orderid);</p>
+<p>int paytype = order.getPaytype();</p>
+<p>if(paytype == Orders.PAYTYPE_WECHAT || paytype == Orders.PAYTYPE_ALIPAY) {</p>
+<p>request.setAttribute(“msg”, “订单[“+orderid+”]支付成功”);</p>
+<p>}else {</p>
+<p>request.setAttribute(“msg”, “订单[“+orderid+”]货到付款”);</p>
+<p>return “/index/payok.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>查看订单</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/order”)</p>
+<p>public String order(HttpSession session, Model model){</p>
+<p>model.addAttribute(“flag”, 3);</p>
+<p>model.addAttribute(“typeList”, typeService.getList());</p>
+<p>Users user = (Users) session.getAttribute(“user”);</p>
+<p>if (user == null) {</p>
+<p>model.addAttribute(“msg”, “请登录后查看订单!”);</p>
+<p>return “/index/login.jsp”;</p>
+<p>List<Orders> orderList = orderService.getListByUserid(user.getId());</Orders></p>
+<p>if (orderList!=null &amp;&amp; !orderList.isEmpty()) {</p>
+<p>for(Orders order : orderList){</p>
+<p>order.setItemList(orderService.getItemList(order.getId()));</p>
+<p>model.addAttribute(“orderList”, orderList);</p>
+<p>return “/index/order.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>个人信息</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/my”)</p>
+<p>public String my(Users user, HttpSession session, Model model){</p>
+<p>model.addAttribute(“flag”, 4);</p>
+<p>model.addAttribute(“typeList”, typeService.getList());</p>
+<p>Users userLogin = (Users) session.getAttribute(“user”);</p>
+<p>if (userLogin == null) {</p>
+<p>model.addAttribute(“msg”, “请先登录!”);</p>
+<p>return “/index/login.jsp”;</p>
+<p>// 进入个人中心</p>
+<p>if (Objects.isNull(user) || Objects.isNull(user.getId())) {</p>
+<p>return “/index/my.jsp”;</p>
+<p>Users u = userService.get(user.getId());</p>
+<p>// 修改资料</p>
+<p>u.setName(user.getName());</p>
+<p>u.setPhone(user.getPhone());</p>
+<p>u.setAddress(user.getAddress());</p>
+<p>userService.update(u);  // 更新数据库</p>
+<p>session.setAttribute(“user”, u); // 更新session</p>
+<p>model.addAttribute(“msg”, “信息修改成功!”);</p>
+<p>// 修改密码</p>
+<p>if(user.getPasswordNew()!=null &amp;&amp; !user.getPasswordNew().trim().isEmpty()) {</p>
+<p>if (user.getPassword()!=null &amp;&amp; !user.getPassword().trim().isEmpty()</p>
+<p>&amp;&amp; SafeUtil.encode(user.getPassword()).equals(u.getPassword())) {</p>
+<p>if (user.getPasswordNew()!=null &amp;&amp; !user.getPasswordNew().trim().isEmpty()) {</p>
+<p>u.setPassword(SafeUtil.encode(user.getPasswordNew()));</p>
+<p>userService.update(u);  // 更新数据库</p>
+<p>session.setAttribute(“user”, u); // 更新session</p>
+<p>model.addAttribute(“msg”, “密码修改成功!”);</p>
+<p>}else {</p>
+<p>model.addAttribute(“msg”, “原密码错误!”);</p>
+<p>return “/index/my.jsp”;</p>
+<p>后台登录验证拦截器：</p>
+<p>/**</p>
+<ul>
+<li>后台登录验证拦截器</li>
+</ul>
+<p>*/</p>
+<p>public class AdminInterceptor extends HandlerInterceptorAdapter{</p>
+<p>/**</p>
+<ul>
+<li>检测登录状态</li>
+</ul>
+<p>*/</p>
+<p>@Override</p>
+<p>public boolean preHandle(HttpServletRequest request,</p>
+<p>HttpServletResponse response, Object handler) throws Exception {</p>
+<p>String uri = request.getRequestURI();</p>
+<p>if(uri.contains(“css/“) || uri.contains(“js/“) || uri.contains(“img/“)</p>
+<p>|| uri.contains(“login”) || uri.contains(“logout”)) {</p>
+<p>return true; // 不拦截路径</p>
+<p>Object username = request.getSession().getAttribute(“username”);</p>
+<p>if (Objects.nonNull(username) &amp;&amp; !username.toString().trim().isEmpty()) {</p>
+<p>return true; // 登录验证通过</p>
+<p>response.sendRedirect(“login.jsp”);</p>
+<p>return false; // 其他情况一律拦截</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=060023061907201ar<br>https://javayms.gitee.io?id=060023061907201ar</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+			<a href="/tags/%E5%AE%A0%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 宠物</a>
+			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

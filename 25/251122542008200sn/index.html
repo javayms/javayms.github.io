@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SSM餐厅点餐收银管理系统(java+ssm+jsp+bootstrap+mysql+redis)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/251122542008200sn/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SSM餐厅点餐收银管理系统(java+ssm+jsp+bootstrap+mysql+redis) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/251122542008200sn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SSM餐厅点餐收银管理系统(java+ssm+jsp+bootstrap+mysql+redis)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Tomcat≥8</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/440023342402.jpg" alt="440023342402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/450023342402.jpg" alt="450023342402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/460023342402.jpg" alt="460023342402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/470023342402.jpg" alt="470023342402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/480023342402.jpg" alt="480023342402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/500023342402.jpg" alt="500023342402"></p>
+<p>基于javaweb的SSM餐厅点餐收银管理系统(java+ssm+jsp+bootstrap+mysql+redis)</p>
+<p>项目介绍</p>
+<p>用于餐厅的收银管理系统，包含了四个模块 1.桌位模块 桌位模块主要是用于管理桌位的模块，包括点菜到结账的流程 将桌位人数设置为<code>0</code>可以滞空当前桌位</p>
+<p>2.账单模块 账单模块记录了每一天的帐单汇总，同时提供了年月日账单的统计，在日账单内可以查看当日的所有消费详情，还提供了按日期或日期区间搜索账单的功能</p>
+<p>3.日常维护模块 提供了桌位菜单用户供应商的配置功能，也就是增删改查</p>
+<p>添加菜品时，添加酒水类时，可以选择进货内的酒水，这样的话在结账后若客人点了该酒水，会将销售信息记录在酒水库存内的销售信息里</p>
+<p>4.酒水库存模块 查看添加酒水的进销存信息</p>
+<p>管理员角色包含以下功能：</p>
+<p>登录,查看桌位,开桌,点菜,结账,查看账单,添加菜品,查看菜品,桌位维护,添加桌位,添加账号,查看账号,添加供应商,进货信息管理,添加进货信息等功能。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  5.数据库：MySql 5.7版本； 6.是否Maven项目：否； 7.Redis数据库;</p>
+<p>技术栈</p>
+<ol>
+<li>后端：Spring+SpringMVC+Mybatis 2. 前端：JSP+Bootstrap+jQuery</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven;若为maven项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中applicationcontext-mybatis.xml配置文件中的数据库配置改为自己的配置; 4. 运行项目，输入localhost:8080/login.html 登录 管理员账号/密码：admin/adminadmin</li>
+</ol>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> <span class="string">&quot;/drink/drink&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//加载供应下拉列表</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/loadProviderSelect.do&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">loadProviderSelect</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> JSON.toJSONString(providerService.getProvider());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//加载进货信息</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/loadDrinkBill.do&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">loadDrinkBill</span><span class="params">(ModelAndView modelAndView, DrinkBillPager pager)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> totalCount = providerService.getDrinkBillCount(pager);</span><br><span class="line">    <span class="keyword">if</span> (totalCount != <span class="number">0</span>) &#123;</span><br><span class="line">        pager.setTotalCount(totalCount);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        pager.setTotalCount(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    pager.setPageSize(PagerTools.drinkBillPagerSize);</span><br><span class="line">    pager.count();</span><br><span class="line">    pager.setList(providerService.getDrinkBill(pager));</span><br><span class="line">    modelAndView.addObject(<span class="string">&quot;pager&quot;</span>, pager);</span><br><span class="line">    modelAndView.setViewName(<span class="string">&quot;/drink/ajaxJinhuoList&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> modelAndView;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//加载进货信息</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/loadDrinkBillCode.do&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">loadDrinkBillCode</span><span class="params">(DrinkBillPager pager)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> totalCount = providerService.getDrinkBillCount(pager);</span><br><span class="line">    <span class="keyword">if</span> (totalCount != <span class="number">0</span>) &#123;</span><br><span class="line">        pager.setTotalCount(totalCount);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        pager.setTotalCount(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    pager.setPageSize(<span class="number">100</span>);</span><br><span class="line">    pager.count();</span><br><span class="line">    List&lt;Drinkbill&gt; drinkBills=providerService.getDrinkBill(pager);</span><br><span class="line">    <span class="keyword">return</span> JSON.toJSONString(drinkBills);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//del删除进货信息</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/delDrinkBill.do&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> JSON.toJSONString(deskDish);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除菜品</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/delDish.do&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">delDish</span><span class="params">(DeskInfo_detail deskInfo_detail,<span class="meta">@RequestParam(required=false)</span>String deskCode)</span></span>&#123;</span><br><span class="line">	List&lt;DeskInfo_detail&gt; deskDish=redisUtil.getList(deskCode);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; deskDish.size(); i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(deskDish.get(i).getDishName().equals(deskInfo_detail.getDishName()))&#123;<span class="comment">//找到相同的菜品</span></span><br><span class="line">			deskDish.remove(i);<span class="comment">//删除该菜品</span></span><br><span class="line">			redisUtil.addList(deskCode, deskDish);<span class="comment">//更新缓存</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> JSON.toJSONString(deskDish);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/alldish.do&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">showAlldish</span><span class="params">(ModelAndView modelAndView,</span></span></span><br><span class="line"><span class="function"><span class="params">Pager pager</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>&#123;</span><br><span class="line">	Dishes dishes=Dishes.getDishes();</span><br><span class="line">	<span class="keyword">if</span>(<span class="string">&quot;allDish&quot;</span>.equals(pager.getOpr()))&#123;</span><br><span class="line">		pager.setTotalCount(dishes.getAllDishCount());</span><br><span class="line">		pager.setPageSize(PagerTools.dishMenuPagerSize);</span><br><span class="line">		pager.count();</span><br><span class="line">		List&lt;Dish&gt; list=dishes.getAllDish(pager);</span><br><span class="line">		pager.setList(list);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;soup&quot;</span>.equals(pager.getOpr()))&#123;</span><br><span class="line">		pager.setTotalCount(dishes.getSoupsCount());</span><br><span class="line">		pager.setPageSize(PagerTools.dishMenuPagerSize);</span><br><span class="line">		pager.count();</span><br><span class="line">		List&lt;Dish&gt; list=dishes.getSoups(pager);</span><br><span class="line">		pager.setList(list);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;fry&quot;</span>.equals(pager.getOpr()))&#123;</span><br><span class="line">		pager.setTotalCount(dishes.getFrysCount());</span><br><span class="line">		pager.setPageSize(PagerTools.dishMenuPagerSize);</span><br><span class="line">		pager.count();</span><br><span class="line">		List&lt;Dish&gt; list=dishes.getFrys(pager);</span><br><span class="line">		pager.setList(list);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;other&quot;</span>.equals(pager.getOpr()))&#123;</span><br><span class="line">		pager.setTotalCount(dishes.getOthersCount());</span><br><span class="line">		pager.setPageSize(PagerTools.dishMenuPagerSize);</span><br><span class="line">		pager.count();</span><br><span class="line">		List&lt;Dish&gt; list=dishes.getOthers(pager);</span><br><span class="line">		pager.setList(list);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;drink&quot;</span>.equals(pager.getOpr()))&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    file.transferTo(<span class="keyword">new</span> File(path + File.separator +newFileName));</span><br><span class="line">                    System.out.println(<span class="string">&quot;上传成功&quot;</span>);</span><br><span class="line">                    dish.setFileName(newFileName);<span class="comment">//将新文件名保存在对象中</span></span><br><span class="line">                    addFlag = dishService.addDish(dish);<span class="comment">//添加至数据库</span></span><br><span class="line">                    System.out.println(<span class="string">&quot;菜品&quot;</span> + dish.getDishName() + <span class="string">&quot;添加成功&quot;</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IllegalStateException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                fifleFlag = <span class="string">&quot;图片不能大于500KB&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            fifleFlag = <span class="string">&quot;请上传JPG格式图片&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (addFlag) &#123;<span class="comment">//添加成功时</span></span><br><span class="line">        <span class="comment">//刷新缓存</span></span><br><span class="line">        redisUtil.del(<span class="string">&quot;allDishes&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> JSON.toJSONString(<span class="string">&quot;OK&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&#123;&#x27;fifleFlag&#x27;:&#x27;&quot;</span> + fifleFlag + <span class="string">&quot;&#x27;&#125;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//ajax验证菜品名是否存在</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/dishNameIsExist.do&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">dishNameIsExist</span><span class="params">(<span class="meta">@RequestParam(required = false)</span> String dishName)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> existFlag = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (dishName != <span class="string">&quot;&quot;</span> &amp;&amp; dishName != <span class="keyword">null</span>) &#123;</span><br><span class="line">        existFlag = dishService.isExist(dishName);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (existFlag) &#123;</span><br><span class="line">        <span class="keyword">return</span> JSON.toJSONString(<span class="string">&quot;0&quot;</span>);<span class="comment">//存在该菜品</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> JSON.toJSONString(<span class="string">&quot;1&quot;</span>);<span class="comment">//不存在该菜品</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//加载菜品列表</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//更改桌位</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/changeDesk.do&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">changeDesk</span><span class="params">(Desk desk)</span></span>&#123;</span><br><span class="line">	<span class="keyword">boolean</span> flag=deskService.updateDesk(desk);</span><br><span class="line">	String str=<span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="keyword">if</span>(flag)&#123;</span><br><span class="line">		str=<span class="string">&quot;true&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		str=<span class="string">&quot;false&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> JSON.toJSONString(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//更改菜品</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/updateDish.do&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">updateDish</span><span class="params">(DeskInfo_detail deskInfo_detail,<span class="meta">@RequestParam(required=false)</span>String deskCode)</span></span>&#123;</span><br><span class="line">	List&lt;DeskInfo_detail&gt; deskDish=redisUtil.getList(deskCode);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; deskDish.size(); i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(deskDish.get(i).getDishName().equals(deskInfo_detail.getDishName()))&#123;<span class="comment">//找到相同的菜品</span></span><br><span class="line">			String newContent=deskInfo_detail.getContent();<span class="comment">//得到新的备注</span></span><br><span class="line">			<span class="keyword">int</span> newNum=deskInfo_detail.getDishNum();<span class="comment">//得到修改过后的数目</span></span><br><span class="line">			deskDish.get(i).setDishNum(newNum);<span class="comment">//修改数目</span></span><br><span class="line">			deskDish.get(i).setCost(newNum*deskDish.get(i).getPrice());<span class="comment">//修改小计</span></span><br><span class="line">			deskDish.get(i).setContent(newContent);<span class="comment">//修改备注</span></span><br><span class="line">			redisUtil.addList(deskCode, deskDish);<span class="comment">//更新缓存</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> JSON.toJSONString(deskDish);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除菜品</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/delDish.do&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">delDish</span><span class="params">(DeskInfo_detail deskInfo_detail,<span class="meta">@RequestParam(required=false)</span>String deskCode)</span></span>&#123;</span><br><span class="line">	List&lt;DeskInfo_detail&gt; deskDish=redisUtil.getList(deskCode);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; deskDish.size(); i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(deskDish.get(i).getDishName().equals(deskInfo_detail.getDishName()))&#123;<span class="comment">//找到相同的菜品</span></span><br><span class="line">			deskDish.remove(i);<span class="comment">//删除该菜品</span></span><br><span class="line">			redisUtil.addList(deskCode, deskDish);<span class="comment">//更新缓存</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DrinkController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ProviderService providerService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/drink.html&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">drink</span><span class="params">(HttpSession session)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(session.getAttribute(<span class="string">&quot;user&quot;</span>)==<span class="keyword">null</span>)&#123;<span class="comment">//权限控制</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;redirect:login.html&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;/drink/drink&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//加载供应下拉列表</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/loadProviderSelect.do&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">loadProviderSelect</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> JSON.toJSONString(providerService.getProvider());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//加载进货信息</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/loadDrinkBill.do&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelAndView <span class="title">loadDrinkBill</span><span class="params">(ModelAndView modelAndView, DrinkBillPager pager)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> totalCount = providerService.getDrinkBillCount(pager);</span><br><span class="line">        <span class="keyword">if</span> (totalCount != <span class="number">0</span>) &#123;</span><br><span class="line">            pager.setTotalCount(totalCount);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            pager.setTotalCount(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        pager.setPageSize(PagerTools.drinkBillPagerSize);</span><br><span class="line">        pager.count();</span><br><span class="line">        pager.setList(providerService.getDrinkBill(pager));</span><br><span class="line">        modelAndView.addObject(<span class="string">&quot;pager&quot;</span>, pager);</span><br><span class="line">        modelAndView.setViewName(<span class="string">&quot;/drink/ajaxJinhuoList&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> modelAndView;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">        System.out.println(<span class="string">&quot;~~~~~~~~~~~~~~开始删除Dish~~~~~~~~~~~~~~~&quot;</span>);</span><br><span class="line">        <span class="keyword">boolean</span> delFlag=<span class="keyword">false</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~id=&quot;</span>+id);</span><br><span class="line">        <span class="keyword">if</span>(id!=<span class="keyword">null</span> &amp;&amp; !<span class="string">&quot;&quot;</span>.equals(id))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;~~~~~~~~~~~~~~~进入删除~~~~~~~~~~~~~~~~&quot;</span>);</span><br><span class="line">            delFlag=dishService.delDishById(id);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(delFlag)&#123;<span class="comment">//删除成功</span></span><br><span class="line">            System.out.println(<span class="string">&quot;~~~~~~~~~~~~~~删除Dish成功~~~~~~~~~~~~~~~&quot;</span>);</span><br><span class="line">            redisUtil.del(<span class="string">&quot;allDishes&quot;</span>);<span class="comment">//刷新redis</span></span><br><span class="line">            Dishes.getDishes().setAllDish(<span class="keyword">null</span>);<span class="comment">//刷新单例</span></span><br><span class="line">            <span class="keyword">return</span> JSON.toJSONString(<span class="number">0</span>);<span class="comment">//删除成功</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> JSON.toJSONString(<span class="number">1</span>);<span class="comment">//删除失败</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DrinkController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ProviderService providerService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/drink.html&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">drink</span><span class="params">(HttpSession session)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(session.getAttribute(<span class="string">&quot;user&quot;</span>)==<span class="keyword">null</span>)&#123;<span class="comment">//权限控制</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;redirect:login.html&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;/drink/drink&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//加载供应下拉列表</span></span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=251122542008200sn<br>https://javayms.gitee.io?id=251122542008200sn</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+			<a href="/tags/%E7%82%B9%E9%A4%90/" rel="tag"><i class="fa fa-tag"></i> 点餐</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

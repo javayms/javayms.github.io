@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的JSP+Servlet网上图书商城(java+servlet+jsp+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/262023280609201et/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的JSP+Servlet网上图书商城(java+servlet+jsp+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/262023280609201et/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的JSP+Servlet网上图书商城(java+servlet+jsp+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Tomcat≥8</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/272023280609.jpg" alt="272023280609"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/282023280609.jpg" alt="282023280609"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/292023280609.jpg" alt="292023280609"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/312023280609.jpg" alt="312023280609"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/322023280609.jpg" alt="322023280609"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/332023280609.jpg" alt="332023280609"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/342023280609.jpg" alt="342023280609"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/352023280609.jpg" alt="352023280609"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/362023280609.jpg" alt="362023280609"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/372023280609.jpg" alt="372023280609"></p>
+<p>基于javaweb的JSP+Servlet网上图书商城(java+servlet+jsp+mysql)</p>
+<p>后台管理员：<br><a target="_blank" rel="noopener" href="http://localhost:8080/adminjsps/login.jsp">http://localhost:8080/adminjsps/login.jsp</a><br>admin    123456</p>
+<p>前台用户：<br><a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a><br>user1    123456<br>user2    123456</p>
+<p>项目采用MVC三层架构，使用（JSP + Sevlvet + JavaBean)技术<br>前台功能模块有：登录注册(校验)<br>加入购物车<br>订单管理（下订单和确认收货或者取消）<br>后台功能模块：图书分级管理（一级和二级）<br>图书管理(图书增删改查)<br>订单管理</p>
+<p>用到的技术<br>开发环境：MyEclipse, Tomcat, Mysql<br>后台技术： JSP, Servlet, JavaBean<br>前端技术： JSP, CSS, HTML5, CSS3, jQuery, Javascript</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">		errors.put(<span class="string">&quot;email&quot;</span>, <span class="string">&quot;Email格式错误！&quot;</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span>(!userService.ajaxValidateEmail(email)) &#123;</span><br><span class="line">		errors.put(<span class="string">&quot;email&quot;</span>, <span class="string">&quot;Email已被注册！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//5. 验证码校验</span></span><br><span class="line">	String verifyCode = formUser.getVerifyCode();</span><br><span class="line">	String vcode = (String) session.getAttribute(<span class="string">&quot;vCode&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(verifyCode == <span class="keyword">null</span> || verifyCode.trim().isEmpty()) &#123;</span><br><span class="line">		errors.put(<span class="string">&quot;verifyCode&quot;</span>, <span class="string">&quot;验证码不能为空！&quot;</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span>(!verifyCode.equalsIgnoreCase(vcode)) &#123;</span><br><span class="line">		errors.put(<span class="string">&quot;verifyCode&quot;</span>, <span class="string">&quot;验证码错误！&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> errors;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//修改密码　</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">updatePassword</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">		<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	User formUser = CommonUtils.toBean(req.getParameterMap(), User.class);</span><br><span class="line">	User user = (User)req.getSession().getAttribute(<span class="string">&quot;sessionUser&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(user == <span class="keyword">null</span>) &#123;</span><br><span class="line">		req.setAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;您还没有登录！&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;f:/jsps/user/login.jsp&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		userService.updatePassword(user.getUid(), formUser.getNewpass(), </span><br><span class="line">				formUser.getLoginpass());</span><br><span class="line">		req.setAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;修改密码成功&quot;</span>);</span><br><span class="line">		req.setAttribute(<span class="string">&quot;code&quot;</span>, <span class="string">&quot;success&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;f:/frontpages/msg1.jsp&quot;</span>;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (UserException e) &#123;</span><br><span class="line">		req.setAttribute(<span class="string">&quot;msg&quot;</span>, e.getMessage());<span class="comment">//保存异常信息到request</span></span><br><span class="line">		req.setAttribute(<span class="string">&quot;user&quot;</span>, formUser);<span class="comment">//为了回显</span></span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;f:/frontpages/user/pwd.jsp&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//退出功能</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用户名是否注册校验</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">ajaxValidateLoginname</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">		<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	String loginname = req.getParameter(<span class="string">&quot;loginname&quot;</span>);</span><br><span class="line">	<span class="keyword">boolean</span> b = userService.ajaxValidateLoginname(loginname);</span><br><span class="line">	resp.getWriter().print(b);</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Email是否注册校验</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">ajaxValidateEmail</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">		<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	String email = req.getParameter(<span class="string">&quot;email&quot;</span>);</span><br><span class="line">	<span class="keyword">boolean</span> b = userService.ajaxValidateEmail(email);</span><br><span class="line">	resp.getWriter().print(b);</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//图片验证码是否正确校验</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">ajaxValidateVerifyCode</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">		<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	String verifyCode = req.getParameter(<span class="string">&quot;verifyCode&quot;</span>);</span><br><span class="line">	String vcode = (String) req.getSession().getAttribute(<span class="string">&quot;vCode&quot;</span>);</span><br><span class="line">	<span class="keyword">boolean</span> b = verifyCode.equalsIgnoreCase(vcode);</span><br><span class="line">	resp.getWriter().print(b);</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//注册功能</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">regist</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">		<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">	User formUser = CommonUtils.toBean(req.getParameterMap(), User.class);<span class="comment">//拿到表单数据</span></span><br><span class="line">	<span class="comment">//校验之, 如果校验失败，保存错误信息，返回到regist.jsp显示</span></span><br><span class="line">	Map&lt;String,String&gt; errors = validateRegist(formUser, req.getSession());</span><br><span class="line">	<span class="keyword">if</span>(errors.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		req.setAttribute(<span class="string">&quot;form&quot;</span>, formUser);</span><br><span class="line">		req.setAttribute(<span class="string">&quot;errors&quot;</span>, errors);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;f:/frontpages/user/register.jsp&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//使用service完成业务</span></span><br><span class="line">	userService.regist(formUser);</span><br><span class="line">	<span class="comment">//保存成功信息，转发到msg.jsp显示！</span></span><br><span class="line">	req.setAttribute(<span class="string">&quot;code&quot;</span>, <span class="string">&quot;success&quot;</span>);</span><br><span class="line">	req.setAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;注册成功！&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;f:/frontpages/msg.jsp&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//注册校验	 * 对表单的字段进行逐个校验，如果有错误，使用当前字段名称为key，错误信息为value，保存到map中</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Map&lt;String,String&gt; <span class="title">validateRegist</span><span class="params">(User formUser, HttpSession session)</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">	<span class="comment">// 删除一级分类</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">deleteParent</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		String cid = req.getParameter(<span class="string">&quot;cid&quot;</span>);</span><br><span class="line">		<span class="keyword">int</span> cnt = categoryService.findChildrenCountByParent(cid);</span><br><span class="line">		<span class="keyword">if</span>(cnt &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			req.setAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;该分类下还有子分类，不能删除！&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="string">&quot;f:/adminjsps/msg.jsp&quot;</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			categoryService.delete(cid);</span><br><span class="line">			<span class="keyword">return</span> findAll(req, resp);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 删除2级分类</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">deleteChild</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		String cid = req.getParameter(<span class="string">&quot;cid&quot;</span>);</span><br><span class="line">		<span class="keyword">int</span> cnt = bookService.findBookCountByCategory(cid);</span><br><span class="line">		<span class="keyword">if</span>(cnt &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			req.setAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;该分类下还存在图书，不能删除！&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="string">&quot;f:/adminjsps/msg.jsp&quot;</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			categoryService.delete(cid);</span><br><span class="line">			<span class="keyword">return</span> findAll(req, resp);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//我的订单</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">myOrders</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">		<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> pc = getPc(req);</span><br><span class="line">	String url = getUrl(req);</span><br><span class="line">	User user = (User)req.getSession().getAttribute(<span class="string">&quot;sessionUser&quot;</span>);</span><br><span class="line">	PageBean&lt;Order&gt; pb = orderService.myOrders(user.getUid(), pc);</span><br><span class="line">	pb.setUrl(url);</span><br><span class="line">	req.setAttribute(<span class="string">&quot;pb&quot;</span>, pb);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;f:/frontpages/order/list.jsp&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*生成订单*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">createOrder</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">		<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	String cartItemIds = req.getParameter(<span class="string">&quot;cartItemIds&quot;</span>);</span><br><span class="line">	List&lt;CartItem&gt; cartItemList = cartItemService.loadCartItems(cartItemIds);</span><br><span class="line">	<span class="keyword">if</span>(cartItemList.size() == <span class="number">0</span>) &#123;</span><br><span class="line">		req.setAttribute(<span class="string">&quot;code&quot;</span>, <span class="string">&quot;error&quot;</span>);</span><br><span class="line">		req.setAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;您没有选择要购买的图书，不能下单！&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;f:/frontpages/msg1.jsp&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	Order order = <span class="keyword">new</span> Order();</span><br><span class="line">	order.setOid(CommonUtils.uuid());<span class="comment">//设置主键</span></span><br><span class="line">	order.setOrdertime(String.format(<span class="string">&quot;%tF %&lt;tT&quot;</span>, <span class="keyword">new</span> Date()));<span class="comment">//下单时间</span></span><br><span class="line">	order.setStatus(<span class="number">1</span>);<span class="comment">//设置状态，1表示未付款</span></span><br><span class="line">	order.setAddress(req.getParameter(<span class="string">&quot;address&quot;</span>));<span class="comment">//设置收货地址</span></span><br><span class="line">	User owner = (User)req.getSession().getAttribute(<span class="string">&quot;sessionUser&quot;</span>);</span><br><span class="line">	order.setOwner(owner);<span class="comment">//设置订单所有者</span></span><br><span class="line"></span><br><span class="line">	BigDecimal total = <span class="keyword">new</span> BigDecimal(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span>(CartItem cartItem : cartItemList) &#123;</span><br><span class="line">		total = total.add(<span class="keyword">new</span> BigDecimal(cartItem.getSubtotal() + <span class="string">&quot;&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	order.setTotal(total.doubleValue());<span class="comment">//设置总计</span></span><br><span class="line"></span><br><span class="line">	List&lt;OrderItem&gt; orderItemList = <span class="keyword">new</span> ArrayList&lt;OrderItem&gt;();</span><br><span class="line">	<span class="keyword">for</span>(CartItem cartItem : cartItemList) &#123;</span><br><span class="line">		OrderItem orderItem = <span class="keyword">new</span> OrderItem();</span><br><span class="line">		orderItem.setOrderItemId(CommonUtils.uuid());<span class="comment">//设置主键</span></span><br><span class="line">		orderItem.setQuantity(cartItem.getQuantity());</span><br><span class="line">		orderItem.setSubtotal(cartItem.getSubtotal());</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 校验图片的尺寸</span></span><br><span class="line"><span class="comment">// 保存上传的图片，把图片new成图片对象：Image、Icon、ImageIcon、BufferedImage、ImageIO</span></span><br><span class="line"><span class="comment">//获取真实路径</span></span><br><span class="line">String savepath = <span class="keyword">this</span>.getServletContext().getRealPath(<span class="string">&quot;/book_img&quot;</span>);</span><br><span class="line"><span class="comment">// 创建目标文件</span></span><br><span class="line">File destFile = <span class="keyword">new</span> File(savepath, filename);</span><br><span class="line"><span class="comment">// 保存文件</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	fileItem.write(destFile);<span class="comment">//它会把临时文件重定向到指定的路径，再删除临时文件</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">	<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 校验尺寸</span></span><br><span class="line"><span class="comment">// 1. 使用文件路径创建ImageIcon</span></span><br><span class="line">ImageIcon icon = <span class="keyword">new</span> ImageIcon(destFile.getAbsolutePath());</span><br><span class="line"><span class="comment">// 2. 通过ImageIcon得到Image对象</span></span><br><span class="line">Image image = icon.getImage();</span><br><span class="line"><span class="comment">// 3. 获取宽高来进行校验</span></span><br><span class="line"><span class="keyword">if</span>(image.getWidth(<span class="keyword">null</span>) &gt; <span class="number">350</span> || image.getHeight(<span class="keyword">null</span>) &gt; <span class="number">350</span>) &#123;</span><br><span class="line">	error(<span class="string">&quot;您上传的图片尺寸超出了350*350！&quot;</span>, request, response);</span><br><span class="line">	<span class="comment">//destFile.delete();//删除图片</span></span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 把图片的路径设置给book对象</span></span><br><span class="line">book.setImage_w(<span class="string">&quot;book_img/&quot;</span> + filename);</span><br><span class="line"><span class="comment">// 获取文件名</span></span><br><span class="line">fileItem = fileItemList.get(<span class="number">2</span>);<span class="comment">//获取小图</span></span><br><span class="line">filename = fileItem.getName();</span><br><span class="line"><span class="comment">// 截取文件名，因为部分浏览器上传的绝对路径</span></span><br><span class="line">index = filename.lastIndexOf(<span class="string">&quot;\\&quot;</span>);</span><br><span class="line"><span class="keyword">if</span>(index != -<span class="number">1</span>) &#123;</span><br><span class="line">	filename = filename.substring(index + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 给文件名添加uuid前缀，避免文件同名现象</span></span><br><span class="line">filename = CommonUtils.uuid() + <span class="string">&quot;_&quot;</span> + filename;</span><br><span class="line"><span class="comment">// 校验文件名称的扩展名</span></span><br><span class="line"><span class="keyword">if</span>(!filename.toLowerCase().endsWith(<span class="string">&quot;.jpg&quot;</span>)) &#123;</span><br><span class="line">	error(<span class="string">&quot;上传的图片扩展名必须是JPG&quot;</span>, request, response);</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 校验图片的尺寸</span></span><br><span class="line"><span class="comment">// 保存上传的图片，把图片new成图片对象：Image、Icon、ImageIcon、BufferedImage、ImageIO</span></span><br><span class="line"><span class="comment">//获取真实路径</span></span><br><span class="line">savepath = <span class="keyword">this</span>.getServletContext().getRealPath(<span class="string">&quot;/book_img&quot;</span>);</span><br><span class="line"><span class="comment">//创建目标文件</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CartItemServlet</span> <span class="keyword">extends</span> <span class="title">MyServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> CartItemService cartItemService = <span class="keyword">new</span> CartItemService();</span><br><span class="line"></span><br><span class="line">	<span class="comment">//显示多个CartItem</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">loadCartItems</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		String cartItemIds = req.getParameter(<span class="string">&quot;cartItemIds&quot;</span>);</span><br><span class="line">		<span class="keyword">double</span> total = Double.parseDouble(req.getParameter(<span class="string">&quot;total&quot;</span>));</span><br><span class="line">		List&lt;CartItem&gt; cartItemList = cartItemService.loadCartItems(cartItemIds);</span><br><span class="line">		req.setAttribute(<span class="string">&quot;cartItemList&quot;</span>, cartItemList);</span><br><span class="line">		req.setAttribute(<span class="string">&quot;total&quot;</span>, total);</span><br><span class="line">		req.setAttribute(<span class="string">&quot;cartItemIds&quot;</span>, cartItemIds);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;f:/frontpages/cart/showitem.jsp&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">updateQuantity</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		String cartItemId = req.getParameter(<span class="string">&quot;cartItemId&quot;</span>);</span><br><span class="line">		<span class="keyword">int</span> quantity = Integer.parseInt(req.getParameter(<span class="string">&quot;quantity&quot;</span>));</span><br><span class="line">		CartItem cartItem = cartItemService.updateQuantity(cartItemId, quantity);</span><br><span class="line">		<span class="comment">// 给客户端返回一个json对象</span></span><br><span class="line">		StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">&quot;&#123;&quot;</span>);</span><br><span class="line">		sb.append(<span class="string">&quot;\&quot;quantity\&quot;&quot;</span>).append(<span class="string">&quot;:&quot;</span>).append(cartItem.getQuantity());</span><br><span class="line">		sb.append(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">		sb.append(<span class="string">&quot;\&quot;subtotal\&quot;&quot;</span>).append(<span class="string">&quot;:&quot;</span>).append(cartItem.getSubtotal());</span><br><span class="line">		sb.append(<span class="string">&quot;&#125;&quot;</span>);</span><br><span class="line">		System.out.println(sb);</span><br><span class="line">		resp.getWriter().print(sb);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 批量删除功能</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">batchDelete</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		String cartItemIds = req.getParameter(<span class="string">&quot;cartItemIds&quot;</span>);</span><br><span class="line">		System.out.println(cartItemIds);</span><br><span class="line">		cartItemService.batchDelete(cartItemIds);</span><br><span class="line">		<span class="keyword">return</span> myCart(req, resp);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//添加购物车条目</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">add</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		Map map = req.getParameterMap();</span><br><span class="line">		CartItem cartItem = CommonUtils.toBean(map, CartItem.class);</span><br><span class="line">		Book book = CommonUtils.toBean(map, Book.class);</span><br><span class="line">		User user = (User)req.getSession().getAttribute(<span class="string">&quot;sessionUser&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=262023280609201et<br>https://javayms.gitee.io?id=262023280609201et</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/JSP-Servlet/" rel="tag"><i class="fa fa-tag"></i> JSP+Servlet</a>
+			<a href="/tags/%E4%B9%A6%E5%BA%97/" rel="tag"><i class="fa fa-tag"></i> 书店</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

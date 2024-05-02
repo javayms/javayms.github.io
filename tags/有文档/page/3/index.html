@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/tags/%E6%9C%89%E6%96%87%E6%A1%A3/page/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>标签: 有文档 | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content tag">
+            
+
+  
+  
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <h2 class="collection-header">有文档
+
+        </h2>
+      </div>
+
+      
+    <div class="collection-year">
+      <span class="collection-header">2024年</span>
+    </div>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/47/471524170701201gy/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven医院预约挂号系统(java+ssm+jsp+js+jquery+layui+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/491424000701.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven医院预约挂号系统(java+ssm+jsp+js+jquery+layui+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/30/30102121220535621/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM个人日记管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/58/58102142220535921/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM教务管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/24/24202142051040521/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM房屋房产档案管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/44/44102132220535821/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM健身房信息管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/11/11162246220140443/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis学生档案管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/04/04162242220136043/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis酒店管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/25/251524180701201ig/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot房屋租赁系统(java+springboot+maven+vue+layui+elementui+mysql)<span style="font-size: xx-small;color:#d8373e;">￥99</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/121424050701.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot房屋租赁系统(java+springboot+maven+vue+layui+elementui+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/14/14192136050535121/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM药店医药信息管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/30/301023292204201ad/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven农产品商城系统(java+ssm+jsp+vue+layui+jquery+mysql)<span style="font-size: xx-small;color:#d8373e;">￥99</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/431023202204.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven农产品商城系统(java+ssm+jsp+vue+layui+jquery+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/42/42192157051038632/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven银行信息管理系统(java+jsp+ssm+mysql+maven+bootstrap+ajax)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/41/41162241220135643/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis个人日记管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/15/15222155040534014/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet宠物领养信息管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/05/05002125050534321/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM客户关系管理系统CRM(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/53/53202152051040814/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet校园家教兼职信息管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/43/43102149050534714/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet实验室管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/47/47092151220535332/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven场馆场地预订管理系统(java+jsp+ssm+mysql+maven+bootstrap+ajax)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/28/281422302105200gg/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven个人博客系统(java+ssm+mysql+servlet+jsp)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/390023292402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven个人博客系统(java+ssm+mysql+servlet+jsp)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/24/24112151220536814/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet学生信息管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/50/501422322105200lb/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM超市订单管理系统(java+ssm+jsp+bootstrap+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/360023202402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM超市订单管理系统(java+ssm+jsp+bootstrap+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/04/04162244220138143/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis饮食营养健康管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/45/45222149250433314/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet毕业生就业信息管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/47/47202134051040114/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet汽车租赁管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/24/241122542008200sm/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven鞋子商城系统(java+ssm+jsp+layui+bootstrap+echarts+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/140023472402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven鞋子商城系统(java+ssm+jsp+layui+bootstrap+echarts+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/57/57232130040534121/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM大学生个人财务记账系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/28/28102154050534732/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven实验室管理系统(java+jsp+ssm+mysql+maven+bootstrap+ajax)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/43/431422282105200dn/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot宿舍管理系统(java+springboot+thymeleaf+html+layui+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/470023062402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot宿舍管理系统(java+springboot+thymeleaf+html+layui+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/44/44212119051041321/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM二手物品交易管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/46/46192104050535014/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet医院住院管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/26/26162247220141743/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis企业行政信息管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/40/401524180701201it/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven旅游景点管理系统旅游资源(java+ssm+elementui+vue+mysql)<span style="font-size: xx-small;color:#d8373e;">￥99</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/281424000701.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven旅游景点管理系统旅游资源(java+ssm+elementui+vue+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/24/24112153220536832/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven学生信息管理系统(java+jsp+ssm+mysql+maven+bootstrap+ajax)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/53/531222052008200vu/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot医院预约挂号系统(java+springboot+maven+vue+mysql)<span style="font-size: xx-small;color:#d8373e;">￥99</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/570123062402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot医院预约挂号系统(java+springboot+maven+vue+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/14/141023501103200zt/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven超市管理系统(java+ssm+jsp+layui+jq+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/300923531103.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven超市管理系统(java+ssm+jsp+layui+jq+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/27/272022090304106aj/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis网上书店管理系统在线购书系统(前台、后台)(javaweb+springboot+thymeleaf+html+mysql+maven)<span style="font-size: xx-small;color:#d8373e;">￥89</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/320123232502.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot+MyBatis网上书店管理系统在线购书系统(前台、后台)(javaweb+springboot+thymeleaf+html+mysql+maven)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/42/42202103051038821/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM机房设备管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/47/47202136051040221/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM企业财务记账管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/39/391122532008200qy/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM汽车出租管理系统(java+ssm+jsp+jquery+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/470023462402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM汽车出租管理系统(java+ssm+jsp+jquery+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/04/04162247220141343/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis二手物品交易管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/12/12202111051039114/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet共享单车管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/31/311223072409201fy/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于java的Swing+MySQL教务学生选课考勤成绩管理系统(java+swing+mysql)<span style="font-size: xx-small;color:#d8373e;">￥69</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/361223072409.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于java的Swing+MySQL教务学生选课考勤成绩管理系统(java+swing+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/34/34162241220135543/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis蛋糕房订购信息管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/24/241122582008200vi/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM邮箱邮件收发管理系统(java+ssm+jsp+jq+mysql)<span style="font-size: xx-small;color:#d8373e;">￥89</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/170023562402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM邮箱邮件收发管理系统(java+ssm+jsp+jq+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/54/541122512008200nk/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet会员卡积分管理系统(java+jsp+javascript+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/490023422402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的JSP+Servlet会员卡积分管理系统(java+jsp+javascript+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/42/42182118050534914/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet幼儿园管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/41/410922400101102ap/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet网上订餐在线点餐系统(前台、后台)(java+jsp+servlet+mysql+dbutil+tomcat)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project02/190123122502.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的JSP+Servlet网上订餐在线点餐系统(前台、后台)(java+jsp+servlet+mysql+dbutil+tomcat)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/55/551524180701201jh/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot漫画之家管理系统(java+springboot+maven+vue+elementui+layui+mysql)<span style="font-size: xx-small;color:#d8373e;">￥99</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/221424030701.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot漫画之家管理系统(java+springboot+maven+vue+elementui+layui+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/47/47202140051040432/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven学生档案管理系统(java+jsp+ssm+mysql+maven+bootstrap+ajax)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/56/56162245220140243/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis企业财务记账管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/23/23222154250433514/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet学生考勤管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/56/56092136050534421/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM家庭财务收支管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/50/502023041010201gg/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot新闻视频发布推荐评论系统(java+springboot+maven+vue+mysql+html)<span style="font-size: xx-small;color:#d8373e;">￥89</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/552023041010.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot新闻视频发布推荐评论系统(java+springboot+maven+vue+mysql+html)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/34/34202117051039414/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet医院门诊病例管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/50/50232132040534132/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven大学生个人财务记账系统(java+jsp+ssm+mysql+maven+bootstrap+ajax)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/26/26112131220536421/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM图书管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/17/171122572008200tb/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet医院挂号管理系统(java+jsp+javascript+servlet+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/050123022402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的JSP+Servlet医院挂号管理系统(java+jsp+javascript+servlet+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/51/51002110031037414/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet停车场信息管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/11/111524180701201ht/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven宠物领养管理系统(java+ssm+jsp+js+jquery+layui+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/051424000701.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven宠物领养管理系统(java+ssm+jsp+js+jquery+layui+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/34/34162246220140843/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis校园家教兼职信息管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/11/111524190701201jv/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot网上书城管理系统(java+springboot+maven+mybaits+vue+elementui+mysql)<span style="font-size: xx-small;color:#d8373e;">￥89</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/231424020701.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot网上书城管理系统(java+springboot+maven+mybaits+vue+elementui+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/23/23222157040534032/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven宠物领养信息管理系统(java+jsp+ssm+mysql+maven+bootstrap+ajax)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/31/311722310805102ak/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet甜品蛋糕店(前台、后台)(java+jsp+servlet+jdbc+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project02/090123112502.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的JSP+Servlet甜品蛋糕店(前台、后台)(java+jsp+servlet+jdbc+bootstrap)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/52/52212119051041332/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven二手物品交易管理系统(java+jsp+ssm+mysql+maven+bootstrap+ajax)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/22/221023491103200xz/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven在线教学系统(java+ssm+vue+elementui+mysql)<span style="font-size: xx-small;color:#d8373e;">￥99</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/041023041103.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven在线教学系统(java+ssm+vue+elementui+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/18/18112142220536614/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet学生成绩管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/49/49202117051039432/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven医院门诊病例管理系统(java+jsp+ssm+mysql+maven+bootstrap+ajax)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/16/162122110705105ac/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+JPA学生宿舍学生住宿申请管理系统(管理员、学生)(java+springboot+jpa+thymeleaf+html+mysql+maven)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project02/350123202502.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot+JPA学生宿舍学生住宿申请管理系统(管理员、学生)(java+springboot+jpa+thymeleaf+html+mysql+maven)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/26/261524180701201ih/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM房屋租赁系统管理系统(java+ssm+elementui+vue+mysql)<span style="font-size: xx-small;color:#d8373e;">￥99</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/221424000701.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM房屋租赁系统管理系统(java+ssm+elementui+vue+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/02/021224123003201lk/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot二手交易平台系统(java+springboot+maven+vue+element-ui+mybatis+mysql)<span style="font-size: xx-small;color:#d8373e;">￥109</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/081224123003.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SpringBoot二手交易平台系统(java+springboot+maven+vue+element-ui+mybatis+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/31/311023292204201ae/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven宠物医院管理系统(java+ssm+jquery+layui+jsp+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/101023202204.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven宠物医院管理系统(java+ssm+jquery+layui+jsp+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/06/061421393005102ax/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet简单留言板(java+jsp+servlet+javabean+mysql+tomcat)<span style="font-size: xx-small;color:#d8373e;">￥59</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/270123142502.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的JSP+Servlet简单留言板(java+jsp+servlet+javabean+mysql+tomcat)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/20/201821252205102ar/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet火车票网上订票系统(前台、后台)(java+jsp+servlet+javabean+mysql+tomcat)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/550123122502.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的JSP+Servlet火车票网上订票系统(前台、后台)(java+jsp+servlet+javabean+mysql+tomcat)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/18/182221280407102ao/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet电影票售票管理系统(java+jsp+servlet+javabean+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/000123122502.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的JSP+Servlet电影票售票管理系统(java+jsp+servlet+javabean+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/42/42162242220136743/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis学生请假管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/00/00192142051038032/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven设备采购管理系统(java+jsp+ssm+mysql+maven+bootstrap+ajax)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/22/22102149220536021/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM酒店管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/15/151023491103200xt/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM医院住院信息管理系统(java+ssm+maven+jsp+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/021023031103.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM医院住院信息管理系统(java+ssm+maven+jsp+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/20/20162242220136343/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis通讯录管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/47/471122572008200ub/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM在线车队货车管理系统(java+ssm+jsp+bootstrap+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/120123022402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM在线车队货车管理系统(java+ssm+jsp+bootstrap+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/41/411524180701201iu/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven旅游景点管理系统(java+ssm+vue+javascript+ajax+mysql)<span style="font-size: xx-small;color:#d8373e;">￥99</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/321324560701.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven旅游景点管理系统(java+ssm+vue+javascript+ajax+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/03/031122542008200rt/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven网吧计费管理系统(java+ssm+js+jsp+mysql)<span style="font-size: xx-small;color:#d8373e;">￥89</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/340023362402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven网吧计费管理系统(java+ssm+js+jsp+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/22/22192145051038132/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven饮食营养健康管理系统(java+jsp+ssm+mysql+maven+bootstrap+ajax)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/33/33222127040533914/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet仓库进销存管理系统(java+mysql+layui+jsp+servlet)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/57/57162241220135943/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis教务管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/51/51192152051038421/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM设备维修管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/59/59102149050534721/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM实验室管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/42/42162245220139943/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis毕业生离校管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/08/080023061907201at/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven宿舍管理系统(java+ssm+jsp+js+bootstrap+layui+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/382323421807.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven宿舍管理系统(java+ssm+jsp+js+bootstrap+layui+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/12/12202125300333421/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM学籍管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/56/561524170701201hg/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven在线音乐管理系统(java+ssm+elementui+vue+mysql)<span style="font-size: xx-small;color:#d8373e;">￥99</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/131424000701.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven在线音乐管理系统(java+ssm+elementui+vue+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/42/42202119051039521/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM企业银行招聘信息管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/00/001422282105200cb/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven在线点餐系统(java+ssm+jsp+mysql+maven)<span style="font-size: xx-small;color:#d8373e;">￥89</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/590023062402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven在线点餐系统(java+ssm+jsp+mysql+maven)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/57/57162243220138043/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis设备采购管理系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/19/191524190701201kc/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven美食推荐管理系统(java+ssm+jsp+jquery+bootstrap+layui+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/501324580701.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven美食推荐管理系统(java+ssm+jsp+jquery+bootstrap+layui+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/18/181122532008200qg/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM校园心理咨询服务系统(java+ssm+jsp+bootstrap+jquery+mysql)<span style="font-size: xx-small;color:#d8373e;">￥129</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/520023392402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM校园心理咨询服务系统(java+ssm+jsp+bootstrap+jquery+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/03/03202149051040621/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM家政服务管理系统(java+ssm+mysql+jsp)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/13/13162240220134143/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SpringBoot+MyBatis大学生个人财务记账系统(java+springboot+maven+jsp+mysql+ssm+bootstrap)<span style="font-size: xx-small;color:#d8373e;">￥48</span>🗎
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/30/302122290502102ah/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的JSP+Servlet学生在线选课系统(管理员、教师、学生)(java+jsp+servlet+mysql)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/590123092502.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的JSP+Servlet学生在线选课系统(管理员、教师、学生)(java+jsp+servlet+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/44/441422322105200kw/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSH课程资源教学在线考试平台(java+ssh+mysql+jsp+tomcat)<span style="font-size: xx-small;color:#d8373e;">￥79</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/220023262402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSH课程资源教学在线考试平台(java+ssh+mysql+jsp+tomcat)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+	
+      <div class="post-title">
+          <a class="post-title-link" href="/00/001422292105200ec/" target="_blank" itemprop="url">
+		  
+		  
+		  
+			<span itemprop="name">基于javaweb的SSM+Maven校园外卖点餐系统(java+ssm+jsp+maven+mysql)<span style="font-size: xx-small;color:#d8373e;">￥89</span>🗎
+          <img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/340023012402.jpg?imageMogr2/thumbnail/120x70/pad/1" loading="lazy" alt="基于javaweb的SSM+Maven校园外卖点餐系统(java+ssm+jsp+maven+mysql)">
+			</span>
+          </a>
+      </div>
+    </header>
+  </article>
+
+    </div>
+  </div>
+  
+  
+  
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/">1</a><a class="page-number" href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/page/4/">4</a><a class="page-number" href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/page/5/">5</a><a class="extend next" rel="next" href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

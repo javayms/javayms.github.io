@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SSM大学生兼职论坛(java+ssm+jsp+jquery+layui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/201422312105200ia/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SSM大学生兼职论坛(java+ssm+jsp+jquery+layui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/201422312105200ia/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SSM大学生兼职论坛(java+ssm+jsp+jquery+layui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Tomcat≥8</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/400023302402.jpg" alt="400023302402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/410023302402.jpg" alt="410023302402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/420023302402.jpg" alt="420023302402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/430023302402.jpg" alt="430023302402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/440023302402.jpg" alt="440023302402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/450023302402.jpg" alt="450023302402"></p>
+<p>基于javaweb的SSM大学生兼职论坛(java+ssm+jsp+jquery+layui+mysql)</p>
+<p>项目介绍</p>
+<p>该项目是一个大学生校园兼职讨论平台，分为前台和后台功能，主要用户有三种角色：分别是商家、学生、管理员。商家可以发布兼职信息，发布后，管理员进入后台确认信息是否有效，并且审核该兼职信息。学生登录平台后，可以查看兼职信息，并且，可以在线和商家聊天，聊天的内容持久化到mysql数据库中。 该网站还有论坛交流的功能，用户可以在论坛发表贴子，并且，可以在帖子下面回复。论坛版块设置有3块广告区，管理员可以在后台对广告进行增删改查。 整体功能包括：论坛交流，帖子发布，个人中心，用户管理，聊天管理，帖子管理。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； 5.数据库：MySql 5.7版本；</p>
+<p>技术栈</p>
+<ol>
+<li>后端：Spring SpringMVC MyBatis 2. 前端：JSP+jQuery+Layui</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 将项目中yml配置文件中的数据库配置改为自己的配置 3. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven;若为maven项目，导入成功后请执行maven clean;maven install命令，配置tomcat，然后运行；</li>
+</ol>
+<p>前台系统：<a target="_blank" rel="noopener" href="http://localhost:8080/moonlighting/">http://localhost:8080/moonlighting/</a></p>
+<p>后台系统：<a target="_blank" rel="noopener" href="http://localhost:8080/moonlighting/manager/login/goServerLogin.action">http://localhost:8080/moonlighting/manager/login/goServerLogin.action</a>  </p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">		mv.setViewName(<span class="string">&quot;server/adverManage/updateAdver&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> mv;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//编辑广告</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/updateAdver&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateAdver</span><span class="params">(HttpServletResponse response,Adver adver)</span></span>&#123;</span><br><span class="line">		adverService.updateAdver(adver);</span><br><span class="line">		output(response,JsonUtil.buildFalseJson(<span class="number">0</span>, <span class="string">&quot;编辑成功！&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//删除广告</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/deleteAdver&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteAdver</span><span class="params">(HttpServletResponse response,Integer id)</span></span>&#123;</span><br><span class="line">		adverService.deleteAdverById(id);</span><br><span class="line">		output(response,JsonUtil.buildFalseJson(<span class="number">0</span>, <span class="string">&quot;删除成功！&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.work.common.utils;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseUtil</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Logger for this class</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = Logger.getLogger(BaseUtil.class);</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeJson</span><span class="params">(HttpServletResponse response, Object object)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			String json = JSON.toJSONStringWithDateFormat(object, <span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">			response.setContentType(<span class="string">&quot;text/html;charset=utf-8&quot;</span>);</span><br><span class="line">			response.getWriter().write(json);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">			mv.addObject(<span class="string">&quot;systemUpset&quot;</span>, systemUpsets.get(<span class="number">0</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		mv.setViewName(<span class="string">&quot;pc/header&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> mv;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//公共尾部</span></span><br><span class="line">	<span class="meta">@RequestMapping(value=&quot;/goFooter.action&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ModelAndView <span class="title">goFooter</span><span class="params">(ModelAndView mv,SystemUpset systemUpset)</span></span>&#123;</span><br><span class="line">		List&lt;SystemUpset&gt; systemUpsets = systemUpsetService.getSystemUpsetList(systemUpset, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">		<span class="keyword">if</span>(systemUpsets.size() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">			mv.addObject(<span class="string">&quot;systemUpset&quot;</span>, systemUpsets.get(<span class="number">0</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		mv.setViewName(<span class="string">&quot;pc/footer&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> mv;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//去首页面</span></span><br><span class="line">	<span class="meta">@RequestMapping(value=&quot;/goIndex.action&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ModelAndView <span class="title">goLogin</span><span class="params">(HttpServletRequest request,ModelAndView mv, Work work, QueryVo vo)</span></span>&#123;</span><br><span class="line">		<span class="comment">//判断滚动条</span></span><br><span class="line">		String isScroll = <span class="string">&quot;f&quot;</span>;</span><br><span class="line">		<span class="comment">//获取兼职</span></span><br><span class="line">		Page&lt;Work&gt; page=<span class="keyword">new</span> Page&lt;Work&gt;();</span><br><span class="line">		<span class="keyword">if</span>(work.getWorkCategory() != <span class="keyword">null</span> &amp;&amp; !work.getWorkCategory().equals(<span class="string">&quot;&quot;</span>))&#123;</span><br><span class="line">			isScroll = <span class="string">&quot;t&quot;</span>;</span><br><span class="line"><span class="comment">//			try &#123;</span></span><br><span class="line"><span class="comment">//				work.setWorkCategory(new String(work.getWorkCategory().getBytes(&quot;ISO8859-1&quot;),&quot;UTF-8&quot;));</span></span><br><span class="line"><span class="comment">//			&#125; catch (UnsupportedEncodingException e) &#123;</span></span><br><span class="line"><span class="comment">//				e.printStackTrace();</span></span><br><span class="line"><span class="comment">//			&#125;</span></span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(work.getWorkCategory());</span><br><span class="line">		work.setIsEffect(<span class="number">1</span>);</span><br><span class="line">		work.setIsAuditing(<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">if</span>(vo.getSize()!=<span class="number">8</span>)&#123; </span><br><span class="line">			vo.setSize(<span class="number">8</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(vo.getPage()==<span class="keyword">null</span>)&#123;</span><br><span class="line">			vo.setPage(<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//每页数</span></span><br><span class="line">		page.setSize(vo.getSize());</span><br><span class="line">		<span class="keyword">if</span> (vo != <span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="comment">//判断当前页</span></span><br><span class="line">			<span class="keyword">if</span>(vo.getPage() != <span class="keyword">null</span>) &#123;</span><br><span class="line">				page.setPage(vo.getPage());</span><br><span class="line">				vo.setStartRow((vo.getPage() -<span class="number">1</span>)*vo.getSize());</span><br><span class="line">			&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">		chatService.addChat(chat);</span><br><span class="line">		output(response,JsonUtil.buildFalseJson(<span class="number">0</span>, <span class="string">&quot;发送成功！&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//发送信件 </span></span><br><span class="line">	<span class="meta">@RequestMapping(value=&quot;/addMailbox.action&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addMailbox</span><span class="params">(Mailbox mailbox,HttpServletRequest request,HttpServletResponse response)</span></span>&#123;</span><br><span class="line">		User pcUser = (User) request.getSession().getAttribute(<span class="string">&quot;pcUser&quot;</span>);</span><br><span class="line">		mailbox.setUserId(pcUser.getUserId());</span><br><span class="line">		mailbox.setCreateTime(<span class="keyword">new</span> Date()); </span><br><span class="line">		mailboxService.addMailbox(mailbox);</span><br><span class="line">		output(response,JsonUtil.buildFalseJson(<span class="number">0</span>, <span class="string">&quot;发送成功&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="comment">//	//发布兼职</span></span><br><span class="line"><span class="comment">//	@RequestMapping(value=&quot;/addWork.action&quot;)</span></span><br><span class="line"><span class="comment">//	public void addWork(Work work,HttpServletRequest request,HttpServletResponse response)&#123;</span></span><br><span class="line"><span class="comment">//		User pcUser = (User) request.getSession().getAttribute(&quot;pcUser&quot;);</span></span><br><span class="line"><span class="comment">//		work.setUserId(pcUser.getUserId());</span></span><br><span class="line"><span class="comment">//		work.setCreateTime(new Date());</span></span><br><span class="line"><span class="comment">//		workService.addWork(work);</span></span><br><span class="line"><span class="comment">//		output(response,JsonUtil.buildFalseJson(0, &quot;发布成功&quot;));</span></span><br><span class="line"><span class="comment">//	&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.work.common.utils;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 显示格式 上一页 1 2 3 4 5 下一页</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NavigationTag</span> <span class="keyword">extends</span> <span class="title">TagSupport</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">2372405317744358833L</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">	<span class="comment">//添加广告</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/addAdver&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addAdver</span><span class="params">(HttpServletRequest request,HttpServletResponse response,Adver adver)</span></span>&#123;</span><br><span class="line">		User serverUser = (User) request.getSession().getAttribute(<span class="string">&quot;serverUser&quot;</span>);</span><br><span class="line">		adver.setCreateTime(<span class="keyword">new</span> Date());</span><br><span class="line">		adver.setUserId(serverUser.getUserId());</span><br><span class="line">		adverService.addAdver(adver);</span><br><span class="line">		output(response,JsonUtil.buildFalseJson(<span class="number">0</span>, <span class="string">&quot;添加成功！&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//去编辑广告</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/goUpdateAdver&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ModelAndView <span class="title">goUpdateAdver</span><span class="params">(ModelAndView mv,Integer id)</span></span>&#123;</span><br><span class="line">		Adver adver = adverService.getAdverById(id);</span><br><span class="line">		mv.addObject(<span class="string">&quot;adver&quot;</span>, adver);</span><br><span class="line">		mv.setViewName(<span class="string">&quot;server/adverManage/updateAdver&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> mv;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//编辑广告</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/updateAdver&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateAdver</span><span class="params">(HttpServletResponse response,Adver adver)</span></span>&#123;</span><br><span class="line">		adverService.updateAdver(adver);</span><br><span class="line">		output(response,JsonUtil.buildFalseJson(<span class="number">0</span>, <span class="string">&quot;编辑成功！&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//删除广告</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/deleteAdver&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteAdver</span><span class="params">(HttpServletResponse response,Integer id)</span></span>&#123;</span><br><span class="line">		adverService.deleteAdverById(id);</span><br><span class="line">		output(response,JsonUtil.buildFalseJson(<span class="number">0</span>, <span class="string">&quot;删除成功！&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.work.common.utils;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">	user = userService.getUserById(user.getUserId());</span><br><span class="line">	<span class="keyword">int</span> userId = user.getUserId();</span><br><span class="line">	mv.addObject(<span class="string">&quot;user&quot;</span>, user);</span><br><span class="line">	<span class="comment">//Session信息</span></span><br><span class="line">	User pcUser = (User) request.getSession().getAttribute(<span class="string">&quot;pcUser&quot;</span>);</span><br><span class="line">	mv.addObject(<span class="string">&quot;pcUser&quot;</span>, pcUser);</span><br><span class="line">	<span class="keyword">if</span>(pcUser == <span class="keyword">null</span>)&#123;</span><br><span class="line">		mv.setViewName(<span class="string">&quot;pc/login&quot;</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(pcUser.getUserId() == userId)&#123;</span><br><span class="line">		mv.addObject(<span class="string">&quot;updatePage&quot;</span>, <span class="string">&quot;y&quot;</span>);</span><br><span class="line">		mv.setViewName(<span class="string">&quot;pc/index&quot;</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="comment">//更新isLook</span></span><br><span class="line">		Chat chat = <span class="keyword">new</span> Chat();</span><br><span class="line">		chat.setUserIdFa(user.getUserId());</span><br><span class="line">		chat.setUserIdJie(pcUser.getUserId());</span><br><span class="line">		chat.setIsLook(<span class="number">1</span>);</span><br><span class="line">		chatService.updateChat(chat);</span><br><span class="line">		mv.setViewName(<span class="string">&quot;pc/chat&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> mv;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//去论坛页面</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;/goForum.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">goForum</span><span class="params">(HttpServletRequest request,ModelAndView mv, QueryVo vo)</span></span>&#123;</span><br><span class="line">	User pcUser = (User) request.getSession().getAttribute(<span class="string">&quot;pcUser&quot;</span>);</span><br><span class="line">	mv.addObject(<span class="string">&quot;pcUser&quot;</span>, pcUser);</span><br><span class="line">	<span class="comment">//获取广告</span></span><br><span class="line">	Adver adver = <span class="keyword">new</span> Adver();</span><br><span class="line">	List&lt;Adver&gt; advers = adverService.getAdverList(adver, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">	mv.addObject(<span class="string">&quot;advers&quot;</span>, advers);</span><br><span class="line">	<span class="comment">//获取帖子</span></span><br><span class="line">	Page&lt;Forum&gt; page=<span class="keyword">new</span> Page&lt;Forum&gt;();</span><br><span class="line">	Forum forum = <span class="keyword">new</span> Forum();</span><br><span class="line">	forum.setIsEffect(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span>(vo.getSize()!=<span class="number">10</span>)&#123; </span><br><span class="line">		vo.setSize(<span class="number">10</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(vo.getPage()==<span class="keyword">null</span>)&#123;</span><br><span class="line">		vo.setPage(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//每页数</span></span><br><span class="line">	page.setSize(vo.getSize());</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">		collectService.addCollect(collect);</span><br><span class="line">		output(response,JsonUtil.buildFalseJson(<span class="number">0</span>, <span class="string">&quot;收藏成功&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//发布兼职</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/addWork&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addWork</span><span class="params">(HttpServletRequest request,HttpServletResponse response,Work work)</span></span>&#123;</span><br><span class="line">	User pcUser = (User) request.getSession().getAttribute(<span class="string">&quot;pcUser&quot;</span>);</span><br><span class="line">       <span class="keyword">if</span>(pcUser == <span class="keyword">null</span>)&#123;</span><br><span class="line">		output(response,JsonUtil.buildFalseJson(<span class="number">1</span>, <span class="string">&quot;您尚未登录，请先登录！&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		work.setUserId(pcUser.getUserId());</span><br><span class="line">		work.setCreateTime(<span class="keyword">new</span> Date());</span><br><span class="line">		workService.addWork(work);</span><br><span class="line">		output(response,JsonUtil.buildFalseJson(<span class="number">0</span>, <span class="string">&quot;发布成功&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//聊天消息查询  </span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;/findChatList.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">findChat</span><span class="params">(User user,HttpServletRequest request,HttpServletResponse response)</span></span>&#123;</span><br><span class="line">	User pcUser = (User) request.getSession().getAttribute(<span class="string">&quot;pcUser&quot;</span>);</span><br><span class="line">	Chat chat=<span class="keyword">new</span> Chat();</span><br><span class="line">	<span class="comment">//设置发送方id</span></span><br><span class="line">	chat.setUserIdFa(pcUser.getUserId());</span><br><span class="line">	<span class="comment">//设置接收方id</span></span><br><span class="line">	chat.setUserIdJie(user.getUserId()); </span><br><span class="line">	List&lt;Chat&gt; chats = chatService.findChatList(chat, <span class="keyword">null</span>, <span class="number">30</span>);</span><br><span class="line">	<span class="comment">//更新isLook</span></span><br><span class="line">	chat.setUserIdFa(user.getUserId());</span><br><span class="line">	chat.setUserIdJie(pcUser.getUserId());</span><br><span class="line">	chat.setIsLook(<span class="number">1</span>);</span><br><span class="line">	chatService.updateChat(chat);</span><br><span class="line">	output(response,JsonUtil.buildJsonByTotalCount(chats, <span class="number">0</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//聊天消息数目 </span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;/findChatListCount.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">findChatListCount</span><span class="params">(User user,HttpServletRequest request,HttpServletResponse response)</span></span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=201422312105200ia<br>https://javayms.gitee.io?id=201422312105200ia</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+			<a href="/tags/%E5%85%BC%E8%81%8C/" rel="tag"><i class="fa fa-tag"></i> 兼职</a>
+			<a href="/tags/%E5%8D%9A%E5%AE%A2-%E8%AE%BA%E5%9D%9B/" rel="tag"><i class="fa fa-tag"></i> 博客 | 论坛</a>
+			<a href="/tags/%E6%8B%9B%E8%81%98-%E5%B0%B1%E4%B8%9A/" rel="tag"><i class="fa fa-tag"></i> 招聘 | 就业</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

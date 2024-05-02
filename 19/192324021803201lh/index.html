@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SSM微信小程序医生挂号预约平台(java+ssm+jsp+javascript+msql+tomcat+wechat)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/192324021803201lh/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SSM微信小程序医生挂号预约平台(java+ssm+jsp+javascript+msql+tomcat+wechat) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/192324021803201lh/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SSM微信小程序医生挂号预约平台(java+ssm+jsp+javascript+msql+tomcat+wechat)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Tomcat≥8</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/202324021803.jpg" alt="202324021803"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/212324021803.jpg" alt="212324021803"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/222324021803.jpg" alt="222324021803"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/232324021803.jpg" alt="232324021803"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/242324021803.jpg" alt="242324021803"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/252324021803.jpg" alt="252324021803"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/262324021803.jpg" alt="262324021803"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/282324021803.jpg" alt="282324021803"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/292324021803.jpg" alt="292324021803"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/302324021803.jpg" alt="302324021803"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/312324021803.jpg" alt="312324021803"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/322324021803.jpg" alt="322324021803"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/332324021803.jpg" alt="332324021803"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/342324021803.jpg" alt="342324021803"></p>
+<p>基于javaweb的SSM微信小程序医生挂号预约平台(java+ssm+jsp+javascript+msql+tomcat+wechat)</p>
+<p>/hospital</p>
+<p>web管理端：<br><a target="_blank" rel="noopener" href="http://localhost:8080/hospital/media/login.jsp">http://localhost:8080/hospital/media/login.jsp</a><br>admin   123456</p>
+<p>小程序端：<br>user    123456</p>
+<p>项目分为三种用户：<br>小程序端：前台用户<br>WEB管理端：管理员、医生</p>
+<p>功能：<br>小程序端：用户注册<br>小程序端：用户登录<br>小程序端：用户查看或搜索医生列表<br>小程序端：用户查看医生详情<br>小程序端：用户预约医生（填写预约人、手机号、支付方式:微信/支付宝）<br>小程序端：用户评价医生（填写评价内容）或取消预约</p>
+<p>WEB管理端：医生查看订单（即预约记录，可以取消预约）<br>WEB管理端：医生查看评价（用户对本医生的评价）</p>
+<p>WEB管理端：管理员管理评价<br>WEB管理端：管理员管理医生（增删改查）<br>WEB管理端：管理员管理科室（增删改查）<br>WEB管理端：管理员管理订单<br>WEB管理端：管理员管理登录日志<br>WEB管理端：管理员管理登录用户<br>WEB管理端：管理员管理角色及菜单权限</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">		map.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;修改失败&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户管理新增/修改</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> paramT</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(params = &quot;addUser&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Map <span class="title">addUser</span><span class="params">(PowerUser paramT,HttpSession session,HttpServletRequest request)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Map&lt;Object, Object&gt; map = <span class="keyword">new</span> HashMap&lt;Object, Object&gt;();</span><br><span class="line">	String[] roleId=request.getParameterValues(<span class="string">&quot;roleId&quot;</span>);</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		PowerUser u=(PowerUser)session.getAttribute(<span class="string">&quot;users&quot;</span>);</span><br><span class="line">		paramT.setUpdateUserId(u.getId());</span><br><span class="line">		paramT.setUpdateUserName(u.getUserName());</span><br><span class="line">		paramT.setUpdateTime(Time.nowDateToString());</span><br><span class="line">		paramT.setState(<span class="number">1</span>);</span><br><span class="line">		paramT.setMobilePowerState(<span class="number">1</span>);</span><br><span class="line">		paramT.setPassword(MD5.pass(<span class="string">&quot;111111&quot;</span>));</span><br><span class="line">		<span class="keyword">if</span>(paramT.getId()!=<span class="keyword">null</span> &amp;&amp; !<span class="string">&quot;&quot;</span>.equals(paramT.getId()))&#123;</span><br><span class="line">			powerUserDao.updateByPrimaryKeySelective(paramT);</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			paramT.setId(IDGenerator.getID());</span><br><span class="line">			powerUserDao.insertSelective(paramT);</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//用户跟角色关联表 现根据userid删除然后再保存</span></span><br><span class="line">		roleUserDao.deleteByPrimaryUserId(paramT.getId());</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;roleId.length;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			PowerRoleUser roleUser=<span class="keyword">new</span> PowerRoleUser();</span><br><span class="line">			roleUser.setId(IDGenerator.getID());</span><br><span class="line">			roleUser.setRoleId(roleId[i]);<span class="comment">//角色id</span></span><br><span class="line">			roleUser.setPowId(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">			roleUser.setUserId(paramT.getId());<span class="comment">//用户id</span></span><br><span class="line">			roleUserDao.insertSelective(roleUser);</span><br><span class="line">		&#125;</span><br><span class="line">		map.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;保存成功&quot;</span>);</span><br><span class="line">		map.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">true</span>);	</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">		e.printStackTrace();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">           HttpClient client = <span class="keyword">new</span> HttpClient();</span><br><span class="line">           HttpSession session = request.getSession();</span><br><span class="line">           String token = (String)session.getAttribute(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">           String cookie = (String)session.getAttribute(<span class="string">&quot;cookie&quot;</span>);</span><br><span class="line">           String url =  <span class="string">&quot;https://mp.weixin.qq.com/advanced/callbackprofile&quot;</span>;</span><br><span class="line">           PostMethod post = <span class="keyword">new</span> PostMethod(url);</span><br><span class="line">           client.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);</span><br><span class="line">           post.setRequestHeader(<span class="string">&quot;Referer&quot;</span>,<span class="string">&quot;https://mp.weixin.qq.com/&quot;</span>);</span><br><span class="line">           post.setRequestHeader(<span class="string">&quot;Host&quot;</span>, <span class="string">&quot;mp.weixin.qq.com&quot;</span>);</span><br><span class="line">           System.out.println(cookie);</span><br><span class="line"></span><br><span class="line">           NameValuePair[] params = <span class="keyword">new</span> NameValuePair[]&#123;</span><br><span class="line">                   <span class="keyword">new</span> NameValuePair(<span class="string">&quot;t&quot;</span>,<span class="string">&quot;ajax-response&quot;</span>),</span><br><span class="line">                   <span class="keyword">new</span> NameValuePair(<span class="string">&quot;token&quot;</span>,token),</span><br><span class="line">                   <span class="keyword">new</span> NameValuePair(<span class="string">&quot;lang&quot;</span>,<span class="string">&quot;zh_CN&quot;</span>),</span><br><span class="line">                   <span class="keyword">new</span> NameValuePair(<span class="string">&quot;url&quot;</span>,callback_url),</span><br><span class="line">                   <span class="keyword">new</span> NameValuePair(<span class="string">&quot;callback_token&quot;</span>,callback_token)</span><br><span class="line">           &#125;;</span><br><span class="line"></span><br><span class="line">           Protocol myhttps = <span class="keyword">new</span> Protocol(<span class="string">&quot;https&quot;</span>,</span><br><span class="line">                   <span class="keyword">new</span> MySSLProtocolSocketFactory(), <span class="number">443</span>);</span><br><span class="line">           Protocol.registerProtocol(<span class="string">&quot;https&quot;</span>, myhttps);</span><br><span class="line">           post.setQueryString(params);</span><br><span class="line">           post.setRequestHeader(<span class="string">&quot;cookie&quot;</span>, cookie);</span><br><span class="line"></span><br><span class="line">           <span class="keyword">int</span> status;</span><br><span class="line">           status = client.executeMethod(post);</span><br><span class="line">           <span class="keyword">if</span> (status == HttpStatus.SC_OK) &#123;</span><br><span class="line">               String text = post.getResponseBodyAsString();</span><br><span class="line">               System.out.println(text);</span><br><span class="line">               Map map = (Map)JSONObject.parse(text);</span><br><span class="line">               String ret = (String) map.get(<span class="string">&quot;ret&quot;</span>);</span><br><span class="line">               <span class="keyword">if</span>(Integer.parseInt(ret) == <span class="number">0</span>)&#123;</span><br><span class="line">                   returnMap.put(<span class="string">&quot;success&quot;</span>,<span class="keyword">true</span>);</span><br><span class="line">                   returnMap.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;设置成功&quot;</span>);</span><br><span class="line">               &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                   returnMap.put(<span class="string">&quot;success&quot;</span>,<span class="keyword">false</span>);</span><br><span class="line">                   returnMap.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;参数错误&quot;</span>);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">return</span> returnMap;</span><br><span class="line">       &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">           <span class="keyword">return</span> returnMap;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">	<span class="comment">// login(&quot;&quot;,&quot;&quot;,&quot;&quot;);</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"> * 类描述： </span><br><span class="line"> * 作者单位： </span><br><span class="line"> * 联系方式：</span><br><span class="line"> * <span class="meta">@version</span></span><br><span class="line"> */</span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/code&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecCodeController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@RequestMapping</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">generate</span><span class="params">(HttpServletResponse response)</span></span>&#123;</span><br><span class="line">		ByteArrayOutputStream output = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">		String code = drawImg(output);</span><br><span class="line">		</span><br><span class="line">		Subject currentUser = SecurityUtils.getSubject();  </span><br><span class="line">		Session session = currentUser.getSession();</span><br><span class="line">		session.setAttribute(Const.SESSION_SECURITY_CODE, code);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			ServletOutputStream out = response.getOutputStream();</span><br><span class="line">			output.writeTo(out);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> String <span class="title">drawImg</span><span class="params">(ByteArrayOutputStream output)</span></span>&#123;</span><br><span class="line">		String code = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++)&#123;</span><br><span class="line">			code += randomChar();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> width = <span class="number">70</span>;</span><br><span class="line">		<span class="keyword">int</span> height = <span class="number">25</span>;</span><br><span class="line">		BufferedImage bi = <span class="keyword">new</span> BufferedImage(width,height,BufferedImage.TYPE_3BYTE_BGR);</span><br><span class="line">		Font font = <span class="keyword">new</span> Font(<span class="string">&quot;Times New Roman&quot;</span>,Font.PLAIN,<span class="number">20</span>);</span><br><span class="line">		Graphics2D g = bi.createGraphics();</span><br><span class="line">		g.setFont(font);</span><br><span class="line">		Color color = <span class="keyword">new</span> Color(<span class="number">66</span>,<span class="number">2</span>,<span class="number">82</span>);</span><br><span class="line">		g.setColor(color);</span><br><span class="line">		g.setBackground(<span class="keyword">new</span> Color(<span class="number">226</span>,<span class="number">226</span>,<span class="number">240</span>));</span><br><span class="line">		g.clearRect(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">		FontRenderContext context = g.getFontRenderContext();</span><br><span class="line">		Rectangle2D bounds = font.getStringBounds(code, context);</span><br><span class="line">		<span class="keyword">double</span> x = (width - bounds.getWidth()) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">double</span> y = (height - bounds.getHeight()) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">double</span> ascent = bounds.getY();</span><br><span class="line">		<span class="keyword">double</span> baseY = y - ascent;</span><br><span class="line">		g.drawString(code, (<span class="keyword">int</span>)x, (<span class="keyword">int</span>)baseY);</span><br><span class="line">		g.dispose();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			ImageIO.write(bi, <span class="string">&quot;jpg&quot;</span>, output);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">			queryMap.put(<span class="string">&quot;rows&quot;</span>, (Integer.parseInt(rows)));</span><br><span class="line">		&#125;</span><br><span class="line">		Map&lt;Object, Object&gt; map = <span class="keyword">new</span> HashMap&lt;Object, Object&gt;();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			List&lt;MobileUser&gt; list = mobileUserDao.get(queryMap);</span><br><span class="line">			map.put(<span class="string">&quot;rows&quot;</span>, list);</span><br><span class="line">			map.put(<span class="string">&quot;total&quot;</span>, mobileUserDao.getCount(queryMap));</span><br><span class="line">			map.put(<span class="string">&quot;success&quot;</span>,<span class="keyword">true</span>);</span><br><span class="line">			map.put(<span class="string">&quot;page&quot;</span>, page);</span><br><span class="line">			map.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;查询成功&quot;</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">			map.put(<span class="string">&quot;success&quot;</span>,<span class="keyword">false</span>);</span><br><span class="line">			map.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;查询失败&quot;</span>);</span><br><span class="line">			<span class="keyword">return</span> map;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> map;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 根据id批量删除</span></span><br><span class="line">	<span class="meta">@RequestMapping(params = &quot;delMoreEvent&quot;)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Map&lt;Object, Object&gt; <span class="title">deleteMore</span><span class="params">(String id,HttpServletRequest request)</span></span>&#123;</span><br><span class="line">		Map&lt;Object, Object&gt; map = <span class="keyword">new</span> HashMap&lt;Object, Object&gt;();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">        	List&lt;String&gt; listId = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">            String[] arrId = id.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; arrId.length ; i ++ )&#123;</span><br><span class="line">            	listId.add(arrId[i]);</span><br><span class="line">            	Map&lt;Object, Object&gt; queryMap = <span class="keyword">new</span> HashMap&lt;Object, Object&gt;();</span><br><span class="line">            	queryMap.put(<span class="string">&quot;id&quot;</span>, arrId[i]);</span><br><span class="line">            	<span class="comment">/*List&lt;MobileUser&gt; list = mobileUserDao.get(queryMap);*/</span></span><br><span class="line">            	</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>( listId.size() &gt; <span class="number">0</span> )&#123;</span><br><span class="line">            	mobileUserDao.deleteMoreByPK(listId);</span><br><span class="line">            	map.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;删除成功&quot;</span>);</span><br><span class="line">                map.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            	 map.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;缺少删除条件&quot;</span>);</span><br><span class="line">                 map.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            map.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;删除失败&quot;</span>);</span><br><span class="line">            map.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">            <span class="keyword">return</span> map;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToolUtil</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Log log = LogFactory.getLog(ToolUtil.class);</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEBUG = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> DISPLAY_ORDER_TOP = <span class="number">630720000000L</span>; <span class="comment">// 20 year</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">long</span> millis)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Thread.sleep(millis);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">			ex.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span>  <span class="title">unless</span><span class="params">(String str)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(str == <span class="keyword">null</span> || <span class="string">&quot;&quot;</span>.equals(str))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sleepMilliSeconds</span><span class="params">(<span class="keyword">long</span> millis)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Thread.sleep(millis);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=149&price1=109&price2=109" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=192324021803201lh<br>https://javayms.gitee.io?id=192324021803201lh</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+			<a href="/tags/%E5%8C%BB%E9%99%A2-%E6%8C%82%E5%8F%B7/" rel="tag"><i class="fa fa-tag"></i> 医院 | 挂号</a>
+			<a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"><i class="fa fa-tag"></i> 小程序</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
