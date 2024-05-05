@@ -228,366 +228,34 @@
 <p>项目介绍</p>
 <p>基于SpringBoot Vue的财务管理系统</p>
 <p>角色：管理员、员工</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">管理员</span><br><span class="line">admin   123456</span><br><span class="line"></span><br><span class="line">员工</span><br><span class="line">员工工号1	123456</span><br><span class="line">员工工号2	123456</span><br><span class="line">员工工号3	123456</span><br><span class="line">员工工号4	123456</span><br><span class="line">员工工号5	123456</span><br><span class="line">员工工号6	123456</span><br><span class="line"></span><br><span class="line">后端启动类：StartApplication</span><br><span class="line">前端启动命令：npm run serve</span><br></pre></td></tr></table></figure>
 <p>管理员：管理员登录系统后，可以对首页，个人中心，员工管理，部门管理，员工工资管理，工资调整管理，资产类别管理，固定资产管理，经营信息管理，序时账管理，年度利润管理，系统管理等功能</p>
 <p>员工：员工登录进入系统可以对首页，个人中心，员工工资管理，工资调整管理，系统管理等功能</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  4.数据库：MySql 5.7/8.0版本均可； 5.是否Maven项目：是；</p>
 <p>技术栈</p>
 <p>后端：SpringBoot+Mybaits</p>
 <p>前端：Vue+ElementUI+Layui+HTML+CSS+JS</p>
-<p>使用说明</p>
-<p>项目运行： 1. 使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中application.yml配置文件中的数据库配置改为自己的配置; 4. 运行项目，控制台提示运行成功后再去运行前端项目； 5. 管理员用户名密码：admin/admin 普通用户名密码：user/123456</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p> 统计管理控制层：</p>
-<p>@RestController</p>
-<p>@RequestMapping(“/bills”)</p>
-<p>public class BillController {</p>
-<p>@Resource</p>
-<p>private BillService billService;</p>
-<p>/**</p>
-<ul>
-<li><p>适用于统计图</p>
-</li>
-<li><p>@param bill</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“/getBillsToChart”)</p>
-<p>public Result<Bill> findByWhereNoPage(Bill bill, HttpSession session){</Bill></p>
-<p>bill = getHouseBill(bill,session);</p>
-<p>return billService.findByWhereNoPage(bill);</p>
-<p>@RequestMapping(“/getBillsByWhere/{type}/{pageNo}/{pageSize}”)</p>
-<p>public Result<Bill> getBillsByWhere(Bill bill,@PathVariable String type, @PathVariable int pageNo, @PathVariable int pageSize, HttpSession session){</Bill></p>
-<p>if(“-1”.equals(bill.getPayway())){</p>
-<p>bill.setPayway(null);</p>
-<p>bill.setType(type);</p>
-<p>bill = getHouseBill(bill,session);</p>
-<p>System.out.println(bill);</p>
-<p>PageModel model = new PageModel&lt;&gt;(pageNo,bill);</p>
-<p>model.setPageSize(pageSize);</p>
-<p>return billService.findByWhere(model);</p>
-<p>@RequestMapping(“/getBillsByUserid/{userid}/{pageNo}/{pageSize}/{year}/{month}”)</p>
-<p>public Result getBillsByUserid(@PathVariable Integer userid, @PathVariable int pageNo, @PathVariable int pageSize, @PathVariable int year, @PathVariable int month){</p>
-<p>Bill bill = new Bill();</p>
-<p>bill.setUserid(userid);</p>
-<p>SimpleDateFormat sdf = new SimpleDateFormat(“yyyy-MM-dd”);</p>
-<p>bill.setStartTime(year+”-0”+month+”-01”);</p>
-<p>try {</p>
-<p>Date date = sdf.parse(year+”-0”+(month+1)+”-01”);</p>
-<p>date.setDate(date.getDate()-1);</p>
-<p>bill.setEndTime(sdf.format(date));</p>
-<p>} catch (ParseException e) {</p>
-<p>e.printStackTrace();</p>
-<p>PageModel model = new PageModel&lt;&gt;(pageNo,bill);</p>
-<p>model.setPageSize(pageSize);</p>
-<p>Result result = billService.findByWhere(model);</p>
-<p>List&lt;Map&lt;String,String&gt;&gt; r = billService.getMonthlyInfo(model);</p>
-<p>Map&lt;String,String&gt; map = new HashMap&lt;&gt;();</p>
-<p>for (Map&lt;String,String&gt; m: r) {</p>
-<p>map.put(m.get(“typeid”),String.format(“%.2f”,m.get(“sum(money)”)));</p>
-<p>result.setData(map);</p>
-<p>return result;</p>
-<p>private Bill getHouseBill(Bill bill, HttpSession session) {</p>
-<p>UserInfo currentUser = Config.getSessionUser(session);</p>
-<p>//当登录用户为家主时，查询默认查询全家账单情况</p>
-<p>//当登录用户为普通用户时，仅查询当前用户的账单</p>
-<p>if (currentUser.getRoleid() == 2){</p>
-<p>bill.setHouseid(currentUser.getHouseid());</p>
-<p>}else if (currentUser.getRoleid() == 3){</p>
-<p>bill.setUserid(currentUser.getId());</p>
-<p>return bill;</p>
-<p>@RequestMapping(value = “/addBill”,method = RequestMethod.POST)</p>
-<p>public Result add(Bill bill, HttpSession session){</p>
-<p>if (Config.getSessionUser(session)!=null){</p>
-<p>bill.setUserid(Config.getSessionUser(session).getId());</p>
-<p>Utils.log(bill.toString());</p>
-<p>try {</p>
-<p>int num = billService.add(bill);</p>
-<p>if(num&gt;0){</p>
-<p>int billid = bill.getId();</p>
-<p>bill = new Bill();</p>
-<p>bill.setId(billid);</p>
-<p>return ResultUtil.success(“记账成功！”,billService.findByWhereNoPage(bill));</p>
-<p>//                return ResultUtil.success(“记账成功！”,bill);</p>
-<p>}else {</p>
-<p>return ResultUtil.unSuccess();</p>
-<p>}catch (Exception e){</p>
-<p>return ResultUtil.error(e);</p>
-<p>@RequestMapping(“/updateBill”)</p>
-<p>public Result update(Bill bill, HttpSession session){</p>
-<p>if (Config.getSessionUser(session)!=null){</p>
-<p>bill.setUserid(Config.getSessionUser(session).getId());</p>
-<p>Utils.log(bill.toString());</p>
-<p>try {</p>
-<p>int num = billService.update(bill);</p>
-<p>if(num&gt;0){</p>
-<p>return ResultUtil.success(“修改成功！”,null);</p>
-<p>}else {</p>
-<p>return ResultUtil.unSuccess();</p>
-<p>}catch (Exception e){</p>
-<p>return ResultUtil.error(e);</p>
-<p>@RequestMapping(“/delBill”)</p>
-<p>public Result del(int id){</p>
-<p>try {</p>
-<p>int num = billService.del(id);</p>
-<p>if(num&gt;0){</p>
-<p>return ResultUtil.success(“删除成功！”,null);</p>
-<p>}else {</p>
-<p>return ResultUtil.unSuccess();</p>
-<p>}catch (Exception e){</p>
-<p>return ResultUtil.error(e);</p>
-<p>@RequestMapping(“/getPayways”)</p>
-<p>public Result<Payway> getAllPayways(){</Payway></p>
-<p>try {</p>
-<p>List<Payway> payways = billService.getAllPayways();</Payway></p>
-<p>if (payways!=null &amp;&amp; payways.size()&gt;0){</p>
-<p>return ResultUtil.success(payways);</p>
-<p>}else {</p>
-<p>return ResultUtil.unSuccess();</p>
-<p>} catch (Exception e) {</p>
-<p>return ResultUtil.error(e);</p>
-<p> 用户信息管理控制层：</p>
-<p>@Controller</p>
-<p>public class UserInfoController {</p>
-<p>@Resource</p>
-<p>private UserInfoService userInfoService;</p>
-<p>@Resource</p>
-<p>private PrivilegeService privilegeService;</p>
-<p>@RequestMapping(value = {“/“, “login.html”})</p>
-<p>public String toLogin(HttpServletRequest request, HttpServletResponse response){</p>
-<p>HttpSession session = request.getSession();</p>
-<p>if(session.getAttribute(Config.CURRENT_USERNAME)==null){</p>
-<p>return “login”;</p>
-<p>}else {</p>
-<p>try {</p>
-<p>response.sendRedirect(“/pages/index”);</p>
-<p>} catch (IOException e) {</p>
-<p>e.printStackTrace();</p>
-<p>return “login”;</p>
-<p>return null;</p>
-<p>//    @RequestMapping(value = “/login.do”,method = RequestMethod.POST)</p>
-<p>@RequestMapping(value = “/login.do”)</p>
-<p>@ResponseBody</p>
-<p>public Result getUserInfo(UserInfo userInfo, HttpServletRequest request, HttpServletResponse response){</p>
-<p>boolean userIsExisted = userInfoService.userIsExisted(userInfo);</p>
-<p>System.out.println(userIsExisted + “ - “ + request.getHeader(“token”));</p>
-<p>userInfo = getUserInfo(userInfo);</p>
-<p>if(“client”.equals(request.getHeader(“token”)) &amp;&amp; !userIsExisted){</p>
-<p>//用户不存在</p>
-<p>return  ResultUtil.success(-1);</p>
-<p>if (userIsExisted &amp;&amp; userInfo == null){</p>
-<p>return  ResultUtil.unSuccess(“用户名或密码错误！”);</p>
-<p>}else {</p>
-<p>//将用户信息存入session</p>
-<p>userInfo = setSessionUserInfo(userInfo,request.getSession());</p>
-<p>//将当前用户信息存入cookie</p>
-<p>setCookieUser(request,response);</p>
-<p>return ResultUtil.success(“登录成功”, userInfo);</p>
-<p>@RequestMapping(“/users/getUsersByWhere/{pageNo}/{pageSize}”)</p>
-<p>public @ResponseBody Result getUsersByWhere(UserInfo userInfo, @PathVariable int pageNo, @PathVariable int pageSize, HttpSession session){</p>
-<p>if (“”.equals(userInfo.getHouseid())){</p>
-<p>userInfo.setHouseid(null);</p>
-<p>if (userInfo.getRoleid() == -1){</p>
-<p>userInfo.setRoleid(Config.getSessionUser(session).getRoleid());</p>
-<p>Utils.log(userInfo.toString());</p>
-<p>PageModel model = new PageModel&lt;&gt;(pageNo,userInfo);</p>
-<p>model.setPageSize(pageSize);</p>
-<p>return userInfoService.getUsersByWhere(model);</p>
-<p>@RequestMapping(“/user/add”)</p>
-<p>public @ResponseBody Result addUser(UserInfo userInfo){</p>
-<p>System.out.println(userInfo);</p>
-<p>try {</p>
-<p>int num = userInfoService.add(userInfo);</p>
-<p>if(num&gt;0){</p>
-<p>return ResultUtil.success();</p>
-<p>}else {</p>
-<p>return ResultUtil.unSuccess();</p>
-<p>}catch (Exception e){</p>
-<p>return ResultUtil.error(e);</p>
-<p>@RequestMapping(“/user/update”)</p>
-<p>public @ResponseBody Result updateUser(UserInfo userInfo){</p>
-<p>try {</p>
-<p>int num = userInfoService.update(userInfo);</p>
-<p>if(num&gt;0){</p>
-<p>return ResultUtil.success();</p>
-<p>}else {</p>
-<p>return ResultUtil.unSuccess();</p>
-<p>}catch (Exception e){</p>
-<p>return ResultUtil.error(e);</p>
-<p>@RequestMapping(“/user/del/{id}”)</p>
-<p>public @ResponseBody Result deleteUser(@PathVariable String id){</p>
-<p>try {</p>
-<p>int num = userInfoService.delete(id);</p>
-<p>if(num&gt;0){</p>
-<p>return ResultUtil.success();</p>
-<p>}else {</p>
-<p>return ResultUtil.unSuccess();</p>
-<p>}catch (Exception e){</p>
-<p>return ResultUtil.error(e);</p>
-<p>@RequestMapping(“/getSessionUser”)</p>
-<p>@ResponseBody</p>
-<p>public UserInfo getSessionUser(HttpSession session){</p>
-<p>UserInfo sessionUser = (UserInfo) session.getAttribute(Config.CURRENT_USERNAME);</p>
-<p>sessionUser.setPassword(null);</p>
-<p>return sessionUser;</p>
-<p>@RequestMapping(“/logout”)</p>
-<p>public String logout(HttpServletRequest request, HttpServletResponse response){</p>
-<p>delCookieUser(request, response);</p>
-<p>request.getSession().removeAttribute(Config.CURRENT_USERNAME);</p>
-<p>return “login”;</p>
-<p>@RequestMapping(“/getAllRoles”)</p>
-<p>public @ResponseBody Result<Role> getAllRoles(){</Role></p>
-<p>try {</p>
-<p>List<Role> roles = userInfoService.getAllRoles();</Role></p>
-<p>if (roles.size()&gt;0){</p>
-<p>return ResultUtil.success(roles);</p>
-<p>}else {</p>
-<p>return ResultUtil.unSuccess();</p>
-<p>}catch (Exception e){</p>
-<p>return ResultUtil.error(e);</p>
-<p>@RequestMapping(“/role/add”)</p>
-<p>public @ResponseBody Result addRole(Role role){</p>
-<p>try {</p>
-<p>int num = userInfoService.addRole(role);</p>
-<p>if(num&gt;0){</p>
-<p>privilegeService.addDefaultPrivilegesWhenAddRole(role.getRoleid().toString());</p>
-<p>return ResultUtil.success();</p>
-<p>}else {</p>
-<p>return ResultUtil.unSuccess();</p>
-<p>}catch (Exception e){</p>
-<p>return ResultUtil.error(e);</p>
-<p>@RequestMapping(“/role/update”)</p>
-<p>public @ResponseBody Result updateRole(Role role){</p>
-<p>try {</p>
-<p>int num = userInfoService.updateRole(role);</p>
-<p>if(num&gt;0){</p>
-<p>return ResultUtil.success();</p>
-<p>}else {</p>
-<p>return ResultUtil.unSuccess();</p>
-<p>}catch (Exception e){</p>
-<p>return ResultUtil.error(e);</p>
-<p>@RequestMapping(“/role/del/{roleid}”)</p>
-<p>public @ResponseBody Result deleteRole(@PathVariable String roleid){</p>
-<p>try {</p>
-<p>privilegeService.delPrivilegesWenDelRole(roleid);</p>
-<p>int num = userInfoService.deleteRole(roleid);</p>
-<p>if(num&gt;0){</p>
-<p>return ResultUtil.success();</p>
-<p>}else {</p>
-<p>privilegeService.addDefaultPrivilegesWhenAddRole(roleid);</p>
-<p>return ResultUtil.unSuccess();</p>
-<p>}catch (Exception e){</p>
-<p>return ResultUtil.error(e);</p>
-<p>@RequestMapping(“/getRole/{id}”)</p>
-<p>public @ResponseBody Result getRoleById(@PathVariable String id){</p>
-<p>try {</p>
-<p>Role role = userInfoService.getRoleById(id);</p>
-<p>if(role != null){</p>
-<p>return ResultUtil.success(role);</p>
-<p>}else {</p>
-<p>return ResultUtil.unSuccess();</p>
-<p>}catch (Exception e){</p>
-<p>return ResultUtil.error(e);</p>
-<p>/**</p>
-<ul>
-<li><p>登录时将用户信息加入cookie中</p>
-</li>
-<li><p>@param response</p>
-</li>
-</ul>
-<p>*/</p>
-<p>private void setCookieUser(HttpServletRequest request, HttpServletResponse response){</p>
-<p>UserInfo user = getSessionUser(request.getSession());</p>
-<p>Cookie cookie = new Cookie(Config.CURRENT_USERNAME,user.getUsername()+”_”+user.getId());</p>
-<p>//cookie 保存7天</p>
-<p>cookie.setMaxAge(60<em>60</em>24*7);</p>
-<p>response.addCookie(cookie);</p>
-<p>/**</p>
-<ul>
-<li><p>注销时删除cookie信息</p>
-</li>
-<li><p>@param request</p>
-</li>
-<li><p>@param response</p>
-</li>
-</ul>
-<p>*/</p>
-<p>private void delCookieUser(HttpServletRequest request, HttpServletResponse response){</p>
-<p>UserInfo user = getSessionUser(request.getSession());</p>
-<p>Cookie cookie = new Cookie(Config.CURRENT_USERNAME,user.getUsername()+”_”+user.getId());</p>
-<p>cookie.setMaxAge(-1);</p>
-<p>response.addCookie(cookie);</p>
-<p>/**</p>
-<ul>
-<li><p>通过用户信息获取用户权限信息，并存入session中</p>
-</li>
-<li><p>@param userInfo</p>
-</li>
-<li><p>@param session</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>public UserInfo setSessionUserInfo(UserInfo userInfo, HttpSession session){</p>
-<p>List<Privilege> privileges = privilegeService.getPrivilegeByRoleid(userInfo.getRoleid());</Privilege></p>
-<p>userInfo.setPrivileges(privileges);</p>
-<p>session.setAttribute(Config.CURRENT_USERNAME,userInfo);</p>
-<p>return userInfo;</p>
-<p>public UserInfo getUserInfo(UserInfo userInfo){</p>
-<p>return userInfoService.getUserInfo(userInfo);</p>
-<p>工具类： </p>
-<p>/**</p>
-<ul>
-<li>接口访问返回</li>
-</ul>
-<p>*/</p>
-<p>public class ResultUtil {</p>
-<p>public static Result success(){</p>
-<p>Result result = new Result();</p>
-<p>result.setCode(Config.SUCCESS);</p>
-<p>result.setMsg(“操作成功！”);</p>
-<p>return result;</p>
-<p>public static Result success(List list){</p>
-<p>Result result = new Result();</p>
-<p>result.setCode(Config.SUCCESS);</p>
-<p>result.setMsg(“操作成功！”);</p>
-<p>result.setDatas(list);</p>
-<p>return result;</p>
-<p>public static Result success(Object o){</p>
-<p>Result result = new Result();</p>
-<p>result.setCode(Config.SUCCESS);</p>
-<p>result.setMsg(“操作成功！”);</p>
-<p>result.setData(o);</p>
-<p>return result;</p>
-<p>public static Result success(String msg, Object object){</p>
-<p>Result result = new Result();</p>
-<p>result.setCode(Config.SUCCESS);</p>
-<p>result.setMsg(msg);</p>
-<p>result.setData(object);</p>
-<p>return result;</p>
-<p>public static Result error(Exception e){</p>
-<p>Result result = new Result();</p>
-<p>result.setCode(Config.ERROR);</p>
-<p>result.setMsg(“操作失败，发生异常”);</p>
-<p>//如果启用自定义日志，则在控制台打印错误信息</p>
-<p>Utils.log(e.getMessage());</p>
-<p>return result;</p>
-<p>public static Result unSuccess(){</p>
-<p>Result result = new Result();</p>
-<p>result.setCode(Config.UNSUCCESS);</p>
-<p>result.setMsg(“操作失败！”);</p>
-<p>return result;</p>
-<p>public static Result unSuccess(String msg){</p>
-<p>Result result = new Result();</p>
-<p>result.setCode(Config.UNSUCCESS);</p>
-<p>result.setMsg(msg);</p>
-<p>return result;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">				remindStartDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindstart&quot;</span>, sdf.format(remindStartDate));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				Integer remindEnd = Integer.parseInt(map.get(<span class="string">&quot;remindend&quot;</span>).toString());</span><br><span class="line">				c.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">				remindEndDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindend&quot;</span>, sdf.format(remindEndDate));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Wrapper&lt;GongzidiaozhengEntity&gt; wrapper = <span class="keyword">new</span> EntityWrapper&lt;GongzidiaozhengEntity&gt;();</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.ge(columnName, map.get(<span class="string">&quot;remindstart&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.le(columnName, map.get(<span class="string">&quot;remindend&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		String tableName = request.getSession().getAttribute(<span class="string">&quot;tableName&quot;</span>).toString();</span><br><span class="line">		<span class="keyword">if</span>(tableName.equals(<span class="string">&quot;yuangong&quot;</span>)) &#123;</span><br><span class="line">			wrapper.eq(<span class="string">&quot;yuangonggonghao&quot;</span>, (String)request.getSession().getAttribute(<span class="string">&quot;username&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> count = gongzidiaozhengService.selectCount(wrapper);</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;score&quot;</span>, com.alibaba.fastjson.JSONObject.parse(res.getJSONObject(<span class="string">&quot;result&quot;</span>).get(<span class="string">&quot;score&quot;</span>).toString()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 员工</span></span><br><span class="line"><span class="comment"> * 后端接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@email</span> </span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"> * 后端接口</span><br><span class="line"> * <span class="meta">@email</span> </span><br><span class="line"> */</span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/niandulirun&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NiandulirunController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> NiandulirunService niandulirunService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 后端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">page</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,NiandulirunEntity niandulirun,</span></span></span><br><span class="line"><span class="function"><span class="params">		HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        EntityWrapper&lt;NiandulirunEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;NiandulirunEntity&gt;();</span><br><span class="line">		PageUtils page = niandulirunService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, niandulirun), params), params));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 前端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="meta">@IgnoreAuth</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/list&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,NiandulirunEntity niandulirun, </span></span></span><br><span class="line"><span class="function"><span class="params">		HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        EntityWrapper&lt;NiandulirunEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;NiandulirunEntity&gt;();</span><br><span class="line">		PageUtils page = niandulirunService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, niandulirun), params), params));</span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 列表</span></span><br><span class="line"><span class="comment">     */</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"> * 经营信息</span><br><span class="line"> * 后端接口</span><br><span class="line"> * <span class="meta">@email</span> </span><br><span class="line"> */</span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/jingyingxinxi&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JingyingxinxiController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> JingyingxinxiService jingyingxinxiService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 后端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">page</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,JingyingxinxiEntity jingyingxinxi,</span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="meta">@RequestParam(required = false)</span> <span class="meta">@DateTimeFormat(pattern=&quot;yyyy-MM-dd&quot;)</span> Date dengjishijianstart,</span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="meta">@RequestParam(required = false)</span> <span class="meta">@DateTimeFormat(pattern=&quot;yyyy-MM-dd&quot;)</span> Date dengjishijianend,</span></span></span><br><span class="line"><span class="function"><span class="params">		HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        EntityWrapper&lt;JingyingxinxiEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;JingyingxinxiEntity&gt;();</span><br><span class="line">                <span class="keyword">if</span>(dengjishijianstart!=<span class="keyword">null</span>) ew.ge(<span class="string">&quot;dengjishijian&quot;</span>, dengjishijianstart);</span><br><span class="line">                <span class="keyword">if</span>(dengjishijianend!=<span class="keyword">null</span>) ew.le(<span class="string">&quot;dengjishijian&quot;</span>, dengjishijianend);</span><br><span class="line">		PageUtils page = jingyingxinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, jingyingxinxi), params), params));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 前端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="meta">@IgnoreAuth</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/list&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,JingyingxinxiEntity jingyingxinxi, </span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="meta">@RequestParam(required = false)</span> <span class="meta">@DateTimeFormat(pattern=&quot;yyyy-MM-dd&quot;)</span> Date dengjishijianstart,</span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="meta">@RequestParam(required = false)</span> <span class="meta">@DateTimeFormat(pattern=&quot;yyyy-MM-dd&quot;)</span> Date dengjishijianend,</span></span></span><br><span class="line"><span class="function"><span class="params">		HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        EntityWrapper&lt;JingyingxinxiEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;JingyingxinxiEntity&gt;();</span><br><span class="line">                <span class="keyword">if</span>(dengjishijianstart!=<span class="keyword">null</span>) ew.ge(<span class="string">&quot;dengjishijian&quot;</span>, dengjishijianstart);</span><br><span class="line">                <span class="keyword">if</span>(dengjishijianend!=<span class="keyword">null</span>) ew.le(<span class="string">&quot;dengjishijian&quot;</span>, dengjishijianend);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">    */</span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">page</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,UserEntity user)</span></span>&#123;</span><br><span class="line">       EntityWrapper&lt;UserEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;UserEntity&gt;();</span><br><span class="line">   	PageUtils page = userService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.allLike(ew, user), params), params));</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 列表</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/list&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">( UserEntity user)</span></span>&#123;</span><br><span class="line">      	EntityWrapper&lt;UserEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;UserEntity&gt;();</span><br><span class="line">     	ew.allEq(MPUtil.allEQMapPre( user, <span class="string">&quot;user&quot;</span>)); </span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, userService.selectListView(ew));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 信息</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">info</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> String id)</span></span>&#123;</span><br><span class="line">       UserEntity user = userService.selectById(id);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, user);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 获取用户的session用户信息</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/session&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">getCurrUser</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">   	Long id = (Long)request.getSession().getAttribute(<span class="string">&quot;userId&quot;</span>);</span><br><span class="line">       UserEntity user = userService.selectById(id);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, user);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 保存</span></span><br><span class="line"><span class="comment">    */</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				Integer remindEnd = Integer.parseInt(map.get(<span class="string">&quot;remindend&quot;</span>).toString());</span><br><span class="line">				c.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">				remindEndDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindend&quot;</span>, sdf.format(remindEndDate));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Wrapper&lt;YuangongEntity&gt; wrapper = <span class="keyword">new</span> EntityWrapper&lt;YuangongEntity&gt;();</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.ge(columnName, map.get(<span class="string">&quot;remindstart&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.le(columnName, map.get(<span class="string">&quot;remindend&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> count = yuangongService.selectCount(wrapper);</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
-<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=139&price1=99&price2=99" style="height: 260px;" frameborder="0"></iframe>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=99&price2=89" style="height: 260px;" frameborder="0"></iframe>
 <blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=231524190701201kg<br>https://javayms.gitee.io?id=231524190701201kg</p></blockquote>
     </div>
 
@@ -600,6 +268,7 @@
           <div class="post-tags">
 			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
 			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
 			<a href="/tags/%E8%B4%A2%E5%8A%A1/" rel="tag"><i class="fa fa-tag"></i> 财务</a>
 
           </div>

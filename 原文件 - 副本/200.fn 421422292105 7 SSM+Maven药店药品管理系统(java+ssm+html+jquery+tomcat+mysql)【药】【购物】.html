@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.fn%20421422292105%207%20SSM+Maven%E8%8D%AF%E5%BA%97%E8%8D%AF%E5%93%81%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+ssm+html+jquery+tomcat+mysql)%E3%80%90%E8%8D%AF%E3%80%91%E3%80%90%E8%B4%AD%E7%89%A9%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project20/330023082402.jpg" alt="330023082402"></p>
+<p><img src="../images/project20/340023082402.jpg" alt="340023082402"></p>
+<p><img src="../images/project20/350023082402.jpg" alt="350023082402"></p>
+<p><img src="../images/project20/370023082402.jpg" alt="370023082402"></p>
+<p><img src="../images/project20/380023082402.jpg" alt="380023082402"></p>
+<p><img src="../images/project20/390023082402.jpg" alt="390023082402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>项目介绍</p>
+<p>该项目是前后台的医药管理系统（写在了一个web项目里），</p>
+<p>简单明了，界面高端大气，共6张表</p>
+<p>后台管理系统用于药片的管理，</p>
+<p>前台系统是用户购买药片，下订单使用。</p>
+<p>主要功能介绍：</p>
+<p>药品管理系统-后台：</p>
+<p>订单管理</p>
+<p>添加、编辑、删除</p>
+<p>药品管理</p>
+<p>添加、编辑、删除 - 药品名、药品类别、单价</p>
+<p>药品类别管理</p>
+<p>添加、编辑、删除 - 类别名称、描述</p>
+<p>用户管理</p>
+<p>添加、编辑、删除 - 用户名、电话、描述</p>
+<p>药品商城-前台：</p>
+<p>前台页面展示药品类别、药品缩略图、药品详情、可购买、加入购物车、形成订单</p>
+<p>配置环境</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可</p>
+<p>4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
+<p>5.是否Maven项目: 是；查看源码目录中是否包含pom.xml；</p>
+<p>若包含，则为maven项目，否则为非maven项目</p>
+<p>6.数据库：MySql 5.7版本；</p>
+<p>技术栈</p>
+<ol>
+<li>后端：Spring SpringMVC MyBatis 2. 前端：html+jQuery+javascript</li>
+</ol>
+<p>使用步骤</p>
+<p>1 使用IDEA/Eclipse导入MedicinesMS项目</p>
+<p>2 使用Navicat或者其它工具，导入并执行sql文件 medicine_ms.sql,在项目的数据库配置文件db.properties中修改数据库相关配置，包括数据库名称、数据库用户名、密码等；</p>
+<p>3 使用tomcat启动项目，项目名是/MedicinesMS 注：请固定为此项目名，否则会产生异常</p>
+<p>4 访问后台系统<a target="_blank" rel="noopener" href="http://localhost:8080/MedicinesMS/admin_login.html">http://localhost:8080/MedicinesMS/admin_login.html</a></p>
+<p>进入登录页面，用户名 admin,密码123</p>
+<p>5 在后台系统上添加药品信息</p>
+<p>6 访问前台页面<a target="_blank" rel="noopener" href="http://localhost:8080/MedicinesMS/login.html">http://localhost:8080/MedicinesMS/login.html</a>,</p>
+<p>使用用户名 admin,密码123登录，购买要求，形成订单。</p>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">        &#125;</span><br><span class="line">        Map&lt;String, Object&gt; result = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">        <span class="keyword">if</span> (user != <span class="keyword">null</span>) &#123;</span><br><span class="line">            result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;success&quot;</span>);</span><br><span class="line">            result.put(<span class="string">&quot;result&quot;</span>, user);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;fail&quot;</span>);</span><br><span class="line">            result.put(<span class="string">&quot;reason&quot;</span>, <span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.clw.medicine.medi_detail.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Description: 药品控制器</span></span><br><span class="line"><span class="comment"> * Author: clw</span></span><br><span class="line"><span class="comment"> * Version: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;medicine/medicine&quot;, method = &#123;RequestMethod.POST&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MedicineController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    MedicineService medicineService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取指定数量的药品信息</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> offset 偏移量</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> limit 返回限制条数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Map 返回相关状态及信息</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception 异常</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;getFilteredLimitMedicine&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function">Map&lt;String, Object&gt; <span class="title">getFilteredLimitMedicine</span><span class="params">(<span class="meta">@RequestParam(value = &quot;medTypeId&quot;, defaultValue = &quot;&quot;)</span> String medTypeId,</span></span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">MedicineService medicineService;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取指定数量的药品信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> offset 偏移量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> limit 返回限制条数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> Map 返回相关状态及信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception 异常</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;getFilteredLimitMedicine&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function">Map&lt;String, Object&gt; <span class="title">getFilteredLimitMedicine</span><span class="params">(<span class="meta">@RequestParam(value = &quot;medTypeId&quot;, defaultValue = &quot;&quot;)</span> String medTypeId,</span></span></span><br><span class="line"><span class="function"><span class="params">                                             <span class="meta">@RequestParam(value = &quot;offset&quot;)</span> <span class="keyword">int</span> offset,</span></span></span><br><span class="line"><span class="function"><span class="params">                                     <span class="meta">@RequestParam(value = &quot;limit&quot;)</span> <span class="keyword">int</span> limit)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    medTypeId = <span class="string">&quot;&quot;</span>.equals(medTypeId) ? <span class="keyword">null</span> : medTypeId;</span><br><span class="line">    List&lt;Medicine&gt; medicines = medicineService.getFilteredLimitMedicine(medTypeId, offset, limit);</span><br><span class="line">    Map&lt;String, Object&gt; result = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">    <span class="keyword">if</span> (medicines.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;success&quot;</span>);</span><br><span class="line">        result.put(<span class="string">&quot;result&quot;</span>, medicines);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;fail&quot;</span>);</span><br><span class="line">        result.put(<span class="string">&quot;reason&quot;</span>, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取指定ID的药品信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> medicineIds String[] 药品ID数组</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> Map 返回相关状态及信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception 异常</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;getSomeMedicine&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function">Map&lt;String, Object&gt; <span class="title">getSomeMedicine</span><span class="params">(<span class="meta">@RequestParam(value = &quot;medicineIds[]&quot;)</span> String[] medicineIds)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    List&lt;Medicine&gt; medicines = medicineService.getSomeMedicine(medicineIds);</span><br><span class="line">    Map&lt;String, Object&gt; result = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">    <span class="keyword">if</span> (medicines.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;success&quot;</span>);</span><br><span class="line">        result.put(<span class="string">&quot;result&quot;</span>, medicines);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;fail&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"> * <span class="meta">@throws</span> Exception 异常</span><br><span class="line"> */</span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;getUserCount&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function">Map&lt;String, Object&gt; <span class="title">getUserCount</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = userService.count();</span><br><span class="line">    Map&lt;String, Object&gt; result = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">    <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;success&quot;</span>);</span><br><span class="line">        result.put(<span class="string">&quot;result&quot;</span>, count);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;fail&quot;</span>);</span><br><span class="line">        result.put(<span class="string">&quot;reason&quot;</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取指定数量的用户信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> offset 偏移量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> limit 限制返回条数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> Map 返回相关状态及信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception 异常</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;getLimitUser&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function">Map&lt;String, Object&gt; <span class="title">getLimitUser</span><span class="params">(<span class="meta">@RequestParam(value = &quot;offset&quot;)</span> <span class="keyword">int</span> offset,</span></span></span><br><span class="line"><span class="function"><span class="params">                                   <span class="meta">@RequestParam(value = &quot;limit&quot;)</span> <span class="keyword">int</span> limit)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    List&lt;User&gt; userList = userService.getLimitUser(offset, limit);</span><br><span class="line">    Map&lt;String, Object&gt; result = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">    <span class="keyword">if</span> (userList.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;success&quot;</span>);</span><br><span class="line">        result.put(<span class="string">&quot;result&quot;</span>, userList);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;fail&quot;</span>);</span><br><span class="line">        result.put(<span class="string">&quot;reason&quot;</span>, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据用户ID更新用户信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> user 新的用户信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> Map 返回相关状态及信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception 异常</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;updateUserById&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function">Map&lt;String, Object&gt; <span class="title">updateUserById</span><span class="params">(<span class="meta">@RequestBody</span> User user)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> updateCount = userService.updateById(user);</span><br><span class="line">    Map&lt;String, Object&gt; result = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加药品类型</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> medicineType 药品信息</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Map 返回相关状态及信息</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception 异常</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;addMedicineType&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function">Map&lt;String, Object&gt; <span class="title">addMedicineType</span><span class="params">(<span class="meta">@RequestBody</span> MedicineType medicineType)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(medicineType);</span><br><span class="line">        <span class="keyword">int</span> addCount = medicineTypeService.addMedicineType(medicineType);</span><br><span class="line">        Map&lt;String, Object&gt; result = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">        <span class="keyword">if</span> (addCount &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;success&quot;</span>);</span><br><span class="line">            result.put(<span class="string">&quot;result&quot;</span>, addCount);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;fail&quot;</span>);</span><br><span class="line">            result.put(<span class="string">&quot;reason&quot;</span>, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查询所有药品类型</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Map 返回相关状态及信息</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception 异常</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;getAllMedicineType&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function">Map&lt;String, Object&gt; <span class="title">getAllMedicineType</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        List&lt;MedicineType&gt; medicineTypes = medicineTypeService.getAllMedicineType();</span><br><span class="line">        Map&lt;String, Object&gt; result = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">        <span class="keyword">if</span> (medicineTypes.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;success&quot;</span>);</span><br><span class="line">            result.put(<span class="string">&quot;result&quot;</span>, medicineTypes);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;fail&quot;</span>);</span><br><span class="line">            result.put(<span class="string">&quot;reason&quot;</span>, <span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.clw.medicine.orders.controller;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">     * 根据管理员ID更新用户密码</span><br><span class="line">     * <span class="meta">@param</span> uid 管理员ID</span><br><span class="line">     * <span class="meta">@param</span> originalPasswd 原密码</span><br><span class="line">     * <span class="meta">@param</span> newPasswd 新密码</span><br><span class="line">     * <span class="meta">@return</span> Map 返回相关状态及信息</span><br><span class="line">     * <span class="meta">@throws</span> Exception 异常</span><br><span class="line">     */</span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;updateAdminPasswdById&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function">Map&lt;String, Object&gt; <span class="title">updateAdminPasswdById</span><span class="params">(<span class="meta">@RequestParam(value = &quot;uid&quot;, defaultValue = &quot;&quot;)</span> String uid,</span></span></span><br><span class="line"><span class="function"><span class="params">                                             <span class="meta">@RequestParam(value = &quot;originalPasswd&quot;, defaultValue = &quot;&quot;)</span> String originalPasswd,</span></span></span><br><span class="line"><span class="function"><span class="params">                                             <span class="meta">@RequestParam(value = &quot;newPasswd&quot;, defaultValue = &quot;&quot;)</span> String newPasswd)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> updateCount = adminService.updatePasswdById(uid, originalPasswd, newPasswd);</span><br><span class="line">        Map&lt;String, Object&gt; result = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">        <span class="keyword">if</span> (updateCount &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;success&quot;</span>);</span><br><span class="line">            result.put(<span class="string">&quot;result&quot;</span>, updateCount);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result.put(<span class="string">&quot;state&quot;</span>, <span class="string">&quot;fail&quot;</span>);</span><br><span class="line">            result.put(<span class="string">&quot;reason&quot;</span>, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.clw.medicine.medi_detail.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> * Author: clw</span></span><br><span class="line"><span class="comment"> * Version: 1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;medicine/medicine_type&quot;, method = &#123;RequestMethod.POST&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MedicineTypeController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    MedicineTypeService medicineTypeService;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

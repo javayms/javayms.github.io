@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.ve%20201122582008%207%20SSM%E8%8D%AF%E5%93%81%E8%BF%9B%E8%B4%A7%E9%94%80%E5%94%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+ssm+js+jsp+mysql)%E3%80%90%E8%8D%AF%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project23/080023562402.jpg" alt="080023562402"></p>
+<p><img src="../images/project23/090023562402.jpg" alt="090023562402"></p>
+<p><img src="../images/project23/100023562402.jpg" alt="100023562402"></p>
+<p><img src="../images/project23/110023562402.jpg" alt="110023562402"></p>
+<p><img src="../images/project23/120023562402.jpg" alt="120023562402"></p>
+<p><img src="../images/project23/130023562402.jpg" alt="130023562402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>项目介绍</p>
+<p>管理员角色包含以下功能： 管理员登录,角色权限管理,职工管理,药品销售管理,供应商管理,进货管理,药品信息管理,过期药品处理等功能。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  5.数据库：MySql 5.7版本；</p>
+<p>技术栈</p>
+<ol>
+<li>后端：Spring+SpringMVC+Mybatis 2. 前端：HTML+CSS+JavaScript+jsp</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven; 若为maven项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中application.yml配置文件中的数据库配置改为自己的配置; 4. 运行项目，输入localhost:8080/ 登录</li>
+</ol>
+<p>——————————NewCode——————————</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">		this.status = status;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;</span><br><span class="line">	pageEncoding=&quot;UTF-8&quot;%&gt;</span><br><span class="line">&lt;%@ taglib prefix=&quot;s&quot; uri=&quot;/struts-tags&quot;%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">	String path = request.getContextPath();</span><br><span class="line">	//获得当前协议+服务器名称+端口名</span><br><span class="line">	String basePath = request.getScheme() + &quot;://&quot;</span><br><span class="line">			+ request.getServerName() + &quot;:&quot; + request.getServerPort()</span><br><span class="line">			+ path + &quot;/&quot;;</span><br><span class="line">%&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;</span> <span class="meta-string">&quot;http://www.w3.org/TR/html4/loose.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">&quot;&lt;%=basePath%&gt;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>用户管理<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;css/common.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;css/main.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;css/toastr.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;css/darktooltip.css&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">&quot;JavaScript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">    $(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    	<span class="comment">//显示添加，删除信息</span></span></span><br><span class="line"><span class="javascript">    	<span class="keyword">var</span> state = $(<span class="string">&quot;#state&quot;</span>).val();</span></span><br><span class="line"><span class="javascript">    	<span class="keyword">if</span>(state!=<span class="literal">null</span>&amp;&amp;state!=<span class="string">&quot;&quot;</span>)&#123;</span></span><br><span class="line"><span class="javascript">    		$(<span class="string">&quot;#state&quot;</span>).val(<span class="string">&quot;&quot;</span>);</span></span><br><span class="line">    		toastr.success(state);</span><br><span class="line">    	&#125;</span><br><span class="line"><span class="javascript">    	<span class="comment">//每页显示条数的操作</span></span></span><br><span class="line"><span class="javascript">    	$(<span class="string">&quot;#meiye&quot;</span>).change(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    		<span class="keyword">var</span> pagelistnum =$(<span class="string">&quot;#meiye  option:selected&quot;</span>).val();</span></span><br><span class="line"><span class="javascript">    		location.href=<span class="string">&quot;user/userManagerAction!searchUser?page.newpage=1&amp;page.pagelistnum=&quot;</span>+pagelistnum;</span></span><br><span class="line">    	&#125;);</span><br><span class="line"><span class="javascript">    	<span class="comment">//点击重置按钮操作</span></span></span><br><span class="line"><span class="javascript">    	$(<span class="string">&quot;.chongzhi&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    		<span class="keyword">var</span> id = $(<span class="built_in">this</span>).attr(<span class="string">&quot;name&quot;</span>);</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String shuliang;</span><br><span class="line"><span class="keyword">public</span> String danwei;</span><br><span class="line"><span class="keyword">public</span> String danjia;</span><br><span class="line"><span class="keyword">public</span> String zongjia;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> status;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> id;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getYaopinid</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> yaopinid;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setYaopinid</span><span class="params">(String yaopinid)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.yaopinid = yaopinid;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getYaopinname</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> yaopinname;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setYaopinname</span><span class="params">(String yaopinname)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.yaopinname = yaopinname;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getJinhuodate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> jinhuodate;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setJinhuodate</span><span class="params">(String jinhuodate)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.jinhuodate = jinhuodate;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getGongyingshang</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> gongyingshang;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setGongyingshang</span><span class="params">(String gongyingshang)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.gongyingshang = gongyingshang;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getPici</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> pici;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPici</span><span class="params">(String pici)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.pici = pici;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">    </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * 创建日期 : 2020年2月28日</span></span><br><span class="line"><span class="comment"> * 修改历史 : </span></span><br><span class="line"><span class="comment"> *     1. [2020年2月28日]创建文件 by Administrator</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">package</span> com.qdu.action;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**!</span></span><br><span class="line"><span class="comment"> * //TODO 添加类/接口功能描述</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SuppressWarnings(&quot;serial&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">gongyingshangAction</span> <span class="keyword">extends</span> <span class="title">ActionSupport</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> gongyingshangService gongyingshangservice=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">public</span> String state=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">public</span> Page page;</span><br><span class="line">    <span class="keyword">public</span> Gongyingshang gongyingshang;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Gongyingshang&gt; gongyingshangList;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">searchGYS</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	state = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    	page.setListnum(gongyingshangservice.listnum(page));</span><br><span class="line">    	page=pageInfo(page);</span><br><span class="line">    	gongyingshangList = gongyingshangservice.gongyingshangList(page);</span><br><span class="line">    	gongyingshang = <span class="keyword">null</span>;</span><br><span class="line">    	<span class="keyword">return</span> <span class="string">&quot;gongyingshang&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addGYS</span><span class="params">()</span></span>&#123;</span><br><span class="line">    	<span class="keyword">int</span> i = gongyingshangservice.addGYS(gongyingshang);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.qdu.model;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Page</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> currpage;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> newpage;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> oldpage;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> pagenum;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> listnum;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> pagelistnum;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> startnum;</span><br><span class="line">    <span class="keyword">private</span> String keyword;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getKeyword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> keyword;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKeyword</span><span class="params">(String keyword)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.keyword = keyword;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getStartnum</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> startnum;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStartnum</span><span class="params">(<span class="keyword">int</span> startnum)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.startnum = startnum;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCurrpage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> currpage;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCurrpage</span><span class="params">(<span class="keyword">int</span> currpage)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.currpage = currpage;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNewpage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> newpage;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNewpage</span><span class="params">(<span class="keyword">int</span> newpage)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.newpage = newpage;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getOldpage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> oldpage;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOldpage</span><span class="params">(<span class="keyword">int</span> oldpage)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.oldpage = oldpage;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPagenum</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> pagenum;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPagenum</span><span class="params">(<span class="keyword">int</span> pagenum)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.pagenum = pagenum;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		page.setPagenum(page.getListnum()/page.getPagelistnum());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> page;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line"><span class="function"><span class="keyword">public</span> Gongyingshang <span class="title">getGongyingshang</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> gongyingshang;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setGongyingshang</span><span class="params">(Gongyingshang gongyingshang)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.gongyingshang = gongyingshang;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Gongyingshang&gt; <span class="title">getGongyingshangList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> gongyingshangList;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setGongyingshangList</span><span class="params">(List&lt;Gongyingshang&gt; gongyingshangList)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.gongyingshangList = gongyingshangList;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> yaopinService <span class="title">getYaopinservice</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> yaopinservice;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setYaopinservice</span><span class="params">(yaopinService yaopinservice)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.yaopinservice = yaopinservice;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> state;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(String state)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.state = state;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Page <span class="title">getPage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> page;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPage</span><span class="params">(Page page)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.page = page;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Jinhuo <span class="title">getJinhuo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> jinhuo;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setJinhuo</span><span class="params">(Jinhuo jinhuo)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.jinhuo = jinhuo;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Xiaoshou <span class="title">getXiaoshou</span><span class="params">()</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setGongyingshang</span><span class="params">(Gongyingshang gongyingshang)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.gongyingshang = gongyingshang;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Gongyingshang&gt; <span class="title">getGongyingshangList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> gongyingshangList;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setGongyingshangList</span><span class="params">(List&lt;Gongyingshang&gt; gongyingshangList)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.gongyingshangList = gongyingshangList;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> yaopinService <span class="title">getYaopinservice</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> yaopinservice;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setYaopinservice</span><span class="params">(yaopinService yaopinservice)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.yaopinservice = yaopinservice;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> state;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(String state)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.state = state;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Page <span class="title">getPage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> page;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPage</span><span class="params">(Page page)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.page = page;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Jinhuo <span class="title">getJinhuo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> jinhuo;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setJinhuo</span><span class="params">(Jinhuo jinhuo)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.jinhuo = jinhuo;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> Xiaoshou <span class="title">getXiaoshou</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> xiaoshou;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setXiaoshou</span><span class="params">(Xiaoshou xiaoshou)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.xiaoshou = xiaoshou;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Yaopininfo <span class="title">getYaopininfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> yaopininfo;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setYaopininfo</span><span class="params">(Yaopininfo yaopininfo)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.yaopininfo = yaopininfo;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

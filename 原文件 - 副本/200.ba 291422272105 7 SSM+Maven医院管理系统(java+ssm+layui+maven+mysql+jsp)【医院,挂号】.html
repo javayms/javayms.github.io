@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.ba%20291422272105%207%20SSM+Maven%E5%8C%BB%E9%99%A2%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+ssm+layui+maven+mysql+jsp)%E3%80%90%E5%8C%BB%E9%99%A2,%E6%8C%82%E5%8F%B7%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project20/410023122402.jpg" alt="410023122402"></p>
+<p><img src="../images/project20/420023122402.jpg" alt="420023122402"></p>
+<p><img src="../images/project20/430023122402.jpg" alt="430023122402"></p>
+<p><img src="../images/project20/440023122402.jpg" alt="440023122402"></p>
+<p><img src="../images/project20/450023122402.jpg" alt="450023122402"></p>
+<p><img src="../images/project20/460023122402.jpg" alt="460023122402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>功能介绍：</p>
+<p>基于ssm+layui框架的小型医院后台管理系统。简单实现了病人管理、病床管理、员工管理、部门管理、药品管理、仪器管理等基础功能。 整个项目通过maven方式搭建用到的jar包通过maven导入，前端使用搭建好的Layui框架，拿来即用。后端使用SSM+MySQL，后台逻辑实现了分页、级联、多表查询。目前项目基本完成，可重构与扩展 </p>
+<p>技术栈：</p>
+<ul>
+<li>SSM框架 - Layui框架 - MySQL 5.7 数据库 - Maven搭建 - MD5加密 </li>
+</ul>
+<p>实现功能：</p>
+<ul>
+<li>管理员的登录、退出与切换 - 管理员、仪器、药品、部门、员工、病床、病人各模块增删改查 - 个别模块关联查询 - 各个模块数据导出Excel</li>
+</ul>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 导出Excel</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/exportBedlist&quot; , method = RequestMethod.POST)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Bed&gt; <span class="title">exportBedlist</span><span class="params">()</span></span>&#123;</span><br><span class="line">        List&lt;Bed&gt; beds = bedService.getAll();</span><br><span class="line">        <span class="keyword">return</span> beds;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 部门人员信息查询</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/findRoomT&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findRoomT</span><span class="params">(Room room, Model model)</span> </span>&#123;</span><br><span class="line">        List&lt;Bed&gt; beds = bedService.findRoomT(room);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;beds&quot;</span>,beds);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;roomT_list&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.xie.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SalaryController</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findClassStudent</span><span class="params">(Dept dept,Model model, HttpSession session)</span> </span>&#123;</span><br><span class="line">        List&lt;Dept&gt; dep = deptService.findDeptPersonnel(dept);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;dep&quot;</span>,dep);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;dept_Personnellist&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.xie.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BedController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BedService bedService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 分页查询</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/findBed&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findBed</span><span class="params">(String bedNo, String bedRoomId,Integer pageIndex</span></span></span><br><span class="line"><span class="function"><span class="params">            , Integer pageSize, Model model,HttpSession session)</span></span>&#123;</span><br><span class="line">        PageInfo&lt;Bed&gt; be = bedService.findPageInfo(bedNo,bedRoomId, pageIndex,pageSize);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;be&quot;</span>,be);</span><br><span class="line">        session.setAttribute(<span class="string">&quot;u&quot;</span>,bedNo);</span><br><span class="line">        session.setAttribute(<span class="string">&quot;t&quot;</span>,bedRoomId);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;bed_list&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加病床信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/addBed&quot; ,method = RequestMethod.POST)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addBed</span><span class="params">(<span class="meta">@RequestBody</span> Bed bed)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = bedService.addBed(bed);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;bed_list&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">int</span> a = personnelService.addPersonnel(personnel);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;personnel_list&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除仪器信息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping( &quot;/deletePersonnel&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">deletePersonnel</span><span class="params">(Integer empId)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = personnelService.deletePersonnel(empId);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;personnel_list&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改仪器信息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping( value = &quot;/updatePersonnel&quot;, method = RequestMethod.POST)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">updatePersonnel</span><span class="params">(Personnel personnel)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = personnelService.updatePersonnel(personnel);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/findPersonnel&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据管理员Id搜索;将请求数据a_id写入参数a_id</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/findPersonnelById&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">findPersonnelById</span><span class="params">(Integer empId, HttpSession session)</span> </span>&#123;</span><br><span class="line">    Personnel pe2= personnelService.findPersonnelById(empId);</span><br><span class="line">    session.setAttribute(<span class="string">&quot;pe2&quot;</span>,pe2);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;personnel_edit&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 导出Excel</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/exportPersonnel&quot; , method = RequestMethod.POST)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Personnel&gt; <span class="title">exportPersonnel</span><span class="params">()</span></span>&#123;</span><br><span class="line">    List&lt;Personnel&gt; personnel = personnelService.getAll();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppartusController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AppartusService appartusService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 分页查询</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/findAppartus&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findAppartus</span><span class="params">(String appartusNo, String appartusName,Integer pageIndex</span></span></span><br><span class="line"><span class="function"><span class="params">            , Integer pageSize, Model model,HttpSession session)</span></span>&#123;</span><br><span class="line">        PageInfo&lt;Appartus&gt; ap = appartusService.findPageInfo(appartusNo,appartusName, pageIndex,pageSize);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;ap&quot;</span>,ap);</span><br><span class="line">        session.setAttribute(<span class="string">&quot;u&quot;</span>,appartusNo);</span><br><span class="line">        session.setAttribute(<span class="string">&quot;t&quot;</span>,appartusName);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;appartus_list&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加管理员信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/addAppartus&quot; ,method = RequestMethod.POST)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addAppartus</span><span class="params">(<span class="meta">@RequestBody</span> Appartus appartus)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = appartusService.addAppartus(appartus);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;admin_list&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除仪器信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping( &quot;/deleteAppartus&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">deleteAdmin</span><span class="params">(Integer appartusId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> a = appartusService.deleteAppartus(appartusId);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;appartus_list&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@RequestMapping(value = &quot;/findDeptPersonnel&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findClassStudent</span><span class="params">(Dept dept,Model model, HttpSession session)</span> </span>&#123;</span><br><span class="line">        List&lt;Dept&gt; dep = deptService.findDeptPersonnel(dept);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;dep&quot;</span>,dep);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;dept_Personnellist&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.xie.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BedController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BedService bedService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 分页查询</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/findBed&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findBed</span><span class="params">(String bedNo, String bedRoomId,Integer pageIndex</span></span></span><br><span class="line"><span class="function"><span class="params">            , Integer pageSize, Model model,HttpSession session)</span></span>&#123;</span><br><span class="line">        PageInfo&lt;Bed&gt; be = bedService.findPageInfo(bedNo,bedRoomId, pageIndex,pageSize);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;be&quot;</span>,be);</span><br><span class="line">        session.setAttribute(<span class="string">&quot;u&quot;</span>,bedNo);</span><br><span class="line">        session.setAttribute(<span class="string">&quot;t&quot;</span>,bedRoomId);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@RequestMapping(&quot;/findPaitientById&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findPaitientById</span><span class="params">(Integer paitientId, HttpSession session)</span> </span>&#123;</span><br><span class="line">        Paitient pa2= paitientService.findPaitientById(paitientId);</span><br><span class="line">        session.setAttribute(<span class="string">&quot;pa2&quot;</span>,pa2);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;paitient_edit&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 导出Excel</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/exportPaitientlist&quot; , method = RequestMethod.POST)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Paitient&gt; <span class="title">exportPotion</span><span class="params">()</span></span>&#123;</span><br><span class="line">        List&lt;Paitient&gt; paitients = paitientService.getAll();</span><br><span class="line">        <span class="keyword">return</span> paitients;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 部门人员信息查询</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/findPP&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findPP</span><span class="params">(Personnel personnel, Model model)</span> </span>&#123;</span><br><span class="line">        List&lt;Paitient&gt; paitients = paitientService.findPP(personnel);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;pas&quot;</span>,paitients);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;PP_list&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.xie.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppartusController</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

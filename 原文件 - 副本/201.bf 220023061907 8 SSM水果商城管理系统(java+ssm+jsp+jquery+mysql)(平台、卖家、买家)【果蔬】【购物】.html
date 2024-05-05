@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/201.bf%20220023061907%208%20SSM%E6%B0%B4%E6%9E%9C%E5%95%86%E5%9F%8E%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+ssm+jsp+jquery+mysql)(%E5%B9%B3%E5%8F%B0%E3%80%81%E5%8D%96%E5%AE%B6%E3%80%81%E4%B9%B0%E5%AE%B6)%E3%80%90%E6%9E%9C%E8%94%AC%E3%80%91%E3%80%90%E8%B4%AD%E7%89%A9%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project24/222323431807.jpg" alt="222323431807"></p>
+<p><img src="../images/project24/232323431807.jpg" alt="232323431807"></p>
+<p><img src="../images/project24/242323431807.jpg" alt="242323431807"></p>
+<p><img src="../images/project24/252323431807.jpg" alt="252323431807"></p>
+<p><img src="../images/project24/262323431807.jpg" alt="262323431807"></p>
+<p>——————————ProjectTitle——————————</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">管理员（后台管理）：</span><br><span class="line">admin   123456</span><br><span class="line"></span><br><span class="line">农户(即卖家，可以发布商品)：</span><br><span class="line">user1   123456</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">经销商(即买家，可以购买商品)：</span><br><span class="line">user2   123456</span><br></pre></td></tr></table></figure>
+<p>项目介绍</p>
+<p>该系统主要分为前台和后台两大功能模块，共包含三个角色：农户、经销商和管理员。 具体的系统功能如下： 1.前台功能 前台首页、用户注册、用户登录、新闻公告、水果行情、查看水果、水果详情、加入购物车、加入收藏、购买水果、付款结算、添加评论、留言交流、个人中心、我的订单、我的收藏、意见反馈、发布水果、我的销售等功能。 2.后台功能 后台系统登陆、用户管理、管理员管理、网站内容管理、水果类型管理、水果信息管理、采购订单管理、用户评价管理、意见反馈管理、留言交流管理等功能。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； 5.是否Maven项目: 否；查看源码目录中是否包含pom.xml；若包含，则为maven项目，否则为非maven项目; 6.数据库：MySql 5.7/8.0等版本均可；</p>
+<p>技术栈</p>
+<p>后台框架：Spring、SpringMVC、MyBatis UI界面：JSP、jQuery 数据库：MySQL</p>
+<p>使用说明</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，修改配置，运行项目；</p>
+</li>
+</ol>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询水果</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;query.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">query</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.front();</span><br><span class="line">	Goods goods = <span class="keyword">new</span> Goods();</span><br><span class="line">	goods.setGoodsname(name);</span><br><span class="line">	List&lt;Goods&gt; goodsList = <span class="keyword">this</span>.goodsService.getGoodsByLike(goods);</span><br><span class="line">	<span class="keyword">this</span>.getRequest().setAttribute(<span class="string">&quot;goodsList&quot;</span>, goodsList);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;users/list&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 水果详情</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;detail.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">detail</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.front();</span><br><span class="line">	Goods goods = <span class="keyword">this</span>.goodsService.getGoodsById(id);</span><br><span class="line">	goods.setHits(<span class="string">&quot;&quot;</span> + (Integer.parseInt(goods.getHits()) + <span class="number">1</span>));</span><br><span class="line">	<span class="keyword">this</span>.goodsService.updateGoods(goods);</span><br><span class="line">	<span class="keyword">this</span>.getRequest().setAttribute(<span class="string">&quot;goods&quot;</span>, goods);</span><br><span class="line">	Topic topic = <span class="keyword">new</span> Topic();</span><br><span class="line">	topic.setGoodsid(id);</span><br><span class="line">	List&lt;Topic&gt; topicList = <span class="keyword">this</span>.topicService.getTopicByCond(topic);</span><br><span class="line">	<span class="keyword">this</span>.getRequest().setAttribute(<span class="string">&quot;topicList&quot;</span>, topicList);</span><br><span class="line">	<span class="keyword">this</span>.getRequest().setAttribute(<span class="string">&quot;tnum&quot;</span>, topicList.size());</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;users/detail&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加收藏</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;addfav.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addfav</span><span class="params">(Fav fav)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.front();</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">this</span>.getSession().getAttribute(<span class="string">&quot;userid&quot;</span>) == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect:/index/preLogin.action&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	String userid = (String) getRequest().getSession().getAttribute(<span class="string">&quot;userid&quot;</span>);</span><br><span class="line">	fav.setAddtime(VeDate.getStringDateShort());</span><br><span class="line">	fav.setGoodsid(getRequest().getParameter(<span class="string">&quot;id&quot;</span>));</span><br><span class="line">	fav.setUsersid(userid);</span><br><span class="line">	<span class="keyword">this</span>.favService.insertFav(fav);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect:/index/myfav.action&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 我的收藏</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 按条件查询数据 (模糊查询)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;queryUsersByCond.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">queryUsersByCond</span><span class="params">(String cond, String name, String number)</span> </span>&#123;</span><br><span class="line">	Users users = <span class="keyword">new</span> Users();</span><br><span class="line">	<span class="keyword">if</span> (cond != <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">&quot;username&quot;</span>.equals(cond)) &#123;</span><br><span class="line">			users.setUsername(name);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">&quot;password&quot;</span>.equals(cond)) &#123;</span><br><span class="line">			users.setPassword(name);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">&quot;realname&quot;</span>.equals(cond)) &#123;</span><br><span class="line">			users.setRealname(name);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">&quot;sex&quot;</span>.equals(cond)) &#123;</span><br><span class="line">			users.setSex(name);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">&quot;birthday&quot;</span>.equals(cond)) &#123;</span><br><span class="line">			users.setBirthday(name);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">&quot;contact&quot;</span>.equals(cond)) &#123;</span><br><span class="line">			users.setContact(name);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">&quot;address&quot;</span>.equals(cond)) &#123;</span><br><span class="line">			users.setAddress(name);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">&quot;image&quot;</span>.equals(cond)) &#123;</span><br><span class="line">			users.setImage(name);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">&quot;role&quot;</span>.equals(cond)) &#123;</span><br><span class="line">			users.setRole(name);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">&quot;status&quot;</span>.equals(cond)) &#123;</span><br><span class="line">			users.setStatus(name);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="string">&quot;regdate&quot;</span>.equals(cond)) &#123;</span><br><span class="line">			users.setRegdate(name);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	List&lt;String&gt; nameList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">	List&lt;String&gt; valueList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">	nameList.add(cond);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">	fav.setGoodsid(getRequest().getParameter(<span class="string">&quot;id&quot;</span>));</span><br><span class="line">	fav.setUsersid(userid);</span><br><span class="line">	<span class="keyword">this</span>.favService.insertFav(fav);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect:/index/myfav.action&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 我的收藏</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;myfav.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">myfav</span><span class="params">(String number)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.front();</span><br><span class="line">	<span class="keyword">if</span> (getRequest().getSession().getAttribute(<span class="string">&quot;userid&quot;</span>) == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect:/index/preLogin.action&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	String userid = (String) <span class="keyword">this</span>.getSession().getAttribute(<span class="string">&quot;userid&quot;</span>);</span><br><span class="line">	Fav fav = <span class="keyword">new</span> Fav();</span><br><span class="line">	fav.setUsersid(userid);</span><br><span class="line">	List&lt;Fav&gt; favList = <span class="keyword">this</span>.favService.getFavByCond(fav);</span><br><span class="line">	PageHelper.getIndexPage(favList, <span class="string">&quot;fav&quot;</span>, <span class="string">&quot;myfav&quot;</span>, <span class="keyword">null</span>, <span class="number">10</span>, number, <span class="keyword">this</span>.getRequest());</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;users/myfav&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除收藏</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;deletefav.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">deletefav</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.front();</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">this</span>.getSession().getAttribute(<span class="string">&quot;userid&quot;</span>) == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect:/index/preLogin.action&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">this</span>.favService.deleteFav(<span class="keyword">this</span>.getRequest().getParameter(<span class="string">&quot;id&quot;</span>));</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect:/index/myfav.action&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;preComplains.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">preComplains</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.front();</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">this</span>.getSession().getAttribute(<span class="string">&quot;userid&quot;</span>) == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect:/index/preLogin.action&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;users/addComplains&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;addComplains.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addComplains</span><span class="params">(Complains complains)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.front();</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">this</span>.getSession().getAttribute(<span class="string">&quot;userid&quot;</span>) == <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect:/index/preLogin.action&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	String userid = (String) <span class="keyword">this</span>.getSession().getAttribute(<span class="string">&quot;userid&quot;</span>);</span><br><span class="line">	complains.setAddtime(VeDate.getStringDateShort());</span><br><span class="line">	complains.setStatus(<span class="string">&quot;未回复&quot;</span>);</span><br><span class="line">	complains.setUsersid(userid);</span><br><span class="line">	<span class="keyword">this</span>.complainsService.insertComplains(complains);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect:/index/preComplains.action&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">		<span class="keyword">this</span>.topicService.insertTopic(topic);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect:/index/showOrders.action&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PageHelper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getPage</span><span class="params">(List&lt;?&gt; list, String name, List&lt;String&gt; nameList, List&lt;String&gt; valueList, <span class="keyword">int</span> pageSize, String number,</span></span></span><br><span class="line"><span class="function"><span class="params">			HttpServletRequest request, String method)</span> </span>&#123;</span><br><span class="line">		StringBuffer buffer = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">		String name2 = name.substring(<span class="number">0</span>, <span class="number">1</span>).toUpperCase() + name.substring(<span class="number">1</span>);</span><br><span class="line">		String path = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		String action = <span class="string">&quot;getAll&quot;</span> + name2 + <span class="string">&quot;.action&quot;</span>;</span><br><span class="line">		<span class="keyword">if</span> (method != <span class="keyword">null</span>) &#123;</span><br><span class="line">			action = <span class="string">&quot;query&quot;</span> + name2 + <span class="string">&quot;ByCond.action&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		List&lt;Object&gt; objList = <span class="keyword">new</span> ArrayList&lt;Object&gt;();</span><br><span class="line">		<span class="keyword">if</span> (nameList != <span class="keyword">null</span> &amp;&amp; valueList != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nameList.size(); i++) &#123;</span><br><span class="line">				path += <span class="string">&quot;&amp;&quot;</span> + nameList.get(i) + <span class="string">&quot;=&quot;</span> + valueList.get(i);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> pageNumber = list.size();</span><br><span class="line">		<span class="keyword">int</span> maxPage = pageNumber;</span><br><span class="line">		<span class="keyword">if</span> (maxPage % pageSize == <span class="number">0</span>) &#123;</span><br><span class="line">			maxPage = maxPage / pageSize;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			maxPage = maxPage / pageSize + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (number == <span class="keyword">null</span>) &#123;</span><br><span class="line">			number = <span class="string">&quot;0&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> start = Integer.parseInt(number) * pageSize;</span><br><span class="line">		<span class="keyword">int</span> over = (Integer.parseInt(number) + <span class="number">1</span>) * pageSize;</span><br><span class="line">		<span class="keyword">int</span> count = pageNumber - over;</span><br><span class="line">		<span class="keyword">if</span> (count &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">			over = pageNumber;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = start; i &lt; over; i++) &#123;</span><br><span class="line">			Object obj = list.get(i);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">		PageHelper.getPage(cateList, <span class="string">&quot;cate&quot;</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="number">10</span>, number, <span class="keyword">this</span>.getRequest(), <span class="keyword">null</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;admin/listcate&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 按条件查询数据 (模糊查询)</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;queryCateByCond.action&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">queryCateByCond</span><span class="params">(String cond, String name, String number)</span> </span>&#123;</span><br><span class="line">		Cate cate = <span class="keyword">new</span> Cate();</span><br><span class="line">		<span class="keyword">if</span>(cond != <span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="string">&quot;catename&quot;</span>.equals(cond)) &#123;</span><br><span class="line">				cate.setCatename(name);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (<span class="string">&quot;memo&quot;</span>.equals(cond)) &#123;</span><br><span class="line">				cate.setMemo(name);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		List&lt;String&gt; nameList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">		List&lt;String&gt; valueList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">		nameList.add(cond);</span><br><span class="line">		valueList.add(name);</span><br><span class="line">		PageHelper.getPage(<span class="keyword">this</span>.cateService.getCateByLike(cate), <span class="string">&quot;cate&quot;</span>, nameList, valueList, <span class="number">10</span>, number, <span class="keyword">this</span>.getRequest(), <span class="string">&quot;query&quot;</span>);</span><br><span class="line">		name = <span class="keyword">null</span>;</span><br><span class="line">		cond = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;admin/querycate&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 按主键查询数据</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;getCateById.action&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getCateById</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">		Cate cate = <span class="keyword">this</span>.cateService.getCateById(id);</span><br><span class="line">		<span class="keyword">this</span>.getRequest().setAttribute(<span class="string">&quot;cate&quot;</span>, cate);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;admin/editcate&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">chartline</span><span class="params">()</span> <span class="keyword">throws</span> JSONException </span>&#123;</span><br><span class="line">	String start = <span class="keyword">this</span>.getRequest().getParameter(<span class="string">&quot;start&quot;</span>);</span><br><span class="line">	String end = <span class="keyword">this</span>.getRequest().getParameter(<span class="string">&quot;end&quot;</span>);</span><br><span class="line">	<span class="keyword">long</span> days = VeDate.getDays(end, start) + <span class="number">1</span>;</span><br><span class="line">	JSONArray total = <span class="keyword">new</span> JSONArray();</span><br><span class="line">	JSONArray count = <span class="keyword">new</span> JSONArray();<span class="comment">// 定义count存放数值</span></span><br><span class="line">	JSONArray day = <span class="keyword">new</span> JSONArray(); <span class="comment">// 存放名称</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; days; i++) &#123;</span><br><span class="line">		String nxtDay = VeDate.getNextDay(start, <span class="string">&quot;&quot;</span> + i);</span><br><span class="line">		System.out.println(nxtDay);</span><br><span class="line">		Orders orders = <span class="keyword">new</span> Orders();</span><br><span class="line">		orders.setAddtime(nxtDay);</span><br><span class="line">		List&lt;Orders&gt; list = <span class="keyword">this</span>.ordersService.getOrdersByCond(orders);</span><br><span class="line">		<span class="keyword">double</span> sellTotal = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">double</span> sellCount = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (Orders x : list) &#123;</span><br><span class="line">			sellTotal += Double.parseDouble(x.getTotal());</span><br><span class="line">		&#125;</span><br><span class="line">		sellCount = list.size();</span><br><span class="line">		total.put(VeDate.getDouble(sellTotal));</span><br><span class="line">		count.put(sellCount);</span><br><span class="line">		day.put(nxtDay);</span><br><span class="line">	&#125;</span><br><span class="line">	JSONArray cate = <span class="keyword">new</span> JSONArray();</span><br><span class="line">	cate.put(<span class="string">&quot;订单收入&quot;</span>);</span><br><span class="line">	JSONObject json = <span class="keyword">new</span> JSONObject();</span><br><span class="line">	json.put(<span class="string">&quot;sellTotal&quot;</span>, total.toString());</span><br><span class="line">	json.put(<span class="string">&quot;days&quot;</span>, day.toString().replaceAll(<span class="string">&quot;\&quot;&quot;</span>, <span class="string">&quot;&quot;</span>));</span><br><span class="line">	json.put(<span class="string">&quot;cate&quot;</span>, cate.toString().replaceAll(<span class="string">&quot;\&quot;&quot;</span>, <span class="string">&quot;&quot;</span>));</span><br><span class="line">	System.out.println(json.toString());</span><br><span class="line">	<span class="keyword">return</span> json.toString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;chartPie.action&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">chartPie</span><span class="params">()</span> <span class="keyword">throws</span> JSONException </span>&#123;</span><br><span class="line">	JSONArray names = <span class="keyword">new</span> JSONArray();</span><br><span class="line">	JSONArray count = <span class="keyword">new</span> JSONArray();<span class="comment">// 定义count存放数值</span></span><br><span class="line">	<span class="keyword">int</span> stars1 = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> stars2 = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> stars3 = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> stars4 = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> stars5 = <span class="number">0</span>;</span><br><span class="line">	names.put(<span class="string">&quot;非常满意&quot;</span>);</span><br><span class="line">	names.put(<span class="string">&quot;满意&quot;</span>);</span><br><span class="line">	names.put(<span class="string">&quot;一般&quot;</span>);</span><br><span class="line">	names.put(<span class="string">&quot;不满意&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

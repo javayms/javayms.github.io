@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/201.dz%20362223270309%209%20SpringBoot%E5%9C%A8%E7%BA%BF%E8%80%83%E8%AF%95%E7%B3%BB%E7%BB%9F(java+springboot+vue+mysql+maven)%E3%80%90%E8%80%83%E8%AF%95%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project29/222223270309.jpg" alt="222223270309"></p>
+<p><img src="../images/project29/232223270309.jpg" alt="232223270309"></p>
+<p><img src="../images/project29/252223270309.jpg" alt="252223270309"></p>
+<p><img src="../images/project29/262223270309.jpg" alt="262223270309"></p>
+<p><img src="../images/project29/272223270309.jpg" alt="272223270309"></p>
+<p><img src="../images/project29/282223270309.jpg" alt="282223270309"></p>
+<p><img src="../images/project29/292223270309.jpg" alt="292223270309"></p>
+<p><img src="../images/project29/302223270309.jpg" alt="302223270309"></p>
+<p><img src="../images/project29/312223270309.jpg" alt="312223270309"></p>
+<p><img src="../images/project29/322223270309.jpg" alt="322223270309"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>线上考试前端系统</p>
+<p>介绍</p>
+<ul>
+<li>本系统通过教师用户创建班级编写试卷信息然后发布到班级。学生用户进入班级，在线作答，考试结果数据通过网络回收，系统自动进行判分，生成考试成绩和统计数据。教师用户也可以再次批阅试卷，确定最后得分。</li>
+<li>试卷支持单选、多选、判断、填空、简答五大题型，可以选项是否允许题目复制、题目乱序功能、是否启动自动批改功能</li>
+</ul>
+<p>软件架构</p>
+<ul>
+<li>这是一款基于前后端分离的线上考试系统</li>
+<li>前端采用vue框架，搭配vue-cli、axios、vuex、element-ui组件库。</li>
+<li>后端采用springBoot框架、jwt、swagger、持久层mybatis，mysql数据库。</li>
+</ul>
+<p>环境运行</p>
+<ul>
+<li>node.js v14.6.0</li>
+<li>jdk 1.8</li>
+<li>mysql 8.0.22</li>
+</ul>
+<p>前端启动命令：npm run serve</p>
+<p>老师（管理员）：<br>13000000000 123456</p>
+<p>学生：<br>注册即可</p>
+<p>前端前修改后端application.properties中的web.uploadpath配置，指向本机的实际位置</p>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">    page.build((List) result.getData());</span><br><span class="line">    <span class="keyword">return</span> ResultUtil.success(page);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;获取班级下的试卷列表&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/getExamByClasses&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Msg <span class="title">getExamByClassesId</span><span class="params">(HttpServletRequest request,<span class="meta">@RequestParam</span> Integer classesId,<span class="meta">@RequestParam</span> <span class="keyword">int</span> pageSize,<span class="meta">@RequestParam</span> <span class="keyword">int</span> currentPage)</span></span>&#123;</span><br><span class="line">    String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取token中的id</span></span><br><span class="line">    <span class="keyword">int</span> u_id=Integer.parseInt(JwtUtil.getUserId(token));</span><br><span class="line"></span><br><span class="line">    Msg result = examService.selectByClassesId(classesId, u_id);</span><br><span class="line">    Page page = <span class="keyword">new</span> Page(pageSize,currentPage);</span><br><span class="line">    page.build((List) result.getData());</span><br><span class="line">    <span class="keyword">return</span> ResultUtil.success(page);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;获取学生已完成的试卷列表&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/getFinishExam&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Msg <span class="title">getFinishExam</span><span class="params">(HttpServletRequest request,<span class="meta">@RequestParam</span> <span class="keyword">int</span> pageSize,<span class="meta">@RequestParam</span> <span class="keyword">int</span> currentPage)</span></span>&#123;</span><br><span class="line">    String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取token中的id</span></span><br><span class="line">    <span class="keyword">int</span> u_id=Integer.parseInt(JwtUtil.getUserId(token));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> examService.selectFinishExamList(u_id, pageSize,currentPage);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过试卷id获取试卷信息(教师角色)</span></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;获取试卷信息(教师角色)&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/getTestPaperByTp_id&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Msg <span class="title">getTestPaperByTp_id</span><span class="params">(HttpServletRequest request,<span class="meta">@RequestParam</span> <span class="keyword">int</span> examId)</span></span>&#123;</span><br><span class="line">    String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(!JwtUtil.getUserStatus(token).equals(<span class="string">&quot;teacher&quot;</span>))&#123;</span><br><span class="line">        <span class="keyword">return</span> ResultUtil.error(<span class="number">400</span>,<span class="string">&quot;用户身份不正确&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> userId = Integer.parseInt(JwtUtil.getUserId(token));</span><br><span class="line">    <span class="keyword">return</span> examService.tchSelectByPrimaryKey(userId,examId);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过试卷id,班级id获取试卷信息(学生角色)</span></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;获取试卷信息(学生角色)&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/getTestPaper&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Msg <span class="title">getTestPaper</span><span class="params">(HttpServletRequest request,<span class="meta">@RequestParam</span> <span class="keyword">int</span> examId ,<span class="meta">@RequestParam</span> <span class="keyword">int</span> classesId)</span></span>&#123;</span><br><span class="line">    String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span>(keyword == <span class="keyword">null</span>)&#123;</span><br><span class="line">        keyword = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    <span class="comment">//获取token中的id</span></span><br><span class="line">    <span class="keyword">int</span> u_id=Integer.parseInt(Objects.requireNonNull(JwtUtil.getUserId(token)));</span><br><span class="line"></span><br><span class="line">    Msg result = examService.selectByCreatorId(u_id,keyword);</span><br><span class="line">    Page page = <span class="keyword">new</span> Page(pageSize,currentPage);</span><br><span class="line">    page.build((List) result.getData());</span><br><span class="line">    <span class="keyword">return</span> ResultUtil.success(page);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;获取班级下的试卷列表&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/getExamByClasses&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Msg <span class="title">getExamByClassesId</span><span class="params">(HttpServletRequest request,<span class="meta">@RequestParam</span> Integer classesId,<span class="meta">@RequestParam</span> <span class="keyword">int</span> pageSize,<span class="meta">@RequestParam</span> <span class="keyword">int</span> currentPage)</span></span>&#123;</span><br><span class="line">    String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取token中的id</span></span><br><span class="line">    <span class="keyword">int</span> u_id=Integer.parseInt(JwtUtil.getUserId(token));</span><br><span class="line"></span><br><span class="line">    Msg result = examService.selectByClassesId(classesId, u_id);</span><br><span class="line">    Page page = <span class="keyword">new</span> Page(pageSize,currentPage);</span><br><span class="line">    page.build((List) result.getData());</span><br><span class="line">    <span class="keyword">return</span> ResultUtil.success(page);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;获取学生已完成的试卷列表&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/getFinishExam&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Msg <span class="title">getFinishExam</span><span class="params">(HttpServletRequest request,<span class="meta">@RequestParam</span> <span class="keyword">int</span> pageSize,<span class="meta">@RequestParam</span> <span class="keyword">int</span> currentPage)</span></span>&#123;</span><br><span class="line">    String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取token中的id</span></span><br><span class="line">    <span class="keyword">int</span> u_id=Integer.parseInt(JwtUtil.getUserId(token));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> examService.selectFinishExamList(u_id, pageSize,currentPage);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过试卷id获取试卷信息(教师角色)</span></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;获取试卷信息(教师角色)&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/getTestPaperByTp_id&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Msg <span class="title">getTestPaperByTp_id</span><span class="params">(HttpServletRequest request,<span class="meta">@RequestParam</span> <span class="keyword">int</span> examId)</span></span>&#123;</span><br><span class="line">    String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(!JwtUtil.getUserStatus(token).equals(<span class="string">&quot;teacher&quot;</span>))&#123;</span><br><span class="line">        <span class="keyword">return</span> ResultUtil.error(<span class="number">400</span>,<span class="string">&quot;用户身份不正确&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> userId = Integer.parseInt(JwtUtil.getUserId(token));</span><br><span class="line">    <span class="keyword">return</span> examService.tchSelectByPrimaryKey(userId,examId);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过试卷id,班级id获取试卷信息(学生角色)</span></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;获取试卷信息(学生角色)&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/getTestPaper&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Msg <span class="title">getTestPaper</span><span class="params">(HttpServletRequest request,<span class="meta">@RequestParam</span> <span class="keyword">int</span> examId ,<span class="meta">@RequestParam</span> <span class="keyword">int</span> classesId)</span></span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//更改试卷</span></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;更改试卷&quot;)</span></span><br><span class="line">    <span class="meta">@PostMapping(value = &quot;/updateTestPaper&quot; )</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Msg <span class="title">updateTestPaper</span><span class="params">(<span class="meta">@RequestBody</span> ExamTopicTchDTO examTopicTchDTO,HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        <span class="comment">//获取token</span></span><br><span class="line">        String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!JwtUtil.getUserStatus(token).equals(<span class="string">&quot;teacher&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> ResultUtil.error(<span class="number">400</span>,<span class="string">&quot;用户身份不正确&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取token中的id</span></span><br><span class="line">        <span class="keyword">int</span> u_id=Integer.parseInt(JwtUtil.getUserId(token));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span>  examService.updateByPrimaryKeySelective(examTopicTchDTO,u_id);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//提交试卷(学生角色)</span></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;提交试卷(学生角色)&quot;)</span></span><br><span class="line">    <span class="meta">@PostMapping(value = &quot;/submitTestPaper&quot; )</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Msg <span class="title">submitTestPaper</span><span class="params">(<span class="meta">@RequestBody</span> StuSubmitExamDTO stuSubmitExamDTO, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        System.out.println(stuSubmitExamDTO);</span><br><span class="line">        String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> u_id=Integer.parseInt(JwtUtil.getUserId(token));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> markExamService.submitTestPaper(stuSubmitExamDTO,u_id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">int</span> u_id=Integer.parseInt(JwtUtil.getUserId(token));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> userService.changeRole(u_id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DeleteMapping(value = &quot;/deleteUser&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">deleteUser</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=userService.deleteUser(id);</span><br><span class="line">        <span class="keyword">if</span>(result==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;注销成功&quot;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;注销失败&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReleaseExamController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ReleaseExamService releaseExamService;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ExamClassesDao examClassesDao;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;获取发布考试信息&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping(value = &quot;/getReleaseInfo&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Msg <span class="title">getReleaseInfo</span><span class="params">(HttpServletRequest request,<span class="meta">@RequestParam</span> Integer classesId,<span class="meta">@RequestParam</span> Integer examId)</span></span>&#123;</span><br><span class="line">        String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> releaseExamService.getReleaseInfo(classesId,examId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;发布考试&quot;)</span></span><br><span class="line">    <span class="meta">@PostMapping(value = &quot;/releaseTest&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Msg <span class="title">releaseTest</span><span class="params">(HttpServletRequest request, <span class="meta">@RequestBody</span> ReleasExamVO releasExamVO)</span></span>&#123;</span><br><span class="line">        System.out.println(releasExamVO);</span><br><span class="line">        String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!JwtUtil.getUserStatus(token).equals(<span class="string">&quot;teacher&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> ResultUtil.error(<span class="number">400</span>,<span class="string">&quot;用户身份不正确&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">    String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    <span class="comment">//获取token中的id</span></span><br><span class="line">    <span class="keyword">int</span> u_id=Integer.parseInt(JwtUtil.getUserId(token));</span><br><span class="line"></span><br><span class="line">    Msg result=userService.queryUserByC_id(c_id, u_id);</span><br><span class="line">    Page&lt;List&gt; page = <span class="keyword">new</span> Page(pageSize,currentPage);</span><br><span class="line">    page.build((List) result.getData());</span><br><span class="line">    <span class="keyword">return</span> ResultUtil.success(page);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;修改用户信息&quot;)</span></span><br><span class="line"><span class="meta">@PutMapping(value = &quot;/updateUser&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Msg <span class="title">updateUser</span><span class="params">(<span class="meta">@RequestBody</span> User user)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result=userService.updateUser(user);</span><br><span class="line">    <span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> ResultUtil.success();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ResultUtil.error(<span class="number">100</span>,<span class="string">&quot;修改失败&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;获取用户权限&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(value = &quot;getRole&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Msg <span class="title">getRole</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    <span class="comment">//获取token中的id</span></span><br><span class="line">    <span class="keyword">int</span> u_id=Integer.parseInt(JwtUtil.getUserId(token));</span><br><span class="line">    <span class="keyword">return</span> userService.getRole(u_id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;切换用户角色&quot;)</span></span><br><span class="line"><span class="meta">@PutMapping(value = &quot;changeRole&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Msg <span class="title">changeRole</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    String token =  request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    <span class="comment">//获取token中的id</span></span><br><span class="line">    <span class="keyword">int</span> u_id=Integer.parseInt(JwtUtil.getUserId(token));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> userService.changeRole(u_id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@DeleteMapping(value = &quot;/deleteUser&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">deleteUser</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result=userService.deleteUser(id);</span><br><span class="line">    <span class="keyword">if</span>(result==<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;注销成功&quot;</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;注销失败&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

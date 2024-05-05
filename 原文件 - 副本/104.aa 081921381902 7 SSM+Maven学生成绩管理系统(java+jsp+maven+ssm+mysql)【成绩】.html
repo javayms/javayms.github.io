@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/104.aa%20081921381902%207%20SSM+Maven%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+jsp+maven+ssm+mysql)%E3%80%90%E6%88%90%E7%BB%A9%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p>学生成绩的增删改查管理</p>
+<p><img src="../images/project06/480123182502.jpg" alt="480123182502"></p>
+<p><img src="../images/project06/500123182502.jpg" alt="500123182502"></p>
+<p><img src="../images/project06/510123182502.jpg" alt="510123182502"></p>
+<p><img src="../images/project06/520123182502.jpg" alt="520123182502"></p>
+<p><img src="../images/project06/530123182502.jpg" alt="530123182502"></p>
+<h3 id="技术框架"><a href="#技术框架" class="headerlink" title="技术框架"></a>技术框架</h3><p>JavaBean MVC JSP SSM(Spring SpringMVC MyBatis) Maven MySQL Bootstrap JavaScript</p>
+<p>——————————ProjectTitle——————————</p>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">.login-center-img &gt; img &#123;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.login-center-input &#123;</span><br><span class="line">    <span class="keyword">float</span>: left;</span><br><span class="line">    width: 230px;</span><br><span class="line">    margin-left: 15px;</span><br><span class="line">    height: 30px;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.login-center-input input &#123;</span><br><span class="line">    z-index: <span class="number">2</span>;</span><br><span class="line">    transition: all <span class="number">0.</span>5s;</span><br><span class="line">    padding-left: 10px;</span><br><span class="line">    color: #333333;</span><br><span class="line">    width: <span class="number">100</span>%;</span><br><span class="line">    height: 30px;</span><br><span class="line">    border: <span class="number">0</span>;</span><br><span class="line">    border-bottom: 1px solid #cccccc;</span><br><span class="line">    border-top: 1px solid #ffffff;</span><br><span class="line">    border-left: 1px solid #ffffff;</span><br><span class="line">    border-right: 1px solid #ffffff;</span><br><span class="line">    box-sizing: border-box;</span><br><span class="line">    outline: none;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.login-center-input input:focus &#123;</span><br><span class="line">    border: 1px solid dodgerblue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.login-center-input input:focus ~</span><br><span class="line">.login-center-input-text &#123;</span><br><span class="line">    top: <span class="number">0</span>;</span><br><span class="line">    z-index: <span class="number">3</span>;</span><br><span class="line">    opacity: <span class="number">1</span>;</span><br><span class="line">    margin-top: -15px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.login-button &#123;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    width: 250px;</span><br><span class="line">    text-align: center;</span><br><span class="line">    height: 40px;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> classid;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClassid</span><span class="params">(String classid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.classid = classid;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getTeacher</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> teacher;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTeacher</span><span class="params">(String teacher)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.teacher = teacher;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Integer <span class="title">getScore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> score;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setScore</span><span class="params">(Integer score)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.score = score;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getSubject</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> subject;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSubject</span><span class="params">(String subject)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.subject = subject;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Student&#123;&quot;</span> +</span><br><span class="line">            <span class="string">&quot;id=&quot;</span> + id +</span><br><span class="line">            <span class="string">&quot;, name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">            <span class="string">&quot;, classid=&#x27;&quot;</span> + classid + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">            <span class="string">&quot;, teacher=&#x27;&quot;</span> + teacher + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">            <span class="string">&quot;, score=&quot;</span> + score +</span><br><span class="line">            <span class="string">&quot;, subject=&#x27;&quot;</span> + subject + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;login&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        request.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">        response.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">        HttpSession session = request.getSession();</span><br><span class="line"><span class="comment">//        boolean flag = &quot;admin&quot;.equals(request.getParameter(&quot;username&quot;)) &amp;&amp; &quot;123456&quot;.equals(request.getParameter(&quot;password&quot;));//模拟数据库登录</span></span><br><span class="line">        User user = userService.get(request.getParameter(<span class="string">&quot;username&quot;</span>), request.getParameter(<span class="string">&quot;password&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (user != <span class="keyword">null</span>) &#123;</span><br><span class="line">            session.setAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;Login Success!!!&quot;</span>);</span><br><span class="line">            session.setAttribute(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;/selectStudentAll&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            session.setAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;username or password was wrong!&quot;</span>);</span><br><span class="line">            session.setAttribute(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;/login.jsp&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        request.getRequestDispatcher(<span class="string">&quot;/forward.jsp&quot;</span>).forward(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.demo.service;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StuServiceImpl</span> <span class="keyword">implements</span> <span class="title">StudentService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"> Student updateStudentEdit(int id);</span><br><span class="line"></span><br><span class="line"> void upadateStudent(Student student);</span><br><span class="line"></span><br><span class="line"> void insertStudent(Student student);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">package com.demo.mapper;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public interface UserMapper &#123;</span><br><span class="line"></span><br><span class="line">    List<span class="tag">&lt;<span class="name">User</span>&gt;</span> findAllSplit(Map&lt;String, Object&gt; params);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">package com.demo.service;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public interface UserService &#123;</span><br><span class="line">    User get(String username, String password);</span><br><span class="line">&#125;</span><br><span class="line">&lt;%--</span><br><span class="line">  Created by IntelliJ IDEA.</span><br><span class="line">  User: EDZ</span><br><span class="line">  Time: 11:28</span><br><span class="line">  To change this template use File | Settings | File Templates.</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;</span><br><span class="line">&lt;%@taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;</span><br><span class="line">&lt;%@taglib prefix=&quot;fmt&quot; uri=&quot;http://java.sun.com/jsp/jstl/fmt&quot; %&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>学生成绩管理系统<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">src</span>=<span class="string">&quot;https://cdn.staticfile.org/twitter-bootstrap/3.3.4/js/bootstrap.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.demo.mapper;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StudentMapper</span> </span>&#123;</span><br><span class="line">    <span class="comment">//查询所有</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">selectStudentAll</span><span class="params">(ParamsStu params)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据id删除学生</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteStudent</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据id查询学生，然后进入编辑页面 展示信息准备修改</span></span><br><span class="line">    <span class="function">Student <span class="title">updateStudentEdit</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//修改编辑页面，提交执行修改</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">        学科：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;subject&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;par.subject&#125;&quot;</span> <span class="attr">size</span>=<span class="string">&quot;6&quot;</span>/&gt;</span></span><br><span class="line">        老师姓名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;teacher&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;par.teacher&#125;&quot;</span> <span class="attr">size</span>=<span class="string">&quot;6&quot;</span>/&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">        学生成绩:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;scoreFrom&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;par.scoreFrom&#125;&quot;</span> <span class="attr">size</span>=<span class="string">&quot;6&quot;</span>/&gt;</span></span><br><span class="line">        ---<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;scoreTo&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;par.scoreTo&#125;&quot;</span> <span class="attr">size</span>=<span class="string">&quot;6&quot;</span>/&gt;</span></span><br><span class="line">        &lt;%--条件搜索后：分页--%&gt;</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;pn&quot;</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;pageNum&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;pageInfo.pageNum&#125;&quot;</span>&gt;</span></span><br><span class="line">        &lt;%--页面动态设置每页条数--%&gt;</span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;ps&quot;</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;pageSize&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;pageInfo.pageSize&#125;&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-primary&quot;</span> <span class="attr">value</span>=<span class="string">&quot;搜索&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&lt;%--数据展示--%&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span> <span class="attr">class</span>=<span class="string">&quot;table table-striped table-hover table-bordered&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>学生编号<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>学生姓名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>班级编号<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>学科<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>老师姓名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>学生成绩<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>等及<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>操作<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    &lt;c:forEach items=&quot;$&#123;pageInfo.list&#125;&quot; var=&quot;stu&quot; varStatus=&quot;vs&quot;&gt;</span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;vs.count+(pageInfo.pageNum-1)*pageInfo.pageSize&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.name&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.classid&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.subject&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.teacher&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.score&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>&lt;c:if test=&quot;$&#123;stu.score&gt;=90&#125;&quot;&gt;优&lt;/c:if&gt;&lt;c:if test=&quot;$&#123;stu.score&lt;90 and stu.score&gt;=80 &#125;&quot;&gt;良&lt;/c:if&gt;&lt;c:if test=&quot;$&#123;stu.score&lt;80 and stu.score&gt;=60&#125;&quot;&gt;合格&lt;/c:if&gt;&lt;c:if test=&quot;$&#123;stu.score&lt;60&#125;&quot;&gt;不合格&lt;/c:if&gt;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/deleteStudent/$&#123;stu.id&#125;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-danger&quot;</span> <span class="attr">value</span>=<span class="string">&quot;删除&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/updateStudentEdit/$&#123;stu.id&#125;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-info&quot;</span> <span class="attr">value</span>=<span class="string">&quot;修改&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    &lt;/c:forEach&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">&lt;%--分页--%&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:toPage(1);&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-default btn-sm&quot;</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:toPage($&#123;pageInfo.pageNum-1&#125;);&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-default btn-sm&quot;</span>&gt;</span>上一页<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:toPage($&#123;pageInfo.pageNum+1&#125;);&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-default btn-sm&quot;</span>&gt;</span>下一页<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:toPage($&#123;pageInfo.pages&#125;);&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-default btn-sm&quot;</span>&gt;</span>尾页<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>设置每页条数</span><br><span class="line">            <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;pageSize&quot;</span> <span class="attr">onchange</span>=<span class="string">&quot;toPage(1)&quot;</span>&gt;</span></span><br><span class="line">                &lt;option &lt;c:if test=&quot;$&#123;pageInfo.pageSize==2&#125;&quot;&gt;selected&lt;/c:if&gt;&gt;2&lt;/option&gt;</span><br><span class="line">                &lt;option &lt;c:if test=&quot;$&#123;pageInfo.pageSize==5&#125;&quot;&gt;selected&lt;/c:if&gt;&gt;5&lt;/option&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

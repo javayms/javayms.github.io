@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.zv%20161023501103%207%20SSM+Maven%E9%98%B2%E7%9B%97%E9%97%A8%E8%BF%9B%E9%94%80%E5%AD%98%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+ssm+html+bootstrap+mysql)%E3%80%90%E8%BF%9B%E9%94%80%E5%AD%98,%E4%BB%93%E5%BA%93%E3%80%91%E3%80%90%E6%96%87%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project24/000923531103.jpg" alt="000923531103"></p>
+<p><img src="../images/project24/010923531103.jpg" alt="010923531103"></p>
+<p><img src="../images/project24/020923531103.jpg" alt="020923531103"></p>
+<p><img src="../images/project24/030923531103.jpg" alt="030923531103"></p>
+<p><img src="../images/project24/040923531103.jpg" alt="040923531103"></p>
+<p><img src="../images/project24/050923531103.jpg" alt="050923531103"></p>
+<p>——————————ProjectTitle——————————</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">admin   	123456	系统管理员</span><br><span class="line">warehouser	123456	库存管理员</span><br><span class="line">purchaser	123456	采购员</span><br><span class="line">saler	    123456	销售员</span><br><span class="line">auditor 	123456	订单审核员</span><br><span class="line"></span><br><span class="line">采购-入库流程：</span><br><span class="line">1 采购员purchaser-采购</span><br><span class="line">2 订单审核员auditor-审核</span><br><span class="line">3 库存管理员warehouser-入库审核（此时【库存管理】出现库存量）</span><br><span class="line"></span><br><span class="line">销售-出库流程：</span><br><span class="line">1 销售员saler-销售</span><br><span class="line">2 订单审核员auditor-审核</span><br><span class="line">3 库存管理员warehouser-出库审核（此时【库存管理】出现销售量）</span><br></pre></td></tr></table></figure>
+<p>项目介绍</p>
+<p>本项目分为系统管理员、库存管理员、采购员、销售员、订单审核员等角色。 各角色主要功能如下所示：</p>
+<p>系统管理员 基础信息管理 商品 仓库 员工 角色 库存管理 库存管理 销售单审核（2出库） 采购单审核（2入库） 订单经理 销售单审核（1审核） 采购单审核（1审核） 采购管理 供应商管理 采购订单 销售管理 客户管理 销售订单 数据统计 采购统计 销售统计 账户管理 用户管理 修改密码</p>
+<p>库存管理员</p>
+<p>库存管理 库存查看 销售单审核（出库） 采购单审核（入库） 账户管理 修改密码</p>
+<p>采购员</p>
+<p>基础信息管理 商品（采购可以添加新的商品） 采购管理 供应商管理 采购订单 数据统计 采购统计 账户管理 修改密码</p>
+<p>销售员</p>
+<p>销售管理 客户管理 销售订单 数据统计 销售统计 账户管理 修改密码</p>
+<p>订单审核员</p>
+<p>订单审核 销售单审核 采购单审核 账户管理 修改密码</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； 5.是否Maven项目: 是 6.数据库：MySql 5.7等版本均可；</p>
+<p>技术栈 1. 后端：Spring+SpringMVC+Mybatis</p>
+<ol start="2">
+<li>前端：BootStrap+JavaScript+jQUery+Ajax+CSS+HTML</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2.使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven; 若为maven项目，导入成功后请执行maven clean;maven install命令，配置tomcat 3.打开jdbc.properties配置文件，修改数据库用户名和密码为自己本地数据库的用户名和密码 注：username与password需要在util/DESUtil中main方法中获取加密后的数据并填写 # 数据库用户名 jdbc.username=Ov4j7fKiCzY=DES加密，加密前为root  # 数据库密码 jdbc.password=Ov4j7fKiCzY=DES加密，加密前为root 4.打开浏览器，输入 localhost:8080/sdims 进入登录界面 5.输入用户名和密码访问系统 账号和密码： 超级管理员： admin 库存管理员: xiaoku 订单经理: xiaodan 采购员：xiaocai 销售员： xiaoxiao 密码均为：111111</li>
+</ol>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">			SaleOrder currentSaleOrder = saleOrderService.getSaleOrderById(sorderId);</span><br><span class="line">			<span class="keyword">if</span> (currentSaleOrder.getStockState()==<span class="number">1</span>) &#123;</span><br><span class="line">				modelMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">				modelMap.put(<span class="string">&quot;errMsg&quot;</span>, <span class="string">&quot;此订单已经出库，不能撤销！&quot;</span>);</span><br><span class="line">				<span class="keyword">return</span> modelMap;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">int</span> effectNum = saleOrderCheckService.modifySaleOrderRevoke(saleOrder);</span><br><span class="line">			<span class="keyword">if</span> (effectNum &lt; <span class="number">1</span>) &#123;</span><br><span class="line">				modelMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">				modelMap.put(<span class="string">&quot;errMsg&quot;</span>, <span class="string">&quot;撤销审核失败&quot;</span>);</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				modelMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">				modelMap.put(<span class="string">&quot;successMsg&quot;</span>, <span class="string">&quot;撤销审核成功&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">			modelMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">			modelMap.put(<span class="string">&quot;errMsg&quot;</span>, e.getMessage());</span><br><span class="line">			<span class="keyword">return</span> modelMap;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> modelMap;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 判断对于查询销售单时候的筛选条件</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> orderNumber</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> checkState</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> SaleOrder <span class="title">compactSaleOrderCheckCondition</span><span class="params">(String orderNumber,<span class="keyword">int</span> checkState)</span> </span>&#123;</span><br><span class="line">		SaleOrder saleOrderCondition = <span class="keyword">new</span> SaleOrder();</span><br><span class="line">		<span class="comment">// 若有指定订单号的要求则添加进去</span></span><br><span class="line">		<span class="keyword">if</span> (orderNumber != <span class="keyword">null</span>) &#123;</span><br><span class="line">			saleOrderCondition.setOrderNumber(orderNumber);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 若有指定订单经理审核通过</span></span><br><span class="line">		<span class="keyword">if</span> (checkState != -<span class="number">1L</span>) &#123;</span><br><span class="line">			saleOrderCondition.setCheckState(checkState);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> saleOrderCondition;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> top.lothar.sdims.web.stock;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">	 */</span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="meta">@RequestMapping(value=&quot;/modifyrepository&quot;,method=RequestMethod.POST)</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> Map&lt;String, Object&gt; <span class="title">modifyRepository</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">		Map&lt;String, Object&gt; modelMap = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">		<span class="comment">//这里的数据要包含ID因为是根据ID进行更新</span></span><br><span class="line">		String repositoryStr = HttpServletRequestUtil.getString(request, <span class="string">&quot;repositoryStr&quot;</span>);</span><br><span class="line">		<span class="comment">//JSON转化后的员工存储对象</span></span><br><span class="line">		Repository repository = <span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//存放json的对象</span></span><br><span class="line">		ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">		<span class="comment">//接受json形式的Employee信息</span></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//使用ObjectMapper类把请求中的json信息存放在Employee实体类中</span></span><br><span class="line">			repository = objectMapper.readValue(repositoryStr, Repository.class);</span><br><span class="line">			<span class="comment">//设置更新的时间</span></span><br><span class="line">			repository.setUpdateTime(<span class="keyword">new</span> Date());</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">			modelMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">			modelMap.put(<span class="string">&quot;errMsg&quot;</span>, e.getMessage());</span><br><span class="line">			<span class="keyword">return</span> modelMap;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">int</span> effectNum = repositoryService.modifyRepository(repository);</span><br><span class="line">			<span class="keyword">if</span> (effectNum &lt; <span class="number">1</span>) &#123;</span><br><span class="line">				modelMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">				modelMap.put(<span class="string">&quot;errMsg&quot;</span>, <span class="string">&quot;更新员工失败&quot;</span>);</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				modelMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">			modelMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">			modelMap.put(<span class="string">&quot;errMsg&quot;</span>, e.getMessage());</span><br><span class="line">			<span class="keyword">return</span> modelMap;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> modelMap;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> top.lothar.sdims.web.sale;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 采购订单管理页</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;purchaseorder&quot;, method=RequestMethod.GET)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">purchaseOrder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;purchase/purchaseorder&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*-------------------------------------------销售管理页----------------------------------------------*/</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 销售商管理页</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;salecustomer&quot;, method=RequestMethod.GET)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">saleCustomer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;sale/salecustomer&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 销售订单管理页</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;saleorder&quot;, method=RequestMethod.GET)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">saleOrder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;sale/saleorder&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*-------------------------------------------订单审核管理页----------------------------------------------*/</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 采购单审核管理页</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;purchaseordercheck&quot;, method=RequestMethod.GET)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">purchaseOrderCheck</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;ordercheck/purchaseordercheck&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 销售单审核管理页</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;saleordercheck&quot;, method=RequestMethod.GET)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">saleOrderCheck</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;ordercheck/saleordercheck&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*-------------------------------------------库存管理页----------------------------------------------*/</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 仓库管理页(仓库管理员专用路由)</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value=&quot;/addgoods&quot;,method=RequestMethod.POST)</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Map&lt;String, Object&gt; <span class="title">addGoods</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">	Map&lt;String, Object&gt; modelMap = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">	String goodsStr = HttpServletRequestUtil.getString(request, <span class="string">&quot;goodsStr&quot;</span>);</span><br><span class="line">	<span class="comment">//JSON转化后的仓库存储对象</span></span><br><span class="line">	Goods goods= <span class="keyword">null</span>;</span><br><span class="line">	<span class="comment">//存放json的对象</span></span><br><span class="line">	ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">	<span class="comment">//接受json形式的Employee信息</span></span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">//使用ObjectMapper类把请求中的json信息存放在repository实体类中</span></span><br><span class="line">		goods = objectMapper.readValue(goodsStr, Goods.class);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">		modelMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">		modelMap.put(<span class="string">&quot;errMsg&quot;</span>, e.getMessage());</span><br><span class="line">		<span class="keyword">return</span> modelMap;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">//非空判断</span></span><br><span class="line">		<span class="keyword">if</span> (goods!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> effectNum = goodsService.addGoods(goods);</span><br><span class="line">			<span class="keyword">if</span> (effectNum &lt; <span class="number">1</span>) &#123;</span><br><span class="line">				modelMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">				modelMap.put(<span class="string">&quot;errMsg&quot;</span>, <span class="string">&quot;插入失败&quot;</span>);</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				modelMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">		modelMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">		modelMap.put(<span class="string">&quot;errMsg&quot;</span>, e.getMessage());</span><br><span class="line">		<span class="keyword">return</span> modelMap;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> modelMap;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据前台传的ID移除对应商品</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"> * <span class="meta">@param</span> request</span><br><span class="line"> * <span class="meta">@return</span></span><br><span class="line"> */</span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;/getgoodslist&quot;,method=RequestMethod.GET)</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Map&lt;String, Object&gt; <span class="title">getGoodsList</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">	Map&lt;String, Object&gt; modelMap = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">	<span class="comment">// 获取页码</span></span><br><span class="line">	<span class="keyword">int</span> pageIndex = HttpServletRequestUtil.getInt(request, <span class="string">&quot;pageIndex&quot;</span>);</span><br><span class="line">	<span class="comment">// 获取每页展示的数据量</span></span><br><span class="line">	<span class="keyword">int</span> pageSize = <span class="number">5</span>;</span><br><span class="line">	<span class="comment">// 获取查询条件</span></span><br><span class="line">	String name = HttpServletRequestUtil.getString(request, <span class="string">&quot;name&quot;</span>);</span><br><span class="line">	String code = HttpServletRequestUtil.getString(request, <span class="string">&quot;code&quot;</span>);</span><br><span class="line">	String type = HttpServletRequestUtil.getString(request, <span class="string">&quot;type&quot;</span>);</span><br><span class="line">	String brand = HttpServletRequestUtil.getString(request, <span class="string">&quot;brand&quot;</span>);</span><br><span class="line">	String standard = HttpServletRequestUtil.getString(request, <span class="string">&quot;standard&quot;</span>);</span><br><span class="line">	String material = HttpServletRequestUtil.getString(request, <span class="string">&quot;material&quot;</span>);</span><br><span class="line">	Goods goodsCondition = <span class="keyword">new</span> Goods();</span><br><span class="line">	goodsCondition.setName(name);</span><br><span class="line">	goodsCondition.setCode(code);</span><br><span class="line">	goodsCondition.setType(type);</span><br><span class="line">	goodsCondition.setBrand(brand);</span><br><span class="line">	goodsCondition.setStandard(standard);</span><br><span class="line">	goodsCondition.setMaterial(material);</span><br><span class="line">	<span class="comment">// 非空判断</span></span><br><span class="line">	<span class="keyword">if</span> (pageIndex &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">		TExecution&lt;Goods&gt; goodsExecution = goodsService.getGoodsList(goodsCondition, pageIndex, pageSize);</span><br><span class="line">		pageBean = <span class="keyword">new</span> PageBean&lt;Goods&gt;();</span><br><span class="line">		<span class="comment">// 总记录数</span></span><br><span class="line">		pageBean.setAllRowCounts(goodsExecution.getCount());</span><br><span class="line">		<span class="comment">// 仓库列表</span></span><br><span class="line">		pageBean.setDatas(goodsExecution.getData());</span><br><span class="line">		<span class="comment">// 每页记录数</span></span><br><span class="line">		pageBean.setPageSize(<span class="number">5</span>);</span><br><span class="line">		<span class="comment">// 当前页</span></span><br><span class="line">		pageBean.setCurPage(pageIndex);</span><br><span class="line">		<span class="keyword">int</span> sumPages = PageBean.getSumPages(goodsExecution.getCount(), pageSize);</span><br><span class="line">		<span class="comment">// 总页数</span></span><br><span class="line">		pageBean.setSumPages(sumPages);</span><br><span class="line">		<span class="comment">// 定义数组(用于页码展示组件)</span></span><br><span class="line">		<span class="keyword">int</span>[] tempNum = <span class="keyword">new</span> <span class="keyword">int</span>[sumPages];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sumPages; i++) &#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">		<span class="keyword">return</span> modelMap;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> top.lothar.sdims.web.ordercheck;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 采购单审核</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/ordercheck&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PurchaseOrderCheckController</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> PurchaseOrderService purchaseOrderService;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> PurchaseOrderCheckService purchaseOrderCheckService;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> PageBean&lt;PurchaseOrder&gt; pageBean;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 条件查询采购单列表</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="meta">@RequestMapping(value=&quot;/getpurchaseorderchecklist&quot;,method=RequestMethod.GET)</span></span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/201.gm%20341524170701%209%20SSM%E4%BA%8C%E6%89%8B%E4%BA%A4%E6%98%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+ssm+elementui+vue+mysql)%E3%80%90%E4%BA%8C%E6%89%8B%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project25/241424010701.jpg" alt="241424010701"></p>
+<p><img src="../images/project25/261424010701.jpg" alt="261424010701"></p>
+<p><img src="../images/project25/271424010701.jpg" alt="271424010701"></p>
+<p><img src="../images/project25/281424010701.jpg" alt="281424010701"></p>
+<p><img src="../images/project25/291424010701.jpg" alt="291424010701"></p>
+<p><img src="../images/project25/301424010701.jpg" alt="301424010701"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>项目介绍</p>
+<p>基于SSM的网上跳蚤市场</p>
+<p>角色：管理员、会员</p>
+<p>前台用户可以实现商品浏览在 ，系统首页可以查看首页，商品信息，求购信息，留言板，个人中心，后台管理，购物车，在线客服等</p>
+<p>管理员登陆系统后，可以查看首页，个人中心，会员管理，商品分类管理，商品信息管理，求购信息管理，留言板管理，系统管理，订单管理等功能，还能对每个功能逐一进行相应操作</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； 4.数据库：MySql 5.7/8.0版本均可； 5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SSM(Spring+SpringMVC+Mybatis) 前端：ElementUI+Vue</p>
+<p>使用说明</p>
+<p>项目运行： 1. 使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+<p>——————————OldCode——————————</p>
+<p>购物车管理控制层： </p>
+<p>@Controller</p>
+<p>public class CartController extends BaseController {</p>
+<p>@Resource</p>
+<p>CartDAO cartDAO;</p>
+<p>@Resource</p>
+<p>MemberDAO memberDAO;</p>
+<p>@Resource</p>
+<p>ProductDAO productDAO;</p>
+<p>@Resource</p>
+<p>CategoryDAO categoryDAO;</p>
+<p>@Resource</p>
+<p>Saveobject saveobject;</p>
+<p>@Resource</p>
+<p>OrdermsgDAO ordermsgDAO;</p>
+<p>// 查询购车商品</p>
+<p>@RequestMapping(“cartList”)</p>
+<p>public String cartList(HttpServletRequest request) {</p>
+<p>Member member = (Member) request.getSession().getAttribute(</p>
+<p>“sessionmember”);</p>
+<p>//double zk = saveobject.getzk(member.getId());</p>
+<p>HashMap map = new HashMap();</p>
+<p>map.put(“memberid”, member.getId());</p>
+<p>List<Cart> cartlist = cartDAO.selectAll(map);</Cart></p>
+<p>String totalstr = “”;</p>
+<p>double total = 0.0;</p>
+<p>for(Cart cart:cartlist){</p>
+<p>Member m = memberDAO.findById(cart.getMemberid());</p>
+<p>Product product = productDAO.findById(cart.getProductid());</p>
+<p>cart.setMember(m);</p>
+<p>cart.setProduct(product);</p>
+<p>double sjprice = 0D;</p>
+<p>double doublesubtotal = 0D;</p>
+<p>if(product.getTprice()&gt;0){</p>
+<p>sjprice = product.getTprice();</p>
+<p>total += Double.parseDouble(String.valueOf(cart.getNum()))* sjprice;</p>
+<p>doublesubtotal = Double.parseDouble(String.valueOf(cart.getNum()))*sjprice;</p>
+<p>}else{</p>
+<p>sjprice = product.getPrice();</p>
+<p>total += Double.parseDouble(String.valueOf(cart.getNum()))* sjprice;</p>
+<p>doublesubtotal = Double.parseDouble(String.valueOf(cart.getNum()))*sjprice;</p>
+<p>cart.setSubtotal(String.format(“%.2f”, doublesubtotal));</p>
+<p>totalstr = String.format(“%.2f”, total);</p>
+<p>request.setAttribute(“totaldoubel”, Double.parseDouble(totalstr));</p>
+<p>request.setAttribute(“cartlist”, cartlist);</p>
+<p>request.setAttribute(“totalstr”, totalstr);</p>
+<p>saveobject.getCategoryObject(request);</p>
+<p>String suc = request.getParameter(“suc”)==null?””:request.getParameter(“suc”);</p>
+<p>if(!suc.equals(“”)){</p>
+<p>request.setAttribute(“suc”, “创建成功”);</p>
+<p>HashMap mmm = new HashMap();</p>
+<p>mmm.put(“goodstype”, “购买商品”);</p>
+<p>saveobject.hotSales(“”, request);</p>
+<p>List<Product> zphlist = saveobject.hotSales(“”,request);</Product></p>
+<p>request.setAttribute(“zphlist”, zphlist);</p>
+<p>return “cartlist”;</p>
+<p>// 添加购物车</p>
+<p>@RequestMapping(“addCart”)</p>
+<p>public void addCart(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>PrintWriter out;</p>
+<p>try {</p>
+<p>out = response.getWriter();</p>
+<p>Member member = (Member) request.getSession().getAttribute(</p>
+<p>“sessionmember”);</p>
+<p>if (member != null) {</p>
+<p>String productid = request.getParameter(“productid”);</p>
+<p>String num = request.getParameter(“num”);</p>
+<p>//判断是否是购买自己的商品</p>
+<p>Product product = (Product)productDAO.findById(Integer.parseInt(productid));</p>
+<p>HashMap map = new HashMap();</p>
+<p>map.put(“memberid”, member.getId());</p>
+<p>map.put(“productid”, productid);</p>
+<p>List<Cart> list = cartDAO.selectAll(map);</Cart></p>
+<p>if (list.size() == 0) {</p>
+<p>Cart cart = new Cart();</p>
+<p>cart.setMemberid(member.getId());</p>
+<p>cart.setProductid(Integer.parseInt(productid));</p>
+<p>cart.setNum(Integer.parseInt(num));</p>
+<p>cart.setShopid(Integer.valueOf(product.getSaver()));</p>
+<p>cartDAO.add(cart);</p>
+<p>} else {</p>
+<p>Cart ct = new Cart();</p>
+<p>ct.setId(list.get(0).getId());</p>
+<p>ct.setNum(list.get(0).getNum() + Integer.parseInt(num));</p>
+<p>cartDAO.update(ct);</p>
+<p>out.print(“1”);</p>
+<p>} else {</p>
+<p>out.println(“0”);</p>
+<p>} catch (IOException e) {</p>
+<p>// TODO Auto-generated catch block</p>
+<p>e.printStackTrace();</p>
+<p>// 删除购物车中的商品</p>
+<p>@RequestMapping(“delCart”)</p>
+<p>public void delCart(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>PrintWriter out;</p>
+<p>try {</p>
+<p>out = response.getWriter();</p>
+<p>String id = request.getParameter(“id”);</p>
+<p>cartDAO.delCart(Integer.parseInt(id));</p>
+<p>out.println(“0”);</p>
+<p>} catch (IOException e) {</p>
+<p>// TODO Auto-generated catch block</p>
+<p>e.printStackTrace();</p>
+<p>//修改购物车</p>
+<p>@RequestMapping(“updateNum”)</p>
+<p>public void updateNum(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>PrintWriter out;</p>
+<p>try {</p>
+<p>out = response.getWriter();</p>
+<p>String id = request.getParameter(“id”);</p>
+<p>String num = request.getParameter(“num”);</p>
+<p>Cart ct = new Cart();</p>
+<p>ct.setId(Integer.parseInt(id));</p>
+<p>ct.setNum(Integer.parseInt(num));</p>
+<p>cartDAO.updateNum(ct);</p>
+<p>out.println(“0”);</p>
+<p>} catch (IOException e) {</p>
+<p>// TODO Auto-generated catch block</p>
+<p>e.printStackTrace();</p>
+<p>//清空购物车</p>
+<p>@RequestMapping(“carDel”)</p>
+<p>public void carDel(HttpServletRequest request,HttpServletResponse response) {</p>
+<p>PrintWriter out;</p>
+<p>try {</p>
+<p>out = response.getWriter();</p>
+<p>Member member = (Member)request.getSession().getAttribute(“sessionmember”);</p>
+<p>if(member!=null){</p>
+<p>HashMap map = new HashMap();</p>
+<p>map.put(“memberid”, member.getId());</p>
+<p>List<Cart> list =  cartDAO.selectAll(map);</Cart></p>
+<p>for(Cart cart:list){</p>
+<p>cartDAO.delCart(cart.getId());</p>
+<p>out.println(“1”);</p>
+<p>}else{</p>
+<p>out.println(“0”);</p>
+<p>} catch (IOException e) {</p>
+<p>// TODO Auto-generated catch block</p>
+<p>e.printStackTrace();</p>
+<p> 品类管理控制层：</p>
+<p>@Controller</p>
+<p>public class CategoryController extends BaseController {</p>
+<p>@Resource</p>
+<p>CategoryDAO categoryDAO;</p>
+<p>@RequestMapping(“/admin/categoryList”)</p>
+<p>public String categoryList(@RequestParam(defaultValue = “1”,value = “pageNum”) Integer pageNum,HttpServletRequest request) {</p>
+<p>String key = request.getParameter(“key”);</p>
+<p>HashMap map = new HashMap();</p>
+<p>map.put(“key”, key);</p>
+<p>PageHelper.startPage(pageNum, 10);</p>
+<p>List<Category> fcategorylist = categoryDAO.selectFcategory(map);</Category></p>
+<p>for(Category category:fcategorylist){</p>
+<p>List<Category> scategorylist = categoryDAO.selectScategory(category.getId());</Category></p>
+<p>category.setScategorylist(scategorylist);</p>
+<p>PageInfo<Category> pageInfo =  new PageInfo<Category>(fcategorylist);</Category></Category></p>
+<p>request.setAttribute(“pageInfo”, pageInfo);</p>
+<p>request.setAttribute(“key”, key);</p>
+<p>return “admin/categorylist”;</p>
+<p>@RequestMapping(“/admin/categoryAdd”)</p>
+<p>public String dingdanAdd(Category ct,HttpServletRequest request){</p>
+<p>categoryDAO.add(ct);</p>
+<p>return “redirect:categoryList.do”;</p>
+<p>@RequestMapping(“/admin/showCategory”)</p>
+<p>public String showCategory(int id,HttpServletRequest request){</p>
+<p>Category category =  categoryDAO.findById(id);</p>
+<p>request.setAttribute(“category”, category);</p>
+<p>return “admin/categoryedit”;</p>
+<p>@RequestMapping(“/admin/categoryEdit”)</p>
+<p>public String categoryEdit(Category category,HttpServletRequest request){</p>
+<p>categoryDAO.update(category);</p>
+<p>request.setAttribute(“category”, category);</p>
+<p>return “redirect:categoryList.do”;</p>
+<p>@RequestMapping(“admin/categoryDelAll”)</p>
+<p>public String categoryDelAll(int id, HttpServletRequest request,HttpServletResponse response){</p>
+<p>categoryDAO.delete(id);</p>
+<p>return “redirect:categoryList.do”;</p>
+<p>//类别二级联动</p>
+<p>@RequestMapping(“admin/searchCtype”)</p>
+<p>public void searchCtype(HttpServletRequest request,HttpServletResponse response){</p>
+<p>String fatherid = request.getParameter(“fatherid”)==null?””:request.getParameter(“fatherid”);</p>
+<p>String xml = “”;</p>
+<p>if(!fatherid.equals(“”)){</p>
+<p>List<Category> list = categoryDAO.selectScategory(Integer.parseInt(fatherid));</Category></p>
+<p>if(list.size()&gt;0){</p>
+<p>for(Category category:list){</p>
+<p>xml += “<option value=""+category.getId()+"">“+category.getName()+”</option>“;</p>
+<p>}else{</p>
+<p>xml =”<option value>请选择上一级目录“;</option></p>
+<p>}else{</p>
+<p>xml =”<option value>请选择上一级目录“;</option></p>
+<p>response.setCharacterEncoding(“utf-8”);</p>
+<p>response.setContentType(“application/json”);</p>
+<p>PrintWriter out;</p>
+<p>try {</p>
+<p>out = response.getWriter();</p>
+<p>Gson gson = new Gson();</p>
+<p>String flag = gson.toJson(xml);</p>
+<p>out.write(flag);</p>
+<p>out.flush();</p>
+<p>out.close();</p>
+<p>} catch (IOException e) {</p>
+<p>// TODO Auto-generated catch block</p>
+<p>e.printStackTrace();</p>
+<p>订单管理控制层： </p>
+<p>@Controller</p>
+<p>public class OrdermsgController extends BaseController {</p>
+<p>@Resource</p>
+<p>CartDAO cartDAO;</p>
+<p>@Resource</p>
+<p>MemberDAO memberDAO;</p>
+<p>@Resource</p>
+<p>ProductDAO productDAO;</p>
+<p>@Resource</p>
+<p>Saveobject saveobject;</p>
+<p>@Resource</p>
+<p>OrdermsgdetailsDAO ordermsgdetailsDAO;</p>
+<p>@Resource</p>
+<p>OrdermsgDAO ordermsgDAO;</p>
+<p>@Resource</p>
+<p>InventoryDAO inventoryDAO;</p>
+<p>@Resource</p>
+<p>AddressDAO addressDAO;</p>
+<p>@Resource</p>
+<p>TicketDAO ticketDAO;</p>
+<p>@Resource</p>
+<p>UserDAO userDAO;</p>
+<p>//创建订单</p>
+<p>@RequestMapping(“createOrder”)</p>
+<p>public String createOrder(HttpServletRequest request) {</p>
+<p>Member member = (Member)request.getSession().getAttribute(“sessionmember”);</p>
+<p>saveobject.getCart(request);</p>
+<p>saveobject.getCategoryObject(request);</p>
+<p>HashMap map = new HashMap();</p>
+<p>map.put(“memberid”, member.getId());</p>
+<p>int addrid = 0;</p>
+<p>List<Address> addresslist = addressDAO.selectAll(map);</Address></p>
+<p>for(Address address:addresslist){</p>
+<p>if(address.getIsmr().equals(“yes”)){</p>
+<p>addrid=address.getId();</p>
+<p>List<Ticket> ticketlist = ticketDAO.selectAll(map);</Ticket></p>
+<p>request.setAttribute(“addresslist”, addresslist);</p>
+<p>request.setAttribute(“ticketlist”, ticketlist);</p>
+<p>request.setAttribute(“addrid”, addrid);</p>
+<p>return “createorder”;</p>
+<p>//付款页面</p>
+<p>@RequestMapping(“skipFukuan”)</p>
+<p>public String skipFukuan(HttpServletRequest request) {</p>
+<p>Member member = (Member)request.getSession().getAttribute(“sessionmember”);</p>
+<p>String id = request.getParameter(“id”);</p>
+<p>Ordermsg ordermsg = ordermsgDAO.findById(Integer.parseInt(id));</p>
+<p>HashMap map1 = new HashMap();</p>
+<p>map1.put(“ddno”, ordermsg.getDdno());</p>
+<p>List<Ordermsgdetails> dddetailist = ordermsgdetailsDAO.selectAll(map1);</Ordermsgdetails></p>
+<p>for(Ordermsgdetails orderdetail:dddetailist){</p>
+<p>orderdetail.setProduct(productDAO.findById(Integer.valueOf(orderdetail.getProductid())));</p>
+<p>ordermsg.setDddetailist(dddetailist);</p>
+<p>saveobject.getCart(request);</p>
+<p>saveobject.getCategoryObject(request);</p>
+<p>HashMap map = new HashMap();</p>
+<p>map.put(“memberid”, member.getId());</p>
+<p>String addrid=””;</p>
+<p>List<Address> addresslist = addressDAO.selectAll(map);</Address></p>
+<p>List<Ticket> ticketlist = ticketDAO.selectAll(map);</Ticket></p>
+<p>for(Address address:addresslist){</p>
+<p>if(address.getIsmr().equals(“yes”)){</p>
+<p>addrid=String.valueOf(address.getId());</p>
+<p>request.setAttribute(“addresslist”, addresslist);</p>
+<p>request.setAttribute(“ticketlist”, ticketlist);</p>
+<p>request.setAttribute(“ordermsg”, ordermsg);</p>
+<p>request.setAttribute(“addrid”, addrid);</p>
+<p>double sjtotal = ordermsg.getTotal();</p>
+<p>request.setAttribute(“sjtotal”, sjtotal);</p>
+<p>return “fukuan”;</p>
+<p>//创建订单</p>
+<p>@RequestMapping(“createDd”)</p>
+<p>public String createDd(HttpServletRequest request) {</p>
+<p>String totalstr = request.getParameter(“totalstr”);</p>
+<p>String addrid = request.getParameter(“addrid”);</p>
+<p>Member member = (Member) request.getSession().getAttribute(</p>
+<p>“sessionmember”);</p>
+<p>double zk = saveobject.getzk(member.getId());</p>
+<p>saveobject.getCart(request);</p>
+<p>saveobject.getCategoryObject(request);</p>
+<p>String memberid = String.valueOf(member.getId());</p>
+<p>String fkstatus = “待付款”;</p>
+<p>String addrstr = addrid;</p>
+<p>String savetime = Info.getDateStr();</p>
+<p>HashMap map = new HashMap();</p>
+<p>map.put(“memberid”, member.getId());</p>
+<p>List<Cart> list = cartDAO.selectAll(map);</Cart></p>
+<p>if(list.size()==0){</p>
+<p>return “redirect:cartList.do”;</p>
+<p>}else{</p>
+<p>List<Integer> shopidlist = new ArrayList<Integer>();</Integer></Integer></p>
+<p>for(int i=0;i&lt;list.size();i++){</p>
+<p>Cart c = list.get(i);</p>
+<p>shopidlist.add(c.getShopid());</p>
+<p>HashSet h = new HashSet(shopidlist);</p>
+<p>shopidlist.clear();</p>
+<p>shopidlist.addAll(h);</p>
+<p>for(Integer distinctshopid : shopidlist){//购物车商家ID去重后的循环</p>
+<p>CheckCode cc = new CheckCode();</p>
+<p>String ddno = cc.getCheckCode();</p>
+<p>Ordermsg ordermsg = new Ordermsg();</p>
+<p>ordermsg.setDdno(ddno);</p>
+<p>ordermsg.setMemberid(memberid);</p>
+<p>ordermsg.setSaver(distinctshopid.toString());</p>
+<p>ordermsg.setGoodstype(“购买商品”);</p>
+<p>ordermsg.setAddr(addrstr);</p>
+<p>ordermsg.setFkstatus(fkstatus);</p>
+<p>ordermsg.setDelstatus(“0”);</p>
+<p>ordermsg.setSavetime(savetime);</p>
+<p>Double ddfee = 0.0;</p>
+<p>map.put(“memberid”, member.getId());</p>
+<p>map.put(“shopid”, distinctshopid);</p>
+<p>List<Cart> finallist = cartDAO.selectAll(map);</Cart></p>
+<p>for(Cart cart:finallist){</p>
+<p>Product product = productDAO.findById(cart.getProductid());</p>
+<p>double sjprice = 0D;</p>
+<p>double doublesubtotal = 0D;</p>
+<p>if(product.getTprice()&gt;0){</p>
+<p>sjprice = product.getTprice();</p>
+<p>ddfee += Double.parseDouble(String.valueOf(cart.getNum()))* sjprice;</p>
+<p>doublesubtotal = Double.parseDouble(String.valueOf(cart.getNum()))*sjprice;</p>
+<p>}else{</p>
+<p>sjprice = product.getPrice();</p>
+<p>ddfee += Double.parseDouble(String.valueOf(cart.getNum()))* sjprice;</p>
+<p>doublesubtotal = Double.parseDouble(String.valueOf(cart.getNum()))*sjprice;</p>
+<p>cart.setSubtotal(String.format(“%.2f”, doublesubtotal));</p>
+<p>Ordermsgdetails ordermsgdetails = new Ordermsgdetails();</p>
+<p>ordermsgdetails.setDdno(ddno);</p>
+<p>ordermsgdetails.setNum(cart.getNum());</p>
+<p>ordermsgdetails.setMemberid(String.valueOf(member.getId()));</p>
+<p>ordermsgdetails.setProductid(String.valueOf(cart.getProductid()));</p>
+<p>ordermsgdetails.setStatus(fkstatus);</p>
+<p>ordermsgdetailsDAO.add(ordermsgdetails);</p>
+<p>cartDAO.delCart(cart.getId());</p>
+<p>ordermsg.setTotal(ddfee);</p>
+<p>ordermsgDAO.add(ordermsg);</p>
+<p>return “redirect:orderLb.do”;</p>
+<p>//前台订单列表</p>
+<p>@RequestMapping(“orderLb”)</p>
+<p>public String orderLb(@RequestParam(defaultValue = “1”,value = “pageNum”) Integer pageNum,HttpServletRequest request) {</p>
+<p>PageHelper.startPage(pageNum, 5);</p>
+<p>Member member = (Member) request.getSession().getAttribute(</p>
+<p>“sessionmember”);</p>
+<p>String msg = request.getParameter(“msg”)==null?””:request.getParameter(“msg”);</p>
+<p>HashMap map = new HashMap();</p>
+<p>map.put(“memberid”, member.getId());</p>
+<p>map.put(“delstatus”, “0”);</p>
+<p>map.put(“goodstype”, “购买商品”);</p>
+<p>List<Ordermsg> list = ordermsgDAO.selectAll(map);</Ordermsg></p>
+<p>for(Ordermsg ordermsg:list){</p>
+<p>Member mem = memberDAO.findById(Integer.parseInt(ordermsg.getMemberid()));</p>
+<p>ordermsg.setMember(mem);</p>
+<p>HashMap map1 = new HashMap();</p>
+<p>map1.put(“ddno”, ordermsg.getDdno());</p>
+<p>List<Ordermsgdetails> dddetailist = ordermsgdetailsDAO.selectAll(map1);</Ordermsgdetails></p>
+<p>for(Ordermsgdetails orderdetail:dddetailist){</p>
+<p>orderdetail.setProduct(productDAO.findById(Integer.valueOf(orderdetail.getProductid())));</p>
+<p>ordermsg.setDddetailist(dddetailist);</p>
+<p>if(ordermsg.getAddr()!=null&amp;&amp;!ordermsg.getAddr().equals(“”)){</p>
+<p>Address address = addressDAO.findById(Integer.parseInt(ordermsg.getAddr()));</p>
+<p>ordermsg.setAddress(address);</p>
+<p>//查看物流信息</p>
+<p>saveobject.getWlrecord(ordermsg.getDdno(), request);</p>
+<p>List<Wlrecord> wllist = (List<Wlrecord>)request.getAttribute(“wllist”);</Wlrecord></Wlrecord></p>
+<p>ordermsg.setWllist(wllist);</p>
+<p>PageInfo<Ordermsg> pageInfo =  new PageInfo<Ordermsg>(list);</Ordermsg></Ordermsg></p>
+<p>request.setAttribute(“pageInfo”,pageInfo);</p>
+<p>saveobject.getCart(request);</p>
+<p>saveobject.getCategoryObject(request);</p>
+<p>if(!msg.equals(“”)){</p>
+<p>request.setAttribute(“msg”, “恭喜你抽中了&nbsp;”+msg+”优惠券”);</p>
+<p>return “orderlb”;</p>
+<p>@RequestMapping(“fubiOrder”)</p>
+<p>public String fubiOrder(HttpServletRequest request) {</p>
+<p>Member member = (Member) request.getSession().getAttribute(</p>
+<p>“sessionmember”);</p>
+<p>String msg = request.getParameter(“msg”)==null?””:request.getParameter(“msg”);</p>
+<p>HashMap map = new HashMap();</p>
+<p>map.put(“memberid”, member.getId());</p>
+<p>map.put(“delstatus”, “0”);</p>
+<p>map.put(“goodstype”, “积分商品”);</p>
+<p>List<Ordermsg> list = ordermsgDAO.selectAll(map);</Ordermsg></p>
+<p>for(Ordermsg ordermsg:list){</p>
+<p>Member mem = memberDAO.findById(Integer.parseInt(ordermsg.getMemberid()));</p>
+<p>ordermsg.setMember(mem);</p>
+<p>Product product = productDAO.findById(Integer.parseInt(ordermsg.getProductid()));</p>
+<p>ordermsg.setProduct(product);</p>
+<p>request.setAttribute(“list”,list);</p>
+<p>saveobject.getCart(request);</p>
+<p>saveobject.getCategoryObject(request);</p>
+<p>return “fubiorder”;</p>
+<p>//后台查询订单列表</p>
+<p>@RequestMapping(“/admin/orderList”)</p>
+<p>public String orderList(@RequestParam(defaultValue = “1”,value = “pageNum”) Integer pageNum,HttpServletRequest request) {</p>
+<p>User admin = (User)request.getSession().getAttribute(“admin”);</p>
+<p>String key = request.getParameter(“key”);</p>
+<p>String suc = request.getParameter(“suc”)==null?””:request.getParameter(“suc”);</p>
+<p>HashMap map = new HashMap();</p>
+<p>map.put(“ddno”, key);</p>
+<p>map.put(“delstatus”, “0”);</p>
+<p>if(!admin.getUsertype().equals(“管理员”)){</p>
+<p>map.put(“saver”, String.valueOf(admin.getId()));</p>
+<p>map.put(“fkstatus”, “待付款”);</p>
+<p>map.put(“goodstype”, “购买商品”);</p>
+<p>List<Ordermsg> list = ordermsgDAO.selectAll(map);</Ordermsg></p>
+<p>for(Ordermsg ordermsg:list){</p>
+<p>Member member = memberDAO.findById(Integer.parseInt(ordermsg.getMemberid()));</p>
+<p>HashMap map1 = new HashMap();</p>
+<p>map1.put(“ddno”, ordermsg.getDdno());</p>
+<p>List<Ordermsgdetails> dddetailist = ordermsgdetailsDAO.selectAll(map1);</Ordermsgdetails></p>
+<p>for(Ordermsgdetails orderdetail:dddetailist){</p>
+<p>orderdetail.setProduct(productDAO.findById(Integer.valueOf(orderdetail.getProductid())));</p>
+<p>ordermsg.setDddetailist(dddetailist);</p>
+<p>ordermsg.setMember(member);</p>
+<p>if(ordermsg.getAddr()!=null){</p>
+<p>Address address = addressDAO.findById(Integer.parseInt(ordermsg.getAddr()));</p>
+<p>ordermsg.setAddress(address);</p>
+<p>//查看物流信息</p>
+<p>saveobject.getWlrecord(ordermsg.getDdno(), request);</p>
+<p>List<Wlrecord> wllist = (List<Wlrecord>)request.getAttribute(“wllist”);</Wlrecord></Wlrecord></p>
+<p>ordermsg.setWllist(wllist);</p>
+<p>PageInfo<Ordermsg> pageInfo =  new PageInfo<Ordermsg>(list);</Ordermsg></Ordermsg></p>
+<p>request.setAttribute(“key”,key);</p>
+<p>request.setAttribute(“pageInfo”,pageInfo);</p>
+<p>if(suc.equals(“suc”)){</p>
+<p>request.setAttribute(“suc”,”操作成功”);</p>
+<p>}else if(suc.equals(“error”)){</p>
+<p>request.setAttribute(“suc”,”库存不足”);</p>
+<p>return “admin/orderlist”;</p>
+<p>@RequestMapping(“/admin/fubiorderList”)</p>
+<p>public String fubiorderList(@RequestParam(defaultValue = “1”,value = “pageNum”) Integer pageNum,HttpServletRequest request) {</p>
+<p>User admin = (User)request.getSession().getAttribute(“admin”);</p>
+<p>String key = request.getParameter(“key”);</p>
+<p>String suc = request.getParameter(“suc”)==null?””:request.getParameter(“suc”);</p>
+<p>HashMap map = new HashMap();</p>
+<p>map.put(“ddno”, key);</p>
+<p>map.put(“delstatus”, “0”);</p>
+<p>map.put(“saver”, admin.getId());</p>
+<p>map.put(“fkstatus”, “待付款”);</p>
+<p>map.put(“goodstype”, “积分商品”);</p>
+<p>List<Ordermsg> list = ordermsgDAO.selectAll(map);</Ordermsg></p>
+<p>for(Ordermsg ordermsg:list){</p>
+<p>Member member = memberDAO.findById(Integer.parseInt(ordermsg.getMemberid()));</p>
+<p>Product product = productDAO.findById(Integer.parseInt(ordermsg.getProductid()));</p>
+<p>ordermsg.setMember(member);</p>
+<p>ordermsg.setProduct(product);</p>
+<p>PageInfo<Ordermsg> pageInfo =  new PageInfo<Ordermsg>(list);</Ordermsg></Ordermsg></p>
+<p>request.setAttribute(“key”,key);</p>
+<p>request.setAttribute(“pageInfo”,pageInfo);</p>
+<p>if(suc.equals(“suc”)){</p>
+<p>request.setAttribute(“suc”,”操作成功”);</p>
+<p>}else if(suc.equals(“error”)){</p>
+<p>request.setAttribute(“suc”,”库存不足”);</p>
+<p>return “admin/fubiorder”;</p>
+<p>//发货</p>
+<p>@RequestMapping(“/admin/orderFh”)</p>
+<p>public String orderFh(int id,HttpServletRequest request) {</p>
+<p>boolean flag = true;</p>
+<p>Ordermsg ordermsg = ordermsgDAO.findById(id);</p>
+<p>HashMap map1 = new HashMap();</p>
+<p>map1.put(“ddno”, ordermsg.getDdno());</p>
+<p>List<Ordermsgdetails> dddetailist = ordermsgdetailsDAO.selectAll(map1);</Ordermsgdetails></p>
+<p>for(Ordermsgdetails orderdetail:dddetailist){</p>
+<p>int kc = saveobject.getInvertory(Integer.valueOf(orderdetail.getProductid()), request);</p>
+<p>if(kc&lt;orderdetail.getNum()){</p>
+<p>flag = false;</p>
+<p>if(flag == true){</p>
+<p>for(Ordermsgdetails orderdetail:dddetailist){</p>
+<p>if(ordermsg.getShfs().equals(“到店自取”)){</p>
+<p>ordermsg.setIsdd(“抵达目的地”);</p>
+<p>ordermsg.setFkstatus(“已发货”);</p>
+<p>ordermsgDAO.update(ordermsg);</p>
+<p>Inventory inv = new Inventory();</p>
+<p>inv.setNum(orderdetail.getNum());</p>
+<p>inv.setProductid(orderdetail.getProductid());</p>
+<p>inv.setType(“out”);</p>
+<p>inventoryDAO.add(inv);</p>
+<p>return “redirect:orderList.do?suc=suc”;</p>
+<p>}else{</p>
+<p>return “redirect:orderList.do?suc=error”;</p>
+<p>//发货</p>
+<p>@RequestMapping(“/admin/fubiorderFh”)</p>
+<p>public String fubiorderFh(int id,HttpServletRequest request) {</p>
+<p>Ordermsg ordermsg = ordermsgDAO.findById(id);</p>
+<p>if(ordermsg.getShfs().equals(“到店自取”)){</p>
+<p>ordermsg.setIsdd(“抵达目的地”);</p>
+<p>ordermsg.setFkstatus(“已发货”);</p>
+<p>ordermsgDAO.update(ordermsg);</p>
+<p>return “redirect:fubiorderList.do?suc=suc”;</p>
+<p>//收货</p>
+<p>@RequestMapping(“qianShou”)</p>
+<p>public String qianShou(int id,HttpServletRequest request){</p>
+<p>Ordermsg ordermsg = ordermsgDAO.findById(id);</p>
+<p>ordermsg.setFkstatus(“交易完成”);</p>
+<p>ordermsgDAO.update(ordermsg);</p>
+<p>return “redirect:orderLb.do”;</p>
+<p>@RequestMapping(“fubiqianshou”)</p>
+<p>public String qs(int id,HttpServletRequest request){</p>
+<p>Ordermsg ordermsg = ordermsgDAO.findById(id);</p>
+<p>ordermsg.setFkstatus(“交易完成”);</p>
+<p>ordermsgDAO.update(ordermsg);</p>
+<p>return “redirect:fubiOrder.do”;</p>
+<p>@RequestMapping(“fubiorderSc”)</p>
+<p>public String fubiorderSc(int id,HttpServletRequest request){</p>
+<p>Ordermsg ordermsg = ordermsgDAO.findById(id);</p>
+<p>ordermsg.setDelstatus(“1”);</p>
+<p>ordermsgDAO.update(ordermsg);</p>
+<p>return “redirect:fubiOrder.do”;</p>
+<p>//删除订单</p>
+<p>@RequestMapping(“orderSc”)</p>
+<p>public String orderSc(int id,HttpServletRequest request){</p>
+<p>Ordermsg ordermsg = ordermsgDAO.findById(id);</p>
+<p>ordermsg.setDelstatus(“1”);</p>
+<p>ordermsgDAO.update(ordermsg);</p>
+<p>return “redirect:orderLb.do”;</p>
+<p>//删除订单</p>
+<p>@RequestMapping(“admin/fubiorderDel”)</p>
+<p>public String fubiorderDel(int id,HttpServletRequest request){</p>
+<p>Ordermsg ordermsg = ordermsgDAO.findById(id);</p>
+<p>ordermsg.setDelstatus(“1”);</p>
+<p>ordermsgDAO.update(ordermsg);</p>
+<p>return “redirect:fubiorderList.do”;</p>
+<p>//使用优惠券</p>
+<p>@RequestMapping(“updateYhtotal”)</p>
+<p>public void updateYhtotal(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>PrintWriter out;</p>
+<p>try {</p>
+<p>out = response.getWriter();</p>
+<p>String id = request.getParameter(“id”);</p>
+<p>String ordermsgid = request.getParameter(“ordermsgid”);</p>
+<p>Ticket ticket = ticketDAO.findById(Integer.parseInt(id));</p>
+<p>Ordermsg ordermsg = ordermsgDAO.findById(Integer.parseInt(ordermsgid));</p>
+<p>int money = ticket.getMoney();</p>
+<p>saveobject.getCart(request);</p>
+<p>double total = (Double)ordermsg.getTotal();</p>
+<p>//                if(total&lt;99){</p>
+<p>//                    total=total+12;</p>
+<p>//                }</p>
+<p>if(total&gt;money){</p>
+<p>double yhtotal = total-money;</p>
+<p>String yhtotalstr = String.format(“%.2f”, yhtotal);</p>
+<p>out.println(yhtotalstr);</p>
+<p>}else{</p>
+<p>out.println(“-1”);</p>
+<p>} catch (IOException e) {</p>
+<p>// TODO Auto-generated catch block</p>
+<p>e.printStackTrace();</p>
+<p>//支付方式页面</p>
+<p>@RequestMapping(“skipZffs”)</p>
+<p>public String skipZffs(HttpServletRequest request){</p>
+<p>Member member = (Member)request.getSession().getAttribute(“sessionmember”);</p>
+<p>String suc = request.getParameter(“suc”)==null?””:request.getParameter(“suc”);</p>
+<p>String id = request.getParameter(“id”);</p>
+<p>String totalstr = request.getParameter(“totalstr”);</p>
+<p>String ticketid = request.getParameter(“ticketid”);</p>
+<p>String addrid = request.getParameter(“addrid”);</p>
+<p>request.setAttribute(“id”, id);</p>
+<p>request.setAttribute(“sjtotal”, totalstr);</p>
+<p>request.setAttribute(“ticketid”, ticketid);</p>
+<p>request.setAttribute(“addrid”, addrid);</p>
+<p>saveobject.getCategoryObject(request);</p>
+<p>return “zffs”;</p>
+<p>//订单付款</p>
+<p>@RequestMapping(“fukuan”)</p>
+<p>public String fukuan(HttpServletRequest request){</p>
+<p>Member member = (Member)request.getSession().getAttribute(“sessionmember”);</p>
+<p>Member mmm = memberDAO.findById(member.getId());</p>
+<p>String id = request.getParameter(“id”);</p>
+<p>String sjtotal = request.getParameter(“sjtotal”);</p>
+<p>String ticketid = request.getParameter(“ticketid”);</p>
+<p>String addrid = request.getParameter(“addrid”);</p>
+<p>String zffs = request.getParameter(“zffs”);</p>
+<p>String shfs = request.getParameter(“shfs”);</p>
+<p>//double yue = mmm.getMoney();</p>
+<p>//查优惠券</p>
+<p>double doublesjtotal = Double.parseDouble(sjtotal);</p>
+<p>if(ticketid != null &amp;&amp; !ticketid.equals(“”)){</p>
+<p>Ticket ticket = ticketDAO.findById(Integer.valueOf(ticketid));</p>
+<p>doublesjtotal = doublesjtotal - Double.valueOf(ticket.getMoney());</p>
+<p>//boolean flag = true;</p>
+<p>//double sxyue = yue-doublesjtotal;</p>
+<p>//if(sxyue&gt;=0){</p>
+<p>Ordermsg ordermsg = ordermsgDAO.findById(Integer.parseInt(id));</p>
+<p>Address address = addressDAO.findById(Integer.parseInt(addrid));</p>
+<p>ordermsg.setAddress(address);</p>
+<p>HashMap map1 = new HashMap();</p>
+<p>map1.put(“ddno”, ordermsg.getDdno());</p>
+<p>List<Ordermsgdetails> dddetailist = ordermsgdetailsDAO.selectAll(map1);</Ordermsgdetails></p>
+<p>for(Ordermsgdetails orderdetail:dddetailist){</p>
+<p>orderdetail.setProduct(productDAO.findById(Integer.valueOf(orderdetail.getProductid())));</p>
+<p>orderdetail.setStatus(“已付款”);</p>
+<p>ordermsgdetailsDAO.update(orderdetail);</p>
+<p>ordermsg.setDddetailist(dddetailist);</p>
+<p>ordermsg.setAddr(addrid);</p>
+<p>ordermsg.setShfs(shfs);</p>
+<p>ordermsg.setZffs(zffs);</p>
+<p>ordermsg.setFkstatus(“已付款”);</p>
+<p>ordermsg.setTotal(doublesjtotal);</p>
+<p>String fktime = Info.getDateStr();</p>
+<p>//            try {</p>
+<p>//                if(Info.compare(fktime,fktime.substring(0, 10)+” 18:00:00”)){</p>
+<p>//                    ordermsg.setRemark(“当日达”);</p>
+<p>//                }else{</p>
+<p>//                    ordermsg.setRemark(“次日达”);</p>
+<p>//                }</p>
+<p>//            } catch (ParseException e) {</p>
+<p>//                // TODO Auto-generated catch block</p>
+<p>//                e.printStackTrace();</p>
+<p>//            }</p>
+<p>ordermsgDAO.update(ordermsg);</p>
+<p>request.setAttribute(“ordermsg”, ordermsg);</p>
+<p>if(ticketid!=null&amp;&amp;!ticketid.equals(“”)){</p>
+<p>ticketDAO.delete(Integer.parseInt(ticketid));</p>
+<p>//mmm.setMoney(sxyue);</p>
+<p>//memberDAO.updateYue(mmm);</p>
+<p>double xftotal = mmm.getXftotal()+doublesjtotal;</p>
+<p>mmm.setXftotal(xftotal);</p>
+<p>memberDAO.updateXftotal(mmm);</p>
+<p>int jf = mmm.getJf()+new Double(doublesjtotal).intValue();</p>
+<p>mmm.setJf(jf);</p>
+<p>memberDAO.updateJf(mmm);</p>
+<p>//            if(!mmm.getCardtype().equals(“白金卡”)){</p>
+<p>//            if(xftotal&gt;300&amp;&amp;xftotal&lt;800){</p>
+<p>//                mmm.setCardtype(“银卡”);</p>
+<p>//            }else if(xftotal&gt;800&amp;&amp;xftotal&lt;1500){</p>
+<p>//                mmm.setCardtype(“金卡”);</p>
+<p>//            }else if(xftotal&gt;1500){</p>
+<p>//                mmm.setCardtype(“白金卡”);</p>
+<p>//            }</p>
+<p>//            }</p>
+<p>memberDAO.update(mmm);</p>
+<p>saveobject.getCategoryObject(request);</p>
+<p>return “success”;</p>
+<p>//}else{</p>
+<p>//    request.setAttribute(“id”, id);</p>
+<p>//    request.setAttribute(“sjtotal”, sjtotal);</p>
+<p>//    request.setAttribute(“ticketid”, ticketid);</p>
+<p>//    request.setAttribute(“addrid”, addrid);</p>
+<p>//    return “redirect:skipZffs.do?suc=error&amp;totalstr=”+sjtotal+”&amp;ticketid=”+ticketid+”&amp;addrid=”+addrid+”&amp;id=”+id;</p>
+<p>//}</p>
+<p>//取消订单</p>
+<p>@RequestMapping(“qxOrdermsg”)</p>
+<p>public String qxOrdermsg(int id,HttpServletRequest request){</p>
+<p>Ordermsg ordermsg = ordermsgDAO.findById(id);</p>
+<p>ordermsg.setFkstatus(“已取消”);</p>
+<p>ordermsgDAO.update(ordermsg);</p>
+<p>return “redirect:orderLb.do”;</p>
+<p>//</p>
+<p>@RequestMapping(“addOrder”)</p>
+<p>public void addOrder(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>PrintWriter out;</p>
+<p>try {</p>
+<p>out = response.getWriter();</p>
+<p>Member member = (Member) request.getSession().getAttribute(</p>
+<p>“sessionmember”);</p>
+<p>if (member != null) {</p>
+<p>Member mmm = memberDAO.findById(member.getId());</p>
+<p>String productid = request.getParameter(“productid”);</p>
+<p>String num = request.getParameter(“num”);</p>
+<p>Product product = productDAO.findById(Integer.parseInt(productid));</p>
+<p>double total = Double.parseDouble(num)*product.getPrice();</p>
+<p>int intotal = new Double(total).intValue();</p>
+<p>if(intotal&lt;=mmm.getJf()){</p>
+<p>int yjf = mmm.getJf()-intotal;</p>
+<p>CheckCode cc = new CheckCode();</p>
+<p>String ddno = cc.getCheckCode();</p>
+<p>Ordermsg ordermsg = new Ordermsg();</p>
+<p>ordermsg.setDdno(ddno);</p>
+<p>ordermsg.setMemberid(String.valueOf(member.getId()));</p>
+<p>ordermsg.setProductid(productid);</p>
+<p>ordermsg.setNum(Integer.parseInt(num));</p>
+<p>ordermsg.setTotal(intotal);</p>
+<p>ordermsg.setFkstatus(“已付款”);</p>
+<p>ordermsg.setSavetime(Info.getDateStr());</p>
+<p>ordermsg.setDelstatus(“0”);</p>
+<p>ordermsg.setShfs(“到店自取”);</p>
+<p>ordermsg.setSaver(product.getSaver());</p>
+<p>ordermsg.setGoodstype(“积分商品”);</p>
+<p>ordermsgDAO.add(ordermsg);</p>
+<p>mmm.setJf(yjf);</p>
+<p>memberDAO.updateJf(mmm);</p>
+<p>out.print(“1”);</p>
+<p>}else{</p>
+<p>out.print(“2”);//积分不足</p>
+<p>} else {</p>
+<p>out.println(“0”);</p>
+<p>} catch (IOException e) {</p>
+<p>// TODO Auto-generated catch block</p>
+<p>e.printStackTrace();</p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

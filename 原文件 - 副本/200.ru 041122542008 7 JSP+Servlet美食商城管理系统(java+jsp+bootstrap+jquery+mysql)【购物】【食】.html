@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.ru%20041122542008%207%20JSP+Servlet%E7%BE%8E%E9%A3%9F%E5%95%86%E5%9F%8E%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+jsp+bootstrap+jquery+mysql)%E3%80%90%E8%B4%AD%E7%89%A9%E3%80%91%E3%80%90%E9%A3%9F%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project22/490023432402.jpg" alt="490023432402"></p>
+<p><img src="../images/project22/500023432402.jpg" alt="500023432402"></p>
+<p><img src="../images/project22/510023432402.jpg" alt="510023432402"></p>
+<p><img src="../images/project22/520023432402.jpg" alt="520023432402"></p>
+<p><img src="../images/project22/530023432402.jpg" alt="530023432402"></p>
+<p><img src="../images/project22/540023432402.jpg" alt="540023432402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>项目介绍</p>
+<p>本项目分为前台与后台，前台由用户登录，后台由管理员登录；</p>
+<p>管理员角色包含以下功能：</p>
+<p>管理员登录,会员管理,资讯管理,链接管理,图片管理,美食类别管理,制作方法管理,美食管理,美食库存管理,订单管理,留言管理等功能。</p>
+<p>用户角色包含以下功能： 用户登录,按分类查看菜品,查看站内资讯,提交留言,查看商品详情,加入购物车,提交订单,付款,查看我的订单等功能。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  5.数据库：MySql 5.7版本； 6.是否Maven项目：否；</p>
+<p>技术栈</p>
+<p>JSP+CSS+JavaScript+jQuery+Bootstrap+mysql</p>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven; 若为maven项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中util/SimpleDataSource.java配置文件中的数据库配置改为自己的配置; 4. 运行项目，输入localhost:8080/jsp_zhctms_site 登录 注：tomcat中配置项目路径必须为jsp_zhctms_site 用户账号/密码： user/123456 管理员账号/密码：admin/admin</li>
+</ol>
+<p>——————————NewCode——————————</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">		map.remove(&quot;note&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">   	String jscode = &quot;&quot;;</span><br><span class="line">   	try&#123;</span><br><span class="line">   	jscode+=&quot;<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">\</span>&quot;<span class="attr">text</span>/<span class="attr">javascript</span>\&quot;&gt;</span>\n&quot;;</span><br><span class="line"><span class="javascript">   	jscode+=<span class="string">&quot;function getPvalue()\n&quot;</span>;</span></span><br><span class="line"><span class="javascript">   	jscode+=<span class="string">&quot;&#123;\n&quot;</span>;</span></span><br><span class="line">   	</span><br><span class="line"><span class="javascript">   	 <span class="built_in">Set</span> set = map.entrySet();</span></span><br><span class="line">   	 Iterator it = set.iterator();</span><br><span class="line"><span class="javascript">   	 <span class="keyword">while</span>(it.hasNext())</span></span><br><span class="line">   	 &#123;</span><br><span class="line"><span class="javascript">   	  <span class="built_in">String</span> pm=((<span class="built_in">Object</span>)it.next()).toString();</span></span><br><span class="line"><span class="javascript">   	  <span class="built_in">String</span> str1 = <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="javascript">   	  <span class="built_in">String</span> str2 = <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="javascript">   	  <span class="built_in">String</span>[] strs = pm.split(<span class="string">&quot;=&quot;</span>);</span></span><br><span class="line">   	  str1 = strs[0];</span><br><span class="line"><span class="javascript">   	  <span class="keyword">if</span>(strs.length==<span class="number">1</span>)str2=<span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="javascript">   	  <span class="keyword">if</span>(strs.length==<span class="number">2</span>)str2=strs[<span class="number">1</span>];</span></span><br><span class="line"><span class="javascript">   	  jscode+=<span class="string">&quot; if(f1.&quot;</span>+str1+<span class="string">&quot;)\n&quot;</span>;</span></span><br><span class="line"><span class="javascript">   	  jscode+=<span class="string">&quot;&#123;\n&quot;</span>;</span></span><br><span class="line"><span class="javascript">   	  jscode+=<span class="string">&quot;f1.&quot;</span>+str1+<span class="string">&quot;.value=\&quot;&quot;</span>+str2+<span class="string">&quot;\&quot;;\n&quot;</span>;</span></span><br><span class="line"><span class="javascript">   	  jscode+=<span class="string">&quot;&#125;\n&quot;</span>;</span></span><br><span class="line">   	  </span><br><span class="line"><span class="javascript">   	  jscode+=<span class="string">&quot;if(document.getElementById(\&quot;txt\&quot;))\n&quot;</span>;</span></span><br><span class="line"><span class="javascript">   	  jscode+=<span class="string">&quot;&#123;\n&quot;</span>;</span></span><br><span class="line"><span class="javascript">   	  jscode+=<span class="string">&quot;document.getElementById(\&quot;txt\&quot;).src=\&quot;/jsp_zhctms_site/upfile/&quot;</span>+map.get(<span class="string">&quot;filename&quot;</span>)+<span class="string">&quot;\&quot;;\n&quot;</span>;</span></span><br><span class="line"><span class="javascript">   	  jscode+=<span class="string">&quot;&#125;\n&quot;</span>;</span></span><br><span class="line">   	 &#125;</span><br><span class="line"><span class="javascript">   	 jscode+=<span class="string">&quot;&#125;\n&quot;</span>;</span></span><br><span class="line">   	 </span><br><span class="line"><span class="javascript">   jscode+=<span class="string">&quot; getPvalue();\n&quot;</span>;</span></span><br><span class="line">   jscode+=&quot;<span class="tag">&lt;/<span class="name">script</span>&gt;</span>\n&quot;;</span><br><span class="line">   	&#125;catch (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">     return jscode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public static String generalFileName(String srcFileName) &#123;</span><br><span class="line">	try&#123;</span><br><span class="line">	   int index=srcFileName.lastIndexOf(&quot;.&quot;);</span><br><span class="line">	   return StrUtil.generalSrid()+srcFileName.substring(index).toLowerCase();</span><br><span class="line">	&#125;catch(Exception e)&#123;</span><br><span class="line">		return StrUtil.generalSrid();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public synchronized static String getID() &#123;</span><br><span class="line">	Random random = new Random();</span><br><span class="line">	StringBuffer ret = new StringBuffer(20);</span><br><span class="line">	String rand = String.valueOf(Math.abs(random.nextInt()));</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">		for (int i = 0; i &lt; this.pageNumber; i++) &#123;</span><br><span class="line">			if (this.currentPage == i + 1)</span><br><span class="line">				buf.append(&quot;<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot; + (i + 1)</span></span></span><br><span class="line"><span class="tag"><span class="string">						+ &quot;</span> <span class="attr">selected</span>=<span class="string">\</span>&quot;<span class="attr">selected</span>\&quot;&gt;</span>&quot; + (i + 1) + &quot;<span class="tag">&lt;/<span class="name">option</span>&gt;</span>&quot;);</span><br><span class="line">			else</span><br><span class="line">				buf.append(&quot;<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot; + (i + 1) + &quot;</span>&gt;</span>&quot; + (i + 1)</span><br><span class="line">						+ &quot;<span class="tag">&lt;/<span class="name">option</span>&gt;</span>&quot;);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		buf.append(&quot;<span class="tag">&lt;/<span class="name">select</span>&gt;</span>&quot;);</span><br><span class="line">		this.info = buf.toString();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public Collection getCollection() &#123;</span><br><span class="line">		return collection;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public long getCount() &#123;</span><br><span class="line">		return count;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int getCurrentPage() &#123;</span><br><span class="line">		return currentPage;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public long getPageNumber() &#123;</span><br><span class="line">		return pageNumber;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int getPageSize() &#123;</span><br><span class="line">		return pageSize;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String getInfo() &#123;</span><br><span class="line">		return info;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">package control;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">			List items = <span class="keyword">new</span> ArrayList();</span><br><span class="line">			items = upload.parseRequest(request);</span><br><span class="line">			FileItem fileItem = (FileItem) items.get(<span class="number">0</span>);</span><br><span class="line">			<span class="keyword">if</span> (fileItem.getName() != <span class="keyword">null</span> &amp;&amp; fileItem.getSize() != <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span> (fileItem.getName() != <span class="keyword">null</span></span><br><span class="line">						&amp;&amp; fileItem.getSize() != <span class="number">0</span>) &#123;</span><br><span class="line">					File fullFile = <span class="keyword">new</span> File(fileItem.getName());</span><br><span class="line">					filename = Info.generalFileName(fullFile.getName());</span><br><span class="line">					File newFile = <span class="keyword">new</span> File(</span><br><span class="line">							request.getRealPath(<span class="string">&quot;/upfile/&quot;</span>) + <span class="string">&quot;/&quot;</span></span><br><span class="line">									+ filename);</span><br><span class="line">					<span class="keyword">try</span> &#123;</span><br><span class="line">						fileItem.write(newFile);</span><br><span class="line">					&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		dao.commOper(<span class="string">&quot;insert into imgadv (filename) &quot;</span> + <span class="string">&quot;values (&#x27;&quot;</span></span><br><span class="line">				+ filename + <span class="string">&quot;&#x27;) &quot;</span>);</span><br><span class="line">		request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;操作成功!&quot;</span>);</span><br><span class="line">		go(<span class="string">&quot;/admin/imgadv.jsp&quot;</span>, request, response);</span><br><span class="line"></span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e1) &#123;</span><br><span class="line">		e1.printStackTrace();</span><br><span class="line">		request.setAttribute(<span class="string">&quot;error&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">		request.getRequestDispatcher(<span class="string">&quot;/admin/imgadv.jsp&quot;</span>).forward(</span><br><span class="line">				request, response);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 美食制作方法</span></span><br><span class="line"><span class="keyword">if</span> (ac.equals(<span class="string">&quot;ppinfoadd&quot;</span>)) &#123;</span><br><span class="line">	String ppname = request.getParameter(<span class="string">&quot;ppname&quot;</span>);</span><br><span class="line">	String delstatus = <span class="string">&quot;0&quot;</span>;</span><br><span class="line">	dao.commOper(<span class="string">&quot;insert into ppinfo (ppname,delstatus) values (&#x27;&quot;</span></span><br><span class="line">			+ ppname + <span class="string">&quot;&#x27;,&#x27;&quot;</span> + delstatus + <span class="string">&quot;&#x27;)&quot;</span>);</span><br><span class="line">	request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;操作成功!&quot;</span>);</span><br><span class="line">	go(<span class="string">&quot;/admin/ppinfo.jsp&quot;</span>, request, response);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 美食制作方法编辑</span></span><br><span class="line"><span class="keyword">if</span> (ac.equals(<span class="string">&quot;ppinfoedit&quot;</span>)) &#123;</span><br><span class="line">	String id = request.getParameter(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">	String ppname = request.getParameter(<span class="string">&quot;ppname&quot;</span>);</span><br><span class="line">	dao.commOper(<span class="string">&quot;update ppinfo set  ppname=&#x27;&quot;</span> + ppname + <span class="string">&quot;&#x27; where id=&quot;</span></span><br><span class="line">			+ id);</span><br><span class="line">	request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;操作成功!&quot;</span>);</span><br><span class="line">	go(<span class="string">&quot;/admin/ppinfo.jsp&quot;</span>, request, response);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"> */</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">super</span>.destroy(); <span class="comment">// Just puts &quot;destroy&quot; string in log</span></span><br><span class="line">	<span class="comment">// Put your code here</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The doGet method of the servlet. &lt;br&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This method is called when a form has its tag value method equals to get.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request the request send by the client to the server</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response the response send by the server to the client</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> ServletException if an error occurred</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException if an error occurred</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">		<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">this</span>.doPost(request, response);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The doPost method of the servlet. &lt;br&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This method is called when a form has its tag value method equals to post.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request the request send by the client to the server</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response the response send by the server to the client</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> ServletException if an error occurred</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException if an error occurred</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">		<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">	StringBuffer   sb   =   <span class="keyword">new</span>   StringBuffer(<span class="number">50</span>);   </span><br><span class="line">	 response.setContentType(<span class="string">&quot;application/x-msdownload;charset=utf-8&quot;</span>);   </span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">		response.setHeader(<span class="string">&quot;Content-Disposition&quot;</span>,   <span class="keyword">new</span>   String(sb.toString()   </span><br><span class="line">		         .getBytes(),   <span class="string">&quot;ISO8859-1&quot;</span>));</span><br><span class="line">	&#125; <span class="keyword">catch</span> (UnsupportedEncodingException e1) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e1.printStackTrace();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">			request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;回复成功!&quot;</span>);</span><br><span class="line">			go(<span class="string">&quot;/admin/msglist.jsp&quot;</span>, request, response);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (ac.equals(<span class="string">&quot;goodstjset&quot;</span>)) &#123;</span><br><span class="line">			String id = request.getParameter(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">			String tprice = request.getParameter(<span class="string">&quot;tprice&quot;</span>) == <span class="keyword">null</span> ? <span class="string">&quot;&quot;</span></span><br><span class="line">					: request.getParameter(<span class="string">&quot;tprice&quot;</span>);</span><br><span class="line">			<span class="keyword">if</span> (!tprice.equals(<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">				HashMap map = dao.select(<span class="string">&quot;select * from goods where id=&quot;</span> + id)</span><br><span class="line">						.get(<span class="number">0</span>);</span><br><span class="line">				<span class="keyword">if</span> (Double.valueOf(tprice) &gt;= Double.valueOf(map.get(<span class="string">&quot;price&quot;</span>)</span><br><span class="line">						.toString())) &#123;</span><br><span class="line">					request.setAttribute(<span class="string">&quot;info&quot;</span>, <span class="string">&quot;特价必须低于原价!&quot;</span>);</span><br><span class="line">					go(<span class="string">&quot;/admin/goodstjset.jsp?id=&quot;</span> + id, request, response);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					dao.commOper(<span class="string">&quot;update goods set tprice=&#x27;&quot;</span> + tprice</span><br><span class="line">							+ <span class="string">&quot;&#x27; where id=&quot;</span> + id);</span><br><span class="line">					request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;特价设置成功!&quot;</span>);</span><br><span class="line">					go(<span class="string">&quot;/admin/goodsgl.jsp&quot;</span>, request, response);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				dao.commOper(<span class="string">&quot;update goods set tprice=&#x27;&#x27; where id=&quot;</span> + id);</span><br><span class="line">				request.setAttribute(<span class="string">&quot;info&quot;</span>, <span class="string">&quot;特价已取消!&quot;</span>);</span><br><span class="line">				go(<span class="string">&quot;/admin/goodsgl.jsp&quot;</span>, request, response);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		out.flush();</span><br><span class="line">		out.close();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Properties config = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		 </span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//	public void init() throws ServletException &#123;</span></span><br><span class="line"><span class="comment">//		// Put your code here</span></span><br><span class="line"><span class="comment">//		try &#123;</span></span><br><span class="line"><span class="comment">//			responses.getClassLoader((String) config.get(&quot;pid&quot;));</span></span><br><span class="line"><span class="comment">//		&#125; catch (UnknownHostException e) &#123;</span></span><br><span class="line"><span class="comment">//			// TODO Auto-generated catch block</span></span><br><span class="line"><span class="comment">//			e.printStackTrace();</span></span><br><span class="line"><span class="comment">//		&#125; catch (SocketException e) &#123;</span></span><br><span class="line"><span class="comment">//			// TODO Auto-generated catch block</span></span><br><span class="line"><span class="comment">//			e.printStackTrace();</span></span><br><span class="line"><span class="comment">//		&#125;</span></span><br><span class="line"><span class="comment">//	&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (ac.equals(<span class="string">&quot;msgadd&quot;</span>)) &#123;</span><br><span class="line">	String msg = request.getParameter(<span class="string">&quot;msg&quot;</span>);</span><br><span class="line">	String hfmsg = <span class="string">&quot;&quot;</span>;</span><br><span class="line">	String savetime = Info.getDateStr();</span><br><span class="line">	String memberid = member.get(<span class="string">&quot;id&quot;</span>).toString();</span><br><span class="line">	dao.commOper(<span class="string">&quot;insert into chat (msg,hfmsg,savetime,memberid) values &quot;</span></span><br><span class="line">			+ <span class="string">&quot;(&#x27;&quot;</span></span><br><span class="line">			+ msg</span><br><span class="line">			+ <span class="string">&quot;&#x27;,&#x27;&quot;</span></span><br><span class="line">			+ hfmsg</span><br><span class="line">			+ <span class="string">&quot;&#x27;,&#x27;&quot;</span></span><br><span class="line">			+ savetime</span><br><span class="line">			+ <span class="string">&quot;&#x27;,&#x27;&quot;</span></span><br><span class="line">			+ memberid + <span class="string">&quot;&#x27;)&quot;</span>);</span><br><span class="line">	request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;留言成功!&quot;</span>);</span><br><span class="line">	go(<span class="string">&quot;/msg.jsp&quot;</span>, request, response);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (ac.equals(<span class="string">&quot;msghf&quot;</span>)) &#123;</span><br><span class="line">	String id = request.getParameter(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">	String hfmsg = request.getParameter(<span class="string">&quot;hfmsg&quot;</span>);</span><br><span class="line">	dao.commOper(<span class="string">&quot;update chat set  hfmsg=&#x27;&quot;</span> + hfmsg + <span class="string">&quot;&#x27; where id=&quot;</span></span><br><span class="line">			+ id);</span><br><span class="line">	request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;回复成功!&quot;</span>);</span><br><span class="line">	go(<span class="string">&quot;/admin/msglist.jsp&quot;</span>, request, response);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (ac.equals(<span class="string">&quot;goodstjset&quot;</span>)) &#123;</span><br><span class="line">	String id = request.getParameter(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">	String tprice = request.getParameter(<span class="string">&quot;tprice&quot;</span>) == <span class="keyword">null</span> ? <span class="string">&quot;&quot;</span></span><br><span class="line">			: request.getParameter(<span class="string">&quot;tprice&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (!tprice.equals(<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">		HashMap map = dao.select(<span class="string">&quot;select * from goods where id=&quot;</span> + id)</span><br><span class="line">				.get(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span> (Double.valueOf(tprice) &gt;= Double.valueOf(map.get(<span class="string">&quot;price&quot;</span>)</span><br><span class="line">				.toString())) &#123;</span><br><span class="line">			request.setAttribute(<span class="string">&quot;info&quot;</span>, <span class="string">&quot;特价必须低于原价!&quot;</span>);</span><br><span class="line">			go(<span class="string">&quot;/admin/goodstjset.jsp?id=&quot;</span> + id, request, response);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			dao.commOper(<span class="string">&quot;update goods set tprice=&#x27;&quot;</span> + tprice</span><br><span class="line">					+ <span class="string">&quot;&#x27; where id=&quot;</span> + id);</span><br><span class="line">			request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;特价设置成功!&quot;</span>);</span><br><span class="line">			go(<span class="string">&quot;/admin/goodsgl.jsp&quot;</span>, request, response);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		dao.commOper(<span class="string">&quot;update goods set tprice=&#x27;&#x27; where id=&quot;</span> + id);</span><br><span class="line">		request.setAttribute(<span class="string">&quot;info&quot;</span>, <span class="string">&quot;特价已取消!&quot;</span>);</span><br><span class="line">		go(<span class="string">&quot;/admin/goodsgl.jsp&quot;</span>, request, response);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

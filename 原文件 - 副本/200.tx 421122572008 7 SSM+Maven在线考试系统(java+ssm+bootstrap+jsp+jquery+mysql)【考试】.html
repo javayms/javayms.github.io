@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.tx%20421122572008%207%20SSM+Maven%E5%9C%A8%E7%BA%BF%E8%80%83%E8%AF%95%E7%B3%BB%E7%BB%9F(java+ssm+bootstrap+jsp+jquery+mysql)%E3%80%90%E8%80%83%E8%AF%95%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project23/320123002402.jpg" alt="320123002402"></p>
+<p><img src="../images/project23/330123002402.jpg" alt="330123002402"></p>
+<p><img src="../images/project23/340123002402.jpg" alt="340123002402"></p>
+<p><img src="../images/project23/350123002402.jpg" alt="350123002402"></p>
+<p><img src="../images/project23/360123002402.jpg" alt="360123002402"></p>
+<p><img src="../images/project23/370123002402.jpg" alt="370123002402"></p>
+<p><img src="../images/project23/380123002402.jpg" alt="380123002402"></p>
+<p><img src="../images/project23/390123002402.jpg" alt="390123002402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>项目介绍</p>
+<p>这个项目是一个基于SSM的在线考试系统，分为考试用户和管理员两种角色。</p>
+<p>考试用户功能包括： 个人信息中心 成绩查询 在线答题 我的错题本 我的试卷</p>
+<p>管理员功能包括： 试题管理 题型管理 用户管理 年级管理 课程管理 试卷管理</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  5.数据库：MySql 5.7版本； 6.是否maven项目：是；</p>
+<p>技术栈</p>
+<ol>
+<li>后端：Spring+SpringMVC+Mybatis 2. 前端：JSP+css+javascript+jQuery+bootstrap</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven; 若为maven项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中jdbc.properties配置文件中的数据库配置改为自己的配置; 4. 运行项目，在浏览器中输入<a target="_blank" rel="noopener" href="http://localhost:8080/online_exam_ssm/toLogin.action">http://localhost:8080/online_exam_ssm/toLogin.action</a> 登录 学生账户：zhangsan/123456 后管登录地址：<a target="_blank" rel="noopener" href="http://localhost:8080/online_exam_ssm/admin/login.action">http://localhost:8080/online_exam_ssm/admin/login.action</a> 管理员账户：admin/123456</li>
+</ol>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">UserService userService;</span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">GradeService gradeService;</span><br><span class="line"></span><br><span class="line"><span class="comment">//跳转到登录页面</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/login.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toLoin</span><span class="params">(User user, Model model, HttpSession session)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (session.getAttribute(<span class="string">&quot;userName&quot;</span>) != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;/admin/index&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;/admin/login&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//跳转到后台首页面</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/toIndex.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toIndex</span><span class="params">(Model model, HttpSession session)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;/admin/index&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 后台登录操作</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/userLogin.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> MsgItem <span class="title">checkUser</span><span class="params">(User user, Model model, HttpSession session)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (StringUtils.isEmpty(user.getUserName())) &#123;</span><br><span class="line">        <span class="keyword">return</span> MsgItem.error(<span class="string">&quot;请填写用户名&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (StringUtils.isEmpty(user.getUserPwd())) &#123;</span><br><span class="line">        <span class="keyword">return</span> MsgItem.error(<span class="string">&quot;请填写密码&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    User loginUser = userService.loginCheck(user);</span><br><span class="line">    <span class="keyword">if</span> (loginUser == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> MsgItem.error(<span class="string">&quot;用户名或密码错误&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (loginUser.getUserType() != <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> MsgItem.error(<span class="string">&quot;用户类型不匹配&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    session.setAttribute(<span class="string">&quot;adminName&quot;</span>, loginUser.getUserName());</span><br><span class="line">    session.setAttribute(<span class="string">&quot;adminUser&quot;</span>, loginUser);</span><br><span class="line">    <span class="keyword">return</span> MsgItem.success(<span class="string">&quot;登录成功&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断账户信息是否存在</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment"></span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.lyy.edu.controller.admin;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 年级Controller</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/admin/grade&quot;)</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GradeController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	GradeService gradeService;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	CourseService courseService;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 跳转到年级页面</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> course</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/toGradePage.action&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toGradePage</span><span class="params">(<span class="meta">@RequestParam(value=&quot;page&quot;, defaultValue=&quot;1&quot;)</span> <span class="keyword">int</span> page,</span></span></span><br><span class="line"><span class="function"><span class="params">			Grade grade,Model model, HttpSession session)</span></span>&#123;</span><br><span class="line">		PageInfo&lt;Grade&gt; pageInfo = gradeService.findByPage(grade, page, <span class="number">5</span>);</span><br><span class="line">		List&lt;Grade&gt; dataList = pageInfo.getList();</span><br><span class="line">		Course course=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">for</span>(Grade g : dataList)&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(<span class="string">&quot;8&quot;</span>.equals(question.getTypeId()))&#123;<span class="comment">//填空</span></span><br><span class="line">			inpList.add(question);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(<span class="string">&quot;9&quot;</span>.equals(question.getTypeId()))&#123;<span class="comment">//简答题</span></span><br><span class="line">			desList.add(question);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(selList.size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		Type type = typeService.get(<span class="number">7</span>);</span><br><span class="line">		model.addAttribute(<span class="string">&quot;selectQ&quot;</span>, type.getTypeName()+<span class="string">&quot;(&quot;</span>+type.getScore()+<span class="string">&quot;分)&quot;</span>);</span><br><span class="line">		model.addAttribute(<span class="string">&quot;selList&quot;</span>, selList);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(inpList.size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		Type type = typeService.get(<span class="number">8</span>);</span><br><span class="line">		model.addAttribute(<span class="string">&quot;inpQ&quot;</span>, type.getTypeName()+<span class="string">&quot;(&quot;</span>+type.getScore()+<span class="string">&quot;分)&quot;</span>);</span><br><span class="line">		model.addAttribute(<span class="string">&quot;inpList&quot;</span>, inpList);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(desList.size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		Type type = typeService.get(<span class="number">9</span>);</span><br><span class="line">		model.addAttribute(<span class="string">&quot;desQ&quot;</span>,  type.getTypeName()+<span class="string">&quot;(&quot;</span>+type.getScore()+<span class="string">&quot;分)&quot;</span>);</span><br><span class="line">		model.addAttribute(<span class="string">&quot;desList&quot;</span>, desList);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	model.addAttribute(<span class="string">&quot;paper&quot;</span>, paper);</span><br><span class="line">	session.setAttribute(<span class="string">&quot;active&quot;</span>, <span class="string">&quot;paper&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;/user/paperdetail&quot;</span>;			</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取未考试试卷，并将为考试的试卷添加用户信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SuppressWarnings(&#123; &quot;unchecked&quot;, &quot;rawtypes&quot; &#125;)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/toMyPaperPage.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toMyPaperPage</span><span class="params">(User user,Model model, HttpSession session)</span></span>&#123;</span><br><span class="line">	User loginUser = (User) session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(loginUser==<span class="keyword">null</span>) &#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/deleteUser.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">deleteUser</span><span class="params">(String userId, Model model)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (userId != <span class="keyword">null</span>) &#123;</span><br><span class="line">        String ids[] = userId.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ids.length; i++) &#123;</span><br><span class="line">            userService.delete(ids[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/admin/getAllUser.action&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户身份信息审核(通过)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/passinfo.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">passUserInfo</span><span class="params">(<span class="meta">@RequestParam(&quot;ids&quot;)</span> String ids)</span> </span>&#123;</span><br><span class="line">    User us = <span class="keyword">new</span> User();</span><br><span class="line">    String currentIds[] = ids.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; currentIds.length; i++) &#123;</span><br><span class="line">        us.setUserId(Integer.parseInt(currentIds[i]));</span><br><span class="line">        us.setUserState(<span class="number">1</span>);</span><br><span class="line">        userService.update(us);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/admin/getFindPending.action&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户身份信息审核(不通过)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/failinfo.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">failUserInfo</span><span class="params">(<span class="meta">@RequestParam(&quot;ids&quot;)</span> String ids)</span> </span>&#123;</span><br><span class="line">    User user = <span class="keyword">new</span> User();</span><br><span class="line">    String currentIds[] = ids.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; currentIds.length; i++) &#123;</span><br><span class="line">        user.setUserId(Integer.parseInt(currentIds[i]));</span><br><span class="line">        user.setUserState(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">		<span class="keyword">return</span> MsgItem.error(<span class="string">&quot;用户名或密码错误&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(loginCheck.getUserType()!=<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> MsgItem.error(<span class="string">&quot;用户类型不匹配&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(loginCheck.getUserState()==<span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> MsgItem.error(<span class="string">&quot;该账号还未通过审核&quot;</span>);	</span><br><span class="line">	&#125;</span><br><span class="line">	session.setAttribute(<span class="string">&quot;userName&quot;</span>, loginCheck.getUserName());</span><br><span class="line">	session.setAttribute(<span class="string">&quot;user&quot;</span>, loginCheck);</span><br><span class="line">	<span class="keyword">return</span> MsgItem.success(<span class="string">&quot;登录成功 &quot;</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 注册</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/toRegistPage.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toRegistPage</span><span class="params">(Model model, HttpSession session)</span></span>&#123;</span><br><span class="line">	List&lt;Grade&gt; list = gradeService.find(<span class="keyword">new</span> Grade());</span><br><span class="line">	model.addAttribute(<span class="string">&quot;grade&quot;</span>, list);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;/user/regist&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加用户信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/addUserInfo.action&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> MsgItem <span class="title">addUserInfo</span><span class="params">(User user, Model model, HttpSession session)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(StringUtils.isEmpty(user.getUserName())) &#123;</span><br><span class="line">		<span class="keyword">return</span> MsgItem.error(<span class="string">&quot;请填写用户名&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(StringUtils.isEmpty(user.getUserPwd())) &#123;</span><br><span class="line">		<span class="keyword">return</span> MsgItem.error(<span class="string">&quot;请填写密码&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(StringUtils.isEmpty(user.getEmail())) &#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">           model.addAttribute(&quot;message&quot;, &quot;<span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&#x27;green&#x27;</span>&gt;</span>验证通过<span class="tag">&lt;/<span class="name">font</span>&gt;</span>&quot;);</span><br><span class="line">       &#125;</span><br><span class="line">       model.addAttribute(&quot;userId&quot;, userId);</span><br><span class="line">       return &quot;/admin/info-reg&quot;;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   /**</span><br><span class="line">    * ajax验证用户账号是否存在</span><br><span class="line">    *</span><br><span class="line">Id</span><br><span class="line"></span><br><span class="line">    * @return</span><br><span class="line">    */</span><br><span class="line">   @RequestMapping(&quot;/userRegist.action&quot;)</span><br><span class="line">   @ResponseBody</span><br><span class="line">   public MsgItem userRegist(String userId, Model model, HttpSession session) &#123;</span><br><span class="line">       MsgItem msgItem = new MsgItem();</span><br><span class="line">       User user = userService.get(userId);</span><br><span class="line">       if (user != null) &#123;</span><br><span class="line">           msgItem.setErrorNo(&quot;1&quot;);</span><br><span class="line">           msgItem.setErrorInfo(&quot;账号已经存在&quot;);</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">           msgItem.setErrorNo(&quot;0&quot;);</span><br><span class="line">           msgItem.setErrorInfo(&quot;<span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&#x27;green&#x27;</span>&gt;</span>验证通过<span class="tag">&lt;/<span class="name">font</span>&gt;</span>&quot;);</span><br><span class="line">       &#125;</span><br><span class="line">       return msgItem;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   /**</span><br><span class="line">    * 注销登录</span><br><span class="line">    *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    * @param session</span><br><span class="line">    * @return</span><br><span class="line">    */</span><br><span class="line">   @RequestMapping(&quot;/exitSys.action&quot;)</span><br><span class="line">   public String exitSys(User user, Model model, HttpSession session) &#123;</span><br><span class="line">       if (session.getAttribute(&quot;userName&quot;) != null) &#123;</span><br><span class="line">           session.removeAttribute(&quot;userName&quot;);</span><br><span class="line">           session.removeAttribute(&quot;adminUser&quot;);</span><br><span class="line">           return &quot;forward:/admin/login.action&quot;;</span><br><span class="line">       &#125;</span><br><span class="line">       return &quot;/admin/login&quot;;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   //跳转到题库录入页面</span><br><span class="line">   @RequestMapping(value = &quot;/toQueDep.action&quot;, method = RequestMethod.POST)</span><br><span class="line">   public String toQueDep(Model model, HttpSession session) &#123;</span><br><span class="line">       return &quot;/admin/info-reg&quot;;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

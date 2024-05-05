@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.wh%20071222062008%20b%20SpringBoot%E5%AE%A0%E7%89%A9%E5%95%86%E5%9F%8E%E7%B3%BB%E7%BB%9F%E5%AE%A0%E7%89%A9%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0(java+springboot+maven+mybatis+vue+mysql)%E3%80%90%E8%B4%AD%E7%89%A9%E3%80%91%E3%80%90%E5%AE%A0%E7%89%A9%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project23/100123032402.jpg" alt="100123032402"></p>
+<p><img src="../images/project23/110123032402.jpg" alt="110123032402"></p>
+<p><img src="../images/project23/120123032402.jpg" alt="120123032402"></p>
+<p><img src="../images/project23/130123032402.jpg" alt="130123032402"></p>
+<p><img src="../images/project23/150123032402.jpg" alt="150123032402"></p>
+<p><img src="../images/project23/160123032402.jpg" alt="160123032402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>一、项目运行 环境配置：</p>
+<p>Jdk1.8 + Mysql + HBuilderX（Webstorm也行）+ Eclispe（IntelliJ IDEA,Eclispe,MyEclispe,Sts都支持）。</p>
+<p>项目技术：</p>
+<p>Springboot + Maven + mybatis+ Vue 等等组成，B/S模式 + Maven管理等等。  </p>
+<p>分为后台管理员和前台用户<br>用户可以售卖宠物，也可以购买宠物</p>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改密码</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/changepassword&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Map <span class="title">changepsaaword</span><span class="params">(User user,<span class="meta">@RequestParam(value = &quot;oldpassword&quot;)</span>String oldpassword)</span></span>&#123;</span><br><span class="line">    Map map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    map.put(<span class="string">&quot;uid&quot;</span>,user.getUid());</span><br><span class="line">    User user1 = userService.queryUser(map);</span><br><span class="line">    map.remove(<span class="string">&quot;uid&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(user1.getPassword().equals(oldpassword))&#123;</span><br><span class="line">        userService.updateUser(user);</span><br><span class="line">        map.put(<span class="string">&quot;flag&quot;</span>,<span class="number">1</span>);</span><br><span class="line">        map.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;修改成功&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        map.put(<span class="string">&quot;flag&quot;</span>,<span class="number">0</span>);</span><br><span class="line">        map.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;旧密码错误&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除用户</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/deleteUser&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">deleteUser</span><span class="params">(Long uid)</span></span>&#123;</span><br><span class="line">    Map map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    map.put(<span class="string">&quot;uid&quot;</span>,uid);</span><br><span class="line">    userService.deleteUser(map);</span><br><span class="line">    petService.deletePet(map);</span><br><span class="line">    addressService.deleteAddress(map);</span><br><span class="line">    map.remove(<span class="string">&quot;uid&quot;</span>);</span><br><span class="line">    map.put(<span class="string">&quot;fromuid&quot;</span>,uid);</span><br><span class="line">    contactService.deleteContact(map);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;该用户已被删除&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查找所有用户</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/queryalluser&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">querAllUser</span><span class="params">(<span class="meta">@RequestParam(name = &quot;page&quot;,required = false)</span> Integer page,<span class="meta">@RequestParam(name = &quot;count&quot;,required = false)</span> Integer count)</span></span>&#123;</span><br><span class="line">    Map map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    <span class="keyword">if</span> (page != <span class="keyword">null</span> &amp;&amp; count != <span class="keyword">null</span>) &#123;</span><br><span class="line">        map.put(<span class="string">&quot;min&quot;</span>,(page-<span class="number">1</span>)*count);</span><br><span class="line">        map.put(<span class="string">&quot;max&quot;</span>,count);</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;User&gt; user = userService.queryAllUser(map);</span><br><span class="line">    <span class="keyword">return</span> user;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&quot;/countuser&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countuser</span><span class="params">()</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span>(skid != <span class="keyword">null</span> &amp;&amp; skid != <span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">        map.put(<span class="string">&quot;skid&quot;</span>,skid);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (bkid !=<span class="keyword">null</span> &amp;&amp; bkid != <span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">        map.put(<span class="string">&quot;bkid&quot;</span>,bkid);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (age != <span class="keyword">null</span> &amp;&amp; age != <span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">        map.put(<span class="string">&quot;age&quot;</span>,age);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (maxprice != <span class="keyword">null</span>)&#123;</span><br><span class="line">        map.put(<span class="string">&quot;maxprice&quot;</span>,maxprice);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (price != <span class="keyword">null</span>)&#123;</span><br><span class="line">        map.put(<span class="string">&quot;price&quot;</span>,price);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (petname != <span class="keyword">null</span> &amp;&amp; petname != <span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">        map.put(<span class="string">&quot;petname&quot;</span>,petname);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (date != <span class="keyword">null</span> &amp;&amp; date != <span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">        map.put(<span class="string">&quot;date&quot;</span>,date);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (sort != <span class="keyword">null</span> &amp;&amp; sort != <span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">        map.put(<span class="string">&quot;sort&quot;</span>,sort);</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;Pet&gt; pet = petService.queryPetpage(map);</span><br><span class="line">    <span class="keyword">return</span> pet;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询宠物条数</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/querypetcount&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">querypetcount</span><span class="params">(<span class="meta">@RequestParam(name = &quot;pid&quot;,required = false)</span> Integer pid,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="meta">@RequestParam(name = &quot;uid&quot;,required = false)</span> Integer uid,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="meta">@RequestParam(name = &quot;pk&quot;,required = false)</span> Integer pk,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="meta">@RequestParam(name = &quot;bkid&quot;,required = false)</span> String bkid,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="meta">@RequestParam(name = &quot;skid&quot;,required = false)</span> String skid,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="meta">@RequestParam(name = &quot;age&quot;,required = false)</span> String age,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="meta">@RequestParam(name = &quot;price&quot;,required = false)</span> Double price,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="meta">@RequestParam(name = &quot;date&quot;,required = false)</span> String date,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="meta">@RequestParam(name = &quot;petname&quot;,required = false)</span> String petname)</span> </span>&#123;</span><br><span class="line">    Map map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    <span class="keyword">if</span>(pid != <span class="keyword">null</span>) &#123;</span><br><span class="line">        map.put(<span class="string">&quot;pid&quot;</span>,pid);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(uid != <span class="keyword">null</span>) &#123;</span><br><span class="line">        map.put(<span class="string">&quot;uid&quot;</span>,uid);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (pk != <span class="keyword">null</span>) &#123;</span><br><span class="line">        map.put(<span class="string">&quot;pk&quot;</span>, pk);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (skid != <span class="keyword">null</span> &amp;&amp; skid != <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">        map.put(<span class="string">&quot;skid&quot;</span>, skid);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (bkid != <span class="keyword">null</span> &amp;&amp; bkid != <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">        map.put(<span class="string">&quot;bkid&quot;</span>, bkid);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (age != <span class="keyword">null</span> &amp;&amp; age != <span class="string">&quot;&quot;</span>)&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> (petname != <span class="keyword">null</span> &amp;&amp; petname != <span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;petname&quot;</span>,petname);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (price != <span class="keyword">null</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;price&quot;</span>,price);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (date != <span class="keyword">null</span> &amp;&amp; date != <span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;date&quot;</span>,date);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> petService.querypetcount(map);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询所有宠物的最高价</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/queryMaxPrice&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">queryMaxPrice</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> petService.queryMaxPrice();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询所有宠物年龄</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/queryage&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Map&gt; <span class="title">queryage</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> petService.queryage();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.example.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//登录</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/login&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Map <span class="title">login</span><span class="params">(String username, String password)</span></span>&#123;</span><br><span class="line">    <span class="comment">//查找该用户名(即该账户)是否存在</span></span><br><span class="line">    Map map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    map.put(<span class="string">&quot;username&quot;</span>, username);</span><br><span class="line">    map.put(<span class="string">&quot;telphone&quot;</span>, username);</span><br><span class="line">    map.put(<span class="string">&quot;email&quot;</span>, username);</span><br><span class="line">    User user = userService.queryUser(map);</span><br><span class="line">    map.remove(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">    map.remove(<span class="string">&quot;telphone&quot;</span>);</span><br><span class="line">    map.remove(<span class="string">&quot;email&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (user == <span class="keyword">null</span>)&#123;</span><br><span class="line">        map.put(<span class="string">&quot;flag&quot;</span>,<span class="number">0</span>);</span><br><span class="line">        map.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;用户不存在&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (password.equals(user.getPassword()))&#123;</span><br><span class="line">        map.put(<span class="string">&quot;flag&quot;</span>,<span class="number">1</span>);</span><br><span class="line">        map.put(<span class="string">&quot;uid&quot;</span>,user.getUid());</span><br><span class="line">        map.put(<span class="string">&quot;avatar&quot;</span>,user.getAvatar());</span><br><span class="line">        map.put(<span class="string">&quot;type&quot;</span>,user.getType());</span><br><span class="line">        map.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;欢迎，&quot;</span>+user.getUsername());</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        map.put(<span class="string">&quot;flag&quot;</span>,<span class="number">0</span>);</span><br><span class="line">        map.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;密码错误&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查找单个用户的信息</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/queryuser&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> User <span class="title">queryuser</span><span class="params">(Long uid)</span></span>&#123;</span><br><span class="line">    Map map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    map.put(<span class="string">&quot;uid&quot;</span>,uid);</span><br><span class="line">    User user = userService.queryUser(map);</span><br><span class="line">    <span class="keyword">if</span>(user.getType() == <span class="number">1</span>)&#123;</span><br><span class="line">        String idcard = user.getIdcard();</span><br><span class="line">        String start = idcard.substring(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">        String end = idcard.substring(idcard.length()-<span class="number">1</span>);</span><br><span class="line">        String center = idcard.substring(<span class="number">1</span>,idcard.length()-<span class="number">1</span>);</span><br><span class="line">        String newidcard = start + center.replaceAll(<span class="string">&quot;[0-9Xx]&quot;</span>,<span class="string">&quot;*&quot;</span>) + end;</span><br><span class="line">        user.setIdcard(newidcard);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="string">&quot;种类修改成功&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/queryallskind&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;SKind&gt; <span class="title">queryAllSKind</span><span class="params">(SKind sKind)</span></span>&#123;</span><br><span class="line">        Map map = <span class="keyword">new</span> HashMap();</span><br><span class="line">        <span class="keyword">if</span>(sKind.getBkid() != <span class="keyword">null</span>)&#123;</span><br><span class="line">            map.put(<span class="string">&quot;bkid&quot;</span>,sKind.getBkid());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sKind.getSkid() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            map.put(<span class="string">&quot;skid&quot;</span>,sKind.getSkid());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sKind.getSkindname() != <span class="keyword">null</span> &amp;&amp; sKind.getSkindname() != <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">            map.put(<span class="string">&quot;skindname&quot;</span>,sKind.getSkindname());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sKindService.queryAllSKind(map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.example.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/contact&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContactController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ContactService contactService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/updatecontact&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">updatecontact</span><span class="params">(Contact contact)</span></span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">                String filename = createUUID.getUUID() + files[i].getOriginalFilename().substring(files[i].getOriginalFilename().lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">                <span class="comment">//创建文件对象，设置文件保存路径</span></span><br><span class="line">                File dest = <span class="keyword">new</span> File(path + filename);</span><br><span class="line">                <span class="comment">//将文件对象转化为文件</span></span><br><span class="line">                files[i].transferTo(dest);</span><br><span class="line">                photo.setUrl(<span class="string">&quot;petimg/&quot;</span> + filename);</span><br><span class="line">                photoService.addPhoto(photo);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            photo.setUrl(<span class="string">&quot;defaultpetimg/nodata.jpg&quot;</span>);</span><br><span class="line">            photoService.addPhoto(photo);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;发布成功&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除宠物</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/deletePet&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">deletePet</span><span class="params">(<span class="meta">@RequestParam(name = &quot;uid&quot;,required = false)</span> Long uid, <span class="meta">@RequestParam(name = &quot;pid&quot;,required = false)</span> Long pid)</span></span>&#123;</span><br><span class="line">    Map map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    <span class="keyword">if</span>(uid != <span class="keyword">null</span>)&#123;</span><br><span class="line">        map.put(<span class="string">&quot;uid&quot;</span>,uid);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        map.put(<span class="string">&quot;pid&quot;</span>,pid);</span><br><span class="line">        map.put(<span class="string">&quot;postatu&quot;</span>,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;Petorder&gt; petorder = petorderService.querypetorder(map);</span><br><span class="line">    map.remove(<span class="string">&quot;postatu&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(petorder.size() == <span class="number">0</span>)&#123;</span><br><span class="line">        petService.deletePet(map);</span><br><span class="line">        photoService.deletePhoto(map);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;删除成功&quot;</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;该宠物已被购买，无法删除&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//更新宠物信息</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/updatePet&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">updatePet</span><span class="params">(<span class="meta">@RequestParam(name = &quot;files&quot;,required = false)</span> MultipartFile[] files,<span class="meta">@RequestParam(name = &quot;ppid&quot;,required = false)</span> Long[] ppid, Pet pet)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    Date date = <span class="keyword">new</span> Date();</span><br><span class="line">    pet.setDate(date);</span><br><span class="line">    Photo photo = <span class="keyword">new</span> Photo();</span><br><span class="line">    photo.setPid(pet.getPid());</span><br><span class="line">    <span class="comment">//删除图片</span></span><br><span class="line">    <span class="keyword">if</span>(ppid != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(ppid.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            Map photomap = <span class="keyword">new</span> HashMap();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i &lt; ppid.length; i++) &#123;</span><br><span class="line">                photomap.put(<span class="string">&quot;ppid&quot;</span>,ppid[i]);</span><br><span class="line">                photoService.deletePhoto(photomap);</span><br><span class="line">                photomap.remove(<span class="string">&quot;ppid&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

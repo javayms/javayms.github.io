@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.xs%20141023491103%209%20SpringBoot%E5%8B%A4%E5%B7%A5%E5%8A%A9%E5%AD%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+springboot+ssm+thymeleaf+html+mysql)">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project24/361023031103.jpg" alt="361023031103"></p>
+<p><img src="../images/project24/371023031103.jpg" alt="371023031103"></p>
+<p><img src="../images/project24/381023031103.jpg" alt="381023031103"></p>
+<p><img src="../images/project24/401023031103.jpg" alt="401023031103"></p>
+<p><img src="../images/project24/411023031103.jpg" alt="411023031103"></p>
+<p><img src="../images/project24/421023031103.jpg" alt="421023031103"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>一、项目运行</p>
+<p>1.运行环境</p>
+<p>环境配置：</p>
+<p>Jdk1.8 + mysql + Eclispe（IntelliJ IDEA,Eclispe,MyEclispe,Sts都支持）</p>
+<p>项目技术：</p>
+<p>HTML +Springboot+ SpringMVC + MyBatis + ThymeLeaf + JavaScript + JQuery + Ajax + maven等</p>
+<p>——————————OldCode——————————</p>
+<p>后台用户管理控制器:</p>
+<p>/**</p>
+<ul>
+<li>后台用户管理控制器</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/admin/user”)</p>
+<p>@Component</p>
+<p>public class UserController {</p>
+<p>@Autowired</p>
+<p>private UserService userService;</p>
+<p>@Autowired</p>
+<p>private RoleService roleService;</p>
+<p>@Autowired</p>
+<p>private OperaterLogService operaterLogService;</p>
+<p>/**</p>
+<ul>
+<li><p>用户列表页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/list”)</p>
+<p>public String list(Model model, User user, PageBean<User> pageBean){</User></p>
+<p>model.addAttribute(“usernmae”,user.getUsername());</p>
+<p>model.addAttribute(“pageBean”,userService.findList(user,pageBean));</p>
+<p>model.addAttribute(“title”,”用户列表”);</p>
+<p>return “admin/user/list”;</p>
+<p>/**</p>
+<ul>
+<li><p>用户添加页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@param</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/add”,method = RequestMethod.GET)</p>
+<p>public String add(Model model){</p>
+<p>List<Role> all = roleService.findAll();</Role></p>
+<p>model.addAttribute(“roles”,all);</p>
+<p>return “admin/user/add”;</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/add”,method = RequestMethod.POST)</p>
+<p>public Result<Boolean> add(Model model,User user){</Boolean></p>
+<p>//用统一验证实体方法验证是否合法</p>
+<p>CodeMsg validate = ValidateEntityUtil.validate(user);</p>
+<p>if(validate.getCode()!=CodeMsg.SUCCESS.getCode()){</p>
+<p>return Result.error(validate);</p>
+<p>//判断用户的角色是否选择</p>
+<p>if(user.getRole()==null ||user.getRole().getId()==null){</p>
+<p>return Result.error(CodeMsg.ADMIN_USER_ROLE_EMPTY);</p>
+<p>//没有ID 传个0进去 0不是Long类型 所以加个0l L</p>
+<p>if(userService.isExistUsername(user.getUsername(),0l)){</p>
+<p>return Result.error(CodeMsg.ADMIN_USER_NAME_EXIST);</p>
+<p>//到这说明一切符合条件进行数据库新增</p>
+<p>if(userService.save(user)==null){</p>
+<p>return Result.error(CodeMsg.ADMIN_USER_ADD_ERROR);</p>
+<p>operaterLogService.add(“添加用户，用户名：”+user.getUsername());</p>
+<p>return Result.success(true);</p>
+<p>/**</p>
+<ul>
+<li><p>用户编辑页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/edit”,method = RequestMethod.GET)</p>
+<p>public String edit(Model model,@RequestParam(name = “id”,required = true) Long id){</p>
+<p>model.addAttribute(“user”,userService.find(id));</p>
+<p>model.addAttribute(“roles”,roleService.findAll());</p>
+<p>return “admin/user/edit”;</p>
+<p>/**</p>
+<ul>
+<li><p>编辑用户信息表单提交处理</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/edit”,method = RequestMethod.POST)</p>
+<p>public Result<Boolean> edit(User user){</Boolean></p>
+<p>//用统一验证实体方法验证是否合法</p>
+<p>CodeMsg validate = ValidateEntityUtil.validate(user);</p>
+<p>if(validate.getCode()!=CodeMsg.SUCCESS.getCode()){</p>
+<p>return Result.error(validate);</p>
+<p>//判断用户的角色是否选择</p>
+<p>if(user.getRole()==null ||user.getRole().getId()==null){</p>
+<p>return Result.error(CodeMsg.ADMIN_USER_ROLE_EMPTY);</p>
+<p>if(user.getId()==null||user.getId().longValue()&lt;=0){</p>
+<p>return Result.error(CodeMsg.ADMIN_USER_NO_EXIST);</p>
+<p>//判断数据库user表有没有这个用户名</p>
+<p>if(userService.isExistUsername(user.getUsername(),user.getId().longValue())){</p>
+<p>return Result.error(CodeMsg.ADMIN_USER_NAME_EXIST);</p>
+<p>//将提交的用户信息指定字段复制到已存在的user对象中</p>
+<p>User findbyId = userService.find(user.getId());</p>
+<p>//把source原来的字段复制到目标对象当中ignoreProperties表示忽略哪些字段 该方法会覆盖新字段内容</p>
+<p>BeanUtils.copyProperties(user,findbyId,”id”,”createTime”,”updateTime”);</p>
+<p>//到这说明一切通过 开始进行数据库编辑</p>
+<p>if(userService.save(findbyId)==null){</p>
+<p>return Result.error(CodeMsg.ADMIN_USER_EDIT_ERROR);</p>
+<p>operaterLogService.add(“编辑用户，用户名：”+user.getUsername());</p>
+<p>return Result.success(true);</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/delete”,method = RequestMethod.POST)</p>
+<p>public Result<Boolean> delete(@RequestParam(name = “id”,required = true) Long id) {</Boolean></p>
+<p>try {</p>
+<p>userService.delete(id);</p>
+<p>} catch (Exception e){</p>
+<p>return Result.error(CodeMsg.ADMIN_USER_DELETE_ERROR);</p>
+<p>operaterLogService.add(“删除用户，id为：”+id);</p>
+<p>return  Result.success(true);</p>
+<p>后台角色管理控制器:</p>
+<p>/**</p>
+<ul>
+<li>后台角色管理控制器</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/admin/role”)</p>
+<p>@Controller</p>
+<p>public class RoleController {</p>
+<p>@Autowired</p>
+<p>private MenuService menuService;</p>
+<p>private Logger log= LoggerFactory.getLogger(RoleController.class);</p>
+<p>@Autowired</p>
+<p>private OperaterLogService operaterLogService;</p>
+<p>@Autowired</p>
+<p>private RoleService roleService;</p>
+<p>/**</p>
+<ul>
+<li><p>分页搜索角色列表</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@param role</p>
+</li>
+<li><p>@param pageBean</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/list”)</p>
+<p>public String list(Model model, Role role, PageBean<Role> pageBean){</Role></p>
+<p>model.addAttribute(“title”,”角色列表”);</p>
+<p>model.addAttribute(“name”,role.getName());</p>
+<p>model.addAttribute(“pageBean”,roleService.findByName(role,pageBean));</p>
+<p>return “admin/role/list”;</p>
+<p>/**</p>
+<ul>
+<li><p>角色添加页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/add”,method = RequestMethod.GET)</p>
+<p>public String add(Model model){</p>
+<p>List<Menu> all = menuService.findAll();</Menu></p>
+<p>model.addAttribute(“title”,”添加角色”);</p>
+<p>model.addAttribute(“topMenus”, MenuUtil.getTopMenus(all));</p>
+<p>model.addAttribute(“secondMenus”, MenuUtil.getSecondMenus(all));</p>
+<p>model.addAttribute(“thirdMenus”, MenuUtil.getThirdMenus(all));</p>
+<p>return “admin/role/add”;</p>
+<p>/**</p>
+<ul>
+<li><p>角色添加表单提交处理</p>
+</li>
+<li><p>@param role</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/add”,method = RequestMethod.POST)</p>
+<p>public Result<Boolean> add(Role role, HttpServletRequest request){</Boolean></p>
+<p>CodeMsg validate = ValidateEntityUtil.validate(role);</p>
+<p>if(validate.getCode()!=CodeMsg.SUCCESS.getCode()){</p>
+<p>return  Result.error(validate);</p>
+<p>if(roleService.save(role)==null){</p>
+<p>return  Result.error(CodeMsg.ADMIN_ROLE_ADD_ERROR);</p>
+<p>log.info(“添加角色[“+role+”]”);</p>
+<p>operaterLogService.add(“添加角色[“+role.getName()+”]”);</p>
+<p>return Result.success(true);</p>
+<p>/**</p>
+<ul>
+<li><p>角色编辑页面</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/edit”,method = RequestMethod.GET)</p>
+<p>public String edit(@RequestParam(name = “id”,required = true) Long id, Model model){</p>
+<p>List<Menu> all = menuService.findAll();</Menu></p>
+<p>model.addAttribute(“title”,”添加角色”);</p>
+<p>model.addAttribute(“topMenus”, MenuUtil.getTopMenus(all));</p>
+<p>model.addAttribute(“secondMenus”, MenuUtil.getSecondMenus(all));</p>
+<p>model.addAttribute(“thirdMenus”, MenuUtil.getThirdMenus(all));</p>
+<p>Role role = roleService.find(id);</p>
+<p>model.addAttribute(“role”,role);</p>
+<p>//list转换为数组</p>
+<p>model.addAttribute(“authorities”, JSONArray.toJSON(role.getAuthorities()).toString());</p>
+<p>return “admin/role/edit”;</p>
+<p>/**</p>
+<ul>
+<li><p>角色修改表单提交处理</p>
+</li>
+<li><p>@param role</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/edit”,method = RequestMethod.POST)</p>
+<p>public Result<Boolean> edit(Role role, HttpServletRequest request){</Boolean></p>
+<p>CodeMsg validate = ValidateEntityUtil.validate(role);</p>
+<p>if(validate.getCode()!=CodeMsg.SUCCESS.getCode()){</p>
+<p>return  Result.error(validate);</p>
+<p>Role existRole = roleService.find(role.getId());</p>
+<p>if(existRole==null){</p>
+<p>return  Result.error(CodeMsg.ADMIN_ROLE_NO_EXIST);</p>
+<p>existRole.setName(role.getName());</p>
+<p>existRole.setRemark(role.getRemark());</p>
+<p>existRole.setStatus(role.getStatus());</p>
+<p>existRole.setAuthorities(role.getAuthorities());</p>
+<p>if(roleService.save(existRole)==null){</p>
+<p>return  Result.error(CodeMsg.ADMIN_ROLE_EDIT_ERROR);</p>
+<p>log.info(“编辑角色[“+role+”]”);</p>
+<p>operaterLogService.add(“编辑角色[“+role.getName()+”]”);</p>
+<p>return Result.success(true);</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/delete”,method = RequestMethod.POST)</p>
+<p>public Result<Boolean> delete(@RequestParam(name = “id”,required = true) Long id,HttpServletRequest request){</Boolean></p>
+<p>try {</p>
+<p>roleService.delete(id);</p>
+<p>}catch (Exception e){</p>
+<p>return Result.error(CodeMsg.ADMIN_ROLE_DELETE_ERROR);</p>
+<p>log.info(“删除角色ID[“+id+”]”);</p>
+<p>operaterLogService.add(“删除角色ID[“+id+”]”);</p>
+<p>return Result.success(true);</p>
+<p>后台学生管理:</p>
+<p>/**</p>
+<ul>
+<li>后台学生管理</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/admin/student/“)</p>
+<p>@Controller</p>
+<p>public class StudentController {</p>
+<p>@Autowired</p>
+<p>private StudentService studentService ;</p>
+<p>@Autowired</p>
+<p>private OperaterLogService operaterLogService;</p>
+<p>/**</p>
+<ul>
+<li><p>学生管理列表</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/list”)</p>
+<p>public String list(Model model, Student student, PageBean<Student> pageBean){</Student></p>
+<p>model.addAttribute(“pageBean”,studentService.findList(student, pageBean));</p>
+<p>model.addAttribute(“studentLoginName”,student.getLoginName());</p>
+<p>model.addAttribute(“title”,”学生列表”);</p>
+<p>return “/admin/student/list”;</p>
+<p>/**</p>
+<ul>
+<li>后台学生添加页面</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/add”,method = RequestMethod.GET)</p>
+<p>public String add(){</p>
+<p>return “/admin/student/add”;</p>
+<p>/**</p>
+<ul>
+<li>后台学生添加信息操作</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/add”,method = RequestMethod.POST)</p>
+<p>public Result<Boolean> add(Model model,Student student){</Boolean></p>
+<p>CodeMsg validate = ValidateEntityUtil.validate(student);</p>
+<p>if (validate.getCode() != CodeMsg.SUCCESS.getCode()) {</p>
+<p>return Result.error(validate);</p>
+<p>if(studentService.findByLoginName(student.getLoginName())!=null){</p>
+<p>return Result.error(CodeMsg.ADMIN_STUDENT_ISEXIST_ERROR);</p>
+<p>if(studentService.save(student)==null){</p>
+<p>return Result.error(CodeMsg.ADMIN_STUDENT_ADD_ERROR);</p>
+<p>return Result.success(true);</p>
+<p>/**</p>
+<ul>
+<li><p>编辑学生页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/edit”,method = RequestMethod.GET)</p>
+<p>public String edit(Model model, @RequestParam(“id”)Long id){</p>
+<p>if(studentService.findById(id)!=null){</p>
+<p>model.addAttribute(“student”,studentService.findById(id));</p>
+<p>return “/admin/student/edit”;</p>
+<p>/**</p>
+<ul>
+<li><p>编辑后台学生信息</p>
+</li>
+<li><p>@param student</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/edit”, method = RequestMethod.POST)</p>
+<p>public Result<Boolean> edit(Student student, HttpServletRequest request) {</Boolean></p>
+<p>//用统一验证实体方法验证是否合法</p>
+<p>CodeMsg validate = ValidateEntityUtil.validate(student);</p>
+<p>if (validate.getCode() != CodeMsg.SUCCESS.getCode()) {</p>
+<p>return Result.error(validate);</p>
+<p>//将提交的学生信息指定字段复制到已存在的student对象中</p>
+<p>Student findbyId = studentService.findById(student.getId());</p>
+<p>//把source原来的字段复制到目标对象当中ignoreProperties表示忽略哪些字段 该方法会覆盖新字段内容</p>
+<p>BeanUtils.copyProperties(student, findbyId, “id”, “createTime”, “updateTime”);</p>
+<p>//到这说明一切通过 开始进行数据库编辑</p>
+<p>if (studentService.save(findbyId) == null) {</p>
+<p>return Result.error(CodeMsg.ADMIN_STUDENT_EDIT_ERROR);</p>
+<p>operaterLogService.add(“编辑学生，学生姓名：” + student.getStuName());</p>
+<p>return Result.success(true);</p>
+<p>/**</p>
+<ul>
+<li><p>学生删除操作</p>
+</li>
+<li><p>@param ids</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/delete”, method = RequestMethod.POST)</p>
+<p>public Result<Boolean> delete(@RequestParam(name = “ids”, required = true) String ids) {</Boolean></p>
+<p>if (!StringUtils.isEmpty(ids)) {</p>
+<p>String[] splitIds = ids.split(“,”);</p>
+<p>for (String id : splitIds) {</p>
+<p>Student student = studentService.findById(Long.valueOf(id));</p>
+<p>if (student != null) {</p>
+<p>try {</p>
+<p>studentService.delete(Long.valueOf(id));</p>
+<p>operaterLogService.add(“删除学生，id为：” + id);</p>
+<p>}catch (Exception e){</p>
+<p>return Result.error(CodeMsg.ADMIN_STUDENT_DELETE_ERROR);</p>
+<p>return Result.success(true);</p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

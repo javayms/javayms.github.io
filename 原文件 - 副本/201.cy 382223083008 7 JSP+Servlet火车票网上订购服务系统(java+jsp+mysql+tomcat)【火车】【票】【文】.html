@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/201.cy%20382223083008%207%20JSP+Servlet%E7%81%AB%E8%BD%A6%E7%A5%A8%E7%BD%91%E4%B8%8A%E8%AE%A2%E8%B4%AD%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F(java+jsp+mysql+tomcat)%E3%80%90%E7%81%AB%E8%BD%A6%E3%80%91%E3%80%90%E7%A5%A8%E3%80%91%E3%80%90%E6%96%87%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project29/392223083009.jpg" alt="392223083009"></p>
+<p><img src="../images/project29/392223083008.jpg" alt="392223083008"></p>
+<p><img src="../images/project29/402223083008.jpg" alt="402223083008"></p>
+<p><img src="../images/project29/412223083008.jpg" alt="412223083008"></p>
+<p><img src="../images/project29/422223083008.jpg" alt="422223083008"></p>
+<p><img src="../images/project29/432223083008.jpg" alt="432223083008"></p>
+<p><img src="../images/project29/442223083008.jpg" alt="442223083008"></p>
+<p><img src="../images/project29/462223083008.jpg" alt="462223083008"></p>
+<p><img src="../images/project29/472223083008.jpg" alt="472223083008"></p>
+<p><img src="../images/project29/482223083008.jpg" alt="482223083008"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>管理员<br>admin    123456</p>
+<p>用户：<br>123456789    123456</p>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"> */</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">		<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	response.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">	<span class="comment">//设置传输数据编码方式</span></span><br><span class="line">	request.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">	response.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">	<span class="comment">//获取前台传送的变量，账号，密码和用户类型</span></span><br><span class="line">	String uname=request.getParameter(<span class="string">&quot;uname&quot;</span>);</span><br><span class="line">	String upassword=request.getParameter(<span class="string">&quot;upassword&quot;</span>);</span><br><span class="line">	String utype=request.getParameter(<span class="string">&quot;utype&quot;</span>);</span><br><span class="line">	<span class="comment">//创建数据库操作对象</span></span><br><span class="line">	DbConn db=<span class="keyword">new</span> DbConn();</span><br><span class="line">	<span class="comment">//sql语句变量定义</span></span><br><span class="line">	String sql=<span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="keyword">int</span> id=-<span class="number">1</span>;</span><br><span class="line">	String usname=<span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="keyword">if</span>(<span class="string">&quot;gly&quot;</span>.equals(utype))&#123;</span><br><span class="line">		sql=<span class="string">&quot;select id from userinfo where uname=&#x27;&quot;</span>+uname+<span class="string">&quot;&#x27; and upassword=&#x27;&quot;</span>+upassword+<span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;cus&quot;</span>.equals(utype))&#123;</span><br><span class="line">		sql=<span class="string">&quot;select id,cname from cusinfo where cidcard=&#x27;&quot;</span>+uname+<span class="string">&quot;&#x27; and cpassword=&#x27;&quot;</span>+upassword+<span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	JSONObject json=<span class="keyword">new</span> JSONObject();</span><br><span class="line">	<span class="keyword">if</span>(<span class="string">&quot;&quot;</span>.equals(sql))&#123;</span><br><span class="line">		json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;系统错误01.&quot;</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		ResultSet rs=db.query(sql);</span><br><span class="line">		<span class="keyword">if</span>(rs==<span class="keyword">null</span>)&#123;</span><br><span class="line">			json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;系统错误02&quot;</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">					id=rs.getInt(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">					<span class="keyword">if</span>(<span class="string">&quot;cus&quot;</span>.equals(utype))&#123;</span><br><span class="line">						usname=rs.getString(<span class="string">&quot;cname&quot;</span>);</span><br><span class="line">					&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;gly&quot;</span>.equals(utype))&#123;</span><br><span class="line">						usname=uname;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">				e.printStackTrace();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;lp&quot;</span>.equals(flgs))&#123;</span><br><span class="line">			<span class="keyword">int</span> bls=db.deleteOrUpdate(<span class="string">&quot;update dpiao set lyflag=&#x27;已领票&#x27; where id=&quot;</span>+id);</span><br><span class="line">			<span class="keyword">if</span>(bls&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				json.put(<span class="string">&quot;dt&quot;</span>, <span class="number">1</span>);</span><br><span class="line">				json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;领票成功。&quot;</span>);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				json.put(<span class="string">&quot;dt&quot;</span>, <span class="number">0</span>);</span><br><span class="line">				json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;lperror:01&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;tp&quot;</span>.equals(flgs))&#123;</span><br><span class="line">			<span class="keyword">int</span> bls=db.deleteOrUpdate(<span class="string">&quot;delete from dpiao where id=&quot;</span>+id);</span><br><span class="line">			<span class="keyword">if</span>(bls&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				json.put(<span class="string">&quot;dt&quot;</span>, <span class="number">1</span>);</span><br><span class="line">				json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;退票成功。&quot;</span>);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				json.put(<span class="string">&quot;dt&quot;</span>, <span class="number">0</span>);</span><br><span class="line">				json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;tperror:01&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;del&quot;</span>.equals(flgs))&#123;</span><br><span class="line">			<span class="keyword">int</span> bls=db.deleteOrUpdate(<span class="string">&quot;delete from dpiao where id=&quot;</span>+id);</span><br><span class="line">			<span class="keyword">if</span>(bls&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				json.put(<span class="string">&quot;dt&quot;</span>, <span class="number">1</span>);</span><br><span class="line">				json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;删除成功。&quot;</span>);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				json.put(<span class="string">&quot;dt&quot;</span>, <span class="number">0</span>);</span><br><span class="line">				json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;tperror:01&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			json.put(<span class="string">&quot;dt&quot;</span>, <span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		PrintWriter out = response.getWriter();</span><br><span class="line">		out.print(json.toString());</span><br><span class="line">		out.flush();</span><br><span class="line">		out.close();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Initialization of the servlet. &lt;br&gt;</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> ServletException if an error occurs</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">		<span class="comment">// Put your code here</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">super</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Destruction of the servlet. &lt;br&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">super</span>.destroy(); <span class="comment">// Just puts &quot;destroy&quot; string in log</span></span><br><span class="line">	<span class="comment">// Put your code here</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The doGet method of the servlet. &lt;br&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This method is called when a form has its tag value method equals to get.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request the request send by the client to the server</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response the response send by the server to the client</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> ServletException if an error occurred</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException if an error occurred</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">		<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.doPost(request, response);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The doPost method of the servlet. &lt;br&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This method is called when a form has its tag value method equals to post.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request the request send by the client to the server</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response the response send by the server to the client</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> ServletException if an error occurred</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException if an error occurred</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">		<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	<span class="comment">//设置传输数据编码方式</span></span><br><span class="line">	request.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">	response.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">	response.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">	HttpSession session=request.getSession();</span><br><span class="line">	<span class="comment">//获取当前登录用户信息</span></span><br><span class="line">	Object utype=session.getAttribute(<span class="string">&quot;utype&quot;</span>);</span><br><span class="line">	Object userid=session.getAttribute(<span class="string">&quot;userid&quot;</span>);</span><br><span class="line">	<span class="comment">//创建json对象</span></span><br><span class="line">	JSONObject json=<span class="keyword">new</span> JSONObject();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">		DbConn db2=<span class="keyword">new</span> DbConn();</span><br><span class="line">		<span class="keyword">if</span>(db.checkTrue(<span class="string">&quot;select id from xianlu where tid=&quot;</span>+tid+<span class="string">&quot;  and zdid=&quot;</span>+zdid))&#123;</span><br><span class="line">			json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;该线路已有该站点&quot;</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(db2.checkTrue(<span class="string">&quot;select id from xianlu where tid=&quot;</span>+tid+<span class="string">&quot; and xh=&quot;</span>+xh))&#123;</span><br><span class="line">			json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;站点序号已存在&quot;</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">boolean</span> bl=db.insort(<span class="string">&quot;insert into xianlu(xh,tid,zdid) values(&quot;</span>+xh+<span class="string">&quot;,&quot;</span>+tid+<span class="string">&quot;,&quot;</span>+zdid+<span class="string">&quot;)&quot;</span>);</span><br><span class="line">			<span class="keyword">if</span>(!bl)&#123;</span><br><span class="line">				json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;添加成功。&quot;</span>);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;添加失败&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//车票信息添加</span></span><br><span class="line">	<span class="comment">//data:&#123;tname:&#x27;piao&#x27;,&quot;szdid&quot;:szdid,&quot;stime&quot;:stime,&quot;ezdid&quot;:ezdid,&quot;pval&quot;:pval,&quot;ptype&quot;:ptype,</span></span><br><span class="line">	<span class="comment">//&quot;cxzh&quot;:cxzh,&quot;yxsj&quot;:yxsj,&quot;tid&quot;:tid,idi:ids&#125;,</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="string">&quot;piao&quot;</span>.equals(tname))&#123;</span><br><span class="line">		String tid=request.getParameter(<span class="string">&quot;tid&quot;</span>);</span><br><span class="line">		String szdid=request.getParameter(<span class="string">&quot;szdid&quot;</span>);</span><br><span class="line">		String ezdid=request.getParameter(<span class="string">&quot;ezdid&quot;</span>);</span><br><span class="line">		String stime=request.getParameter(<span class="string">&quot;stime&quot;</span>);</span><br><span class="line">		String pval=request.getParameter(<span class="string">&quot;pval&quot;</span>);</span><br><span class="line">		String ptype=request.getParameter(<span class="string">&quot;ptype&quot;</span>);</span><br><span class="line">		String cxzh=request.getParameter(<span class="string">&quot;cxzh&quot;</span>);</span><br><span class="line">		String yxsj=request.getParameter(<span class="string">&quot;yxsj&quot;</span>);</span><br><span class="line">		<span class="keyword">boolean</span> bl=db.insort(<span class="string">&quot;insert into piao(szdid,ezdid,tid,stime,pval,ptype,cxzh,yxsj) values(&quot;</span>+szdid+<span class="string">&quot;,&quot;</span>+ezdid+<span class="string">&quot;,&quot;</span>+tid+<span class="string">&quot;,&#x27;&quot;</span>+stime+<span class="string">&quot;&#x27;,&quot;</span>+pval+<span class="string">&quot;,&#x27;&quot;</span>+ptype+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+cxzh+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+yxsj+<span class="string">&quot;&#x27;)&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span>(!bl)&#123;</span><br><span class="line">			json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;添加成功。&quot;</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			json.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;添加失败&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	PrintWriter out=response.getWriter();</span><br><span class="line">	out.print(json.toString());</span><br><span class="line">	out.flush();</span><br><span class="line">	out.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Initialization of the servlet. &lt;br&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> ServletException if an error occurs</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">	<span class="comment">// Put your code here</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InitLoginSvlt</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Constructor of the object.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">InitLoginSvlt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Destruction of the servlet. &lt;br&gt;</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.destroy(); <span class="comment">// Just puts &quot;destroy&quot; string in log</span></span><br><span class="line">		<span class="comment">// Put your code here</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * The doGet method of the servlet. &lt;br&gt;</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * This method is called when a form has its tag value method equals to get.</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> request the request send by the client to the server</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> response the response send by the server to the client</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> ServletException if an error occurred</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> IOException if an error occurred</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.doPost(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * The doPost method of the servlet. &lt;br&gt;</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * This method is called when a form has its tag value method equals to post.</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">		response.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">		response.setContentType(<span class="string">&quot;text/html&quot;</span>);</span><br><span class="line">		String tid=request.getParameter(<span class="string">&quot;tid&quot;</span>);</span><br><span class="line">		JSONObject json=<span class="keyword">new</span> JSONObject();</span><br><span class="line">		<span class="keyword">if</span>(!<span class="string">&quot;&quot;</span>.equals(tid)&amp;&amp;tid!=<span class="keyword">null</span>)&#123;</span><br><span class="line">			DbConn db=<span class="keyword">new</span> DbConn();</span><br><span class="line">			ResultSet rs=db.query(<span class="string">&quot;select zhandian.* from xianlu,zhandian where xianlu.zdid=zhandian.id and xianlu.tid=&quot;</span>+tid);</span><br><span class="line">			List&lt;Zhandian&gt; zdlist=FindService.getZhandian(rs);</span><br><span class="line">			json.put(<span class="string">&quot;msg&quot;</span>, <span class="number">1</span>);</span><br><span class="line">			json.put(<span class="string">&quot;zdlist&quot;</span>, zdlist);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			json.put(<span class="string">&quot;msg&quot;</span>, <span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		PrintWriter out=response.getWriter();</span><br><span class="line">		out.print(json.toString());</span><br><span class="line">		out.flush();</span><br><span class="line">		out.close();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Initialization of the servlet. &lt;br&gt;</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> ServletException if an error occurs</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">		<span class="comment">// Put your code here</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CkSvlt</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Constructor of the object.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">CkSvlt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

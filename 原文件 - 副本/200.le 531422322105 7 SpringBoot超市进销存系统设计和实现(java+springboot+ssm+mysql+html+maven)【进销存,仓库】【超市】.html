@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.le%20531422322105%207%20SpringBoot%E8%B6%85%E5%B8%82%E8%BF%9B%E9%94%80%E5%AD%98%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%AE%9E%E7%8E%B0(java+springboot+ssm+mysql+html+maven)%E3%80%90%E8%BF%9B%E9%94%80%E5%AD%98,%E4%BB%93%E5%BA%93%E3%80%91%E3%80%90%E8%B6%85%E5%B8%82%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project21/550023202402.jpg" alt="550023202402"></p>
+<p><img src="../images/project21/560023202402.jpg" alt="560023202402"></p>
+<p><img src="../images/project21/570023202402.jpg" alt="570023202402"></p>
+<p><img src="../images/project21/580023202402.jpg" alt="580023202402"></p>
+<p><img src="../images/project21/590023202402.jpg" alt="590023202402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>一、项目简述</p>
+<p>本系统主要实现的功能有： 用户管理，商品管理，销售管理，进货退货管理，仓库管 理等等功能。</p>
+<p>二、项目运行</p>
+<p>环境配置： Jdk1.8 + mysql + Eclispe (IntelliJ IDEA,Eclispe,MyEclispe,Sts 都支持)</p>
+<p>项目技术： Springboot+ SpringMVC + MyBatis + ThymeLeaf + JavaScript + JQuery + Ajax + maven等等</p>
+<p>——————————NewCode——————————</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line"> * 前端控制器</span><br><span class="line"> * <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/role&quot;)</span><br><span class="line">public class RoleController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private RoleService roleService;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private PermissionService permissionService;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 查询所有角色信息</span><br><span class="line">     * @param roleVO</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @SysLog(&quot;角色查询操作&quot;)</span><br><span class="line">    @RequestMapping(&quot;/roleList&quot;)</span><br><span class="line">    public DataGridViewResult roleList(RoleVO roleVO) &#123;</span><br><span class="line">        //分页构造函数</span><br><span class="line">        IPage<span class="tag">&lt;<span class="name">Role</span>&gt;</span> page = new Page<span class="tag">&lt;&gt;</span>(roleVO.getPage(), roleVO.getLimit());</span><br><span class="line">        QueryWrapper<span class="tag">&lt;<span class="name">Role</span>&gt;</span> queryWrapper = new QueryWrapper<span class="tag">&lt;&gt;</span>();</span><br><span class="line">        queryWrapper.like(!StringUtils.isEmpty(roleVO.getRolename()), &quot;rolename&quot;, roleVO.getRolename());</span><br><span class="line">        /**</span><br><span class="line">         * 翻页查询</span><br><span class="line">         *</span><br><span class="line">         * @param page         翻页对象</span><br><span class="line">         * @param queryWrapper 实体对象封装操作类 &#123;@link com.baomidou.mybatisplus.core.conditions.query.QueryWrapper&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 类别批量删除</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> ids</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SysLog(&quot;类别删除操作&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/deleteList&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">deleteList</span><span class="params">(String ids)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//将字符串拆分成数组</span></span><br><span class="line">    String[] idsStr = ids.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">    List&lt;String&gt; list = Arrays.asList(idsStr);</span><br><span class="line">    <span class="keyword">boolean</span> bool = categoryService.removeByIds(list);</span><br><span class="line">    <span class="keyword">if</span>(bool)&#123;</span><br><span class="line">        <span class="keyword">return</span> Result.success(<span class="keyword">true</span>,<span class="string">&quot;200&quot;</span>,<span class="string">&quot;删除成功！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Result.error(<span class="keyword">false</span>,<span class="keyword">null</span>,<span class="string">&quot;删除失败！&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加类别信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> category</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SysLog(&quot;类别添加操作&quot;)</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/addcategory&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">addCategory</span><span class="params">(Category category)</span></span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> bool = categoryService.save(category);</span><br><span class="line">    <span class="keyword">if</span>(bool)&#123;</span><br><span class="line">        <span class="keyword">return</span> Result.success(<span class="keyword">true</span>,<span class="string">&quot;200&quot;</span>,<span class="string">&quot;添加成功！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Result.error(<span class="keyword">false</span>,<span class="keyword">null</span>,<span class="string">&quot;添加失败！&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改类别信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> category</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SysLog(&quot;类别修改操作&quot;)</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/updatecategory&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">updateCategory</span><span class="params">(Category category)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">boolean</span> bool = categoryService.updateById(category);</span><br><span class="line">    <span class="keyword">if</span>(bool)&#123;</span><br><span class="line">        <span class="keyword">return</span> Result.success(<span class="keyword">true</span>,<span class="string">&quot;200&quot;</span>,<span class="string">&quot;修改成功！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Result.error(<span class="keyword">false</span>,<span class="keyword">null</span>,<span class="string">&quot;修改失败！&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除单条数据</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">            .select(<span class="string">&quot;sum( money*buyquantity ) AS moneys,DATE_FORMAT( buytime, &#x27;%Y-%m&#x27; ) AS counttime&quot;</span>)</span><br><span class="line">            .between(<span class="string">&quot;buytime&quot;</span>,DateUtils.stepMonth(i),DateUtils.getMonth(i))</span><br><span class="line">            .groupBy(<span class="string">&quot;counttime&quot;</span>)</span><br><span class="line">            .orderByDesc(<span class="string">&quot;counttime&quot;</span>);</span><br><span class="line"></span><br><span class="line">    queryWrapper2</span><br><span class="line">            .select(<span class="string">&quot;sum( outprice ) AS moneys,DATE_FORMAT( outtime, &#x27;%Y-%m&#x27; ) AS counttime&quot;</span>)</span><br><span class="line">            .between(<span class="string">&quot;outtime&quot;</span>,DateUtils.stepMonth(i),DateUtils.getMonth(i))</span><br><span class="line">            .groupBy(<span class="string">&quot;counttime&quot;</span>)</span><br><span class="line">            .orderByDesc(<span class="string">&quot;counttime&quot;</span>);</span><br><span class="line"></span><br><span class="line">    Sale sales = saleService.getOne(queryWrapper);</span><br><span class="line"></span><br><span class="line">    Outsale outsale = outsaleService.getOne(queryWrapper2);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span>!= sales)&#123;</span><br><span class="line">        list1.add(sales.getCounttime());</span><br><span class="line">        list2.add(sales.getMoneys());</span><br><span class="line">        <span class="keyword">if</span>(outsale!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            list3.add(sales.getMoneys()-outsale.getMoneys());</span><br><span class="line">            list4.add(-outsale.getMoneys());</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            list3.add(sales.getMoneys());</span><br><span class="line">            list4.add(<span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        list1.add(<span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM&quot;</span>).format(DateUtils.getMonth(i)));</span><br><span class="line">        list2.add(<span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">if</span>(outsale!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            list3.add(-outsale.getMoneys());</span><br><span class="line">            list4.add(-outsale.getMoneys());</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            list3.add(<span class="keyword">null</span>);</span><br><span class="line">            list4.add(<span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map.put(<span class="string">&quot;data1&quot;</span>,list1);</span><br><span class="line">map.put(<span class="string">&quot;data2&quot;</span>,list2);</span><br><span class="line">map.put(<span class="string">&quot;data3&quot;</span>,list3);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> InportService inportService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Resource</span></span><br><span class="line"><span class="keyword">private</span> OutportService outportService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> GoodsService goodsService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@SysLog(&quot;查询统计销售报表&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/statisticsSales&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataGridViewResult <span class="title">statisticsSales</span><span class="params">()</span></span>&#123;</span><br><span class="line">    QueryWrapper&lt;Sale&gt; queryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">    queryWrapper</span><br><span class="line">            .select(<span class="string">&quot;gid&quot;</span>,<span class="string">&quot;sum(buyquantity) total,sum(realnumber) actualtotal&quot;</span>)</span><br><span class="line">            .groupBy(<span class="string">&quot;gid&quot;</span>)</span><br><span class="line">            .orderByAsc(<span class="string">&quot;total&quot;</span>)</span><br><span class="line">            .last(<span class="string">&quot;limit 5&quot;</span>);</span><br><span class="line">    List&lt;Sale&gt; salesList = saleService.list(queryWrapper);</span><br><span class="line">    Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    List&lt;String&gt; list1 = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    List&lt;Integer&gt; list2 = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    List&lt;Integer&gt; list3 = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (Sale sale : salesList) &#123;</span><br><span class="line">        Goods goods = goodsService.getById(sale.getGid());</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != goods) &#123;</span><br><span class="line">            list1.add(goods.getGname()+goods.getGnumbering());</span><br><span class="line">            list2.add(sale.getTotal());</span><br><span class="line">            list3.add(sale.getActualtotal());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    map.put(<span class="string">&quot;data1&quot;</span>,list1);</span><br><span class="line">    map.put(<span class="string">&quot;data2&quot;</span>,list2);</span><br><span class="line">    map.put(<span class="string">&quot;data3&quot;</span>,list3);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DataGridViewResult(map);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SysLog(&quot;查询统计退货报表&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/statisticsinGoods&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataGridViewResult <span class="title">statisticsinGoods</span><span class="params">()</span></span>&#123;</span><br><span class="line">    QueryWrapper&lt;Inport&gt; queryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">    queryWrapper</span><br><span class="line">            .select(<span class="string">&quot;sum( number ) as countnumbers,DATE_FORMAT( inptime, &#x27;%Y-%m&#x27; ) AS counttime&quot;</span>)</span><br><span class="line">            .between(<span class="string">&quot;inptime&quot;</span>,DateUtils.stepMonth(<span class="number">5</span>),<span class="keyword">new</span> Date())</span><br><span class="line">            .groupBy(<span class="string">&quot;counttime&quot;</span>)</span><br><span class="line">            .orderByAsc(<span class="string">&quot;counttime&quot;</span>);</span><br><span class="line">    List&lt;Inport&gt; inportsList = inportService.list(queryWrapper);</span><br><span class="line"></span><br><span class="line">    Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"> * <span class="meta">@param</span> username 用户名</span><br><span class="line"> * <span class="meta">@param</span> password 密码</span><br><span class="line"> * <span class="meta">@param</span> request</span><br><span class="line"> * <span class="meta">@return</span></span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"><span class="meta">@SysLog(&quot;登录操作&quot;)</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/login&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">login</span><span class="params">(String username, String password, String code,HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!(request.getSession().getAttribute(<span class="string">&quot;code&quot;</span>)+<span class="string">&quot;&quot;</span>).equalsIgnoreCase(code+<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> Result.error(<span class="keyword">false</span>, <span class="string">&quot;400&quot;</span>, <span class="string">&quot;登录失败,验证码错误&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取当前登录主体对象</span></span><br><span class="line">        Subject subject = SecurityUtils.getSubject();</span><br><span class="line">        UsernamePasswordToken token = <span class="keyword">new</span> UsernamePasswordToken(username, password);</span><br><span class="line">        subject.login(token);</span><br><span class="line">        LoginUserVO userDTO = (LoginUserVO) subject.getPrincipal();</span><br><span class="line">        request.getSession().setAttribute(<span class="string">&quot;username&quot;</span>, userDTO.getUser());</span><br><span class="line">        <span class="keyword">return</span> Result.success(<span class="keyword">true</span>, <span class="string">&quot;200&quot;</span>, <span class="string">&quot;登录成功&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (UnknownAccountException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="keyword">false</span>, <span class="string">&quot;400&quot;</span>, <span class="string">&quot;登录失败,用户名不存在&quot;</span>);</span><br><span class="line">    &#125;<span class="keyword">catch</span> (IncorrectCredentialsException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="keyword">false</span>, <span class="string">&quot;400&quot;</span>, <span class="string">&quot;登录失败,密码错误&quot;</span>);</span><br><span class="line">    &#125;<span class="keyword">catch</span> (AuthenticationException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="keyword">false</span>, <span class="string">&quot;400&quot;</span>, <span class="string">&quot;登录失败,账户禁用&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 得到登陆验证码</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/getCode&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getCode</span><span class="params">(HttpServletResponse response, HttpSession session)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="comment">//定义图形验证码的长和宽</span></span><br><span class="line">    LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(<span class="number">116</span>, <span class="number">36</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line">    session.setAttribute(<span class="string">&quot;code&quot;</span>,lineCaptcha.getCode());</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        ServletOutputStream outputStream = response.getOutputStream();</span><br><span class="line">        lineCaptcha.write(outputStream);</span><br><span class="line">        outputStream.close();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> PermissionService permissionService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> RoleService roleService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 加载首页左侧菜单</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/loadIndexLeftMenuTree&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataGridViewResult <span class="title">loadIndexLeftMenuTree</span><span class="params">(HttpSession session)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//调用查询权限菜单列表</span></span><br><span class="line">    QueryWrapper&lt;Permission&gt; queryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">    queryWrapper.eq(<span class="string">&quot;type&quot;</span>, <span class="string">&quot;menu&quot;</span>);</span><br><span class="line">    User username = (User) session.getAttribute(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">    List&lt;Permission&gt; permissionList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (username.getType() == <span class="number">0</span>) &#123;</span><br><span class="line">        permissionList = permissionService.list(queryWrapper);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//1.根据当前登录用户ID查询该用户拥有的角色列表</span></span><br><span class="line">        Set&lt;Integer&gt; currentUserRoleIds = userService.findRoleByUserId(username.getUid());</span><br><span class="line">        <span class="comment">//2.创建集合保存每个角色下拥有的权限菜单ID</span></span><br><span class="line">        Set&lt;Integer&gt; pids = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        <span class="comment">//3.循环遍历当前用户拥有的角色列表</span></span><br><span class="line">        <span class="keyword">for</span> (Integer roleId : currentUserRoleIds) &#123;</span><br><span class="line">            <span class="comment">//4.根据角色ID查询每个角色下拥有的权限菜单</span></span><br><span class="line">            Set&lt;Integer&gt; permissionIds = roleService.findRolePermissionByRoleId(roleId);</span><br><span class="line">            <span class="comment">//5.将查询出来的权限id放到集合中</span></span><br><span class="line">            pids.addAll(permissionIds);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//判断当前权限集合是否有数据</span></span><br><span class="line">        <span class="keyword">if</span> (pids.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//拼接查询条件</span></span><br><span class="line">            queryWrapper.in(<span class="string">&quot;id&quot;</span>, pids);</span><br><span class="line">            <span class="comment">//执行查询</span></span><br><span class="line">            permissionList = permissionService.list(queryWrapper);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//创建集合 保存树节点</span></span><br><span class="line">    List&lt;TreeNode&gt; treeNodes = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

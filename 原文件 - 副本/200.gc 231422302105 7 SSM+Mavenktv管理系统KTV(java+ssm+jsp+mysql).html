@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.gc%20231422302105%207%20SSM+Mavenktv%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FKTV(java+ssm+jsp+mysql)">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project21/460023322402.jpg" alt="460023322402"></p>
+<p><img src="../images/project21/470023322402.jpg" alt="470023322402"></p>
+<p><img src="../images/project21/490023322402.jpg" alt="490023322402"></p>
+<p><img src="../images/project21/500023322402.jpg" alt="500023322402"></p>
+<p><img src="../images/project21/510023322402.jpg" alt="510023322402"></p>
+<p><img src="../images/project21/520023322402.jpg" alt="520023322402"></p>
+<p><img src="../images/project21/530023322402.jpg" alt="530023322402"></p>
+<p><img src="../images/project21/540023322402.jpg" alt="540023322402"></p>
+<p><img src="../images/project21/550023322402.jpg" alt="550023322402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>项目介绍</p>
+<p>主要功能包括： 登陆页,房间信息,房间管理,开取房间,房间查询,会员管理,食物管理,查看订单,查询订单,查看房间消费使用情况等功能。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  5.数据库：MySql 5.7版本；</p>
+<p>技术栈</p>
+<ol>
+<li>后端：Spring+SpringMVC+Mybatis 2. 前端：HTML+CSS+JavaScript+jsp</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven;若为maven项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中application.yml配置文件中的数据库配置改为自己的配置; 4. 运行项目，输入localhost:8080/ 登录</li>
+</ol>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">        model.addAttribute(<span class="string">&quot;allfood&quot;</span>, allFood);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;rows&quot;</span>, Math.ceil(allFood.size() / <span class="number">6.0</span>));</span><br><span class="line">        model.addAttribute(<span class="string">&quot;succeed&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;msg&quot;</span>, result.getMessage());</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;consume&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> cn.edu.sysu.Web;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Project name: KTV-System</span></span><br><span class="line"><span class="comment"> * Package name: cn.edu.sysu.Web</span></span><br><span class="line"><span class="comment"> * Description: VIP相关页面的Controller</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/vip&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VIPController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> VIPService vipService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(method = RequestMethod.GET)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">VIPManagement</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;vipManagement&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/all&quot;, method = RequestMethod.GET)</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (name != <span class="keyword">null</span>) &#123;</span><br><span class="line">        result.add(name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (phone != <span class="keyword">null</span>) &#123;</span><br><span class="line">        result.add(phone);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (result.size() == <span class="number">0</span>) &#123;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;未查询到相关会员信息！&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;vipQuery&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    model.addAttribute(<span class="string">&quot;list&quot;</span>, result);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;rows&quot;</span>, Math.ceil(result.size() / <span class="number">6.0</span>));</span><br><span class="line">    model.addAttribute(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;查询结果&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;vipList&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/add&quot;, method = RequestMethod.GET)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addVIP</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;vipAdd&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/add&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">doVIPAdd</span><span class="params">(HttpServletRequest request, Model model)</span> <span class="keyword">throws</span> UnsupportedEncodingException </span>&#123;</span><br><span class="line">    request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">    String cname = request.getParameter(<span class="string">&quot;cname&quot;</span>);</span><br><span class="line">    String phone = request.getParameter(<span class="string">&quot;phone&quot;</span>);</span><br><span class="line">    VIP vip = <span class="keyword">new</span> VIP();</span><br><span class="line">    vip.setCname(cname);</span><br><span class="line">    vip.setPhone(phone);</span><br><span class="line">    OperationStatus result;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        result = vipService.addVIP(vip);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (KTVException e) &#123;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;succeed&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;msg&quot;</span>, e.getMessage());</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;vipAdd&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    model.addAttribute(<span class="string">&quot;succeed&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;msg&quot;</span>, result.getMessage());</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;vipAdd&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/delete&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">doVIPDelete</span><span class="params">(HttpServletRequest request, Model model)</span> <span class="keyword">throws</span> UnsupportedEncodingException </span>&#123;</span><br><span class="line">    request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Project name: KTV-System</span></span><br><span class="line"><span class="comment"> * Package name: cn.edu.sysu.Web</span></span><br><span class="line"><span class="comment"> * Description: Room相关页面的Controller</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/room&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RoomController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RoomService roomService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> OrderService orderService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Project name: KTV-System</span></span><br><span class="line"><span class="comment"> * Package name: cn.edu.sysu.Web</span></span><br><span class="line"><span class="comment"> * Description: VIP相关页面的Controller</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/vip&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VIPController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> VIPService vipService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(method = RequestMethod.GET)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">VIPManagement</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;vipManagement&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/all&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">allVIP</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">        List&lt;VIP&gt; allVIP = vipService.queryAllVIP();</span><br><span class="line">        model.addAttribute(<span class="string">&quot;list&quot;</span>, allVIP);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;rows&quot;</span>, Math.ceil(allVIP.size() / <span class="number">6.0</span>));</span><br><span class="line">        model.addAttribute(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;所有会员&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;vipList&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/query&quot;, method = RequestMethod.GET)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">queryVIP</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;vipQuery&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/query&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">doVIPQuery</span><span class="params">(HttpServletRequest request, Model model)</span> <span class="keyword">throws</span> UnsupportedEncodingException </span>&#123;</span><br><span class="line">        request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">        String keyWord = request.getParameter(<span class="string">&quot;key&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (keyWord.equals(<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">            model.addAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;请输入有效字符！&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;vipQuery&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/query&quot;, method = RequestMethod.GET)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">queryRoom</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;roomQuery&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/query&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">doRoomQuery</span><span class="params">(HttpServletRequest request, Model model)</span> <span class="keyword">throws</span> UnsupportedEncodingException </span>&#123;</span><br><span class="line">    request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">    String keyWord = request.getParameter(<span class="string">&quot;key&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (keyWord.length() == <span class="number">1</span> &amp;&amp; String.valueOf(keyWord.charAt(<span class="number">0</span>)).equals(<span class="string">&quot;空&quot;</span>)) &#123;</span><br><span class="line">        List&lt;Room&gt; result = roomService.queryEmptyRoom();</span><br><span class="line">        <span class="keyword">if</span> (result == <span class="keyword">null</span>) &#123;</span><br><span class="line">            model.addAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;未查询到空房间！&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;roomQuery&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;list&quot;</span>, result);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;rows&quot;</span>, Math.ceil(result.size() / <span class="number">6.0</span>));</span><br><span class="line">        model.addAttribute(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;查询结果&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;roomList&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (keyWord.length() == <span class="number">2</span> &amp;&amp; String.valueOf(keyWord.charAt(<span class="number">0</span>)).equals(<span class="string">&quot;空&quot;</span>)) &#123;</span><br><span class="line">        List&lt;Room&gt; result = roomService.queryEmptyRoomByType(String.valueOf(keyWord.charAt(<span class="number">1</span>)));</span><br><span class="line">        <span class="keyword">if</span> (result == <span class="keyword">null</span>) &#123;</span><br><span class="line">            model.addAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;未查询到类型为&quot;</span> + String.valueOf(keyWord.charAt(<span class="number">1</span>)) + <span class="string">&quot;空房间！&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;roomQuery&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;list&quot;</span>, result);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;rows&quot;</span>, Math.ceil(result.size() / <span class="number">6.0</span>));</span><br><span class="line">        model.addAttribute(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;查询结果&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;roomList&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (keyWord.length() == <span class="number">2</span> &amp;&amp; !String.valueOf(keyWord.charAt(<span class="number">0</span>)).equals(<span class="string">&quot;空&quot;</span>)) &#123;</span><br><span class="line">        Room room = roomService.queryRoom(Integer.parseInt(keyWord.substring(<span class="number">1</span>)), keyWord.substring(<span class="number">0</span>, <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">if</span> (room == <span class="keyword">null</span>) &#123;</span><br><span class="line">            model.addAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;未查询到相关房间信息！&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;roomQuery&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;room&quot;</span>, room);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;房间详情&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;roomDetail&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;请输入有效字符！&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;roomQuery&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/add&quot;, method = RequestMethod.GET)</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">    String roomType = request.getParameter(<span class="string">&quot;roomType&quot;</span>);</span><br><span class="line">    String roomNum = request.getParameter(<span class="string">&quot;roomNum&quot;</span>);</span><br><span class="line">    Room room = <span class="keyword">new</span> Room();</span><br><span class="line">    room.setType(roomType);</span><br><span class="line">    room.setPrice(roomType.equals(<span class="string">&quot;L&quot;</span>) ? <span class="number">200.0</span> : roomType.equals(<span class="string">&quot;M&quot;</span>) ? <span class="number">130.0</span> : <span class="number">80.0</span>);</span><br><span class="line">    room.setId(Integer.parseInt(roomNum));</span><br><span class="line">    OperationStatus result;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        result = roomService.addRoom(room);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (KTVException e) &#123;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;succeed&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;msg&quot;</span>, e.getMessage());</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;roomAdd&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    model.addAttribute(<span class="string">&quot;succeed&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;msg&quot;</span>, result.getMessage());</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;roomAdd&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/&#123;type&#125;-&#123;id&#125;/detail&quot;, method = RequestMethod.GET)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">detail</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id,</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="meta">@PathVariable(&quot;type&quot;)</span> String type, Model model)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (id == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:room/all&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Room room = roomService.queryRoom(id, type);</span><br><span class="line">    <span class="keyword">if</span> (room == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:room/all&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    model.addAttribute(<span class="string">&quot;room&quot;</span>, room);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;房间详情&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;roomDetail&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/booking&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">bookingRoom</span><span class="params">(HttpServletRequest request, Model model)</span> <span class="keyword">throws</span> UnsupportedEncodingException, JsonProcessingException </span>&#123;</span><br><span class="line">    request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">    String roomType = request.getParameter(<span class="string">&quot;roomType&quot;</span>);</span><br><span class="line">    String roomNum = request.getParameter(<span class="string">&quot;roomNum&quot;</span>);</span><br><span class="line">    String hours = request.getParameter(<span class="string">&quot;hours&quot;</span>);</span><br><span class="line">    String cname = request.getParameter(<span class="string">&quot;cname&quot;</span>);</span><br><span class="line">    Room room = roomService.queryRoom(Integer.parseInt(roomNum), roomType);</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

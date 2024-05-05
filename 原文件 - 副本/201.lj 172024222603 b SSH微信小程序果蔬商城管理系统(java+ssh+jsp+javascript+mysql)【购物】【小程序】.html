@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/201.lj%20172024222603%20b%20SSH%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%9E%9C%E8%94%AC%E5%95%86%E5%9F%8E%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+ssh+jsp+javascript+mysql)%E3%80%90%E8%B4%AD%E7%89%A9%E3%80%91%E3%80%90%E5%B0%8F%E7%A8%8B%E5%BA%8F%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project30/182024222603.jpg" alt="182024222603"></p>
+<p><img src="../images/project30/192024222603.jpg" alt="192024222603"></p>
+<p><img src="../images/project30/212024222603.jpg" alt="212024222603"></p>
+<p><img src="../images/project30/222024222603.jpg" alt="222024222603"></p>
+<p><img src="../images/project30/232024222603.jpg" alt="232024222603"></p>
+<p><img src="../images/project30/242024222603.jpg" alt="242024222603"></p>
+<p><img src="../images/project30/252024222603.jpg" alt="252024222603"></p>
+<p><img src="../images/project30/262024222603.jpg" alt="262024222603"></p>
+<p><img src="../images/project30/272024222603.jpg" alt="272024222603"></p>
+<p><img src="../images/project30/282024222603.jpg" alt="282024222603"></p>
+<p><img src="../images/project30/292024222603.jpg" alt="292024222603"></p>
+<p><img src="../images/project30/302024222603.jpg" alt="302024222603"></p>
+<p><img src="../images/project30/322024222603.jpg" alt="322024222603"></p>
+<p><img src="../images/project30/332024222603.jpg" alt="332024222603"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>管理员（web）端：<br><a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a><br>admin   123456</p>
+<p>用户（小程序）端<br>1.使用微信开发者工具导入项目<br>2.导入成功后编译运行<br>3.运行成功后登录账号:<br>user1   123456<br>user2   123456</p>
+<p>程序功能：<br>1.小程序前台：用户注册登录、首页、轮播图、新品推荐、分类、购物车、我的订单。<br>2.网站后台：管理员登录、用户管理、商品类别管理、商品管理、订单管理、公告管理。</p>
+<ol>
+<li>后端：spring+struts+hibernate</li>
+<li>前端：JSP+css+javascript+jquery</li>
+</ol>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				replaceAll = string.replaceAll(<span class="string">&quot;\\\\&quot;</span>, <span class="string">&quot;/&quot;</span>).replaceAll(<span class="string">&quot;shop&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">				g2.getGoods().setUrl1(replaceAll);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	jsonMap.put(<span class="string">&quot;listgoods&quot;</span>,gg);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;json&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 跳转到添加页面</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">add</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 执行添加</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">exAdd</span><span class="params">()</span></span>&#123;</span><br><span class="line">	  </span><br><span class="line">	List&lt;Goods&gt; listByAlias = goodsService.listByAlias(<span class="string">&quot;from Car where user.id=&quot;</span>+userId+<span class="string">&quot;and goods.id=&quot;</span>+goodsId, <span class="keyword">null</span>);</span><br><span class="line">	<span class="keyword">if</span>(isEmpty(listByAlias))&#123;</span><br><span class="line">		User user = <span class="keyword">new</span> User();</span><br><span class="line">		user.setId(userId);</span><br><span class="line">		Goods byId = goodsService.getById(goodsId);</span><br><span class="line">		car.setGoods(byId);</span><br><span class="line">		car.setUser(user);</span><br><span class="line">		carService.save(car);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	jsonMap.put(<span class="string">&quot;result&quot;</span>, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;json&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查看详情页面</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">view</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Car n = carService.getById(car.getId());</span><br><span class="line">	ActionContext.getContext().put(<span class="string">&quot;Obj&quot;</span>, n);</span><br><span class="line">	<span class="keyword">return</span> SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">               HttpServletRequest request = (HttpServletRequest) ac.get(ServletActionContext.HTTP_REQUEST);</span><br><span class="line">               String root  = <span class="string">&quot;D:/my/upload&quot;</span>;</span><br><span class="line">               InputStream is = <span class="keyword">new</span> FileInputStream(file.get(i));</span><br><span class="line">               String f = fileFileName.get(i);</span><br><span class="line">               f = UUIDUtils.create() + i + fileFileName.get(i);</span><br><span class="line">               OutputStream os = <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(root, f));</span><br><span class="line">               <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">500</span>];</span><br><span class="line">               <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">               <span class="keyword">while</span> (-<span class="number">1</span> != (length = is.read(buffer, <span class="number">0</span>, buffer.length))) &#123;</span><br><span class="line">                   os.write(buffer);</span><br><span class="line">               &#125;</span><br><span class="line">               os.close();</span><br><span class="line">               is.close();</span><br><span class="line">               <span class="keyword">if</span> (i == <span class="number">0</span>)&#123;</span><br><span class="line">               	goods.setUrl1(<span class="string">&quot;\\upload\\&quot;</span> + f);</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span> (i == <span class="number">1</span>)&#123;</span><br><span class="line">               	goods.setUrl2(<span class="string">&quot;\\upload\\&quot;</span> + f);</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span> (i == <span class="number">2</span>)&#123;</span><br><span class="line">               	goods.setUrl3(<span class="string">&quot;\\upload\\&quot;</span> + f);</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span> (i == <span class="number">3</span>)&#123;</span><br><span class="line">               	goods.setUrl4(<span class="string">&quot;\\upload\\&quot;</span> + f);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">	goods.setIsDelete(<span class="number">0</span>);</span><br><span class="line">	goodsService.save(goods);</span><br><span class="line">	ActionContext.getContext().put(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;/goods_goods.do&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查看详情页面</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">view</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Goods n = goodsService.getById(goods.getId());</span><br><span class="line">	ActionContext.getContext().put(<span class="string">&quot;Obj&quot;</span>, n);</span><br><span class="line">	<span class="keyword">return</span> SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">	HttpServletRequest request = getRequest();</span><br><span class="line">	String path = request.getContextPath();</span><br><span class="line">	String basePath = request.getScheme()+<span class="string">&quot;://&quot;</span>+request.getServerName()+<span class="string">&quot;:&quot;</span>+request.getServerPort()+path+<span class="string">&quot;&quot;</span>;</span><br><span class="line">	List&lt;LbDto&gt; lbs = <span class="keyword">new</span> ArrayList&lt;LbDto&gt;();</span><br><span class="line">	List&lt;Lb&gt; pagers = lbService.listByAlias(<span class="string">&quot;from Lb where 1=1 and isDelete = 0&quot;</span>,<span class="keyword">null</span>);</span><br><span class="line">	<span class="keyword">if</span>(!isEmpty(pagers))&#123;</span><br><span class="line">		<span class="keyword">for</span>(Lb lb : pagers)&#123;</span><br><span class="line">			LbDto ld = <span class="keyword">new</span> LbDto();</span><br><span class="line">			ld.setLb(lb);</span><br><span class="line">			<span class="comment">//查询品牌</span></span><br><span class="line">			List&lt;Pp&gt; listByAlias = ppService.listByAlias(<span class="string">&quot;from Pp where 1=1 and  lb.id=&quot;</span>+lb.getId(), <span class="keyword">null</span>);</span><br><span class="line">			<span class="keyword">if</span>(!isEmpty(listByAlias))&#123;</span><br><span class="line">				<span class="keyword">for</span>(Pp p : listByAlias)&#123;</span><br><span class="line">					String string = basePath+p.getCpUrl();</span><br><span class="line">					String replaceAll;</span><br><span class="line">					<span class="keyword">try</span> &#123;</span><br><span class="line">						replaceAll = string.replaceAll(<span class="string">&quot;\\\\&quot;</span>, <span class="string">&quot;/&quot;</span>).replaceAll(<span class="string">&quot;shop&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">						p.setCpUrl(replaceAll);</span><br><span class="line">					&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">						<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">						e.printStackTrace();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			ld.setPps(listByAlias);</span><br><span class="line">			lbs.add(ld);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	jsonMap.put(<span class="string">&quot;lbs&quot;</span>, lbs);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;json&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">userpp</span><span class="params">()</span></span>&#123;</span><br><span class="line">	HttpServletRequest request = getRequest();</span><br><span class="line">	String path = request.getContextPath();</span><br><span class="line">	String basePath = request.getScheme()+<span class="string">&quot;://&quot;</span>+request.getServerName()+<span class="string">&quot;:&quot;</span>+request.getServerPort()+path+<span class="string">&quot;&quot;</span>;</span><br><span class="line">	List&lt;Pp&gt; listByAlias = ppService.listByAlias(<span class="string">&quot;from Pp where 1=1 and  lb.id=&quot;</span>+lbId, <span class="keyword">null</span>);</span><br><span class="line">	<span class="keyword">if</span>(!isEmpty(listByAlias))&#123;</span><br><span class="line">		<span class="keyword">for</span>(Pp p : listByAlias)&#123;</span><br><span class="line">			String string = basePath+p.getCpUrl();</span><br><span class="line">			String replaceAll;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">	  <span class="comment">// dataMap中的数据将会被Struts2转换成JSON字符串，所以这里要先清空其中的数据</span></span><br><span class="line">	  jsonMap.clear();</span><br><span class="line">	  jsonMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">	  <span class="keyword">return</span> JSON_TYPE;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="comment">//-------------------------华丽分割线---------------------------------------------//</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//=============公=======共=======方=======法==========区=========start============//</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 列表分页查询</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">pp</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Map&lt;String,Object&gt; alias = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">	StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">	sb = sb.append(<span class="string">&quot;from Pp where 1=1 and  lb.id=&quot;</span>+lbId);</span><br><span class="line">	sb = sb.append(<span class="string">&quot;order by id desc&quot;</span>);</span><br><span class="line">	List&lt;Pp&gt; pagers = ppService.listByAlias(sb.toString(),alias);</span><br><span class="line">	ActionContext.getContext().put(<span class="string">&quot;pagers&quot;</span>, pagers);</span><br><span class="line">	ActionContext.getContext().put(<span class="string">&quot;Obj&quot;</span>, pp);</span><br><span class="line">	getActionContext().put(<span class="string">&quot;lbId&quot;</span>, lbId);</span><br><span class="line">	<span class="keyword">return</span> SUCCESS;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 跳转到添加页面</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">add</span><span class="params">()</span></span>&#123;</span><br><span class="line">	getActionContext().put(<span class="string">&quot;lbId&quot;</span>, lbId);</span><br><span class="line">	<span class="keyword">return</span> SUCCESS;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 执行添加</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">exAdd</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(fileFileName != <span class="keyword">null</span>)&#123;</span><br><span class="line">		   String root  = <span class="string">&quot;D:/my/upload&quot;</span>;</span><br><span class="line">	        InputStream is = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">	        fileFileName = UUIDUtils.create()+fileFileName;</span><br><span class="line">	        OutputStream os = <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(root, fileFileName));</span><br><span class="line">	        System.out.println(<span class="string">&quot;fileFileName: &quot;</span> + fileFileName);</span><br><span class="line">	        System.out.println(<span class="string">&quot;file: &quot;</span> + file.getName());</span><br><span class="line">	        System.out.println(<span class="string">&quot;file: &quot;</span> + file.getPath());</span><br><span class="line">	        <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">500</span>];</span><br><span class="line">	        <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">	        </span><br><span class="line">	        <span class="keyword">while</span>(-<span class="number">1</span> != (length = is.read(buffer, <span class="number">0</span>, buffer.length)))</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">	ma.setId(manage.getId());*/</span><br><span class="line">   	manageService.updateInfo(manage);</span><br><span class="line">   	out = resp.getWriter();</span><br><span class="line">	 out.write(JSONArray.fromObject(<span class="number">1</span>).toString());</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">delManage</span><span class="params">()</span></span>&#123;</span><br><span class="line">   	manageService.deleteInfo(manage.getId());</span><br><span class="line">   	ActionContext.getContext().put(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;/manage_manage.do&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect&quot;</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   <span class="comment">//=============================================================================================================</span></span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSayId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> sayId;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSayId</span><span class="params">(<span class="keyword">int</span> sayId)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.sayId = sayId;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> File file;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> File <span class="title">getFile</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> file;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>:  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller(&quot;goodsAction&quot;)</span></span><br><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GoodsAction</span> <span class="keyword">extends</span> <span class="title">BaseAction</span> <span class="keyword">implements</span> <span class="title">ModelDriven</span>&lt;<span class="title">Goods</span>&gt;</span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//==========model==============</span></span><br><span class="line">	  <span class="keyword">private</span> Goods goods;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Goods <span class="title">getModel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(goods==<span class="keyword">null</span>) goods = <span class="keyword">new</span> Goods();</span><br><span class="line">			<span class="keyword">return</span> goods;	</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//==========model==============</span></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 依赖注入 start dao/service/===</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> GoodsService goodsService;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> PpService ppService;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> Integer ppId;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//依赖注入 end  dao/service/===</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//-------------------------华丽分割线---------------------------------------------</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//============自定义参数start=============</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//============自定义参数end=============</span></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//-------------------------华丽分割线---------------------------------------------</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//============文件上传start=======================================================</span></span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

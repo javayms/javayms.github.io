@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.cp%20151422282105%207%20JSP+Servlet%E5%9C%A8%E7%BA%BF%E8%B4%AD%E4%B9%A6%E5%95%86%E5%9F%8E%E7%B3%BB%E7%BB%9F(java+jsp+mysql+servlert+ajax)%E3%80%90%E8%B4%AD%E7%89%A9%E3%80%91%E3%80%90%E4%B9%A6%E5%BA%97%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project20/420023072402.jpg" alt="420023072402"></p>
+<p><img src="../images/project20/430023072402.jpg" alt="430023072402"></p>
+<p><img src="../images/project20/440023072402.jpg" alt="440023072402"></p>
+<p><img src="../images/project20/450023072402.jpg" alt="450023072402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>一、项目简述</p>
+<p>功能：一个基于JavaWeb的网上书店的设计与实现，归纳 出了几个模块，首先是登录注册模块，图书查找模块，购 物车模块，订单模块，个人中心模块，用户管理模块，图 书管理模块等。 该项目是javaJeb技术的实战操作，采用了MVC设计模 式，包括基本的entity, jscript, servlet,以及ajax异步请 求，查询分页，持久化层方法的封装等等，对javaweb技 术的巩固很有帮助，为J2EE的学习打下基础，适用于课程 设计，毕业设计。</p>
+<p>二、项目运行</p>
+<p>环境配置： Jdk1.8 + Tomcat8.5 + mysql + Eclispe (IntelliJ IDEA,Eclispe,MyEclispe,Sts都支持)。</p>
+<p>项目技术： JSP + Entity+ Servlert + html+ css + JavaScript + JQuery + Ajax + Fileupload 等等。</p>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 显示购物车</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> ServletException</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">showCart</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute(<span class="string">&quot;cart&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(cart!=<span class="keyword">null</span>)&#123;</span><br><span class="line">		Collection&lt;ShoppingItem&gt; silist = cart.getItems();</span><br><span class="line">		request.getSession().setAttribute(<span class="string">&quot;silist&quot;</span>, silist);</span><br><span class="line">		<span class="comment">//计算商品总价</span></span><br><span class="line">		cart.getTotalReal();</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		cart = <span class="keyword">new</span> ShoppingCart();</span><br><span class="line">	&#125;</span><br><span class="line">	request.getSession().setAttribute(<span class="string">&quot;cart&quot;</span>, cart);</span><br><span class="line">	</span><br><span class="line">	Users user = (Users) request.getSession().getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(user!=<span class="keyword">null</span>)&#123;</span><br><span class="line">		<span class="comment">//页面跳转</span></span><br><span class="line">		response.sendRedirect(<span class="string">&quot;user/usercart.jsp&quot;</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="comment">//页面跳转</span></span><br><span class="line">		response.sendRedirect(<span class="string">&quot;showcart.jsp&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 增加购物车商品数量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> ServletException</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">inAmount</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	<span class="comment">//从session中获取ShoppingCart</span></span><br><span class="line">	ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute(<span class="string">&quot;cart&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(cart!=<span class="keyword">null</span>)&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	doPost(request, response);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;	</span><br><span class="line">	String opt = request.getParameter(<span class="string">&quot;opt&quot;</span>);</span><br><span class="line">	String role = request.getParameter(<span class="string">&quot;role&quot;</span>);</span><br><span class="line">	<span class="comment">//判断是否为管理员操作</span></span><br><span class="line">	<span class="keyword">if</span>(role!=<span class="keyword">null</span> &amp;&amp; role.equals(<span class="string">&quot;3&quot;</span>))&#123;</span><br><span class="line">		optByAdmin(request, response);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//操作判断</span></span><br><span class="line">	<span class="keyword">if</span>(opt.equals(<span class="string">&quot;byTitle&quot;</span>))&#123;</span><br><span class="line">		queryByTitle(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;byIsbn&quot;</span>))&#123;</span><br><span class="line">		queryByIsbn(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;byCategory&quot;</span>))&#123;</span><br><span class="line">		queryByCategory(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;buyBook&quot;</span>))&#123;</span><br><span class="line">		buyBook(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;search&quot;</span>))&#123;</span><br><span class="line">		search(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;byPublish&quot;</span>))&#123;</span><br><span class="line">		queryByPublish(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;byCategoryName&quot;</span>))&#123;</span><br><span class="line">		queryByCategoryName(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		response.sendRedirect(<span class="string">&quot;index.jsp&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 管理员操作</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> ServletException</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;buyBook&quot;</span>))&#123;</span><br><span class="line">		buyBook(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;search&quot;</span>))&#123;</span><br><span class="line">		search(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;byPublish&quot;</span>))&#123;</span><br><span class="line">		queryByPublish(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;byCategoryName&quot;</span>))&#123;</span><br><span class="line">		queryByCategoryName(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		response.sendRedirect(<span class="string">&quot;index.jsp&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 管理员操作</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> ServletException</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">optByAdmin</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	String opt = request.getParameter(<span class="string">&quot;opt&quot;</span>);</span><br><span class="line">	<span class="comment">//判断是否登录</span></span><br><span class="line">	Users user = (Users) request.getSession().getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(user==<span class="keyword">null</span> || user.getUserRoleId()!=<span class="number">3</span>)&#123;</span><br><span class="line">		response.sendRedirect(<span class="string">&quot;admin/login.jsp&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(opt.equals(<span class="string">&quot;booklist&quot;</span>))&#123;</span><br><span class="line">		bookListByAdmin(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;del&quot;</span>))&#123;</span><br><span class="line">		delBookByAdmin(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;show&quot;</span>))&#123;</span><br><span class="line">		showBookByAdmin(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;edit&quot;</span>))&#123;</span><br><span class="line">		editBookByAdmin(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;add&quot;</span>))&#123;</span><br><span class="line">		addBookByAdmin(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">		<span class="comment">//获取session中的user对象</span></span><br><span class="line">		Users user = (Users) request.getSession().getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">		<span class="comment">//调用dao层的获取订单方法</span></span><br><span class="line">		OrderDaoImpl dao = <span class="keyword">new</span> OrderDaoImpl();</span><br><span class="line">		List&lt;OrderBookCustom&gt; olist = dao.getOrder(user.getId());</span><br><span class="line">		<span class="comment">//添加到session中</span></span><br><span class="line">		request.getSession().setAttribute(<span class="string">&quot;olist&quot;</span>,olist);</span><br><span class="line">		<span class="comment">//页面跳转</span></span><br><span class="line">		response.sendRedirect(<span class="string">&quot;user/userorder.jsp&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> cn.svtcc.edu.mybookshop.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(name=&quot;InitServlet&quot;,urlPatterns=&#123;&quot;/initServlet&quot;&#125;,loadOnStartup=0)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InitServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">       </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">InitServlet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">		<span class="comment">//获取图书分类</span></span><br><span class="line">		CategoriesDaoImpl dao = <span class="keyword">new</span> CategoriesDaoImpl();</span><br><span class="line">		List&lt;Categories&gt; clist = dao.getCategories();</span><br><span class="line">		config.getServletContext().setAttribute(<span class="string">&quot;clist&quot;</span>, clist);</span><br><span class="line">		<span class="comment">//获取出版社</span></span><br><span class="line">		PublisherDaoImpl pdao = <span class="keyword">new</span> PublisherDaoImpl();</span><br><span class="line">		List&lt;Publishers&gt; plist = pdao.getPublisher();</span><br><span class="line">		config.getServletContext().setAttribute(<span class="string">&quot;plist&quot;</span>, plist);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//获取热门图书</span></span><br><span class="line">		BookDaoImpl bDao = <span class="keyword">new</span> BookDaoImpl();</span><br><span class="line">		List&lt;Books&gt; hotBList = bDao.getHotBooksByClicks();</span><br><span class="line">		config.getServletContext().setAttribute(<span class="string">&quot;hotBList&quot;</span>, hotBList);</span><br><span class="line">		String ctxPath = config.getServletContext().getContextPath();</span><br><span class="line">		config.getServletContext().setAttribute(<span class="string">&quot;ctxPath&quot;</span>, ctxPath);</span><br><span class="line">		System.out.println(<span class="string">&quot;InitServlet初始化完毕！&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	doPost(request, response);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;	</span><br><span class="line">	String opt = request.getParameter(<span class="string">&quot;opt&quot;</span>);</span><br><span class="line">	String role = request.getParameter(<span class="string">&quot;role&quot;</span>);</span><br><span class="line">	<span class="comment">//判断是否为管理员操作</span></span><br><span class="line">	<span class="keyword">if</span>(role!=<span class="keyword">null</span> &amp;&amp; role.equals(<span class="string">&quot;3&quot;</span>))&#123;</span><br><span class="line">		optByAdmin(request, response);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//操作判断</span></span><br><span class="line">	<span class="keyword">if</span>(opt.equals(<span class="string">&quot;byTitle&quot;</span>))&#123;</span><br><span class="line">		queryByTitle(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;byIsbn&quot;</span>))&#123;</span><br><span class="line">		queryByIsbn(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;byCategory&quot;</span>))&#123;</span><br><span class="line">		queryByCategory(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;buyBook&quot;</span>))&#123;</span><br><span class="line">		buyBook(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;search&quot;</span>))&#123;</span><br><span class="line">		search(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;byPublish&quot;</span>))&#123;</span><br><span class="line">		queryByPublish(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(opt.equals(<span class="string">&quot;byCategoryName&quot;</span>))&#123;</span><br><span class="line">		queryByCategoryName(request, response);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		response.sendRedirect(<span class="string">&quot;index.jsp&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 管理员操作</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> ServletException</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"> * <span class="meta">@throws</span> ServletException</span><br><span class="line"> * <span class="meta">@throws</span> IOException</span><br><span class="line"> */</span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">loginByAdmin</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute(<span class="string">&quot;cart&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(cart==<span class="keyword">null</span>)&#123;</span><br><span class="line">		cart = <span class="keyword">new</span> ShoppingCart();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//获取参数</span></span><br><span class="line">	String name = request.getParameter(<span class="string">&quot;loginId&quot;</span>);</span><br><span class="line">	String pwd = request.getParameter(<span class="string">&quot;loginPwd&quot;</span>);</span><br><span class="line">	<span class="comment">//调用登录验证</span></span><br><span class="line">	UserDaoImpl dao = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">	Users user = dao.doLoginByAdmin(name, pwd);</span><br><span class="line">	 <span class="keyword">if</span>(user!=<span class="keyword">null</span>)&#123;</span><br><span class="line">		 <span class="comment">//将user对象存入session中,便于前台使用</span></span><br><span class="line">		 request.getSession().setAttribute(<span class="string">&quot;user&quot;</span>, user);</span><br><span class="line">		 response.sendRedirect(<span class="string">&quot;admin/index.jsp&quot;</span>);</span><br><span class="line">		 <span class="keyword">return</span>;</span><br><span class="line">	 &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		 response.sendRedirect(<span class="string">&quot;admin/login.jsp&quot;</span>);</span><br><span class="line">		 <span class="keyword">return</span>;</span><br><span class="line">	 &#125;	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户注销退出</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> ServletException</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">logout</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	<span class="comment">//从session中获取用户信息</span></span><br><span class="line">	Users user = (Users) request.getSession().getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(user!=<span class="keyword">null</span>)&#123;</span><br><span class="line">		request.getSession().removeAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	response.sendRedirect(<span class="string">&quot;login.jsp&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	response.sendRedirect(<span class="string">&quot;user/user.jsp&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

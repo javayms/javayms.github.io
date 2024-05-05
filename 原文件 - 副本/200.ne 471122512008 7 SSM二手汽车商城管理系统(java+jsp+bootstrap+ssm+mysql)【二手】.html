@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.ne%20471122512008%207%20SSM%E4%BA%8C%E6%89%8B%E6%B1%BD%E8%BD%A6%E5%95%86%E5%9F%8E%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+jsp+bootstrap+ssm+mysql)%E3%80%90%E4%BA%8C%E6%89%8B%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project22/280023502402.jpg" alt="280023502402"></p>
+<p><img src="../images/project22/290023502402.jpg" alt="290023502402"></p>
+<p><img src="../images/project22/300023502402.jpg" alt="300023502402"></p>
+<p><img src="../images/project22/310023502402.jpg" alt="310023502402"></p>
+<p><img src="../images/project22/320023502402.jpg" alt="320023502402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>项目介绍</p>
+<p>本项目共分为管理员、用户、店员三种角色： 管理员角色包含以下功能： 管理员登录,在售车辆管理,品牌管理,品牌分类管理,推荐车辆,订单管理,销量统计等功能。</p>
+<p>用户角色包含以下功能： 用户登录,用户角色首页,购物商城,查看购物车,订单管理,个人信息修改,关于我们等功能。</p>
+<p>店员角色包含以下功能： 添加删除修改二手车,订单管理,销量统计,个人信息修改等功能。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  5.数据库：MySql 5.7/8.0版本均可； 6.是否Maven项目：否；</p>
+<p>技术栈</p>
+<ol>
+<li>后端：Spring+SpringMVC+Mybatis 2. 前端：JSP+JavaScript+jQuery+BootStrap</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven; 若为maven项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中DB.properties配置文件中的数据库配置改为自己的配置; 4. 运行项目，输入localhost:8080/ 登录</li>
+</ol>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">			<span class="keyword">int</span> templeng = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">byte</span>[] tempbyte = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4096</span>];</span><br><span class="line">			<span class="keyword">while</span>((templeng = is.read(tempbyte)) != -<span class="number">1</span>)&#123;</span><br><span class="line">				os.write(tempbyte, <span class="number">0</span>, templeng);</span><br><span class="line">				os.flush();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				is.close();</span><br><span class="line">				os.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		car.setCar_img(mf.getOriginalFilename());</span><br><span class="line">		</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;	<span class="comment">//用户上传图片为空</span></span><br><span class="line">		car.setCar_img(<span class="string">&quot;demo.jpg&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	carService.addCar(car);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect:/shop/queryAllOnlineCar&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查看单个车辆详情</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/carDetail&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">carDetails</span><span class="params">(Map&lt;String, Object&gt; map, String car_id)</span></span>&#123;</span><br><span class="line">	List&lt;Car&gt; list = carService.queryOnlineCarById(car_id);</span><br><span class="line">	map.put(<span class="string">&quot;carDetail&quot;</span>, list.get(<span class="number">0</span>));</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;shop/carManage/car_details&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//在线车辆信息更新初始化页面</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/carUpdateInit&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">carUpdateInit</span><span class="params">(Map&lt;String, Object&gt; map, String car_id)</span></span>&#123;</span><br><span class="line">	map.put(<span class="string">&quot;carUpdate&quot;</span>, carService.queryOnlineCarById(car_id).get(<span class="number">0</span>));</span><br><span class="line">	map.put(<span class="string">&quot;brandList&quot;</span>,brandService.queryAllBrand());</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;shop/carManage/car_update&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">	Login queryLogin = loginService.queryLoginById(login.getLogin_id());</span><br><span class="line">	<span class="keyword">if</span>(queryLogin == <span class="keyword">null</span>)&#123;		<span class="comment">//账号不存在</span></span><br><span class="line">		map.put(<span class="string">&quot;loginError&quot;</span>, <span class="string">&quot;账号或密码输入错误&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;login&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(! queryLogin.getLogin_password().equals(login.getLogin_password()) )&#123;	<span class="comment">//密码错误</span></span><br><span class="line">		System.out.println(<span class="string">&quot;---------error-------&quot;</span>);</span><br><span class="line">		map.put(<span class="string">&quot;permission&quot;</span>, queryLogin.getLogin_permission());</span><br><span class="line">		map.put(<span class="string">&quot;loginError1&quot;</span>, <span class="string">&quot;账号或密码输入错误&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;login&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(queryLogin.getLogin_permission().equals(<span class="string">&quot;admin&quot;</span>))&#123;		<span class="comment">//管理员</span></span><br><span class="line">		System.out.println(<span class="string">&quot;---------admin-------&quot;</span>);</span><br><span class="line">		session.setAttribute(<span class="string">&quot;adminloginSession&quot;</span>, queryLogin);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;admin/index&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(queryLogin.getLogin_permission().equals(<span class="string">&quot;shop&quot;</span>))&#123;		<span class="comment">//商家</span></span><br><span class="line">		System.out.println(<span class="string">&quot;---------shop-------&quot;</span>);</span><br><span class="line">		session.setAttribute(<span class="string">&quot;shoploginSession&quot;</span>, queryLogin);</span><br><span class="line">		session.setAttribute(<span class="string">&quot;shoploginSession_name&quot;</span>, personService.queryPersonById(queryLogin.getLogin_id()).getPerson_name());</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;shop/index&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;	<span class="comment">//用户</span></span><br><span class="line">		System.out.println(<span class="string">&quot;---------user--------&quot;</span>);</span><br><span class="line">		session.setAttribute(<span class="string">&quot;loginSession&quot;</span>, queryLogin);</span><br><span class="line">		session.setAttribute(<span class="string">&quot;loginSession_name&quot;</span>, personService.queryPersonById(queryLogin.getLogin_id()).getPerson_name());</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect:/indexInitAction&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//跳转到（用户或商家）主页。</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/indexInitAction&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">indexInit</span><span class="params">(HttpSession session, Map&lt;String, Object&gt; map)</span></span>&#123;</span><br><span class="line">	Login login =  (Login)session.getAttribute(<span class="string">&quot;loginSession&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(login != <span class="keyword">null</span> &amp;&amp; login.getLogin_permission().equals(<span class="string">&quot;user&quot;</span>) )&#123;</span><br><span class="line">		Person person = personService.queryPersonById(login.getLogin_id());</span><br><span class="line">		session.setAttribute(<span class="string">&quot;loginSession_name&quot;</span>, person.getPerson_name());</span><br><span class="line">		System.out.println(<span class="string">&quot;==========index=========&quot;</span> + login.getLogin_permission() + <span class="string">&quot;===========&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;/user/index&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//利用ajax确定修改后的电话号码没有被注册</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/ajaxTextIdAndTel&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ajaxTextIdAndTel</span><span class="params">(HttpServletRequest request, HttpServletResponse response, String person_tel, String login_id)</span> <span class="keyword">throws</span> UnsupportedEncodingException</span>&#123;</span><br><span class="line">	response.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">	request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">boolean</span> boolReturn = <span class="keyword">true</span>;</span><br><span class="line">	</span><br><span class="line">	Login login = loginService.queryLoginById(login_id);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/shopSaleCountManage&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShopSaleCountManageAction</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> BrandService brandService;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> OrderService orderService;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//根据品牌统计销量</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/brandSaleList&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">brandSaleList</span><span class="params">(Map&lt;String, Object&gt; map, HttpSession session)</span></span>&#123;</span><br><span class="line">		Login login = (Login) session.getAttribute(<span class="string">&quot;shoploginSession&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span>(login == <span class="keyword">null</span> || !login.getLogin_permission().equals(<span class="string">&quot;shop&quot;</span>))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="string">&quot;redirect:/loginInitAction&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		List&lt;Brand&gt; brandList = brandService.queryAllBrand();</span><br><span class="line">		List&lt;Order&gt; orderList = orderService.shopSaleOrderByBrand(login.getLogin_id());</span><br><span class="line">		<span class="keyword">int</span> saleNum[] = <span class="keyword">new</span> <span class="keyword">int</span>[brandList.size()];</span><br><span class="line">		<span class="keyword">int</span> salePrice[] = <span class="keyword">new</span> <span class="keyword">int</span>[brandList.size()];</span><br><span class="line">	</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;orderList.size(); i++)&#123;</span><br><span class="line">			<span class="comment">//该订单品牌在品牌列表中的位置</span></span><br><span class="line">			<span class="keyword">int</span> temp =<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;brandList.size(); j++)&#123;</span><br><span class="line">				<span class="keyword">if</span>(brandList.get(j).getBrand_id().equals( orderList.get(i).getCar_brand_id() ))&#123;</span><br><span class="line">					temp = j;<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			saleNum[temp]++;</span><br><span class="line">			salePrice[temp] += orderList.get(i).getCar_price_new();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		map.put(<span class="string">&quot;saleNum&quot;</span>, saleNum);</span><br><span class="line">		map.put(<span class="string">&quot;salePrice&quot;</span>, salePrice);</span><br><span class="line">		map.put(<span class="string">&quot;brandList&quot;</span>, brandList);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;shop/saleCountManage/countByBrand&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//某个品牌销售详情</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/saleOrderByBrand&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">saleOrderByBrand</span><span class="params">(String brand_id,String shop_id, Map&lt;String, Object&gt; map)</span></span>&#123;</span><br><span class="line">		List&lt;Order&gt; orderList = orderService.shopSaleOrderByBrandId(brand_id, shop_id);</span><br><span class="line">		map.put(<span class="string">&quot;brand_name&quot;</span>, brandService.queryBrandById(brand_id).getBrand_name() );</span><br><span class="line">		map.put(<span class="string">&quot;brandOrderList&quot;</span>, orderList);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;shop/saleCountManage/brandOrderDetails&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdminOrderManageAction</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> OrderService orderService;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> PageService pageService;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//未发货订单列表</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/orderNotSendList&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">orderNotSendList</span><span class="params">(Map&lt;String, Object&gt; map, String currentpage)</span></span>&#123;</span><br><span class="line">		List&lt;Order&gt; orderList = orderService.queryAllPayOrder();</span><br><span class="line"></span><br><span class="line">		Page page = pageService.pageToOrder(orderList.size(), currentpage);</span><br><span class="line">		<span class="keyword">int</span> subEnd = (page.getCurrentpage()-<span class="number">1</span>)*page.getSize() + page.getSize() &gt; orderList.size() ? orderList.size() : (page.getCurrentpage()-<span class="number">1</span>)*page.getSize() + page.getSize();</span><br><span class="line">		orderList = orderList.subList( (page.getCurrentpage()-<span class="number">1</span>)*page.getSize() , subEnd);</span><br><span class="line">		</span><br><span class="line">		map.put(<span class="string">&quot;page&quot;</span>, page);</span><br><span class="line">		map.put(<span class="string">&quot;queryKind&quot;</span>, <span class="string">&quot;all&quot;</span>);</span><br><span class="line">		map.put(<span class="string">&quot;notSendOrder&quot;</span>, orderList);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;admin/orderManage/order_notSend&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//将订单发货,然后返回未发货订单列表</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/sendOrderById&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sendOrderById</span><span class="params">(String order_id)</span></span>&#123;</span><br><span class="line">		orderService.sendOrderById(order_id);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect:/adminOrderManage/orderNotSendList&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//订单信息详情</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/orderDetails&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">orderDetails</span><span class="params">(Map&lt;String, Object&gt; map, String order_id)</span></span>&#123;</span><br><span class="line">		Order order = orderService.queryOrderById(order_id).get(<span class="number">0</span>);</span><br><span class="line">		map.put(<span class="string">&quot;detailsOrder&quot;</span>, order);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;admin/orderManage/order_details&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//根据id查询未发货订单</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/queryNotSendById&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">queryNotSendById</span><span class="params">(Map&lt;String, Object&gt; map, String order_id, String currentpage)</span></span>&#123;</span><br><span class="line">		List&lt;Order&gt; orderList = orderService.queryPayOrderById(order_id);</span><br><span class="line"></span><br><span class="line">		Page page = pageService.pageToOrder(orderList.size(), currentpage);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.carSystem.action.admin;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/admin&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CarManageAction</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> CarService carService;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> BrandService brandService;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> PageService pageService;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">		</span><br><span class="line">		<span class="keyword">int</span>[] monthArray = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>&#125;;</span><br><span class="line">		List&lt;Order&gt; orderTimeList = <span class="keyword">new</span> ArrayList&lt;Order&gt;();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(year == <span class="keyword">null</span> || year.equals(<span class="string">&quot;&quot;</span>))&#123;</span><br><span class="line">			year = <span class="string">&quot;2017&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>( !year.equals(<span class="string">&quot;2017&quot;</span>))&#123;</span><br><span class="line">			map.put(<span class="string">&quot;year&quot;</span>, year);</span><br><span class="line">			map.put(<span class="string">&quot;month&quot;</span>, monthArray);</span><br><span class="line">			<span class="keyword">return</span> <span class="string">&quot;shop/saleCountManage/countByTime&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		orderTimeList = orderService.shopSaleOrderTime(login.getLogin_id());</span><br><span class="line">		<span class="keyword">int</span> numSumMonth[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">13</span>]; </span><br><span class="line">		<span class="keyword">int</span> priceSumMonth[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">13</span>]; </span><br><span class="line"><span class="comment">//		List&lt;ArrayList&lt;Order&gt;&gt; orderMonthList = new ArrayList&lt;ArrayList&lt;Order&gt;&gt;(13);</span></span><br><span class="line"><span class="comment">//		for(int i=0; i&lt;13; i++)&#123;</span></span><br><span class="line"><span class="comment">//			ArrayList&lt;Order&gt; list = new ArrayList&lt;Order&gt;(1);</span></span><br><span class="line"><span class="comment">//			orderMonthList.add(list);</span></span><br><span class="line"><span class="comment">//		&#125;</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;orderTimeList.size(); i++)&#123;</span><br><span class="line">			String month = orderTimeList.get(i).getOrder_time_receive().substring(<span class="number">5</span>, <span class="number">7</span>);	<span class="comment">//订单完成时间的月份</span></span><br><span class="line">			<span class="keyword">int</span> monthInt = Integer.parseInt(month);</span><br><span class="line">			numSumMonth[monthInt]++;	<span class="comment">//时间加进去</span></span><br><span class="line">			priceSumMonth[monthInt]+=orderTimeList.get(i).getCar_price_new();	<span class="comment">//销量加进去</span></span><br><span class="line"><span class="comment">//			orderMonthList.get(monthInt).add( orderTimeList.get(i) );	//订单列表</span></span><br><span class="line">		&#125;</span><br><span class="line">		map.put(<span class="string">&quot;month&quot;</span>, monthArray);</span><br><span class="line">		map.put(<span class="string">&quot;year&quot;</span>, year);</span><br><span class="line">		map.put(<span class="string">&quot;numSum&quot;</span>, numSumMonth);</span><br><span class="line">		map.put(<span class="string">&quot;priceSum&quot;</span>, priceSumMonth);</span><br><span class="line"><span class="comment">//		map.put(&quot;orderList&quot;, orderMonthList);</span></span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;shop/saleCountManage/countByTime&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//(商家)月份订单详情</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/saleOrderByMonth&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">saleOrderByMonth</span><span class="params">(String month, Map&lt;String, Object&gt; map, String shop_id, String year)</span></span>&#123;</span><br><span class="line">		List&lt;Order&gt; orderList = orderService.shopSaleOrderByMonth(year, month, shop_id);</span><br><span class="line">		map.put(<span class="string">&quot;month&quot;</span>, month);</span><br><span class="line">		map.put(<span class="string">&quot;monthOrderList&quot;</span>, orderList);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;shop/saleCountManage/monthOrderDetails&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

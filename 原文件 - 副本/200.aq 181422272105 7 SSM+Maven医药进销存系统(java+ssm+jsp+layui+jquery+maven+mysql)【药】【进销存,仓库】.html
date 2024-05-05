@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.aq%20181422272105%207%20SSM+Maven%E5%8C%BB%E8%8D%AF%E8%BF%9B%E9%94%80%E5%AD%98%E7%B3%BB%E7%BB%9F(java+ssm+jsp+layui+jquery+maven+mysql)%E3%80%90%E8%8D%AF%E3%80%91%E3%80%90%E8%BF%9B%E9%94%80%E5%AD%98,%E4%BB%93%E5%BA%93%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project20/030023122402.jpg" alt="030023122402"></p>
+<p><img src="../images/project20/040023122402.jpg" alt="040023122402"></p>
+<p><img src="../images/project20/060023122402.jpg" alt="060023122402"></p>
+<p><img src="../images/project20/070023122402.jpg" alt="070023122402"></p>
+<p><img src="../images/project20/080023122402.jpg" alt="080023122402"></p>
+<p><img src="../images/project20/090023122402.jpg" alt="090023122402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>功能介绍</p>
+<p>医药进销存系统，主要功能包括：</p>
+<p>公告管理：发布公告、公告列表； 生产管理：订单列表、增加生产、订单日志； 分店采购：分店审核、采购； 总店仓库：出库管理、仓库列表、入库管理； 分店管理：分店库存、分店列表、分店财务； 商品管理：原材料、药效、商品列表、药品类型； 总店采购：采购列表、采购审核； 合同管理：合同类型管理、合同列表； 会员管理：会员列表； 质检：质检； 权限管理：人员管理、模块管理、部门管理、角色管理； 审核管理：财务审核、生产审核、采购审核； 分店销售：销售统计图、订单批发审核、订单列表、分店销售； 该项目共有49张表，功能比较复杂；</p>
+<p>其他管理：供货商管理，新增、搜索、编辑、删除；</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； 5.是否Maven项目: 是；查看源码目录中是否包含pom.xml；若包含，则为maven项目，否则为非maven项目 6.数据库：MySql 5.7版本；</p>
+<p>技术栈</p>
+<ol>
+<li>后端：Spring SpringMVC MyBatis 2. 前端：JSP+Layui+jQuery</li>
+</ol>
+<p>运行说明</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven; 若为maven项目，导入成功后请执行maven clean;maven install命令，配置tomcat，然后运行； 3. 将项目中db.properties和spring.xml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，输入<a target="_blank" rel="noopener" href="http://localhost:8080/medicine/page/login.jsp">http://localhost:8080/medicine/page/login.jsp</a> 登录</p>
+</li>
+</ol>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 显示采购图</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> date</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/showTuxing&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">showTuxing</span><span class="params">(String date)</span></span>&#123;</span><br><span class="line">	<span class="comment">//判断前台传值是否为空</span></span><br><span class="line">	<span class="keyword">if</span>(Tools.isEmpty(date))&#123;</span><br><span class="line">		date=<span class="string">&quot;&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		date=<span class="string">&quot;%&quot;</span>+date+<span class="string">&quot;%&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	List&lt;ErpPurchase&gt; erpPurchase = erpPurchaseService.findTuxing(date);<span class="comment">//查询年月日</span></span><br><span class="line">	Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();<span class="comment">//定义一个map集合</span></span><br><span class="line">	map.put(<span class="string">&quot;erpPurchase&quot;</span>,erpPurchase);<span class="comment">//map放入资金申请集合</span></span><br><span class="line">	<span class="keyword">return</span> map;<span class="comment">//返回map</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用于审核采购</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> purcId 采购订单id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> state 状态信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> feedBack 回馈信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> session 得到session</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 返回消息类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/auditPurchase&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> SsmMessage <span class="title">auditPurchase</span><span class="params">(String purcId,String state,String feedBack,HttpSession session)</span></span>&#123;</span><br><span class="line">	SsmMessage mes = <span class="keyword">new</span> SsmMessage();<span class="comment">//定义一个消息类用于返回jsp</span></span><br><span class="line">	Map&lt;String,Object&gt;map = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();<span class="comment">//定义一个map集合</span></span><br><span class="line">	<span class="keyword">if</span>(Tools.isEmpty(feedBack))&#123;<span class="comment">//判断字符串是否为空</span></span><br><span class="line">		map.put(<span class="string">&quot;feedBack&quot;</span>, <span class="string">&quot;暂无反馈信息&quot;</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		map.put(<span class="string">&quot;feedBack&quot;</span>, feedBack);<span class="comment">//map集合中存入 反馈消息</span></span><br><span class="line">	&#125;</span><br><span class="line">	map.put(<span class="string">&quot;purcId&quot;</span>, purcId);<span class="comment">//map集合中存入财务id</span></span><br><span class="line">	map.put(<span class="string">&quot;state&quot;</span>, state);<span class="comment">//map集合中存入 审核是否通过   state=2 通过 state=0 不通过</span></span><br><span class="line">	ErpStaff staff = (ErpStaff) session.getAttribute(<span class="string">&quot;staff&quot;</span>);<span class="comment">//得到人员session</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 工具类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0 </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@update</span> 修改人 </span></span><br><span class="line"><span class="comment"> * 修改内容.................</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tools</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> Random random = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">char</span>[] char_random = &#123; <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;f&#x27;</span>, <span class="string">&#x27;g&#x27;</span>, <span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;j&#x27;</span>, <span class="string">&#x27;k&#x27;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;p&#x27;</span>, <span class="string">&#x27;q&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;s&#x27;</span>, <span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;v&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;y&#x27;</span>, <span class="string">&#x27;z&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;0&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 随机生成字符串 共40位</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 随机字符串</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getRandomString</span><span class="params">()</span></span>&#123;</span><br><span class="line">		String s = RandomStringUtils.random(<span class="number">20</span>,char_random) ;</span><br><span class="line">		String s1 = RandomStringUtils.random(<span class="number">20</span>, char_random) ;</span><br><span class="line">		<span class="keyword">return</span> s+s1 ;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 随机生成字符串</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> size 位数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 随机字符串</span></span><br><span class="line"><span class="comment">	 */</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">	map.put(<span class="string">&quot;purcId&quot;</span>, purcId);<span class="comment">//map集合中存入财务id</span></span><br><span class="line">	map.put(<span class="string">&quot;state&quot;</span>, state);<span class="comment">//map集合中存入 审核是否通过   state=2 通过 state=0 不通过</span></span><br><span class="line">	ErpStaff staff = (ErpStaff) session.getAttribute(<span class="string">&quot;staff&quot;</span>);<span class="comment">//得到人员session</span></span><br><span class="line">	map.put(<span class="string">&quot;staff&quot;</span>, staff);</span><br><span class="line">	<span class="keyword">int</span> rows = erpPurchaseService.auditPurchase(map);</span><br><span class="line">	<span class="keyword">return</span> mes;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询合同表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> map</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/pact&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;ErpPact&gt; <span class="title">findPactText</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> erpPactService.findPactText();<span class="comment">//查询合同表</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询单个对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> purcId 采购id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 返回采购对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/selectByPrimaryKey&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ErpPurchase <span class="title">selectByPrimaryKey</span><span class="params">(String purcId)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> erpPurchaseService.selectByPrimaryKey(purcId);<span class="comment">//根据ID查询</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询采购信息（采购原材料）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> purcId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/showErp&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ErpPurchase <span class="title">updateRaw</span><span class="params">(String purcId)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> erpPurchaseService.showErp(purcId);<span class="comment">//查询修改信息（原材料）</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询采购信息（采购成品）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> purcId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">//新建一个质检明细的集合</span></span><br><span class="line">	List&lt;ErpQualityDetail&gt; detlist = <span class="keyword">new</span> ArrayList&lt;ErpQualityDetail&gt;();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;qdetGood.length;i++)&#123;<span class="comment">//循环一个数组因为两个数组的值对应只有循环一个就好了</span></span><br><span class="line">		ErpQualityDetail det = <span class="keyword">new</span> ErpQualityDetail();<span class="comment">//创建一个质检对象</span></span><br><span class="line">		det.setQdetGood(qdetGood[i]);<span class="comment">//把数组里面的东西放入对象</span></span><br><span class="line">		det.setQdetBab(qdetBab[i]);</span><br><span class="line">		<span class="keyword">if</span>(kinId!=<span class="keyword">null</span>)&#123;</span><br><span class="line">			det.setKinId(kinId[i]);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			det.setRawId(rawId[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		det.setQuaId(qua.getQuaId());</span><br><span class="line">		detlist.add(det);<span class="comment">//把对象放入集合</span></span><br><span class="line">	&#125;</span><br><span class="line">	SsmMessage mes = <span class="keyword">new</span> SsmMessage();</span><br><span class="line">	ErpStaff staff = (ErpStaff) session.getAttribute(<span class="string">&quot;staff&quot;</span>);<span class="comment">//得到用户对象</span></span><br><span class="line">	qua.setQuaQc(staff.getStaName());<span class="comment">//把当前用户名放入质检里</span></span><br><span class="line">	<span class="keyword">int</span> rows;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		rows = service.updateByPrimaryKeySelective(qua,detlist);</span><br><span class="line">		<span class="keyword">if</span>(rows&gt;-<span class="number">1</span>)&#123; </span><br><span class="line">			mes.setMes(<span class="string">&quot;成功&quot;</span>);</span><br><span class="line">			mes.setState(<span class="number">1</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			mes.setMes(<span class="string">&quot;失败&quot;</span>);</span><br><span class="line">			mes.setState(<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (BackException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> mes;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询单个对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> quaId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> indentId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> purcId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;selectByPrimaryKey&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ErpQuality <span class="title">selectByPrimaryKey</span><span class="params">(String quaId,String indentId, String purcId)</span></span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">	List&lt;Map&lt;String, Object&gt;&gt; map=proindentService.findByshow(m);<span class="comment">//查询产品，订单，订单明细，订单生产日志，订单生产日志明细，根据订单ID查询和订单明细总行数查询</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> map;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询所有方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> page 当前页数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> limit 每页最大显示条数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> key 关键字</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> indentUrgency 是否紧急</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> state 审核状态</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> indentState 订单状态</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> data 返回所有</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/showList&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span>  <span class="comment">//ajax注解</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">showList</span><span class="params">(<span class="keyword">int</span> page ,<span class="keyword">int</span> limit,ErpProindent dent,String key)</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();<span class="comment">//定义map</span></span><br><span class="line">	</span><br><span class="line">	Map&lt;String,Object&gt; pagmap = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();<span class="comment">//定义map</span></span><br><span class="line">	</span><br><span class="line">	Pages ps=<span class="keyword">new</span> Pages();<span class="comment">//new出分页工具类</span></span><br><span class="line">	ps.setCurPage(page);<span class="comment">//分页工具类赋值，当前页数</span></span><br><span class="line">	ps.setMaxResult(limit);<span class="comment">//分页工具类赋值，每页最大显示条数</span></span><br><span class="line">	pagmap.put(<span class="string">&quot;page&quot;</span>, ps.getFirstRows());<span class="comment">//map赋值，取出，开始的行数 --需要计算的</span></span><br><span class="line">	pagmap.put(<span class="string">&quot;limit&quot;</span>, ps.getMaxResult());<span class="comment">//map赋值，取出，每页最大显示条数</span></span><br><span class="line">	pagmap.put(<span class="string">&quot;key&quot;</span>, key);<span class="comment">//map赋值，关键字</span></span><br><span class="line">	pagmap.put(<span class="string">&quot;indentUrgency&quot;</span>, dent.getIndentUrgency());<span class="comment">//map赋值，是否紧急</span></span><br><span class="line">	pagmap.put(<span class="string">&quot;state&quot;</span>, dent.getState());<span class="comment">//map赋值，订单取出，审核状态</span></span><br><span class="line">	pagmap.put(<span class="string">&quot;indentState&quot;</span>, dent.getIndentState());<span class="comment">//map赋值，订单状态</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	List&lt;ErpProindent&gt; list=proindentService.selectByPrimaryKey(pagmap);<span class="comment">//定义订单list查询所有</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//layui数据表格需要返回的参数</span></span><br><span class="line">	map.put(<span class="string">&quot;count&quot;</span>,proindentService.findRowCount(pagmap));<span class="comment">//总行数返回count</span></span><br><span class="line">	</span><br><span class="line">	map.put(<span class="string">&quot;data&quot;</span>, list);<span class="comment">//返回所有，传list</span></span><br><span class="line">	map.put(<span class="string">&quot;code&quot;</span>,<span class="number">0</span>);</span><br><span class="line">	map.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改订单明细和修改订单</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> detail 订单明细表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> dent 订单表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">//增加销售订单明细</span></span><br><span class="line">	<span class="keyword">int</span> row2 = sctockmpDetailDao.addSctockmpDetailList(list);<span class="comment">//订单明细:批量增加销售订单明细</span></span><br><span class="line">	<span class="comment">//如果为零售(则需减库存，增加财务)</span></span><br><span class="line">	<span class="keyword">if</span>(sctockmp.getSaleIfWholesale()==<span class="number">0</span>)&#123;<span class="comment">//如果销售订单对象的是否批发 等于零的时候</span></span><br><span class="line">		<span class="comment">//减库存</span></span><br><span class="line">		List&lt;Map&lt;String, Object&gt;&gt; mapList = <span class="keyword">new</span> ArrayList&lt;Map&lt;String, Object&gt;&gt;();<span class="comment">//实例化一个map集合</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>;i&lt;list.size();i++)&#123;<span class="comment">//循环分店销售订单明细集合</span></span><br><span class="line">			Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();<span class="comment">//实例化map集合</span></span><br><span class="line">			map.put(<span class="string">&quot;annexId&quot;</span>,sctockmp.getAnnexId());<span class="comment">//map赋值-分店ID-订单中的分店ID</span></span><br><span class="line">			map.put(<span class="string">&quot;kinId&quot;</span>,list.get(i).getKinId());<span class="comment">//map赋值-商品ID-明细订单集合第i个中的商品ID</span></span><br><span class="line">			map.put(<span class="string">&quot;kmpNum&quot;</span>,list.get(i).getKmpNum());<span class="comment">//map赋值-商品数量-明细订单集合第i个中的商品数量</span></span><br><span class="line">			mapList.add(map);<span class="comment">//把map加入到map集合</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> row3 = sumstockDao.updateStockSuount(mapList);<span class="comment">//分店库存：批量减少库存(根据分店ID和商品ID减少)</span></span><br><span class="line">		<span class="keyword">if</span>(row3&lt;<span class="number">1</span>)&#123;<span class="comment">//如果减少库存的影响行数小于1</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//返回0</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//增加财务(先增加分店收入明细，再增加分店表的总资产)</span></span><br><span class="line">		<span class="comment">/*  增加分店收入明细  */</span></span><br><span class="line">		ErpLedgyr ledgyr = <span class="keyword">new</span> ErpLedgyr();<span class="comment">//实例化一个分店财务模型</span></span><br><span class="line">		ledgyr.setGyrId(UUID.randomUUID()+<span class="string">&quot;&quot;</span>);<span class="comment">//赋值-分店财务ID-随机生成</span></span><br><span class="line">		ledgyr.setSaleId(sctockmp.getSaleId());<span class="comment">//赋值-分店销售ID</span></span><br><span class="line">		ledgyr.setAnnexId(sctockmp.getAnnexId());<span class="comment">//赋值-分店ID-订单中的分店ID</span></span><br><span class="line">		ledgyr.setGyrSreial(UUID.randomUUID()+<span class="string">&quot;&quot;</span>);<span class="comment">//赋值-分店支出收入编号-随机生成</span></span><br><span class="line">		ledgyr.setGyrPrice(sctockmp.getSaleMoney1());<span class="comment">//赋值-分店支出金钱-订单中的应付金额</span></span><br><span class="line">		ledgyr.setCreater(sctockmp.getCreater());<span class="comment">//赋值-创建人-订单中的创建人</span></span><br><span class="line">		ledgyr.setCreatetime(sctockmp.getCreatetime()+<span class="string">&quot;&quot;</span>);<span class="comment">//赋值-创建时间-订单中的创建时间</span></span><br><span class="line">		<span class="keyword">int</span> row4 = ledgyrDao.insertSelective(ledgyr);<span class="comment">//分店财务：增加(可以为空)</span></span><br><span class="line">		<span class="keyword">if</span>(row4&lt;<span class="number">1</span>)&#123;<span class="comment">//如果增加的影响行数小于1</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*  增加分店表的总资产  */</span></span><br><span class="line">		ErpAnnex annex = <span class="keyword">new</span> ErpAnnex();<span class="comment">//实例化一个分店模型</span></span><br><span class="line">		annex.setAnnexId(sctockmp.getAnnexId());<span class="comment">//分店赋值-分店ID-订单中的分店ID</span></span><br><span class="line">		annex.setAnnexPrice(sctockmp.getSaleMoney1());<span class="comment">//分店赋值-分店总资产-订单中的应付金额</span></span><br><span class="line">		<span class="keyword">int</span> row5 = annexDao.updateAnnexPriceAdd(annex);<span class="comment">//分店：增加分店的总资产</span></span><br><span class="line">		<span class="keyword">if</span>(row5&lt;<span class="number">1</span>)&#123;<span class="comment">//如果 增加分店的总资产 的影响行数小于1</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> rows = row1+row2;</span><br><span class="line">	<span class="keyword">return</span> rows;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

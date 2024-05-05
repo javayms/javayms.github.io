@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.uq%20041122582008%207%20JSP+Servlet%E5%B9%BC%E5%84%BF%E5%9B%AD%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+jsp+easyui+h-ui+servlet+mysql)%E3%80%90%E5%B9%BC%E5%84%BF%E5%9B%AD%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project23/520023592402.jpg" alt="520023592402"></p>
+<p><img src="../images/project23/530023592402.jpg" alt="530023592402"></p>
+<p><img src="../images/project23/540023592402.jpg" alt="540023592402"></p>
+<p><img src="../images/project23/550023592402.jpg" alt="550023592402"></p>
+<p><img src="../images/project23/570023592402.jpg" alt="570023592402"></p>
+<p><img src="../images/project23/580023592402.jpg" alt="580023592402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>项目介绍</p>
+<p>本项目为后台管理系统,包括管理员、教师、家长三种角色； 管理员角色包含以下功能： 学生信息管理：学生列表、班级列表； 生活展示：运动会、生活照、菜单； 教师信息管理：教师列表； 园所管理：园所信息； 留言板：留言管理； 系统管理：修改密码；</p>
+<p>教师角色包含以下功能： 学生信息管理：学生列表、班级列表； 生活展示：运动会、生活照、菜单； 教师信息管理：教师列表； 园所管理：园所信息； 留言板：留言管理； 系统管理：修改密码；</p>
+<p>家长角色包含以下功能： 学生信息管理：学生列表、班级列表； 生活展示：运动会、生活照、菜单； 教师信息管理：教师列表； 园所管理：园所信息； 留言板：留言管理； 系统管理：修改密码； 管理员、教师、家长包含相同的菜单，但对应的权限各不相同，如教师只能查看和修改自己负责班级的学生等；</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  5.数据库：MySql 5.7版本； 6.是否Maven项目: 否；</p>
+<p>技术栈</p>
+<ol>
+<li>后端：Servlet 2. 前端：JSP+CSS+Javascript+jQuery+easyui+h-ui</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven; 若为maven项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中util/DbUtil.java配置文件中的数据库配置改为自己的配置; 4. 运行项目，在浏览器中输入<a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a> 登录</li>
+</ol>
+<p>——————————OldCode——————————</p>
+<p>用户管理控制层：</p>
+<p>@SuppressWarnings({ “unchecked”, “rawtypes” })</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/user”)</p>
+<p>public class UserController {</p>
+<p>private final Logger logger = LoggerFactory.getLogger(UserController.class);</p>
+<p>private final ResultMap resultMap;</p>
+<p>@Autowired</p>
+<p>private UserService userService;</p>
+<p>@Autowired</p>
+<p>private UserRoleService userRoleService;</p>
+<p>@Autowired</p>
+<p>public UserController(ResultMap resultMap) {</p>
+<p>this.resultMap = resultMap;</p>
+<p>@RequestMapping(value = “/getMessage”, method = RequestMethod.GET)</p>
+<p>public ResultMap getMessage() {</p>
+<p>return resultMap.success().message(“您拥有用户权限，可以获得该接口的信息！”);</p>
+<p>@RequestMapping(value = “/editUserPage”)</p>
+<p>public String editUserPage(String userId, Model model) {</p>
+<p>model.addAttribute(“manageUser”, userId);</p>
+<p>if (null != userId) {</p>
+<p>User user = userService.selectByPrimaryKey(userId);</p>
+<p>model.addAttribute(“manageUser”, user);</p>
+<p>return “user/userEdit”;</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(“/updateUser”)</p>
+<p>public String updateUser(User user) {</p>
+<p>return userService.updateUser(user);</p>
+<p>// 任务</p>
+<p>/**</p>
+<ul>
+<li><p>Description: 查询所有管理员 <BR></BR></p>
+</li>
+<li><p>@return List<Project></Project></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/getAdmins”)</p>
+<p>public List<User> getAdmins() {</User></p>
+<p>return userService.getAdmins();</p>
+<p>/**</p>
+<ul>
+<li><p>Description: 查询所有授权用户<BR></BR></p>
+</li>
+<li><p>@return List<User></User></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/getAllUser”)</p>
+<p>public List<User> getAllUser() {</User></p>
+<p>return userService.getAllUser();</p>
+<p>登录管理控制层：</p>
+<p>@Controller</p>
+<p>public class LoginController {</p>
+<p>@Autowired</p>
+<p>private ResultMap resultMap;</p>
+<p>@Autowired</p>
+<p>private UserService userService;// 用户登录service</p>
+<p>@Autowired</p>
+<p>private PageService pageService;</p>
+<p>private final Logger logger = LoggerFactory.getLogger(LoginController.class);</p>
+<p>@RequestMapping(value = “/notLogin”, method = RequestMethod.GET)</p>
+<p>@ResponseBody</p>
+<p>public ResultMap notLogin() {</p>
+<p>logger.warn(“尚未登陆！”);</p>
+<p>return resultMap.success().message(“您尚未登陆！”);</p>
+<p>@RequestMapping(value = “/notRole”, method = RequestMethod.GET)</p>
+<p>@ResponseBody</p>
+<p>public ResultMap notRole() {</p>
+<p>Subject subject = SecurityUtils.getSubject();</p>
+<p>User user = (User) subject.getPrincipal();</p>
+<p>if (user != null) {</p>
+<p>logger.info(“{}—没有权限！”, user.getUserName());</p>
+<p>return resultMap.success().message(“您没有权限！”);</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: logout <BR></BR></p>
+</li>
+<li><p>Description: 退出登录 <BR></BR></p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/logout”, method = RequestMethod.GET)</p>
+<p>public String logout() {</p>
+<p>Subject subject = SecurityUtils.getSubject();</p>
+<p>User user = (User) subject.getPrincipal();</p>
+<p>if (null != user) {</p>
+<p>logger.info(“{}—退出登录！”, user.getUserName());</p>
+<p>subject.logout();</p>
+<p>return “login”;</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: login <BR></BR></p>
+</li>
+<li><p>Description: 登录验证 <BR></BR></p>
+</li>
+<li><p>Remark: <BR></BR></p>
+</li>
+<li><p>@param username 用户名</p>
+</li>
+<li><p>@param password 密码</p>
+</li>
+<li><p>@return ResultMap<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/login”)</p>
+<p>@ResponseBody</p>
+<p>public ResultMap login(String username, String password) {</p>
+<p>return userService.login(username, password);</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: login <BR></BR></p>
+</li>
+<li><p>Description: 登录页面 <BR></BR></p>
+</li>
+<li><p>@return String login.html<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/index”)</p>
+<p>public String login() {</p>
+<p>return “login”;</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: index <BR></BR></p>
+</li>
+<li><p>Description: 登录页面 <BR></BR></p>
+</li>
+<li><p>@return String login.html<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/“)</p>
+<p>public String index(Model model) {</p>
+<p>Subject subject = SecurityUtils.getSubject();</p>
+<p>User user = (User) subject.getPrincipal();</p>
+<p>if (null != user) {</p>
+<p>model.addAttribute(“user”, user);</p>
+<p>List<Page> pageList = pageService.getAllRolePageByUserId(user.getUserId());</Page></p>
+<p>model.addAttribute(“pageList”, pageList);</p>
+<p>return “index”;</p>
+<p>} else {</p>
+<p>return “login”;</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: main <BR></BR></p>
+</li>
+<li><p>Description: 进入主页面 <BR></BR></p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/main”)</p>
+<p>public String main(Model model) {</p>
+<p>Subject subject = SecurityUtils.getSubject();</p>
+<p>User user = (User) subject.getPrincipal();</p>
+<p>if (null != user) {</p>
+<p>model.addAttribute(“user”, user);</p>
+<p>} else {</p>
+<p>return “login”;</p>
+<p>List<Page> pageList = pageService.getAllRolePageByUserId(user.getUserId());</Page></p>
+<p>model.addAttribute(“pageList”, pageList);</p>
+<p>return “index”;</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: checkUserPassword <BR></BR></p>
+</li>
+<li><p>Description: 检测旧密码是否正确 <BR></BR></p>
+</li>
+<li><p>@param password 旧密码</p>
+</li>
+<li><p>@return boolean 是否正确<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/user/checkUserPassword”)</p>
+<p>@ResponseBody</p>
+<p>public boolean checkUserPassword(String password) {</p>
+<p>return userService.checkUserPassword(password);</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: updatePassword <BR></BR></p>
+</li>
+<li><p>Description: 更新密码 <BR></BR></p>
+</li>
+<li><p>@param password 旧密码</p>
+</li>
+<li><p>@return String 是否成功<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/user/updatePassword”)</p>
+<p>@ResponseBody</p>
+<p>public String updatePassword(String password) {</p>
+<p>return userService.updatePassword(password);</p>
+<p>教师管理控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(value = “/ls”)</p>
+<p>public class TeacherController {</p>
+<p>@Autowired</p>
+<p>private StudentService studentService;</p>
+<p>@Autowired</p>
+<p>private ClassService classService;</p>
+<p>@Autowired</p>
+<p>private NoticeService noticeService;</p>
+<p>@Autowired</p>
+<p>private SignService signService;</p>
+<p>@Autowired</p>
+<p>private UserService userService;</p>
+<p>@Autowired</p>
+<p>private UserChildrenService userChildrenService;</p>
+<p>@Autowired</p>
+<p>private CourseService courseService;</p>
+<p>@RequestMapping(“/stu”)</p>
+<p>public String stu(Model model) {</p>
+<p>List<Classes> classes=classService.selectAllClasses();</Classes></p>
+<p>model.addAttribute(“cla”, classes);</p>
+<p>return “ls/stuPage”;</p>
+<p>//学生管理</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: teacherPage <BR></BR></p>
+</li>
+<li><p>Description: 教师管理页面 <BR></BR></p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/stuMG”)</p>
+<p>public String teaMG(Model model) {</p>
+<p>List<Classes> classes=classService.selectAllClasses();</Classes></p>
+<p>model.addAttribute(“cla”, classes);</p>
+<p>return “ls/student”;</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: getAllStudentByLimit <BR></BR></p>
+</li>
+<li><p>Description: 根据条件获取所有教师 <BR></BR></p>
+</li>
+<li><p>@param userParameter</p>
+</li>
+<li><p>@return Object<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/getAllStudentByLimit”)</p>
+<p>@ResponseBody</p>
+<p>public Object getAllStudentByLimit(Children stuParameter) {</p>
+<p>return studentService.getAllStudentByLimit(stuParameter);</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: addStuPage <BR></BR></p>
+</li>
+<li><p>Description: 增加教师界面 <BR></BR></p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/addStuPage”)</p>
+<p>public String addStuPage(Integer id, Model model) {</p>
+<p>model.addAttribute(“manageStu”, id);</p>
+<p>if (null != id) {</p>
+<p>Children student = studentService.selectByPrimaryKey(id);</p>
+<p>//UserChildren userChild = userChildrenService.selectById(id);</p>
+<p>model.addAttribute(“manageStu”, student);</p>
+<p>//model.addAttribute(“manageChild”, userChild);</p>
+<p>UserChildren uc = userChildrenService.selectByUCId(student.getId());</p>
+<p>model.addAttribute(“uc”, uc);</p>
+<p>List<Classes> classes=classService.selectAllClasses();</Classes></p>
+<p>model.addAttribute(“cla”, classes);</p>
+<p>List<User> user=userService.selectAllJiazhang();</User></p>
+<p>model.addAttribute(“user”, user);</p>
+<p>return “ls/stuPageAdd”;</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: addStu <BR></BR></p>
+</li>
+<li><p>Description: 教师添加 <BR></BR></p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(“/addStu”)</p>
+<p>public String addStu(Children student) {</p>
+<p>try {</p>
+<p>studentService.addStudent(student);</p>
+<p>addUserChildren(student);</p>
+<p>return “SUCCESS”;</p>
+<p>} catch (Exception e) {</p>
+<p>return “ERR”;</p>
+<p>public void addUserChildren(Children student) {</p>
+<p>UserChildren userChildern = new UserChildren();</p>
+<p>userChildern.setChildrenId(student.getId());</p>
+<p>userChildern.setUserId(student.getUserId());</p>
+<p>userChildern.setIsFaMa(student.getIsFaMa());</p>
+<p>userChildern.setIsJinji(student.getIsJinji());</p>
+<p>userChildrenService.addUserChildren(userChildern);</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: updateStudent <BR></BR></p>
+</li>
+<li><p>Description: 更新教师 <BR></BR></p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(“/updateStudent”)</p>
+<p>public String updateStudent(Children studnet) {</p>
+<p>UserChildren uc = new UserChildren();</p>
+<p>uc.setId(studnet.getUcId());</p>
+<p>uc.setChildrenId(studnet.getId());</p>
+<p>uc.setIsFaMa(studnet.getIsFaMa());</p>
+<p>uc.setIsJinji(studnet.getIsJinji());</p>
+<p>uc.setUserId(studnet.getUserId());</p>
+<p>userChildrenService.updateUC(uc);</p>
+<p>return studentService.updateStu(studnet);</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: delClaTea <BR></BR></p>
+</li>
+<li><p>Description: 批量删除教师<BR></BR></p>
+</li>
+<li><p>@param ids</p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “delStudent”)</p>
+<p>@ResponseBody</p>
+<p>@Transactional</p>
+<p>public String delStudent(String[] ids) {</p>
+<p>try {</p>
+<p>for (String id : ids) {</p>
+<p>studentService.delStudentById(Integer.parseInt(id));</p>
+<p>return “SUCCESS”;</p>
+<p>} catch (Exception e) {</p>
+<p>TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();</p>
+<p>return “ERROR”;</p>
+<p>//公告管理</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: gg <BR></BR></p>
+</li>
+<li><p>Description: 教师管理页面 <BR></BR></p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/gg”)</p>
+<p>public String gg() {</p>
+<p>return “ls/notice”;</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: getAllNoticeByLimit <BR></BR></p>
+</li>
+<li><p>Description: 根据条件获取所有教师 <BR></BR></p>
+</li>
+<li><p>@param userParameter</p>
+</li>
+<li><p>@return Object<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/getAllNoticeByLimit”)</p>
+<p>@ResponseBody</p>
+<p>public Object getAllNoticeByLimit(Notice noticeParameter) {</p>
+<p>return noticeService.getAllNoticeByLimit(noticeParameter);</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: addStuPage <BR></BR></p>
+</li>
+<li><p>Description: 增加教师界面 <BR></BR></p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/addNoticePage”)</p>
+<p>public String addNoticePage(Integer id, Model model) {</p>
+<p>model.addAttribute(“manageNotice”, id);</p>
+<p>if (null != id) {</p>
+<p>Notice notice = noticeService.selectByPrimaryKey(id);</p>
+<p>model.addAttribute(“manageNotice”, notice);</p>
+<p>return “ls/noticeAdd”;</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: addStu <BR></BR></p>
+</li>
+<li><p>Description: 教师添加 <BR></BR></p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(“/addNotice”)</p>
+<p>public String addNotice(Notice notice) {</p>
+<p>try {</p>
+<p>notice.setCreatTime(new Date());</p>
+<p>noticeService.addNotice(notice);</p>
+<p>return “SUCCESS”;</p>
+<p>} catch (Exception e) {</p>
+<p>return “ERR”;</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: updateStudent <BR></BR></p>
+</li>
+<li><p>Description: 更新教师 <BR></BR></p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(“/updateNotice”)</p>
+<p>public String updateNotice(Notice notice) {</p>
+<p>return noticeService.updateStu(notice);</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: delClaTea <BR></BR></p>
+</li>
+<li><p>Description: 批量删除教师<BR></BR></p>
+</li>
+<li><p>@param ids</p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “delNotice”)</p>
+<p>@ResponseBody</p>
+<p>@Transactional</p>
+<p>public String delNotice(String[] ids) {</p>
+<p>try {</p>
+<p>for (String id : ids) {</p>
+<p>noticeService.delNoticeById(Integer.parseInt(id));</p>
+<p>return “SUCCESS”;</p>
+<p>} catch (Exception e) {</p>
+<p>TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();</p>
+<p>return “ERROR”;</p>
+<p>//考勤管理</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: lskq <BR></BR></p>
+</li>
+<li><p>Description: 教师管理页面 <BR></BR></p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/lskq”)</p>
+<p>public String lskq() {</p>
+<p>return “ls/sign”;</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: getAllSignByLimit <BR></BR></p>
+</li>
+<li><p>Description: 根据条件获取所有教师 <BR></BR></p>
+</li>
+<li><p>@param userParameter</p>
+</li>
+<li><p>@return Object<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/getAllSignByLimit”)</p>
+<p>@ResponseBody</p>
+<p>public Object getAllSignByLimit(Sign signParameter) {</p>
+<p>return signService.getAllSignByLimit(signParameter);</p>
+<p>//打卡</p>
+<p>@RequestMapping(value = “/qianDaoTui”)</p>
+<p>public String qianDaoTui() {</p>
+<p>return “ls/daKa”;</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: addStu <BR></BR></p>
+</li>
+<li><p>Description: 教师添加 <BR></BR></p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(“/addSign”)</p>
+<p>public String addSign(Sign sign) {</p>
+<p>Subject subject = SecurityUtils.getSubject();</p>
+<p>User user = (User) subject.getPrincipal();</p>
+<p>try {</p>
+<p>Date date=new Date();</p>
+<p>SimpleDateFormat formatter = new SimpleDateFormat(“yyyy-MM-dd HH:mm:ss a”);</p>
+<p>String time = formatter.format(date).split(“ “)[2];</p>
+<p>String time1 = formatter.format(date).split(“ “)[1];</p>
+<p>String s=PropertyUtil.getConfigureProperties(“startTime”);</p>
+<p>if(time.equals(“上午”) &amp;&amp; time1.compareTo(s)&gt;0) {</p>
+<p>sign.setState(1);</p>
+<p>}else {</p>
+<p>sign.setState(3);</p>
+<p>sign.setType(1);</p>
+<p>sign.setSignIn(date);</p>
+<p>sign.setKqrId(user.getUserId());</p>
+<p>sign.setKqrType(user.getUserState());</p>
+<p>signService.addSign(sign);</p>
+<p>return “SUCCESS”;</p>
+<p>} catch (Exception e) {</p>
+<p>return “ERR”;</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: addStu <BR></BR></p>
+</li>
+<li><p>Description: 教师添加 <BR></BR></p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return String<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(“/addQianTui”)</p>
+<p>public String addQianTui(Sign sign) {</p>
+<p>Subject subject = SecurityUtils.getSubject();</p>
+<p>User user = (User) subject.getPrincipal();</p>
+<p>try {</p>
+<p>Date date=new Date();</p>
+<p>SimpleDateFormat formatter = new SimpleDateFormat(“yyyy-MM-dd HH:mm:ss a”);</p>
+<p>String time = formatter.format(date).split(“ “)[2];</p>
+<p>String time1 = formatter.format(date).split(“ “)[1];</p>
+<p>String s=PropertyUtil.getConfigureProperties(“endTime”);</p>
+<p>if(time.equals(“下午”) &amp;&amp; time1.compareTo(s)&lt;0) {</p>
+<p>sign.setState(1);</p>
+<p>}else{</p>
+<p>sign.setState(2);</p>
+<p>sign.setType(2);</p>
+<p>sign.setSignIn(date);</p>
+<p>sign.setKqrId(user.getUserId());</p>
+<p>sign.setKqrType(user.getUserState());</p>
+<p>signService.addSign(sign);</p>
+<p>return “SUCCESS”;</p>
+<p>} catch (Exception e) {</p>
+<p>return “ERR”;</p>
+<p>//学生考勤</p>
+<p>@RequestMapping(value = “/xskq”)</p>
+<p>public String xskq() {</p>
+<p>return “ls/childSign”;</p>
+<p>/**</p>
+<ul>
+<li><p>Method name: getAllSignByLimit <BR></BR></p>
+</li>
+<li><p>Description: 根据条件获取所有教师 <BR></BR></p>
+</li>
+<li><p>@param userParameter</p>
+</li>
+<li><p>@return Object<BR></BR></p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/getAllChildSignByLimit”)</p>
+<p>@ResponseBody</p>
+<p>public Object getAllChildSignByLimit(Sign signParameter) {</p>
+<p>return signService.getAllChildSignByLimit(signParameter);</p>
+<p>//所有老师签到的总次数统计</p>
+<p>@RequestMapping(value = “/kqtj”)</p>
+<p>public String kqtj(Model model) {</p>
+<p>List<TongJi> ts = signService.getAllTeacherCount();</TongJi></p>
+<p>List<String> names = new ArrayList&lt;&gt;();</String></p>
+<p>List<Integer> zc =  new ArrayList&lt;&gt;();</Integer></p>
+<p>List<Integer> tq =  new ArrayList&lt;&gt;();</Integer></p>
+<p>List<Integer> cd =  new ArrayList&lt;&gt;();</Integer></p>
+<p>for (TongJi tongJi : ts) {</p>
+<p>names.add(tongJi.getUserName());</p>
+<p>zc.add(tongJi.getZhengChang());</p>
+<p>tq.add(tongJi.getTiQian());</p>
+<p>cd.add(tongJi.getChiDao());</p>
+<p>model.addAttribute(“names”, names);</p>
+<p>model.addAttribute(“zc”, zc);</p>
+<p>model.addAttribute(“tq”, tq);</p>
+<p>model.addAttribute(“cd”, cd);</p>
+<p>return “ls/tongJi”;</p>
+<p>//所有学生签到的总次数统计</p>
+<p>@RequestMapping(value = “/tongJiXueSheng”)</p>
+<p>public String tongJiXueSheng(Model model) {</p>
+<p>List<TongJi> ts = signService.getAllChildCount();</TongJi></p>
+<p>List<String> names = new ArrayList&lt;&gt;();</String></p>
+<p>List<Integer> zc =  new ArrayList&lt;&gt;();</Integer></p>
+<p>List<Integer> tq =  new ArrayList&lt;&gt;();</Integer></p>
+<p>List<Integer> cd =  new ArrayList&lt;&gt;();</Integer></p>
+<p>for (TongJi tongJi : ts) {</p>
+<p>names.add(tongJi.getUserName());</p>
+<p>zc.add(tongJi.getZhengChang());</p>
+<p>tq.add(tongJi.getTiQian());</p>
+<p>cd.add(tongJi.getChiDao());</p>
+<p>model.addAttribute(“names”, names);</p>
+<p>model.addAttribute(“zc”, zc);</p>
+<p>model.addAttribute(“tq”, tq);</p>
+<p>model.addAttribute(“cd”, cd);</p>
+<p>return “ls/tongJiXueSheng”;</p>
+<p>@RequestMapping(value = “/course”)</p>
+<p>public String course(Model model) {</p>
+<p>return “ls/course”;</p>
+<p>//课程</p>
+<p>@RequestMapping(value = “/courseAdd”)</p>
+<p>public String courseAdd(Model model) {</p>
+<p>List<User> users = userService.selectAllTea();</User></p>
+<p>model.addAttribute(“users”, users);</p>
+<p>List<Classes> clas = classService.selectAllClasses();</Classes></p>
+<p>model.addAttribute(“cla”, clas);</p>
+<p>return “ls/courseAdd”;</p>
+<p>@RequestMapping(“/getAllCourseByLimit”)</p>
+<p>@ResponseBody</p>
+<p>public Object getAllCourseByLimit(Course course) {</p>
+<p>return courseService.getAllCourseByLimit(course);</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(“/addCourse”)</p>
+<p>public String addCourse(Course course) {</p>
+<p>course.setCreateTime(new Date());</p>
+<p>try {</p>
+<p>courseService.addCourse(course);</p>
+<p>return “SUCCESS”;</p>
+<p>} catch (Exception e) {</p>
+<p>return “ERR”;</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(“/delCourse”)</p>
+<p>public String delCourse(Integer id) {</p>
+<p>try {</p>
+<p>courseService.delCourse(id);</p>
+<p>return “SUCCESS”;</p>
+<p>} catch (Exception e) {</p>
+<p>return “ERR”;</p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.fx%20171422302105%207%20SpringBootcrm%E5%AE%A2%E6%88%B7%E5%85%B3%E7%B3%BB%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+springboot+maven+mysql)%E3%80%90%E5%AE%A2%E6%88%B7%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project21/430023182402.jpg" alt="430023182402"></p>
+<p><img src="../images/project21/440023182402.jpg" alt="440023182402"></p>
+<p><img src="../images/project21/450023182402.jpg" alt="450023182402"></p>
+<p><img src="../images/project21/460023182402.jpg" alt="460023182402"></p>
+<p><img src="../images/project21/470023182402.jpg" alt="470023182402"></p>
+<p><img src="../images/project21/480023182402.jpg" alt="480023182402"></p>
+<p><img src="../images/project21/490023182402.jpg" alt="490023182402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>Springboot项目CRM客户关系管理系统:</p>
+<p>系统实现了CRM客户关系系统的基本功能，主要有看板（当月参与的业务机会、当月转化情况、将要结束的业务机会等）、业务机会（初步接触中、需求分析中、协商方案中、商业谈判中的业务机会）、客户管理、联系人管理、个人日报管理、查看团队日报、主数据管理（组织架构管理）、系统管理（用户管理、角色管理、菜单管理）。</p>
+<p>——————————OldCode——————————</p>
+<p>登录控制层：</p>
+<p>public class LoginFrm extends javax.swing.JFrame {</p>
+<p>/**</p>
+<ul>
+<li>皮肤</li>
+</ul>
+<p>*/</p>
+<p>static {</p>
+<p>try {</p>
+<p>// LookAndFeel lf = new SubstanceAutumnLookAndFeel();</p>
+<p>// LookAndFeel lf = new SubstanceChallengerDeepLookAndFeel();</p>
+<p>// LookAndFeel lf = new Plastic3DLookAndFeel();</p>
+<p>// LookAndFeel lf = new PlasticLookAndFeel();</p>
+<p>LookAndFeel lf = new PlasticXPLookAndFeel();</p>
+<p>UIManager.setLookAndFeel(lf);</p>
+<p>} catch (UnsupportedLookAndFeelException e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li>版本序列号</li>
+</ul>
+<p>*/</p>
+<p>private static final long serialVersionUID = -2989784724450522952L;</p>
+<p>// 验证码的String类型</p>
+<p>private String imageCode;</p>
+<p>private User user;</p>
+<p>/** Creates new form LoginFrm */</p>
+<p>public LoginFrm(User user) {</p>
+<p>this.user = user;</p>
+<p>initComponents();</p>
+<p>this.setLocationRelativeTo(null);</p>
+<p>fillImageCode();</p>
+<p>if (user != null) {</p>
+<p>this.jtf_username.setText(this.user.getusername());</p>
+<p>this.jpw_password.setText(this.user.getpassword());</p>
+<p>public void setUser(User user) {</p>
+<p>this.user = user;</p>
+<p>/**</p>
+<ul>
+<li>填充验证码图片</li>
+</ul>
+<p>*/</p>
+<p>private void fillImageCode() {</p>
+<p>// this.jl_checkImage.setIcon(new ImageIcon(“images/check.png”));</p>
+<p>// this.repaint();</p>
+<p>// jl_checkImage.setIcon(new ImageIcon(ImageIO.read(new</p>
+<p>// File(“images/check.png”))));</p>
+<p>ImageCodeUtil imageCodeUtil = ImageCodeUtil.getImageCodeUtil();</p>
+<p>jl_checkImage.setIcon(new ImageIcon(imageCodeUtil.getBufferedImage()));</p>
+<p>imageCode =imageCodeUtil.sRand;</p>
+<p>// GEN-BEGIN:initComponents</p>
+<p>// <editor-fold defaultstate="collapsed" desc="Generated Code"></editor-fold></p>
+<p>private void initComponents() {</p>
+<p>jLabel1 = new javax.swing.JLabel();</p>
+<p>jLabel2 = new javax.swing.JLabel();</p>
+<p>jLabel3 = new javax.swing.JLabel();</p>
+<p>jtf_username = new javax.swing.JTextField();</p>
+<p>jpw_password = new javax.swing.JPasswordField();</p>
+<p>jLabel4 = new javax.swing.JLabel();</p>
+<p>jtf_check = new javax.swing.JTextField();</p>
+<p>jl_checkImage = new javax.swing.JLabel();</p>
+<p>jb_login = new javax.swing.JButton();</p>
+<p>jb_cancle = new javax.swing.JButton();</p>
+<p>setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</p>
+<p>setTitle(“\u7528\u6237\u767b\u5f55”);</p>
+<p>jLabel1.setFont(new java.awt.Font(“宋体”, 0, 24));</p>
+<p>jLabel1.setText(“\u5ba2\u6237\u5173\u7cfb\u7ba1\u7406\u7cfb\u7edf”);</p>
+<p>jLabel2.setText(“\u7528\u6237\u540d\uff1a”);</p>
+<p>jLabel3.setText(“\u5bc6  \u7801\uff1a”);</p>
+<p>jLabel4.setText(“\u9a8c\u8bc1\u7801\uff1a”);</p>
+<p>jb_login.setText(“\u767b\u5f55”);</p>
+<p>jb_login.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_loginActionPerformed(evt);</p>
+<p>});</p>
+<p>jb_cancle.setText(“\u53d6\u6d88”);</p>
+<p>jb_cancle.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_cancleActionPerformed(evt);</p>
+<p>});</p>
+<p>javax.swing.GroupLayout layout = new javax.swing.GroupLayout(</p>
+<p>getContentPane());</p>
+<p>getContentPane().setLayout(layout);</p>
+<p>layout.setHorizontalGroup(layout</p>
+<p>.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.LEADING)</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addGap(108,</p>
+<p>108,</p>
+<p>108)</p>
+<p>.addComponent(</p>
+<p>jLabel1))</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addGap(78, 78,</p>
+<p>78)</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.LEADING,</p>
+<p>false)</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.TRAILING)</p>
+<p>.addComponent(</p>
+<p>jLabel2)</p>
+<p>.addComponent(</p>
+<p>jLabel3)</p>
+<p>.addComponent(</p>
+<p>jLabel4))</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.TRAILING,</p>
+<p>false)</p>
+<p>.addGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.LEADING,</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addComponent(</p>
+<p>jtf_check,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>71,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</p>
+<p>.addComponent(</p>
+<p>jl_checkImage))</p>
+<p>.addComponent(</p>
+<p>jpw_password,</p>
+<p>javax.swing.GroupLayout.Alignment.LEADING,</p>
+<p>javax.swing.GroupLayout.DEFAULT_SIZE,</p>
+<p>157,</p>
+<p>Short.MAX_VALUE)</p>
+<p>.addComponent(</p>
+<p>jtf_username,</p>
+<p>javax.swing.GroupLayout.Alignment.LEADING)))</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addComponent(</p>
+<p>jb_login)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED,</p>
+<p>javax.swing.GroupLayout.DEFAULT_SIZE,</p>
+<p>Short.MAX_VALUE)</p>
+<p>.addComponent(</p>
+<p>jb_cancle)))))</p>
+<p>.addContainerGap(79, Short.MAX_VALUE)));</p>
+<p>layout.setVerticalGroup(layout</p>
+<p>.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addGap(34, 34, 34)</p>
+<p>.addComponent(jLabel1)</p>
+<p>.addGap(53, 53, 53)</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.BASELINE)</p>
+<p>.addComponent(jLabel2)</p>
+<p>.addComponent(</p>
+<p>jtf_username,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>javax.swing.GroupLayout.DEFAULT_SIZE,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE))</p>
+<p>.addGap(18, 18, 18)</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.BASELINE)</p>
+<p>.addComponent(jLabel3)</p>
+<p>.addComponent(</p>
+<p>jpw_password,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>javax.swing.GroupLayout.DEFAULT_SIZE,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE))</p>
+<p>.addGap(28, 28, 28)</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.BASELINE)</p>
+<p>.addComponent(jLabel4)</p>
+<p>.addComponent(</p>
+<p>jtf_check,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>javax.swing.GroupLayout.DEFAULT_SIZE,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE)</p>
+<p>.addComponent(jl_checkImage))</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED,</p>
+<p>38, Short.MAX_VALUE)</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.BASELINE)</p>
+<p>.addComponent(jb_login)</p>
+<p>.addComponent(jb_cancle))</p>
+<p>.addContainerGap()));</p>
+<p>pack();</p>
+<p>}// </p>
+<p>// GEN-END:initComponents</p>
+<p>private void jb_cancleActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>int i = JOptionPane.showConfirmDialog(this, “确定退出系统？”, “确认信息”,</p>
+<p>JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);</p>
+<p>if (i == 0) {</p>
+<p>this.dispose();</p>
+<p>private void jb_loginActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>String userName = this.jtf_username.getText();</p>
+<p>String password = new String(this.jpw_password.getPassword());</p>
+<p>String checkCode = this.jtf_check.getText();</p>
+<p>if (StringUtil.isEmpty(userName)) {</p>
+<p>JOptionPane.showMessageDialog(this, “用户名不能为空！”);</p>
+<p>return;</p>
+<p>if (StringUtil.isEmpty(password)) {</p>
+<p>JOptionPane.showMessageDialog(this, “密码不能为空”);</p>
+<p>return;</p>
+<p>if (!checkCode.equals(imageCode)) {</p>
+<p>JOptionPane.showMessageDialog(this, “验证码错误”);</p>
+<p>// this.fillImageCode();</p>
+<p>// this.jl_checkImage.updateUI();</p>
+<p>// this.pack();</p>
+<p>return;</p>
+<p>User user = new User(userName, password);</p>
+<p>UserEbi userEbi = UserEbiFactory.getUserEbi();</p>
+<p>User currentUser = userEbi.login(user);</p>
+<p>if (currentUser == null) {</p>
+<p>JOptionPane.showMessageDialog(this, “用户名或密码错误！”);</p>
+<p>return;</p>
+<p>// System.out.println(“登录成功”);</p>
+<p>this.dispose();</p>
+<p>new MainFrm(currentUser).setVisible(true);</p>
+<p>/**</p>
+<ul>
+<li><p>@param args</p>
+</li>
+<li><pre><code>       the command line arguments</code></pre>
+</li>
+</ul>
+<p>*/</p>
+<p>public static void main(String args[]) {</p>
+<p>java.awt.EventQueue.invokeLater(new Runnable() {</p>
+<p>public void run() {</p>
+<p>new LoginFrm(null).setVisible(true);</p>
+<p>});</p>
+<p>// GEN-BEGIN:variables</p>
+<p>// Variables declaration - do not modify</p>
+<p>private javax.swing.JLabel jLabel1;</p>
+<p>private javax.swing.JLabel jLabel2;</p>
+<p>private javax.swing.JLabel jLabel3;</p>
+<p>private javax.swing.JLabel jLabel4;</p>
+<p>private javax.swing.JButton jb_cancle;</p>
+<p>private javax.swing.JButton jb_login;</p>
+<p>private javax.swing.JLabel jl_checkImage;</p>
+<p>private javax.swing.JPasswordField jpw_password;</p>
+<p>private javax.swing.JTextField jtf_check;</p>
+<p>private javax.swing.JTextField jtf_username;</p>
+<p>// End of variables declaration//GEN-END:variables</p>
+<p>用户服务类：</p>
+<p>public class UserSerInterFrm extends javax.swing.JInternalFrame {</p>
+<p>/**</p>
+<p>*/</p>
+<p>private static final long serialVersionUID = -8462503234613628488L;</p>
+<p>private PageBean bean = null;</p>
+<p>/** Creates new form UserSerInterFrm */</p>
+<p>public UserSerInterFrm() {</p>
+<p>initComponents();</p>
+<p>this.setLocation(230, 130);</p>
+<p>this.fillRole();</p>
+<p>QueryInfo info = new QueryInfo();</p>
+<p>info.setPagesize(9);</p>
+<p>this.fillTable(info);</p>
+<p>private void fillRole() {</p>
+<p>DefaultComboBoxModel dcm = (DefaultComboBoxModel) this.jcb_role</p>
+<p>.getModel();</p>
+<p>dcm.removeAllElements();</p>
+<p>List<Role> list = RoleEbiFactory.getRoleEbo().getRole();</Role></p>
+<p>for (Role role : list) {</p>
+<p>dcm.addElement(role);</p>
+<p>/**</p>
+<ul>
+<li><p>This method is called from within the constructor to initialize the form.</p>
+</li>
+<li><p>WARNING: Do NOT modify this code. The content of this method is always</p>
+</li>
+<li><p>regenerated by the Form Editor.</p>
+</li>
+</ul>
+<p>*/</p>
+<p>//GEN-BEGIN:initComponents</p>
+<p>// <editor-fold defaultstate="collapsed" desc="Generated Code"></editor-fold></p>
+<p>private void initComponents() {</p>
+<p>jScrollPane1 = new javax.swing.JScrollPane();</p>
+<p>jtb_user = new javax.swing.JTable();</p>
+<p>jLabel1 = new javax.swing.JLabel();</p>
+<p>jLabel2 = new javax.swing.JLabel();</p>
+<p>jLabel3 = new javax.swing.JLabel();</p>
+<p>jtf_username = new javax.swing.JTextField();</p>
+<p>jtf_password = new javax.swing.JTextField();</p>
+<p>jcb_role = new javax.swing.JComboBox();</p>
+<p>jb_modify = new javax.swing.JButton();</p>
+<p>jb_del = new javax.swing.JButton();</p>
+<p>jb_end = new javax.swing.JButton();</p>
+<p>jb_nextpage = new javax.swing.JButton();</p>
+<p>jb_previouspage = new javax.swing.JButton();</p>
+<p>jb_start = new javax.swing.JButton();</p>
+<p>jb_add = new javax.swing.JButton();</p>
+<p>jLabel4 = new javax.swing.JLabel();</p>
+<p>setClosable(true);</p>
+<p>setIconifiable(true);</p>
+<p>setTitle(“\u7528\u6237\u7ba1\u7406”);</p>
+<p>jtb_user.setModel(new javax.swing.table.DefaultTableModel(</p>
+<p>new Object[][] {</p>
+<p>}, new String[] { “编号”, “用户名”, “角色” }) {</p>
+<p>boolean[] canEdit = new boolean[] { false, false, false };</p>
+<p>public boolean isCellEditable(int rowIndex, int columnIndex) {</p>
+<p>return canEdit[columnIndex];</p>
+<p>});</p>
+<p>jtb_user.addMouseListener(new java.awt.event.MouseAdapter() {</p>
+<p>public void mouseClicked(java.awt.event.MouseEvent evt) {</p>
+<p>jtb_userMouseClicked(evt);</p>
+<p>});</p>
+<p>jScrollPane1.setViewportView(jtb_user);</p>
+<p>jLabel1.setText(“\u7528\u6237\u540d\uff1a”);</p>
+<p>jLabel2.setText(“\u5bc6   \u7801\uff1a”);</p>
+<p>jLabel3.setText(“\u89d2   \u8272\uff1a”);</p>
+<p>jcb_role.setModel(new javax.swing.DefaultComboBoxModel(new String[] {</p>
+<p>“Item 1”, “Item 2”, “Item 3”, “Item 4” }));</p>
+<p>jb_modify.setText(“\u4fee\u6539”);</p>
+<p>jb_modify.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_modifyActionPerformed(evt);</p>
+<p>});</p>
+<p>jb_del.setText(“\u5220\u9664”);</p>
+<p>jb_del.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_delActionPerformed(evt);</p>
+<p>});</p>
+<p>jb_end.setText(“\u672b\u9875”);</p>
+<p>jb_end.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_endActionPerformed(evt);</p>
+<p>});</p>
+<p>jb_nextpage.setText(“\u4e0b\u4e00\u9875”);</p>
+<p>jb_nextpage.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_nextpageActionPerformed(evt);</p>
+<p>});</p>
+<p>jb_previouspage.setText(“\u4e0a\u4e00\u9875”);</p>
+<p>jb_previouspage.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_previouspageActionPerformed(evt);</p>
+<p>});</p>
+<p>jb_start.setText(“\u9996\u9875”);</p>
+<p>jb_start.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_startActionPerformed(evt);</p>
+<p>});</p>
+<p>jb_add.setText(“\u65b0\u5efa”);</p>
+<p>jb_add.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_addActionPerformed(evt);</p>
+<p>});</p>
+<p>jLabel4.setText(“jLabel4”);</p>
+<p>javax.swing.GroupLayout layout = new javax.swing.GroupLayout(</p>
+<p>getContentPane());</p>
+<p>getContentPane().setLayout(layout);</p>
+<p>layout.setHorizontalGroup(layout</p>
+<p>.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.LEADING)</p>
+<p>.addGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.TRAILING,</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addContainerGap(</p>
+<p>87,</p>
+<p>Short.MAX_VALUE)</p>
+<p>.addComponent(</p>
+<p>jb_start)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addComponent(</p>
+<p>jb_previouspage)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addComponent(</p>
+<p>jb_nextpage)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addComponent(</p>
+<p>jb_end)</p>
+<p>.addGap(39, 39,</p>
+<p>39))</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addContainerGap()</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.LEADING)</p>
+<p>.addComponent(</p>
+<p>jScrollPane1,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>359,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE)</p>
+<p>.addComponent(</p>
+<p>jLabel4,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>271,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE))</p>
+<p>.addGap(28, 28,</p>
+<p>28)))</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.LEADING)</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.LEADING,</p>
+<p>false)</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addComponent(</p>
+<p>jLabel1)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addComponent(</p>
+<p>jtf_username,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>125,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE))</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addComponent(</p>
+<p>jLabel2)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addComponent(</p>
+<p>jtf_password))</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addComponent(</p>
+<p>jLabel3)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addComponent(</p>
+<p>jcb_role,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>75,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE)))</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addComponent(</p>
+<p>jb_add)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addComponent(</p>
+<p>jb_modify)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addComponent(</p>
+<p>jb_del)))</p>
+<p>.addContainerGap(20, Short.MAX_VALUE)));</p>
+<p>layout.setVerticalGroup(layout</p>
+<p>.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addContainerGap()</p>
+<p>.addComponent(jScrollPane1,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>199,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</p>
+<p>.addComponent(jLabel4)</p>
+<p>.addGap(4, 4, 4)</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.BASELINE)</p>
+<p>.addComponent(jb_end)</p>
+<p>.addComponent(jb_nextpage)</p>
+<p>.addComponent(jb_previouspage)</p>
+<p>.addComponent(jb_start)</p>
+<p>.addComponent(jb_del)</p>
+<p>.addComponent(jb_modify)</p>
+<p>.addComponent(jb_add))</p>
+<p>.addContainerGap(45, Short.MAX_VALUE))</p>
+<p>.addGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.TRAILING,</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addContainerGap(99, Short.MAX_VALUE)</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.BASELINE)</p>
+<p>.addComponent(jLabel1)</p>
+<p>.addComponent(</p>
+<p>jtf_username,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>javax.swing.GroupLayout.DEFAULT_SIZE,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE))</p>
+<p>.addGap(26, 26, 26)</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.BASELINE)</p>
+<p>.addComponent(jLabel2)</p>
+<p>.addComponent(</p>
+<p>jtf_password,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>javax.swing.GroupLayout.DEFAULT_SIZE,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE))</p>
+<p>.addGap(26, 26, 26)</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.BASELINE)</p>
+<p>.addComponent(jLabel3)</p>
+<p>.addComponent(</p>
+<p>jcb_role,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>javax.swing.GroupLayout.DEFAULT_SIZE,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE))</p>
+<p>.addGap(98, 98, 98)));</p>
+<p>pack();</p>
+<p>}// </p>
+<p>//GEN-END:initComponents</p>
+<p>private void jtb_userMouseClicked(java.awt.event.MouseEvent evt) {</p>
+<p>DefaultTableModel tableModel = (DefaultTableModel) jtb_user.getModel();</p>
+<p>int selectRows = jtb_user.getSelectedRows().length;// 取得用户所选行的行数</p>
+<p>int selectedRowIndex = jtb_user.getSelectedRow(); // 取得用户所选单行</p>
+<p>if (selectRows == 1) {</p>
+<p>String id = tableModel.getValueAt(selectedRowIndex, 0).toString();</p>
+<p>User user = UserEbiFactory.getUserEbi().search(id);</p>
+<p>this.jtf_username.setText(user.getusername());</p>
+<p>this.jtf_password.setText(user.getpassword());</p>
+<p>// Role[] role = (Role[]) this.jcb_role.getSelectedObjects();</p>
+<p>// for (Role r: role) {</p>
+<p>// if (r.getId()==user.getid()) {</p>
+<p>// this.jcb_role.setSelectedItem(r);</p>
+<p>// }</p>
+<p>// }</p>
+<p>for (int i = 0; i &lt; this.jcb_role.getItemCount(); i++) {</p>
+<p>Role role = (Role) this.jcb_role.getItemAt(i);</p>
+<p>if (role.getId() == user.getroleid()) {</p>
+<p>this.jcb_role.setSelectedIndex(i);</p>
+<p>private void jb_endActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>QueryInfo info = new QueryInfo();</p>
+<p>info.setCurrentpage(bean.getTotalpage());</p>
+<p>info.setPagesize(9);</p>
+<p>fillTable(info);</p>
+<p>private void jb_nextpageActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>QueryInfo info = new QueryInfo();</p>
+<p>info.setCurrentpage(bean.getNextpage());</p>
+<p>info.setPagesize(9);</p>
+<p>fillTable(info);</p>
+<p>private void jb_previouspageActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>QueryInfo info = new QueryInfo();</p>
+<p>info.setCurrentpage(bean.getPreviouspage());</p>
+<p>info.setPagesize(9);</p>
+<p>fillTable(info);</p>
+<p>private void jb_startActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>QueryInfo info = new QueryInfo();</p>
+<p>info.setCurrentpage(1);</p>
+<p>info.setPagesize(9);</p>
+<p>fillTable(info);</p>
+<p>private void jb_modifyActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>DefaultTableModel tableModel = (DefaultTableModel) jtb_user.getModel();</p>
+<p>int selectRows = jtb_user.getSelectedRows().length;// 取得用户所选行的行数</p>
+<p>int selectedRowIndex = jtb_user.getSelectedRow(); // 取得用户所选单行</p>
+<p>if (selectRows == 1) {</p>
+<p>BigDecimal userId = (BigDecimal) tableModel.getValueAt(</p>
+<p>selectedRowIndex, 0);</p>
+<p>String username = this.jtf_username.getText();</p>
+<p>String password = this.jtf_password.getText();</p>
+<p>Role role = (Role) this.jcb_role.getSelectedItem();</p>
+<p>BigDecimal roleId = role.getId();</p>
+<p>User user = new User(userId, username, password, roleId);</p>
+<p>boolean b = UserEbiFactory.getUserEbi().update(user);</p>
+<p>if (b) {</p>
+<p>JOptionPane.showMessageDialog(this, “修改成功！”);</p>
+<p>} else {</p>
+<p>JOptionPane.showMessageDialog(this, “修改失败！”);</p>
+<p>private void jb_addActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>String username = this.jtf_username.getText();</p>
+<p>String password = this.jtf_password.getText();</p>
+<p>User user = new User(username, password, new BigDecimal(5));</p>
+<p>boolean b = UserEbiFactory.getUserEbi().add(user);</p>
+<p>if (b) {</p>
+<p>JOptionPane.showMessageDialog(this, “添加成功！”);</p>
+<p>} else {</p>
+<p>JOptionPane.showMessageDialog(this, “添加失败！”);</p>
+<p>private void jb_delActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>int i = JOptionPane.showConfirmDialog(this, “确认删除此条记录？”, “确认信息”,</p>
+<p>JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);</p>
+<p>if (i == 0) {</p>
+<p>DefaultTableModel tableModel = (DefaultTableModel) jtb_user</p>
+<p>.getModel();</p>
+<p>int selectRows = jtb_user.getSelectedRows().length;// 取得用户所选行的行数</p>
+<p>int selectedRowIndex = jtb_user.getSelectedRow(); // 取得用户所选单行</p>
+<p>if (selectRows == 1) {</p>
+<p>String userId = tableModel.getValueAt(selectedRowIndex, 0)</p>
+<p>.toString();</p>
+<p>boolean b = UserEbiFactory.getUserEbi().del(userId);</p>
+<p>if (b) {</p>
+<p>JOptionPane.showMessageDialog(this, “删除成功！”);</p>
+<p>} else {</p>
+<p>JOptionPane.showMessageDialog(this, “删除失败！”);</p>
+<p>@SuppressWarnings({ “unchecked”, “rawtypes” })</p>
+<p>private void fillTable(QueryInfo info) {</p>
+<p>// 获取表格模型</p>
+<p>DefaultTableModel dtm = (DefaultTableModel) this.jtb_user.getModel();</p>
+<p>// 清空表格</p>
+<p>dtm.setRowCount(0);</p>
+<p>// 获取业务层接口实现类对象</p>
+<p>UserEbi userEbi = UserEbiFactory.getUserEbi();</p>
+<p>// 查询数据</p>
+<p>bean = userEbi.search(info);</p>
+<p>// 获取封装数据的集合</p>
+<p>List list = bean.getList();</p>
+<p>// 遍历集合并向表格填充数据</p>
+<p>for (Object object : list) {</p>
+<p>Vector v = new Vector();</p>
+<p>User user = (User) object;</p>
+<p>v.add(user.getid());</p>
+<p>v.add(user.getusername());</p>
+<p>v.add(user.getRolename());</p>
+<p>dtm.addRow(v);</p>
+<p>this.jLabel4.setText(“共” + bean.getTotalrecord() + “条记录-共”</p>
+<ul>
+<li>bean.getTotalpage() + “页-当前第” + bean.getCurrentpage() + “页”);</li>
+</ul>
+<p>//GEN-BEGIN:variables</p>
+<p>// Variables declaration - do not modify</p>
+<p>private javax.swing.JLabel jLabel1;</p>
+<p>private javax.swing.JLabel jLabel2;</p>
+<p>private javax.swing.JLabel jLabel3;</p>
+<p>private javax.swing.JLabel jLabel4;</p>
+<p>private javax.swing.JScrollPane jScrollPane1;</p>
+<p>private javax.swing.JButton jb_add;</p>
+<p>private javax.swing.JButton jb_del;</p>
+<p>private javax.swing.JButton jb_end;</p>
+<p>private javax.swing.JButton jb_modify;</p>
+<p>private javax.swing.JButton jb_nextpage;</p>
+<p>private javax.swing.JButton jb_previouspage;</p>
+<p>private javax.swing.JButton jb_start;</p>
+<p>private javax.swing.JComboBox jcb_role;</p>
+<p>private javax.swing.JTable jtb_user;</p>
+<p>private javax.swing.JTextField jtf_password;</p>
+<p>private javax.swing.JTextField jtf_username;</p>
+<p>// End of variables declaration//GEN-END:variables</p>
+<p>订单管理服务类：</p>
+<p>public class CusOrderInterFrm extends javax.swing.JInternalFrame {</p>
+<p>private static final long serialVersionUID = 5178086178074169208L;</p>
+<p>private static final int PAGESIZE = 10;</p>
+<p>private String id;</p>
+<p>private String name;</p>
+<p>private PageBean bean;</p>
+<p>/** Creates new form CusOrderInterFrm */</p>
+<p>public CusOrderInterFrm(String id, String name) {</p>
+<p>this.id = id;</p>
+<p>this.name = name;</p>
+<p>initComponents();</p>
+<p>this.setLocation(330, 80);</p>
+<p>initData();</p>
+<p>private void initData() {</p>
+<p>this.jtf_cusid.setText(id);</p>
+<p>this.jtf_cusname.setText(name);</p>
+<p>QueryInfo info = new QueryInfo();</p>
+<p>info.setPagesize(PAGESIZE);</p>
+<p>fillTable(info, id);</p>
+<p>@SuppressWarnings({ “unchecked”, “rawtypes” })</p>
+<p>private void fillTable(QueryInfo info, String id) {</p>
+<p>DefaultTableModel dtm = (DefaultTableModel) this.jtb_order.getModel();</p>
+<p>dtm.setRowCount(0);</p>
+<p>bean = CustomerEbiFactory.getCustomerEbi().searchOrder(id, info);</p>
+<p>List<CusOrder> list = bean.getList();</CusOrder></p>
+<p>for (CusOrder cusOrder : list) {</p>
+<p>Vector v = new Vector();</p>
+<p>v.add(cusOrder.getOrderid());</p>
+<p>v.add(cusOrder.getOrder_date());</p>
+<p>v.add(cusOrder.getOrder_address());</p>
+<p>v.add(cusOrder.getOr_state());</p>
+<p>dtm.addRow(v);</p>
+<p>this.jLabel9.setText(“共” + bean.getTotalrecord() + “条记录-共”</p>
+<ul>
+<li>bean.getTotalpage() + “页-当前第” + bean.getCurrentpage() + “页”);</li>
+</ul>
+<p>//GEN-BEGIN:initComponents</p>
+<p>// <editor-fold defaultstate="collapsed" desc="Generated Code"></editor-fold></p>
+<p>private void initComponents() {</p>
+<p>jLabel1 = new javax.swing.JLabel();</p>
+<p>jtf_cusid = new javax.swing.JTextField();</p>
+<p>jLabel2 = new javax.swing.JLabel();</p>
+<p>jtf_cusname = new javax.swing.JTextField();</p>
+<p>jScrollPane1 = new javax.swing.JScrollPane();</p>
+<p>jtb_order = new javax.swing.JTable();</p>
+<p>jb_start = new javax.swing.JButton();</p>
+<p>jb_end = new javax.swing.JButton();</p>
+<p>jb_previouspage = new javax.swing.JButton();</p>
+<p>jb_nextpage = new javax.swing.JButton();</p>
+<p>jLabel9 = new javax.swing.JLabel();</p>
+<p>jb_info = new javax.swing.JButton();</p>
+<p>setClosable(true);</p>
+<p>setIconifiable(true);</p>
+<p>setTitle(“\u5386\u53f2\u8ba2\u5355”);</p>
+<p>jLabel1.setText(“\u5ba2\u6237\u7f16\u53f7\uff1a”);</p>
+<p>jtf_cusid.setEditable(false);</p>
+<p>jLabel2.setText(“\u5ba2\u6237\u540d\u79f0\uff1a”);</p>
+<p>jtf_cusname.setEditable(false);</p>
+<p>jtb_order.setModel(new javax.swing.table.DefaultTableModel(</p>
+<p>new Object[][] {</p>
+<p>}, new String[] { “订单编号”, “日期”, “送货地址”, “状态” }) {</p>
+<p>boolean[] canEdit = new boolean[] { false, false, false, false };</p>
+<p>public boolean isCellEditable(int rowIndex, int columnIndex) {</p>
+<p>return canEdit[columnIndex];</p>
+<p>});</p>
+<p>jScrollPane1.setViewportView(jtb_order);</p>
+<p>jb_start.setText(“\u9996\u9875”);</p>
+<p>jb_start.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_startActionPerformed(evt);</p>
+<p>});</p>
+<p>jb_end.setText(“\u672b\u9875”);</p>
+<p>jb_end.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_endActionPerformed(evt);</p>
+<p>});</p>
+<p>jb_previouspage.setText(“\u4e0a\u4e00\u9875”);</p>
+<p>jb_previouspage.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_previouspageActionPerformed(evt);</p>
+<p>});</p>
+<p>jb_nextpage.setText(“\u4e0b\u4e00\u9875”);</p>
+<p>jb_nextpage.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_nextpageActionPerformed(evt);</p>
+<p>});</p>
+<p>jLabel9.setText(“jLabel9”);</p>
+<p>jb_info.setText(“\u660e\u7ec6”);</p>
+<p>jb_info.addActionListener(new java.awt.event.ActionListener() {</p>
+<p>public void actionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>jb_infoActionPerformed(evt);</p>
+<p>});</p>
+<p>javax.swing.GroupLayout layout = new javax.swing.GroupLayout(</p>
+<p>getContentPane());</p>
+<p>getContentPane().setLayout(layout);</p>
+<p>layout.setHorizontalGroup(layout</p>
+<p>.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addContainerGap()</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.LEADING,</p>
+<p>false)</p>
+<p>.addGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.TRAILING,</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addComponent(</p>
+<p>jLabel9,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>162,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addComponent(</p>
+<p>jb_info)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED,</p>
+<p>javax.swing.GroupLayout.DEFAULT_SIZE,</p>
+<p>Short.MAX_VALUE)</p>
+<p>.addComponent(</p>
+<p>jb_start)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addComponent(</p>
+<p>jb_previouspage)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addComponent(</p>
+<p>jb_nextpage)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addComponent(</p>
+<p>jb_end))</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.TRAILING)</p>
+<p>.addComponent(</p>
+<p>jScrollPane1,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>503,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE)</p>
+<p>.addGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.LEADING,</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addComponent(</p>
+<p>jLabel1)</p>
+<p>.addGap(18,</p>
+<p>18,</p>
+<p>18)</p>
+<p>.addComponent(</p>
+<p>jtf_cusid,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>151,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE)</p>
+<p>.addGap(26,</p>
+<p>26,</p>
+<p>26)</p>
+<p>.addComponent(</p>
+<p>jLabel2)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</p>
+<p>.addComponent(</p>
+<p>jtf_cusname,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>176,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE))))</p>
+<p>.addContainerGap(36, Short.MAX_VALUE)));</p>
+<p>layout.setVerticalGroup(layout</p>
+<p>.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</p>
+<p>.addGroup(</p>
+<p>layout.createSequentialGroup()</p>
+<p>.addContainerGap()</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.BASELINE)</p>
+<p>.addComponent(jLabel1)</p>
+<p>.addComponent(</p>
+<p>jtf_cusid,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>javax.swing.GroupLayout.DEFAULT_SIZE,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE)</p>
+<p>.addComponent(jLabel2)</p>
+<p>.addComponent(</p>
+<p>jtf_cusname,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>javax.swing.GroupLayout.DEFAULT_SIZE,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE))</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addComponent(jScrollPane1,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE,</p>
+<p>193,</p>
+<p>javax.swing.GroupLayout.PREFERRED_SIZE)</p>
+<p>.addPreferredGap(</p>
+<p>javax.swing.LayoutStyle.ComponentPlacement.RELATED)</p>
+<p>.addGroup(</p>
+<p>layout.createParallelGroup(</p>
+<p>javax.swing.GroupLayout.Alignment.BASELINE)</p>
+<p>.addComponent(jb_end)</p>
+<p>.addComponent(jb_nextpage)</p>
+<p>.addComponent(jb_previouspage)</p>
+<p>.addComponent(jb_start)</p>
+<p>.addComponent(jLabel9)</p>
+<p>.addComponent(jb_info))</p>
+<p>.addGap(24, 24, 24)));</p>
+<p>pack();</p>
+<p>}// </p>
+<p>//GEN-END:initComponents</p>
+<p>private void jb_infoActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>JOptionPane.showMessageDialog(this, “暂不提供查看明细\n系统功能开发中”);</p>
+<p>private void jb_endActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>QueryInfo info = new QueryInfo();</p>
+<p>info.setCurrentpage(bean.getTotalpage());</p>
+<p>info.setPagesize(PAGESIZE);</p>
+<p>fillTable(info, id);</p>
+<p>private void jb_nextpageActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>QueryInfo info = new QueryInfo();</p>
+<p>info.setCurrentpage(bean.getNextpage());</p>
+<p>info.setPagesize(PAGESIZE);</p>
+<p>fillTable(info, id);</p>
+<p>private void jb_previouspageActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>QueryInfo info = new QueryInfo();</p>
+<p>info.setCurrentpage(bean.getPreviouspage());</p>
+<p>info.setPagesize(PAGESIZE);</p>
+<p>fillTable(info, id);</p>
+<p>private void jb_startActionPerformed(java.awt.event.ActionEvent evt) {</p>
+<p>QueryInfo info = new QueryInfo();</p>
+<p>info.setCurrentpage(1);</p>
+<p>info.setPagesize(PAGESIZE);</p>
+<p>fillTable(info, id);</p>
+<p>//GEN-BEGIN:variables</p>
+<p>// Variables declaration - do not modify</p>
+<p>private javax.swing.JLabel jLabel1;</p>
+<p>private javax.swing.JLabel jLabel2;</p>
+<p>private javax.swing.JLabel jLabel9;</p>
+<p>private javax.swing.JScrollPane jScrollPane1;</p>
+<p>private javax.swing.JButton jb_end;</p>
+<p>private javax.swing.JButton jb_info;</p>
+<p>private javax.swing.JButton jb_nextpage;</p>
+<p>private javax.swing.JButton jb_previouspage;</p>
+<p>private javax.swing.JButton jb_start;</p>
+<p>private javax.swing.JTable jtb_order;</p>
+<p>private javax.swing.JTextField jtf_cusid;</p>
+<p>private javax.swing.JTextField jtf_cusname;</p>
+<p>// End of variables declaration//GEN-END:variables</p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

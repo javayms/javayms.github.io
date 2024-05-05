@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/201.em%20132123460509%207%20SSM%E5%9C%A8%E7%BA%BF%E8%80%83%E8%AF%95%E7%B3%BB%E7%BB%9F(java+ssm+mysql+jsp+bootstrap)%E3%80%90%E8%80%83%E8%AF%95%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project29/142123460509.jpg" alt="142123460509"></p>
+<p><img src="../images/project29/152123460509.jpg" alt="152123460509"></p>
+<p><img src="../images/project29/162123460509.jpg" alt="162123460509"></p>
+<p><img src="../images/project29/182123460509.jpg" alt="182123460509"></p>
+<p><img src="../images/project29/192123460509.jpg" alt="192123460509"></p>
+<p><img src="../images/project29/202123460509.jpg" alt="202123460509"></p>
+<p><img src="../images/project29/212123460509.jpg" alt="212123460509"></p>
+<p><img src="../images/project29/222123460509.jpg" alt="222123460509"></p>
+<p><img src="../images/project29/232123460509.jpg" alt="232123460509"></p>
+<p><img src="../images/project29/242123460509.jpg" alt="242123460509"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>老师：<br>teacher1    123456——管理员权限<br>teacher2    123456<br>teacher3    123456</p>
+<p>学生：<br>student1    123456<br>student2    123456<br>student3    123456</p>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"> * 预修改教师</span><br><span class="line"> * <span class="meta">@param</span> teacherId</span><br><span class="line"> * <span class="meta">@return</span></span><br><span class="line"> */</span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;/teacher/&#123;teacherId&#125;&quot;, method=RequestMethod.GET)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">preUpdateTeacher</span><span class="params">(<span class="meta">@PathVariable(&quot;teacherId&quot;)</span> Integer teacherId)</span> </span>&#123;</span><br><span class="line">	logger.info(<span class="string">&quot;预修改教师处理&quot;</span>);</span><br><span class="line">	</span><br><span class="line">	ModelAndView model = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">	<span class="comment">//获取要修改教师</span></span><br><span class="line">	TeacherInfo teacher = teacherInfoService.getTeacherById(teacherId);</span><br><span class="line">	model.setViewName(<span class="string">&quot;/admin/teacheredit&quot;</span>);</span><br><span class="line">	model.addObject(<span class="string">&quot;teacher&quot;</span>, teacher);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> model;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改/添加 教师</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> teacherId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> isUpdate 操作标识</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> teacherName</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> teacherAccount</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> teacherPwd</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> adminPower</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;/teacher/teacher&quot;, method=RequestMethod.POST)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">isUpdateOrAddTeacher</span><span class="params">(<span class="meta">@RequestParam(value=&quot;teacherId&quot;, required=false)</span> Integer teacherId,</span></span></span><br><span class="line"><span class="function"><span class="params">		<span class="meta">@RequestParam(value=&quot;isupdate&quot;, required=false)</span> Integer isUpdate,</span></span></span><br><span class="line"><span class="function"><span class="params">		<span class="meta">@RequestParam(&quot;teacherName&quot;)</span> String teacherName,</span></span></span><br><span class="line"><span class="function"><span class="params">		<span class="meta">@RequestParam(&quot;teacherAccount&quot;)</span> String teacherAccount,</span></span></span><br><span class="line"><span class="function"><span class="params">		<span class="meta">@RequestParam(&quot;teacherPwd&quot;)</span> String teacherPwd,</span></span></span><br><span class="line"><span class="function"><span class="params">		<span class="meta">@RequestParam(&quot;adminPower&quot;)</span> Integer adminPower)</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	TeacherInfo teacher = <span class="keyword">new</span> TeacherInfo();</span><br><span class="line">		teacher.setTeacherId(teacherId);</span><br><span class="line">		teacher.setTeacherName(teacherName);</span><br><span class="line">		teacher.setTeacherAccount(teacherAccount);</span><br><span class="line">		teacher.setTeacherPwd(teacherPwd);</span><br><span class="line">		teacher.setAdminPower(adminPower);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> (isUpdate != <span class="keyword">null</span>) &#123;  <span class="comment">//修改</span></span><br><span class="line">		logger.info(<span class="string">&quot;修改教师 &quot;</span>+teacher+<span class="string">&quot; 的信息&quot;</span>);</span><br><span class="line">		<span class="keyword">int</span> row = teacherInfoService.isUpdateTeacherInfo(teacher);			</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;  <span class="comment">//添加</span></span><br><span class="line">		logger.info(<span class="string">&quot;添加教师 &quot;</span>+teacher+<span class="string">&quot; 的信息&quot;</span>);</span><br><span class="line">		<span class="keyword">int</span> row = teacherInfoService.isAddTeacherInfo(teacher);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">	<span class="meta">@RequestMapping(&quot;/self/&#123;studentId&#125;&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ModelAndView <span class="title">selfInfo</span><span class="params">(<span class="meta">@PathVariable(&quot;studentId&quot;)</span> Integer studentId)</span> </span>&#123;</span><br><span class="line">		StudentInfo stu = studentInfoService.getStudentById(studentId);</span><br><span class="line">		</span><br><span class="line">		ModelAndView model = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">		model.setViewName(<span class="string">&quot;/reception/self&quot;</span>);</span><br><span class="line">		model.addObject(<span class="string">&quot;self&quot;</span>, stu);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> model;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 学生修改密码</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> pwd</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> studentId</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/reset/&#123;pwd&#125;/&#123;studentId&#125;&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">isResetPwd</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="meta">@PathVariable(&quot;pwd&quot;)</span> String pwd,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="meta">@PathVariable(&quot;studentId&quot;)</span> Integer studentId,</span></span></span><br><span class="line"><span class="function"><span class="params">			HttpServletResponse response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		logger.info(<span class="string">&quot;学生 &quot;</span>+studentId+<span class="string">&quot; 修改密码&quot;</span>);</span><br><span class="line">		student.setStudentId(studentId);</span><br><span class="line">		student.setStudentPwd(pwd);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> row = studentInfoService.isResetPwdWithStu(student);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (row &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			response.getWriter().print(<span class="string">&quot;t&quot;</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			response.getWriter().print(<span class="string">&quot;f&quot;</span>);			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 处理 试题 添加到 试卷</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> subjects    试题集合</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> examPaperId 对应试卷编号</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dispatcherExamPaperAndSubject</span><span class="params">(List&lt;SubjectInfo&gt; subjects, Integer examPaperId)</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; subjectIds = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">    <span class="comment">//试题总量统计</span></span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//试题总分统计</span></span><br><span class="line">    <span class="keyword">int</span> score = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 添加试题 */</span></span><br><span class="line">    <span class="keyword">for</span> (SubjectInfo subjectInfo : subjects) &#123;</span><br><span class="line">        <span class="keyword">int</span> row1 = subjectInfoService.isAddSubject(subjectInfo);</span><br><span class="line">        score += subjectInfo.getSubjectScore();</span><br><span class="line">        subjectIds.add(subjectInfo.getSubjectId());</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    logger.info(<span class="string">&quot;添加试题 SIZE &quot;</span> + count);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 添加试题到试卷 */</span></span><br><span class="line">    Map&lt;String, Object&gt; esmMap = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">    esmMap.put(<span class="string">&quot;examPaperId&quot;</span>, examPaperId);</span><br><span class="line">    esmMap.put(<span class="string">&quot;subjectIds&quot;</span>, subjectIds);</span><br><span class="line">    esmService.isAddESM(esmMap);</span><br><span class="line">    logger.info(<span class="string">&quot;添加试题 SIZE &quot;</span> + count + <span class="string">&quot; SCORE &quot;</span> + score + <span class="string">&quot; 到试卷 &quot;</span> + examPaperId);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//修改试卷信息</span></span><br><span class="line">    Map&lt;String, Object&gt; scoreWithNum = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">    scoreWithNum.put(<span class="string">&quot;subjectNum&quot;</span>, count);</span><br><span class="line">    scoreWithNum.put(<span class="string">&quot;score&quot;</span>, score);</span><br><span class="line">    scoreWithNum.put(<span class="string">&quot;examPaperId&quot;</span>, examPaperId);</span><br><span class="line">    <span class="comment">/** 修改试卷总分 */</span></span><br><span class="line">    examPaperInfoService.isUpdateExamPaperScore(scoreWithNum);</span><br><span class="line">    <span class="comment">/** 修改试卷试题总量 */</span></span><br><span class="line">    examPaperInfoService.isUpdateExamPaperSubjects(scoreWithNum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">		<span class="keyword">return</span> <span class="string">&quot;../error&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect:/classes&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取指定年级下的班级</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> gradeId 年级编号</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;/gradeclass/&#123;gradeId&#125;&quot;, method=RequestMethod.GET)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getClassesByGradeId</span><span class="params">(<span class="meta">@PathVariable(&quot;gradeId&quot;)</span> Integer gradeId,</span></span></span><br><span class="line"><span class="function"><span class="params">		HttpServletResponse response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">	logger.info(<span class="string">&quot;获取年级 &quot;</span>+gradeId+<span class="string">&quot; 下的班级集合&quot;</span>);</span><br><span class="line">	</span><br><span class="line">	List&lt;ClassInfo&gt; classes = classInfoService.getClassByGradeId(gradeId);</span><br><span class="line">	</span><br><span class="line">	String json = gson.toJson(classes);</span><br><span class="line">	response.getWriter().print(json);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改教师(班主任)工作状态</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> status 是否为班主任标识</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> teacherId 教师编号</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">isChangeTeacherWork</span><span class="params">(<span class="keyword">int</span> status, Integer teacherId)</span> </span>&#123;</span><br><span class="line">	logger.info(<span class="string">&quot;修改教师 &quot;</span>+teacherId+<span class="string">&quot; 的状态为 &quot;</span>+status);</span><br><span class="line">	teacher.setIsWork(status);</span><br><span class="line">	<span class="keyword">if</span> (teacherId == <span class="keyword">null</span>) &#123;</span><br><span class="line">		logger.error(<span class="string">&quot;修改教师班主任状态 对应教师编号有误&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;修改教师班主任状态 对应教师编号有误&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	teacher.setTeacherId(teacherId);</span><br><span class="line">	<span class="keyword">int</span> row = teacherInfoService.updateTeacherIsWork(teacher);</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/stuCount&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getStudentCountForClass</span><span class="params">(</span></span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"> *   返回学生密码，前台登录焦点离开密码框使用 JavaScript 判断</span><br><span class="line"> * </span><br><span class="line"> * <span class="meta">@param</span> studentAccount 学生登录账户</span><br><span class="line"> * <span class="meta">@param</span> response</span><br><span class="line"> * <span class="meta">@throws</span> IOException</span><br><span class="line"> */</span><br><span class="line"><span class="meta">@RequestMapping(&quot;/validateLoginStudent&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">validateLoginStudent</span><span class="params">(<span class="meta">@RequestParam(&quot;studentAccount&quot;)</span> String studentAccount,</span></span></span><br><span class="line"><span class="function"><span class="params">		HttpServletResponse response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">	logger.info(<span class="string">&quot;学生账户 &quot;</span>+studentAccount+<span class="string">&quot;，尝试登录考试&quot;</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//获取需要登录的学生对象</span></span><br><span class="line">	StudentInfo student = studentInfoService.getStudentByAccountAndPwd(studentAccount);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> (student == <span class="keyword">null</span>) &#123;</span><br><span class="line">		logger.error(<span class="string">&quot;登录学生账户 &quot;</span>+studentAccount+<span class="string">&quot; 不存在&quot;</span>);</span><br><span class="line">		response.getWriter().print(<span class="string">&quot;n&quot;</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		logger.error(<span class="string">&quot;登录学生账户 &quot;</span>+studentAccount+<span class="string">&quot; 存在&quot;</span>);</span><br><span class="line">		response.getWriter().print(student.getStudentPwd());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 学生登录考试</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> student 登录学生</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;/studentLogin&quot;, method=RequestMethod.POST)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">studentLogin</span><span class="params">(StudentInfo student, HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">	ModelAndView model = <span class="keyword">new</span> ModelAndView();</span><br><span class="line">	StudentInfo loginStudent = studentInfoService.getStudentByAccountAndPwd(student.getStudentAccount());</span><br><span class="line">	logger.info(<span class="string">&quot;学生 &quot;</span>+loginStudent+<span class="string">&quot; 有效登录&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(loginStudent == <span class="keyword">null</span> || !student.getStudentPwd().equals(loginStudent.getStudentPwd()))&#123;</span><br><span class="line">		model.setViewName(<span class="string">&quot;reception/suc&quot;</span>);</span><br><span class="line">		model.addObject(<span class="string">&quot;success&quot;</span>, <span class="string">&quot;密码错误&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> model;</span><br><span class="line">	&#125;</span><br><span class="line">	request.getSession().setAttribute(<span class="string">&quot;loginStudent&quot;</span>, loginStudent);</span><br><span class="line">	</span><br><span class="line">	model.setViewName(<span class="string">&quot;reception/suc&quot;</span>);</span><br><span class="line">	model.addObject(<span class="string">&quot;success&quot;</span>, <span class="string">&quot;登录成功&quot;</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> model;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 退出登录</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

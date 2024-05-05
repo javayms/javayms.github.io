@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/201.dy%20412123280309%207%20JSP+Servlet%E6%A0%A1%E5%9B%AD%E7%BD%91%E4%B8%8A%E9%9B%B6%E9%A3%9F%E8%B6%85%E5%B8%82%E4%BE%BF%E5%88%A9%E5%BA%97%E7%B3%BB%E7%BB%9F(java+servlet+jsp+mysql)%E3%80%90%E8%B4%AD%E7%89%A9%E3%80%91%E3%80%90%E8%B6%85%E5%B8%82%E3%80%91%E3%80%90%E6%96%87%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project29/422123280309.jpg" alt="422123280309"></p>
+<p><img src="../images/project29/432123280309.jpg" alt="432123280309"></p>
+<p><img src="../images/project29/452123280309.jpg" alt="452123280309"></p>
+<p><img src="../images/project29/462123280309.jpg" alt="462123280309"></p>
+<p><img src="../images/project29/472123280309.jpg" alt="472123280309"></p>
+<p><img src="../images/project29/482123280309.jpg" alt="482123280309"></p>
+<p><img src="../images/project29/492123280309.jpg" alt="492123280309"></p>
+<p><img src="../images/project29/502123280309.jpg" alt="502123280309"></p>
+<p><img src="../images/project29/512123280309.jpg" alt="512123280309"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>前台：<br><a target="_blank" rel="noopener" href="http://localhost:8080/schoolsupermaket/">http://localhost:8080/schoolsupermaket/</a><br>xm/123456</p>
+<p>后台：<br><a target="_blank" rel="noopener" href="http://localhost:8080/schoolsupermaket/admin">http://localhost:8080/schoolsupermaket/admin</a><br>admin/123456</p>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">	String filename=<span class="string">&quot;&quot;</span>;</span><br><span class="line">	String note=<span class="string">&quot;&quot;</span>;</span><br><span class="line">	String shstatus = <span class="string">&quot;通过&quot;</span>;</span><br><span class="line">	String istj = <span class="string">&quot;no&quot;</span>;</span><br><span class="line">	String savetime = Info.getDateStr();</span><br><span class="line">	String tprice=<span class="string">&quot;&quot;</span>;</span><br><span class="line">request.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">RequestContext  requestContext = <span class="keyword">new</span> ServletRequestContext(request);</span><br><span class="line"><span class="keyword">if</span>(FileUpload.isMultipartContent(requestContext))&#123;</span><br><span class="line">   DiskFileItemFactory factory = <span class="keyword">new</span> DiskFileItemFactory();</span><br><span class="line">   factory.setRepository(<span class="keyword">new</span> File(request.getRealPath(<span class="string">&quot;/upfile/&quot;</span>)+<span class="string">&quot;/&quot;</span>));</span><br><span class="line">   ServletFileUpload upload = <span class="keyword">new</span> ServletFileUpload(factory);</span><br><span class="line">   upload.setSizeMax(<span class="number">100</span>*<span class="number">1024</span>*<span class="number">1024</span>);</span><br><span class="line">   List items = <span class="keyword">new</span> ArrayList();</span><br><span class="line">     items = upload.parseRequest(request);</span><br><span class="line">     goodname = ((FileItem) items.get(<span class="number">0</span>)).getString();</span><br><span class="line">     goodname = Info.getUTFStr(goodname);</span><br><span class="line">     fid = ((FileItem) items.get(<span class="number">1</span>)).getString();</span><br><span class="line">     fid = Info.getUTFStr(fid);</span><br><span class="line">     sid = ((FileItem) items.get(<span class="number">2</span>)).getString();</span><br><span class="line">     sid = Info.getUTFStr(sid);</span><br><span class="line">     goodpp = ((FileItem) items.get(<span class="number">3</span>)).getString();</span><br><span class="line">     goodpp = Info.getUTFStr(goodpp);</span><br><span class="line">     price = ((FileItem) items.get(<span class="number">4</span>)).getString();</span><br><span class="line">     price = Info.getUTFStr(price);</span><br><span class="line">     note = ((FileItem) items.get(<span class="number">6</span>)).getString();</span><br><span class="line">     note = Info.getUTFStr(note);</span><br><span class="line">		FileItem fileItem = (FileItem) items.get(<span class="number">5</span>);</span><br><span class="line">		<span class="keyword">if</span> (fileItem.getName() != <span class="keyword">null</span> &amp;&amp; fileItem.getSize() != <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (fileItem.getName() != <span class="keyword">null</span></span><br><span class="line">					&amp;&amp; fileItem.getSize() != <span class="number">0</span>) &#123;</span><br><span class="line">				File fullFile = <span class="keyword">new</span> File(fileItem.getName());</span><br><span class="line">				filename = Info.generalFileName(fullFile.getName());</span><br><span class="line">				File newFile = <span class="keyword">new</span> File(request</span><br><span class="line">						.getRealPath(<span class="string">&quot;/upfile/&quot;</span>)</span><br><span class="line">						+ <span class="string">&quot;/&quot;</span> + filename);</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					fileItem.write(newFile);</span><br><span class="line">				&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">dao.commOper(<span class="string">&quot;insert into goods (goodno,goodname,fid,sid,price,note,savetime,shstatus,filename,istj,tprice,delstatus,salestatus,goodpp) &quot;</span> +</span><br><span class="line">		<span class="string">&quot;values (&#x27;&quot;</span>+goodno+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+goodname+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+fid+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+sid+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+price+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+note+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+savetime+<span class="string">&quot;&#x27;,&#x27;通过&#x27;,&#x27;&quot;</span>+filename+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+istj+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+tprice+<span class="string">&quot;&#x27;,&#x27;0&#x27;,&#x27;在售&#x27;,&#x27;&quot;</span>+goodpp+<span class="string">&quot;&#x27;) &quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">	<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getGBKStr</span><span class="params">(String str)</span> <span class="keyword">throws</span> UnsupportedEncodingException</span>&#123;</span><br><span class="line"> <span class="keyword">if</span>(str==<span class="keyword">null</span>)&#123;</span><br><span class="line">	 <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span>  <span class="keyword">new</span> String(str.getBytes(<span class="string">&quot;ISO-8859-1&quot;</span>),<span class="string">&quot;GBK&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getGB2312Str</span><span class="params">(String str)</span> <span class="keyword">throws</span> UnsupportedEncodingException</span>&#123;</span><br><span class="line"> <span class="keyword">if</span>(str==<span class="keyword">null</span>)&#123;</span><br><span class="line">	 <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span>  <span class="keyword">new</span> String(str.getBytes(<span class="string">&quot;ISO-8859-1&quot;</span>),<span class="string">&quot;gb2312&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> String date</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> int day</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getDay</span><span class="params">(String date,<span class="keyword">int</span> day)</span> </span>&#123;</span><br><span class="line">	String b = date.substring(<span class="number">0</span>,<span class="number">10</span>);</span><br><span class="line">	String c = b.substring(<span class="number">0</span>,<span class="number">4</span>);</span><br><span class="line">	String d = b.substring(<span class="number">5</span>,<span class="number">7</span>);</span><br><span class="line">	String f = b.substring(<span class="number">8</span>,<span class="number">10</span>);</span><br><span class="line">	String aa = c+<span class="string">&quot;/&quot;</span>+d+<span class="string">&quot;/&quot;</span>+f;</span><br><span class="line">	String a = <span class="string">&quot;&quot;</span>;</span><br><span class="line">	DateFormat dateFormat =  DateFormat.getDateInstance(DateFormat.MEDIUM);</span><br><span class="line">		GregorianCalendar grc=<span class="keyword">new</span> GregorianCalendar();</span><br><span class="line">		grc.setTime(<span class="keyword">new</span> Date(aa));</span><br><span class="line">           grc.add(GregorianCalendar.DAY_OF_MONTH,day);</span><br><span class="line">           String resu = dateFormat.format(grc.getTime());</span><br><span class="line">       String t[]= resu.split(<span class="string">&quot;-&quot;</span>);</span><br><span class="line">       String sesuu = <span class="string">&quot;&quot;</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;t.length;i++)</span><br><span class="line">       &#123;</span><br><span class="line">       	<span class="keyword">if</span>(t[i].length()==<span class="number">1</span>)</span><br><span class="line">       	&#123;</span><br><span class="line">       		t[i]=<span class="string">&quot;0&quot;</span>+t[i];</span><br><span class="line">       	&#125;</span><br><span class="line">       	sesuu += t[i]+<span class="string">&quot;-&quot;</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">	<span class="keyword">return</span> sesuu.substring(<span class="number">0</span>,<span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Info</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">tform</span><span class="params">(HashMap map)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;isgood&quot;</span>)!=<span class="keyword">null</span>)&#123;</span><br><span class="line">			map.remove(<span class="string">&quot;note&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">    	String jscode = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    	<span class="keyword">try</span>&#123;</span><br><span class="line">    	jscode+=<span class="string">&quot;&lt;script type=\&quot;text/javascript\&quot;&gt;\n&quot;</span>;</span><br><span class="line">    	jscode+=<span class="string">&quot;function getPvalue()\n&quot;</span>;</span><br><span class="line">    	jscode+=<span class="string">&quot;&#123;\n&quot;</span>;</span><br><span class="line">    	</span><br><span class="line">    	 Set set = map.entrySet();</span><br><span class="line">    	 Iterator it = set.iterator();</span><br><span class="line">    	 <span class="keyword">while</span>(it.hasNext())</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">	request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">	go(<span class="string">&quot;/admin/sysuseradd.jsp&quot;</span>, request, response);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编辑管理员</span></span><br><span class="line"><span class="keyword">if</span>(ac.equals(<span class="string">&quot;sysuseredit&quot;</span>))&#123;</span><br><span class="line">	String id = request.getParameter(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">	String userpwd = request.getParameter(<span class="string">&quot;userpwd&quot;</span>);</span><br><span class="line">	String realname = request.getParameter(<span class="string">&quot;realname&quot;</span>);</span><br><span class="line">	String sex = request.getParameter(<span class="string">&quot;sex&quot;</span>);</span><br><span class="line">	String idcard = request.getParameter(<span class="string">&quot;idcard&quot;</span>);</span><br><span class="line">	String tel = request.getParameter(<span class="string">&quot;tel&quot;</span>);</span><br><span class="line">	String email = request.getParameter(<span class="string">&quot;email&quot;</span>);</span><br><span class="line">	String addr = request.getParameter(<span class="string">&quot;addr&quot;</span>);</span><br><span class="line">	dao.commOper(<span class="string">&quot;update sysuser set userpwd=&#x27;&quot;</span>+userpwd+<span class="string">&quot;&#x27;,realname=&#x27;&quot;</span>+realname+<span class="string">&quot;&#x27;,sex=&#x27;&quot;</span>+sex+<span class="string">&quot;&#x27;,idcard=&#x27;&quot;</span>+idcard+<span class="string">&quot;&#x27;,tel=&#x27;&quot;</span>+tel+<span class="string">&quot;&#x27;,email=&#x27;&quot;</span>+email+<span class="string">&quot;&#x27;,addr=&#x27;&quot;</span>+addr+<span class="string">&quot;&#x27; where id=&quot;</span>+id);</span><br><span class="line">	request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">	go(<span class="string">&quot;/admin/sysuseredit.jsp?id=&quot;</span>+id, request, response);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//商品类别新增</span></span><br><span class="line"><span class="keyword">if</span>(ac.equals(<span class="string">&quot;protypeadd&quot;</span>))&#123;</span><br><span class="line">	String typename = request.getParameter(<span class="string">&quot;typename&quot;</span>);</span><br><span class="line">	String fatherid = request.getParameter(<span class="string">&quot;fatherid&quot;</span>);</span><br><span class="line">	dao.commOper(<span class="string">&quot;insert into protype (typename,fatherid,delstatus) values (&#x27;&quot;</span>+typename+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+fatherid+<span class="string">&quot;&#x27;,&#x27;0&#x27;) &quot;</span>);</span><br><span class="line">	request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;操作成功!&quot;</span>);</span><br><span class="line">	go(<span class="string">&quot;/admin/protype.jsp&quot;</span>, request, response);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//商品类别编辑</span></span><br><span class="line"><span class="keyword">if</span>(ac.equals(<span class="string">&quot;protypeedit&quot;</span>))&#123;</span><br><span class="line">	String id = request.getParameter(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">	String typename = request.getParameter(<span class="string">&quot;typename&quot;</span>);</span><br><span class="line">	dao.commOper(<span class="string">&quot;update protype set typename=&#x27;&quot;</span>+typename+<span class="string">&quot;&#x27; where id=&quot;</span>+id);</span><br><span class="line">	request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;操作成功!&quot;</span>);</span><br><span class="line">	go(<span class="string">&quot;/admin/protype.jsp?id=&quot;</span>+id, request, response);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//商品属性新增</span></span><br><span class="line"><span class="keyword">if</span>(ac.equals(<span class="string">&quot;propertyadd&quot;</span>))&#123;</span><br><span class="line">	String propertyname = request.getParameter(<span class="string">&quot;propertyname&quot;</span>);</span><br><span class="line">	dao.commOper(<span class="string">&quot;insert into property (propertyname,delstatus) values (&#x27;&quot;</span>+propertyname+<span class="string">&quot;&#x27;,&#x27;0&#x27;) &quot;</span>);</span><br><span class="line">	request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">	go(<span class="string">&quot;/admin/propertyadd.jsp&quot;</span>, request, response);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//商品属性编辑</span></span><br><span class="line"><span class="keyword">if</span>(ac.equals(<span class="string">&quot;propertyedit&quot;</span>))&#123;</span><br><span class="line">	String id = request.getParameter(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">	String propertyname = request.getParameter(<span class="string">&quot;propertyname&quot;</span>);</span><br><span class="line">	dao.commOper(<span class="string">&quot;update property set propertyname=&#x27;&quot;</span>+propertyname+<span class="string">&quot;&#x27; where id=&quot;</span>+id);</span><br><span class="line">	request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">					<span class="string">&quot; values (&#x27;&quot;</span>+username+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+userpwd+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+email+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+realname+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+sex+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+addr+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+idcard+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+tel+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+delstatus+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+savetime+<span class="string">&quot;&#x27;)&quot;</span>);</span><br><span class="line">		request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;操作成功!&quot;</span>);</span><br><span class="line">		go(<span class="string">&quot;/admin/userlist.jsp&quot;</span>, request, response);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(ac.equals(<span class="string">&quot;useredit&quot;</span>))&#123;</span><br><span class="line">		String id = request.getParameter(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">		String userpwd = request.getParameter(<span class="string">&quot;userpwd&quot;</span>);</span><br><span class="line">		String email = request.getParameter(<span class="string">&quot;email&quot;</span>)==<span class="keyword">null</span>?<span class="string">&quot;&quot;</span>:request.getParameter(<span class="string">&quot;email&quot;</span>);</span><br><span class="line">		String realname = request.getParameter(<span class="string">&quot;realname&quot;</span>)==<span class="keyword">null</span>?<span class="string">&quot;&quot;</span>:request.getParameter(<span class="string">&quot;realname&quot;</span>);</span><br><span class="line">		String sex = request.getParameter(<span class="string">&quot;sex&quot;</span>)==<span class="keyword">null</span>?<span class="string">&quot;&quot;</span>:request.getParameter(<span class="string">&quot;sex&quot;</span>);</span><br><span class="line">		String addr = request.getParameter(<span class="string">&quot;addr&quot;</span>)==<span class="keyword">null</span>?<span class="string">&quot;&quot;</span>:request.getParameter(<span class="string">&quot;addr&quot;</span>);</span><br><span class="line">		String idcard = request.getParameter(<span class="string">&quot;idcard&quot;</span>)==<span class="keyword">null</span>?<span class="string">&quot;&quot;</span>:request.getParameter(<span class="string">&quot;idcard&quot;</span>);</span><br><span class="line">		String tel = request.getParameter(<span class="string">&quot;tel&quot;</span>)==<span class="keyword">null</span>?<span class="string">&quot;&quot;</span>:request.getParameter(<span class="string">&quot;tel&quot;</span>);</span><br><span class="line">		String delstatus = <span class="string">&quot;0&quot;</span>;</span><br><span class="line">		String savetime = Info.getDateStr();</span><br><span class="line">		dao.commOper(<span class="string">&quot;update sysuser set userpwd=&#x27;&quot;</span>+userpwd+<span class="string">&quot;&#x27;,email=&#x27;&quot;</span>+email+<span class="string">&quot;&#x27;,realname=&#x27;&quot;</span>+realname+<span class="string">&quot;&#x27;,&quot;</span> +</span><br><span class="line">				<span class="string">&quot;sex=&#x27;&quot;</span>+sex+<span class="string">&quot;&#x27;,addr=&#x27;&quot;</span>+addr+<span class="string">&quot;&#x27;,idcard=&#x27;&quot;</span>+idcard+<span class="string">&quot;&#x27;,tel=&#x27;&quot;</span>+tel+<span class="string">&quot;&#x27; where id=&quot;</span>+id);</span><br><span class="line">		request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;操作成功!&quot;</span>);</span><br><span class="line">		go(<span class="string">&quot;/admin/userlist.jsp&quot;</span>, request, response);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(ac.equals(<span class="string">&quot;pwdedit&quot;</span>))&#123;</span><br><span class="line">		String oldpwd = request.getParameter(<span class="string">&quot;oldpwd&quot;</span>);</span><br><span class="line">		String newpwd = request.getParameter(<span class="string">&quot;newpwd&quot;</span>);</span><br><span class="line">		HashMap oldmap = dao.select(<span class="string">&quot;select * from sysuser where id=&quot;</span>+admin.get(<span class="string">&quot;id&quot;</span>)).get(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span>(oldpwd.equals(oldmap.get(<span class="string">&quot;userpwd&quot;</span>)))&#123;</span><br><span class="line">			dao.commOper(<span class="string">&quot;update sysuser set userpwd = &#x27;&quot;</span>+newpwd+<span class="string">&quot;&#x27; where id=&quot;</span>+admin.get(<span class="string">&quot;id&quot;</span>));</span><br><span class="line">			request.setAttribute(<span class="string">&quot;info&quot;</span>, <span class="string">&quot;密码修改成功!&quot;</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			request.setAttribute(<span class="string">&quot;info&quot;</span>, <span class="string">&quot;旧密码不正确!&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		go(<span class="string">&quot;/admin/myaccount.jsp&quot;</span>, request, response);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(ac.equals(<span class="string">&quot;aboutedit&quot;</span>))&#123;</span><br><span class="line">		String lxr = request.getParameter(<span class="string">&quot;lxr&quot;</span>);</span><br><span class="line">		String tel = request.getParameter(<span class="string">&quot;tel&quot;</span>);</span><br><span class="line">		String addr = request.getParameter(<span class="string">&quot;addr&quot;</span>);</span><br><span class="line">		String note = request.getParameter(<span class="string">&quot;note&quot;</span>);</span><br><span class="line">		dao.commOper(<span class="string">&quot;update about set lxr=&#x27;&quot;</span>+lxr+<span class="string">&quot;&#x27;,tel=&#x27;&quot;</span>+tel+<span class="string">&quot;&#x27;,addr=&#x27;&quot;</span>+addr+<span class="string">&quot;&#x27;,note=&#x27;&quot;</span>+note+<span class="string">&quot;&#x27; where id=1&quot;</span>);</span><br><span class="line">		request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;操作成功!&quot;</span>);</span><br><span class="line">		go(<span class="string">&quot;/admin/aboutedit.jsp&quot;</span>, request, response);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(ac.equals(<span class="string">&quot;msgadd&quot;</span>))&#123;</span><br><span class="line">		String msg = request.getParameter(<span class="string">&quot;msg&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//商品购买成功后的评价</span></span><br><span class="line"><span class="keyword">if</span>(ac.equals(<span class="string">&quot;pj&quot;</span>))&#123;</span><br><span class="line">	String goodid = request.getParameter(<span class="string">&quot;goodid&quot;</span>);</span><br><span class="line">	String memberid = member.get(<span class="string">&quot;id&quot;</span>).toString();</span><br><span class="line">	String jb = request.getParameter(<span class="string">&quot;jb&quot;</span>);</span><br><span class="line">	String msg = request.getParameter(<span class="string">&quot;msg&quot;</span>);</span><br><span class="line">	String savetime = Info.getDateStr();</span><br><span class="line">	HashMap mm = dao.select(<span class="string">&quot;select * from goods where id=&quot;</span>+goodid).get(<span class="number">0</span>);</span><br><span class="line">	dao.commOper(<span class="string">&quot;insert into pj (goodid,goodsaver,memberid,jb,msg,savetime,hf) values &quot;</span> +</span><br><span class="line">			<span class="string">&quot;(&#x27;&quot;</span>+goodid+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+mm.get(<span class="string">&quot;saver&quot;</span>)+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+memberid+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+jb+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+msg+<span class="string">&quot;&#x27;,&#x27;&quot;</span>+savetime+<span class="string">&quot;&#x27;,&#x27;&#x27;) &quot;</span>);</span><br><span class="line">	request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;商品评价成功!&quot;</span>);</span><br><span class="line">	go(<span class="string">&quot;/mydd.jsp&quot;</span>, request, response);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//管理员回复评价</span></span><br><span class="line"><span class="keyword">if</span>(ac.equals(<span class="string">&quot;pjhf&quot;</span>))&#123;</span><br><span class="line">	String id = request.getParameter(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">	String gid = request.getParameter(<span class="string">&quot;gid&quot;</span>);</span><br><span class="line">	String hf = request.getParameter(<span class="string">&quot;hf&quot;</span>);</span><br><span class="line">	dao.commOper(<span class="string">&quot;update pj set hf=&#x27;&quot;</span>+hf+<span class="string">&quot;&#x27; where id=&quot;</span>+id);</span><br><span class="line">	request.setAttribute(<span class="string">&quot;suc&quot;</span>, <span class="string">&quot;评价回复成功!&quot;</span>);</span><br><span class="line">	go(<span class="string">&quot;/admin/goodpj.jsp?gid=&quot;</span>+gid, request, response);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//滚动图片</span></span><br><span class="line"><span class="keyword">if</span>(ac.equals(<span class="string">&quot;imgadvadd&quot;</span>))&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		String filename=<span class="string">&quot;&quot;</span>;</span><br><span class="line">	request.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">	RequestContext  requestContext = <span class="keyword">new</span> ServletRequestContext(request);</span><br><span class="line">	<span class="keyword">if</span>(FileUpload.isMultipartContent(requestContext))&#123;</span><br><span class="line">	   DiskFileItemFactory factory = <span class="keyword">new</span> DiskFileItemFactory();</span><br><span class="line">	   factory.setRepository(<span class="keyword">new</span> File(request.getRealPath(<span class="string">&quot;/upfile/&quot;</span>)+<span class="string">&quot;/&quot;</span>));</span><br><span class="line">	   ServletFileUpload upload = <span class="keyword">new</span> ServletFileUpload(factory);</span><br><span class="line">	   upload.setSizeMax(<span class="number">100</span>*<span class="number">1024</span>*<span class="number">1024</span>);</span><br><span class="line">	   List items = <span class="keyword">new</span> ArrayList();</span><br><span class="line">	     items = upload.parseRequest(request);</span><br><span class="line">			FileItem fileItem = (FileItem) items.get(<span class="number">0</span>);</span><br><span class="line">			<span class="keyword">if</span> (fileItem.getName() != <span class="keyword">null</span> &amp;&amp; fileItem.getSize() != <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span> (fileItem.getName() != <span class="keyword">null</span></span><br><span class="line">						&amp;&amp; fileItem.getSize() != <span class="number">0</span>) &#123;</span><br><span class="line">					File fullFile = <span class="keyword">new</span> File(fileItem.getName());</span><br><span class="line">					filename = Info.generalFileName(fullFile.getName());</span><br><span class="line">					File newFile = <span class="keyword">new</span> File(request</span><br><span class="line">							.getRealPath(<span class="string">&quot;/upfile/&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

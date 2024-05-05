@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/201.gj%20351523331012%20a%20SpringBoot%E5%9C%A8%E7%BA%BF%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F%E5%9C%A8%E7%BA%BF%E5%AD%A6%E4%B9%A0%E5%B9%B3%E5%8F%B0(%E5%AD%A6%E7%94%9F%E3%80%81%E6%95%99%E5%B8%88%E3%80%81%E7%AE%A1%E7%90%86%E5%91%98)(java+springboot+maven+vue+elementui+mysql)%E3%80%90%E5%AD%A6%E4%B9%A0%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p>管理员：</p>
+<p><img src="../images/project30/361523331012.jpg" alt="361523331012"></p>
+<p><img src="../images/project30/371523331012.jpg" alt="371523331012"></p>
+<p>老师：</p>
+<p><img src="../images/project30/381523331012.jpg" alt="381523331012"></p>
+<p><img src="../images/project30/391523331012.jpg" alt="391523331012"></p>
+<p><img src="../images/project30/401523331012.jpg" alt="401523331012"></p>
+<p><img src="../images/project30/411523331012.jpg" alt="411523331012"></p>
+<p>学生：</p>
+<p><img src="../images/project30/421523331012.jpg" alt="421523331012"></p>
+<p><img src="../images/project30/431523331012.jpg" alt="431523331012"></p>
+<p><img src="../images/project30/441523331012.jpg" alt="441523331012"></p>
+<p><img src="../images/project30/461523331012.jpg" alt="461523331012"></p>
+<p><img src="../images/project30/471523331012.jpg" alt="471523331012"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>登录页：<br><a target="_blank" rel="noopener" href="http://localhost:8080/#/login">http://localhost:8080/#/login</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">管理员</span><br><span class="line">admin	123456</span><br><span class="line"></span><br><span class="line">老师</span><br><span class="line">t1	123456</span><br><span class="line"></span><br><span class="line">学生</span><br><span class="line">s1	123456</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">@RequestMapping(&quot;/list&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Result <span class="title">list</span><span class="params">(<span class="meta">@RequestBody</span> UserSubjectVo userSubjectVo)</span></span>&#123;</span><br><span class="line">      userSubjectVo.setPage((userSubjectVo.getPage() - <span class="number">1</span>) * userSubjectVo.getPageSize());</span><br><span class="line">      Map&lt;String, Object&gt; page = userSubjectService.queryPage(userSubjectVo);</span><br><span class="line">      <span class="keyword">return</span> Result.success(page);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 信息</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Result <span class="title">info</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span></span>&#123;</span><br><span class="line">UserSubjectEntity userSubject = userSubjectService.getById(id);</span><br><span class="line">      <span class="keyword">return</span> Result.success(userSubject);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 保存</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/save&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Result <span class="title">save</span><span class="params">(<span class="meta">@RequestBody</span> UserSubjectEntity userSubject)</span></span>&#123;</span><br><span class="line">      <span class="keyword">boolean</span> save = userSubjectService.save(userSubject);</span><br><span class="line">      <span class="keyword">if</span> (save) &#123;</span><br><span class="line">          <span class="keyword">return</span> Result.successCode();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> Result.failureCode();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 修改</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/update&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Result <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> UserSubjectEntity userSubject)</span></span>&#123;</span><br><span class="line">      <span class="keyword">boolean</span> update = userSubjectService.updateById(userSubject);</span><br><span class="line">      <span class="keyword">if</span> (update) &#123;</span><br><span class="line">          <span class="keyword">return</span> Result.successCode();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> Result.failureCode();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 删除</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Result <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Integer[] ids)</span></span>&#123;</span><br><span class="line">      <span class="keyword">boolean</span> b = userSubjectService.removeByIds(Arrays.asList(ids));</span><br><span class="line">      <span class="keyword">if</span> (b) &#123;</span><br><span class="line">          <span class="keyword">return</span> Result.successCode();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@email</span> $&#123;email&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;study/videoTotal&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VideoTotalController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;file.imagePath&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String imagePath;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> VideoTotalService videoTotalService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> VideosService videosService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 分页查询</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/list&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">list</span><span class="params">(<span class="meta">@RequestBody</span> VideoTotalVo videoTotalVo)</span> </span>&#123;</span><br><span class="line">        videoTotalVo.setPage((videoTotalVo.getPage() - <span class="number">1</span>) * videoTotalVo.getPageSize());</span><br><span class="line">        Map&lt;String, Object&gt; page = videoTotalService.queryPage(videoTotalVo);</span><br><span class="line">        <span class="keyword">return</span> Result.success(page);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户注册</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/registry&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">registry</span><span class="params">(<span class="meta">@RequestBody</span> UserEntity user)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> save = userService.save(user);</span><br><span class="line">    <span class="keyword">if</span> (save) &#123;</span><br><span class="line">        UserRoleEntity userRoleEntity = <span class="keyword">new</span> UserRoleEntity();</span><br><span class="line">        userRoleEntity.setUserId(user.getId());</span><br><span class="line">        userRoleEntity.setRoleId(<span class="number">3</span>);</span><br><span class="line">        userRoleService.save(userRoleEntity);</span><br><span class="line">        <span class="keyword">return</span> Result.successCode();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Result.failureCode();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/update&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> UserVo userVo)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> b;</span><br><span class="line">    <span class="keyword">if</span> (userVo.getUserEntity() == <span class="keyword">null</span>) &#123;</span><br><span class="line">        UserEntity userEntity = <span class="keyword">new</span> UserEntity();</span><br><span class="line">        userEntity.setId(userVo.getId());</span><br><span class="line">        userEntity.setUserName(userVo.getUserName());</span><br><span class="line">        userEntity.setSex(userVo.getSex());</span><br><span class="line">        b = userService.updateById(userEntity);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        b = userService.updateById(userVo.getUserEntity());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (userVo.getClassId() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//根据老师ID删除老师所对应的班级并重新新增</span></span><br><span class="line">            QueryWrapper&lt;UserClassEntity&gt; userClassQueryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">            <span class="keyword">if</span> (userVo.getUserEntity() != <span class="keyword">null</span>) &#123;</span><br><span class="line">                userClassQueryWrapper.eq(<span class="string">&quot;user_id&quot;</span>, userVo.getUserEntity().getId());</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                userClassQueryWrapper.eq(<span class="string">&quot;user_id&quot;</span>, userVo.getId());</span><br><span class="line">            &#125;</span><br><span class="line">            userClassService.remove(userClassQueryWrapper);</span><br><span class="line"></span><br><span class="line">            UserClassEntity userClassEntity = <span class="keyword">new</span> UserClassEntity();</span><br><span class="line">            userClassEntity.setClassId(userVo.getClassId());</span><br><span class="line">            <span class="keyword">if</span> (userVo.getUserEntity() != <span class="keyword">null</span>) &#123;</span><br><span class="line">                userClassEntity.setUserId(userVo.getUserEntity().getId());</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                userClassEntity.setUserId(userVo.getId());</span><br><span class="line">            &#125;</span><br><span class="line">            userClassService.save(userClassEntity);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@email</span> $&#123;email&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;study/class&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ClassService classService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserClassService userClassService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/list&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">list</span><span class="params">(<span class="meta">@RequestBody</span> ClassVo classVo)</span> </span>&#123;</span><br><span class="line">        classVo.setPage((classVo.getPage() - <span class="number">1</span>) * classVo.getPageSize());</span><br><span class="line">        Map&lt;String, Object&gt; page = classService.queryPage(classVo);</span><br><span class="line">        <span class="keyword">return</span> Result.success(page);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/findList&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">findList</span><span class="params">(<span class="meta">@RequestBody</span> ClassVo classVo)</span> </span>&#123;</span><br><span class="line">        List&lt;HashMap&gt; page = classService.findList(classVo);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">boolean</span> save = homeworkService.save(homework);</span><br><span class="line">        <span class="keyword">if</span> (save) &#123;</span><br><span class="line">            <span class="keyword">return</span> Result.successCode();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Result.failureCode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 修改</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/update&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> HomeworkEntity homework)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> b = homeworkService.updateById(homework);</span><br><span class="line">        <span class="keyword">if</span> (b) &#123;</span><br><span class="line">            <span class="keyword">return</span> Result.successCode();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Result.failureCode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> HomeworkEntity homework)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> b = homeworkService.removeById(homework.getId());</span><br><span class="line">        <span class="keyword">if</span> (b)&#123;</span><br><span class="line">            QueryWrapper&lt;UserDoHomeworkEntity&gt; queryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">            queryWrapper.eq(<span class="string">&quot;homework_id&quot;</span>,homework.getId());</span><br><span class="line">            <span class="keyword">boolean</span> remove = userDoHomeworkService.remove(queryWrapper);</span><br><span class="line">            <span class="keyword">return</span> Result.successCode();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Result.failureCode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"> */</span><br><span class="line"><span class="meta">@RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">info</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span> </span>&#123;</span><br><span class="line">    ApplicantEntity applicant = applicantService.getById(id);</span><br><span class="line">    <span class="keyword">return</span> Result.success(applicant);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 保存</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/save&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">save</span><span class="params">(<span class="meta">@RequestBody</span> ApplicantEntity applicant)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> save = applicantService.save(applicant);</span><br><span class="line">    <span class="keyword">if</span> (save) &#123;</span><br><span class="line">        <span class="keyword">return</span> Result.successCode();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Result.failureCode();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/update&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> ApplicantVo applicantVo)</span> </span>&#123;</span><br><span class="line">    ApplicantEntity applicantEntity = <span class="keyword">new</span> ApplicantEntity();</span><br><span class="line">    applicantEntity.setStatus(applicantVo.getStatus());</span><br><span class="line">    applicantEntity.setId(applicantVo.getId());</span><br><span class="line">    <span class="keyword">boolean</span> b = applicantService.updateById(applicantEntity);</span><br><span class="line">    <span class="keyword">if</span> (b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (applicantVo.getStatus() == <span class="number">2</span>) &#123;</span><br><span class="line">            QueryWrapper&lt;UserClassEntity&gt; queryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">            queryWrapper.eq(<span class="string">&quot;user_id&quot;</span>, applicantVo.getUserId());</span><br><span class="line">            List&lt;UserClassEntity&gt; list = userClassService.list(queryWrapper);</span><br><span class="line">            <span class="keyword">if</span> (list.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> Result.failure(<span class="string">&quot;该学生已经加入了班级&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            UserClassEntity userClassEntity = <span class="keyword">new</span> UserClassEntity();</span><br><span class="line">            userClassEntity.setClassId(applicantVo.getClassId());</span><br><span class="line">            userClassEntity.setUserId(applicantVo.getUserId());</span><br><span class="line">            userClassService.save(userClassEntity);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Result.successCode();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Result.failureCode();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Integer[] ids)</span> </span>&#123;</span><br><span class="line">    applicantService.removeByIds(Arrays.asList(ids));</span><br><span class="line">    <span class="keyword">return</span> Result.successCode();</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

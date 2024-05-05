@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/101.ab%20241621462402%205%20Swing+MySQL%E7%81%AB%E8%BD%A6%E7%A5%A8%E5%94%AE%E7%A5%A8%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+swing+mysql+gui)%E3%80%90%E7%A5%A8%E3%80%91%E3%80%90%E6%96%87%E3%80%91%E3%80%90%E7%81%AB%E8%BD%A6%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p>管理员管理车票和用户、用户购买车票等</p>
+<p><img src="../images/project06/052123510307.jpg" alt="052123510307"></p>
+<p><img src="../images/project06/070123082502.jpg" alt="070123082502"></p>
+<p><img src="../images/project06/080123082502.jpg" alt="080123082502"></p>
+<p><img src="../images/project06/550123072502.jpg" alt="550123072502"></p>
+<p><img src="../images/project06/560123072502.jpg" alt="560123072502"></p>
+<p><img src="../images/project06/570123072502.jpg" alt="570123072502"></p>
+<p><img src="../images/project06/580123072502.jpg" alt="580123072502"></p>
+<p><img src="../images/project06/590123072502.jpg" alt="590123072502"></p>
+<p><img src="../images/project06/010123082502.jpg" alt="010123082502"></p>
+<p><img src="../images/project06/020123082502.jpg" alt="020123082502"></p>
+<p><img src="../images/project06/030123082502.jpg" alt="030123082502"></p>
+<p><img src="../images/project06/040123082502.jpg" alt="040123082502"></p>
+<p><img src="../images/project06/050123082502.jpg" alt="050123082502"></p>
+<p><img src="../images/project06/060123082502.jpg" alt="060123082502"></p>
+<h3 id="技术框架"><a href="#技术框架" class="headerlink" title="技术框架"></a>技术框架</h3><p>Java Swing MySQL</p>
+<p>——————————ProjectTitle——————————</p>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span><br><span class="line">setBounds(<span class="number">500</span>, <span class="number">100</span>, <span class="number">800</span>, <span class="number">800</span>);</span><br><span class="line"></span><br><span class="line">contentPane = <span class="keyword">new</span> JPanel();</span><br><span class="line">contentPane.setBorder(<span class="keyword">new</span> EmptyBorder(<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>));</span><br><span class="line">contentPane.setLayout(<span class="keyword">new</span> BorderLayout(<span class="number">0</span>, <span class="number">0</span>));</span><br><span class="line">setContentPane(contentPane);</span><br><span class="line"></span><br><span class="line">JPanel panel = <span class="keyword">new</span> JPanel();</span><br><span class="line">contentPane.add(panel, BorderLayout.NORTH);</span><br><span class="line"></span><br><span class="line">panel.setLayout(<span class="keyword">new</span> FlowLayout(FlowLayout.CENTER, <span class="number">5</span>, <span class="number">5</span>));<span class="comment">//流式居中</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">btnQue = <span class="keyword">new</span> JButton(<span class="string">&quot;查看车票信息&quot;</span>);</span><br><span class="line">panel.add(btnQue);</span><br><span class="line">btnQue.setActionCommand(<span class="string">&quot;que&quot;</span>);</span><br><span class="line"></span><br><span class="line">btnDel = <span class="keyword">new</span> JButton(<span class="string">&quot;删除所选&quot;</span>);</span><br><span class="line">panel.add(btnDel);</span><br><span class="line">btnDel.setActionCommand(<span class="string">&quot;del&quot;</span>);</span><br><span class="line"></span><br><span class="line">btnAdd = <span class="keyword">new</span> JButton(<span class="string">&quot;添加车票&quot;</span>);</span><br><span class="line">panel.add(btnAdd);</span><br><span class="line">btnAdd.setActionCommand(<span class="string">&quot;add&quot;</span>);</span><br><span class="line"></span><br><span class="line">btnUpd = <span class="keyword">new</span> JButton(<span class="string">&quot;修改车票&quot;</span>);</span><br><span class="line">panel.add(btnUpd);</span><br><span class="line">btnUpd.setActionCommand(<span class="string">&quot;upd&quot;</span>);</span><br><span class="line"></span><br><span class="line">tzyh = <span class="keyword">new</span> JButton(<span class="string">&quot;用户管理&quot;</span>);</span><br><span class="line">panel.add(tzyh);</span><br><span class="line"></span><br><span class="line">tuichu = <span class="keyword">new</span> JButton(<span class="string">&quot;退出&quot;</span>);</span><br><span class="line">panel.add(tuichu);</span><br><span class="line">tuichu.addActionListener(<span class="keyword">new</span> ActionListener() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">        dispose();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tzyh.addActionListener(<span class="keyword">new</span> ActionListener() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">        Usermanagement_ui yhgl = <span class="keyword">new</span> Usermanagement_ui();</span><br><span class="line">        yhgl.setVisible(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">        String name = rs.getString(<span class="number">2</span>);</span><br><span class="line">        String identity_number = rs.getString(<span class="number">3</span>);</span><br><span class="line">        String account = rs.getString(<span class="number">4</span>);</span><br><span class="line">        String password = rs.getString(<span class="number">5</span>);</span><br><span class="line">        User user0 = <span class="keyword">new</span> User(userid0, name, identity_number, account, password);</span><br><span class="line">        user.add(user0);</span><br><span class="line">    &#125;</span><br><span class="line">    Util.closeAll(con, stmt, rs);</span><br><span class="line">    <span class="keyword">return</span> user;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">SlectAcPs</span><span class="params">(String account, String password)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">    String sql = <span class="string">&quot;select account,password from user&quot;</span>;</span><br><span class="line">    Connection con = Util.getConnection();</span><br><span class="line">    PreparedStatement stmt = con.prepareStatement(sql);</span><br><span class="line">    ResultSet rr = stmt.executeQuery();</span><br><span class="line">    <span class="keyword">while</span> (rr.next()) &#123;</span><br><span class="line">        String account1 = rr.getString(<span class="number">1</span>);</span><br><span class="line">        String password1 = rr.getString(<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span> (account.equals(account1) &amp;&amp; password.equals(password1)) &#123;</span><br><span class="line">            flag = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Util.closeAll(con, stmt, rr);</span><br><span class="line">    <span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;AcPs&gt; <span class="title">getAC</span><span class="params">(String account, String password)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    String account0 = account;</span><br><span class="line">    String password0 = password;</span><br><span class="line">    List&lt;AcPs&gt; acps = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    AcPs acpss = <span class="keyword">new</span> AcPs(account0, password0);</span><br><span class="line">    acps.add(acpss);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> acps;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">GetUseridbyaccount</span><span class="params">(String account)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNa</span><span class="params">(String na)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.na = na;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getIde</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ide;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIde</span><span class="params">(String ide)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.ide = ide;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getAc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ac;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAc</span><span class="params">(String ac)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.ac = ac;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getPs</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ps;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPs</span><span class="params">(String ps)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.ps = ps;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">UserSelf</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span><br><span class="line">    setBounds(<span class="number">500</span>, <span class="number">100</span>, <span class="number">800</span>, <span class="number">800</span>);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">            <span class="keyword">int</span> blance = userdao.selectbl(usd);</span><br><span class="line">            <span class="keyword">int</span> yuan = ticketim.fares(ticketidd);</span><br><span class="line">            System.out.println(blance + <span class="string">&quot;***&quot;</span> + yuan);</span><br><span class="line">            <span class="keyword">if</span> (blance &gt;= yuan) &#123;</span><br><span class="line">                <span class="keyword">boolean</span> falll = userdao.reduBlance(usd, yuan);</span><br><span class="line">                <span class="keyword">boolean</span> fal = userticketdao.SelectUidTid(ticketidd, usd);</span><br><span class="line">                <span class="keyword">boolean</span> fall = userticketdao.Left(ticketidd);</span><br><span class="line">                System.out.println(fal + <span class="string">&quot;23421434234&quot;</span> + fall);</span><br><span class="line">                <span class="keyword">if</span> (falll) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (fall) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (fal) &#123;</span><br><span class="line">                            <span class="keyword">boolean</span> falg = userticketdao.buyTicket(ticketidd, usd);</span><br><span class="line">                            <span class="keyword">boolean</span> flag1 = userticketdao.buyTicketb(ticketidd, usd);</span><br><span class="line">                            JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="string">&quot;购买成功！&quot;</span>);</span><br><span class="line">                            System.out.println(falg + <span class="string">&quot;1&quot;</span> + flag1);</span><br><span class="line">                            System.out.println(usd);</span><br><span class="line">                            System.out.println(ticketidd);</span><br><span class="line">                            System.out.println();</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="string">&quot;您不能重复购买该票！&quot;</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="string">&quot;该票已经售罄！&quot;</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="string">&quot;购买失败！&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="string">&quot;余额不足！&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                loadData();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">package</span> dao.Impl;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">            + <span class="string">&quot;usertickettickettype,userticketfares,userticketticket_office) values&quot;</span></span><br><span class="line">            + <span class="string">&quot;(?,?,?,?,?,?,?,?,?,?,?,?,?)&quot;</span>;</span><br><span class="line">    PreparedStatement stmt = con.prepareStatement(sqladd);</span><br><span class="line">    stmt.setInt(<span class="number">1</span>, userticketuserid);</span><br><span class="line">    stmt.setInt(<span class="number">2</span>, userticketticketid);</span><br><span class="line">    stmt.setString(<span class="number">3</span>, userticketname);</span><br><span class="line">    stmt.setString(<span class="number">4</span>, userticketidentity_number);</span><br><span class="line">    stmt.setString(<span class="number">5</span>, userticketstation_arrival);</span><br><span class="line">    stmt.setString(<span class="number">6</span>, userticketstation_depart);</span><br><span class="line">    stmt.setString(<span class="number">7</span>, userticketdepart_date);</span><br><span class="line">    stmt.setString(<span class="number">8</span>, userticketdepart_time);</span><br><span class="line">    stmt.setInt(<span class="number">9</span>, userticketticket_number);</span><br><span class="line">    stmt.setString(<span class="number">10</span>, userticketseattype);</span><br><span class="line">    stmt.setString(<span class="number">11</span>, usertickettickettype);</span><br><span class="line">    stmt.setString(<span class="number">12</span>, userticketfares);</span><br><span class="line">    stmt.setString(<span class="number">13</span>, userticketticket_office);</span><br><span class="line">    stmt.executeUpdate();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">update</span><span class="params">(UserTicket UserTicket)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> userticketid)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    Connection con = Util.getConnection();</span><br><span class="line">    String sqladd = <span class="string">&quot;delete from userticket where userticketid=?&quot;</span>;</span><br><span class="line">    PreparedStatement stmt = con.prepareStatement(sqladd);</span><br><span class="line">    stmt.setInt(<span class="number">1</span>, userticketid);</span><br><span class="line">    ResultSet rs = <span class="keyword">null</span>;</span><br><span class="line">    stmt.executeUpdate();</span><br><span class="line">    Util.closeAll(con, stmt, rs);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;UserTicket&gt; <span class="title">QueryByuserticketuserid</span><span class="params">(<span class="keyword">int</span> userticketuserid)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    Connection con = Util.getConnection();</span><br><span class="line">    String sqladd = <span class="string">&quot;select * from userticket where userticketuserid=?&quot;</span>;</span><br><span class="line">    PreparedStatement stmt = con.prepareStatement(sqladd);</span><br><span class="line">    stmt.setInt(<span class="number">1</span>, userticketuserid);</span><br><span class="line">    ResultSet rs = stmt.executeQuery();</span><br><span class="line"></span><br><span class="line">    List&lt;UserTicket&gt; userticket = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">while</span> (rs.next()) &#123;</span><br><span class="line">        <span class="keyword">int</span> userticketid = rs.getInt(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e1) &#123;</span><br><span class="line">                <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                e1.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loadData</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="comment">// 清除旧的数据</span></span><br><span class="line">    model.getDataVector().clear();</span><br><span class="line"></span><br><span class="line">    List&lt;Ticket&gt; list = ticketDao.queryAll();</span><br><span class="line">    <span class="comment">// 遍历每一条数据，添加到model中</span></span><br><span class="line">    <span class="keyword">for</span> (Ticket ticket : list) &#123;</span><br><span class="line">        <span class="comment">// 添加 行数据</span></span><br><span class="line">        <span class="comment">//	cob.setSelectedItem(new Tickettype(ticket.getTicketid()));</span></span><br><span class="line">        model.addRow(<span class="keyword">new</span> Object[]&#123;ticket.getTicketid(), ticket.getStation_arrival(), ticket.getStation_depart(),</span><br><span class="line">                ticket.getDepart_date(), ticket.getDepart_time(), ticket.getTicket_number(), ticket.getSeattypeid(),</span><br><span class="line">                ticket.getTickettypeid(), ticket.getTickets_left(), ticket.getFares(),</span><br><span class="line">                ticket.getTicket_office()</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">del</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (table.getSelectedRowCount() &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="string">&quot;请选择要删除的数据行&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> result = JOptionPane.showConfirmDialog(<span class="keyword">null</span>, <span class="string">&quot;是否确定要删除&quot;</span>);</span><br><span class="line">    <span class="comment">// 判断用户是否点击</span></span><br><span class="line">    <span class="keyword">if</span> (result == JOptionPane.OK_OPTION) &#123;</span><br><span class="line">        <span class="keyword">int</span> ticketid = Integer.valueOf(table.getValueAt(</span><br><span class="line">                table.getSelectedRow(), <span class="number">0</span>).toString());</span><br><span class="line">        ticketDao.delete(ticketid);</span><br><span class="line">        loadData();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updata</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (table.getSelectedRowCount() &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="string">&quot;请选择要修改的数据行&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> result = JOptionPane.showConfirmDialog(<span class="keyword">null</span>, <span class="string">&quot;是否确定要修改&quot;</span>);</span><br><span class="line">    <span class="comment">// 判断用户是否点击</span></span><br><span class="line">    <span class="keyword">if</span> (result == JOptionPane.OK_OPTION) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> ticketid = Integer.valueOf(table.getValueAt(table.getSelectedRow(), <span class="number">0</span>).toString());</span><br><span class="line">        String station_arrival = table.getValueAt(table.getSelectedRow(), <span class="number">1</span>).toString();</span><br><span class="line">        String station_depart = table.getValueAt(table.getSelectedRow(), <span class="number">2</span>).toString();</span><br><span class="line">        String depart_date = table.getValueAt(table.getSelectedRow(), <span class="number">3</span>).toString();</span><br><span class="line">        String depart_time = table.getValueAt(table.getSelectedRow(), <span class="number">4</span>).toString();</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

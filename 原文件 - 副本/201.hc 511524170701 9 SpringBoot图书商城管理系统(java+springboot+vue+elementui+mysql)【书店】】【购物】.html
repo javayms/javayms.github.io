@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/201.hc%20511524170701%209%20SpringBoot%E5%9B%BE%E4%B9%A6%E5%95%86%E5%9F%8E%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+springboot+vue+elementui+mysql)%E3%80%90%E4%B9%A6%E5%BA%97%E3%80%91%E3%80%91%E3%80%90%E8%B4%AD%E7%89%A9%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project25/411424060701.jpg" alt="411424060701"></p>
+<p><img src="../images/project25/421424060701.jpg" alt="421424060701"></p>
+<p><img src="../images/project25/431424060701.jpg" alt="431424060701"></p>
+<p><img src="../images/project25/451424060701.jpg" alt="451424060701"></p>
+<p><img src="../images/project25/461424060701.jpg" alt="461424060701"></p>
+<p><img src="../images/project25/471424060701.jpg" alt="471424060701"></p>
+<p><img src="../images/project25/481424060701.jpg" alt="481424060701"></p>
+<p><img src="../images/project25/491424060701.jpg" alt="491424060701"></p>
+<p><img src="../images/project25/501424060701.jpg" alt="501424060701"></p>
+<p><img src="../images/project25/511424060701.jpg" alt="511424060701"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>项目介绍</p>
+<p>管理员：首页、个人中心、用户管理、卖家管理、图书类型管理、图书信息管理、图书信息、系统管理 、订单管理</p>
+<p>卖家： 首页、个人中心、图书信息管理、订单管理</p>
+<p>用户: 首页、图书信息、图书资讯、个人中心、购物车</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； 4.数据库：MySql 5.7/8.0版本均可； 5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBot(Spring+SpringMVC+Mybatis)</p>
+<p>前端：Vue</p>
+<p>使用说明</p>
+<p>项目运行： 1. 使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中application.yml配置文件中的数据库配置改为自己的配置; 4. 运行项目，控制台提示运行成功后再去运行前端项目； 5. 管理员用户名密码：admin/admin 普通用户名密码：user/123456  </p>
+<p>文档介绍（课题背景与意义、系统实现功能、课题研究现状、系统相关技术、java技术、B/S架构、Mysql介绍、Mysql环境配置、Springboot框架、系统需求分析、系统功能、可行性研究、经济可行性、技术可行性、运行可行性、事件可行性、系统业务过程分析、系统业务过程分析、系统用例图、系统设计、数据库设计、系统整体设计、系统设计思想、系统流程图、系统详情设计、系统功能模块、系统功能模块、管理员功能模块）：</p>
+<p>图书商城首页展示：</p>
+<p>图书信息展示页面：</p>
+<p>图书信息详情页面： </p>
+<p>购物车展示页面： </p>
+<p>个人中心详情展示：</p>
+<p> 后台登陆管理页面：</p>
+<p> 图书归还列表详情：</p>
+<p>图书借阅列表：</p>
+<p> 图书信息详情：</p>
+<p>——————————OldCode——————————</p>
+<p>用户登录管理控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/Userlogin”)</p>
+<p>public class UserLoginController {</p>
+<p>@Autowired</p>
+<p>private UserLoginMapper userLoginMapper;</p>
+<p>@Autowired</p>
+<p>private UserRealm userRealm;</p>
+<p>/**</p>
+<ul>
+<li><p>@throws IOException</p>
+</li>
+<li><p>@throws ServletException</p>
+</li>
+<li><p>@Title : createIdentity</p>
+</li>
+<li><p>@功能描述: TODO 产生验证码</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数：</p>
+</li>
+<li><p>@返回类型：void</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/identity”)</p>
+<p>public void createIdentity(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException</p>
+<p>//com.chen.PLoveLibrary.util.IdentityCode.outputIdentity(request, response);</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : Login</p>
+</li>
+<li><p>@功能描述: TODO 登陆验证</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param request</p>
+</li>
+<li><p>@参数： @param response</p>
+</li>
+<li><p>@参数： @param user</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/login” ,method=RequestMethod.POST)</p>
+<p>public String Login(HttpServletRequest request,HttpServletResponse response,SysUser user)</p>
+<p>/*if(user.getIdentity().equals(request.getSession().getAttribute(“randomString”)))</p>
+<p>{*/</p>
+<p>org.apache.shiro.subject.Subject subject=SecurityUtils.getSubject();</p>
+<p>UsernamePasswordToken token=new UsernamePasswordToken(user.getUsername(), user.getPassword());</p>
+<p>if(!subject.isAuthenticated())</p>
+<p>subject.login(token);</p>
+<p>/*}</p>
+<p>else</p>
+<p>return “login”;</p>
+<p>}*/</p>
+<p>request.getSession().setAttribute(“admin”,user.getUsername());</p>
+<p>//将登陆的用户信息存储在session中</p>
+<p>Reader reader=userLoginMapper.selectSysUser(user.getUsername());</p>
+<p>request.getSession().setAttribute(“SysReader”,reader);</p>
+<p>//model.addAttribute(“admin”,user.getUsername());</p>
+<p>return “frame/frameSet”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : logOut</p>
+</li>
+<li><p>@功能描述: TODO 用户注销登陆</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/logout”)</p>
+<p>public String logOut()</p>
+<p>userRealm.clearCached();</p>
+<p>return “login”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : login</p>
+</li>
+<li><p>@功能描述: TODO 返回后台登陆界面</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/index”)</p>
+<p>public String login()</p>
+<p>return “login”;</p>
+<p>/**</p>
+<ul>
+<li><p>@throws Exception</p>
+</li>
+<li><p>@Title : passwordEdit</p>
+</li>
+<li><p>@功能描述: TODO 用户修改密码</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param user</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/pwdEdit”,method=RequestMethod.POST)</p>
+<p>public String passwordEdit(SysUser user) throws Exception</p>
+<p>int i=0;</p>
+<p>user.setDate(new Date());</p>
+<p>i=userLoginMapper.updatepwdByName(user);</p>
+<p>userLoginMapper.updatePwd(user);</p>
+<p>if(i==0)</p>
+<p>throw  new Exception(“密码修改失败”);</p>
+<p>return “frame/mainFrame”;</p>
+<p>//*<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>// *    权限设置</p>
+<p>// *</p>
+<p>// *</p>
+<p>// *</p>
+<p>// *</p>
+<p>// <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>/**</p>
+<ul>
+<li><p>@Title : comePermission</p>
+</li>
+<li><p>@功能描述: TODO 进入权限注册界面</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“toReaderPermission”)</p>
+<p>@RequiresPermissions(value={“permission:toReaderPermission”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String comePermission()</p>
+<p>return “WEB-INF/readerJsp/readerPermission”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : InsertPermission</p>
+</li>
+<li><p>@功能描述: TODO 插入权限</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param sysUR</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”insertPermission”,method={RequestMethod.GET,RequestMethod.POST})</p>
+<p>@RequiresPermissions(value={“permission:insertPermission”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String InsertPermission(SysUR sysUR)</p>
+<p>userLoginMapper.insertPermission(sysUR);</p>
+<p>return “index”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : selectPermission</p>
+</li>
+<li><p>@功能描述: TODO 遍历信息</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param parameter</p>
+</li>
+<li><p>@参数： @param model</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”selectPermission”)</p>
+<p>@RequiresPermissions(value={“permission:selectPermission”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String selectPermission(Parameter parameter,Model model)</p>
+<p>int count=userLoginMapper.getCountsPermission();</p>
+<p>int start=parameter.getStart();</p>
+<p>if(start&lt;0)start=0;</p>
+<p>if(start&gt;count)start-=10;</p>
+<p>int end=start+10;</p>
+<p>parameter.setEnd(end);</p>
+<p>parameter.setStart(start);</p>
+<p>List<SysUR> permission=userLoginMapper.selectPermission(parameter);</SysUR></p>
+<p>model.addAttribute(“permission”, permission);</p>
+<p>model.addAttribute(“parameter”, parameter);</p>
+<p>return “WEB-INF/readerJsp/permissionPage”;</p>
+<p>@RequestMapping(value=”deletePermission”)</p>
+<p>@RequiresPermissions(value={“permission:deletePermission”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String DeletePermission(Parameter parameter,RedirectAttributes ra,SysUR sysUR)</p>
+<p>userLoginMapper.deletePermission(sysUR);</p>
+<p>ra.addAttribute(“start”, parameter.getStart());</p>
+<p>return “redirect:/Userlogin/selectPermission”;</p>
+<p>读者管理控制层： </p>
+<p>@Controller</p>
+<p>@RequestMapping(“/reader”)</p>
+<p>@RequiresRoles(value={“BookManager”,”SysManager”,”Manager”},logical=Logical.OR)</p>
+<p>public class ReaderController {</p>
+<p>@Autowired</p>
+<p>private ReaderService readerService;</p>
+<p>@Autowired</p>
+<p>private UserLoginMapper userLoginMapper;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : comeReader</p>
+</li>
+<li><p>@功能描述: TODO 进入读者信息录入界面</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/toReader”)</p>
+<p>@RequiresPermissions(value={“reader:toReader”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String comeReader()</p>
+<p>return “WEB-INF/readerJsp/readerLoad”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : ReaderLoad</p>
+</li>
+<li><p>@功能描述: TODO</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param reader</p>
+</li>
+<li><p>@参数： @param br</p>
+</li>
+<li><p>@参数： @param file</p>
+</li>
+<li><p>@参数： @param model</p>
+</li>
+<li><p>@参数： @param request</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@参数： @throws Exception</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/readerLoad”,method={RequestMethod.POST,RequestMethod.POST})</p>
+<p>@RequiresPermissions(value={“reader:readerLoad”,”iterm:all”},logical=Logical.OR)</p>
+<p>@SuppressWarnings(“unused”)</p>
+<p>public String ReaderLoad(@Validated Reader reader,BindingResult br,</p>
+<p>@RequestParam(value=”filePhoto”,required=false)MultipartFile file,</p>
+<p>Model model,HttpServletRequest request) throws Exception</p>
+<p>if(br.hasErrors())</p>
+<p>List<ObjectError> errors=br.getAllErrors();</ObjectError></p>
+<p>for(ObjectError error:errors)</p>
+<p>model.addAttribute(“message”,error.getDefaultMessage());</p>
+<p>return “error”;</p>
+<p>int i=0;</p>
+<p>String path=request.getSession().getServletContext().getRealPath(“upload”);</p>
+<p>String fileName=file.getOriginalFilename();</p>
+<p>String fileType=file.getContentType();</p>
+<p>File targetFile = new File(path, fileName);</p>
+<p>if(file==null)</p>
+<p>reader.setRdPhoto(“upload/empty.jpg”);</p>
+<p>else</p>
+<p>if(fileType.equals(“image/jpeg”)  ||fileType.equals(“image/pjpeg”)||fileType.equals(“image/gif”))</p>
+<p>reader.setRdPhoto(“upload/“+fileName);</p>
+<p>file.transferTo(targetFile);</p>
+<p>else</p>
+<p>reader.setRdPhoto(“upload/empty.jpg”);</p>
+<p>reader.setRdDateReg(new Date());</p>
+<p>i=readerService.insertReader(reader);</p>
+<p>if(i==0)</p>
+<p>throw new Exception(“业务办理失败”);</p>
+<p>userLoginMapper.insertSysUser(reader);</p>
+<p>model.addAttribute(“reader”,reader);</p>
+<p>return “WEB-INF/readerJsp/readerLoad”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : FindReader</p>
+</li>
+<li><p>@功能描述: TODO 查找reader信息实现数据库的分页。</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param start</p>
+</li>
+<li><p>@参数： @param model</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/findReader”)</p>
+<p>@RequiresPermissions(value={“reader:findReader”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String FindReader(Model model,Parameter parameter)</p>
+<p>int count=readerService.getCounts(parameter);</p>
+<p>int start=parameter.getStart();</p>
+<p>if(start&lt;0) start=0;</p>
+<p>if(start&gt;count)start-=10;</p>
+<p>int end=start+10;</p>
+<p>parameter.setStart(start);</p>
+<p>parameter.setEnd(end);</p>
+<p>List<Reader> readerList=readerService.getReaderInfo(parameter);</Reader></p>
+<p>model.addAttribute(“readerList”,readerList);</p>
+<p>model.addAttribute(“start”, start);</p>
+<p>model.addAttribute(“rdID”, parameter.getRdID());</p>
+<p>return “WEB-INF/readerJsp/readerPage”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : DeleteReader</p>
+</li>
+<li><p>@功能描述: TODO 删除用户的信息，在重定向页面</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param rdID</p>
+</li>
+<li><p>@参数： @param start</p>
+</li>
+<li><p>@参数： @param model</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“deleteReader”)</p>
+<p>@RequiresPermissions(value={“reader:deleteReader”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String DeleteReader(@RequestParam(“rdID”)String rdID,@RequestParam(value=”start”)Integer start,Model model,RedirectAttributes rab)</p>
+<p>readerService.deleteReaderByrdID(rdID);</p>
+<p>userLoginMapper.deleteSysUser(rdID);</p>
+<p>SysUR sysUR=new SysUR();</p>
+<p>sysUR.setUserName(rdID);</p>
+<p>userLoginMapper.deletePermission(sysUR);</p>
+<p>System.out.println(rdID);</p>
+<p>rab.addAttribute(“start”, start);</p>
+<p>return “redirect:/reader/findReader”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : EditReader</p>
+</li>
+<li><p>@功能描述: TODO 读者信息编辑  跳转到读者信息注册界面</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param model</p>
+</li>
+<li><p>@参数： @param rdID  用户名</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/editReader/{rdID}”)</p>
+<p>@RequiresPermissions(value={“reader:editReader”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String EditReader(Model model,@PathVariable String rdID,@RequestParam(value=”start”)Integer start)</p>
+<p>Reader reader=readerService.findReaderByrdID(rdID);</p>
+<p>model.addAttribute(“editReader”, reader);</p>
+<p>model.addAttribute(“start”, start);</p>
+<p>return “WEB-INF/readerJsp/readerPage”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : UpdateReader</p>
+</li>
+<li><p>@功能描述: TODO 编辑读者信息</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param reader 读者类</p>
+</li>
+<li><p>@参数： @param file 文件上传</p>
+</li>
+<li><p>@参数： @param ra 重定向</p>
+</li>
+<li><p>@参数： @param start 页码</p>
+</li>
+<li><p>@参数： @param request</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@参数： @throws IllegalStateException</p>
+</li>
+<li><p>@参数： @throws IOException</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@SuppressWarnings(“unused”)</p>
+<p>@RequiresPermissions(value={“reader:updateReader”,”iterm:all”},logical=Logical.OR)</p>
+<p>@RequestMapping(value=”/updateReader/{start}”,method={RequestMethod.POST,RequestMethod.GET})</p>
+<p>public String UpdateReader(@Validated Reader reader,BindingResult br,</p>
+<p>@RequestParam(value=”filePhoto”,required=false)MultipartFile file,</p>
+<p>RedirectAttributes ra,</p>
+<p>@PathVariable Integer start,</p>
+<p>HttpServletRequest request,Model model) throws IllegalStateException, IOException</p>
+<p>if(br.hasErrors())</p>
+<p>List<ObjectError> errors=br.getAllErrors();</ObjectError></p>
+<p>for(ObjectError error:errors)</p>
+<p>model.addAttribute(“message”,error.getDefaultMessage());</p>
+<p>return “error”;</p>
+<p>int i=0;</p>
+<p>String path=request.getSession().getServletContext().getRealPath(“upload”);</p>
+<p>String fileName=file.getOriginalFilename();</p>
+<p>String fileType=file.getContentType();</p>
+<p>File targetFile = new File(path, fileName);</p>
+<p>if(file==null)</p>
+<p>reader.setRdPhoto(“upload/empty.jpg”);</p>
+<p>else</p>
+<p>if(fileType.equals(“image/jpeg”)  ||fileType.equals(“image/pjpeg”)||fileType.equals(“image/gif”))</p>
+<p>reader.setRdPhoto(“upload/“+fileName);</p>
+<p>file.transferTo(targetFile);</p>
+<p>else</p>
+<p>reader.setRdPhoto(“upload/empty.jpg”);</p>
+<p>reader.setRdDateReg(new Date());</p>
+<p>System.out.println(reader.getRdID());</p>
+<p>i=readerService.updateReaderByrdID(reader);</p>
+<p>userLoginMapper.updateSysUser(reader);</p>
+<p>ra.addAttribute(“start”, start);</p>
+<p>return “redirect:/reader/findReader”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : SearchReader</p>
+</li>
+<li><p>@功能描述: TODO 查找指定的用户</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param rdID</p>
+</li>
+<li><p>@参数： @param model</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/searchReader”, method={RequestMethod.POST,RequestMethod.GET})</p>
+<p>@RequiresPermissions(value={“reader:searchReader”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String SearchReader(@RequestParam(“rdID”)String rdID,RedirectAttributes ra)</p>
+<p>ra.addAttribute(“rdID”,rdID);</p>
+<p>ra.addAttribute(“start”, 0);</p>
+<p>return “redirect:/reader/findReader”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : ExportExcel</p>
+</li>
+<li><p>@功能描述: TODO 将数据导出</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param parameter</p>
+</li>
+<li><p>@参数： @param request</p>
+</li>
+<li><p>@参数： @param response</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/exportExcel”)</p>
+<p>public String ExportExcel(Parameter parameter,HttpServletRequest request,HttpServletResponse response)</p>
+<p>int start=parameter.getStart();</p>
+<p>int end=start+10;</p>
+<p>parameter.setStart(start);</p>
+<p>parameter.setEnd(end);</p>
+<p>List<Reader> readerList=readerService.getReaderInfo(parameter);</Reader></p>
+<p>ExportExcelUtil ex = new ExportExcelUtil();</p>
+<p>SimpleDateFormat format=new SimpleDateFormat(“yyyy-MM-dd”);</p>
+<p>String title = “Reader信息记录”;</p>
+<p>String[] headers = { “用户名”,”姓名”,”性别”,”读者类型”,”单位名称”,”电话号码”,”邮箱”,”证件状态”,”办证日期”,”已借书数量”,”读者角色”,”照片”};</p>
+<p>List&lt;String[]&gt; dataset = new ArrayList&lt;String[]&gt;();</p>
+<p>for(int i=0;i&lt;readerList.size();i++)</p>
+<p>Reader reader=readerList.get(i);</p>
+<p>String borrowQty=Integer.toString(reader.getRdBorrowQty());</p>
+<p>String date=format.format(reader.getRdDateReg());</p>
+<p>dataset.add(new String[]{reader.getRdID(),reader.getRdName(),reader.getRdSex(),reader.getRdType(),</p>
+<p>reader.getRdDept(),reader.getRdPhone(),reader.getRdEmail(),reader.getRdStatus(),</p>
+<p>date,borrowQty,reader.getRdAdminRoles(),reader.getRdPhoto()});</p>
+<p>System.out.println(reader.getRdID());</p>
+<p>OutputStream out = null;//创建一个输出流对象</p>
+<p>try {</p>
+<p>out = response.getOutputStream();//</p>
+<p>response.setHeader(“Content-disposition”,”attachment; filename=”+”Reader.xls”);//filename是下载的xls的名，建议最好用英文</p>
+<p>response.setContentType(“application/msexcel;charset=UTF-8”);//设置类型</p>
+<p>response.setHeader(“Pragma”,”No-cache”);//设置头</p>
+<p>response.setHeader(“Cache-Control”,”no-cache”);//设置头</p>
+<p>response.setDateHeader(“Expires”, 0);//设置日期头</p>
+<p>String rootPath = request.getSession().getServletContext().getRealPath(“/“);</p>
+<p>ex.exportExcel(rootPath,title,headers, dataset, out);</p>
+<p>out.flush();</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>}finally{</p>
+<p>try{</p>
+<p>if(out!=null){</p>
+<p>out.close();</p>
+<p>}catch(IOException e){</p>
+<p>e.printStackTrace();</p>
+<p>return null;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : findStatusByrdID</p>
+</li>
+<li><p>@功能描述: TODO 找到证件当前的状态</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param rdID</p>
+</li>
+<li><p>@参数： @param model</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/findStatusByrdID”)</p>
+<p>@RequiresPermissions(value={“reader:findStatusByrdID”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String findStatusByrdID(@RequestParam(“rdID”)String rdID,Model model)</p>
+<p>String status= readerService.findStatusByrdID(rdID);</p>
+<p>model.addAttribute(“status”, status);</p>
+<p>model.addAttribute(“rdID”, rdID);</p>
+<p>return “WEB-INF/readerJsp/readerStatus”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : updateStatus</p>
+</li>
+<li><p>@功能描述: TODO 更改证件的状态</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param reader</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/updateStatus”,method={RequestMethod.POST,RequestMethod.GET})</p>
+<p>@RequiresPermissions(value={“reader:updateStatus”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String updateStatus(Reader reader)</p>
+<p>readerService.updateStatusByrdID(reader);</p>
+<p>return “WEB-INF/readerJsp/readerStatus”;</p>
+<p>@RequestMapping(“/toReaderStatus”)</p>
+<p>public String readerStatus()</p>
+<p>return “WEB-INF/readerJsp/readerStatus”;</p>
+<p>借书管理控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/borrow”)</p>
+<p>@RequiresRoles(value={“BookManager”,”SysManager”,”Manager”},logical=Logical.OR)</p>
+<p>public class BorrowContorller {</p>
+<p>@Autowired</p>
+<p>private BorrowService borrowService;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : comeBorrow</p>
+</li>
+<li><p>@功能描述: TODO 来到借书页面</p>
+</li>
+<li><p>@开发者：陈强 @参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/toBorrow”)</p>
+<p>@RequiresPermissions(value={“borrow:toBorrow”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String comeBorrow() {</p>
+<p>return “WEB-INF/bookJsp/bookBorrow”;</p>
+<p>/**</p>
+<ul>
+<li><p>@throws Exception</p>
+</li>
+<li><p>@Title : InsertBorrow</p>
+</li>
+<li><p>@功能描述: TODO 插入借阅信息,读者信息表的借阅图书数加1，图书表的图书状态改变成借出</p>
+</li>
+<li><p>@开发者：陈强 @参数： @param borrow @参数： @param br @参数： @param model @参数： @param</p>
+</li>
+<li><pre><code>    DateOut @参数： @return @参数： @throws ParseException</code></pre>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/insertBorrow”, method = { RequestMethod.POST, RequestMethod.GET })</p>
+<p>@RequiresPermissions(value={“borrow:insertBorrow”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String InsertBorrow(@Validated Borrow borrow, BindingResult br, Model model,</p>
+<p>@RequestParam(“DateOut”) String DateOut) throws Exception {</p>
+<p>if (br.hasErrors()) {</p>
+<p>String Message = null;</p>
+<p>List<ObjectError> errors = br.getAllErrors();</ObjectError></p>
+<p>for (ObjectError objectError : errors) {</p>
+<p>model.addAttribute(“message”, Message + objectError.getDefaultMessage());</p>
+<p>return “error”;</p>
+<p>ReaderType readerType = borrowService.findReaderTypeByrdID(borrow.getRdID());</p>
+<p>borrow.setIdContinueTimes(0);</p>
+<p>borrow.setIdDateOut(DateExchangeUtil.StringToDate(DateOut));</p>
+<p>borrow.setIdDateRetPlan(</p>
+<p>DateExchangeUtil.GetDateFromDay(DateExchangeUtil.StringToDate(DateOut), readerType.getCanLendDay()));</p>
+<p>borrow.setIdDateRetAct(null);</p>
+<p>borrow.setIdOverDay(0);</p>
+<p>borrow.setIdOverMoney(0);</p>
+<p>borrow.setIdPunishMoney(0);</p>
+<p>borrow.setIsHasReturn(“未还”);</p>
+<p>borrow.setOperatorRet(“”);</p>
+<p>System.out.println(borrow.getBkID() + borrow.getRdID() + borrow.getOperatorLend());</p>
+<p>// 更新</p>
+<p>Parameter parameter = new Parameter();</p>
+<p>parameter.setBkID(borrow.getBkID());</p>
+<p>parameter.setRdID(borrow.getRdID());</p>
+<p>// 比较证件是否有效</p>
+<p>Parameter parameter1 = borrowService.getReaderInfoByID(parameter);</p>
+<p>if (parameter1.getRdStatus().equals(“有效”) &amp;&amp; (DateExchangeUtil.GetDayFormDate(new Date(),</p>
+<p>parameter1.getRdDateReg()) &lt;= readerType.getDateValid() * 366 || readerType.getDateValid() == 0)) {</p>
+<p>if (parameter1.getRdBorrowQty() &lt;= readerType.getCanLendQty()) {</p>
+<p>if (parameter1.getBkStatus().equals(“在馆”)) {</p>
+<p>parameter.setBkStatus(“借出”);</p>
+<p>parameter.setRdStatus(“有效”);</p>
+<p>parameter.setRdBorrowQty(parameter1.getRdBorrowQty() + 1);</p>
+<p>borrowService.insertBorrow(borrow);</p>
+<p>borrowService.updateBookByID(parameter);</p>
+<p>borrowService.updateReaderByID(parameter);</p>
+<p>} else {</p>
+<p>throw new Exception(“图书已借出”);</p>
+<p>} else {</p>
+<p>throw new Exception(“已超过规定的借书的数量”);</p>
+<p>} else {</p>
+<p>parameter.setRdStatus(“注销”);</p>
+<p>borrowService.updateReaderByID(parameter1);</p>
+<p>throw new Exception(“你的证件已过期”);</p>
+<p>return “index”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : SelectBorrowInfo</p>
+</li>
+<li><p>@功能描述: TODO 列举所有的信息</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param parameter</p>
+</li>
+<li><p>@参数： @param model</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/selectBorrowInfo”)</p>
+<p>@RequiresPermissions(value={“borrow:selectBorrowInfo”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String SelectBorrowInfo(Parameter parameter,Model model)</p>
+<p>int count=borrowService.getCounts(parameter);</p>
+<p>int start=parameter.getStart();</p>
+<p>if(start&lt;0) start=0;</p>
+<p>if(start&gt;count)start-=10;</p>
+<p>int end=start+10;</p>
+<p>parameter.setStart(start);</p>
+<p>parameter.setEnd(end);</p>
+<p>List<Borrow> borrowList=borrowService.selectBorrowInfo(parameter);</Borrow></p>
+<p>model.addAttribute(“BorrowList”,borrowList);</p>
+<p>model.addAttribute(“parameter”, parameter);</p>
+<p>return “WEB-INF/bookJsp/bookBorrowInfo”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : DeleteBorrow</p>
+</li>
+<li><p>@功能描述: TODO 删除借阅信息，把一切的信息还原</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param parameter</p>
+</li>
+<li><p>@参数： @param ra</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“deleteBorrow”)</p>
+<p>@RequiresPermissions(value={“borrow:deleteBorrow”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String DeleteBorrow(Parameter parameter,RedirectAttributes ra,@RequestParam(“id”)int id)</p>
+<p>if(parameter.getIsHasReturn().equals(“未还”))</p>
+<p>Parameter pmt=borrowService.getReaderInfoByID(parameter);</p>
+<p>Parameter temp=new Parameter();</p>
+<p>temp.setBkID(parameter.getBkID());</p>
+<p>temp.setRdID(parameter.getRdID());</p>
+<p>temp.setRdBorrowQty(pmt.getRdBorrowQty()-1);</p>
+<p>temp.setBkStatus(“在馆”);</p>
+<p>borrowService.updateReader(temp);</p>
+<p>borrowService.updateBookByID(temp);</p>
+<p>borrowService.deleteBorrowByID(id);</p>
+<p>ra.addAttribute(“start”,0);</p>
+<p>ra.addAttribute(“isHasReturn”, parameter.getIsHasReturn());</p>
+<p>return “redirect:/borrow/selectBorrowInfo”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : comeBorrowEdit</p>
+</li>
+<li><p>@功能描述: TODO 进入归还和续借的操作页面</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/comeBorrowEdit”)</p>
+<p>@RequiresPermissions(value={“borrow:comeBorrowEdit”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String comeBorrowEdit()</p>
+<p>return “WEB-INF/bookJsp/bookBorrowEdit”;</p>
+<p>/**</p>
+<ul>
+<li><p>@Title : BorrowOperator</p>
+</li>
+<li><p>@功能描述: TODO</p>
+</li>
+<li><p>@开发者：陈强</p>
+</li>
+<li><p>@参数： @param borrow</p>
+</li>
+<li><p>@参数： @param br</p>
+</li>
+<li><p>@参数： @param model</p>
+</li>
+<li><p>@参数： @param radion</p>
+</li>
+<li><p>@参数： @param operator</p>
+</li>
+<li><p>@参数： @return</p>
+</li>
+<li><p>@参数： @throws Exception</p>
+</li>
+<li><p>@返回类型：String</p>
+</li>
+<li><p>@throws ：</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/borrowOperator”, method = { RequestMethod.POST, RequestMethod.GET })</p>
+<p>@RequiresPermissions(value={“borrow:borrowOperator”,”iterm:all”},logical=Logical.OR)</p>
+<p>public String BorrowOperator(@Validated Borrow borrow,BindingResult br,Model model,@RequestParam(“tool”)String radion,@RequestParam(“operator”)String operator</p>
+<p>) throws Exception</p>
+<p>if (br.hasErrors()) {</p>
+<p>String Message = null;</p>
+<p>List<ObjectError> errors = br.getAllErrors();</ObjectError></p>
+<p>for (ObjectError objectError : errors) {</p>
+<p>model.addAttribute(“message”, Message + objectError.getDefaultMessage());</p>
+<p>return “error”;</p>
+<p>Borrow row=borrowService.getBorrow(borrow);</p>
+<p>ReaderType readerType=borrowService.findReaderTypeByrdID(borrow.getRdID());</p>
+<p>if(row.getIsHasReturn().equals(“已还”))</p>
+<p>throw new Exception(“该图书已还不需要此操作”);</p>
+<p>if(radion.equals(“2”))</p>
+<p>if(row.getIdContinueTimes()&lt;readerType.getCanContinueTimes())</p>
+<p>borrow.setIdDateOut(new Date());</p>
+<p>borrow.setIdContinueTimes(row.getIdContinueTimes()+1);</p>
+<p>borrow.setOperatorLend(operator);</p>
+<p>borrow.setIdDateRetPlan(DateExchangeUtil.GetDateFromDay(new Date(), readerType.getCanLendDay()));</p>
+<p>borrowService.updateTB(borrow);</p>
+<p>else</p>
+<p>throw new Exception(“你已没有续借的机会”);</p>
+<p>if(radion.equals(“1”))</p>
+<p>borrow.setIdDateRetAct(new Date());</p>
+<p>borrow.setIdOverDay((int)DateExchangeUtil.GetDayFormDate(new Date(), row.getIdDateRetPlan()));</p>
+<p>borrow.setIdOverMoney(borrow.getIdOverDay()*readerType.getPunishRate());</p>
+<p>borrow.setIdPunishMoney(borrow.getIdOverMoney());</p>
+<p>borrow.setIsHasReturn(“已还”);</p>
+<p>borrow.setOperatorRet(operator);</p>
+<p>borrowService.updateReturn(borrow);</p>
+<p>Parameter parameter=new Parameter();</p>
+<p>parameter.setBkID(borrow.getBkID());</p>
+<p>parameter.setRdID(borrow.getRdID());</p>
+<p>Parameter pmt=borrowService.getReaderInfoByID(parameter);</p>
+<p>Parameter temp=new Parameter();</p>
+<p>temp.setBkID(parameter.getBkID());</p>
+<p>temp.setRdID(parameter.getRdID());</p>
+<p>temp.setRdBorrowQty(pmt.getRdBorrowQty()-1);</p>
+<p>temp.setBkStatus(“在馆”);</p>
+<p>borrowService.updateReader(temp);</p>
+<p>borrowService.updateBookByID(temp);</p>
+<p>return “index”;</p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

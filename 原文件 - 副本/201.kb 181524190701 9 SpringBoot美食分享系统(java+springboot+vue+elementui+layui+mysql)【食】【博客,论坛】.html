@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/201.kb%20181524190701%209%20SpringBoot%E7%BE%8E%E9%A3%9F%E5%88%86%E4%BA%AB%E7%B3%BB%E7%BB%9F(java+springboot+vue+elementui+layui+mysql)%E3%80%90%E9%A3%9F%E3%80%91%E3%80%90%E5%8D%9A%E5%AE%A2,%E8%AE%BA%E5%9D%9B%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project25/001424080701.jpg" alt="001424080701"></p>
+<p><img src="../images/project25/021424080701.jpg" alt="021424080701"></p>
+<p><img src="../images/project25/031424080701.jpg" alt="031424080701"></p>
+<p><img src="../images/project25/041424080701.jpg" alt="041424080701"></p>
+<p><img src="../images/project25/581424070701.jpg" alt="581424070701"></p>
+<p><img src="../images/project25/591424070701.jpg" alt="591424070701"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>项目介绍</p>
+<p>基于SpringBoot Vue的美食分享网站</p>
+<p>角色：管理员、用户</p>
+<p>用户：在网站首页可以查看首页，外国美食，中式美食，热门菜品，论坛，新闻资讯，留言板，个人中心，后台管理等内容</p>
+<p>管理员：管理员登录系统后，可以对首页，个人中心，用户管理，外国美食管理，中式美食管理，热门菜品管理，论坛管理，我的收藏管理，留言板管理等进行相应的操作</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  4.数据库：MySql 5.7/8.0版本均可； 5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue+ElementUI+Layui+HTML+CSS+JS</p>
+<p>使用说明</p>
+<p>项目运行： 1. 使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+<p>文档介绍（课题背景与意义、系统实现功能、课题研究现状、系统相关技术、java技术、B/S架构、Mysql介绍、Mysql环境配置、Springboot框架、系统需求分析、系统功能、可行性研究、经济可行性、技术可行性、运行可行性、事件可行性、系统业务过程分析、系统业务过程分析、系统用例图、系统设计、数据库设计、系统整体设计、系统设计思想、系统流程图、系统详情设计、系统功能模块、系统功能模块、管理员功能模块）：</p>
+<p>美食首页展示：</p>
+<p>美食详情展示： </p>
+<p> 外卖美食列表：</p>
+<p>后台美食管理列表展示：</p>
+<p>后台登录页面展示：</p>
+<p>——————————OldCode——————————</p>
+<p>订单管理控制层： </p>
+<p>@Controller</p>
+<p>public class orderController {</p>
+<p>@Autowired</p>
+<p>private OrderService orderService;</p>
+<p>@RequestMapping(“/toOrder”)</p>
+<p>public String toOrder(HttpServletRequest request,Model model) throws Exception {</p>
+<p>Orders orders = new Orders();</p>
+<p>Cart cart = (Cart) request.getSession().getAttribute(“cart”);</p>
+<p>User loginUser = (User) request.getSession().getAttribute(“loginUser”);</p>
+<p>if(loginUser==null){</p>
+<p>model.addAttribute(“message”, “对不起您还没有登录”);</p>
+<p>return “msg”;</p>
+<p>//        0表示没有付款、1表示已付款即将发货 2表示确认收货 3表示交易成功</p>
+<p>orders.setState(0);</p>
+<p>orders.setOrderTime(new Date());</p>
+<p>orders.setUid(loginUser.getUid());</p>
+<p>orders.setMoney(cart.getTotale());</p>
+<p>orderService.toOrder(orders);</p>
+<p>Map&lt;Integer, CartItem&gt; cartItems = cart.getCartItem();</p>
+<p>for (Entry&lt;Integer, CartItem&gt; entry : cartItems.entrySet()) {</p>
+<p>CartItem cartItem = entry.getValue();</p>
+<p>Orderitem orderitem = new Orderitem();</p>
+<p>orderitem.setProduct(cartItem.getProduct());</p>
+<p>orderitem.setCount(cartItem.getCount());</p>
+<p>orderitem.setPid(cartItem.getProduct().getPid());</p>
+<p>orderitem.setSubtotal(cartItem.getSubtotle());</p>
+<p>orderitem.setOid(orders.getOid());</p>
+<p>orders.getOiList().add(orderitem);</p>
+<p>orderService.toOrderItem(orderitem);</p>
+<p>cart.clearCart();</p>
+<p>request.getSession().setAttribute(“orders”, orders);</p>
+<p>return “order”;</p>
+<p>// 为定单付款</p>
+<p>@RequestMapping(“/payOrder”)</p>
+<p>public String payOrder(Orders orders,@RequestParam String receiveInfo,@RequestParam String phoNum,@RequestParam String accepter) throws Exception {</p>
+<p>orders.setReceiveinfo(receiveInfo);</p>
+<p>orders.setPhonum(phoNum);</p>
+<p>orders.setAccepter(accepter);</p>
+<p>orderService.payOrder(orders);</p>
+<p>return “redirect:myOrder.action?page=1”;</p>
+<p>//payOrderAganin</p>
+<p>@RequestMapping(“/payOrderAganin”)</p>
+<p>public String payOrderAganin(@RequestParam int oid,HttpServletRequest request){</p>
+<p>Orders noPayOrder = orderService.findOrderByOid(oid);</p>
+<p>request.getSession().setAttribute(“orders”, noPayOrder);</p>
+<p>return “order”;</p>
+<p>// 查询myOrder</p>
+<p>@RequestMapping(“/myOrder”)</p>
+<p>public String myOrder(@RequestParam int page, Model model,</p>
+<p>HttpServletRequest request) throws Exception {</p>
+<p>User loginUser = (User) request.getSession().getAttribute(“loginUser”);</p>
+<p>PageBean<Orders> pageBean = orderService.findOrderByUidAndPage(page,loginUser.getUid());</Orders></p>
+<p>model.addAttribute(“pageBean”, pageBean);</p>
+<p>return “orderList”;</p>
+<p>// 确认收货</p>
+<p>@RequestMapping(“/updateState”)</p>
+<p>public String updateState(@RequestParam int oid ) throws Exception {</p>
+<p>orderService.updateOrderStatus(oid, 3);</p>
+<p>return “redirect:myOrder.action?page=1”;</p>
+<p> 登录管理控制层：</p>
+<p>@Controller</p>
+<p>public class loginController {</p>
+<p>@Autowired</p>
+<p>private UserService userService;</p>
+<p>@RequestMapping(“login”)</p>
+<p>public String login() {</p>
+<p>return “login”;</p>
+<p>// 用户登录</p>
+<p>@RequestMapping(“/userLogin”)</p>
+<p>public String userLogin(HttpServletRequest request,</p>
+<p>@RequestParam String checkImg, User user, Model model)</p>
+<p>throws zdyException, Exception {</p>
+<p>String sessionCode = (String) request.getSession().getAttribute(</p>
+<p>“checkcode”);</p>
+<p>if (!sessionCode.equalsIgnoreCase(checkImg)) {</p>
+<p>//model.addAttribute(“message”, “验证码输入错误请重新注册”);</p>
+<p>//throw new zdyException(“验证码输入错误请重新注册”);</p>
+<p>request.getSession().setAttribute(“message”, “验证码输入错误请重新注册”);</p>
+<p>return “redirect:login.action”;</p>
+<p>User loginUser = userService.loginFindByUnameAndPwd(user.getUsername(),</p>
+<p>user.getPassword());</p>
+<p>if (loginUser == null) {</p>
+<p>//model.addAttribute(“message”, “密码输入错误请重新登陆”);</p>
+<p>request.getSession().setAttribute(“message”, “密码输入错误请重新登陆”);</p>
+<p>//throw new zdyException(“密码输入错误请重新登陆”);</p>
+<p>return “redirect:login.action”;</p>
+<p>request.getSession().setAttribute(“loginUser”, loginUser);</p>
+<p>request.getSession().removeAttribute(“message”);</p>
+<p>return “redirect:index.action”;</p>
+<p>// 用户退出</p>
+<p>@RequestMapping(“userLogout”)</p>
+<p>public String userLogout(HttpServletRequest request,</p>
+<p>HttpServletResponse response, Model model) {</p>
+<p>request.getSession().removeAttribute(“loginUser”);</p>
+<p>response.setHeader(“content-type”, “text/html;charset=UTF-8”);</p>
+<p>response.setHeader(“refresh”, “5;url=/shop/index.action”);</p>
+<p>model.addAttribute(“message”, “退出成功，系统将在5秒之后跳转到首页……”);</p>
+<p>return “msg”;</p>
+<p>//进入管理员页面</p>
+<p>@RequestMapping(“/admin”)</p>
+<p>public String AdminIndex(){</p>
+<p>return “admin/index”;</p>
+<p>//admin/adminUser_login.action</p>
+<p>//adminUser_login管理员登录</p>
+<p>@RequestMapping(“/admin/adminUser_login”)</p>
+<p>public String adminUser_login(HttpServletRequest request,Model model,@RequestParam String username,@RequestParam String password) throws Exception{</p>
+<p>Adminuser adminuserLogin = userService.adminUser_login(username,password);</p>
+<p>System.out.println(username);</p>
+<p>System.out.println(password);</p>
+<p>if(adminuserLogin == null){</p>
+<p>model.addAttribute(“message”, “改用户未被授予管理员身份！”);</p>
+<p>return “admin/index”;</p>
+<p>request.getSession().setAttribute(“adminuserLogin”, adminuserLogin);</p>
+<p>//        model.addAttribute(“adminuserLogin”, adminuserLogin);</p>
+<p>return “admin/home”;</p>
+<p> 后台管理控制层：</p>
+<p>@Controller</p>
+<p>public class AdminController {</p>
+<p>@Autowired</p>
+<p>private UserService userService;</p>
+<p>@Autowired</p>
+<p>public CategoryService categoryService;</p>
+<p>@Autowired</p>
+<p>public CategorySecondService categorySecondService;</p>
+<p>@Autowired</p>
+<p>public ProductService productService;</p>
+<p>@Autowired</p>
+<p>private OrderService orderService;</p>
+<p>@Autowired</p>
+<p>private MessageService messageService;</p>
+<p>@RequestMapping(“/admin/admin_findAll”)</p>
+<p>public String admin_findAll(Model model, HttpServletRequest request) throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>List<User> userList = userService.admin_findAll();</User></p>
+<p>model.addAttribute(“userList”, userList);</p>
+<p>return “admin/user/list”;</p>
+<p>@RequestMapping(“/admin/adminCategory_findAll”)</p>
+<p>public String adminCategory_findAll(Model model, HttpServletRequest request)</p>
+<p>throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>List<Category> categoryList = categoryService.adminbFindCategory();</Category></p>
+<p>/*for (Category category : categoryList) {</p>
+<p>System.out.println(category.getCname());</p>
+<p>}*/</p>
+<p>model.addAttribute(“categoryList”, categoryList);</p>
+<p>return “admin/category/list”;</p>
+<p>@RequestMapping(“/admin/adminCategory_add”)</p>
+<p>public String adminCategory_add(Model model,HttpServletRequest request) throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>//        List<Category> categoryList = categoryService.adminbFindCategory();</Category></p>
+<p>//        model.addAttribute(“categoryList”, categoryList);</p>
+<p>return “admin/category/add”;</p>
+<p>@RequestMapping(“/admin/adminCategory_save”)</p>
+<p>public String adminCategory_save(@RequestParam String cname,HttpServletRequest request)</p>
+<p>throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>Category addCategory = new Category();</p>
+<p>addCategory.setCname(cname);</p>
+<p>categoryService.addCategory(addCategory);</p>
+<p>return “redirect:/admin/adminCategory_findAll.action”;</p>
+<p>@RequestMapping(“/admin/adminCategory_edit”)</p>
+<p>public String adminCategory_delete(@RequestParam int cid, Model model,HttpServletRequest request)</p>
+<p>throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>Category existCategory = categoryService.findCategory(cid);</p>
+<p>model.addAttribute(“existCategory”, existCategory);</p>
+<p>return “admin/category/edit”;</p>
+<p>@RequestMapping(“/admin/adminCategory_update”)</p>
+<p>public String adminCategory_update(@RequestParam int cid,</p>
+<p>@RequestParam String cname,HttpServletRequest request) {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>Category category = new Category();</p>
+<p>category.setCid(cid);</p>
+<p>category.setCname(cname);</p>
+<p>categoryService.adminCategory_update(category);</p>
+<p>return “redirect:/admin/adminCategory_findAll.action”;</p>
+<p>@RequestMapping(“/admin/adminCategory_delete”)</p>
+<p>public String adminCategory_delete(@RequestParam int cid,HttpServletRequest request) throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>categorySecondService.adminCategorySecond_deleteByCid(cid);</p>
+<p>categoryService.deleteCategoryByCid(cid);</p>
+<p>return “redirect:/admin/adminCategory_findAll.action”;</p>
+<p>// admin 的二级分类的管理</p>
+<p>@RequestMapping(“/admin/adminCategorySecond_findAllByPage”)</p>
+<p>public String adminCategorySecond_findAllByPage(@RequestParam int page,Model model,HttpServletRequest request) {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>PageBean<Categorysecond> csPageBean = categorySecondService</Categorysecond></p>
+<p>.adminCategorySecond_findAllByPage(page);</p>
+<p>/*List<Categorysecond> list = csPageBean.getList();</Categorysecond></p>
+<p>for (Categorysecond categorysecond : list) {</p>
+<p>System.out.println(categorysecond.getCsname());</p>
+<p>}*/</p>
+<p>model.addAttribute(“csPageBean”, csPageBean);</p>
+<p>return “admin/categorysecond/list”;</p>
+<p>@RequestMapping(“admin/adminCategorySecond_addPage”)</p>
+<p>public String adminCategorySecond_addPage(Model model,HttpServletRequest request) throws Exception{</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>List<Category> categoryList = categoryService.adminbFindCategory();</Category></p>
+<p>model.addAttribute(“categoryList”, categoryList);</p>
+<p>return “admin/categorysecond/add”;</p>
+<p>@RequestMapping(“admin/adminCategorySecond_save”)</p>
+<p>public String adminCategorySecond_save(@RequestParam String csname,@RequestParam int cid,HttpServletRequest request) throws Exception{</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>Categorysecond categorysecond = new Categorysecond();</p>
+<p>categorysecond.setCsname(csname);</p>
+<p>categorysecond.setCid(cid);</p>
+<p>categorySecondService.adminCategorySecond_save(categorysecond);</p>
+<p>return “redirect:/admin/adminCategorySecond_findAllByPage.action?page=1”;</p>
+<p>@RequestMapping(“admin/adminCategorySecond_edit”)</p>
+<p>public String adminCategorySecond_edit(@RequestParam int csid,Model model,HttpServletRequest request) throws Exception{</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>Categorysecond findByCsid = categorySecondService.findByCsid(csid);</p>
+<p>model.addAttribute(“findByCsid”, findByCsid);</p>
+<p>return “admin/categorysecond/edit”;</p>
+<p>@RequestMapping(“admin/adminCategorySecond_update”)</p>
+<p>public String adminCategorySecond_update(@RequestParam String csname,@RequestParam int csid,HttpServletRequest request){</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>Categorysecond categorysecond = new Categorysecond();</p>
+<p>categorysecond.setCsname(csname);</p>
+<p>categorysecond.setCsid(csid);</p>
+<p>categorySecondService.adminCategorySecond_update(categorysecond);</p>
+<p>return “redirect:/admin/adminCategorySecond_findAllByPage.action?page=1”;</p>
+<p>@RequestMapping(“admin/adminCategorySecond_delete”)</p>
+<p>public String adminCategorySecond_delete(@RequestParam int csid,HttpServletRequest request) throws Exception{</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>categorySecondService.adminCategorySecond_delete(csid);</p>
+<p>return “redirect:/admin/adminCategorySecond_findAllByPage.action?page=1”;</p>
+<p>//admin的商品管理</p>
+<p>@RequestMapping(“/admin/adminProduct_findAllByPage”)</p>
+<p>public String adminProduct_findAllByPage(@RequestParam int page, Model model,HttpServletRequest request)</p>
+<p>throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>PageBean<Product> allProPageBean = productService.findAllProduct(page);</Product></p>
+<p>model.addAttribute(“allProPageBean”, allProPageBean);</p>
+<p>return “admin/product/list”;</p>
+<p>@RequestMapping(“/admin/adminProduct_addPage”)</p>
+<p>public String adminProduct_addPage(Model model,HttpServletRequest request) throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>//查询出所有的二级分类</p>
+<p>List<Categorysecond> cslist = categorySecondService.findAll();</Categorysecond></p>
+<p>/*for (Categorysecond categorysecond : cslist) {</p>
+<p>System.out.println(categorysecond.getCsname());</p>
+<p>}*/</p>
+<p>model.addAttribute(“cslist”, cslist);</p>
+<p>return “admin/product/add”;</p>
+<p>@RequestMapping(“/admin/adminProduct_save”)</p>
+<p>public String adminProduct_save(Product product,HttpServletRequest request,MultipartFile file) throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>product.setPdate(new Date());</p>
+<p>//        上传图片</p>
+<p>if (file != null) {</p>
+<p>String path = request.getServletContext().getRealPath(</p>
+<p>“/products”);</p>
+<p>String uploadFileName = file.getOriginalFilename();</p>
+<p>String fileName = UUIDUtiils.getUUID()+uploadFileName;</p>
+<p>File diskFile = new File(path + “//“ + fileName);</p>
+<p>file.transferTo(diskFile);</p>
+<p>product.setImage(“products/“ + fileName);</p>
+<p>System.out.println(product.getImage());</p>
+<p>productService.adminProduct_save(product);</p>
+<p>return “redirect:/admin/adminProduct_findAllByPage.action?page=1”;</p>
+<p>@RequestMapping(“admin/adminProduct_deletecs”)</p>
+<p>public String adminProduct_deletecs(@RequestParam int pid,HttpServletRequest request) throws Exception{</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>productService.adminProduct_deletecs(pid);</p>
+<p>return “redirect:/admin/adminProduct_findAllByPage.action?page=1”;</p>
+<p>/**</p>
+<ul>
+<li><p>编辑商品</p>
+</li>
+<li><p>@param pid</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+<li><p>@throws Exception</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“admin/adminProduct_edit”)</p>
+<p>public String adminProduct_edit(@RequestParam int pid,Model model,HttpServletRequest request) throws Exception{</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>Product product = productService.finbProductByPid(pid);</p>
+<p>model.addAttribute(“findByPid”, product);</p>
+<p>//查询出所有的二级分类</p>
+<p>List<Categorysecond> cslist = categorySecondService.findAll();</Categorysecond></p>
+<p>model.addAttribute(“cslist”, cslist);</p>
+<p>return “admin/product/edit”;</p>
+<p>@RequestMapping(“/admin/adminProduct_update”)</p>
+<p>public String adminProduct_update(Product product,HttpServletRequest request,MultipartFile file) throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>product.setPdate(new Date());</p>
+<p>//        上传图片</p>
+<p>if (file != null) {</p>
+<p>String path = request.getServletContext().getRealPath(</p>
+<p>“/products”);</p>
+<p>String uploadFileName = file.getOriginalFilename();</p>
+<p>String fileName = UUIDUtiils.getUUID()+uploadFileName;</p>
+<p>File diskFile = new File(path + “//“ + fileName);</p>
+<p>file.transferTo(diskFile);</p>
+<p>product.setImage(“products/“ + fileName);</p>
+<p>productService.adminProduct_update(product);</p>
+<p>return “redirect:/admin/adminProduct_findAllByPage.action?page=1”;</p>
+<p>/** 订单管理模块  **/</p>
+<p>@RequestMapping(“/admin/adminOrder_findAllByPage”)</p>
+<p>public String adminOrder_findAllByPage(@RequestParam int page, Model model,HttpServletRequest request)</p>
+<p>throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>PageBean<Orders> allProPageBean = orderService.findAllOrderByStateAndPage(page);</Orders></p>
+<p>model.addAttribute(“pageBean”, allProPageBean);</p>
+<p>return “admin/order/list”;</p>
+<p>//adminOrder_findByState</p>
+<p>@RequestMapping(“/admin/adminOrder_findByState”)</p>
+<p>public String adminOrder_findByState(@RequestParam int page,@RequestParam int state, Model model,HttpServletRequest request)</p>
+<p>throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>PageBean<Orders> allProPageBean = orderService.findAllOrderByStateAndPage(state,page);</Orders></p>
+<p>model.addAttribute(“pageBean”, allProPageBean);</p>
+<p>return “admin/order/list”;</p>
+<p>//订单详情</p>
+<p>//adminOrder_findOrderItem</p>
+<p>@RequestMapping(“/admin/adminOrder_findOrderItem”)</p>
+<p>public String adminOrder_findOrderItem(@RequestParam int oid, Model model,HttpServletRequest request)</p>
+<p>throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>Orders orderItems = orderService.findOrderByOid(oid);</p>
+<p>model.addAttribute(“orderItems”, orderItems);</p>
+<p>return “admin/order/list”;</p>
+<p>//更新订单状态</p>
+<p>@RequestMapping(“/admin/adminOrder_updateState”)</p>
+<p>public String adminOrder_updateState(@RequestParam int oid, @RequestParam int status, Model model,HttpServletRequest request)</p>
+<p>throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>orderService.updateOrderStatus(oid, status);</p>
+<p>return “redirect:/admin/adminOrder_findAllByPage.action?page=1”;</p>
+<p>//后台留言管理</p>
+<p>@RequestMapping(“/admin/adminMessage_findAllByPage”)</p>
+<p>public String adminMessage_findAllByPage(@RequestParam int page, Model model,HttpServletRequest request)</p>
+<p>throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>PageBean<Message> pageBean = messageService.findAllMessageByPage(page);</Message></p>
+<p>model.addAttribute(“pageBean”, pageBean);</p>
+<p>return “admin/message/list”;</p>
+<p>@RequestMapping(“/admin/adminMessage_delete”)</p>
+<p>public String adminOrder_updateState(@RequestParam int messageid, Model model,HttpServletRequest request)</p>
+<p>throws Exception {</p>
+<p>Adminuser adminuserLogin = (Adminuser) request.getSession().getAttribute(“adminuserLogin”);</p>
+<p>if(adminuserLogin==null){</p>
+<p>request.getSession().setAttribute(“message”,”对不起您还没有登录”);</p>
+<p>return “admin/index”;</p>
+<p>messageService.deleteMessage(messageid);</p>
+<p>return “redirect:/admin/adminMessage_findAllByPage.action?page=1”;</p>
+<p> 品类管理控制层：</p>
+<p>@Controller</p>
+<p>public class CategorySecondController {</p>
+<p>@Autowired</p>
+<p>private ProductService productService;</p>
+<p>//根据一级目录查找二级目录下面的商品(使用延迟加载但是这里不知为啥使用起来出错了)</p>
+<p>@RequestMapping(“/findCategorySecond”)</p>
+<p>public String findCategorySecond(HttpServletRequest request,@RequestParam int cid,Model model,@RequestParam int page) throws Exception {</p>
+<p>request.getSession().setAttribute(“cid”,cid);</p>
+<p>PageBean<Product> proPageBean = productService.findProductyBycid(cid,page);</Product></p>
+<p>model.addAttribute(“pageBean”,proPageBean);</p>
+<p>return “category”;</p>
+<p>//    根据csid来分页查询商品</p>
+<p>@RequestMapping(“/findCategorySecond1”)</p>
+<p>public String findCategorySecond1(@RequestParam int csid,Model model,@RequestParam int page){</p>
+<p>PageBean<Product> proPageBean = productService.finbProductByCsid(csid,page);</Product></p>
+<p>model.addAttribute(“pageBean”,proPageBean);</p>
+<p>return “category”;</p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

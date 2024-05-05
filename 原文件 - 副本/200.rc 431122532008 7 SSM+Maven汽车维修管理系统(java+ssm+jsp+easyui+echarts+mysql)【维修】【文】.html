@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.rc%20431122532008%207%20SSM+Maven%E6%B1%BD%E8%BD%A6%E7%BB%B4%E4%BF%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+ssm+jsp+easyui+echarts+mysql)%E3%80%90%E7%BB%B4%E4%BF%AE%E3%80%91%E3%80%90%E6%96%87%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project22/310023382402.jpg" alt="310023382402"></p>
+<p><img src="../images/project22/320023382402.jpg" alt="320023382402"></p>
+<p><img src="../images/project22/330023382402.jpg" alt="330023382402"></p>
+<p><img src="../images/project22/340023382402.jpg" alt="340023382402"></p>
+<p><img src="../images/project22/350023382402.jpg" alt="350023382402"></p>
+<p><img src="../images/project22/360023382402.jpg" alt="360023382402"></p>
+<p><img src="../images/project22/370023382402.jpg" alt="370023382402"></p>
+<p><img src="../images/project22/380023382402.jpg" alt="380023382402"></p>
+<p><img src="../images/project22/390023382402.jpg" alt="390023382402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>项目介绍</p>
+<p>随着人们生活水平的提高，私家车的数量正在在逐年攀升。由此带动了汽车维修行业的发展，越来越多的汽车维修厂如雨后春笋般涌现。作为汽车维修厂，如何高效的对维修长进行管理是企业管理者需要着重考虑的问题。而汽车维修管理系统就是一个能够帮助汽车维修长进行业务管理、客户信息管理和员工信息管理的软件系统。 本课题基于Java技术的汽车维修管理软件的设计与实现。其主要解决的问题有： （1）车辆接待：系统需要实现添加来访者以及其车辆的信息，需要进行开单操作，同时为维修单分配维修人员和质检人员。 （2）维修项目登记：维修人员登录系统能够看到自己当前所有的维修任务，进行维修检查，系统需要纪录维修人员填写的维修项目以及工时和维修领料的情况。 （3）维修领料：按照维修人员的相关信息和时间范围的条件,查询用户维修用料登记的情况，可以查看每一项登记的领取历史，对于材料库存不够的情况,需要进行材料采购的申请。 （4）质检完工：质检员查看自己的质检任务，进行质检，录入质检结果到系统中。 （5）消费结算：车主在约定的时间进行提车，查看维修单，进行付款操作。 （6）配件管理：管理配件的信息，采购相关的配件，录入信息到系统中。 （7）基础数据管理：对系统的一些参数进行配置，管理系统的一些基础的数据，个人信息的查看以及密码修改等相关功能的实现。 系统使用tomcat作为servlet容器，mysql作为后台的数据库，服务器端使用Spring、SpringMVC和Mybatis框架来进行开发。前段的开发部分主要采用EasyUI和jQuery框架。系统页面部分采用WebStorm开发工具 ，后端的部分使用eclipse来作为开发工具，数据库开发使用Navicat for MySQL来完成开发。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  5.数据库：MySql 5.7版本； 6.是否Maven项目: 是；查看源码目录中是否包含pom.xml；若包含，则为maven项目，否则为非maven项目</p>
+<p>技术栈</p>
+<ol>
+<li>后端：Spring、SpringMVC和Mybatis 2. 前端：JSP+EasyUI+jQuery+Echarts</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven; 若为maven项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中jdbc.properties配置文件中的数据库配置改为自己的配置; 4. 运行项目，输入localhost:8080/vmm 登录  用户名:20130501140 密码:xzit001</li>
+</ol>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;index&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(IndexController.class);</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	<span class="keyword">private</span> ServiceFactory serviceFactory;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/main.shtml&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">		LoginBean loginBean = (LoginBean) request.getSession().getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">		request.setAttribute(<span class="string">&quot;loginbean&quot;</span>, loginBean);</span><br><span class="line">		<span class="comment">// 下面是返回用户的权限：</span></span><br><span class="line">		Account account = <span class="keyword">new</span> Account();</span><br><span class="line">		account.setAccountnumber(loginBean.getAccountnumber());</span><br><span class="line">		request.setAttribute(<span class="string">&quot;allprivilege&quot;</span>, serviceFactory.getUserValidateService().queryUserPrivleges(account));</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;main&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/dis&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dispatcher</span><span class="params">(HttpServletRequest request,HttpServletResponse response,<span class="meta">@RequestParam(&quot;url&quot;)</span> String url)</span></span>&#123;		</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			logger.info(<span class="string">&quot;dispatcher:&quot;</span>+url);</span><br><span class="line">			request.getRequestDispatcher(<span class="string">&quot;/WEB-INF/views&quot;</span>+url).forward(request, response);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ServletException e) &#123;			 </span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;			 </span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"> * </span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/vehicle&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VehicleMaintenceController</span> <span class="keyword">extends</span> <span class="title">BaseController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@InitBinder</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBinder</span><span class="params">(WebDataBinder binder)</span> </span>&#123;</span><br><span class="line">		SimpleDateFormat dateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">		dateFormat.setLenient(<span class="keyword">false</span>);</span><br><span class="line">		binder.registerCustomEditor(Date.class, <span class="keyword">new</span> CustomDateEditor(dateFormat, <span class="keyword">true</span>));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(VehicleMaintenceController.class);</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> ServiceFactory serviceFactory;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据关键字查询用户和车辆的信息</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/getUserVehBykey&quot;)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">queryCustomAndVehByKey</span><span class="params">(HttpServletRequest request, Model model)</span> </span>&#123;</span><br><span class="line">		String qString = request.getParameter(<span class="string">&quot;q&quot;</span>) != <span class="keyword">null</span> ? request.getParameter(<span class="string">&quot;q&quot;</span>).toString() : <span class="string">&quot;&quot;</span>;</span><br><span class="line">		List&lt;CustomerVehicle&gt; customerVehicles = serviceFactory.getVehicleMaintence().queryUserVehiByKeyWorld(qString);</span><br><span class="line">		logger.info(<span class="string">&quot;查询到所有的用户信息为:--&gt;&quot;</span> + JSON.toJSONString(customerVehicles));</span><br><span class="line">		<span class="keyword">return</span> JSON.toJSONString(customerVehicles);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据关键字查询用户的信息</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> request</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">		databasename = properties.getProperty(<span class="string">&quot;databasename&quot;</span>);</span><br><span class="line">		mysqldump = properties.getProperty(<span class="string">&quot;mysqldump&quot;</span>);</span><br><span class="line">		username = properties.getProperty(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">		password = properties.getProperty(<span class="string">&quot;password&quot;</span>); </span><br><span class="line">		mysqlexe = properties.getProperty(<span class="string">&quot;mysqlexe&quot;</span>);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		logger.error(<span class="string">&quot;读取mysql备份还原配置失败&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@InitBinder</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBinder</span><span class="params">(WebDataBinder binder)</span> </span>&#123;</span><br><span class="line">	SimpleDateFormat dateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">	dateFormat.setLenient(<span class="keyword">false</span>);</span><br><span class="line">	binder.registerCustomEditor(Date.class, <span class="keyword">new</span> CustomDateEditor(dateFormat, <span class="keyword">true</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> ServiceFactory serviceFactory;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询所有的用户</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> status</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> page</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> rows</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/queryUser&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">queryUser</span><span class="params">(String status, Integer page, Integer rows, String key)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> responseSuccess(serviceFactory.getSystemManageService().queryAllUser(page, rows, status, key));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户信息管理 operation:c:创建,u:更新,d:删除</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/&#123;operation&#125;/modiUser&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">modiUser</span><span class="params">(UserView userView, String allprivileges, <span class="meta">@PathVariable(&quot;operation&quot;)</span> String operation)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">	<span class="keyword">if</span> (org.apache.commons.lang.StringUtils.isNotBlank(operation)) &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">int</span>[] myprivileges = <span class="keyword">null</span>;</span><br><span class="line">			logger.info(<span class="string">&quot;===========================&gt;allprivileges：&quot;</span> + allprivileges);</span><br><span class="line">			<span class="keyword">if</span> (org.apache.commons.lang.StringUtils.isNotBlank(allprivileges)) &#123;</span><br><span class="line">				String[] privileges = allprivileges.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">				myprivileges = <span class="keyword">new</span> <span class="keyword">int</span>[privileges.length];</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; myprivileges.length; i++) &#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 数据库备份</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> location</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line"><span class="comment">//	@RequestMapping(&quot;/databaseBF&quot;)</span></span><br><span class="line"><span class="comment">//	@ResponseBody</span></span><br><span class="line"><span class="comment">//	public String databaseBF(String location, HttpServletRequest request) &#123;</span></span><br><span class="line"><span class="comment">//		boolean flag = false;</span></span><br><span class="line"><span class="comment">//		if(org.apache.commons.lang.StringUtils.isNotBlank(location))&#123;</span></span><br><span class="line"><span class="comment">//			try &#123;</span></span><br><span class="line"><span class="comment">//	            Runtime rt = Runtime.getRuntime();</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//	            // 调用 调用mysql的安装目录的命令</span></span><br><span class="line"><span class="comment">//	            Process child = rt</span></span><br><span class="line"><span class="comment">//	                    .exec(mysqldump+&quot; -h localhost -u&quot;+username+&quot; -p&quot;+password+&quot; &quot;+databasename);</span></span><br><span class="line"><span class="comment">//	            // 设置导出编码为utf-8。这里必须是utf-8</span></span><br><span class="line"><span class="comment">//	            // 把进程执行中的控制台输出信息写入.sql文件，即生成了备份文件。注：如果不对控制台信息进行读出，则会导致进程堵塞无法运行</span></span><br><span class="line"><span class="comment">//	            InputStream in = child.getInputStream();// 控制台的输出信息作为输入流</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//	            InputStreamReader xx = new InputStreamReader(in, &quot;utf-8&quot;);</span></span><br><span class="line"><span class="comment">//	            // 设置输出流编码为utf-8。这里必须是utf-8，否则从流中读入的是乱码</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//	            String inStr;</span></span><br><span class="line"><span class="comment">//	            StringBuffer sb = new StringBuffer(&quot;&quot;);</span></span><br><span class="line"><span class="comment">//	            String outStr;</span></span><br><span class="line"><span class="comment">//	            // 组合控制台输出信息字符串</span></span><br><span class="line"><span class="comment">//	            BufferedReader br = new BufferedReader(xx);</span></span><br><span class="line"><span class="comment">//	            while ((inStr = br.readLine()) != null) &#123;</span></span><br><span class="line"><span class="comment">//	                sb.append(inStr + &quot;\r\n&quot;);</span></span><br><span class="line"><span class="comment">//	            &#125;</span></span><br><span class="line"><span class="comment">//	            outStr = sb.toString();</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//	            // 要用来做导入用的sql目标文件：</span></span><br><span class="line"><span class="comment">//	            CreateFileUtil.createFile(location);</span></span><br><span class="line"><span class="comment">//	            File objfile = new File(location);</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查询所有供应商的信息</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/searchWareHouse&quot;)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">searchWareHouse</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> responseArraySuccess(serviceFactory.getBaseDataManageService().queryAllWareHouse());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 零件入库</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/storagePart&quot;)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">storagePart</span><span class="params">(<span class="meta">@ModelAttribute(&quot;part&quot;)</span> Part part,<span class="meta">@ModelAttribute(&quot;storage&quot;)</span> Partstorage storage,HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 设置part的值为1</span></span><br><span class="line">		part.setPartflag(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">		<span class="comment">// 设置零件存储表的信息</span></span><br><span class="line">	    storage.setStoragetime(<span class="keyword">new</span> Date());</span><br><span class="line">	    LoginBean loginBean = MyWebUtils.getCurrentUser(request);</span><br><span class="line">	    <span class="keyword">if</span>(loginBean!=<span class="keyword">null</span>)&#123;</span><br><span class="line">	    	storage.setPurchaser(loginBean.getUsername());</span><br><span class="line">		    storage.setJobnumber(loginBean.getJobnumber());		    </span><br><span class="line">	    &#125;</span><br><span class="line">	    <span class="comment">// 调用service添加</span></span><br><span class="line">	    <span class="keyword">boolean</span> flag = serviceFactory.getBaseDataManageService().addPartStorage(part, storage);	    </span><br><span class="line">		<span class="keyword">return</span> flag?(responseSuccess(<span class="keyword">null</span>)):(responseFail(<span class="string">&quot;添加失败!&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	 </span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 删除零件</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/delPart&quot;)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">delPart</span><span class="params">(String partid)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">		<span class="keyword">if</span>(StringUtils.isNotBlank(partid))&#123;</span><br><span class="line">			flag = serviceFactory.getBaseDataManageService().delPart(partid);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> flag?responseSuccess(<span class="keyword">null</span>):responseFail(<span class="string">&quot;删除失败&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.javaweb.controller;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 财务管理控制器</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/financial&quot;)</span></span><br><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinancialManagementController</span> <span class="keyword">extends</span> <span class="title">BaseController</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(FinancialManagementController.class);</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> ServiceFactory serviceFactory;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查询所有的订单</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> starttime		开始时间</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> endtime		结束时间</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> page			页号</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> rows			页面数据大小</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/getOrders&quot;)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getOrders</span><span class="params">(String starttime,String endtime,Integer page,Integer rows)</span></span>&#123;		</span><br><span class="line">		<span class="keyword">return</span> responseSuccess(serviceFactory.getFinanicalManagement().queryallSettled(starttime, endtime, page, rows));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查询所有的维修单</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> starttime</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> endtime</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> page</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> rows</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/getPartProc&quot;)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getPartProc</span><span class="params">(String starttime,String endtime,Integer page,Integer rows)</span></span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

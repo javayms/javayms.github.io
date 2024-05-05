@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.tr%20351122572008%207%20SSM%E5%9C%A8%E7%BA%BF%E7%94%9C%E5%93%81%E5%95%86%E5%9F%8E%E7%B3%BB%E7%BB%9F(java+ssm+jsp+javascript+mysql)%E3%80%90%E8%B4%AD%E7%89%A9%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project23/500023562402.jpg" alt="500023562402"></p>
+<p><img src="../images/project23/510023562402.jpg" alt="510023562402"></p>
+<p><img src="../images/project23/520023562402.jpg" alt="520023562402"></p>
+<p><img src="../images/project23/530023562402.jpg" alt="530023562402"></p>
+<p><img src="../images/project23/540023562402.jpg" alt="540023562402"></p>
+<p><img src="../images/project23/550023562402.jpg" alt="550023562402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>项目介绍</p>
+<p>管理员角色包含以下功能： 管理员登录,套餐管理,甜品管理,预定管理等功能。</p>
+<p>用户角色包含以下功能： 用户登录与注册,查看首页,查看商品详情,加入购物车,查看预定商品等功能。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  5.数据库：MySql 5.7版本；</p>
+<p>技术栈</p>
+<ol>
+<li>后端：Spring+SpringMVC+Mybatis 2. 前端：JSP+CSS+JavaScript+jQuery</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven;若为maven项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中jdbc.properties配置文件中的数据库配置改为自己的配置; 4. 运行项目，在浏览器中输入 <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a></li>
+</ol>
+<p>——————————OldCode——————————</p>
+<p>商品管理控制层：</p>
+<p>@WebServlet(“/backstage_goodsServlet”)</p>
+<p>public class GoodsServlet extends HttpServlet{</p>
+<p>GoodsService service = new GoodsService();</p>
+<p>@Override</p>
+<p>protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {</p>
+<p>String action = req.getParameter(“action”);</p>
+<p>switch(action) {</p>
+<p>case “addGoods”:addGoods(req,resp);break;</p>
+<p>case “getGoodsList”:getGoodsList(req,resp);break;</p>
+<p>case “getGoodsListByName”:getGoodsListByName(req,resp);break;</p>
+<p>case “deleteGoods”:deleteGoods(req,resp);break;</p>
+<p>case “toGoodsUpdatePage”:toGoodsUpdatePage(req,resp);break;</p>
+<p>case “updateGoods”:updateGoods(req,resp);break;</p>
+<p>case “upGoodsImage”:upGoodsImage(req,resp);break;</p>
+<p>case “fastbuy”:sendOrder(req,resp);break;</p>
+<p>/**</p>
+<ul>
+<li><p>提交订单</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>public void sendOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>SimpleDateFormat df = new SimpleDateFormat(“yyyy-MM-dd HH:mm:ss”);//设置日期格式</p>
+<p>Orders order = new Orders();</p>
+<p>order.setNumber(order.getRandomString(10));</p>
+<p>order.setTime(df.format(new Date()));</p>
+<p>order.setName(req.getParameter(“recipients”));</p>
+<p>order.setAddress(req.getParameter(“address”));</p>
+<p>order.setPhone(req.getParameter(“phone”));</p>
+<p>order.setAddress_label(req.getParameter(“addressLabel”));</p>
+<p>order.setSex(req.getParameter(“sex”));</p>
+<p>order.setUser(“sjb”);</p>
+<p>order.setGoods_id(99);</p>
+<p>order.setGoods_num(3);</p>
+<p>order.setGoods_status(1);</p>
+<p>int d = service.addOrder(order);</p>
+<p>try {</p>
+<p>if(d&gt;0) {</p>
+<p>JSONResult ok = JSONResult.ok();</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>}else {</p>
+<p>JSONResult error = JSONResult.errorMsg(“订单提交失败!”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(error));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p>保存商品</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>public void addGoods(HttpServletRequest req,HttpServletResponse resp) throws IOException {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>FileUploadUtil upFile = new FileUploadUtil();</p>
+<p>ServletContext servletContext = req.getSession().getServletContext();</p>
+<p>List<FileItem> items= upFile.getRequsetFileItems(req,servletContext);</FileItem></p>
+<p>//保存所有用户提交的 表单数据 的map</p>
+<p>Map&lt;String, String&gt;  formData = new HashMap&lt;&gt;();</p>
+<p>String savePath = “D:\头条视频\\2020-12-16\Gok_ShoppingMallx\WebContent\home\img”;</p>
+<p>try {</p>
+<p>//遍历</p>
+<p>for (FileItem file : items) {</p>
+<p>if(!file.isFormField()) {</p>
+<p>String fileSuffix = FileUploadUtil.getFileSuffix(file).toUpperCase();</p>
+<p>//必须是jpg或png  图片文件才能进行上传操作</p>
+<p>if(“JPG”.equals(fileSuffix) || “PNG”.equals(fileSuffix)) {</p>
+<p>//生成新图片名</p>
+<p>String imgName = FileUploadUtil.getImgNewName(fileSuffix);</p>
+<p>FileUploadUtil.saveFile(file, savePath, imgName);</p>
+<p>formData.put(“imgUrl”,imgName);</p>
+<p>}else {</p>
+<p>//非文件数据存入</p>
+<p>formData.put(file.getFieldName(), file.getString(“utf-8”));</p>
+<p>} catch (UnsupportedEncodingException e) {</p>
+<p>e.printStackTrace();</p>
+<p>Goods goods = new Goods();</p>
+<p>goods.setName(formData.get(“goodsName”));</p>
+<p>goods.setNum(Integer.parseInt(formData.get(“num”)));</p>
+<p>goods.setPrice(Double.parseDouble(formData.get(“price”)));</p>
+<p>goods.setImgurl(formData.get(“imgUrl”));</p>
+<p>goods.setType(formData.get(“type”));</p>
+<p>goods.setDescription(formData.get(“description”));</p>
+<p>goods.setColor(formData.get(“color”));</p>
+<p>goods.setMemory(formData.get(“memory”));</p>
+<p>goods.setCreateDate(new SimpleDateFormat(“yyyy-MM-dd”).format(new Date()));</p>
+<p>int d = service.addGoods(goods);</p>
+<p>try {</p>
+<p>if(d&gt;0) {</p>
+<p>JSONResult ok = JSONResult.ok();</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>}else {</p>
+<p>JSONResult errorMsg = JSONResult.errorMsg(“添加失败，请重试”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(errorMsg));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li>向前端页面返回商品数据列表</li>
+</ul>
+<p>*/</p>
+<p>public void getGoodsList(HttpServletRequest req,HttpServletResponse resp) {</p>
+<p>List<Goods> allGoods = service.getAllGoods();</Goods></p>
+<p>req.setAttribute(“goodsList”, allGoods);</p>
+<p>try {</p>
+<p>req.getRequestDispatcher(“/backstage/tgls/goodsManage/goods_list.jsp”).forward(req, resp);</p>
+<p>} catch (ServletException e) {</p>
+<p>e.printStackTrace();</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p>@throws IOException</p>
+</li>
+<li><p>根据商品名查询商品</p>
+</li>
+<li><p>@param req</p>
+</li>
+<li><p>@param resp</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>public void getGoodsListByName(HttpServletRequest req,HttpServletResponse resp) throws IOException  {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>String name = req.getParameter(“goodsName”);</p>
+<p>String type = req.getParameter(“type”);</p>
+<p>Map&lt;String,String&gt; parmas = new HashMap&lt;&gt;();</p>
+<p>parmas.put(“name”, name);</p>
+<p>parmas.put(“type”, type);</p>
+<p>List<Goods> list = service.getGoodsByName(parmas);</Goods></p>
+<p>try {</p>
+<p>if(list != null) {</p>
+<p>JSONResult ok = JSONResult.ok(list);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>}else {</p>
+<p>JSONResult errorMsg = JSONResult.errorMsg(“未获取到任何数据，请重试”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(errorMsg));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li>修改商品时，获取此商品的全部数据，并返回至修改页面</li>
+</ul>
+<p>*/</p>
+<p>public void toGoodsUpdatePage(HttpServletRequest req,HttpServletResponse resp) {</p>
+<p>int id = Integer.parseInt(req.getParameter(“id”));</p>
+<p>Goods goods = service.getGoodsInfoById(id);</p>
+<p>req.setAttribute(“goods”, goods);</p>
+<p>try {</p>
+<p>req.getRequestDispatcher(“/backstage/tgls/goodsManage/goods_update.jsp”).forward(req, resp);</p>
+<p>} catch (ServletException e) {</p>
+<p>e.printStackTrace();</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<p>*修改商品信息时，如果有修改图片，先将图片进行修改</p>
+<ul>
+<li>@throws IOException</li>
+</ul>
+<p>*/</p>
+<p>public void upGoodsImage(HttpServletRequest req,HttpServletResponse resp) throws IOException {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>FileUploadUtil upFile = new FileUploadUtil();</p>
+<p>ServletContext servletContext = req.getSession().getServletContext();</p>
+<p>List<FileItem> items= upFile.getRequsetFileItems(req,servletContext);</FileItem></p>
+<p>String savePath = “D:\头条视频\\2020-12-16\Gok_ShoppingMallx\WebContent\home\img”;</p>
+<p>String imgName = null;</p>
+<p>try {</p>
+<p>//遍历</p>
+<p>for (FileItem file : items) {</p>
+<p>if(!file.isFormField()) {</p>
+<p>String fileSuffix = FileUploadUtil.getFileSuffix(file);</p>
+<p>//必须是jpg或png  图片文件才能进行上传操作</p>
+<p>if(“jpg”.equals(fileSuffix) || “png”.equals(fileSuffix)) {</p>
+<p>//生成新图片名</p>
+<p>imgName = FileUploadUtil.getImgNewName(fileSuffix);</p>
+<p>FileUploadUtil.saveFile(file, savePath, imgName);</p>
+<p>int d = service.updateGoodsImgById(imgName, Integer.parseInt(req.getParameter(“id”)));</p>
+<p>if(d&gt;0) {</p>
+<p>JSONResult ok = JSONResult.ok(imgName);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>}else {</p>
+<p>JSONResult errorMsg = JSONResult.errorMsg(“修改失败，请重试”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(errorMsg));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p> 修改商品</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>public void updateGoods(HttpServletRequest req,HttpServletResponse resp) throws IOException {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>Goods goods = new Goods();</p>
+<p>goods.setId(Integer.parseInt(req.getParameter(“id”)));</p>
+<p>goods.setName(req.getParameter(“goodsName”));</p>
+<p>goods.setNum(Integer.parseInt(req.getParameter(“num”)));</p>
+<p>goods.setPrice(Double.parseDouble(req.getParameter(“price”)));</p>
+<p>goods.setType(req.getParameter(“type”));</p>
+<p>goods.setColor(req.getParameter(“color”));</p>
+<p>goods.setMemory(req.getParameter(“memory”));</p>
+<p>goods.setDescription(req.getParameter(“description”));</p>
+<p>int d = service.updateGoodsById(goods);</p>
+<p>try {</p>
+<p>if(d&gt;0) {</p>
+<p>JSONResult ok = JSONResult.ok();</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>}else {</p>
+<p>JSONResult errorMsg = JSONResult.errorMsg(“修改失败，请重试”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(errorMsg));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p>删除商品</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>public void deleteGoods(HttpServletRequest req,HttpServletResponse resp) throws IOException {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>int id = Integer.parseInt(req.getParameter(“id”));</p>
+<p>int d = service.deleteGoodsById(id);</p>
+<p>try {</p>
+<p>if(d&gt;0) {</p>
+<p>JSONResult ok = JSONResult.ok();</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>}else {</p>
+<p>JSONResult errorMsg = JSONResult.errorMsg(“删除失败，请重试”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(errorMsg));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>用户管理控制层：</p>
+<p>@WebServlet(“/backstage_userServlet”)</p>
+<p>public class UserServlet extends HttpServlet{</p>
+<p>UserService service = new UserService();</p>
+<p>@Override</p>
+<p>protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {</p>
+<p>String action = req.getParameter(“action”);</p>
+<p>switch(action) {</p>
+<p>case “login”:login(req, resp);break;</p>
+<p>case “modifyPassword”:modifyPassword(req, resp);break;</p>
+<p>case “checkOldPassword”:checkOldPassword(req, resp);break;</p>
+<p>case “afterModifyPassword”:afterModifyPassword(req, resp);break;</p>
+<p>case “logout”:logout(req, resp);break;</p>
+<p>/**</p>
+<ul>
+<li><p>用户登录</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>public void login(HttpServletRequest req, HttpServletResponse resp) throws IOException {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>//获取前端页面传来的用户名</p>
+<p>String userName = req.getParameter(“userName”);</p>
+<p>//获取前端页面传来的密码</p>
+<p>String password = req.getParameter(“password”);</p>
+<p>// 1、先验证该用户的角色是否为管理员</p>
+<p>String userRole = service.getUserRoleByName(userName);</p>
+<p>try {</p>
+<p>if(!”admin”.equals(userRole)) {</p>
+<p>JSONResult errorMsg = JSONResult.errorMsg(“暂无登录权限”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(errorMsg));</p>
+<p>}else {</p>
+<p>//2、获取用户数据 进行用户名和密码验证</p>
+<p>User user = service.getUserByNameAndPassword(userName, password);</p>
+<p>if(user!=null) {</p>
+<p>//将用户数据保存到session 作用域中，方便在后续的操作中使用用户数据</p>
+<p>req.getSession().setAttribute(“user”, user);</p>
+<p>JSONResult ok = JSONResult.ok();</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>}else {</p>
+<p>// 将错误信息封装在结果集中</p>
+<p>JSONResult result = JSONResult.errorMsg(“用户名或密码错误，请重试”);</p>
+<p>//以json的形式返回给前端</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(result));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p>检查旧密码是否正确 ，在修改密码操作时使用</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>public void checkOldPassword(HttpServletRequest req, HttpServletResponse resp) throws IOException {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>User user =(User) req.getSession().getAttribute(“user”);</p>
+<p>String oldPassword = service.getPasswordById(user.getId());</p>
+<p>String password = req.getParameter(“password”);</p>
+<p>try {</p>
+<p>if(!oldPassword.equals(password)) {</p>
+<p>JSONResult errorMsg = JSONResult.errorMsg(“原始密码错误，请重新输入”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(errorMsg));</p>
+<p>}else {</p>
+<p>JSONResult ok = JSONResult.ok();</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p> 修改密码</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>public void modifyPassword(HttpServletRequest req, HttpServletResponse resp) throws IOException {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>String password = req.getParameter(“newPassword”);</p>
+<p>User user =(User) req.getSession().getAttribute(“user”);</p>
+<p>int id = user.getId();</p>
+<p>int d = service.updatePasswordById(id, password);</p>
+<p>try {</p>
+<p>if(d&gt;0) {</p>
+<p>JSONResult ok = JSONResult.ok();</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>}else {</p>
+<p>JSONResult errorMsg = JSONResult.errorMsg(“修改失败，请重试”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(errorMsg));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p>成功修改密码后，清除session中的数据，并且重新跳转到登录页</p>
+</li>
+<li><p>@param req</p>
+</li>
+<li><p>@param resp</p>
+</li>
+</ul>
+<p>*/</p>
+<p>public void afterModifyPassword(HttpServletRequest req, HttpServletResponse resp) {</p>
+<p>req.getSession().removeAttribute(“user”);</p>
+<p>try {</p>
+<p>//使用iframe时，要避免这种直接跳转的方式</p>
+<p>// 此时只会让内嵌的iframe跳转到登录页，并非整个页面</p>
+<p>//            resp.sendRedirect(“backstage/login.jsp”);</p>
+<p>PrintWriter writer = resp.getWriter();</p>
+<p>writer.print(“<html>“);</html></p>
+<p>writer.print(“<script>");</p>
+<p>writer.print(“window.open(‘“+ req.getContextPath()+”/backstage/login.jsp’,’_top’)”);</p>
+<p>writer.print(“</script>“);</p>
+<p>writer.print(““);</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li>退出登录</li>
+</ul>
+<p>*/</p>
+<p>public void logout(HttpServletRequest req, HttpServletResponse resp) {</p>
+<p>req.getSession().removeAttribute(“user”);</p>
+<p>try {</p>
+<p>resp.sendRedirect(“backstage/login.jsp”);</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>订单管理控制层：</p>
+<p>@WebServlet(“/backstage_ordersServlet”)</p>
+<p>public class OrdersServlet extends HttpServlet{</p>
+<p>OrdersService service = new OrdersService();</p>
+<p>@Override</p>
+<p>protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {</p>
+<p>String action = req.getParameter(“action”);</p>
+<p>System.out.println(action);</p>
+<p>switch(action) {</p>
+<p>case “getOrdersList”:getOrdersList(req,resp);break;</p>
+<p>case “getOrdersListByName”:getOrdersListByName(req,resp);break;</p>
+<p>case “deleteOrders”:deleteOrders(req,resp);break;</p>
+<p>case “deleteAllOrders”:deleteAllOrders(req,resp);break;</p>
+<p>case “toOrdersUpdatePage”:toOrdersUpdatePage(req,resp);break;</p>
+<p>case “updateOrders”:updateOrders(req,resp);break;</p>
+<p>case “fastbuy”:sendOrder(req,resp);break;</p>
+<p>/*</p>
+<ul>
+<li>删除全部订单</li>
+</ul>
+<p>*/</p>
+<p>private void deleteAllOrders(HttpServletRequest req, HttpServletResponse resp) throws IOException {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>// TODO 自动生成的方法存根</p>
+<p>int d = service.deleteAllOrders();</p>
+<p>try {</p>
+<p>if(d&gt;0) {</p>
+<p>JSONResult ok = JSONResult.ok();</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>}else {</p>
+<p>JSONResult errorMsg = JSONResult.errorMsg(“删除失败，请重试”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(errorMsg));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p>提交订单</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>public void sendOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>SimpleDateFormat df = new SimpleDateFormat(“yyyy-MM-dd HH:mm:ss”);//设置日期格式</p>
+<p>User user =(User) req.getSession().getAttribute(“user”);</p>
+<p>Orders order = new Orders();</p>
+<p>order.setNumber(order.getRandomString(10));</p>
+<p>order.setTime(df.format(new Date()));</p>
+<p>order.setName(req.getParameter(“recipients”));</p>
+<p>order.setAddress(req.getParameter(“address”));</p>
+<p>order.setPhone(req.getParameter(“phone”));</p>
+<p>order.setAddress_label(req.getParameter(“addressLabel”));</p>
+<p>order.setSex(req.getParameter(“sex”));</p>
+<p>order.setUser(user.getUserName());</p>
+<p>order.setGoods_id(Integer.parseInt(req.getParameter(“id”)));</p>
+<p>order.setGoods_num(Integer.parseInt(req.getParameter(“num”)));</p>
+<p>order.setGoods_status(1);</p>
+<p>int d = service.addOrder(order);</p>
+<p>try {</p>
+<p>if(d&gt;0) {</p>
+<p>JSONResult ok = JSONResult.ok();</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>}else {</p>
+<p>JSONResult error = JSONResult.errorMsg(“订单提交失败!”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(error));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li>向前端页面返回订单数据列表</li>
+</ul>
+<p>*/</p>
+<p>public void getOrdersList(HttpServletRequest req,HttpServletResponse resp) {</p>
+<p>List<Orders> allOrders = service.getAllOrders();</Orders></p>
+<p>req.setAttribute(“ordersList”,allOrders);</p>
+<p>try {</p>
+<p>req.getRequestDispatcher(“/backstage/tgls/ordersManage/orders_list.jsp”).forward(req, resp);</p>
+<p>} catch (ServletException e) {</p>
+<p>e.printStackTrace();</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p>根据订单名查询商品(注意！类别没改)</p>
+</li>
+<li><p>@param req</p>
+</li>
+<li><p>@param resp</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>public void getOrdersListByName(HttpServletRequest req,HttpServletResponse resp) throws IOException {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>String name = req.getParameter(“OrdersUser”);</p>
+<p>//String type = req.getParameter(“type”);</p>
+<p>Map&lt;String,String&gt; parmas = new HashMap&lt;&gt;();</p>
+<p>parmas.put(“name”, name);</p>
+<p>//parmas.put(“type”, type);</p>
+<p>List<Orders> list = service.getOrdersByName(parmas);</Orders></p>
+<p>try {</p>
+<p>if(list != null) {</p>
+<p>JSONResult ok = JSONResult.ok(list);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>}else {</p>
+<p>JSONResult errorMsg = JSONResult.errorMsg(“未获取到任何数据，请重试”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(errorMsg));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li>修改订单时，获取此订单的全部数据，并返回至修改页面</li>
+</ul>
+<p>*/</p>
+<p>public void toOrdersUpdatePage(HttpServletRequest req,HttpServletResponse resp) {</p>
+<p>int id = Integer.parseInt(req.getParameter(“id”));</p>
+<p>Orders orders = service.getOrdersInfoById(id);</p>
+<p>req.setAttribute(“orders”, orders);</p>
+<p>try {</p>
+<p>req.getRequestDispatcher(“/backstage/tgls/ordersManage/orders_update.jsp”).forward(req, resp);</p>
+<p>} catch (ServletException e) {</p>
+<p>e.printStackTrace();</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p> 修改订单</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>public void updateOrders(HttpServletRequest req,HttpServletResponse resp) throws IOException {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>Orders orders = new Orders();</p>
+<p>orders.setId(Integer.parseInt(req.getParameter(“id”)));</p>
+<p>orders.setNumber(req.getParameter(“number”));</p>
+<p>orders.setUser(req.getParameter(“user”));</p>
+<p>orders.setTime(req.getParameter(“time”));</p>
+<p>orders.setName(req.getParameter(“name”));</p>
+<p>orders.setSex(req.getParameter(“sex”));</p>
+<p>orders.setAddress(req.getParameter(“address”));</p>
+<p>orders.setPhone(req.getParameter(“phone”));</p>
+<p>orders.setAddress_label(req.getParameter(“address_label”));</p>
+<p>orders.setGoods_id(Integer.parseInt(req.getParameter(“goods_id”)));</p>
+<p>orders.setGoods_num(Integer.parseInt(req.getParameter(“goods_num”)));</p>
+<p>orders.setGoods_status(Integer.parseInt(req.getParameter(“goods_status”)));</p>
+<p>System.out.println(orders);</p>
+<p>int d = service.updateOrdersById(orders);</p>
+<p>System.out.println(d);</p>
+<p>try {</p>
+<p>if(d&gt;0) {</p>
+<p>JSONResult ok = JSONResult.ok();</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>}else {</p>
+<p>JSONResult errorMsg = JSONResult.errorMsg(“修改失败，请重试”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(errorMsg));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p>删除订单</p>
+</li>
+<li><p>@throws UnsupportedEncodingException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>public void deleteOrders(HttpServletRequest req,HttpServletResponse resp) throws UnsupportedEncodingException {</p>
+<p>//设置请求编码格式:</p>
+<p>req.setCharacterEncoding(“utf-8”);</p>
+<p>//设置响应编码格式</p>
+<p>resp.setContentType(“text/html;charset=utf-8”);</p>
+<p>int id = Integer.parseInt(req.getParameter(“id”));</p>
+<p>int d = service.deleteOrdersById(id);</p>
+<p>try {</p>
+<p>if(d&gt;0) {</p>
+<p>JSONResult ok = JSONResult.ok();</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(ok));</p>
+<p>}else {</p>
+<p>JSONResult errorMsg = JSONResult.errorMsg(“删除失败，请重试”);</p>
+<p>resp.getWriter().println(JsonUtil.javaObjectToJson(errorMsg));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

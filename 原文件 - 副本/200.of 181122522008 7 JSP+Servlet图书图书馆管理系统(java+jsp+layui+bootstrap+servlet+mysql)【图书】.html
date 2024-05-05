@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Java源码社">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/%E5%8E%9F%E6%96%87%E4%BB%B6%20-%20%E5%89%AF%E6%9C%AC/200.of%20181122522008%207%20JSP+Servlet%E5%9B%BE%E4%B9%A6%E5%9B%BE%E4%B9%A6%E9%A6%86%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(java+jsp+layui+bootstrap+servlet+mysql)%E3%80%90%E5%9B%BE%E4%B9%A6%E3%80%91">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title> | Java源码社
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+
+      <div class="post-body">
+          <p><img src="../images/project22/370023402402.jpg" alt="370023402402"></p>
+<p><img src="../images/project22/380023402402.jpg" alt="380023402402"></p>
+<p><img src="../images/project22/390023402402.jpg" alt="390023402402"></p>
+<p><img src="../images/project22/400023402402.jpg" alt="400023402402"></p>
+<p><img src="../images/project22/420023402402.jpg" alt="420023402402"></p>
+<p><img src="../images/project22/430023402402.jpg" alt="430023402402"></p>
+<p>——————————ProjectTitle——————————</p>
+<p>项目介绍</p>
+<p>使用jsp+servlet、layui、mysql完成的图书馆系统，包含用户图书借阅、图书管理员、系统管理员界面，功能齐全。</p>
+<p>开发工具为eclipse/IDEA，环境java8，tomcat9.0+，mysql为5.7（mysql8也行）</p>
+<p>项目详细介绍</p>
+<p>本图书管理系统总体上分为前台页面显示和后台管理。</p>
+<p>前台页面（即本书图书管理系统的首页）实现了公告的显示，图书查询，留言建议三大主要功能，有读者规则查看功能，师生们可以看到图书管理人员发布的最新公告信息，并可以查询自己感兴趣的图书，查看留言提议，用户登录后还有个人资料修改、个人借阅信息查询、个人违章信息查询等功能，也可以给学校的图书管理人员留言提议。</p>
+<p>后台的页面则集成了图书管理中所需的功能，分成图书管理人员和系统管理人员，平时管理人员的工作都是在后台中完成的。前台是为了师生显示的。相对应的后台是针对学校图书管理人员，后台的页面都加密，如果不正常登录是进入不了后台管理页面的，后台图书管理人员功能包括：借阅图书、归还图书、借书记录显示与查找、还书记录显示与查找、公告增删改查；后台系统管理员功能包括：对书籍的增删改查、对书籍分类的增删改、对借阅证的增删改查、对借阅信息的显示与查找、对借阅规则的增删改、对图书管理员的增删改、对近期借阅书籍数量的折线图显示，以及对这些表格数据进行Excel表格的输出</p>
+<p>共包含三个大模块：用户、图书管理员、系统管理员</p>
+<p>一、用户模块</p>
+<ol>
+<li>查看公告：能看到图书管理员发布的公告信息。 2. 图书查看：分页显示，能看到图书总览，能通过图书编号、图书名称、作者、存放位置、图书描述进行模糊查询 3. 个人违章信息（登录后）：个人历史违章信息与查询 4. 图书馆读者留言（登录后）：对图书馆的建议，或对书籍的评价 5. 查看借阅规则：不同的规则有不同的借阅限定数量、限定时间、超期费用 6. 个人信息（登录后）：对个人信息的查看与登录密码的修改 7. 个人借阅信息（登录后）：对个人借阅记录的分页查看与查询</li>
+</ol>
+<p>二、图书管理员模块</p>
+<ol>
+<li>借还图书：帮助用户借阅图书，并判断符不符合借阅规则、返还图书时判断有没有超期，超期则输出超期费用再归还 2. 借阅报表：分页显示所有借阅记录、能进行查询和输出结果到excel公告管理：能添加编辑和删除公告 3. 还书报表：分页显示所有未还的书籍，能通过借阅证号、图书编号、借阅日期、截止日期等条件进行模糊查询 4. 个人信息修改：修改个人信息、密码等</li>
+</ol>
+<p>三、系统管理员模块</p>
+<ol>
+<li>书籍管理：分页，新添图书，设置图书各种信息，编辑删除，通过编号、书名、作者、描述等进行搜索，输出结果到excel，并且能查看该书籍被谁借阅过。 2. 分类管理：分页显示，增删改书籍分类，书籍分类方便查阅整理 3. 借阅证管理：分页显示所有借阅证，增删改查用户借阅证，查看该借阅证所有的借阅记录 4. 借阅规则管理：能显示、编辑、删除所有借阅规则，借阅规则将决定该图书证能借阅什么图书馆的图书，能借多少本，能借多久以及超期每天的费用。 5. 借阅信息查询：分页显示，能条件查询超期没还的，根据编号、借阅证号、书籍编号、借阅日期等进行模糊查询，输出结果到excel等，系统管理员只能查询，不能增删改借阅信息，这个操作由图书管理员操作。 6. 图书管理员管理：对图书管理员进行增删改操作，但是不能修改原来的账号 7. 图书借阅统计：通过折线图将图书馆近30天的每天借阅书籍数量直观的显示出来。</li>
+</ol>
+<p>sql表</p>
+<p>共有十张数据库表，书籍表、借书记录表、留言表、系统管理员表、借阅证表、图书管理管理员表书籍分类表、图书馆表、借阅规则表、公告表 - 书籍表 - 编号、姓名、作者、存放的图书馆、分类编号、存放位置、是否借出、书籍描述 - 借书记录表 - 编号、借阅证编号、书籍编号、借书日期、限制日期、归还日期、违规描述、处理人编号 - 留言表 - 编号、借阅证编号、留言内容、留言日期 - 系统管理员表 - 账号、密码 - 借阅证表 - 编号、密码、借阅者姓名、规则编号、状态（丢失、可用） - 图书管理员表 - 编号、姓名、账号、密码、邮箱 - 书籍分类表 - 编号、分类名、分类描述 - 图书馆表 - 编号、图书馆名、描述 - 规则表 - 编号、限制借阅数量、限制借阅天数、图书超期每天费用 - 公告表 - 编号、标题、公告内容、发布日期</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 9.x版本，注：tomcat9.0以下会有问题； 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； 5.是否Maven项目: 否；查看源码目录中是否包含pom.xml；若包含，则为maven项目，否则为非maven项目  6.数据库：MySql 5.7版本，（mysql8也行）</p>
+<p>技术栈</p>
+<ol>
+<li>后端：JSP+Servlet 2. 前端：jsp+layui+bootstrap+jQuery</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven;若为maven项目，导入成功后请执行maven clean;maven install命令，配置tomcat，然后运行； 3. 将项目中src/javabean/Base.java和JDBCBean.java配置文件中的数据库配置改为自己的配置; 4. 运行项目，输入localhost:8080/xxx 登录 5. 用户账号密码：1805010219  1234 图书管理员账号密码：root 1234 系统管理员账号密码：admin admin</li>
+</ol>
+<p>——————————NewCode——————————</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">				msg = <span class="string">&quot;成功&quot;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			msg = <span class="string">&quot;没找到&quot;</span>;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			msg = <span class="string">&quot;sql错误&quot;</span>;</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				Base.closeResource(connection, pstmt, resultSet);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				msg = <span class="string">&quot;关闭失败&quot;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		jsonResult.put(<span class="string">&quot;code&quot;</span>, code);</span><br><span class="line">		jsonResult.put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">		jsonResult.put(<span class="string">&quot;msg&quot;</span>, msg);</span><br><span class="line">		jsonResult.put(<span class="string">&quot;data&quot;</span>, jsonArray.toString());</span><br><span class="line">		PrintWriter out = resp.getWriter();</span><br><span class="line">		out.print(jsonResult.toString());</span><br><span class="line">		<span class="comment">// out.print(&quot;&#123;\&quot;code\&quot;:0,\&quot;msg\&quot;:\&quot;\&quot;,\&quot;count\&quot;:\&quot;234\&quot;,\&quot;data\&quot;:[&#123;\&quot;id\&quot;:\&quot;1\&quot;,\&quot;password\&quot;:\&quot;23442\&quot;,\&quot;reader\&quot;:\&quot;minm\&quot;,\&quot;rule_id\&quot;:\&quot;1\&quot;,\&quot;status\&quot;:\&quot;2\&quot;&#125;]&#125;&quot;);</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> filter;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XSSFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">filter</span><span class="params">(String htmlStr)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(htmlStr == <span class="keyword">null</span>) &#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getParameter</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 返回过滤后的参数值</span></span><br><span class="line">            <span class="keyword">return</span> filter(<span class="keyword">super</span>.getRequest().getParameter(name));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String[] getParameterValues(String name) &#123;</span><br><span class="line">            <span class="comment">// 获取所有参数值</span></span><br><span class="line">            String[] values = <span class="keyword">super</span>.getRequest().getParameterValues(name);</span><br><span class="line">            <span class="comment">// 通过循环对所有参数进行进行过滤</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;values.length;i++)&#123;</span><br><span class="line">                values[i] = filter(values[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> values;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> Filter#doFilter(ServletRequest, ServletResponse, FilterChain)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest request, ServletResponse response, FilterChain chain)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        <span class="comment">/*if(encoding != null)&#123;</span></span><br><span class="line"><span class="comment">            request.setCharacterEncoding(encoding);</span></span><br><span class="line"><span class="comment">            //将request替换为重写后的request</span></span><br><span class="line"><span class="comment">            request = new Request((HttpServletRequest) request);</span></span><br><span class="line"><span class="comment">            response.setContentType(&quot;text/html; charset = &quot;+encoding);</span></span><br><span class="line"><span class="comment">        &#125;*/</span></span><br><span class="line">    	request = <span class="keyword">new</span> Request((HttpServletRequest) request);</span><br><span class="line">        chain.doFilter(request, response);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@see</span> Filter#destroy()</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> servlet.admin;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			msg = <span class="string">&quot;class没找到&quot;</span>;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			msg = <span class="string">&quot;sql错误&quot;</span>;</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				Base.closeResource(<span class="keyword">null</span>, pstmt, resultSet);</span><br><span class="line">				Base.closeResource(connection, countPstmt, countSet);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				msg = <span class="string">&quot;关闭资源失败&quot;</span>;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 返回数据</span></span><br><span class="line">		jsonResult.put(<span class="string">&quot;code&quot;</span>, code);</span><br><span class="line">		jsonResult.put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">		jsonResult.put(<span class="string">&quot;msg&quot;</span>, msg);</span><br><span class="line">		jsonResult.put(<span class="string">&quot;data&quot;</span>, jsonArray.toArray());</span><br><span class="line">		PrintWriter out = resp.getWriter();</span><br><span class="line">		out.print(jsonResult.toString());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> servlet.admin;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">			<span class="keyword">if</span> (where != <span class="keyword">null</span>) &#123;</span><br><span class="line">				sql = sql + where;</span><br><span class="line">			&#125;</span><br><span class="line">			pstmt = connection.prepareStatement(sql);</span><br><span class="line">			resultSet = pstmt.executeQuery();</span><br><span class="line">			<span class="keyword">if</span> (resultSet.next()) &#123;</span><br><span class="line">				count = resultSet.getInt(<span class="string">&quot;count&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (!jsonArray.isEmpty()) &#123;</span><br><span class="line">				code = <span class="number">0</span>;</span><br><span class="line">				msg = <span class="string">&quot;成功&quot;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			msg = <span class="string">&quot;没找到&quot;</span>;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			msg = <span class="string">&quot;sql错误&quot;</span>;</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				Base.closeResource(connection, pstmt, resultSet);</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				msg = <span class="string">&quot;关闭失败&quot;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		jsonResult.put(<span class="string">&quot;code&quot;</span>, code);</span><br><span class="line">		jsonResult.put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">		jsonResult.put(<span class="string">&quot;msg&quot;</span>, msg);</span><br><span class="line">		jsonResult.put(<span class="string">&quot;data&quot;</span>, jsonArray.toString());</span><br><span class="line">		PrintWriter out = resp.getWriter();</span><br><span class="line">		out.print(jsonResult.toString());</span><br><span class="line">		<span class="comment">// out.print(&quot;&#123;\&quot;code\&quot;:0,\&quot;msg\&quot;:\&quot;\&quot;,\&quot;count\&quot;:\&quot;234\&quot;,\&quot;data\&quot;:[&#123;\&quot;id\&quot;:\&quot;1\&quot;,\&quot;password\&quot;:\&quot;23442\&quot;,\&quot;reader\&quot;:\&quot;minm\&quot;,\&quot;rule_id\&quot;:\&quot;1\&quot;,\&quot;status\&quot;:\&quot;2\&quot;&#125;]&#125;&quot;);</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> filter;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (page == <span class="keyword">null</span>) &#123;</span><br><span class="line">	page = <span class="string">&quot;1&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (limit == <span class="keyword">null</span>) &#123;</span><br><span class="line">	limit = <span class="string">&quot;10&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">Connection connection = <span class="keyword">null</span>;</span><br><span class="line">PreparedStatement pstmt = <span class="keyword">null</span>;</span><br><span class="line">ResultSet resultSet = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">int</span> code = <span class="number">1</span>;</span><br><span class="line">String msg = <span class="string">&quot;error&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">String sql = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="comment">// String countSql = &quot;&quot;</span></span><br><span class="line">JSONObject jsonObject = <span class="keyword">new</span> JSONObject();</span><br><span class="line">JSONArray jsonArray = <span class="keyword">new</span> JSONArray();</span><br><span class="line">JSONObject jsonResult = <span class="keyword">new</span> JSONObject();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	<span class="comment">// 获取数据</span></span><br><span class="line">	connection = (Connection) Base.getConnection();</span><br><span class="line">	sql = <span class="string">&quot;select id,password,reader,rule_id,status from borrow_card&quot;</span>;</span><br><span class="line">	<span class="comment">// where</span></span><br><span class="line">	<span class="keyword">if</span> (condition != <span class="keyword">null</span> &amp;&amp; conditionValue != <span class="keyword">null</span> &amp;&amp; !condition.isEmpty() &amp;&amp; !conditionValue.isEmpty()) &#123;</span><br><span class="line">		where = <span class="string">&quot; where &quot;</span> + condition + <span class="string">&quot; like &#x27;%&quot;</span> + conditionValue + <span class="string">&quot;%&#x27;&quot;</span>;</span><br><span class="line">		sql = sql + where;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 分页</span></span><br><span class="line">	sql += <span class="string">&quot;  order by id desc limit ?,?&quot;</span>;</span><br><span class="line">	pstmt = connection.prepareStatement(sql);</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		pstmt.setInt(<span class="number">1</span>, (Integer.parseInt(page) - <span class="number">1</span>) * Integer.parseInt(limit));</span><br><span class="line">		pstmt.setInt(<span class="number">2</span>, Integer.parseInt(limit));</span><br><span class="line">	&#125; <span class="keyword">catch</span> (NumberFormatException | SQLException e1) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	resultSet = pstmt.executeQuery();</span><br><span class="line">	<span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">		jsonObject.put(<span class="string">&quot;id&quot;</span>, resultSet.getString(<span class="string">&quot;id&quot;</span>));</span><br><span class="line">		jsonObject.put(<span class="string">&quot;password&quot;</span>, resultSet.getString(<span class="string">&quot;password&quot;</span>));</span><br><span class="line">		jsonObject.put(<span class="string">&quot;reader&quot;</span>, resultSet.getString(<span class="string">&quot;reader&quot;</span>));</span><br><span class="line">		jsonObject.put(<span class="string">&quot;rule_id&quot;</span>, resultSet.getString(<span class="string">&quot;rule_id&quot;</span>));</span><br><span class="line">		jsonObject.put(<span class="string">&quot;status&quot;</span>, resultSet.getString(<span class="string">&quot;status&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取限定图书馆1、2、3</span></span><br><span class="line"><span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	Map&lt;String, String&gt; libraryMap = Common.getLibraryMap();</span><br><span class="line">	<span class="keyword">for</span>(String key : libraryMap.keySet()) &#123;</span><br><span class="line">		<span class="keyword">if</span>(req.getParameter(<span class="string">&quot;borrow_library[&quot;</span> +key +<span class="string">&quot;]&quot;</span>) != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span>(num == <span class="number">0</span>) &#123;</span><br><span class="line">				borrow_library += key;</span><br><span class="line">				num++;</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				borrow_library += <span class="string">&quot;、&quot;</span>+key;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(borrow_library.isEmpty()) &#123;</span><br><span class="line">		msg = <span class="string">&quot;允许图书馆不能为空&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">	msg = <span class="string">&quot;获取图书馆失败&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">String borrow_num = req.getParameter(<span class="string">&quot;borrow_num&quot;</span>);</span><br><span class="line">String limit_day = req.getParameter(<span class="string">&quot;limit_day&quot;</span>);</span><br><span class="line">String overtime_fee = req.getParameter(<span class="string">&quot;overtime_fee&quot;</span>);</span><br><span class="line">String id = req.getParameter(<span class="string">&quot;id&quot;</span>);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	connection = (Connection) Base.getConnection();</span><br><span class="line">	sql = <span class="string">&quot;update rules set borrow_num=?, limit_day=?, borrow_library=?,overtime_fee=? where id=?&quot;</span>;</span><br><span class="line">	pstmt = connection.prepareStatement(sql);</span><br><span class="line">	pstmt.setString(<span class="number">1</span>, borrow_num);</span><br><span class="line">	pstmt.setString(<span class="number">2</span>, limit_day);</span><br><span class="line">	pstmt.setString(<span class="number">3</span>, borrow_library);</span><br><span class="line">	pstmt.setString(<span class="number">4</span>, overtime_fee);</span><br><span class="line">	pstmt.setString(<span class="number">5</span>, id);</span><br><span class="line">	result = pstmt.executeUpdate();</span><br><span class="line">	<span class="keyword">if</span>(result == <span class="number">1</span>) &#123;</span><br><span class="line">		code = <span class="number">0</span>;</span><br><span class="line">		msg = <span class="string">&quot;success&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">	msg = <span class="string">&quot;classnotfound&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">	msg = <span class="string">&quot;SQL错误&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br></pre></td></tr></table></figure>
+
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
