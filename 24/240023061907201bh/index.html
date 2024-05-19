@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot汽车租赁管理系统(java+springboot+ssm+jsp+js+mysql)">
+<meta property="og:title" content="基于javaweb的SpringBoot汽车租赁管理系统(java+springboot+maven+ssm+jsp+js+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot汽车租赁管理系统(java+springboot+ssm+jsp+js+mysql) | Java源码社</title>
+  <title>基于javaweb的SpringBoot汽车租赁管理系统(java+springboot+maven+ssm+jsp+js+mysql) | Java源码社</title>
   
 
 
@@ -190,7 +190,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot汽车租赁管理系统(java+springboot+ssm+jsp+js+mysql)
+			基于javaweb的SpringBoot汽车租赁管理系统(java+springboot+maven+ssm+jsp+js+mysql)
             
         </h1>
 
@@ -224,7 +224,7 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/502323471807.jpg" alt="502323471807"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/512323471807.jpg" alt="512323471807"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/522323471807.jpg" alt="522323471807"></p>
-<p>基于javaweb的SpringBoot汽车租赁管理系统(java+springboot+ssm+jsp+js+mysql)</p>
+<p>基于javaweb的SpringBoot汽车租赁管理系统(java+springboot+maven+ssm+jsp+js+mysql)</p>
 <p>项目介绍角色：管理员、用户</p>
 <p>用户登录进入汽车租赁系统 可以查看首页、个人中心、租赁信息管理、续租信息管理、归还信息管理、违章记录管理</p>
 <p>管理员登录进入汽车租赁系统可以查看首页、个人中心、汽车类型管理，汽车信息管理，租赁信息管理，用户管理、续租信息管理、归还信息管理、保险信息管理、违章记录管理、留言板管理、系统管理等</p>
@@ -232,313 +232,21 @@
 <p>技术栈 后端：SpringBoot+SSM(Spring+SpringMVC+Mybatis)+JSP</p>
 <p>使用说明 1. 使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，修改配置，运行项目；  </p>
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>统计分析控制层：</p>
-<p>/*</p>
-<ul>
-<li>统计分析</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“stat”)</p>
-<p>@Controller</p>
-<p>public class StatController {</p>
-<p>@Autowired</p>
-<p>private StatService statService;</p>
-<p>@Autowired</p>
-<p>private CustomerService customerService;</p>
-<p>@Autowired</p>
-<p>private RentService rentService;</p>
-<p>/*</p>
-<ul>
-<li>跳转到客户地区统计页面</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“toCustomerAreaStat”)</p>
-<p>public String toCustomerAreaStat() {</p>
-<p>return “stat/customerAreaStat”;</p>
-<p>/*</p>
-<ul>
-<li>跳转到业务员年度销售额</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“toOpernameYearGradeStat”)</p>
-<p>public String toOpernameYearGradeStat() {</p>
-<p>return “stat/opernameYearGradeStat”;</p>
-<p>/*</p>
-<ul>
-<li>跳转到公司年度统计</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“toCompanyYearGradeStat”)</p>
-<p>public String toLadcompanyYearGradeStat() {</p>
-<p>return “stat/componyYearGradeStat”;</p>
-<p>/*</p>
-<ul>
-<li>加载客户地区统计</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“loadCustomerAreaStatJson”)</p>
-<p>@ResponseBody</p>
-<p>public List<BaseEntity> loadCustomerAreaStatJson(){</BaseEntity></p>
-<p>return this.statService.loadCustomerAreaStatList();</p>
-<p>/*</p>
-<ul>
-<li>加载客户地区统计</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“loadOpernameYearGradeStat”)</p>
-<p>@ResponseBody</p>
-<p>public Map&lt;String, Object&gt; loadOpernameYearGradeStat(String year){</p>
-<p>List<BaseEntity> entities = this.statService.loadOpernameYearGradeList(year);</BaseEntity></p>
-<p>Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
-<p>List<String> names = new ArrayList&lt;&gt;();</String></p>
-<p>List<Double> values = new ArrayList&lt;&gt;();</Double></p>
-<p>for (BaseEntity baseEntity : entities) {</p>
-<p>names.add(baseEntity.getName());</p>
-<p>values.add(baseEntity.getValue());</p>
-<p>map.put(“name”, names);</p>
-<p>map.put(“value”, values);</p>
-<p>return map;</p>
-<p>/*</p>
-<ul>
-<li>加载公司年度月份销售额</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“loadCompanyYearGradeStat”)</p>
-<p>@ResponseBody</p>
-<p>public List<Double> toLoadCompanyYearGradeStat(String year){</Double></p>
-<p>List<Double> entities = this.statService.loadCompanyYearGradeStatList(year);</Double></p>
-<p>for (int i = 0; i &lt; entities.size(); i++) {</p>
-<p>if (null==entities.get(i)) {</p>
-<p>entities.set(i, 0.0);</p>
-<p>return entities;</p>
-<p>/*</p>
-<ul>
-<li>导出客户数据</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“exportCustomer”)</p>
-<p>public ResponseEntity<Object> exportCustomer(CustomerVo customerVo,HttpServletResponse response) {</Object></p>
-<p>List<Customer> customers =  customerService.queryAllCustomerForList(customerVo);</Customer></p>
-<p>String filename  = “客户数据.xls”;</p>
-<p>String sheetname  = “客户数据”;</p>
-<p>ByteArrayOutputStream bos = ExportCustomerUtils.exportCustomer(customers,sheetname);</p>
-<p>try {</p>
-<p>filename=URLEncoder.encode(filename,”UTF-8”);</p>
-<p>//创建封装响应头信息的对象</p>
-<p>HttpHeaders header = new HttpHeaders();</p>
-<p>//封装响应内容类型(APPLICATION_OCTET_STREAM 响应的内容不限定)</p>
-<p>header.setContentType(MediaType.APPLICATION_OCTET_STREAM);</p>
-<p>//设置下载的文件名称</p>
-<p>header.setContentDispositionFormData(“attachment”, filename);</p>
-<p>return new ResponseEntity<Object>(bos.toByteArray(),header,HttpStatus.CREATED);</Object></p>
-<p>} catch (UnsupportedEncodingException e) {</p>
-<p>e.printStackTrace();</p>
-<p>return null;</p>
-<p>/*</p>
-<ul>
-<li>导出出租单</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“exportRent”)</p>
-<p>public ResponseEntity<Object> exportRent(String rentid) {</Object></p>
-<p>//根据出租单号查询出租单信息</p>
-<p>Rent rent = rentService.queryRentByRentId(rentid);</p>
-<p>//根据身份证号查询客户信息</p>
-<p>Customer customer = customerService.queryCustomerByIdentity(rent.getIdentity());</p>
-<p>String filename  =customer.getCustname() +”的出租单.xls”;</p>
-<p>String sheetname  = customer.getCustname()+”的出租单”;</p>
-<p>ByteArrayOutputStream bos = ExportRentUtils.exportCustomer(rent,customer, sheetname);</p>
-<p>try {</p>
-<p>filename=URLEncoder.encode(filename,”UTF-8”);</p>
-<p>//创建封装响应头信息的对象</p>
-<p>HttpHeaders header = new HttpHeaders();</p>
-<p>//封装响应内容类型(APPLICATION_OCTET_STREAM 响应的内容不限定)</p>
-<p>header.setContentType(MediaType.APPLICATION_OCTET_STREAM);</p>
-<p>//设置下载的文件名称</p>
-<p>header.setContentDispositionFormData(“attachment”, filename);</p>
-<p>return new ResponseEntity<Object>(bos.toByteArray(),header,HttpStatus.CREATED);</Object></p>
-<p>} catch (UnsupportedEncodingException e) {</p>
-<p>e.printStackTrace();</p>
-<p>return null;</p>
-<p>车辆管理控制层：</p>
-<p>/**</p>
-<ul>
-<li>车辆管理控制器</li>
-</ul>
-<p>*/</p>
-<p>@RestController</p>
-<p>@RequestMapping(“car”)</p>
-<p>public class CarController {</p>
-<p>@Autowired</p>
-<p>private CarService carService;</p>
-<p>/*</p>
-<ul>
-<li>加载车辆列表返回DataGridView</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“loadAllCar”)</p>
-<p>public DataGridView loadAllmeenu(CarVo carVo) {</p>
-<p>return this.carService.queryAllCar(carVo);</p>
-<p>/*</p>
-<ul>
-<li>添加车辆</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“addCar”)</p>
-<p>public ResultObj addCar(CarVo carVo) {</p>
-<p>try {</p>
-<p>carVo.setCreatetime(new Date());</p>
-<p>//在添加车辆之前要把设置的图片格式_temp给去掉</p>
-<p>//如果不是默认图片就去掉后缀</p>
-<p>if (!carVo.getCarimg().equals(SysConstast.DEFAULT_CAR_IMG)) {</p>
-<p>String filePath = AppFileUtils.updateFileName(carVo.getCarimg(),SysConstast.FILE_UPLOAD_TEMP);</p>
-<p>carVo.setCarimg(filePath);</p>
-<p>this.carService.addCar(carVo);</p>
-<p>return ResultObj.ADD_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.ADD_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>删除车辆</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“deleteCar”)</p>
-<p>public ResultObj deleteCar(CarVo carVo) {</p>
-<p>try {</p>
-<p>this.carService.deleteCar(carVo.getCarnumber());</p>
-<p>return ResultObj.DELETE_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.DELETE_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>修改车辆</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“updateCar”)</p>
-<p>public ResultObj updateCar(CarVo carVo) {</p>
-<p>try {</p>
-<p>String carimg =  carVo.getCarimg();</p>
-<p>if (carimg.endsWith(SysConstast.FILE_UPLOAD_TEMP)) {</p>
-<p>String filePath = AppFileUtils.updateFileName(carVo.getCarimg(),SysConstast.FILE_UPLOAD_TEMP);</p>
-<p>carVo.setCarimg(filePath);</p>
-<p>//把原来的删除</p>
-<p>Car car = this.carService.queryCarByCarNumber(carVo.getCarnumber());</p>
-<p>AppFileUtils.removeFileByPath(car.getCarimg());</p>
-<p>this.carService.updateCar(carVo);</p>
-<p>return ResultObj.UPDATE_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.UPDATE_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>批量删除车辆</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“deleteBatchCar”)</p>
-<p>public ResultObj deleteBatchCar(CarVo carVo) {</p>
-<p>try {</p>
-<p>this.carService.deleteBatchCar(carVo.getIds());</p>
-<p>return ResultObj.DELETE_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.DELETE_ERROR;</p>
-<p>汽车出租管理的控制层：</p>
-<p>/**</p>
-<ul>
-<li>汽车出租管理的控制器</li>
-</ul>
-<p>*/</p>
-<p>@RestController</p>
-<p>@RequestMapping(“rent”)</p>
-<p>public class RentController {</p>
-<p>@Autowired</p>
-<p>private RentService rentService;</p>
-<p>@Autowired</p>
-<p>private CustomerService customerService;</p>
-<p>/**</p>
-<ul>
-<li>检查身份证号码是否存在</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“checkCustomerExist”)</p>
-<p>public ResultObj checkCustomerExist(RentVo rentVo) {</p>
-<p>Customer customer = customerService.queryCustomerByIdentity(rentVo.getIdentity());</p>
-<p>if (null!=customer) {</p>
-<p>return ResultObj.STATUS_TRUE;</p>
-<p>}else {</p>
-<p>return ResultObj.STATUS_FALSE;</p>
-<p>/**</p>
-<ul>
-<li>初始化添加出租单的表单数据</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“initRentFrom”)</p>
-<p>public RentVo initRentFrom(RentVo rentVo) {</p>
-<p>//生成出租单号</p>
-<p>rentVo.setRentid(RandomUtils.createRandomStringUseTime(SysConstast.CAR_ORDER_CZ));</p>
-<p>//设置起租时间</p>
-<p>rentVo.setBegindate(new Date());</p>
-<p>//设置操作员</p>
-<p>User user = (User)WebUtils.getHttpSession().getAttribute(“user”);</p>
-<p>rentVo.setOpername(user.getRealname());</p>
-<p>return rentVo;</p>
-<p>/**</p>
-<ul>
-<li>保存出租单信息</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“saveRent”)</p>
-<p>public ResultObj saveRent(RentVo rentVo) {</p>
-<p>try {</p>
-<p>//设置创建时间</p>
-<p>rentVo.setCreatetime(new Date());</p>
-<p>//设置归还状态</p>
-<p>rentVo.setRentflag(SysConstast.RENT_BACK_FALSE);</p>
-<p>//保存</p>
-<p>this.rentService.addRent(rentVo);</p>
-<p>return ResultObj.ADD_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.ADD_ERROR;</p>
-<p>/*<strong><strong>**</strong></strong>出租单管理**<strong><strong><strong>****</strong></strong></strong>/</p>
-<p>/**</p>
-<ul>
-<li>查询</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“loadAllRent”)</p>
-<p>public DataGridView loadAllRent(RentVo rentVo) {</p>
-<p>return this.rentService.queryAllRent(rentVo);</p>
-<p>/**</p>
-<ul>
-<li>删除出租单信息</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“deleteRent”)</p>
-<p>public ResultObj deleteRent(RentVo rentVo) {</p>
-<p>try {</p>
-<p>//保存</p>
-<p>this.rentService.deleteRent(rentVo.getRentid());</p>
-<p>return ResultObj.DELETE_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.DELETE_ERROR;</p>
-<p>/**</p>
-<ul>
-<li>更改出租单信息</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“updateRent”)</p>
-<p>public ResultObj updateRent(RentVo rentVo) {</p>
-<p>try {</p>
-<p>//保存</p>
-<p>this.rentService.updateRent(rentVo);</p>
-<p>return ResultObj.UPDATE_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.UPDATE_ERROR;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">        RespResult respResult = <span class="keyword">new</span> RespResult();</span><br><span class="line">        User user = (User) session.getAttribute(SessionConstant.KEY_USER);</span><br><span class="line">        Collect c = collectMapper.selectByUserId(collect.getCommodityId(), user.getId());</span><br><span class="line">        <span class="comment">// 判断是否已经收藏过</span></span><br><span class="line">        <span class="keyword">if</span> (c == <span class="keyword">null</span>) &#123;</span><br><span class="line">            collect.setUserId(user.getId());</span><br><span class="line">            collectMapper.insertSelective(collect);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 收藏量 + 1</span></span><br><span class="line">            Commodity commodity = commodityMapper.selectByPrimaryKey(collect.getCommodityId());</span><br><span class="line">            commodity.setCollectCount(commodity.getCollectCount() + <span class="number">1</span>);</span><br><span class="line">            commodityMapper.updateByPrimaryKeySelective(commodity);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            respResult.error(<span class="string">&quot;收藏失败：不可重复收藏&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> respResult;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RespResult <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Integer id)</span> </span>&#123;</span><br><span class="line">        collectMapper.deleteByPrimaryKey(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RespResult();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/likes&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LikesController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String prefix = <span class="string">&quot;/user/likes/&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> LikesMapper likesMapper;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">int</span> count = articleMapper.selectCountByPaging(title);</span><br><span class="line">    RespResult respResult = <span class="keyword">new</span> RespResult();</span><br><span class="line">    respResult.success(data, count);</span><br><span class="line">    <span class="keyword">return</span> respResult;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/add.html&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addHtml</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> prefix + <span class="string">&quot;add&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/add&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RespResult <span class="title">add</span><span class="params">(<span class="meta">@RequestBody</span> Article article, HttpSession session)</span> </span>&#123;</span><br><span class="line">    User user = (User) session.getAttribute(SessionConstant.KEY_USER);</span><br><span class="line">    article.setUserId(user.getId());</span><br><span class="line">    article.setCreatDate(<span class="keyword">new</span> Date());</span><br><span class="line">    articleMapper.insertSelective(article);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> RespResult();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 编辑</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/edit.html&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">editHtml</span><span class="params">(<span class="meta">@RequestParam(&quot;id&quot;)</span> <span class="keyword">int</span> id, Model model)</span> </span>&#123;</span><br><span class="line">    Article article = articleMapper.selectByPrimaryKey(id);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;article&quot;</span>, article);</span><br><span class="line">    <span class="keyword">return</span> prefix + <span class="string">&quot;edit&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/edit&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RespResult <span class="title">edit</span><span class="params">(<span class="meta">@RequestBody</span> Article article)</span> </span>&#123;</span><br><span class="line">    articleMapper.updateByPrimaryKeySelective(article);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> RespResult();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查看详情</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/item.html&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">itemHtml</span><span class="params">(<span class="meta">@RequestParam(&quot;id&quot;)</span> <span class="keyword">int</span> id, Model model)</span> </span>&#123;</span><br><span class="line">    Article article = articleMapper.selectById(id);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;article&quot;</span>, article);</span><br><span class="line">    <span class="keyword">return</span> prefix + <span class="string">&quot;item&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RespResult <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> <span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">    articleMapper.deleteByPrimaryKey(id);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> RespResult();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">            limit,</span><br><span class="line">            categoryId,</span><br><span class="line">            brandId,</span><br><span class="line">            name,</span><br><span class="line">            content,</span><br><span class="line">            user.getId()</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">int</span> count = commentMapper.selectCountByPaging(</span><br><span class="line">            categoryId,</span><br><span class="line">            brandId,</span><br><span class="line">            name,</span><br><span class="line">            content,</span><br><span class="line">            user.getId()</span><br><span class="line">    );</span><br><span class="line">    RespResult respResult = <span class="keyword">new</span> RespResult();</span><br><span class="line">    respResult.success(data, count);</span><br><span class="line">    <span class="keyword">return</span> respResult;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/add&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RespResult <span class="title">add</span><span class="params">(<span class="meta">@RequestBody</span> Comment comment, HttpSession session)</span> </span>&#123;</span><br><span class="line">    RespResult respResult = <span class="keyword">new</span> RespResult();</span><br><span class="line">    User user = (User) session.getAttribute(SessionConstant.KEY_USER);</span><br><span class="line">    <span class="keyword">int</span> count = ordersMapper.selectCountByUserId(user.getId(), comment.getCommodityId());</span><br><span class="line">    <span class="keyword">if</span> (count == <span class="number">0</span>) &#123;</span><br><span class="line">        respResult.error(<span class="string">&quot;评价失败：您还未租赁过此汽车&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        comment.setUserId(user.getId());</span><br><span class="line">        comment.setCreatTime(<span class="keyword">new</span> Date());</span><br><span class="line">        commentMapper.insertSelective(comment);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算评分</span></span><br><span class="line">        List&lt;Comment&gt; commentList = commentMapper.selectListByCommodityId(comment.getCommodityId());</span><br><span class="line">        <span class="keyword">double</span> score = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (Comment item : commentList) &#123;</span><br><span class="line">            score += item.getScore();</span><br><span class="line">        &#125;</span><br><span class="line">        Commodity commodity = commodityMapper.selectByPrimaryKey(comment.getCommodityId());</span><br><span class="line">        commodity.setCommentCount(commodity.getCommentCount() + <span class="number">1</span>);</span><br><span class="line">        commodity.setScore((<span class="keyword">int</span>)(score / commentList.size()));</span><br><span class="line">        commodityMapper.updateByPrimaryKeySelective(commodity);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> respResult;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RespResult <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Integer id)</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (name != <span class="keyword">null</span>) model.addAttribute(<span class="string">&quot;name&quot;</span>, name);</span><br><span class="line">    <span class="keyword">if</span> (color != <span class="keyword">null</span>) model.addAttribute(<span class="string">&quot;color&quot;</span>, color);</span><br><span class="line">    <span class="keyword">if</span> (types != <span class="keyword">null</span>) model.addAttribute(<span class="string">&quot;types&quot;</span>, types);</span><br><span class="line">    <span class="keyword">if</span> (seat != <span class="keyword">null</span>) model.addAttribute(<span class="string">&quot;seat&quot;</span>, seat);</span><br><span class="line"></span><br><span class="line">    model.addAttribute(<span class="string">&quot;brandList&quot;</span>, brandList);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;categoryList&quot;</span>, categoryList);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;commodityList&quot;</span>, commodityList);</span><br><span class="line">    <span class="keyword">return</span> prefix + <span class="string">&quot;search&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 分页数据</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/data&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RespResult <span class="title">pageData</span><span class="params">(<span class="meta">@RequestParam(&quot;page&quot;)</span> Integer page,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="meta">@RequestParam(&quot;limit&quot;)</span> Integer limit,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="meta">@RequestParam(value = &quot;categoryId&quot;, required = false)</span> Integer categoryId,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="meta">@RequestParam(value = &quot;brandId&quot;, required = false)</span> Integer brandId,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="meta">@RequestParam(value = &quot;status&quot;, required = false)</span> Integer status,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="meta">@RequestParam(value = &quot;gasoline&quot;, required = false)</span> Integer gasoline,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="meta">@RequestParam(value = &quot;name&quot;, required = false, defaultValue = &quot;&quot;)</span> String name,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="meta">@RequestParam(value = &quot;color&quot;, required = false, defaultValue = &quot;&quot;)</span> String color,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="meta">@RequestParam(value = &quot;types&quot;, required = false, defaultValue = &quot;&quot;)</span> String types,</span></span></span><br><span class="line"><span class="function"><span class="params">                           <span class="meta">@RequestParam(value = &quot;seat&quot;, required = false, defaultValue = &quot;&quot;)</span> String seat)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (name.equals(<span class="string">&quot;&quot;</span>)) name = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (color.equals(<span class="string">&quot;&quot;</span>)) color = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (types.equals(<span class="string">&quot;&quot;</span>)) types = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (seat.equals(<span class="string">&quot;&quot;</span>)) seat = <span class="keyword">null</span>;</span><br><span class="line">    List&lt;Commodity&gt; data = commodityMapper.selectListByPaging(</span><br><span class="line">            (page - <span class="number">1</span>) * limit,</span><br><span class="line">            limit,</span><br><span class="line">            categoryId,</span><br><span class="line">            brandId,</span><br><span class="line">            <span class="number">1</span>,</span><br><span class="line">            gasoline,</span><br><span class="line">            name,</span><br><span class="line">            color,</span><br><span class="line">            types,</span><br><span class="line">            seat</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">int</span> count = commodityMapper.selectCountByPaging(</span><br><span class="line">            categoryId,</span><br><span class="line">            brandId,</span><br><span class="line">            <span class="number">1</span>,</span><br><span class="line">            gasoline,</span><br><span class="line">            name,</span><br><span class="line">            color,</span><br><span class="line">            types,</span><br><span class="line">            seat</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/orders&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrdersController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String prefix = <span class="string">&quot;/user/orders/&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> OrdersMapper ordersMapper;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> CommodityMapper commodityMapper;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> CategoryMapper categoryMapper;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 我的订单</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/manage.html&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">manageHtml</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> prefix + <span class="string">&quot;orders&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 分页数据</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/data&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RespResult <span class="title">pageData</span><span class="params">(<span class="meta">@RequestParam(&quot;page&quot;)</span> Integer page,</span></span></span><br><span class="line"><span class="function"><span class="params">                               <span class="meta">@RequestParam(&quot;limit&quot;)</span> Integer limit,</span></span></span><br><span class="line"><span class="function"><span class="params">                               <span class="meta">@RequestParam(value = &quot;categoryId&quot;, required = false)</span> Integer categoryId,</span></span></span><br><span class="line"><span class="function"><span class="params">                               <span class="meta">@RequestParam(value = &quot;brandId&quot;, required = false)</span> Integer brandId,</span></span></span><br><span class="line"><span class="function"><span class="params">                               <span class="meta">@RequestParam(value = &quot;status&quot;, required = false)</span> Integer status,</span></span></span><br><span class="line"><span class="function"><span class="params">                               <span class="meta">@RequestParam(value = &quot;number&quot;, required = false, defaultValue = &quot;&quot;)</span> String number,</span></span></span><br><span class="line"><span class="function"><span class="params">                               <span class="meta">@RequestParam(value = &quot;name&quot;, required = false, defaultValue = &quot;&quot;)</span> String name,</span></span></span><br><span class="line"><span class="function"><span class="params">                               HttpSession session)</span> </span>&#123;</span><br><span class="line">        User user = (User) session.getAttribute(SessionConstant.KEY_USER);</span><br><span class="line">        <span class="keyword">if</span> (number.equals(<span class="string">&quot;&quot;</span>)) number = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (name.equals(<span class="string">&quot;&quot;</span>)) name = <span class="keyword">null</span>;</span><br><span class="line">        List&lt;Orders&gt; data = ordersMapper.selectListByPaging(</span><br><span class="line">                (page - <span class="number">1</span>) * limit,</span><br><span class="line">                limit,</span><br><span class="line">                number,</span><br><span class="line">                status,</span><br><span class="line">                categoryId,</span><br><span class="line">                brandId,</span><br><span class="line">                name,</span><br><span class="line">                user.getId()</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
 <iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
