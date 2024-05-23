@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SSM医院分诊管理系统(java+ssm+jsp+html+javascript+mysql)">
+<meta property="og:title" content="基于javaweb的SSM医院分诊管理系统(java+ssm+jsp+javascript+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SSM医院分诊管理系统(java+ssm+jsp+html+javascript+mysql) | Java源码社</title>
+  <title>基于javaweb的SSM医院分诊管理系统(java+ssm+jsp+javascript+mysql) | Java源码社</title>
   
 
 
@@ -190,7 +190,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SSM医院分诊管理系统(java+ssm+jsp+html+javascript+mysql)
+			基于javaweb的SSM医院分诊管理系统(java+ssm+jsp+javascript+mysql)
             
         </h1>
 
@@ -224,7 +224,7 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/310023562402.jpg" alt="310023562402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/320023562402.jpg" alt="320023562402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/330023562402.jpg" alt="330023562402"></p>
-<p>基于javaweb的SSM医院分诊管理系统(java+ssm+jsp+html+javascript+mysql)</p>
+<p>基于javaweb的SSM医院分诊管理系统(java+ssm+jsp+javascript+mysql)</p>
 <p>项目介绍</p>
 <p>管理员角色包含以下功能： 管理员登录,用户管理,患者管理,挂号管理,科室管理,分诊叫号管理等功能。</p>
 <p>环境需要</p>
@@ -238,157 +238,24 @@
 <li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven; 若为maven项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中application.yml配置文件中的数据库配置改为自己的配置; 4. 运行项目，输入localhost:8080/ 登录</li>
 </ol>
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>患者管理控制层：</p>
-<p>@Controller</p>
-<p>public class PatientController {</p>
-<p>@Autowired</p>
-<p>PatientService patientService;</p>
-<p>@Autowired</p>
-<p>DoctorService doctorService;</p>
-<p>@Autowired</p>
-<p>AppointmentService appointmentService;</p>
-<p>@Autowired</p>
-<p>HospitalizationService hospitalizationService;</p>
-<p>@Autowired</p>
-<p>MedicalhistoryService medicalhistoryService;</p>
-<p>@RequestMapping(“/admin/patientManage”)</p>
-<p>public String patientlist(HttpServletRequest request,@RequestParam(value=”name”,required = false) String name,@RequestParam(value=”certId”,required = false) String certId){</p>
-<p>request.setAttribute(“patients”,patientService.getAllPatients(name,certId));</p>
-<p>return “admin/patientManage”;</p>
-<p>@RequestMapping(value = “/admin/patient/{id}”,method = RequestMethod.DELETE)</p>
-<p>@ResponseBody</p>
-<p>public JSONObject delPatient(@PathVariable Integer id){</p>
-<p>JSONObject json=new JSONObject();</p>
-<p>json.put(“message”,patientService.delPatient(id));</p>
-<p>return json;</p>
-<p>@RequestMapping(value = “/admin/patient/{id}”,method = RequestMethod.GET)</p>
-<p>public String patientInfo(@PathVariable Integer id,HttpServletRequest request){</p>
-<p>request.setAttribute(“patient”,patientService.getPatient(id));</p>
-<p>request.setAttribute(“appointments”,appointmentService.getPatientMessage(id));</p>
-<p>request.setAttribute(“hospitalizations”,hospitalizationService.getPatientMessage(id));</p>
-<p>request.setAttribute(“doctors”,doctorService.getAllDoctor());</p>
-<p>return “admin/info/patientinfo”;</p>
-<p>@RequestMapping(value = “/admin/patientAdd”,method = RequestMethod.GET)</p>
-<p>public String patientAddPage(){</p>
-<p>return “admin/add/patientadd”;</p>
-<p>@RequestMapping(value = “/admin/patient”,method = RequestMethod.PUT)</p>
-<p>@ResponseBody</p>
-<p>public JSONObject patientInfo(@RequestBody Patient patient){</p>
-<p>JSONObject json=new JSONObject();</p>
-<p>json.put(“message”,patientService.updatePatient(patient));</p>
-<p>return json;</p>
-<p>@RequestMapping(value = “/admin/patient”,method = RequestMethod.POST)</p>
-<p>@ResponseBody</p>
-<p>public JSONObject delPatient(@RequestBody Patient patient){</p>
-<p>JSONObject json=new JSONObject();</p>
-<p>json.put(“message”,patientService.addPatient(patient));</p>
-<p>return json;</p>
-<p>@RequestMapping(value = “/patient/medicalhistory”)</p>
-<p>public String medicalhistory(HttpSession session,HttpServletRequest request){</p>
-<p>Login login=(Login)session.getAttribute(“login”);</p>
-<p>Patient patient=patientService.findPatientByLoginId(login.getId());</p>
-<p>request.setAttribute(“medicalhistorys”,medicalhistoryService.getMedicalhistoryByPatientId(patient.getId()));</p>
-<p>return “patient/medicalhistory”;</p>
-<p>@RequestMapping(value = “/patient/hospitalization”)</p>
-<p>public String hospitalization(HttpSession session,HttpServletRequest request){</p>
-<p>Login login=(Login)session.getAttribute(“login”);</p>
-<p>Patient patient=patientService.findPatientByLoginId(login.getId());</p>
-<p>request.setAttribute(“theLast”,hospitalizationService.findTheLastHospitalization(patient.getHospitalizationid()));</p>
-<p>Hospitalization hospitalization=new Hospitalization();</p>
-<p>hospitalization.setPatientid(patient.getId());</p>
-<p>hospitalization.setId(patient.getHospitalizationid());</p>
-<p>request.setAttribute(“others”,hospitalizationService.findOtherHospitalization(hospitalization));</p>
-<p>return “patient/hospitalization”;</p>
-<p>@RequestMapping(value = “/patient/appointment”)</p>
-<p>public String appointmentInfo(HttpServletRequest request,HttpSession session){</p>
-<p>Login login=(Login)session.getAttribute(“login”);</p>
-<p>Patient patient=patientService.findPatientByLoginId(login.getId());</p>
-<p>request.setAttribute(“patientid”,patient.getId());</p>
-<p>request.setAttribute(“doctors”,doctorService.getAllDoctor());</p>
-<p>return “patient/appointment”;</p>
-<p>@RequestMapping(value = “/patient/appointment”,method = RequestMethod.POST)</p>
-<p>@ResponseBody</p>
-<p>public JSONObject appointment(@RequestBody Appointment appointment){</p>
-<p>JSONObject json=new JSONObject();</p>
-<p>Patient patient=new Patient();</p>
-<p>String message=appointmentService.addAppointment(appointment);</p>
-<p>patient.setAppointmentid(appointmentService.selectTheLastAppointment(appointment.getPatientid()));</p>
-<p>patient.setId(appointment.getPatientid());</p>
-<p>patientService.updateAppointMent(patient);</p>
-<p>json.put(“message”,message);</p>
-<p>return json;</p>
-<p>@RequestMapping(value=”/patient/search”,method=RequestMethod.GET)</p>
-<p>public String search(){</p>
-<p>return “patient/search”;</p>
-<p>登录管理控制层：</p>
-<p>@Controller</p>
-<p>public class LoginController {</p>
-<p>@Autowired</p>
-<p>LoginService loginService;</p>
-<p>@RequestMapping(value = “/hospital/login”)</p>
-<p>public String loginAndregist(){</p>
-<p>return “login&amp;regist”;</p>
-<p>@RequestMapping(“/admin/adminManage”)</p>
-<p>public String adminManage(HttpServletRequest request,@RequestParam(value = “username”,required = false)String username){</p>
-<p>request.setAttribute(“admins”,loginService.findAllAdmin(username));</p>
-<p>return “/admin/adminManage”;</p>
-<p>@RequestMapping(“/admin/admin/{id}”)</p>
-<p>public String adminInfo(HttpServletRequest request,@PathVariable Integer id){</p>
-<p>request.setAttribute(“admin”,loginService.getAdmin(id));</p>
-<p>return “/admin/info/admininfo”;</p>
-<p>@RequestMapping(“/admin/adminAdd”)</p>
-<p>public String adminAddPage(){</p>
-<p>return”admin/add/adminadd”;</p>
-<p>@RequestMapping(value = “/admin/admin”,method = RequestMethod.POST)</p>
-<p>@ResponseBody</p>
-<p>public JSONObject adminAdd(@RequestBody Login login){</p>
-<p>JSONObject json=new JSONObject();</p>
-<p>json.put(“message”,loginService.addAmin(login));</p>
-<p>return json;</p>
-<p>@RequestMapping(value = “/admin/admin”,method = RequestMethod.PUT)</p>
-<p>@ResponseBody</p>
-<p>public JSONObject upAdmin(@RequestBody Login login){</p>
-<p>JSONObject json=new JSONObject();</p>
-<p>json.put(“message”,loginService.updateAdmin(login));</p>
-<p>return json;</p>
-<p>@RequestMapping(value = “/admin/admin/{id}”,method = RequestMethod.DELETE)</p>
-<p>@ResponseBody</p>
-<p>public JSONObject delAdmin(@PathVariable Integer id){</p>
-<p>JSONObject json=new JSONObject();</p>
-<p>json.put(“message”,loginService.delAdmin(id));</p>
-<p>return json;</p>
-<p>@RequestMapping(value = “/loginout”,method = RequestMethod.GET)</p>
-<p>public String loginout(HttpSession session){</p>
-<p>session.removeAttribute(“login”);</p>
-<p>return “login&amp;regist”;</p>
-<p>@RequestMapping(value = “/login”,method = RequestMethod.POST)</p>
-<p>@ResponseBody</p>
-<p>public JSONObject login(@RequestBody Login login,HttpSession session){</p>
-<p>// 生成登录验证用到的token对象</p>
-<p>UsernamePasswordToken token = new UsernamePasswordToken(login.getUsername(), login.getPassword());</p>
-<p>Subject subject = SecurityUtils.getSubject();</p>
-<p>//登录验证</p>
-<p>subject.login(token);</p>
-<p>String login1 = loginService.login(login);</p>
-<p>JSONObject json=new JSONObject();</p>
-<p>json.put(“message”,login1);</p>
-<p>session.setAttribute(“login”,login);</p>
-<p>return json;</p>
-<p>@RequestMapping(value = “/regest”,method = RequestMethod.POST)</p>
-<p>@ResponseBody</p>
-<p>public JSONObject regest(@RequestBody Login login){</p>
-<p>JSONObject json=new JSONObject();</p>
-<p>json.put(“message”,loginService.regist(login));</p>
-<p>return json;</p>
-<p>@RequestMapping(“/hospital/patient/index”)</p>
-<p>public String patientIndex(){</p>
-<p>return “/patient/index”;</p>
-<p>@RequestMapping(“/hospital/doctor/index”)</p>
-<p>public String doctorIndex(){</p>
-<p>return “/doctor/index”;</p>
-<p>@RequestMapping(“/hospital/admin/index”)</p>
-<p>public String adminIndex(){</p>
-<p>return “/admin/index”;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户controller</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;buss/patient&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PatientController</span> <span class="keyword">extends</span> <span class="title">BaseController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> PatientService patientService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 默认页面</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(method = RequestMethod.GET)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">list</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;buss/patientList&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取json</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequiresPermissions(&quot;buss:patient:view&quot;)</span></span><br><span class="line">	<span class="meta">@RequestMapping(value=&quot;json&quot;,method = RequestMethod.GET)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getData</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">		Page&lt;Patient&gt; page = getPage(request);</span><br><span class="line">		List&lt;PropertyFilter&gt; filters = PropertyFilter.buildFromHttpRequest(request);</span><br><span class="line">		page = patientService.search(page, filters);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">checkIfNoneMatchEtag</span><span class="params">(HttpServletRequest request, HttpServletResponse response, String etag)</span> </span>&#123;</span><br><span class="line">	String headerValue = request.getHeader(<span class="string">&quot;If-None-Match&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (headerValue != <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">boolean</span> conditionSatisfied = <span class="keyword">false</span>;</span><br><span class="line">		<span class="keyword">if</span> (!<span class="string">&quot;*&quot;</span>.equals(headerValue)) &#123;</span><br><span class="line">			StringTokenizer commaTokenizer = <span class="keyword">new</span> StringTokenizer(headerValue, <span class="string">&quot;,&quot;</span>);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">while</span> (!conditionSatisfied &amp;&amp; commaTokenizer.hasMoreTokens()) &#123;</span><br><span class="line">				String currentToken = commaTokenizer.nextToken();</span><br><span class="line">				<span class="keyword">if</span> (currentToken.trim().equals(etag)) &#123;</span><br><span class="line">					conditionSatisfied = <span class="keyword">true</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			conditionSatisfied = <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (conditionSatisfied) &#123;</span><br><span class="line">			response.setStatus(HttpServletResponse.SC_NOT_MODIFIED);</span><br><span class="line">			response.setHeader(<span class="string">&quot;ETag&quot;</span>, etag);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 设置让浏览器弹出下载对话框的Header.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> fileName 下载后的文件名.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setFileDownloadHeader</span><span class="params">(HttpServletResponse response, String fileName)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">//中文文件名支持</span></span><br><span class="line">		String encodedfileName = <span class="keyword">new</span> String(fileName.getBytes(), <span class="string">&quot;ISO8859-1&quot;</span>);</span><br><span class="line">		response.setHeader(<span class="string">&quot;Content-Disposition&quot;</span>, <span class="string">&quot;attachment; filename=\&quot;&quot;</span> + encodedfileName + <span class="string">&quot;\&quot;&quot;</span>);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 取得带相同前缀的Request Parameters.</span></span><br><span class="line"><span class="comment"> * </span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">			pageSize=Integer.valueOf(request.getParameter(<span class="string">&quot;rows&quot;</span>));</span><br><span class="line">		<span class="keyword">if</span>(StringUtils.isNotEmpty(request.getParameter(<span class="string">&quot;sort&quot;</span>)))</span><br><span class="line">			orderBy=request.getParameter(<span class="string">&quot;sort&quot;</span>).toString();</span><br><span class="line">		<span class="keyword">if</span>(StringUtils.isNotEmpty(request.getParameter(<span class="string">&quot;order&quot;</span>)))</span><br><span class="line">			order=request.getParameter(<span class="string">&quot;order&quot;</span>).toString();</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Page&lt;T&gt;(pageNo, pageSize, orderBy, order);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取easyui分页数据</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> page</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> map对象</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> &lt;T&gt; <span class="function">Map&lt;String, Object&gt; <span class="title">getEasyUIData</span><span class="params">(Page&lt;T&gt; page)</span></span>&#123;</span><br><span class="line">		Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">		map.put(<span class="string">&quot;rows&quot;</span>, page.getResult());</span><br><span class="line">		map.put(<span class="string">&quot;total&quot;</span>, page.getTotalCount());</span><br><span class="line">		<span class="keyword">return</span> map;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * session监听器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@WebListener</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取角色拥有的权限ID集合</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequiresPermissions(&quot;sys:role:permView&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;&#123;id&#125;/json&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getRolePermissions</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span></span>&#123;</span><br><span class="line">	List&lt;Integer&gt; permissionIdList=rolePermissionService.getPermissionIds(id);</span><br><span class="line">	<span class="keyword">return</span> permissionIdList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改角色权限</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> newRoleList</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequiresPermissions(&quot;sys:role:permUpd&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;&#123;id&#125;/updatePermission&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">updateRolePermission</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id,<span class="meta">@RequestBody</span> List&lt;Integer&gt; newRoleIdList,HttpSession session)</span></span>&#123;</span><br><span class="line">	List&lt;Integer&gt; oldRoleIdList=rolePermissionService.getPermissionIds(id);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//获取application中的sessions</span></span><br><span class="line">	<span class="meta">@SuppressWarnings(&quot;rawtypes&quot;)</span></span><br><span class="line">	HashSet sessions=(HashSet) session.getServletContext().getAttribute(<span class="string">&quot;sessions&quot;</span>);</span><br><span class="line">	<span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line">	Iterator&lt;Session&gt; iterator= sessions.iterator();</span><br><span class="line">	PrincipalCollection pc=<span class="keyword">null</span>;</span><br><span class="line">	<span class="comment">//遍历sessions</span></span><br><span class="line">	<span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">		HttpSession s=(HttpSession) iterator.next();</span><br><span class="line">		User user=(User) s.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span>(user !=<span class="keyword">null</span> &amp;&amp; user.getId()==id)&#123;</span><br><span class="line">			pc= (PrincipalCollection) s.getAttribute(String.valueOf(id));</span><br><span class="line">			<span class="comment">//清空该用户权限缓存</span></span><br><span class="line">			rolePermissionService.clearUserPermCache(pc);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Dept&gt;  <span class="title">allDept</span><span class="params">()</span></span>&#123;</span><br><span class="line">	List&lt;Dept&gt; deptList=deptService.getAll();</span><br><span class="line">	<span class="keyword">return</span> deptList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取科室json</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequiresPermissions(&quot;buss:dept:view&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;json&quot;,method = RequestMethod.GET)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getData</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">	Page&lt;Dept&gt; page = getPage(request);</span><br><span class="line">	List&lt;PropertyFilter&gt; filters = PropertyFilter.buildFromHttpRequest(request);</span><br><span class="line">	page = deptService.search(page, filters);</span><br><span class="line">	<span class="keyword">return</span> getEasyUIData(page);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加科室跳转</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequiresPermissions(&quot;buss:dept:add&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;create&quot;, method = RequestMethod.GET)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">createForm</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">	model.addAttribute(<span class="string">&quot;dept&quot;</span>, <span class="keyword">new</span> Dept());</span><br><span class="line">	model.addAttribute(<span class="string">&quot;action&quot;</span>, <span class="string">&quot;create&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;buss/deptForm&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加科室</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> dept</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequiresPermissions(&quot;buss:dept:add&quot;)</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;create&quot;, method = RequestMethod.POST)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">create</span><span class="params">(<span class="meta">@Valid</span> Dept dept, Model model)</span> </span>&#123;</span><br><span class="line">	deptService.save(dept);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">		page.setOrderBy(<span class="string">&quot;urgent,createTime&quot;</span>);</span><br><span class="line">		page.setOrder(<span class="string">&quot;desc,asc&quot;</span>);</span><br><span class="line">		List&lt;PropertyFilter&gt; filters = PropertyFilter.buildFromHttpRequest(request);</span><br><span class="line">		page = triageService.search(page, filters);</span><br><span class="line">		<span class="keyword">return</span> getEasyUIData(page);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//	/**</span></span><br><span class="line"><span class="comment">//	 * 添加分诊跳转</span></span><br><span class="line"><span class="comment">//	 * </span></span><br><span class="line"><span class="comment">//	 * @param model</span></span><br><span class="line"><span class="comment">//	 */</span></span><br><span class="line"><span class="comment">//	@RequiresPermissions(&quot;buss:triage:add&quot;)</span></span><br><span class="line"><span class="comment">//	@RequestMapping(value = &quot;create&quot;, method = RequestMethod.GET)</span></span><br><span class="line"><span class="comment">//	public String createForm(Model model) &#123;</span></span><br><span class="line"><span class="comment">//		model.addAttribute(&quot;triage&quot;, new Dept());</span></span><br><span class="line"><span class="comment">//		model.addAttribute(&quot;action&quot;, &quot;create&quot;);</span></span><br><span class="line"><span class="comment">//		return &quot;buss/deptForm&quot;;</span></span><br><span class="line"><span class="comment">//	&#125;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 添加分诊</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> triage</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequiresPermissions(&quot;buss:triage:add&quot;)</span></span><br><span class="line">	<span class="meta">@RequestMapping(value = &quot;create&quot;, method = RequestMethod.POST)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">create</span><span class="params">(<span class="meta">@Valid</span> Triage triage,Integer patientId,Integer deptId, Model model)</span> </span>&#123;</span><br><span class="line">		triage.setStatus(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">		Patient patient = <span class="keyword">new</span> Patient(patientId);</span><br><span class="line">		Dept dept = <span class="keyword">new</span> Dept(deptId);</span><br><span class="line">		triage.setDept(dept);</span><br><span class="line">		triage.setPatient(patient);</span><br><span class="line">		triage.setCreateTime(<span class="keyword">new</span> Date());</span><br><span class="line">		triageService.save(triage);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 叫号</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(value = &quot;callPatient&quot;, method = RequestMethod.GET)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">callPatient</span><span class="params">(HttpServletRequest request,Model model)</span> </span>&#123;</span><br><span class="line">		Page&lt;Triage&gt; page = getPage(request);</span><br><span class="line">		page.setOrderBy(<span class="string">&quot;urgent,createTime&quot;</span>);</span><br><span class="line">		page.setOrder(<span class="string">&quot;desc,asc&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
 <iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
