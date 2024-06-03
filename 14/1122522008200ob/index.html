@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot商品进销存系统(java+vue+springboot+maven+mybatis+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/141122522008200ob/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot商品进销存系统(java+vue+springboot+maven+mybatis+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/141122522008200ob/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot商品进销存系统(java+vue+springboot+maven+mybatis+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥10</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/180023482402.jpg" alt="180023482402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/190023482402.jpg" alt="190023482402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/200023482402.jpg" alt="200023482402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/210023482402.jpg" alt="210023482402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/220023482402.jpg" alt="220023482402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/240023482402.jpg" alt="240023482402"></p>
+<p>基于javaweb的SpringBoot商品进销存系统(java+vue+springboot+maven+mybatis+mysql)</p>
+<p>一、项目运行 环境配置：</p>
+<p>Jdk1.8 + Mysql + HBuilderX（Webstorm也行）+ Eclispe（IntelliJ IDEA,Eclispe,MyEclispe,Sts都支持）。</p>
+<p>项目技术：</p>
+<p>Spring + SpringBoot+ mybatis + Maven + Vue 等等组成，B/S模式 + Maven管理等等。</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>接口返回数据格式：</p>
+<p>/**</p>
+<ul>
+<li><p>  接口返回数据格式</p>
+</li>
+<li><p>@author scott</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@Data</p>
+<p>@ApiModel(value=”接口返回对象”, description=”接口返回对象”)</p>
+<p>public class Result<T> implements Serializable {</T></p>
+<p>private static final long serialVersionUID = 1L;</p>
+<p>/**</p>
+<ul>
+<li>成功标志</li>
+</ul>
+<p>*/</p>
+<p>@ApiModelProperty(value = “成功标志”)</p>
+<p>private boolean success = true;</p>
+<p>/**</p>
+<ul>
+<li>返回处理消息</li>
+</ul>
+<p>*/</p>
+<p>@ApiModelProperty(value = “返回处理消息”)</p>
+<p>private String message = “操作成功！”;</p>
+<p>/**</p>
+<ul>
+<li>返回代码</li>
+</ul>
+<p>*/</p>
+<p>@ApiModelProperty(value = “返回代码”)</p>
+<p>private Integer code = 0;</p>
+<p>/**</p>
+<ul>
+<li>返回数据对象 data</li>
+</ul>
+<p>*/</p>
+<p>@ApiModelProperty(value = “返回数据对象”)</p>
+<p>private T result;</p>
+<p>/**</p>
+<ul>
+<li>时间戳</li>
+</ul>
+<p>*/</p>
+<p>@ApiModelProperty(value = “时间戳”)</p>
+<p>private long timestamp = System.currentTimeMillis();</p>
+<p>public Result() {</p>
+<p>public Result<T> success(String message) {</T></p>
+<p>this.message = message;</p>
+<p>this.code = CommonConstant.SC_OK_200;</p>
+<p>this.success = true;</p>
+<p>return this;</p>
+<p>public static Result<Object> ok() {</Object></p>
+<p>Result<Object> r = new Result<Object>();</Object></Object></p>
+<p>r.setSuccess(true);</p>
+<p>r.setCode(CommonConstant.SC_OK_200);</p>
+<p>r.setMessage(“成功”);</p>
+<p>return r;</p>
+<p>public static Result<Object> ok(String msg) {</Object></p>
+<p>Result<Object> r = new Result<Object>();</Object></Object></p>
+<p>r.setSuccess(true);</p>
+<p>r.setCode(CommonConstant.SC_OK_200);</p>
+<p>r.setMessage(msg);</p>
+<p>return r;</p>
+<p>public static Result<Object> ok(Object data) {</Object></p>
+<p>Result<Object> r = new Result<Object>();</Object></Object></p>
+<p>r.setSuccess(true);</p>
+<p>r.setCode(CommonConstant.SC_OK_200);</p>
+<p>r.setResult(data);</p>
+<p>return r;</p>
+<p>public static Result<Object> error(String msg) {</Object></p>
+<p>return error(CommonConstant.SC_INTERNAL_SERVER_ERROR_500, msg);</p>
+<p>public static Result<Object> error(int code, String msg) {</Object></p>
+<p>Result<Object> r = new Result<Object>();</Object></Object></p>
+<p>r.setCode(code);</p>
+<p>r.setMessage(msg);</p>
+<p>r.setSuccess(false);</p>
+<p>return r;</p>
+<p>public Result<T> error500(String message) {</T></p>
+<p>this.message = message;</p>
+<p>this.code = CommonConstant.SC_INTERNAL_SERVER_ERROR_500;</p>
+<p>this.success = false;</p>
+<p>return this;</p>
+<p>/**</p>
+<ul>
+<li>无权限访问返回结果</li>
+</ul>
+<p>*/</p>
+<p>public static Result<Object> noauth(String msg) {</Object></p>
+<p>return error(CommonConstant.SC_JEECG_NO_AUTHZ, msg);</p>
+<p>用户信息控制器：</p>
+<p>/**</p>
+<ul>
+<li><p>
+</p></li>
+<li><p>用户表 前端控制器</p>
+</li>
+<li><p></p>
+
+</li>
+</ul>
+<p>*/</p>
+<p>@Slf4j</p>
+<p>@RestController</p>
+<p>@RequestMapping(“/sys/common”)</p>
+<p>public class CommonController {</p>
+<p>@Autowired</p>
+<p>private ISysBaseAPI sysBaseAPI;</p>
+<p>@Value(value = “${jeecg.path.upload}”)</p>
+<p>private String uploadpath;</p>
+<p>/**</p>
+<ul>
+<li>本地：local minio：minio 阿里：alioss</li>
+</ul>
+<p>*/</p>
+<p>@Value(value=”${jeecg.uploadType}”)</p>
+<p>private String uploadType;</p>
+<p>/**</p>
+<ul>
+<li><p>@Author 政辉</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/403”)</p>
+<p>public Result&lt;?&gt; noauth()  {</p>
+<p>return Result.error(“没有权限，请联系管理员授权”);</p>
+<p>/**</p>
+<ul>
+<li><p>文件上传统一方法</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(value = “/upload”)</p>
+<p>public Result&lt;?&gt; upload(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>Result&lt;?&gt; result = new Result&lt;&gt;();</p>
+<p>String savePath = “”;</p>
+<p>String bizPath = request.getParameter(“biz”);</p>
+<p>MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;</p>
+<p>MultipartFile file = multipartRequest.getFile(“file”);// 获取上传文件对象</p>
+<p>if(oConvertUtils.isEmpty(bizPath)){</p>
+<p>if(CommonConstant.UPLOAD_TYPE_OSS.equals(uploadType)){</p>
+<p>//未指定目录，则用阿里云默认目录 upload</p>
+<p>bizPath = “upload”;</p>
+<p>//result.setMessage(“使用阿里云文件上传时，必须添加目录！”);</p>
+<p>//result.setSuccess(false);</p>
+<p>//return result;</p>
+<p>}else{</p>
+<p>bizPath = “”;</p>
+<p>if(CommonConstant.UPLOAD_TYPE_LOCAL.equals(uploadType)){</p>
+<p>//针对jeditor编辑器如何使 lcaol模式，采用 base64格式存储</p>
+<p>String jeditor = request.getParameter(“jeditor”);</p>
+<p>if(oConvertUtils.isNotEmpty(jeditor)){</p>
+<p>result.setMessage(CommonConstant.UPLOAD_TYPE_LOCAL);</p>
+<p>result.setSuccess(true);</p>
+<p>return result;</p>
+<p>}else{</p>
+<p>savePath = this.uploadLocal(file,bizPath);</p>
+<p>}else{</p>
+<p>savePath = sysBaseAPI.upload(file,bizPath,uploadType);</p>
+<p>if(oConvertUtils.isNotEmpty(savePath)){</p>
+<p>result.setMessage(savePath);</p>
+<p>result.setSuccess(true);</p>
+<p>}else {</p>
+<p>result.setMessage(“上传失败！”);</p>
+<p>result.setSuccess(false);</p>
+<p>return result;</p>
+<p>/**</p>
+<ul>
+<li><p>本地文件上传</p>
+</li>
+<li><p>@param mf 文件</p>
+</li>
+<li><p>@param bizPath  自定义路径</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>private String uploadLocal(MultipartFile mf,String bizPath){</p>
+<p>try {</p>
+<p>String ctxPath = uploadpath;</p>
+<p>String fileName = null;</p>
+<p>File file = new File(ctxPath + File.separator + bizPath + File.separator );</p>
+<p>if (!file.exists()) {</p>
+<p>file.mkdirs();// 创建文件根目录</p>
+<p>String orgName = mf.getOriginalFilename();// 获取文件名</p>
+<p>orgName = CommonUtils.getFileName(orgName);</p>
+<p>if(orgName.indexOf(“.”)!=-1){</p>
+<p>fileName = orgName.substring(0, orgName.lastIndexOf(“.”)) + “_” + System.currentTimeMillis() + orgName.substring(orgName.indexOf(“.”));</p>
+<p>}else{</p>
+<p>fileName = orgName+ “_” + System.currentTimeMillis();</p>
+<p>String savePath = file.getPath() + File.separator + fileName;</p>
+<p>File savefile = new File(savePath);</p>
+<p>FileCopyUtils.copy(mf.getBytes(), savefile);</p>
+<p>String dbpath = null;</p>
+<p>if(oConvertUtils.isNotEmpty(bizPath)){</p>
+<p>dbpath = bizPath + File.separator + fileName;</p>
+<p>}else{</p>
+<p>dbpath = fileName;</p>
+<p>if (dbpath.contains(“\“)) {</p>
+<p>dbpath = dbpath.replace(“\“, “/“);</p>
+<p>return dbpath;</p>
+<p>} catch (IOException e) {</p>
+<p>log.error(e.getMessage(), e);</p>
+<p>return “”;</p>
+<p>//    @PostMapping(value = “/upload2”)</p>
+<p>//    public Result&lt;?&gt; upload2(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//        Result&lt;?&gt; result = new Result&lt;&gt;();</p>
+<p>//        try {</p>
+<p>//            String ctxPath = uploadpath;</p>
+<p>//            String fileName = null;</p>
+<p>//            String bizPath = “files”;</p>
+<p>//            String tempBizPath = request.getParameter(“biz”);</p>
+<p>//            if(oConvertUtils.isNotEmpty(tempBizPath)){</p>
+<p>//                bizPath = tempBizPath;</p>
+<p>//            }</p>
+<p>//            String nowday = new SimpleDateFormat(“yyyyMMdd”).format(new Date());</p>
+<p>//            File file = new File(ctxPath + File.separator + bizPath + File.separator + nowday);</p>
+<p>//            if (!file.exists()) {</p>
+<p>//                file.mkdirs();// 创建文件根目录</p>
+<p>//            }</p>
+<p>//            MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;</p>
+<p>//            MultipartFile mf = multipartRequest.getFile(“file”);// 获取上传文件对象</p>
+<p>//            String orgName = mf.getOriginalFilename();// 获取文件名</p>
+<p>//            fileName = orgName.substring(0, orgName.lastIndexOf(“.”)) + “_” + System.currentTimeMillis() + orgName.substring(orgName.indexOf(“.”));</p>
+<p>//            String savePath = file.getPath() + File.separator + fileName;</p>
+<p>//            File savefile = new File(savePath);</p>
+<p>//            FileCopyUtils.copy(mf.getBytes(), savefile);</p>
+<p>//            String dbpath = bizPath + File.separator + nowday + File.separator + fileName;</p>
+<p>//            if (dbpath.contains(“\“)) {</p>
+<p>//                dbpath = dbpath.replace(“\“, “/“);</p>
+<p>//            }</p>
+<p>//            result.setMessage(dbpath);</p>
+<p>//            result.setSuccess(true);</p>
+<p>//        } catch (IOException e) {</p>
+<p>//            result.setSuccess(false);</p>
+<p>//            result.setMessage(e.getMessage());</p>
+<p>//            log.error(e.getMessage(), e);</p>
+<p>//        }</p>
+<p>//        return result;</p>
+<p>//    }</p>
+<p>/**</p>
+<ul>
+<li><p>预览图片&amp;下载文件</p>
+</li>
+<li><p>请求地址：<a target="_blank" rel="noopener" href="http://localhost:8080/common/static/%7Buser/20190119/e1fe9925bc315c60addea1b98eb1cb1349547719_1547866868179.jpg%7D">http://localhost:8080/common/static/{user/20190119/e1fe9925bc315c60addea1b98eb1cb1349547719_1547866868179.jpg}</a></p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(value = “/static/**”)</p>
+<p>public void view(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>// ISO-8859-1 ==&gt; UTF-8 进行编码转换</p>
+<p>String imgPath = extractPathFromPattern(request);</p>
+<p>if(oConvertUtils.isEmpty(imgPath) || imgPath==”null”){</p>
+<p>return;</p>
+<p>// 其余处理略</p>
+<p>InputStream inputStream = null;</p>
+<p>OutputStream outputStream = null;</p>
+<p>try {</p>
+<p>imgPath = imgPath.replace(“..”, “”);</p>
+<p>if (imgPath.endsWith(“,”)) {</p>
+<p>imgPath = imgPath.substring(0, imgPath.length() - 1);</p>
+<p>String filePath = uploadpath + File.separator + imgPath;</p>
+<p>File file = new File(filePath);</p>
+<p>if(!file.exists()){</p>
+<p>response.setStatus(404);</p>
+<p>throw new RuntimeException(“文件不存在..”);</p>
+<p>response.setContentType(“application/force-download”);// 设置强制下载不打开</p>
+<p>response.addHeader(“Content-Disposition”, “attachment;fileName=” + new String(file.getName().getBytes(“UTF-8”),”iso-8859-1”));</p>
+<p>inputStream = new BufferedInputStream(new FileInputStream(filePath));</p>
+<p>outputStream = response.getOutputStream();</p>
+<p>byte[] buf = new byte[1024];</p>
+<p>int len;</p>
+<p>while ((len = inputStream.read(buf)) &gt; 0) {</p>
+<p>outputStream.write(buf, 0, len);</p>
+<p>response.flushBuffer();</p>
+<p>} catch (IOException e) {</p>
+<p>log.error(“预览文件失败” + e.getMessage());</p>
+<p>response.setStatus(404);</p>
+<p>e.printStackTrace();</p>
+<p>} finally {</p>
+<p>if (inputStream != null) {</p>
+<p>try {</p>
+<p>inputStream.close();</p>
+<p>} catch (IOException e) {</p>
+<p>log.error(e.getMessage(), e);</p>
+<p>if (outputStream != null) {</p>
+<p>try {</p>
+<p>outputStream.close();</p>
+<p>} catch (IOException e) {</p>
+<p>log.error(e.getMessage(), e);</p>
+<p>//    /**</p>
+<p>//     * 下载文件</p>
+<p>//     * 请求地址：<a target="_blank" rel="noopener" href="http://localhost:8080/common/download/%7Buser/20190119/e1fe9925bc315c60addea1b98eb1cb1349547719_1547866868179.jpg%7D">http://localhost:8080/common/download/{user/20190119/e1fe9925bc315c60addea1b98eb1cb1349547719_1547866868179.jpg}</a></p>
+<p>//     *</p>
+<p>//     * @param request</p>
+<p>//     * @param response</p>
+<p>//     * @throws Exception</p>
+<p>//     */</p>
+<p>//    @GetMapping(value = “/download/**”)</p>
+<p>//    public void download(HttpServletRequest request, HttpServletResponse response) throws Exception {</p>
+<p>//        // ISO-8859-1 ==&gt; UTF-8 进行编码转换</p>
+<p>//        String filePath = extractPathFromPattern(request);</p>
+<p>//        // 其余处理略</p>
+<p>//        InputStream inputStream = null;</p>
+<p>//        OutputStream outputStream = null;</p>
+<p>//        try {</p>
+<p>//            filePath = filePath.replace(“..”, “”);</p>
+<p>//            if (filePath.endsWith(“,”)) {</p>
+<p>//                filePath = filePath.substring(0, filePath.length() - 1);</p>
+<p>//            }</p>
+<p>//            String localPath = uploadpath;</p>
+<p>//            String downloadFilePath = localPath + File.separator + filePath;</p>
+<p>//            File file = new File(downloadFilePath);</p>
+<p>//             if (file.exists()) {</p>
+<p>//                 response.setContentType(“application/force-download”);// 设置强制下载不打开            </p>
+<p>//                 response.addHeader(“Content-Disposition”, “attachment;fileName=” + new String(file.getName().getBytes(“UTF-8”),”iso-8859-1”));</p>
+<p>//                 inputStream = new BufferedInputStream(new FileInputStream(file));</p>
+<p>//                 outputStream = response.getOutputStream();</p>
+<p>//                 byte[] buf = new byte[1024];</p>
+<p>//                 int len;</p>
+<p>//                 while ((len = inputStream.read(buf)) &gt; 0) {</p>
+<p>//                     outputStream.write(buf, 0, len);</p>
+<p>//                 }</p>
+<p>//                 response.flushBuffer();</p>
+<p>//             }</p>
+<p>//</p>
+<p>//        } catch (Exception e) {</p>
+<p>//            log.info(“文件下载失败” + e.getMessage());</p>
+<p>//            // e.printStackTrace();</p>
+<p>//        } finally {</p>
+<p>//            if (inputStream != null) {</p>
+<p>//                try {</p>
+<p>//                    inputStream.close();</p>
+<p>//                } catch (IOException e) {</p>
+<p>//                    e.printStackTrace();</p>
+<p>//                }</p>
+<p>//            }</p>
+<p>//            if (outputStream != null) {</p>
+<p>//                try {</p>
+<p>//                    outputStream.close();</p>
+<p>//                } catch (IOException e) {</p>
+<p>//                    e.printStackTrace();</p>
+<p>//                }</p>
+<p>//            }</p>
+<p>//        }</p>
+<p>//</p>
+<p>//    }</p>
+<p>/**</p>
+<ul>
+<li><p>@功能：pdf预览Iframe</p>
+</li>
+<li><p>@param modelAndView</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/pdf/pdfPreviewIframe”)</p>
+<p>public ModelAndView pdfPreviewIframe(ModelAndView modelAndView) {</p>
+<p>modelAndView.setViewName(“pdfPreviewIframe”);</p>
+<p>return modelAndView;</p>
+<p>/**</p>
+<ul>
+<li><p> 把指定URL后的字符串全部截断当成参数</p>
+</li>
+<li><p> 这么做是为了防止URL中包含中文或者特殊字符（/等）时，匹配不了的问题</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>private static String extractPathFromPattern(final HttpServletRequest request) {</p>
+<p>String path = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);</p>
+<p>String bestMatchPattern = (String) request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE);</p>
+<p>return new AntPathMatcher().extractPathWithinPattern(bestMatchPattern, path);</p>
+<p>/**</p>
+<ul>
+<li><p>中转HTTP请求，解决跨域问题</p>
+</li>
+<li><p>@param url 必填：请求地址</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/transitRESTful”)</p>
+<p>public Result transitRESTful(@RequestParam(“url”) String url, HttpServletRequest request) {</p>
+<p>try {</p>
+<p>ServletServerHttpRequest httpRequest = new ServletServerHttpRequest(request);</p>
+<p>// 中转请求method、body</p>
+<p>HttpMethod method = httpRequest.getMethod();</p>
+<p>JSONObject params;</p>
+<p>try {</p>
+<p>params = JSON.parseObject(JSON.toJSONString(httpRequest.getBody()));</p>
+<p>} catch (Exception e) {</p>
+<p>params = new JSONObject();</p>
+<p>// 中转请求问号参数</p>
+<p>JSONObject variables = JSON.parseObject(JSON.toJSONString(request.getParameterMap()));</p>
+<p>variables.remove(“url”);</p>
+<p>// 在 headers 里传递Token</p>
+<p>String token = TokenUtils.getTokenByRequest(request);</p>
+<p>HttpHeaders headers = new HttpHeaders();</p>
+<p>headers.set(“X-Access-Token”, token);</p>
+<p>// 发送请求</p>
+<p>String httpURL = URLDecoder.decode(url, “UTF-8”);</p>
+<p>ResponseEntity<String> response = RestUtil.request(httpURL, method, headers , variables, params, String.class);</String></p>
+<p>// 封装返回结果</p>
+<p>Result<Object> result = new Result&lt;&gt;();</Object></p>
+<p>int statusCode = response.getStatusCodeValue();</p>
+<p>result.setCode(statusCode);</p>
+<p>result.setSuccess(statusCode == 200);</p>
+<p>String responseBody = response.getBody();</p>
+<p>try {</p>
+<p>// 尝试将返回结果转为JSON</p>
+<p>Object json = JSON.parse(responseBody);</p>
+<p>result.setResult(json);</p>
+<p>} catch (Exception e) {</p>
+<p>// 转成JSON失败，直接返回原始数据</p>
+<p>result.setResult(responseBody);</p>
+<p>return result;</p>
+<p>} catch (Exception e) {</p>
+<p>log.debug(“中转HTTP请求失败”, e);</p>
+<p>return Result.error(e.getMessage());</p>
+<p>付款单控制层：</p>
+<p>/**</p>
+<ul>
+<li>@Description: 付款单</li>
+</ul>
+<p>*/</p>
+<p>@Api(tags=”付款单”)</p>
+<p>@RestController</p>
+<p>@RequestMapping(“/finance/finPayment”)</p>
+<p>@Slf4j</p>
+<p>public class FinPaymentController {</p>
+<p>@Autowired</p>
+<p>private IFinPaymentService finPaymentService;</p>
+<p>@Autowired</p>
+<p>private IFinPaymentEntryService finPaymentEntryService;</p>
+<p>/**</p>
+<ul>
+<li><p>分页列表查询</p>
+</li>
+<li><p>@param finPayment</p>
+</li>
+<li><p>@param pageNo</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@param req</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@AutoLog(value = “付款单-分页列表查询”)</p>
+<p>@ApiOperation(value=”付款单-分页列表查询”, notes=”付款单-分页列表查询”)</p>
+<p>@GetMapping(value = {“/list”, “/list/{paymentType}”})  //paymentType会传至finPayment.paymentType</p>
+<p>public Result&lt;?&gt; queryPageList(FinPayment finPayment,</p>
+<p>@RequestParam(name=”pageNo”, defaultValue=”1”) Integer pageNo,</p>
+<p>@RequestParam(name=”pageSize”, defaultValue=”10”) Integer pageSize,</p>
+<p>HttpServletRequest req) {</p>
+<p>QueryWrapper<FinPayment> queryWrapper = QueryGenerator.initQueryWrapper(finPayment, req.getParameterMap());</FinPayment></p>
+<p>Page<FinPayment> page = new Page<FinPayment>(pageNo, pageSize);</FinPayment></FinPayment></p>
+<p>IPage<FinPayment> pageList = finPaymentService.page(page, queryWrapper);</FinPayment></p>
+<p>return Result.ok(pageList);</p>
+<p>@GetMapping(value = “/checkableList”)</p>
+<p>public Result&lt;?&gt; queryCheckablePageList(FinPayment finPayment,</p>
+<p>@RequestParam(name=”pageNo”, defaultValue=”1”) Integer pageNo,</p>
+<p>@RequestParam(name=”pageSize”, defaultValue=”10”) Integer pageSize,</p>
+<p>HttpServletRequest req) {</p>
+<p>QueryWrapper<FinPayment> queryWrapper = QueryGenerator.initQueryWrapper(finPayment, req.getParameterMap());</FinPayment></p>
+<p>List<String>  list = new ArrayList<String>();</String></String></p>
+<p>list.add(“23”);</p>
+<p>list.add(“31”);</p>
+<p>list.add(“32”);</p>
+<p>queryWrapper.in(“bill_proc_Status”, list);</p>
+<p>queryWrapper.eq(“is_approved”, 1);</p>
+<p>queryWrapper.eq(“is_closed”, 0);</p>
+<p>queryWrapper.eq(“is_voided”, 0);</p>
+<p>queryWrapper.apply(“amt - deducted_amt - checked_amt &gt; 0”);</p>
+<p>Page<FinPayment> page = new Page<FinPayment>(pageNo, pageSize);</FinPayment></FinPayment></p>
+<p>IPage<FinPayment> pageList = finPaymentService.page(page, queryWrapper);</FinPayment></p>
+<p>return Result.ok(pageList);</p>
+<p>/**</p>
+<ul>
+<li><p>  添加</p>
+</li>
+<li><p>@param finPaymentPage</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@AutoLog(value = “付款单-添加”)</p>
+<p>@ApiOperation(value=”付款单-添加”, notes=”付款单-添加”)</p>
+<p>@PostMapping(value = “/add”)</p>
+<p>public Result&lt;?&gt; add(@RequestBody FinPaymentPage finPaymentPage) {</p>
+<p>FinPayment finPayment = new FinPayment();</p>
+<p>BeanUtils.copyProperties(finPaymentPage, finPayment);</p>
+<p>finPaymentService.saveMain(finPayment, finPaymentPage.getFinPaymentEntryList());</p>
+<p>return Result.ok(“添加成功！”);</p>
+<p>/**</p>
+<ul>
+<li><p> 编辑</p>
+</li>
+<li><p>@param finPaymentPage</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@AutoLog(value = “付款单-编辑”)</p>
+<p>@ApiOperation(value=”付款单-编辑”, notes=”付款单-编辑”)</p>
+<p>@PutMapping(value = “/edit”)</p>
+<p>public Result&lt;?&gt; edit(@RequestBody FinPaymentPage finPaymentPage) {</p>
+<p>FinPayment finPayment = new FinPayment();</p>
+<p>BeanUtils.copyProperties(finPaymentPage, finPayment);</p>
+<p>FinPayment finPaymentEntity = finPaymentService.getById(finPayment.getId());</p>
+<p>if(finPaymentEntity==null) {</p>
+<p>return Result.error(“未找到对应数据”);</p>
+<p>finPaymentService.updateMain(finPayment, finPaymentPage.getFinPaymentEntryList());</p>
+<p>return Result.ok(“编辑成功!”);</p>
+<p>/**</p>
+<ul>
+<li><p>  通过id删除</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@AutoLog(value = “付款单-通过id删除”)</p>
+<p>@ApiOperation(value=”付款单-通过id删除”, notes=”付款单-通过id删除”)</p>
+<p>@DeleteMapping(value = “/delete”)</p>
+<p>public Result&lt;?&gt; delete(@RequestParam(name=”id”,required=true) String id) {</p>
+<p>finPaymentService.delMain(id);</p>
+<p>return Result.ok(“删除成功!”);</p>
+<p>/**</p>
+<ul>
+<li><p> 批量删除</p>
+</li>
+<li><p>@param ids</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@AutoLog(value = “付款单-批量删除”)</p>
+<p>@ApiOperation(value=”付款单-批量删除”, notes=”付款单-批量删除”)</p>
+<p>@DeleteMapping(value = “/deleteBatch”)</p>
+<p>public Result&lt;?&gt; deleteBatch(@RequestParam(name=”ids”,required=true) String ids) {</p>
+<p>this.finPaymentService.delBatchMain(Arrays.asList(ids.split(“,”)));</p>
+<p>return Result.ok(“批量删除成功！”);</p>
+<p>/**</p>
+<ul>
+<li><p>通过id查询</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@AutoLog(value = “付款单-通过id查询”)</p>
+<p>@ApiOperation(value=”付款单-通过id查询”, notes=”付款单-通过id查询”)</p>
+<p>@GetMapping(value = “/queryById”)</p>
+<p>public Result&lt;?&gt; queryById(@RequestParam(name=”id”,required=true) String id) {</p>
+<p>FinPayment finPayment = finPaymentService.getById(id);</p>
+<p>if(finPayment==null) {</p>
+<p>return Result.error(“未找到对应数据”);</p>
+<p>return Result.ok(finPayment);</p>
+<p>/**</p>
+<ul>
+<li><p>通过id查询</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@AutoLog(value = “付款明细集合-通过id查询”)</p>
+<p>@ApiOperation(value=”付款明细集合-通过id查询”, notes=”付款明细-通过id查询”)</p>
+<p>@GetMapping(value = “/queryFinPaymentEntryByMainId”)</p>
+<p>public Result&lt;?&gt; queryFinPaymentEntryListByMainId(@RequestParam(name=”id”,required=true) String id) {</p>
+<p>List<FinPaymentEntry> finPaymentEntryList = finPaymentEntryService.selectByMainId(id);</FinPaymentEntry></p>
+<p>return Result.ok(finPaymentEntryList);</p>
+<p>/**</p>
+<ul>
+<li><p>导出excel</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param finPayment</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value =  {“/exportXls”, “/exportXls/{paymentType}”})</p>
+<p>public ModelAndView exportXls(HttpServletRequest request, FinPayment finPayment) {</p>
+<p>// Step.1 组装查询条件查询数据</p>
+<p>QueryWrapper<FinPayment> queryWrapper = QueryGenerator.initQueryWrapper(finPayment, request.getParameterMap());</FinPayment></p>
+<p>LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();</p>
+<p>//Step.2 获取导出数据</p>
+<p>List<FinPayment> queryList = finPaymentService.list(queryWrapper);</FinPayment></p>
+<p>// 过滤选中数据</p>
+<p>String selections = request.getParameter(“selections”);</p>
+<p>List<FinPayment> finPaymentList = new ArrayList<FinPayment>();</FinPayment></FinPayment></p>
+<p>if(oConvertUtils.isEmpty(selections)) {</p>
+<p>finPaymentList = queryList;</p>
+<p>}else {</p>
+<p>List<String> selectionList = Arrays.asList(selections.split(“,”));</String></p>
+<p>finPaymentList = queryList.stream().filter(item -&gt; selectionList.contains(item.getId())).collect(Collectors.toList());</p>
+<p>// Step.3 组装pageList</p>
+<p>List<FinPaymentPage> pageList = new ArrayList<FinPaymentPage>();</FinPaymentPage></FinPaymentPage></p>
+<p>for (FinPayment main : finPaymentList) {</p>
+<p>FinPaymentPage vo = new FinPaymentPage();</p>
+<p>BeanUtils.copyProperties(main, vo);</p>
+<p>List<FinPaymentEntry> finPaymentEntryList = finPaymentEntryService.selectByMainId(main.getId());</FinPaymentEntry></p>
+<p>vo.setFinPaymentEntryList(finPaymentEntryList);</p>
+<p>pageList.add(vo);</p>
+<p>// Step.4 AutoPoi 导出Excel</p>
+<p>ModelAndView mv = new ModelAndView(new JeecgEntityExcelView());</p>
+<p>mv.addObject(NormalExcelConstants.FILE_NAME, “付款单列表”);</p>
+<p>mv.addObject(NormalExcelConstants.CLASS, FinPaymentPage.class);</p>
+<p>mv.addObject(NormalExcelConstants.PARAMS, new ExportParams(“付款单数据”, “导出人:”+sysUser.getRealname(), “付款单”));</p>
+<p>mv.addObject(NormalExcelConstants.DATA_LIST, pageList);</p>
+<p>return mv;</p>
+<p>/**</p>
+<ul>
+<li><p>通过excel导入数据</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/importExcel”, method = RequestMethod.POST)</p>
+<p>public Result&lt;?&gt; importExcel(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;</p>
+<p>Map&lt;String, MultipartFile&gt; fileMap = multipartRequest.getFileMap();</p>
+<p>for (Map.Entry&lt;String, MultipartFile&gt; entity : fileMap.entrySet()) {</p>
+<p>MultipartFile file = entity.getValue();// 获取上传文件对象</p>
+<p>ImportParams params = new ImportParams();</p>
+<p>params.setTitleRows(2);</p>
+<p>params.setHeadRows(1);</p>
+<p>params.setNeedSave(true);</p>
+<p>try {</p>
+<p>List<FinPaymentPage> list = ExcelImportUtil.importExcel(file.getInputStream(), FinPaymentPage.class, params);</FinPaymentPage></p>
+<p>for (FinPaymentPage page : list) {</p>
+<p>FinPayment po = new FinPayment();</p>
+<p>BeanUtils.copyProperties(page, po);</p>
+<p>finPaymentService.saveMain(po, page.getFinPaymentEntryList());</p>
+<p>return Result.ok(“文件导入成功！数据行数:” + list.size());</p>
+<p>} catch (Exception e) {</p>
+<p>log.error(e.getMessage(),e);</p>
+<p>return Result.error(“文件导入失败:”+e.getMessage());</p>
+<p>} finally {</p>
+<p>try {</p>
+<p>file.getInputStream().close();</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>return Result.ok(“文件导入失败！”);</p>
+<p>@AutoLog(value = “付款单-通过id审核”)</p>
+<p>@ApiOperation(value=”付款单-通过id审核”, notes=”付款单-通过id审核”)</p>
+<p>@PutMapping(value = “/approve”)</p>
+<p>public Result&lt;?&gt; approve(@RequestBody JSONObject json) {</p>
+<p>finPaymentService.approve(json.getString(“id”));</p>
+<p>return Result.ok(“审核通过!”);</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=169&price1=129&price2=129" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=141122522008200ob<br>https://javayms.pages.dev?id=141122522008200ob</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E8%BF%9B%E9%94%80%E5%AD%98-%E4%BB%93%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 进销存 | 仓库</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

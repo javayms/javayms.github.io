@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot前台+后台在线考试系统设计和实现(java+springboot+ssm+mysql+thymeleaf+html+maven)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/571422302105200hg/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot前台+后台在线考试系统设计和实现(java+springboot+ssm+mysql+thymeleaf+html+maven) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/571422302105200hg/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot前台+后台在线考试系统设计和实现(java+springboot+ssm+mysql+thymeleaf+html+maven)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/380023262402.jpg" alt="380023262402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/390023262402.jpg" alt="390023262402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/400023262402.jpg" alt="400023262402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/410023262402.jpg" alt="410023262402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/420023262402.jpg" alt="420023262402"></p>
+<p>基于javaweb的SpringBoot前台+后台在线考试系统设计和实现(java+springboot+ssm+mysql+thymeleaf+html+maven)</p>
+<p>一、项目简述</p>
+<p>本系统主要实现的功能有： 学生以及老师的注册登录，在线考试，错题查询，学生管理，问题管理，错题管理，错题查询，分数查询，试卷管 理，人工组卷。自动组卷，教师，班级，统计等等管理功能。</p>
+<p>二、项目运行</p>
+<p>环境配置： Jdk1.8 + mysql + Eclispe (IntelliJ IDEA,Eclispe,MyEclispe,Sts 都支持)</p>
+<p>项目技术： Springboot+ SpringMVC + MyBatis + ThymeLeaf + JavaScript + JQuery + Ajax + maven等等</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        result.setSuccess(<span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/index&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    <span class="comment">//查询所有用户</span></span><br><span class="line">    <span class="keyword">int</span> teas=teacherService.queryCountAll();</span><br><span class="line">    <span class="keyword">int</span> stus=studentService.queryCOuntALlstu();</span><br><span class="line">    <span class="keyword">int</span> alllogers=teas+stus;</span><br><span class="line">    <span class="comment">//统计试题</span></span><br><span class="line">    <span class="keyword">int</span> allQues=questionService.queryCountAllQues();</span><br><span class="line">    <span class="comment">//统计试卷</span></span><br><span class="line">    <span class="keyword">int</span> allPaps=paperService.queryCountALlPaps();</span><br><span class="line">    List&lt;Record&gt; ScoreHStu=recordService.queryRankScoreRecord();</span><br><span class="line">    List&lt;Record&gt; AccHStu=recordService.queryRankAccRecord();</span><br><span class="line">    model.addAttribute(<span class="string">&quot;ScoreHStu&quot;</span>,ScoreHStu);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;AccHStu&quot;</span>,AccHStu);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;allPaps&quot;</span>,allPaps);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;allQues&quot;</span>,allQues);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;alllogers&quot;</span>,alllogers);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//前台学生登录考试</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/foreCheck/check&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">foreCheck</span><span class="params">(Student student, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    AjaxResult result=<span class="keyword">new</span> AjaxResult();</span><br><span class="line">    HttpSession session=request.getSession();</span><br><span class="line">    Student stud=studentService.check(student);</span><br><span class="line">    <span class="keyword">if</span>(stud!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        session.setAttribute(<span class="string">&quot;loger&quot;</span>,stud);</span><br><span class="line">        result.setSuccess(<span class="keyword">true</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        result.setSuccess(<span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//前台登录到展示页面</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@RequestMapping(&quot;/getAllTeacher&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAllTeacher</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">        List&lt;Teacher&gt; teachers = teacherService.getAll();</span><br><span class="line">        <span class="comment">//查找classe表中已存在的教师，将用于表单教师是否可以删除</span></span><br><span class="line">        List&lt;Classe&gt; classes=classeService.queryAllTeacherId();</span><br><span class="line">        List&lt;Integer&gt; teaId=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(Classe cla:classes)&#123;</span><br><span class="line">            teaId.add(cla.getTeacherId());</span><br><span class="line">        &#125;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;teaId&quot;</span>,teaId);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;teachers&quot;</span>,teachers);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;teacher/teacherList&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//教师添加或者修改操作，先去添加页面</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/toAddTeacher&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toAddTeacher</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;teacher/teacherAdd&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加或者修改具体操作</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/addTeacher&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addTeacher</span><span class="params">(Teacher teacher)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> teacherId = teacher.getTeacherId();</span><br><span class="line">        <span class="keyword">if</span>(teacherId==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">/*若id为0即是刚添加未分配，要进行增加操作*/</span></span><br><span class="line">            teacherService.addTeacher(teacher);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">/*若id已存在，是要进行修改操作*/</span></span><br><span class="line">            teacherService.editTeacher(teacher);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/teacher/getAllTeacher&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//教师去修改页面</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toEditTeacher</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id,Model model)</span></span>&#123;</span><br><span class="line">        Teacher teacher=teacherService.getTeacherById(id);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;teacher&quot;</span>,teacher);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;teacher/teacherAdd&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//教师删除</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/deleteTeacher/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">deleteTeacherById</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id,Model model)</span></span>&#123;</span><br><span class="line">        teacherService.deleteTeacherById(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/teacher/getAllTeacher&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.zhao.quiz.controller;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/classe&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClasseController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ClasseService classeService;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> TeacherService teacherService;</span><br><span class="line"><span class="comment">//查看所有班级</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/getAllClasse&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAllClasse</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">        List&lt;Classe&gt; classes = classeService.getAll();</span><br><span class="line">        model.addAttribute(<span class="string">&quot;classes&quot;</span>,classes);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;classe/classeList&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//班级添加或者修改操作，先去添加页面</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/toAddClasse&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toAddClasse</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">        List&lt;Teacher&gt; teachers=teacherService.queryTeacherNotAdvisor();</span><br><span class="line">        model.addAttribute(<span class="string">&quot;teachers&quot;</span>,teachers);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;classe/classeAdd&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加具体操作</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/addClasse&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addClasse</span><span class="params">(Classe classe)</span></span>&#123;</span><br><span class="line">        classeService.addClasse(classe);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/classe/getAllClasse&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//班级去修改页面</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/toEditClasse/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toEditClasse</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id,Model model)</span></span>&#123;</span><br><span class="line">        <span class="comment">//根据id查询班级</span></span><br><span class="line">        Classe classe=classeService.getClasseById(id);</span><br><span class="line">        <span class="comment">//过去班级的班主任，回显</span></span><br><span class="line">        <span class="keyword">int</span> teacherIdd=classe.getTeacherId();</span><br><span class="line">        Teacher teacherold=teacherService.getTeacherById(teacherIdd);</span><br><span class="line">        <span class="comment">//查询可分配班主任得教师</span></span><br><span class="line">        List&lt;Teacher&gt; teachers=teacherService.queryTeacherNotAdvisor();</span><br><span class="line">        teachers.add(teacherold);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">    model.addAttribute(<span class="string">&quot;questionCourseresRes&quot;</span>,questionCourseresRes);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;questionTypesRes&quot;</span>,questionTypesRes);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;questionTypes&quot;</span>,questionTypes);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;questionCourses&quot;</span>,questionCourses);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;pageInfo&quot;</span>,pageInfo);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;paperId&quot;</span>,paperId);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;paper/AddQuestion&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//为试卷添加试题</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/AddQuestion&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">AddQuestion</span><span class="params">(Integer paperId,Integer quesId,Integer pageNum,String questionCourse,String questionType)</span></span>&#123;</span><br><span class="line">    QuestionPaper questionPaper=<span class="keyword">new</span> QuestionPaper(quesId,paperId);</span><br><span class="line">    paperService.AddQuestionToPaperById(questionPaper);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/paper/toAddQuestion/&quot;</span>+paperId+<span class="string">&quot;?pageNum=&quot;</span>+pageNum+<span class="string">&quot;&amp;questionCourse=&quot;</span>+questionCourse+<span class="string">&quot;&amp;questionType=&quot;</span>+questionType;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//从试卷中移除试题</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/detachQuestion&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">detachQuestion</span><span class="params">(Integer qpId,Integer paperId)</span></span>&#123;</span><br><span class="line">    paperService.detachQuestionById(qpId);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/paper/toManagerQuestion/&quot;</span>+paperId;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//去往随机组题页面</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/toRandomQuestion/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toRandomQuestion</span><span class="params">(<span class="meta">@PathVariable</span> (<span class="string">&quot;id&quot;</span>)</span> Integer papid,Question question,Model model)</span>&#123;</span><br><span class="line">    List&lt;Question&gt; questionCourses=questionService.queryAllCourse();</span><br><span class="line">    questionCourses.add(<span class="keyword">new</span> Question(<span class="string">&quot;bug&quot;</span>,<span class="string">&quot;all&quot;</span>));</span><br><span class="line">    <span class="comment">//查找所有题目课程和所有类型，且去重</span></span><br><span class="line">    <span class="comment">//用于条件查询题库中尚未分配的题有多少道</span></span><br><span class="line">    <span class="keyword">int</span> TotalQuestionNums=questionService.queryAllQuestionNums();</span><br><span class="line">    List&lt;Map&gt; maps = questionService.queryNumOfQuestionType();</span><br><span class="line">    List&lt;String&gt; course=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    List&lt;Integer&gt; count=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (Map map:maps)&#123;</span><br><span class="line">        <span class="keyword">for</span> (Object key : map.keySet()) &#123;</span><br><span class="line">            <span class="keyword">if</span>(map.get(key) <span class="keyword">instanceof</span> String)&#123;</span><br><span class="line">                course.add(map.get(key).toString());</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                count.add(Integer.parseInt(map.get(key).toString()));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Paper paperName=paperService.queryPaperNameById(papid);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;paperName&quot;</span>,paperName.getPaperName());</span><br><span class="line">    model.addAttribute(<span class="string">&quot;count&quot;</span>,count);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;course&quot;</span>,course);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;TotalQuestionNums&quot;</span>,TotalQuestionNums);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;paperId&quot;</span>,papid);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">    paperService.editPaper(paper);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/paper/getAllPaper&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//试卷删除</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/deletePaper/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">deletePaperById</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id,Model model)</span></span>&#123;</span><br><span class="line">    paperService.deletePaperById(id);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/paper/getAllPaper&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//去往试题管理页面</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/toManagerQuestion/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toManagerQuestion</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id,Model model)</span></span>&#123;</span><br><span class="line">    List&lt;QuestionPaper&gt; questionPapers = paperService.paperQueryALlQuestionById(id);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;papid&quot;</span>,id);</span><br><span class="line">    Paper paperName=paperService.queryPaperNameById(id);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;paperName&quot;</span>,paperName.getPaperName());</span><br><span class="line">    model.addAttribute(<span class="string">&quot;questionPapers&quot;</span>,questionPapers);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;paper/ManagerQuestion&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//来到试题显示页面为试卷添加试题</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/toAddQuestion/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getAllQuestion</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer paperId,Question question,<span class="meta">@RequestParam(defaultValue = &quot;1&quot;)</span> <span class="keyword">int</span> pageNum,</span></span></span><br><span class="line"><span class="function"><span class="params">                             <span class="meta">@RequestParam(defaultValue = &quot;4&quot;)</span> <span class="keyword">int</span> pageSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                             Model model)</span></span>&#123;</span><br><span class="line">    <span class="comment">//查找所有题目课程和所有类型，且去重</span></span><br><span class="line">    List&lt;Question&gt; questionCourses=questionService.queryAllCourse();</span><br><span class="line">    questionCourses.add(<span class="keyword">new</span> Question(<span class="string">&quot;bug&quot;</span>,<span class="string">&quot;all&quot;</span>));</span><br><span class="line">    List&lt;Question&gt; questionTypes=questionService.queryAllType();</span><br><span class="line">    questionTypes.add(<span class="keyword">new</span> Question(<span class="string">&quot;k&quot;</span>,<span class="string">&quot;bug&quot;</span>));</span><br><span class="line">    String questionCourseBef = question.getQuestionCourse();</span><br><span class="line">    String questionCourseresRes=<span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(questionCourseBef==<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="comment">//默认查询所有</span></span><br><span class="line">        questionCourseresRes=<span class="string">&quot;all&quot;</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        questionCourseresRes=questionCourseBef;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//若是第一次查询则用上次提交的表单中的类型、课程，若是第二次查询则延用上次类型</span></span><br><span class="line">    String questionTypeBef=question.getQuestionType();</span><br><span class="line">    String questionTypesRes=<span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span>(questionTypeBef==<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="comment">//默认查询所有</span></span><br><span class="line">        questionTypesRes=<span class="string">&quot;k&quot;</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        questionTypesRes=questionTypeBef;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//查询试卷中已存在的试题，不能再次被添加</span></span><br><span class="line">    List&lt;Question&gt; questionids=paperService.queryALlQuestionIdInPaperById(paperId);</span><br><span class="line">    List&lt;Integer&gt; quesds=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span>(questionids!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(Question qid:questionids)&#123;</span><br><span class="line">            quesds.add(qid.getQuestionId());</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">int</span> nums=questionService.queryIdByPapQue(ques);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/paper/toManagerQuestion/&quot;</span>+papid;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.zhao.quiz.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/exam&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExamController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ExamService examService;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> PaperService paperService;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RecordService recordService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//前台跳转</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/toExam&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toExam</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">        List&lt;Exam&gt; Exams = examService.getAll();</span><br><span class="line">        model.addAttribute(<span class="string">&quot;Exams&quot;</span>,Exams);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;exam/examplan&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=89&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=571422302105200hg<br>https://javayms.pages.dev?id=571422302105200hg</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
+			<a href="/tags/%E8%80%83%E8%AF%95/" rel="tag"><i class="fa fa-tag"></i> 考试</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

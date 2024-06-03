@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于java的Swing+MySQL电子商城(java+swing+mysql+gui)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/292121051901101aa/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于java的Swing+MySQL电子商城(java+swing+mysql+gui) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/292121051901101aa/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于java的Swing+MySQL电子商城(java+swing+mysql+gui)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p>管理员管理商品、用户购买商品等</p>
+<p>eclipse运行：</p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/540123072502.jpg" alt="540123072502"></p>
+<p>idea运行：</p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/530123072502.jpg" alt="530123072502"></p>
+<p>前台用户：</p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/350123072502.jpg" alt="350123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/360123072502.jpg" alt="360123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/370123072502.jpg" alt="370123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/390123072502.jpg" alt="390123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/400123072502.jpg" alt="400123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/410123072502.jpg" alt="410123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/420123072502.jpg" alt="420123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/430123072502.jpg" alt="430123072502"></p>
+<p>后台管理员：</p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/440123072502.jpg" alt="440123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/450123072502.jpg" alt="450123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/460123072502.jpg" alt="460123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/470123072502.jpg" alt="470123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/480123072502.jpg" alt="480123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/500123072502.jpg" alt="500123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/510123072502.jpg" alt="510123072502"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/520123072502.jpg" alt="520123072502"></p>
+<h3 id="技术框架"><a href="#技术框架" class="headerlink" title="技术框架"></a>技术框架</h3><p>Java Swing GUI</p>
+<p>基于java的Swing+MySQL电子商城(java+swing+mysql+gui)</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">box.add(label);</span><br><span class="line">box1.add(label0);</span><br><span class="line">box2.add(label1);</span><br><span class="line">box3.add(scroll);</span><br><span class="line">box4.add(label2);</span><br><span class="line">box5.add(label3);</span><br><span class="line">box5.add(field);</span><br><span class="line">box6.add(label4);</span><br><span class="line">box6.add(field1);</span><br><span class="line">box7.add(label5);</span><br><span class="line">box7.add(field2);</span><br><span class="line">box8.add(label6);</span><br><span class="line">box8.add(field3);</span><br><span class="line">box9.add(label7);</span><br><span class="line">box9.add(field4);</span><br><span class="line">box10.add(label8);</span><br><span class="line">box10.add(field5);</span><br><span class="line">box11.add(button);</span><br><span class="line">box11.add(button1);</span><br><span class="line"></span><br><span class="line">base.add(box);</span><br><span class="line">base.add(Box.createVerticalStrut(<span class="number">10</span>));</span><br><span class="line">base.add(box0);</span><br><span class="line">base.add(Box.createVerticalStrut(<span class="number">10</span>));</span><br><span class="line">base.add(box1);</span><br><span class="line">base.add(Box.createVerticalStrut(<span class="number">10</span>));</span><br><span class="line">base.add(box2);</span><br><span class="line">base.add(Box.createVerticalStrut(<span class="number">10</span>));</span><br><span class="line">base.add(box3);</span><br><span class="line">base.add(Box.createVerticalStrut(<span class="number">30</span>));</span><br><span class="line">base.add(box4);</span><br><span class="line">base.add(Box.createVerticalStrut(<span class="number">30</span>));</span><br><span class="line">base.add(box5);</span><br><span class="line">base.add(Box.createVerticalStrut(<span class="number">30</span>));</span><br><span class="line">base.add(box6);</span><br><span class="line">base.add(Box.createVerticalStrut(<span class="number">30</span>));</span><br><span class="line">base.add(box7);</span><br><span class="line">base.add(Box.createVerticalStrut(<span class="number">30</span>));</span><br><span class="line">base.add(box8);</span><br><span class="line">base.add(Box.createVerticalStrut(<span class="number">30</span>));</span><br><span class="line">base.add(box9);</span><br><span class="line">base.add(Box.createVerticalStrut(<span class="number">30</span>));</span><br><span class="line">base.add(box10);</span><br><span class="line">base.add(Box.createVerticalStrut(<span class="number">40</span>));</span><br><span class="line">base.add(box11);</span><br><span class="line">base.add(Box.createVerticalStrut(<span class="number">40</span>));</span><br><span class="line"></span><br><span class="line">contenctPanel.add(base);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Box box6 = Box.createHorizontalBox();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Box box7 = Box.createHorizontalBox();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Box box8 = Box.createHorizontalBox();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Box box9 = Box.createHorizontalBox();</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> String adminname;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.adminname = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AdminSelect</span><span class="params">(String adminname)</span> </span>&#123;</span><br><span class="line">	setTitle(<span class="string">&quot;欢迎使用  在线  电子商城&quot;</span>);</span><br><span class="line">	setBounds(<span class="number">300</span>,<span class="number">100</span>,<span class="number">900</span>,<span class="number">900</span>);</span><br><span class="line">	setVisible(<span class="keyword">true</span>);</span><br><span class="line">	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span><br><span class="line">	</span><br><span class="line">	contenctPanel.setLayout(<span class="keyword">new</span> FlowLayout(FlowLayout.CENTER));</span><br><span class="line">	contenctPanel.setBackground(Color.WHITE);</span><br><span class="line">	label.setText(<span class="string">&quot;在 线    电   子   商   城&quot;</span>);</span><br><span class="line">	label.setFont(<span class="keyword">new</span> Font(<span class="string">&quot;微软雅黑&quot;</span>,<span class="number">1</span>,<span class="number">32</span>));</span><br><span class="line">	label.setForeground(Color.BLUE);</span><br><span class="line">	</span><br><span class="line">	label0.setText(<span class="string">&quot;管  理  员  服  务  选  择  界  面\n&quot;</span>);</span><br><span class="line">	label0.setFont(<span class="keyword">new</span> Font(<span class="string">&quot;微软雅黑&quot;</span>,<span class="number">1</span>,<span class="number">25</span>));</span><br><span class="line">	</span><br><span class="line">	label1.setText(<span class="string">&quot;欢迎  &quot;</span> + adminname + <span class="string">&quot;  管理员&quot;</span>);</span><br><span class="line">	label1.setFont(<span class="keyword">new</span> Font(<span class="string">&quot;微软雅黑&quot;</span>,<span class="number">0</span>,<span class="number">20</span>));</span><br><span class="line">	</span><br><span class="line">	button1.setText(<span class="string">&quot;1、添 加 新 管 理 员&quot;</span>);</span><br><span class="line">	button1.setBackground(Color.WHITE);</span><br><span class="line">	button1.setFont(<span class="keyword">new</span> Font(<span class="string">&quot;微软雅黑&quot;</span>,<span class="number">1</span>,<span class="number">18</span>));</span><br><span class="line">	button1.setBorderPainted(<span class="keyword">false</span>);</span><br><span class="line">	button1.addActionListener(<span class="keyword">new</span> ActionListener() &#123;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">			<span class="keyword">if</span>(e.getSource() == button1) &#123;</span><br><span class="line">				dispose();</span><br><span class="line">				AdminRegion region = <span class="keyword">new</span> AdminRegion(adminname);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">				AdminGoodsUpdate Up = <span class="keyword">new</span> AdminGoodsUpdate(adminname);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.shop.JFrame;</span><br><span class="line"><span class="comment">/***用户购买商品界面***/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserBuy</span> <span class="keyword">extends</span> <span class="title">JFrame</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> Connection conn;	<span class="comment">//声明Connection对象</span></span><br><span class="line">	<span class="keyword">static</span> PreparedStatement pres;	<span class="comment">//向数据库发送SQL语句</span></span><br><span class="line">	<span class="keyword">static</span> ResultSet res;	<span class="comment">//执行数据库查询</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JPanel contenctPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JTextField field = <span class="keyword">new</span> JTextField(<span class="number">10</span>);</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JTextField field1 = <span class="keyword">new</span> JTextField(<span class="number">10</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JLabel label = <span class="keyword">new</span> JLabel();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JLabel label0 = <span class="keyword">new</span> JLabel();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JLabel label1 = <span class="keyword">new</span> JLabel();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JLabel label2 = <span class="keyword">new</span> JLabel();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JLabel label3 = <span class="keyword">new</span> JLabel();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JLabel label4 = <span class="keyword">new</span> JLabel();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JButton button = <span class="keyword">new</span> JButton();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JButton button1 = <span class="keyword">new</span> JButton();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box base = Box.createVerticalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box1 = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box2 = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box3 = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box4 = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box5 = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box6 = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box7 = Box.createHorizontalBox();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Box box1 = Box.createHorizontalBox();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Box box2 = Box.createHorizontalBox();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Box box3 = Box.createHorizontalBox();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Box box4 = Box.createHorizontalBox();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Box box5 = Box.createHorizontalBox();</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> String username;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.username = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">UserSelect</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	setTitle(<span class="string">&quot;欢迎使用  在线  电子商城&quot;</span>);</span><br><span class="line">	setBounds(<span class="number">300</span>,<span class="number">100</span>,<span class="number">900</span>,<span class="number">900</span>);</span><br><span class="line">	setVisible(<span class="keyword">true</span>);</span><br><span class="line">	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span><br><span class="line">	</span><br><span class="line">	contenctPanel.setLayout(<span class="keyword">new</span> FlowLayout(FlowLayout.CENTER));</span><br><span class="line">	contenctPanel.setBackground(Color.WHITE);</span><br><span class="line">	label.setText(<span class="string">&quot;在 线    电   子   商   城&quot;</span>);</span><br><span class="line">	label.setFont(<span class="keyword">new</span> Font(<span class="string">&quot;微软雅黑&quot;</span>,<span class="number">1</span>,<span class="number">32</span>));</span><br><span class="line">	label.setForeground(Color.BLUE);</span><br><span class="line">	</span><br><span class="line">	label0.setText(<span class="string">&quot;用  户  服  务  选  择  界  面\n&quot;</span>);</span><br><span class="line">	label0.setFont(<span class="keyword">new</span> Font(<span class="string">&quot;微软雅黑&quot;</span>,<span class="number">1</span>,<span class="number">25</span>));</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	label1.setText(<span class="string">&quot;欢迎  &quot;</span> + username + <span class="string">&quot;  VIP用户&quot;</span>);</span><br><span class="line">	label1.setFont(<span class="keyword">new</span> Font(<span class="string">&quot;微软雅黑&quot;</span>,<span class="number">0</span>,<span class="number">20</span>));</span><br><span class="line">	<span class="comment">//购买商品</span></span><br><span class="line">	button.setText(<span class="string">&quot;1、 购  买  商  品 &quot;</span>);</span><br><span class="line">	button.setFont(<span class="keyword">new</span> Font(<span class="string">&quot;微软雅黑&quot;</span>,<span class="number">1</span>,<span class="number">18</span>));</span><br><span class="line">	button.setBorderPainted(<span class="keyword">false</span>);</span><br><span class="line">	button.setBackground(Color.WHITE);</span><br><span class="line">	button.addActionListener(<span class="keyword">new</span> ActionListener() &#123;</span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">			<span class="keyword">if</span>(e.getSource() == button) &#123;</span><br><span class="line">				dispose();</span><br><span class="line">				UserBuy buy = <span class="keyword">new</span> UserBuy(username);</span><br><span class="line">				buy.getName(username);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;			</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="comment">//查看购物车</span></span><br><span class="line">	button2.setText(<span class="string">&quot;2、 查  看  购  物  车 &quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">			DBadminNamedecide dbadminname = <span class="keyword">new</span> DBadminNamedecide();</span><br><span class="line">			DBadminRegion insert = <span class="keyword">new</span> DBadminRegion();</span><br><span class="line">			UserDecide userdecide = <span class="keyword">new</span> UserDecide();</span><br><span class="line">			<span class="keyword">if</span>(e.getSource() == button) &#123;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//获取文本框输入的信息</span></span><br><span class="line">				username = field.getText();</span><br><span class="line">				password = password1.getText();</span><br><span class="line">				</span><br><span class="line">				String option = username + <span class="string">&quot;  管理员添加成功&quot;</span>;</span><br><span class="line">				</span><br><span class="line">				<span class="keyword">if</span>(dbadminname.decideAdminname(username) == <span class="keyword">true</span> || username.length() &lt; <span class="number">6</span> || userdecide.Decide(username) == <span class="keyword">false</span>) &#123;</span><br><span class="line">					JOptionPane.showMessageDialog(<span class="keyword">null</span>,<span class="string">&quot;用户名重复，由字母和数字组成，长度至少为6位！&quot;</span>, <span class="string">&quot;错误&quot;</span>,JOptionPane.ERROR_MESSAGE); </span><br><span class="line">					field.setText(<span class="string">&quot;&quot;</span>);</span><br><span class="line">				&#125;<span class="keyword">else</span> <span class="keyword">if</span>(userdecide.Decide(password) == <span class="keyword">false</span>) &#123;</span><br><span class="line">					JOptionPane.showMessageDialog(<span class="keyword">null</span>,<span class="string">&quot;密码名由字母和数字组成，长度至少为6位！&quot;</span>, <span class="string">&quot;错误&quot;</span>,JOptionPane.ERROR_MESSAGE); </span><br><span class="line">					field1.setText(<span class="string">&quot;&quot;</span>);</span><br><span class="line">				&#125;<span class="keyword">else</span> <span class="keyword">if</span>(insert.insertAdmin(username,password )) &#123;</span><br><span class="line">						JOptionPane.showMessageDialog(<span class="keyword">null</span>, option, <span class="string">&quot;正确注册&quot;</span>,JOptionPane.DEFAULT_OPTION); </span><br><span class="line">						AdminSelect select = <span class="keyword">new</span> AdminSelect(adminname);</span><br><span class="line">						select.getName(adminname);</span><br><span class="line">						dispose();</span><br><span class="line">				&#125;</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.shop.JFrame;</span><br><span class="line"><span class="comment">/***管理员删除商品信息界面***/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdminGoodsDel</span> <span class="keyword">extends</span> <span class="title">JFrame</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> String adminname;</span><br><span class="line">	<span class="keyword">static</span> Connection conn;	<span class="comment">//声明Connection对象</span></span><br><span class="line">	<span class="keyword">static</span> PreparedStatement pres;	<span class="comment">//向数据库发送SQL语句</span></span><br><span class="line">	<span class="keyword">static</span> ResultSet res;	<span class="comment">//执行数据库查询</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">					field1.setText(<span class="string">&quot;&quot;</span>);</span><br><span class="line">				&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">					String name = goodsname.getgoodsName(id);<span class="comment">//获取商品名称</span></span><br><span class="line">					BigDecimal vip = money.getgoodsVIPmoney(id);<span class="comment">//获取商品价格</span></span><br><span class="line">					BigDecimal cost = vip.multiply(BigDecimal.valueOf(num));</span><br><span class="line">					<span class="keyword">if</span>(insert.Goodsinsert(username, id, name, vip, num, cost)) &#123;</span><br><span class="line">						JOptionPane.showMessageDialog(<span class="keyword">null</span>, name + <span class="string">&quot;  商 品 购 买 成 功 ！&quot;</span>, <span class="string">&quot;购买成功&quot;</span>,JOptionPane.DEFAULT_OPTION); </span><br><span class="line">						update.setupgoodsNum(id, n-num);<span class="comment">//同时更新商品数量</span></span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				JOptionPane.showMessageDialog(<span class="keyword">null</span>,<span class="string">&quot;您 输 入 的 商 品 序 号 不 存 在 ！&quot;</span>, <span class="string">&quot;错误&quot;</span>,JOptionPane.ERROR_MESSAGE); </span><br><span class="line">				field.setText(<span class="string">&quot;&quot;</span>);</span><br><span class="line">				field1.setText(<span class="string">&quot;&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.shop.JFrame;</span><br><span class="line"><span class="comment">/***管理员服务选择界面***/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdminSelect</span> <span class="keyword">extends</span> <span class="title">JFrame</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JPanel contenctPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JButton button1 = <span class="keyword">new</span> JButton();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JButton button2 = <span class="keyword">new</span> JButton();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JButton button3 = <span class="keyword">new</span> JButton();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JButton button4 = <span class="keyword">new</span> JButton();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JButton button5 = <span class="keyword">new</span> JButton();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JButton button6 = <span class="keyword">new</span> JButton();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JButton button7 = <span class="keyword">new</span> JButton();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JLabel label = <span class="keyword">new</span> JLabel();<span class="comment">//文本标签</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JLabel label0 = <span class="keyword">new</span> JLabel();<span class="comment">//文本标签</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JLabel label1 = <span class="keyword">new</span> JLabel();<span class="comment">//文本标签</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> JLabel label2 = <span class="keyword">new</span> JLabel();<span class="comment">//文本标签</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box base = Box.createVerticalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box0 = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box1 = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box2 = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box3 = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box4 = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box5 = Box.createHorizontalBox();</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Box box6 = Box.createHorizontalBox();</span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=99&price1=59&price2=59" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=292121051901101aa<br>https://javayms.pages.dev?id=292121051901101aa</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/Swing/" rel="tag"><i class="fa fa-tag"></i> Swing</a>
+			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

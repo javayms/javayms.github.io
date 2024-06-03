@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于java的Swing+MySQL银行管理系统+文档java基础gui(java+gui)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/331222062008200xe/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于java的Swing+MySQL银行管理系统+文档java基础gui(java+gui) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/331222062008200xe/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于java的Swing+MySQL银行管理系统+文档java基础gui(java+gui)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/590123062402.jpg" alt="590123062402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/000123072402.jpg" alt="000123072402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/010123072402.jpg" alt="010123072402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/020123072402.jpg" alt="020123072402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/030123072402.jpg" alt="030123072402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/040123072402.jpg" alt="040123072402"></p>
+<p>基于java的Swing+MySQL银行管理系统+文档java基础gui(java+gui)</p>
+<p>功能介绍：</p>
+<p>登录、打印、取款、改密、转账、查询、挂失、存款、退卡</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">    	<span class="keyword">this</span>.setLayout(<span class="keyword">null</span>);<span class="comment">//设置空布局</span></span><br><span class="line">		</span><br><span class="line">    	<span class="comment">//设置更新后的Account对象</span></span><br><span class="line">    	dao.setTheAccount(user);<span class="comment">//使得后面调用Account对象的setter方法和getter方法，都是最新的值</span></span><br><span class="line">    	</span><br><span class="line">    	<span class="comment">//初始化标签</span></span><br><span class="line">    	balanceLabel = <span class="keyword">new</span> JLabel(<span class="string">&quot;余      额：&quot;</span>);</span><br><span class="line">    	depositLabel = <span class="keyword">new</span> JLabel(<span class="string">&quot;存款金额：&quot;</span>);</span><br><span class="line">    	</span><br><span class="line">		<span class="comment">//初始化文本域</span></span><br><span class="line">    	balanceTextField = <span class="keyword">new</span> JTextField(<span class="number">10</span>);</span><br><span class="line">    	depositTextField = <span class="keyword">new</span> JTextField(<span class="number">10</span>);</span><br><span class="line">		</span><br><span class="line">    	<span class="comment">//设置文本域</span></span><br><span class="line">    	System.out.println(<span class="string">&quot;余额为：&quot;</span> + user.getBalance());<span class="comment">//测试代码</span></span><br><span class="line"><span class="comment">//    	System.out.println(&quot;balanceTextField的值为：&quot; + balanceTextField.getText());//测试代码</span></span><br><span class="line">    	balanceTextField.setText(user.getBalance());<span class="comment">//在余额文本框显示余额</span></span><br><span class="line">    	balanceTextField.setEditable(<span class="keyword">false</span>);<span class="comment">//设置用户不可在窗口编辑状态</span></span><br><span class="line"><span class="comment">//    	System.out.println(&quot;balanceTextField的值为：&quot; + balanceTextField.getText());//测试代码</span></span><br><span class="line"><span class="comment">//    	balanceTextField.setText(String.valueOf(user.getBalance()));//String.valueOf()是将浮点型转换成字符串</span></span><br><span class="line"><span class="comment">//    	balanceTextField.setEditable(false);</span></span><br><span class="line">    	</span><br><span class="line">    	<span class="comment">//添加文本域事件</span></span><br><span class="line">    	balanceTextField.getDocument().addDocumentListener(<span class="keyword">this</span>);</span><br><span class="line">		depositTextField.getDocument().addDocumentListener(<span class="keyword">this</span>);</span><br><span class="line">		depositTextField.addKeyListener(<span class="keyword">new</span> MyFieldEvent());</span><br><span class="line">		</span><br><span class="line">    	<span class="comment">//初始化按钮</span></span><br><span class="line">		confirmButton = <span class="keyword">new</span> JButton(<span class="string">&quot;确定&quot;</span>);</span><br><span class="line">		resetButton = <span class="keyword">new</span> JButton(<span class="string">&quot;重置&quot;</span>);</span><br><span class="line">		returnButton = <span class="keyword">new</span> JButton(<span class="string">&quot;返回&quot;</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//添加按钮事件</span></span><br><span class="line">		confirmButton.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">		resetButton.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">		returnButton.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//初始化面板</span></span><br><span class="line">		balancePanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">		depositPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">		buttonPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//向面板添加组件</span></span><br><span class="line">		balancePanel.add(balanceLabel);</span><br><span class="line">		balancePanel.add(balanceTextField);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">reservePathTextField = <span class="keyword">new</span> JTextField(<span class="number">20</span>);</span><br><span class="line">filenameTextField = <span class="keyword">new</span> JTextField(<span class="number">10</span>);</span><br><span class="line">displayTextArea = <span class="keyword">new</span> JTextArea(<span class="number">6</span>,<span class="number">20</span>); <span class="comment">//设置成6行20列</span></span><br><span class="line">	</span><br><span class="line"><span class="comment">//添加文本域事件</span></span><br><span class="line">reservePathTextField.getDocument().addDocumentListener(<span class="keyword">this</span>);</span><br><span class="line">filenameTextField.getDocument().addDocumentListener(<span class="keyword">this</span>);</span><br><span class="line">filenameTextField.addKeyListener(<span class="keyword">new</span> MyFieldEvent());</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置显示信息的文本域</span></span><br><span class="line">displayTextArea.append( <span class="string">&quot;姓名：&quot;</span> + user.getChineseName() + <span class="string">&quot;\r\n&quot;</span>);<span class="comment">//打印中文名，&quot;\r\n&quot;作用是每次输入都会换行</span></span><br><span class="line">displayTextArea.append( <span class="string">&quot;卡号：&quot;</span> + user.getCardNumber() + <span class="string">&quot;\r\n&quot;</span>);<span class="comment">//打印卡号</span></span><br><span class="line">displayTextArea.append( <span class="string">&quot;余额：&quot;</span> + user.getBalance() + <span class="string">&quot;\r\n&quot;</span>);<span class="comment">//打印余额</span></span><br><span class="line">displayTextArea.setEditable(<span class="keyword">false</span>);<span class="comment">//设置用户不可以在窗口编辑状态</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化按钮</span></span><br><span class="line">printButton = <span class="keyword">new</span> JButton(<span class="string">&quot;打印&quot;</span>);</span><br><span class="line">returnButton = <span class="keyword">new</span> JButton(<span class="string">&quot;返回&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//添加按钮事件</span></span><br><span class="line">printButton.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">returnButton.addActionListener(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//初始化面板</span></span><br><span class="line">reservePathPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">tipsPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">filenamePanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">buttonPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">contentPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">textAreaPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line"></span><br><span class="line"><span class="comment">//向面板添加组件</span></span><br><span class="line">reservePathPanel.add(reservePathLabel);</span><br><span class="line">reservePathPanel.add(reservePathTextField);</span><br><span class="line">tipsPanel.add(tipsLabel);</span><br><span class="line">filenamePanel.add(filenameLabel);</span><br><span class="line">filenamePanel.add(filenameTextField);</span><br><span class="line">buttonPanel.add(printButton);</span><br><span class="line">buttonPanel.add(returnButton);</span><br><span class="line">contentPanel.add(contentLabel);</span><br><span class="line">textAreaPanel.add(displayTextArea);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//有参构造</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ReportLost</span><span class="params">(Account user)</span> </span>&#123;</span><br><span class="line">	        <span class="comment">//设置窗口</span></span><br><span class="line">			<span class="keyword">this</span>.setTitle(<span class="string">&quot;挂失&quot;</span>);</span><br><span class="line">	    	<span class="keyword">this</span>.setVisible(<span class="keyword">true</span>);</span><br><span class="line">	    	<span class="keyword">this</span>.setSize(<span class="number">310</span>, <span class="number">400</span>);</span><br><span class="line">	    	<span class="keyword">this</span>.setLocationRelativeTo(<span class="keyword">null</span>);<span class="comment">//在屏幕中间居中显示</span></span><br><span class="line">	    	<span class="keyword">this</span>.setLayout(<span class="keyword">null</span>);<span class="comment">//设置空布局</span></span><br><span class="line">	        </span><br><span class="line">	    	<span class="comment">//设置更新后的Account对象</span></span><br><span class="line">	    	dao.setTheAccount(user);<span class="comment">//使得后面调用Account对象的setter方法和getter方法，都是最新的值</span></span><br><span class="line">	    	</span><br><span class="line">	    	<span class="comment">//初始化标签</span></span><br><span class="line">	    	chineseNameLabel = <span class="keyword">new</span> JLabel(<span class="string">&quot;姓名：&quot;</span>);</span><br><span class="line">	    	cardNumberLabel = <span class="keyword">new</span> JLabel(<span class="string">&quot;卡号：&quot;</span>);</span><br><span class="line">	    	accountNameLabel = <span class="keyword">new</span> JLabel(<span class="string">&quot;账户：&quot;</span>);</span><br><span class="line">			</span><br><span class="line">	    	<span class="comment">//初始化文本域</span></span><br><span class="line">	    	chineseNameTextField = <span class="keyword">new</span> JTextField(<span class="number">20</span>);</span><br><span class="line">	    	cardNumberTextField = <span class="keyword">new</span> JTextField(<span class="number">20</span>);</span><br><span class="line">	        accountNameTextField= <span class="keyword">new</span> JTextField(<span class="number">20</span>);</span><br><span class="line">			displayTextArea = <span class="keyword">new</span> JTextArea(<span class="number">8</span>,<span class="number">20</span>); <span class="comment">//设置成6行20列</span></span><br><span class="line">			</span><br><span class="line">			<span class="comment">//设置文本域</span></span><br><span class="line">			displayTextArea.setEditable(<span class="keyword">false</span>);<span class="comment">//设置用户不可在窗口编辑状态</span></span><br><span class="line">			</span><br><span class="line">			<span class="comment">//添加文本域事件</span></span><br><span class="line">			chineseNameTextField.getDocument().addDocumentListener(<span class="keyword">this</span>);</span><br><span class="line">			cardNumberTextField.getDocument().addDocumentListener(<span class="keyword">this</span>);</span><br><span class="line">			accountNameTextField.getDocument().addDocumentListener(<span class="keyword">this</span>);</span><br><span class="line">			accountNameTextField.addKeyListener(<span class="keyword">new</span> MyFieldEvent());</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//初始化按钮</span></span><br><span class="line">			confirmButton = <span class="keyword">new</span> JButton(<span class="string">&quot;确定&quot;</span>);</span><br><span class="line">			resetButton = <span class="keyword">new</span> JButton(<span class="string">&quot;重置&quot;</span>);</span><br><span class="line">			returnButton = <span class="keyword">new</span> JButton(<span class="string">&quot;返回&quot;</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//添加按钮事件</span></span><br><span class="line">			confirmButton.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">			resetButton.addActionListener(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">		<span class="comment">//设置面板的边界</span></span><br><span class="line">		chineseNamePanel.setBounds(-<span class="number">10</span>, <span class="number">30</span>, <span class="number">300</span>, <span class="number">30</span>);   </span><br><span class="line">		accountNamePanel.setBounds(<span class="number">2</span>, <span class="number">70</span>, <span class="number">300</span>, <span class="number">30</span>);</span><br><span class="line">		transferedMoneyPanel.setBounds(-<span class="number">10</span>, <span class="number">110</span>, <span class="number">300</span>, <span class="number">40</span>);</span><br><span class="line">		buttonPanel.setBounds(-<span class="number">10</span>, <span class="number">160</span>, <span class="number">300</span>, <span class="number">40</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//向窗口添加面板</span></span><br><span class="line">		<span class="keyword">this</span>.add(chineseNamePanel);</span><br><span class="line">		<span class="keyword">this</span>.add(accountNamePanel);</span><br><span class="line">		<span class="keyword">this</span>.add(transferedMoneyPanel);</span><br><span class="line">		<span class="keyword">this</span>.add(buttonPanel);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//文本框的监听事件,转账文本框监听回车键，则执行确定按钮的按钮事件</span></span><br><span class="line">	 <span class="class"><span class="keyword">class</span> <span class="title">MyFieldEvent</span> <span class="keyword">extends</span> <span class="title">KeyAdapter</span></span>&#123; <span class="comment">//KeyAdapter为KeyListener的适配器，作用是不需要实现接口里面的全部方法</span></span><br><span class="line">		 <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">keyPressed</span><span class="params">(KeyEvent e)</span> </span>&#123;</span><br><span class="line">			 <span class="keyword">if</span>(e.getSource() == chineseNameTextField) &#123;</span><br><span class="line">				 <span class="keyword">if</span>(e.getKeyCode() == <span class="number">10</span>) &#123;<span class="comment">//10代表回车键</span></span><br><span class="line">					 confirmButton.doClick(); <span class="comment">//调用确定按钮的单击事件</span></span><br><span class="line">				 &#125;</span><br><span class="line">			 &#125;</span><br><span class="line">		 &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//按钮事件处理的方法</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">if</span>( e.getSource() == returnButton ) &#123;</span><br><span class="line">					<span class="keyword">this</span>.setVisible(<span class="keyword">false</span>);</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"><span class="comment">//					System.out.println(transferTextField.getText());//测试代码</span></span><br><span class="line">					<span class="keyword">this</span>.executeTransfer(transferedAccount, Login.getUser());<span class="comment">//执行转账方法</span></span><br><span class="line">					dao.setTheAccount(transferedAccount);<span class="comment">//使得后面调用Account对象的setter方法和getter方法，都是最新的值</span></span><br><span class="line">					dao.setTheAccount(Login.getUser());<span class="comment">//使得后面调用Account对象的setter方法和getter方法，都是最新的值</span></span><br><span class="line">				    System.out.println(<span class="string">&quot;操作完成！&quot;</span>);<span class="comment">//测试代码</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//在本类中定义私有方法——执行转账给对方的方法</span></span><br><span class="line">			<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">executeTransfer</span><span class="params">(Account transferedAccount, Account user)</span> </span>&#123;</span><br><span class="line">				<span class="comment">/*</span></span><br><span class="line"><span class="comment">				 * 数据库纪录更新操作sql语句</span></span><br><span class="line"><span class="comment">				 * userSql是针对于转账方的sql语句</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">			buttonPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//向面板添加组件</span></span><br><span class="line">			chineseNamePanel.add(chineseNameLabel);</span><br><span class="line">			chineseNamePanel.add(chineseNameTextField);</span><br><span class="line">			cardNumberPanel.add(cardNumberLabel);</span><br><span class="line">			cardNumberPanel.add(cardNumberTextField);</span><br><span class="line">			accountNamePanel.add(accountNameLabel);</span><br><span class="line">			accountNamePanel.add(accountNameTextField);</span><br><span class="line">			buttonPanel.add(confirmButton);</span><br><span class="line">			buttonPanel.add(resetButton);</span><br><span class="line">			buttonPanel.add(returnButton);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//设置面板的边界</span></span><br><span class="line">			chineseNamePanel.setBounds(-<span class="number">10</span>, <span class="number">30</span>, <span class="number">300</span>, <span class="number">30</span>);   </span><br><span class="line">			cardNumberPanel.setBounds(-<span class="number">10</span>, <span class="number">70</span>, <span class="number">300</span>, <span class="number">30</span>);</span><br><span class="line">			accountNamePanel.setBounds(-<span class="number">10</span>, <span class="number">110</span>, <span class="number">300</span>, <span class="number">30</span>);</span><br><span class="line">			buttonPanel.setBounds(-<span class="number">10</span>, <span class="number">150</span>, <span class="number">300</span>, <span class="number">40</span>);</span><br><span class="line">			displayTextArea.setBounds(<span class="number">0</span>, <span class="number">220</span>, <span class="number">300</span>, <span class="number">100</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//向窗口添加面板</span></span><br><span class="line">			<span class="keyword">this</span>.add(chineseNamePanel);</span><br><span class="line">			<span class="keyword">this</span>.add(cardNumberPanel);</span><br><span class="line">			<span class="keyword">this</span>.add(accountNamePanel);</span><br><span class="line">			<span class="keyword">this</span>.add(buttonPanel);</span><br><span class="line">			<span class="keyword">this</span>.add(displayTextArea);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//文本域事件的处理方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changedUpdate</span><span class="params">(DocumentEvent e)</span> </span>&#123;</span><br><span class="line">	chineseNameTemp = chineseNameTextField.getText();</span><br><span class="line">	cardNumberTemp = cardNumberTextField.getText();</span><br><span class="line">	accountNameTemp = accountNameTextField.getText();</span><br><span class="line">	System.out.println(chineseNameTemp + cardNumberTemp + accountNameTemp );<span class="comment">//测试代码</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertUpdate</span><span class="params">(DocumentEvent e)</span> </span>&#123;</span><br><span class="line">	chineseNameTemp = chineseNameTextField.getText();</span><br><span class="line">	cardNumberTemp = cardNumberTextField.getText();</span><br><span class="line">	accountNameTemp = accountNameTextField.getText();</span><br><span class="line">	System.out.println(chineseNameTemp + cardNumberTemp + accountNameTemp );<span class="comment">//测试代码</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeUpdate</span><span class="params">(DocumentEvent e)</span> </span>&#123;</span><br><span class="line">	chineseNameTemp = chineseNameTextField.getText();</span><br><span class="line">	cardNumberTemp = cardNumberTextField.getText();</span><br><span class="line">	accountNameTemp = accountNameTextField.getText();</span><br><span class="line">	System.out.println(chineseNameTemp + cardNumberTemp + accountNameTemp );<span class="comment">//测试代码</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//文本框的监听事件</span></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">MyFieldEvent</span> <span class="keyword">extends</span> <span class="title">KeyAdapter</span></span>&#123;</span><br><span class="line">	 <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">keyPressed</span><span class="params">(KeyEvent e)</span> </span>&#123;</span><br><span class="line">		 <span class="keyword">if</span>(e.getSource() == accountNameTextField) &#123;</span><br><span class="line">			 <span class="keyword">if</span>(e.getKeyCode() == <span class="number">10</span>) &#123;<span class="comment">//10代表回车键</span></span><br><span class="line">				 confirmButton.doClick(); <span class="comment">//调用确定按钮的单击事件</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">	    	<span class="comment">//初始化标签</span></span><br><span class="line">	    	accountNameLabel = <span class="keyword">new</span> JLabel(<span class="string">&quot;用      户：&quot;</span>);</span><br><span class="line">	    	chineseNameLabel = <span class="keyword">new</span> JLabel(<span class="string">&quot;中  文  名：&quot;</span>);</span><br><span class="line">	    	cardNumberLabel = <span class="keyword">new</span> JLabel(<span class="string">&quot;卡号：(若已挂失，则填unavaibility)&quot;</span>);</span><br><span class="line">	    	</span><br><span class="line">			<span class="comment">//初始化文本域</span></span><br><span class="line">	    	accountNameTextField = <span class="keyword">new</span> JTextField(<span class="number">10</span>);</span><br><span class="line">	    	chineseNameTextField = <span class="keyword">new</span> JTextField(<span class="number">10</span>);</span><br><span class="line">	    	cardNumberTextField = <span class="keyword">new</span> JTextField(<span class="number">20</span>);</span><br><span class="line">			</span><br><span class="line"><span class="comment">//	    	//设置文本域</span></span><br><span class="line"><span class="comment">//	    	System.out.println(&quot;余额为：&quot; + user.getBalance());//测试代码</span></span><br><span class="line"><span class="comment">////	    	System.out.println(&quot;balanceTextField的值为：&quot; + balanceTextField.getText());//测试代码</span></span><br><span class="line"><span class="comment">//	    	balanceTextField.setText(user.getBalance());//在余额文本框显示余额</span></span><br><span class="line"><span class="comment">//	    	balanceTextField.setEditable(false);//设置用户不可在窗口编辑状态</span></span><br><span class="line"><span class="comment">////	    	System.out.println(&quot;balanceTextField的值为：&quot; + balanceTextField.getText());//测试代码</span></span><br><span class="line"><span class="comment">////	    	balanceTextField.setText(String.valueOf(user.getBalance()));//String.valueOf()是将浮点型转换成字符串</span></span><br><span class="line"><span class="comment">////	    	balanceTextField.setEditable(false);</span></span><br><span class="line">	    	</span><br><span class="line">	    	<span class="comment">//添加文本域事件</span></span><br><span class="line">	    	accountNameTextField.getDocument().addDocumentListener(<span class="keyword">this</span>);</span><br><span class="line">	    	chineseNameTextField.getDocument().addDocumentListener(<span class="keyword">this</span>);</span><br><span class="line">	    	cardNumberTextField.getDocument().addDocumentListener(<span class="keyword">this</span>);</span><br><span class="line">	    	cardNumberTextField.addKeyListener(<span class="keyword">new</span> MyFieldEvent());</span><br><span class="line">			</span><br><span class="line">	    	<span class="comment">//初始化按钮</span></span><br><span class="line">			confirmButton = <span class="keyword">new</span> JButton(<span class="string">&quot;确定&quot;</span>);</span><br><span class="line">			returnButton = <span class="keyword">new</span> JButton(<span class="string">&quot;返回&quot;</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//添加按钮事件</span></span><br><span class="line">			confirmButton.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">			returnButton.addActionListener(<span class="keyword">this</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//初始化面板</span></span><br><span class="line">			accountNamePanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">			chineseNamePanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">			cardNumberPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">			buttonPanel = <span class="keyword">new</span> JPanel();</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//向面板添加组件</span></span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=99&price1=69&price2=59" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=331222062008200xe<br>https://javayms.pages.dev?id=331222062008200xe</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/Swing/" rel="tag"><i class="fa fa-tag"></i> Swing</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
+			<a href="/tags/%E9%93%B6%E8%A1%8C/" rel="tag"><i class="fa fa-tag"></i> 银行</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

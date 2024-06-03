@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot书城商城系统(java+springboot+vue+maven+mybatis+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/431122512008200na/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot书城商城系统(java+springboot+vue+maven+mybatis+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/431122512008200na/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot书城商城系统(java+springboot+vue+maven+mybatis+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥10</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/000023522402.jpg" alt="000023522402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/010023522402.jpg" alt="010023522402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/020023522402.jpg" alt="020023522402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/040023522402.jpg" alt="040023522402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/050023522402.jpg" alt="050023522402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/060023522402.jpg" alt="060023522402"></p>
+<p>基于javaweb的SpringBoot书城商城系统(java+springboot+vue+maven+mybatis+mysql)</p>
+<p>一、项目运行 环境配置：</p>
+<p>Jdk1.8 + Mysql + HBuilderX（Webstorm也行）+ Eclispe（IntelliJ IDEA,Eclispe,MyEclispe,Sts都支持）。</p>
+<p>项目技术：</p>
+<p>Spring + SpringBoot+ mybatis + Maven + Vue 等等组成，B/S模式 + Maven管理等等。</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> PageUtils pageUtils;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String token = request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    String username = JWT.decode(token).getAudience().get(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> userService.getOne(Wrappers.&lt;User&gt;lambdaQuery().eq(User::getUsername, username));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;新增图书&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; save(<span class="meta">@RequestBody</span> MsslyyBook msslyyBook) &#123;</span><br><span class="line">    msslyyBookService.save(msslyyBook);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;下单之后扣除图书数量&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/decrQuantity/&#123;bookId&#125;/&#123;quantity&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; decrQuantity(<span class="meta">@PathVariable</span> Long bookId,<span class="meta">@PathVariable</span> Integer quantity) &#123;</span><br><span class="line">    MsslyyBook book = msslyyBookService.getById(bookId);</span><br><span class="line">    book.setBookQuantityOutput(book.getBookQuantityOutput()+quantity);</span><br><span class="line">    <span class="keyword">boolean</span> b = msslyyBookService.updateById(book);</span><br><span class="line">    <span class="keyword">return</span> Result.success(b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;更新图书&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@PutMapping</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; update(<span class="meta">@RequestBody</span> MsslyyBook msslyyBook) &#123;</span><br><span class="line">    msslyyBookService.updateById(msslyyBook);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;删除图书&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@DeleteMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; delete(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">    msslyyBookService.removeById(id);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;根据id查询&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; findById(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">    <span class="keyword">return</span> Result.success(msslyyBookService.getById(id));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;分页&quot;,notes = &quot;&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; findPage(<span class="meta">@RequestParam(required = false, defaultValue = &quot;&quot;)</span> String name,</span><br><span class="line">                                                <span class="meta">@RequestParam(required = false, defaultValue = &quot;1&quot;)</span> Integer pageNum,</span><br><span class="line">                                                <span class="meta">@RequestParam(required = false, defaultValue = &quot;10&quot;)</span> Integer pageSize) &#123;</span><br><span class="line">        LambdaQueryWrapper&lt;MsslyyOrderDetail&gt; query = Wrappers.&lt;MsslyyOrderDetail&gt;lambdaQuery().orderByDesc(MsslyyOrderDetail::getId);</span><br><span class="line">        <span class="keyword">if</span> (StrUtil.isNotBlank(name)) &#123;</span><br><span class="line">            query.like(MsslyyOrderDetail::getBookId, name);</span><br><span class="line">        &#125;</span><br><span class="line">        IPage&lt;MsslyyOrderDetail&gt; page = msslyyOrderDetailService.page(<span class="keyword">new</span> Page&lt;&gt;(pageNum, pageSize), query);</span><br><span class="line">        <span class="keyword">return</span> Result.success(page);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.example.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/api/msslyyPublisher&quot;)</span></span><br><span class="line"><span class="meta">@Api(tags = &quot;出版社分类表&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MsslyyPublisherController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> MsslyyPublisherService msslyyPublisherService;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> HttpServletRequest request;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">                          <span class="meta">@RequestBody</span> MsslyyAddressMessaget address,</span><br><span class="line">                          <span class="meta">@PathVariable</span> BigDecimal orderMasterMoney,</span><br><span class="line">                          <span class="meta">@PathVariable</span> String bookIds,</span><br><span class="line">                          <span class="meta">@PathVariable</span> String bookAmounts) &#123;</span><br><span class="line">    <span class="comment">//添加订单主表</span></span><br><span class="line">    MsslyyOrderMaster msslyyOrderMaster = msslyyOrderMasterService.addOrder(userId, address, orderMasterMoney);</span><br><span class="line">    <span class="comment">//添加订单详情表</span></span><br><span class="line">    msslyyOrderDetailService.addOrder(msslyyOrderMaster.getId(),bookIds,bookAmounts);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;新增订单&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="comment">//根据用户拿到历史订单信息</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/getHistoryOrder/&#123;userId&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; getHistoryOrder(<span class="meta">@PathVariable</span> Long userId,</span><br><span class="line">                                 <span class="meta">@RequestParam(required = false, defaultValue = &quot;1&quot;)</span> Integer pageNum,</span><br><span class="line">                                 <span class="meta">@RequestParam(required = false, defaultValue = &quot;10&quot;)</span> Integer pageSize) &#123;</span><br><span class="line">    List&lt;MsslyyOrderMaster&gt; list = msslyyOrderMasterService.historyOrder(userId);</span><br><span class="line">    Page pages = pageUtils.getPages(pageNum, pageSize, list);</span><br><span class="line">    <span class="keyword">return</span> Result.success(pages);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//确认收货</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/confirmReceipt/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; confirmReceipt(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">    <span class="keyword">return</span> Result.success(msslyyOrderMasterService.confirmReceipt(id));</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; save(<span class="meta">@RequestBody</span> MsslyyOrderMaster msslyyOrderMaster) &#123;</span><br><span class="line">    msslyyOrderMasterService.save(msslyyOrderMaster);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;更新订单&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@PutMapping</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; update(<span class="meta">@RequestBody</span> MsslyyOrderMaster msslyyOrderMaster) &#123;</span><br><span class="line">    msslyyOrderMasterService.updateById(msslyyOrderMaster);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;删除订单&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@DeleteMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; delete(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">    msslyyOrderMasterService.removeById(id);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;根据id查询&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; findById(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">    <span class="keyword">return</span> Result.success(msslyyOrderMasterService.getById(id));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;查询全部&quot;,notes = &quot;&quot;)</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;删除分配标签&quot;,notes = &quot;&quot;)</span></span><br><span class="line">    <span class="meta">@DeleteMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; delete(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">        msslyyLabelBookService.removeById(id);</span><br><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;根据id查询&quot;,notes = &quot;&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; findById(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">        <span class="keyword">return</span> Result.success(msslyyLabelBookService.getById(id));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;查询全部&quot;,notes = &quot;&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; findAll() &#123;</span><br><span class="line">        List&lt;MsslyyLabelBook&gt; list = msslyyLabelBookService.list();</span><br><span class="line">        <span class="keyword">return</span> Result.success(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;分页&quot;,notes = &quot;&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; findPage(<span class="meta">@RequestParam(required = false, defaultValue = &quot;&quot;)</span> String name,</span><br><span class="line">                                                <span class="meta">@RequestParam(required = false, defaultValue = &quot;1&quot;)</span> Integer pageNum,</span><br><span class="line">                                                <span class="meta">@RequestParam(required = false, defaultValue = &quot;10&quot;)</span> Integer pageSize) &#123;</span><br><span class="line">        LambdaQueryWrapper&lt;MsslyyLabelBook&gt; query = Wrappers.&lt;MsslyyLabelBook&gt;lambdaQuery().orderByDesc(MsslyyLabelBook::getId);</span><br><span class="line">        <span class="keyword">if</span> (StrUtil.isNotBlank(name)) &#123;</span><br><span class="line">            query.like(MsslyyLabelBook::getBookId, name);</span><br><span class="line">        &#125;</span><br><span class="line">        IPage&lt;MsslyyLabelBook&gt; page = msslyyLabelBookService.page(<span class="keyword">new</span> Page&lt;&gt;(pageNum, pageSize), query);</span><br><span class="line">        <span class="keyword">return</span> Result.success(page);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.example.controller;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String token = request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    String username = JWT.decode(token).getAudience().get(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> userService.getOne(Wrappers.&lt;User&gt;lambdaQuery().eq(User::getUsername, username));</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@GetMapping(&quot;/add/&#123;bookId&#125;/&#123;userId&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; add(<span class="meta">@PathVariable</span> Long bookId,<span class="meta">@PathVariable</span> Long userId) &#123;</span><br><span class="line">    <span class="keyword">int</span> i = msslyyWishlistService.addWishList(bookId, userId);</span><br><span class="line">    <span class="keyword">return</span> Result.success(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;新增收藏&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; save(<span class="meta">@RequestBody</span> MsslyyWishlist msslyyWishlist) &#123;</span><br><span class="line">    msslyyWishlistService.save(msslyyWishlist);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;更新收藏&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@PutMapping</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; update(<span class="meta">@RequestBody</span> MsslyyWishlist msslyyWishlist) &#123;</span><br><span class="line">    msslyyWishlistService.updateById(msslyyWishlist);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;删除收藏&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@DeleteMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; delete(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">    msslyyWishlistService.removeById(id);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;根据id查询&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; findById(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">    <span class="keyword">return</span> Result.success(msslyyWishlistService.getById(id));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;查询全部&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@GetMapping(&quot;/getBookListById/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; getBookListById(</span><br><span class="line">            <span class="meta">@PathVariable</span> Long id,</span><br><span class="line">            <span class="meta">@RequestParam(required = false, defaultValue = &quot;1&quot;)</span> Integer pageNum,</span><br><span class="line">            <span class="meta">@RequestParam(required = false, defaultValue = &quot;10&quot;)</span> Integer pageSize) &#123;</span><br><span class="line">        List books = msslyyWishlistService.getBookListById(id);</span><br><span class="line">        Page pages = pageUtils.getPages(pageNum, pageSize, books);</span><br><span class="line">        <span class="keyword">return</span> Result.success(pages);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/getBookListById2/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; getBookListById2(</span><br><span class="line">            <span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">        List books = msslyyWishlistService.getBookListById(id);</span><br><span class="line">        <span class="keyword">return</span> Result.success(books);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/getFootprintById/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; getFootprintById(</span><br><span class="line">            <span class="meta">@PathVariable</span> Long id,</span><br><span class="line">            <span class="meta">@RequestParam(required = false, defaultValue = &quot;1&quot;)</span> Integer pageNum,</span><br><span class="line">            <span class="meta">@RequestParam(required = false, defaultValue = &quot;10&quot;)</span> Integer pageSize) &#123;</span><br><span class="line">        List books = msslyyFootprintService.getFootprintById(id);</span><br><span class="line">        Page pages = pageUtils.getPages(pageNum, pageSize, books);</span><br><span class="line">        <span class="keyword">return</span> Result.success(pages);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/getCartById/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; getCartById(</span><br><span class="line">            <span class="meta">@PathVariable</span> Long id,</span><br><span class="line">            <span class="meta">@RequestParam(required = false, defaultValue = &quot;1&quot;)</span> Integer pageNum,</span><br><span class="line">            <span class="meta">@RequestParam(required = false, defaultValue = &quot;10&quot;)</span> Integer pageSize) &#123;</span><br><span class="line">        List books = msslyyCartService.getCartById(id);</span><br><span class="line">        Page pages = pageUtils.getPages(pageNum, pageSize, books);</span><br><span class="line">        <span class="keyword">return</span> Result.success(pages);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.example.controller;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=199&price1=159&price2=159" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=431122512008200na<br>https://javayms.pages.dev?id=431122512008200na</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E4%B9%A6%E5%BA%97/" rel="tag"><i class="fa fa-tag"></i> 书店</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

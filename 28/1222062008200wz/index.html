@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot调查问卷管理系统(java+springboot+vue+elementui+maven+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/281222062008200wz/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot调查问卷管理系统(java+springboot+vue+elementui+maven+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/281222062008200wz/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot调查问卷管理系统(java+springboot+vue+elementui+maven+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥10</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/570123052402.jpg" alt="570123052402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/580123052402.jpg" alt="580123052402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/000123062402.jpg" alt="000123062402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/010123062402.jpg" alt="010123062402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/020123062402.jpg" alt="020123062402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/030123062402.jpg" alt="030123062402"></p>
+<p>基于javaweb的SpringBoot调查问卷管理系统(java+springboot+vue+elementui+maven+mysql)</p>
+<p>项目介绍</p>
+<blockquote>
+<ul>
+<li>本项目的在线问卷调查调查系统是基于SpringBoot开发的，采用了前后端分离模式来开发。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>前端开发使用了Vue、Element UI，后端的开发则是使用了SpringBoot、MyBatis技术。</li>
+</ul>
+</blockquote>
+<p>项目配置</p>
+<blockquote>
+<ul>
+<li>下载项目压缩包，在IDEA或者Eclipse软件中打开，并修改<strong>application.yml</strong>文件中数据库的用户和密码 &gt; * 在本地的MySQL数据库中导入项目的<strong>sql文件</strong> &gt; * 在编译器中运行该项目:此为SpringBoot框架，启动主类Main方法</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>在浏览器中输入<strong>localhost:8181</strong>后按回车键进入系统</li>
+</ul>
+</blockquote>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">        responseService.delResponseByOid(oid);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//修改或添加问题和选项信息</span></span><br><span class="line">JSONArray ques = queList.getJSONArray(<span class="string">&quot;question&quot;</span>);<span class="comment">//获取问题列表</span></span><br><span class="line"><span class="comment">//遍历问题数组</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ques.size(); i++) &#123;</span><br><span class="line">    JSONObject que = ques.getJSONObject(i);</span><br><span class="line">    <span class="keyword">int</span> qtype = que.getInteger(<span class="string">&quot;qtype&quot;</span>);<span class="comment">//获取该问题的题目类型</span></span><br><span class="line">    String qtitle = que.getString(<span class="string">&quot;qtitle&quot;</span>);<span class="comment">//获取该问题内容</span></span><br><span class="line">    <span class="comment">//判断该问题是否为新添加</span></span><br><span class="line">    <span class="keyword">if</span> (que.getInteger(<span class="string">&quot;qid&quot;</span>)==<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="comment">//添加问题操作</span></span><br><span class="line">        <span class="keyword">if</span> (qtype==<span class="number">1</span>||qtype==<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="comment">//问题为选择题,先添加问题信息，并获取问题编号</span></span><br><span class="line">            Question quesChos = <span class="keyword">new</span> Question();</span><br><span class="line">            quesChos.setQtype(qtype);</span><br><span class="line">            quesChos.setQtitle(qtitle);</span><br><span class="line">            quesChos.setSid(sid);</span><br><span class="line">            <span class="keyword">int</span> qid = questionService.addQueChos(quesChos);<span class="comment">//添加选择题</span></span><br><span class="line">            <span class="keyword">if</span> (qid&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="comment">//问题添加成功，获取对应的选项列表</span></span><br><span class="line">                JSONArray ops = que.getJSONArray(<span class="string">&quot;options&quot;</span>);</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ops.size(); j++) &#123;</span><br><span class="line">                    JSONObject op = ops.getJSONObject(j);</span><br><span class="line">                    String option = op.getString(<span class="string">&quot;option&quot;</span>);<span class="comment">//获取选项值</span></span><br><span class="line">                    <span class="comment">//添加问题选项</span></span><br><span class="line">                    <span class="keyword">int</span> res = optionService.addOption(option,qid);</span><br><span class="line">                    <span class="keyword">if</span> (res&gt;<span class="number">0</span>)</span><br><span class="line">                        flag = <span class="keyword">true</span>;<span class="comment">//选项添加成功</span></span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        flag=<span class="keyword">false</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!flag) <span class="keyword">break</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (qtype==<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="comment">//问题为简答题，直接添加问题信息</span></span><br><span class="line">            <span class="keyword">int</span> count = questionService.addQueText(qtitle,<span class="number">3</span>,sid);<span class="comment">//添加简答题</span></span><br><span class="line">            <span class="keyword">if</span> (count &gt; <span class="number">0</span>)</span><br><span class="line">                flag = <span class="keyword">true</span>;<span class="comment">//添加成功</span></span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                flag=<span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//修改问题操作</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;<span class="comment">//跳出遍历</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (qtype==<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="comment">//多选题,回答内容是选项编号的数组,</span></span><br><span class="line">    JSONArray answers = res.getJSONArray(<span class="string">&quot;answer&quot;</span>);</span><br><span class="line">    <span class="comment">//遍历回答内容</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; answers.size(); j++) &#123;</span><br><span class="line">        <span class="keyword">int</span> oid = answers.getInteger(j);</span><br><span class="line">        System.out.println(oid);</span><br><span class="line">        Response queData = <span class="keyword">new</span> Response();<span class="comment">//回答数据</span></span><br><span class="line">        queData.setSid(sid);<span class="comment">//设置回答的问卷编号</span></span><br><span class="line">        queData.setQid(qid);<span class="comment">//设置回答的问题编号</span></span><br><span class="line">        queData.setOid(oid);<span class="comment">//设置回答的选项编号</span></span><br><span class="line">        <span class="comment">//根据回答的选项编号，获取回答内容</span></span><br><span class="line">        String answer = optionService.getOptionByOid(oid);</span><br><span class="line">        queData.setResponse(answer);<span class="comment">//设置回答的内容</span></span><br><span class="line">        <span class="comment">//提交该条回答数据</span></span><br><span class="line">        <span class="keyword">int</span> count = responseService.submitData(queData);</span><br><span class="line">        <span class="keyword">if</span> (count &gt; <span class="number">0</span>)</span><br><span class="line">            flag=<span class="keyword">true</span>;<span class="comment">//提交成功</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            flag=<span class="keyword">false</span>;<span class="comment">//提交失败</span></span><br><span class="line">            <span class="keyword">break</span>;<span class="comment">//跳出遍历</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!flag) <span class="keyword">break</span>;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (qtype==<span class="number">3</span>)&#123;</span><br><span class="line">    <span class="comment">//简答题,选项编号为0</span></span><br><span class="line">    Response queData = <span class="keyword">new</span> Response();<span class="comment">//回答数据</span></span><br><span class="line">    queData.setSid(sid);<span class="comment">//设置回答的问卷编号</span></span><br><span class="line">    queData.setQid(qid);<span class="comment">//设置回答的问题编号</span></span><br><span class="line">    queData.setOid(<span class="number">0</span>);<span class="comment">//设置回答的选项编号</span></span><br><span class="line">    <span class="comment">//获取回答内容</span></span><br><span class="line">    String answer = res.getString(<span class="string">&quot;answer&quot;</span>);</span><br><span class="line">    queData.setResponse(answer);<span class="comment">//设置回答的内容</span></span><br><span class="line">    <span class="comment">//提交该条回答数据</span></span><br><span class="line">    <span class="keyword">int</span> count = responseService.submitData(queData);</span><br><span class="line">    <span class="keyword">if</span> (count &gt; <span class="number">0</span>)</span><br><span class="line">        flag=<span class="keyword">true</span>;<span class="comment">//提交成功</span></span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        flag=<span class="keyword">false</span>;<span class="comment">//提交失败</span></span><br><span class="line">        <span class="keyword">break</span>;<span class="comment">//跳出遍历</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">            json.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;fail&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> json;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.surveycenter.controller;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserCtrl</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(value = &quot;/allUser&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span> <span class="comment">//获取所有用户</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> JSONObject <span class="title">selectAllUsers</span><span class="params">()</span></span>&#123;</span><br><span class="line">        JSONObject json = <span class="keyword">new</span> JSONObject();</span><br><span class="line">        <span class="comment">//获取所有用户信息</span></span><br><span class="line">        List&lt;User&gt; users = userService.selectAllUsers();</span><br><span class="line">        <span class="comment">//把结果json化</span></span><br><span class="line">        JSONObject userList = (JSONObject) JSON.toJSON(users);</span><br><span class="line">        json.put(<span class="string">&quot;userlist&quot;</span>,userList);</span><br><span class="line">        <span class="keyword">return</span> json;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@CrossOrigin</span></span><br><span class="line">    <span class="meta">@PostMapping(value = &quot;api/login&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span> <span class="comment">//用户登录</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> JSONObject <span class="title">login</span><span class="params">(<span class="meta">@RequestBody</span> User loginUser)</span></span>&#123;</span><br><span class="line">        JSONObject res = <span class="keyword">new</span> JSONObject();</span><br><span class="line">        <span class="comment">//获取输入的用户名</span></span><br><span class="line">        String username = loginUser.getUsername();</span><br><span class="line">        username = HtmlUtils.htmlEscape(username);</span><br><span class="line">        <span class="comment">//获取输入的密码</span></span><br><span class="line">        String password = loginUser.getPassword();</span><br><span class="line">        password = HtmlUtils.htmlEscape(password);</span><br><span class="line">        <span class="comment">//在数据库查找</span></span><br><span class="line">        User curUser = userService.findUser(username,password);</span><br><span class="line">        <span class="keyword">if</span> (curUser==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">//用户名或密码输入错误</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//加载所有问卷信息_old</span></span><br><span class="line"><span class="meta">@CrossOrigin</span></span><br><span class="line"><span class="meta">@PostMapping(value = &quot;api/allSurveys&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JSONObject <span class="title">getAllSurveys</span><span class="params">()</span></span>&#123;</span><br><span class="line">    JSONObject json = <span class="keyword">new</span> JSONObject();</span><br><span class="line">    <span class="comment">//获取SurveyList</span></span><br><span class="line">    List&lt;Survey&gt; surveys = surveyService.getAllSurveys();</span><br><span class="line">    <span class="comment">//把结果json化</span></span><br><span class="line">    JSONArray allSurveyList = JSONArray.parseArray(JSON.toJSONString(surveys));</span><br><span class="line">    json.put(<span class="string">&quot;allSurveyList&quot;</span>,allSurveyList);</span><br><span class="line">    <span class="keyword">return</span> json;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//加载所有问卷信息_05.05</span></span><br><span class="line"><span class="meta">@CrossOrigin</span></span><br><span class="line"><span class="meta">@PostMapping(value = &quot;api/surveysInfo&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JSONObject <span class="title">getSurveysInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">    JSONObject json = <span class="keyword">new</span> JSONObject();</span><br><span class="line">    <span class="comment">//获取List jsonObject：sid，stitle，count</span></span><br><span class="line">    List&lt;JSONObject&gt; surveysList = surveyService.getSurveysInfo();</span><br><span class="line">    JSONArray surveys = JSONArray.parseArray(JSON.toJSONString(surveysList));</span><br><span class="line">    json.put(<span class="string">&quot;tableData&quot;</span>,surveys);</span><br><span class="line">    <span class="keyword">return</span> json;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//根据关键字查找相关的问卷_old</span></span><br><span class="line"><span class="meta">@CrossOrigin</span></span><br><span class="line"><span class="meta">@PostMapping(value = &quot;api/SurveySearch&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JSONObject <span class="title">getSurveyList</span><span class="params">(<span class="meta">@RequestBody</span> String keyword)</span></span>&#123;</span><br><span class="line">    JSONObject json = <span class="keyword">new</span> JSONObject();</span><br><span class="line">    System.out.println(keyword);</span><br><span class="line">    <span class="comment">//判断关键字是否为空</span></span><br><span class="line">    <span class="keyword">if</span> (keyword == <span class="keyword">null</span> || <span class="string">&quot;&quot;</span>.equals(keyword))&#123;</span><br><span class="line">        <span class="comment">//关键字为空 返回所有问卷</span></span><br><span class="line">        List&lt;Survey&gt; surveys = surveyService.getAllSurveys();</span><br><span class="line">        <span class="comment">//把结果json化</span></span><br><span class="line">        JSONArray allSurveyList = JSONArray.parseArray(JSON.toJSONString(surveys));</span><br><span class="line">        json.put(<span class="string">&quot;res&quot;</span>,allSurveyList);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//根据关键字查找</span></span><br><span class="line">        List&lt;Survey&gt; surveyList = surveyService.getSurveysByKey(<span class="string">&#x27;%&#x27;</span>+keyword+<span class="string">&#x27;%&#x27;</span>);</span><br><span class="line">        <span class="comment">//把结果json化</span></span><br><span class="line">        JSONArray keySurveyList = JSONArray.parseArray(JSON.toJSONString(surveyList));</span><br><span class="line">        json.put(<span class="string">&quot;res&quot;</span>,keySurveyList);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> json;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//根据关键字查找相关的问卷_05.05</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuestionCtrl</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> QuestionService questionService;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> OptionService optionService;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> ResponseService responseService;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> SurveyService surveyService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给新问卷添加题目列表</span></span><br><span class="line">    <span class="meta">@CrossOrigin</span></span><br><span class="line">    <span class="meta">@PostMapping(value = &quot;api/addQuesList&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> JSONObject <span class="title">addQuesList</span><span class="params">(<span class="meta">@RequestBody</span> JSONObject data)</span></span>&#123;</span><br><span class="line">        JSONObject json = <span class="keyword">new</span> JSONObject();</span><br><span class="line">        <span class="comment">//获取问卷编号</span></span><br><span class="line">        <span class="keyword">int</span> sid = data.getInteger(<span class="string">&quot;sid&quot;</span>);</span><br><span class="line">        <span class="comment">//获取问题列表</span></span><br><span class="line">        JSONObject quesList = data.getJSONObject(<span class="string">&quot;quesList&quot;</span>);</span><br><span class="line">        JSONArray ques = quesList.getJSONArray(<span class="string">&quot;question&quot;</span>);</span><br><span class="line">        <span class="comment">//设置flag记录问题记录过程</span></span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="comment">//遍历问题列表</span></span><br><span class="line">        <span class="keyword">for</span> (Object q:ques) &#123;</span><br><span class="line">            <span class="comment">//强制转换</span></span><br><span class="line">            JSONObject que = (JSONObject) q;</span><br><span class="line">            <span class="comment">//获取该问题的题目类型</span></span><br><span class="line">            <span class="keyword">int</span> qtype = que.getInteger(<span class="string">&quot;qtype&quot;</span>);</span><br><span class="line">            <span class="comment">//获取该问题内容</span></span><br><span class="line">            String qtitle = que.getString(<span class="string">&quot;qtitle&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (qtype==<span class="number">1</span>||qtype==<span class="number">2</span>)&#123;</span><br><span class="line">                <span class="comment">//问题为选择题,先添加问题信息，并获取问题编号</span></span><br><span class="line">                Question quesChos = <span class="keyword">new</span> Question();</span><br><span class="line">                quesChos.setQtype(qtype);</span><br><span class="line">                quesChos.setQtitle(qtitle);</span><br><span class="line">                quesChos.setSid(sid);</span><br><span class="line">                <span class="keyword">int</span> qid = questionService.addQueChos(quesChos);<span class="comment">//添加选择题</span></span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=139&price1=109&price2=99" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=281222062008200wz<br>https://javayms.pages.dev?id=281222062008200wz</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
+			<a href="/tags/%E9%97%AE%E5%8D%B7%E8%B0%83%E6%9F%A5-%E6%8A%95%E7%A5%A8/" rel="tag"><i class="fa fa-tag"></i> 问卷调查 | 投票</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

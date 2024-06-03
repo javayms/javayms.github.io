@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SSM在线图书商城系统(java+ssm+freemarker+bootstrap+mysql+redis)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/231122572008200tg/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SSM在线图书商城系统(java+ssm+freemarker+bootstrap+mysql+redis) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/231122572008200tg/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SSM在线图书商城系统(java+ssm+freemarker+bootstrap+mysql+redis)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Tomcat≥8</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/590123002402.jpg" alt="590123002402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/000123012402.jpg" alt="000123012402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/010123012402.jpg" alt="010123012402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/030123012402.jpg" alt="030123012402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/040123012402.jpg" alt="040123012402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/050123012402.jpg" alt="050123012402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/060123012402.jpg" alt="060123012402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/070123012402.jpg" alt="070123012402"></p>
+<p>基于javaweb的SSM在线图书商城系统(java+ssm+freemarker+bootstrap+mysql+redis)</p>
+<p>项目介绍</p>
+<p>本项目分为前后台，有管理员与用户两种角色； 管理员角色包含以下功能： 管理员登录,商品分类管理,商品管理,商品属性管理,商品参数管理,订单管理,退款管理,退货管理,会员等级管理,客户信息管理,评论管理,文章分类管理,公告管理,文章管理,滚动图片管理,广告管理,热门查询管理,查询订单销售,查询商品销售,用户管理,角色管理,资源管理,修改密码,区域管理,配送方式管理,查看系统设置,缓存管理,查询到货通知等功能。</p>
+<p>用户角色包含以下功能： 用户登录,查看首页,查看商品详情,查看购物车,提交订单,修改个人信息,修改密码,查看我的订单,添加配送地址,查看收藏夹等功能。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：Eclipse；注:本项目目前仅支持Eclipse,暂不支持IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  5.数据库：MySql 5.7版本； 6.是否Maven项目：否；</p>
+<p>技术栈</p>
+<ol>
+<li>后端：Spring+SpringMVC+Mbytes 2. 前端：Freemarker+css+javascript+bootstrap+jQuery</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用Eclipse导入项目，将项目中src目录下的conf.properties配置文件中的数据库配置改为自己的配置; 3. 运行项目，在浏览器中输入localhost:8080/ssm_zxbookshop 用户账号/密码： user/123456 管理员账号/密码：admin/admin</li>
+</ol>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">			<span class="comment">//发送邮件到用户的邮箱</span></span><br><span class="line"><span class="comment">//			MailUtil mail = new MailUtil(e.getEmail());//new MailUtil(&quot;543089122@qq.com&quot;,SystemManager.getInstance().get(&quot;from_email_account&quot;),SystemManager.getInstance().get(&quot;from_email_password&quot;), SystemManager.getInstance().get(&quot;from_eamil_smtpServer&quot;), &quot;myshop注册验证邮件&quot;);//用户注册成功发送邮件</span></span><br><span class="line"><span class="comment">//			boolean result = mail.startSend(&quot;注册邮箱验证&quot;,&quot;恭喜，您在myshop站点的账号注册成功！点击下面的链接进行验证。有效时间为2小时。http://myshop.itelse.com&quot;);</span></span><br><span class="line"><span class="comment">//			logger.error(&quot;email resule = &quot; + result);</span></span><br><span class="line">			</span><br><span class="line">			accountService.sendEmail(e, NotifyTemplate.email_reg);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// 修改密码</span></span><br><span class="line"><span class="comment">//			getServer().update(e);</span></span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">&quot;不支持！&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		getSession().setAttribute(&quot;checkEmail&quot;,&quot;checkEmail&quot;);</span></span><br><span class="line">		model.addAttribute(<span class="string">&quot;uid&quot;</span>, e.getId());</span><br><span class="line"><span class="comment">//		getResponse().sendRedirect(SystemManager.systemSetting.getWww()+&quot;/account/checkEmail.html&quot;);</span></span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect:/account/checkEmail.html&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 用户注册--》再次发送邮件</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> IOException </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(value = &quot;sendEmailAgain&quot;, method = RequestMethod.POST)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">sendEmailAgain</span><span class="params">(String uid, ModelMap model)</span> <span class="keyword">throws</span> IOException</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(StringUtils.isBlank(uid))&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">&quot;参数不正确！&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Account acc = accountService.selectById(uid);</span><br><span class="line">		<span class="keyword">if</span>(acc==<span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">&quot;根据用户ID查询不到用户信息！&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		accountService.sendEmail(acc, NotifyTemplate.email_reg);</span><br><span class="line">		model.addAttribute(<span class="string">&quot;uid&quot;</span>, acc.getId());</span><br><span class="line"><span class="comment">//		getResponse().sendRedirect(SystemManager.systemSetting.getWww()+&quot;/account/checkEmail.html&quot;);</span></span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect:/account/checkEmail.html&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 转到邮箱验证提示页面</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;checkEmail&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">checkEmail</span><span class="params">()</span></span>&#123;</span><br><span class="line">		logger.info(<span class="string">&quot;checkEmail&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//			logger.error(&quot;还没有评价&quot;);</span></span><br><span class="line"><span class="comment">//		&#125;else&#123;</span></span><br><span class="line"><span class="comment">//			logger.error(&quot;已经评价过了&quot;);</span></span><br><span class="line"><span class="comment">//		&#125;</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//加载指定商品的评论列表</span></span><br><span class="line"><span class="comment">//		Comment commentParam = new Comment();</span></span><br><span class="line"><span class="comment">//		commentParam.setProductID(Integer.valueOf(productID));</span></span><br><span class="line"><span class="comment">//		selectCommentList(commentParam);</span></span><br><span class="line">		model.addAttribute(<span class="string">&quot;e&quot;</span>, e);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;/rate&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 分页加载评论</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> PagerModel <span class="title">selectCommentList</span><span class="params">(Comment commentParam)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		HttpServletRequest request = RequestHolder.getRequest();</span><br><span class="line">		<span class="keyword">int</span> offset = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (request.getParameter(<span class="string">&quot;pager.offset&quot;</span>) != <span class="keyword">null</span>) &#123;</span><br><span class="line">			offset = Integer</span><br><span class="line">					.parseInt(request.getParameter(<span class="string">&quot;pager.offset&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (offset &lt; <span class="number">0</span>)</span><br><span class="line">			offset = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//		Comment comment = new Comment();</span></span><br><span class="line">		((PagerModel) commentParam).setOffset(offset);</span><br><span class="line">		PagerModel pager = commentService.selectPageList(commentParam);</span><br><span class="line">		<span class="keyword">if</span>(pager==<span class="keyword">null</span>)pager = <span class="keyword">new</span> PagerModel();</span><br><span class="line">		<span class="comment">// 计算总页数</span></span><br><span class="line">		pager.setPagerSize((pager.getTotal() + pager.getPageSize() - <span class="number">1</span>)</span><br><span class="line">				/ pager.getPageSize());</span><br><span class="line">		</span><br><span class="line"><span class="comment">//		selectListAfter();</span></span><br><span class="line">		pager.setPagerUrl(<span class="string">&quot;rate&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> pager;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setError</span><span class="params">(String error)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.error = error;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 库存检查错误消息对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StockErrorProduct</span></span>&#123;</span><br><span class="line">	String id;<span class="comment">//商品ID</span></span><br><span class="line">	String tips;<span class="comment">//错误消息</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">StockErrorProduct</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">StockErrorProduct</span><span class="params">(String id,String tips)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">		<span class="keyword">this</span>.tips = tips;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> id;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getTips</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> tips;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTips</span><span class="params">(String tips)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.tips = tips;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 购物车页面，单个商品返回的信息对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CartProductInfo</span> </span>&#123;</span><br><span class="line">	String code;<span class="comment">//返回代码</span></span><br><span class="line">	String msg;<span class="comment">//返回消息</span></span><br><span class="line">	String total0;<span class="comment">//小计金额</span></span><br><span class="line">	String amount;<span class="comment">//总计金额</span></span><br><span class="line">	<span class="keyword">int</span> totalExchangeScore;<span class="comment">//兑换此商品所需总积分</span></span><br><span class="line">	<span class="keyword">int</span> amountExchangeScore;<span class="comment">//积分汇总</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> code;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">	e.setOffset(offset);</span><br><span class="line">	PagerModel pager = getService().selectPageList(e);</span><br><span class="line">	<span class="keyword">if</span> (pager == <span class="keyword">null</span>) &#123;</span><br><span class="line">		pager = <span class="keyword">new</span> PagerModel();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 计算总页数</span></span><br><span class="line">	pager.setPagerSize((pager.getTotal() + pager.getPageSize() - <span class="number">1</span>)</span><br><span class="line">			/ pager.getPageSize());</span><br><span class="line">	pager.setPagerUrl(<span class="string">&quot;myCarts&quot;</span>);</span><br><span class="line">	model.addAttribute(<span class="string">&quot;pager&quot;</span>, pager);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect:/account/orders&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除我的订单信息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;deletes&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">deletes</span><span class="params">(String[] ids, HttpServletRequest request, <span class="meta">@ModelAttribute(&quot;e&quot;)</span> Order e, ModelMap model)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	getService().deletes(ids);</span><br><span class="line">	<span class="keyword">return</span> selectList(request, e, model);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 退订或取消指定的订单</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;shouhuo&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">shouhuo</span><span class="params">(String id,HttpServletRequest request, <span class="meta">@ModelAttribute(&quot;e&quot;)</span> Order e, ModelMap model)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	Order order = orderService.selectById(id);</span><br><span class="line">	order.setStatus(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">	orderService.update(order);</span><br><span class="line">	<span class="keyword">int</span> offset = <span class="number">0</span>;<span class="comment">//分页偏移量</span></span><br><span class="line">	<span class="keyword">if</span> (request.getParameter(<span class="string">&quot;pager.offset&quot;</span>) != <span class="keyword">null</span>) &#123;</span><br><span class="line">		offset = Integer.parseInt(request.getParameter(<span class="string">&quot;pager.offset&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (offset &lt; <span class="number">0</span>)</span><br><span class="line">		offset = <span class="number">0</span>;</span><br><span class="line">	e.setOffset(offset);</span><br><span class="line">	PagerModel pager = getService().selectPageList(e);</span><br><span class="line">	<span class="keyword">if</span> (pager == <span class="keyword">null</span>) &#123;</span><br><span class="line">		pager = <span class="keyword">new</span> PagerModel();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 计算总页数</span></span><br><span class="line">	pager.setPagerSize((pager.getTotal() + pager.getPageSize() - <span class="number">1</span>)</span><br><span class="line">			/ pager.getPageSize());</span><br><span class="line">	pager.setPagerUrl(<span class="string">&quot;myCarts&quot;</span>);</span><br><span class="line">	model.addAttribute(<span class="string">&quot;pager&quot;</span>, pager);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect:/account/orders&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">		e.clear();</span><br><span class="line"><span class="comment">//		if(productList==null)&#123;</span></span><br><span class="line"><span class="comment">//			logger.error(&quot;productList=0&quot;);</span></span><br><span class="line"><span class="comment">//		&#125;else&#123;</span></span><br><span class="line"><span class="comment">//			logger.error(&quot;productList=&quot;+productList.size());</span></span><br><span class="line"><span class="comment">//		&#125;</span></span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;productList&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据商品属性加载商品列表</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> Exception </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;productListByAttrID&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">productListByAttrID</span><span class="params">(ModelMap model, <span class="meta">@ModelAttribute(&quot;e&quot;)</span>Product e)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//			logger.error(&quot;attributeID=&quot;+attributeID);</span></span><br><span class="line"><span class="comment">//			getE().setAttrID(this.attributeID);</span></span><br><span class="line"><span class="comment">//			Attribute attr = SystemManager.attrsMap.get(String.valueOf(this.attributeID));</span></span><br><span class="line"><span class="comment">//			this.catalogID = attr.getCatalogID();</span></span><br><span class="line"><span class="comment">//			logger.error(&quot;productListByAttrID  catalogID = &quot;+catalogID);</span></span><br><span class="line"><span class="comment">//			productList = selectProductList0();</span></span><br><span class="line">			productList(model, e);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">			logger.error(<span class="string">&quot;productListByAttrID()异常：&quot;</span>+ex.getMessage());</span><br><span class="line">			ex.printStackTrace();</span><br><span class="line">			<span class="keyword">throw</span> ex;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;productList&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 根据商品目录、子目录、属性、排序等规则分页加载商品列表信息。此方法为商品加载的通用方法。</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;productList&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">productList</span><span class="params">(ModelMap model, <span class="meta">@ModelAttribute(&quot;e&quot;)</span>Product e)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			String catalogCode = getCatalogCode();</span><br><span class="line">			logger.error(<span class="string">&quot;special=&quot;</span>+e.getSpecial() + <span class="string">&quot;,orderBy=&quot;</span>+e.getOrderBy() + <span class="string">&quot;,catalogCode=&quot;</span>+catalogCode);</span><br><span class="line">			</span><br><span class="line">			Catalog item = systemManager.getCatalogsCodeMap().get(catalogCode);</span><br><span class="line">			<span class="keyword">if</span>(item==<span class="keyword">null</span>)&#123;</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">&quot;目录为空！&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			logger.error(<span class="string">&quot;item.getId()=&quot;</span>+item.getId());</span><br><span class="line">			</span><br><span class="line"><span class="comment">//			getSession().setAttribute(&quot;selectMenu&quot;, item.getId());//设置选择的商品目录</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">			<span class="keyword">return</span> toLogin;</span><br><span class="line">		&#125;</span><br><span class="line"><span class="comment">//		selectLeftMenu = &quot;address&quot;;</span></span><br><span class="line">		String id = address.getId();</span><br><span class="line">		<span class="keyword">if</span>(StringUtils.isBlank(id))&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">&quot;id is null!&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		Address add = <span class="keyword">new</span> Address();</span><br><span class="line">		add.setId(id);</span><br><span class="line">		addressService.delete(add);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> address(model, address);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 编辑指定的配送地址</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;editAddress&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">editAddress</span><span class="params">(ModelMap model, Address address)</span></span>&#123;</span><br><span class="line">		Account acc = LoginUserHolder.getLoginAccount();</span><br><span class="line">		<span class="keyword">if</span> (acc == <span class="keyword">null</span> || StringUtils.isBlank(acc.getAccount())) &#123;</span><br><span class="line">			<span class="keyword">return</span> toLogin;</span><br><span class="line">		&#125;</span><br><span class="line"><span class="comment">//		selectLeftMenu = &quot;address&quot;;</span></span><br><span class="line">		String id = address.getId();</span><br><span class="line">		<span class="keyword">if</span>(StringUtils.isBlank(id))&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">&quot;id is null!&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		address = addressService.selectById(id);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//获取区域列表</span></span><br><span class="line">		<span class="keyword">if</span>(StringUtils.isNotBlank(address.getArea()))&#123;</span><br><span class="line"><span class="comment">//			address.getArea()</span></span><br><span class="line">            Map&lt;String, Area&gt; areaMap = SystemManager.getInstance().getAreaMap();</span><br><span class="line">			Area area = areaMap.get(address.getProvince());</span><br><span class="line">			<span class="keyword">if</span>(area!=<span class="keyword">null</span> &amp;&amp; area.getChildren()!=<span class="keyword">null</span> &amp;&amp; area.getChildren().size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;area.getChildren().size();i++)&#123;</span><br><span class="line">					Area city = area.getChildren().get(i);</span><br><span class="line">					<span class="keyword">if</span>(city.getCode().equals(address.getCity()))&#123;</span><br><span class="line">						</span><br><span class="line">						logger.error(<span class="string">&quot;address.getCity()=&quot;</span>+address.getCity());</span><br><span class="line">						logger.error(city.toString());</span><br><span class="line">						address.setAreaList(city.getChildren());</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=231122572008200tg<br>https://javayms.pages.dev?id=231122572008200tg</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+			<a href="/tags/%E4%B9%A6%E5%BA%97/" rel="tag"><i class="fa fa-tag"></i> 书店</a>
+			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

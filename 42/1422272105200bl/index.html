@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot图书管理系统(java+springboot+jsp+bootstrap+maven+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/421422272105200bl/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot图书管理系统(java+springboot+jsp+bootstrap+maven+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/421422272105200bl/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot图书管理系统(java+springboot+jsp+bootstrap+maven+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/520023052402.jpg" alt="520023052402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/530023052402.jpg" alt="530023052402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/540023052402.jpg" alt="540023052402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/550023052402.jpg" alt="550023052402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/560023052402.jpg" alt="560023052402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/570023052402.jpg" alt="570023052402"></p>
+<p>基于javaweb的SpringBoot图书管理系统(java+springboot+jsp+bootstrap+maven+mysql)</p>
+<p>项目介绍</p>
+<p>本系统分为管理员与普通用户两种角色； 管理员角色包含以下功能： 借书管理,图书信息管理,图书分类管理,用户管理,角色管理,还书管理,登录页面等功能。 </p>
+<p>用户角色包含以下功能：借阅管理,图书检索,查看借还记录,查看图书详情,还书管理,登录页面等功能。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。<br>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;<br>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；<br>4.数据库：MySql 5.7版本；<br>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<ol>
+<li><p>后端：SpringBoot</p>
+</li>
+<li><p>前端：JSP+CSS+JavaScript+bootstrap</p>
+</li>
+</ol>
+<p>使用说明<br>运行项目，在浏览器中输入localhost:8083/ 登录</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> : java.util.Map&lt;java.lang.String,java.lang.Object&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 文件上传</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/uploadFile&quot;, method = RequestMethod.POST)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">uploadFile</span><span class="params">(MultipartFile file)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (!file.isEmpty()) &#123;</span><br><span class="line">        <span class="comment">// 获取文件名</span></span><br><span class="line">        String fileName = file.getOriginalFilename();</span><br><span class="line">        <span class="comment">// 获取文件的后缀名</span></span><br><span class="line">        String suffixName = fileName.substring(fileName.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">        String newFileName = UUID.randomUUID() + suffixName;</span><br><span class="line"></span><br><span class="line">        Date date = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="keyword">int</span> hashcode = fileName.hashCode();</span><br><span class="line">        <span class="keyword">int</span> dir1 = hashcode &amp; <span class="number">0xf</span>;  <span class="comment">//0--15</span></span><br><span class="line">        <span class="keyword">int</span> dir2 = (hashcode &amp; <span class="number">0xf0</span>) &gt;&gt; <span class="number">4</span>; <span class="comment">//0--15</span></span><br><span class="line">        String path = uploadFilePath + <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy/MM/dd&quot;</span>).format(date) + <span class="string">&quot;/&quot;</span> + dir1 + <span class="string">&quot;/&quot;</span> + dir2 + <span class="string">&quot;/&quot;</span>;</span><br><span class="line">        FileUtils.copyInputStreamToFile(file.getInputStream(), <span class="keyword">new</span> File(path + newFileName));</span><br><span class="line">        map.put(<span class="string">&quot;code&quot;</span>, <span class="number">0</span>);</span><br><span class="line">        map.put(<span class="string">&quot;msg&quot;</span>, <span class="string">&quot;上传成功&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;http://localhost:8080/uploads/&quot;</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy/MM/dd&quot;</span>).format(date) + <span class="string">&quot;/&quot;</span> + dir1 + <span class="string">&quot;/&quot;</span> + dir2 + <span class="string">&quot;/&quot;</span> + newFileName);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> map;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> CKEditorFuncNum</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> : java.lang.String</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: ckeditor上传</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/ckeditorUpload&quot;, method = RequestMethod.POST)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">ckeditorUpload</span><span class="params">(<span class="meta">@RequestParam(&quot;upload&quot;)</span> MultipartFile file, String CKEditorFuncNum)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">        bookInfoDataGridDataSource.setRows(bookInfoList);</span><br><span class="line">        <span class="keyword">return</span> bookInfoDataGridDataSource;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bookId</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> : io.hailiang.web.book.common.JsonData</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span>: 图书详情</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/detail&quot;)</span></span><br><span class="line">    <span class="meta">@LoginRequired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> JsonData <span class="title">bookInfoDetail</span><span class="params">(Integer bookId)</span> </span>&#123;</span><br><span class="line">        List&lt;BookInfo&gt; bookInfos = bookInfoService.selectBookById(bookId);</span><br><span class="line">        <span class="keyword">for</span> (BookInfo bookInfo : bookInfos) &#123;</span><br><span class="line">            List&lt;BookType&gt; bookTypeList = bookTypeService.selectBookTypeListByBookTypeId(bookInfo.getBookType());</span><br><span class="line">            <span class="keyword">for</span> (BookType bookType : bookTypeList) &#123;</span><br><span class="line">                bookInfo.setTypes(bookType.getBookTypeName());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> JsonData.success(bookInfos);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bookId</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> : io.hailiang.web.book.common.JsonData</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@description</span>: 图书信息(借书管理)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/info&quot;)</span></span><br><span class="line">    <span class="meta">@LoginRequired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> JsonData <span class="title">bookInfo</span><span class="params">(Integer bookId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> JsonData.success(bookInfoService.selectBookInfoById(bookId));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> io.hailiang.web.book.controller;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"> * <span class="meta">@description</span>: 根据id删除用户</span><br><span class="line"> */</span><br><span class="line"><span class="meta">@DeleteMapping(&quot;/delete&quot;)</span></span><br><span class="line"><span class="meta">@LoginRequired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JsonData <span class="title">deleteUser</span><span class="params">(<span class="meta">@RequestParam(value = &quot;userId&quot;)</span> Long userId)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//TODO 删除用户前先根据用户id将用户角色关联表的记录删除</span></span><br><span class="line">    roleService.deleteRoleUserRsByUserId(userId);</span><br><span class="line">    <span class="keyword">int</span> count = userService.deleteUser(userId);</span><br><span class="line">    <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonData.success(count, <span class="string">&quot;删除成功&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonData.fail(<span class="string">&quot;删除失败&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> toMail</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> userId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> : io.hailiang.web.book.common.JsonData</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 重置用户密码并发送邮件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/sendMail&quot;)</span></span><br><span class="line"><span class="meta">@LoginRequired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JsonData <span class="title">sendMail</span><span class="params">(<span class="meta">@RequestParam(value = &quot;toMail&quot;)</span> String toMail,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="meta">@RequestParam(value = &quot;userId&quot;)</span> Long userId)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (StringUtils.isEmpty(toMail)) &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonData.fail(<span class="string">&quot;用户邮箱不能为空&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//TODO 随机生成密码</span></span><br><span class="line">    String defaultPassword = PasswordCreateUtil.createPassWord(<span class="number">8</span>);</span><br><span class="line">    User user = <span class="keyword">new</span> User();</span><br><span class="line">    user.setUserId(userId);</span><br><span class="line">    user.setUserPassword(defaultPassword);</span><br><span class="line">    <span class="keyword">int</span> count = userService.updateUser(user);</span><br><span class="line">    <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        mailService.sendSimpleMail(toMail, <span class="string">&quot;重置密码&quot;</span>, <span class="string">&quot;您的初始密码为：&quot;</span> + defaultPassword);</span><br><span class="line">        <span class="keyword">return</span> JsonData.success(count, <span class="string">&quot;重置密码成功&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonData.fail(<span class="string">&quot;重置密码失败&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">        StringBuffer stringBuffer = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span> (Role role : roleList) &#123;</span><br><span class="line">            stringBuffer.append(<span class="string">&quot;,&quot;</span> + role.getRoleName());</span><br><span class="line">        &#125;</span><br><span class="line">        user.setRoles(stringBuffer.toString().replaceFirst(<span class="string">&quot;,&quot;</span>, <span class="string">&quot;&quot;</span>));</span><br><span class="line">        session.setAttribute(<span class="string">&quot;user&quot;</span>, user);</span><br><span class="line">        <span class="comment">// 获取用户权限信息</span></span><br><span class="line">        List&lt;Permission&gt; permissions = permissionService.queryPermissionsByUser(user);</span><br><span class="line">        Map&lt;Integer, Permission&gt; permissionMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        Permission root = <span class="keyword">null</span>;</span><br><span class="line">        Set&lt;String&gt; uriSet = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (Permission permission : permissions) &#123;</span><br><span class="line">            permissionMap.put(permission.getPermissionId(), permission);</span><br><span class="line">            <span class="keyword">if</span> (permission.getPermissionUrl() != <span class="keyword">null</span> &amp;&amp; !<span class="string">&quot;&quot;</span>.equals(permission.getPermissionUrl())) &#123;</span><br><span class="line">                uriSet.add(permission.getPermissionUrl());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        session.setAttribute(<span class="string">&quot;authUriSet&quot;</span>, uriSet);</span><br><span class="line">        <span class="keyword">for</span> (Permission permission : permissions) &#123;</span><br><span class="line">            Permission child = permission;</span><br><span class="line">            <span class="keyword">if</span> (child.getPermissionParentId() == <span class="keyword">null</span>) &#123;</span><br><span class="line">                root = permission;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                Permission parent = permissionMap.get(child.getPermissionParentId());</span><br><span class="line">                parent.getChildren().add(child);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        session.setAttribute(<span class="string">&quot;rootPermission&quot;</span>, root);</span><br><span class="line">        <span class="keyword">return</span> JsonData.success();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonData.fail(<span class="string">&quot;用户名或密码错误！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> user</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> : io.hailiang.web.book.common.JsonData</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 新增用户</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/save&quot;)</span></span><br><span class="line"><span class="meta">@LoginRequired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JsonData <span class="title">saveUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = userService.saveUser(user);</span><br><span class="line">    <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonData.success(count, <span class="string">&quot;添加成功&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> JsonData <span class="title">updateUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = userService.updateUser(user);</span><br><span class="line">    <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonData.success(count, <span class="string">&quot;更新成功&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonData.fail(<span class="string">&quot;更新失败&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> userId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> : io.hailiang.web.book.common.JsonData</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 根据id删除用户</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@DeleteMapping(&quot;/delete&quot;)</span></span><br><span class="line"><span class="meta">@LoginRequired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JsonData <span class="title">deleteUser</span><span class="params">(<span class="meta">@RequestParam(value = &quot;userId&quot;)</span> Long userId)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//TODO 删除用户前先根据用户id将用户角色关联表的记录删除</span></span><br><span class="line">    roleService.deleteRoleUserRsByUserId(userId);</span><br><span class="line">    <span class="keyword">int</span> count = userService.deleteUser(userId);</span><br><span class="line">    <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonData.success(count, <span class="string">&quot;删除成功&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonData.fail(<span class="string">&quot;删除失败&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> toMail</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> userId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> : io.hailiang.web.book.common.JsonData</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 重置用户密码并发送邮件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/sendMail&quot;)</span></span><br><span class="line"><span class="meta">@LoginRequired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> JsonData <span class="title">sendMail</span><span class="params">(<span class="meta">@RequestParam(value = &quot;toMail&quot;)</span> String toMail,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="meta">@RequestParam(value = &quot;userId&quot;)</span> Long userId)</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//更新图书状态为借出</span></span><br><span class="line">    BookInfo bookInfo = <span class="keyword">new</span> BookInfo();</span><br><span class="line">    bookInfo.setBookId(lendReturnList.getBookId());</span><br><span class="line">    bookInfo.setBookState(<span class="number">1</span>);</span><br><span class="line">   </span><br><span class="line">    bookInfoService.updateBookInfo(bookInfo);</span><br><span class="line">    <span class="keyword">if</span> (i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonData.success(i, <span class="string">&quot;借阅成功&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> JsonData.fail(<span class="string">&quot;借阅失败&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> page</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> rows</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> session</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> : io.hailiang.web.book.common.DataGridDataSource&lt;io.hailiang.web.book.model.LendReturnList&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 根据用户ID查询借还记录</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/lendreturnrecord&quot;)</span></span><br><span class="line"><span class="meta">@LoginRequired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataGridDataSource&lt;LendReturnList&gt; <span class="title">selectLendReturnRecordByUserId</span><span class="params">(<span class="meta">@RequestParam(value = &quot;page&quot;, required = false, defaultValue = &quot;1&quot;)</span> Integer page,</span></span></span><br><span class="line"><span class="function"><span class="params">                                                                         <span class="meta">@RequestParam(value = &quot;rows&quot;, required = false, defaultValue = &quot;5&quot;)</span> Integer rows,</span></span></span><br><span class="line"><span class="function"><span class="params">                                                                         HttpSession session)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line"></span><br><span class="line">    User currentUser = (User) session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">    PageBean pageBean = <span class="keyword">new</span> PageBean(page, rows);</span><br><span class="line">    Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    map.put(<span class="string">&quot;userId&quot;</span>, currentUser.getUserId());</span><br><span class="line">    map.put(<span class="string">&quot;start&quot;</span>, pageBean.getStart());</span><br><span class="line">    map.put(<span class="string">&quot;size&quot;</span>, pageBean.getPageSize());</span><br><span class="line">    List&lt;LendReturnList&gt; lendReturnLists = lendBookService.selectLendReturnRecordByUserId(map);</span><br><span class="line">    <span class="keyword">int</span> totalRecord = lendBookService.getTotalRecord(map);</span><br><span class="line">    DataGridDataSource&lt;LendReturnList&gt; list = <span class="keyword">new</span> DataGridDataSource&lt;&gt;();</span><br><span class="line">    list.setTotal(totalRecord);</span><br><span class="line">    list.setRows(lendReturnLists);</span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PostMapping(&quot;/lendreturnrecordAll&quot;)</span></span><br><span class="line"><span class="meta">@LoginRequired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataGridDataSource&lt;LendReturnList&gt; <span class="title">lendreturnrecordAll</span><span class="params">(<span class="meta">@RequestParam(value = &quot;page&quot;, required = false, defaultValue = &quot;1&quot;)</span> Integer page,</span></span></span><br><span class="line"><span class="function"><span class="params">                                                              <span class="meta">@RequestParam(value = &quot;uid&quot;, required = false)</span> Long uid,</span></span></span><br><span class="line"><span class="function"><span class="params">                                                                         <span class="meta">@RequestParam(value = &quot;rows&quot;, required = false, defaultValue = &quot;5&quot;)</span> Integer rows,</span></span></span><br><span class="line"><span class="function"><span class="params">                                                                         HttpSession session)</span> <span class="keyword">throws</span> ParseException </span>&#123;</span><br><span class="line"></span><br><span class="line">     PageBean pageBean = <span class="keyword">new</span> PageBean(page, rows);</span><br><span class="line">    Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=421422272105200bl<br>https://javayms.pages.dev?id=421422272105200bl</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%9B%BE%E4%B9%A6%E5%80%9F%E9%98%85/" rel="tag"><i class="fa fa-tag"></i> 图书借阅</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

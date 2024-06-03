@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SSH农业信息新闻管理系统(java+ssh+jsp+css+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/252322092805200md/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SSH农业信息新闻管理系统(java+ssh+jsp+css+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/252322092805200md/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SSH农业信息新闻管理系统(java+ssh+jsp+css+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Tomcat≥8</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/180023152402.jpg" alt="180023152402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/190023152402.jpg" alt="190023152402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/200023152402.jpg" alt="200023152402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/210023152402.jpg" alt="210023152402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/220023152402.jpg" alt="220023152402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/240023152402.jpg" alt="240023152402"></p>
+<p>基于javaweb的SSH农业信息新闻管理系统(java+ssh+jsp+css+mysql)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">前台用户：</span><br><span class="line">user    123456</span><br><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;ssm_nywz_sys</span><br><span class="line"></span><br><span class="line">后台管理：</span><br><span class="line">admin   123456</span><br><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;ssm_nywz_sys&#x2F;login_toLogin.do</span><br></pre></td></tr></table></figure>
+
+<p>项目介绍</p>
+<p>管理员角色包含以下功能： 管理员登陆,用户管理,新闻管理,留言列表查看等功能。 用户角色包含以下功能： 查看所有新闻,市场资讯查看,科技推广查看,致富经栏目查看,网站留言,用户注册登陆等功能。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  5.数据库：MySql 5.7版本；</p>
+<p>技术栈</p>
+<ol>
+<li>后端：Spring+SpringMVC+Mybatis 2. 前端：HTML+CSS+JavaScript+jsp</li>
+</ol>
+<p>使用说明</p>
+<ol>
+<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven;若为maven项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中application.yml配置文件中的数据库配置改为自己的配置; 4. 运行项目，输入localhost:8080/ 登录</li>
+</ol>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKeyword2</span><span class="params">(Integer keyword2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.keyword2 = keyword2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> userName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.userName = userName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getPassWord</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> passWord;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassWord</span><span class="params">(String passWord)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.passWord = passWord;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRole</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> role;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRole</span><span class="params">(<span class="keyword">int</span> role)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.role = role;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//============自定义参数end=============</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------华丽分割线---------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//============文件上传start=============</span></span><br><span class="line"><span class="keyword">private</span> File file;</span><br><span class="line"><span class="comment">//提交过来的file的名字</span></span><br><span class="line"><span class="keyword">private</span> String fileFileName;</span><br><span class="line"><span class="comment">//提交过来的file的MIME类型</span></span><br><span class="line"><span class="keyword">private</span> String fileContentType;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> File <span class="title">getFile</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> file;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFile</span><span class="params">(File file)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.file = file;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getFileFileName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fileFileName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFileFileName</span><span class="params">(String fileFileName)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.fileFileName = fileFileName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 跳转修改页面</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">update</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Message n = messageService.getById(message.getId());</span><br><span class="line">        ActionContext.getContext().put(<span class="string">&quot;Obj&quot;</span>, n);</span><br><span class="line">        <span class="keyword">return</span> SUCCESS;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 执行修改</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">exUpdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Message n = messageService.getById(message.getId());</span><br><span class="line">        messageService.update(n);</span><br><span class="line">        ActionContext.getContext().put(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;/message_message.do&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        messageService.delete(message.getId());</span><br><span class="line">        ActionContext.getContext().put(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;/message_message.do&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=============公=======共=======方=======法==========区=========end============//</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//-------------------------华丽分割线---------------------------------------------//</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//=============自=======定=======义=========方=======法==========区=========start============//</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//=============自=======定=======义=========方=======法==========区=========end============//</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>:</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller(&quot;newsAction&quot;)</span></span><br><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NewsAction</span> <span class="keyword">extends</span> <span class="title">ActionSupport</span> <span class="keyword">implements</span> <span class="title">ModelDriven</span>&lt;<span class="title">News</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//==========model==============</span></span><br><span class="line">    <span class="keyword">private</span> News news;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> News <span class="title">getModel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (news == <span class="keyword">null</span>) news = <span class="keyword">new</span> News();</span><br><span class="line">        <span class="keyword">return</span> news;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//==========model==============</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 依赖注入 start dao/service/===</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> NewsService newsService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//依赖注入 end  dao/service/===</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//-------------------------华丽分割线---------------------------------------------</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//============自定义参数start=============</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//============自定义参数end=============</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//-------------------------华丽分割线---------------------------------------------</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//============文件上传start=======================================================</span></span><br><span class="line">    <span class="keyword">private</span> File file;</span><br><span class="line">    <span class="comment">//提交过来的file的名字</span></span><br><span class="line">    <span class="keyword">private</span> String fileFileName;</span><br><span class="line">    <span class="comment">//提交过来的file的MIME类型</span></span><br><span class="line">    <span class="keyword">private</span> String fileContentType;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> File <span class="title">getFile</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> file;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFile</span><span class="params">(File file)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.file = file;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">//     8 技术下乡</span><br><span class="line">// --  致富经</span><br><span class="line">//      9致富新闻 --&gt;</span><br><span class="line">     <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;ctx&#125;/message_add.do?type=1&quot;</span>&gt;</span>新闻中心<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;ctx&#125;/message_add.do?type=2&quot;</span>&gt;</span>市场资讯<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;ctx&#125;/message_add.do?type=3&quot;</span>&gt;</span>科技推广<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;$&#123;ctx&#125;/message_add.do?type=4&quot;</span>&gt;</span>致富经<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span>*/</span><br><span class="line"></span><br><span class="line">public String news3() &#123;</span><br><span class="line"></span><br><span class="line">    if (news.getType() == 1) &#123;</span><br><span class="line">        Map&lt;String, List<span class="tag">&lt;<span class="name">News</span>&gt;</span>&gt; map1 = new HashMap&lt;String, List<span class="tag">&lt;<span class="name">News</span>&gt;</span>&gt;();</span><br><span class="line">        List<span class="tag">&lt;<span class="name">News</span>&gt;</span> list1 = newsService.select5ByType(4, null);</span><br><span class="line">        map1.put(&quot;list1&quot;, list1);</span><br><span class="line">        Map&lt;String, List<span class="tag">&lt;<span class="name">News</span>&gt;</span>&gt; map2 = new HashMap&lt;String, List<span class="tag">&lt;<span class="name">News</span>&gt;</span>&gt;();</span><br><span class="line">        List<span class="tag">&lt;<span class="name">News</span>&gt;</span> list2 = newsService.select5ByType(5, null);</span><br><span class="line">        map2.put(&quot;list2&quot;, list2);</span><br><span class="line">        ActionContext.getContext().put(&quot;map1&quot;, map1);</span><br><span class="line">        ActionContext.getContext().put(&quot;map2&quot;, map2);</span><br><span class="line">    &#125;</span><br><span class="line">    if (news.getType() == 2) &#123;</span><br><span class="line">        Map&lt;String, List<span class="tag">&lt;<span class="name">News</span>&gt;</span>&gt; map1 = new HashMap&lt;String, List<span class="tag">&lt;<span class="name">News</span>&gt;</span>&gt;();</span><br><span class="line">        List<span class="tag">&lt;<span class="name">News</span>&gt;</span> list1 = newsService.select5ByType(6, null);</span><br><span class="line">        map1.put(&quot;list1&quot;, list1);</span><br><span class="line">        Map&lt;String, List<span class="tag">&lt;<span class="name">News</span>&gt;</span>&gt; map2 = new HashMap&lt;String, List<span class="tag">&lt;<span class="name">News</span>&gt;</span>&gt;();</span><br><span class="line">        List<span class="tag">&lt;<span class="name">News</span>&gt;</span> list2 = newsService.select5ByType(7, null);</span><br><span class="line">        map2.put(&quot;list2&quot;, list2);</span><br><span class="line">        ActionContext.getContext().put(&quot;map1&quot;, map1);</span><br><span class="line">        ActionContext.getContext().put(&quot;map2&quot;, map2);</span><br><span class="line">    &#125;</span><br><span class="line">    if (news.getType() == 3) &#123;</span><br><span class="line">        Map&lt;String, List<span class="tag">&lt;<span class="name">News</span>&gt;</span>&gt; map1 = new HashMap&lt;String, List<span class="tag">&lt;<span class="name">News</span>&gt;</span>&gt;();</span><br><span class="line">        List<span class="tag">&lt;<span class="name">News</span>&gt;</span> list1 = newsService.select5ByType(8, null);</span><br><span class="line">        map1.put(&quot;list1&quot;, list1);</span><br><span class="line">        ActionContext.getContext().put(&quot;map1&quot;, map1);</span><br><span class="line">    &#125;</span><br><span class="line">    if (news.getType() == 4) &#123;</span><br><span class="line">        Map&lt;String, List<span class="tag">&lt;<span class="name">News</span>&gt;</span>&gt; map1 = new HashMap&lt;String, List<span class="tag">&lt;<span class="name">News</span>&gt;</span>&gt;();</span><br><span class="line">        List<span class="tag">&lt;<span class="name">News</span>&gt;</span> list1 = newsService.select5ByType(9, null);</span><br><span class="line">        map1.put(&quot;list1&quot;, list1);</span><br><span class="line">        ActionContext.getContext().put(&quot;map1&quot;, map1);</span><br><span class="line">    &#125;</span><br><span class="line">    ActionContext.getContext().put(&quot;mytype&quot;, news.getType());</span><br><span class="line">    ActionContext.getContext().put(&quot;Obj&quot;, news);</span><br><span class="line">    return &quot;success&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 跳转到添加页面</span><br><span class="line"> *</span><br><span class="line"> * @return</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 执行修改</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">exUpdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    User n = userService.getById(user.getId());</span><br><span class="line">    n.setPassWord(user.getPassWord());</span><br><span class="line">    n.setPhone(user.getPhone());</span><br><span class="line">    n.setRealName(user.getRealName());</span><br><span class="line">    n.setUserName(user.getUserName());</span><br><span class="line">    n.setEmail(user.getEmail());</span><br><span class="line">    userService.update(n);</span><br><span class="line">    ActionContext.getContext().put(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;/user_user.do&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">exUpdate2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    User n = userService.getById(user.getId());</span><br><span class="line">    n.setPassWord(user.getPassWord());</span><br><span class="line">    n.setPhone(user.getPhone());</span><br><span class="line">    n.setRealName(user.getRealName());</span><br><span class="line">    n.setUserName(user.getUserName());</span><br><span class="line">    n.setEmail(user.getEmail());</span><br><span class="line">    userService.update(n);</span><br><span class="line">    ActionContext.getContext().put(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;/user_update2.do&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">exUpdate3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    User n = userService.getById(user.getId());</span><br><span class="line">    n.setPassWord(user.getPassWord());</span><br><span class="line">    n.setPhone(user.getPhone());</span><br><span class="line">    n.setRealName(user.getRealName());</span><br><span class="line">    n.setUserName(user.getUserName());</span><br><span class="line">    n.setEmail(user.getEmail());</span><br><span class="line">    userService.update(n);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;uLogin&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=252322092805200md<br>https://javayms.pages.dev?id=252322092805200md</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SSH/" rel="tag"><i class="fa fa-tag"></i> SSH</a>
+			<a href="/tags/%E5%86%9C/" rel="tag"><i class="fa fa-tag"></i> 农</a>
+			<a href="/tags/%E6%96%B0%E9%97%BB/" rel="tag"><i class="fa fa-tag"></i> 新闻</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

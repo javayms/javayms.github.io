@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot宠物医院预约挂号系统(java+spring+springboot+mybatis+thymeleaf+html+layui+maven+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/261422312105200if/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot宠物医院预约挂号系统(java+spring+springboot+mybatis+thymeleaf+html+layui+maven+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/261422312105200if/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot宠物医院预约挂号系统(java+spring+springboot+mybatis+thymeleaf+html+layui+maven+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/530023302402.jpg" alt="530023302402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/540023302402.jpg" alt="540023302402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/550023302402.jpg" alt="550023302402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/560023302402.jpg" alt="560023302402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/570023302402.jpg" alt="570023302402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/590023302402.jpg" alt="590023302402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/000023312402.jpg" alt="000023312402"></p>
+<p>基于javaweb的SpringBoot宠物医院预约挂号系统(java+spring+springboot+mybatis+thymeleaf+html+layui+maven+mysql)</p>
+<p>一、项目简述功能包括： 用户分为宠物，医生，管理员，宠物主人可进行注册选择医生挂号，选择日期，选择号源，医生可进行宠物接诊，管理员可对宠物，医生信息的维护等等功能。</p>
+<p>二、项目运行 环境配置：</p>
+<p>Jdk1.8 + mysql + Eclispe（IntelliJ IDEA,Eclispe,MyEclispe,Sts都支持）</p>
+<p>项目技术：</p>
+<p>JSP +Spring + SpringBoot + MyBatis + html+ css + JavaScript + JQuery + Ajax + layui+ maven等等  </p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">     &#125;</span><br><span class="line">  model.addAttribute(<span class="string">&quot;sectionlist&quot;</span>, sectionlist);</span><br><span class="line">  model.addAttribute(<span class="string">&quot;sectionlist2&quot;</span>, sectionlist2);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;doctorRegister&quot;</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 管理员注册</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/admin_Register&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">admin_Register</span><span class="params">(Admin admin,Model model)</span> </span>&#123;</span><br><span class="line"> <span class="keyword">int</span> insertSelective = adminService.insertSelective(admin);</span><br><span class="line"> model.addAttribute(<span class="string">&quot;type&quot;</span>,<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;login&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 登陆验证</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="meta">@RequestMapping(&quot;/verificatio&quot;)</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> String <span class="title">verificatio</span><span class="params">(String username, String password, Integer type, HttpServletRequest request,Model model)</span> </span>&#123;</span><br><span class="line">     HttpSession session = request.getSession();</span><br><span class="line">     session.setAttribute(<span class="string">&quot;type&quot;</span>,type);</span><br><span class="line">     <span class="comment">//类型为1是医院 2是管理员</span></span><br><span class="line">      <span class="keyword">if</span>(type == <span class="number">1</span>)&#123;</span><br><span class="line">     	 Doctor doctor = <span class="keyword">new</span>  Doctor();</span><br><span class="line">     	 doctor.setUsername(username);</span><br><span class="line">     	 doctor.setPasswoed(password);</span><br><span class="line">     	 List&lt;Doctor&gt; doctorlist = doctorService.selectDoctor(doctor);</span><br><span class="line">          <span class="keyword">if</span>(doctorlist.size() &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">              model.addAttribute(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;密码错误&quot;</span>);</span><br><span class="line">              model.addAttribute(<span class="string">&quot;type&quot;</span>,type);</span><br><span class="line">              <span class="keyword">return</span> <span class="string">&quot;login&quot;</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          session.setAttribute(<span class="string">&quot;DOCTOR&quot;</span>,doctorlist.get(<span class="number">0</span>));</span><br><span class="line">          <span class="keyword">return</span> <span class="string">&quot;redirect:/doctor/index&quot;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(type == <span class="number">3</span>)&#123;</span><br><span class="line">     	 Patient patient = <span class="keyword">new</span>  Patient();</span><br><span class="line">     	 patient.setUsername(username);</span><br><span class="line">     	 patient.setPassword(password);</span><br><span class="line">     	 List&lt;Patient&gt;  list = patientService.selectPatient(patient);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>  <span class="string">&quot;behind/admin/commentList&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">*<span class="comment">//**</span></span><br><span class="line"> * 评论删除</span><br><span class="line"> * <span class="meta">@return</span></span><br><span class="line"> *<span class="comment">//*</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/commentDel&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">commentDel</span><span class="params">(Model model,Integer id)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(id != <span class="keyword">null</span>)&#123;</span><br><span class="line">        commentService.deleteByPrimaryKey(id);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>  <span class="string">&quot;redirect:/admin/commentList&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">*<span class="comment">//**</span></span><br><span class="line"> *审核</span><br><span class="line"> * <span class="meta">@return</span></span><br><span class="line"> *<span class="comment">//*</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/merchantList&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">merchantList</span><span class="params">(Model model,Integer id)</span> </span>&#123;</span><br><span class="line">    Merchant merchant = <span class="keyword">new</span> Merchant();</span><br><span class="line">    merchant.setState(<span class="number">0</span>);</span><br><span class="line">    List&lt;Merchant&gt; merchantlist =   merchantService.selectMerchant(merchant);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;merchantlist&quot;</span>,merchantlist);</span><br><span class="line">    <span class="keyword">return</span>  <span class="string">&quot;behind/admin/merchantList&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">*<span class="comment">//**</span></span><br><span class="line"> *通过</span><br><span class="line"> * <span class="meta">@return</span></span><br><span class="line"> *<span class="comment">//*</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/merchanUpate&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">merchanUpate</span><span class="params">(Model model,Integer id)</span> </span>&#123;</span><br><span class="line">    Merchant merchant = <span class="keyword">new</span> Merchant();</span><br><span class="line">    <span class="keyword">if</span>(id != <span class="keyword">null</span>)&#123;</span><br><span class="line">        merchant.setId(id);</span><br><span class="line">        merchant.setState(<span class="number">1</span>);</span><br><span class="line">        merchantService.updateByPrimaryKeySelective(merchant);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>  <span class="string">&quot;redirect:/admin/merchantList&quot;</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">*<span class="comment">//**</span></span><br><span class="line"> *未通过</span><br><span class="line"> * <span class="meta">@return</span></span><br><span class="line"> *<span class="comment">//*</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/merchanDel&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">merchanDel</span><span class="params">(Model model,Integer id)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(id != <span class="keyword">null</span>)&#123;</span><br><span class="line">        merchantService.deleteByPrimaryKey(id);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">     	  <span class="keyword">return</span>  <span class="string">&quot;redirect:/login/index&quot;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  	</span><br><span class="line">  	messages.setType(type);</span><br><span class="line">  	<span class="comment">//底层数据</span></span><br><span class="line">  	PageInfo&lt;Messages&gt; pageInfo = messagesService.selectMessagesList(messages,page,size);</span><br><span class="line">  	<span class="comment">//工作区数据</span></span><br><span class="line">  	messages.setTime(<span class="keyword">new</span> Date());</span><br><span class="line"> 	List&lt;Messages&gt; list = messagesService.selectMessagesPai(messages);</span><br><span class="line"> 	 model.addAttribute(<span class="string">&quot;mlist&quot;</span>,list);</span><br><span class="line"> 	 model.addAttribute(<span class="string">&quot;messagesList&quot;</span>,pageInfo.getList());</span><br><span class="line">      model.addAttribute(<span class="string">&quot;pageInfo&quot;</span>,pageInfo);</span><br><span class="line">      model.addAttribute(<span class="string">&quot;messages&quot;</span>,messages);</span><br><span class="line">      model.addAttribute(<span class="string">&quot;type&quot;</span>,type);</span><br><span class="line">      <span class="keyword">return</span>    <span class="string">&quot;doctor/messageList&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">*医生列表查询</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">  <span class="meta">@RequestMapping(value = &quot;/messageAjax&quot;)</span></span><br><span class="line">  <span class="meta">@ResponseBody</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span>  List&lt;Messages&gt;  <span class="title">doctorList</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">  	 Messages		messages = <span class="keyword">new</span> Messages();</span><br><span class="line">       HttpSession session = request.getSession();</span><br><span class="line">       Doctor dt = (Doctor) session.getAttribute(<span class="string">&quot;DOCTOR&quot;</span>);</span><br><span class="line">       messages.setDid(dt.getId());</span><br><span class="line">     </span><br><span class="line">   	messages.setType(<span class="number">1</span>);</span><br><span class="line">   	messages.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">  	PageInfo&lt;Messages&gt; pageInfo2 = messagesService.selectMessagesListDemo(messages,<span class="number">1</span>,<span class="number">99</span>);</span><br><span class="line">     </span><br><span class="line">     <span class="keyword">return</span> pageInfo2.getList();</span><br><span class="line">  &#125;  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">*医生列表查询</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">  <span class="meta">@RequestMapping(value = &quot;/messagesQundingUptate&quot;)</span></span><br><span class="line">  <span class="meta">@ResponseBody</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String  <span class="title">messagesQundingUptate</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">  	   <span class="keyword">if</span>(id != <span class="keyword">null</span>) &#123;</span><br><span class="line">       	Messages messages = <span class="keyword">new</span> Messages();</span><br><span class="line">       	messages.setId(id);</span><br><span class="line">       	messages.setType(<span class="number">3</span>); <span class="comment">//3表示预约成功</span></span><br><span class="line">       	messagesService.updateByPrimaryKeySelective(messages);</span><br><span class="line">       	Messages selectByPrimaryKey = messagesService.selectByPrimaryKey(id);</span><br><span class="line">       	Messages  mes = <span class="keyword">new</span> Messages();</span><br><span class="line">       	mes.setType(<span class="number">1</span>);</span><br><span class="line">       	mes.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">       	mes.setDid(selectByPrimaryKey.getDid());</span><br><span class="line">    	List&lt;Messages&gt; list = messagesService.selectMessagesPai(mes);</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">  	section.setType(<span class="number">2</span>);</span><br><span class="line">  	sectionlist2 = sectionService.selectByExample(section);</span><br><span class="line">  &#125;</span><br><span class="line">  model.addAttribute(<span class="string">&quot;sectionlist&quot;</span>, sectionlist);</span><br><span class="line">  model.addAttribute(<span class="string">&quot;sectionlist2&quot;</span>, sectionlist2);</span><br><span class="line">  <span class="keyword">return</span>    <span class="string">&quot;admin/doctorAdd&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> <span class="meta">@RequestMapping(&quot;/admindoctorAdd&quot;)</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> String <span class="title">admindoctorAdd</span><span class="params">(Doctor doctor,Model model)</span> </span>&#123;</span><br><span class="line"> 	  <span class="keyword">if</span>(doctor.getId() !=  <span class="keyword">null</span>)&#123;</span><br><span class="line"> 	 	   <span class="keyword">if</span>(doctor.getSid() != <span class="keyword">null</span>) &#123;</span><br><span class="line"> 			   Section selectByPrimaryKey = sectionService.selectByPrimaryKey(doctor.getSid());</span><br><span class="line"> 			   doctor.setSname(selectByPrimaryKey.getName());</span><br><span class="line"> 		   &#125;</span><br><span class="line"> 	       doctorService.updateByPrimaryKeySelective(doctor);</span><br><span class="line"> 	   &#125;</span><br><span class="line">     <span class="keyword">return</span>  <span class="string">&quot;redirect:/admin/doctorList&quot;</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 医生列表</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="meta">@RequestMapping(&quot;/doctorList&quot;)</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> String <span class="title">doctorList</span><span class="params">(Model model, Doctor doctor, <span class="meta">@RequestParam(value=&quot;page&quot;,defaultValue=&quot;1&quot;)</span>Integer page)</span> </span>&#123;</span><br><span class="line"> 	<span class="keyword">if</span>(doctor == <span class="keyword">null</span>) &#123;</span><br><span class="line"> 		doctor = <span class="keyword">new</span> Doctor();</span><br><span class="line"> 	&#125;</span><br><span class="line"> 	PageInfo&lt;Doctor&gt; pageInfo  =  doctorService.selectDoctorList(doctor,page,size);</span><br><span class="line"> 	</span><br><span class="line"> 	List&lt;Doctor&gt; list = pageInfo.getList();</span><br><span class="line">     model.addAttribute(<span class="string">&quot;doctorList&quot;</span>,pageInfo.getList());</span><br><span class="line">     model.addAttribute(<span class="string">&quot;pageInfo&quot;</span>,pageInfo);</span><br><span class="line">     model.addAttribute(<span class="string">&quot;doctor&quot;</span>,doctor);</span><br><span class="line">     <span class="keyword">return</span>    <span class="string">&quot;admin/doctorList&quot;</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  *  修改医生信息界面</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   *  修改医生信息</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/admindoctorUptate&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">adminUptatePassword</span><span class="params">(Doctor doctor,Model model)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(doctor !=  <span class="keyword">null</span> &amp;&amp; doctor.getId() != <span class="keyword">null</span>) &#123;</span><br><span class="line">  	   <span class="keyword">if</span>(doctor.getSid() != <span class="keyword">null</span>) &#123;</span><br><span class="line">  		   Section section = sectionService.selectByPrimaryKey(doctor.getSid());</span><br><span class="line">  		   doctor.setSid(section.getId());</span><br><span class="line">  		   doctor.setSname(section.getName());</span><br><span class="line">  	   &#125;</span><br><span class="line">  	   doctorService.updateByPrimaryKeySelective(doctor);</span><br><span class="line">     &#125;</span><br><span class="line">      <span class="keyword">return</span>  <span class="string">&quot;redirect:/admin/doctorList&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   *  删除医生信息</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/doctorDelect&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">doctorDelect</span><span class="params">(Integer id,Model model)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(id !=  <span class="keyword">null</span>) &#123;</span><br><span class="line">  	</span><br><span class="line">  	   doctorService.deleteByPrimaryKey(id);</span><br><span class="line">     &#125;</span><br><span class="line">      <span class="keyword">return</span>  <span class="string">&quot;redirect:/admin/doctorList&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   *  医生注册界面</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="meta">@RequestMapping(&quot;/doctorAddPage&quot;)</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> String  <span class="title">doctorAddPage</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">  	List&lt;Section&gt; sectionlist2  = <span class="keyword">null</span>;</span><br><span class="line">  	Section  se = <span class="keyword">new</span>  Section();</span><br><span class="line">  	se.setType(<span class="number">1</span>);</span><br><span class="line">List&lt;Section&gt; sectionlist = sectionService.selectByExample(se);</span><br><span class="line">   <span class="keyword">if</span>(sectionlist.size() &gt; <span class="number">0</span> ) &#123;</span><br><span class="line">   	<span class="comment">//科室详情</span></span><br><span class="line">   	Section  section = <span class="keyword">new</span>  Section();</span><br><span class="line">   	section.setPid(sectionlist.get(<span class="number">0</span>).getId());</span><br><span class="line">   	section.setType(<span class="number">2</span>);</span><br><span class="line">   	sectionlist2 = sectionService.selectByExample(section);</span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=261422312105200if<br>https://javayms.pages.dev?id=261422312105200if</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%AE%A0%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 宠物</a>
+			<a href="/tags/%E9%A2%84%E7%BA%A6%E6%8C%82%E5%8F%B7/" rel="tag"><i class="fa fa-tag"></i> 预约挂号</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

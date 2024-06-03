@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SSM零食商城系统(java+ssm+jsp+mysql+easyui)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/031422332105200ln/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SSM零食商城系统(java+ssm+jsp+mysql+easyui) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/031422332105200ln/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SSM零食商城系统(java+ssm+jsp+mysql+easyui)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Tomcat≥8</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/420023222402.jpg" alt="420023222402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/440023222402.jpg" alt="440023222402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/450023222402.jpg" alt="450023222402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/460023222402.jpg" alt="460023222402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/470023222402.jpg" alt="470023222402"></p>
+<p>基于javaweb的SSM零食商城系统(java+ssm+jsp+mysql+easyui)</p>
+<p>系统主要实现的功能有：用户浏览商品、加入商品到购物车、登录注册、提交订单，会员中心修改个人信息、查看订单等。</p>
+<p>后台管理员登录后可以分角色添加管理员，不同角色有不同权限，可以管理用户信息、商品信息、订单信息，订单信息可以导出到excel。其中支付是模拟在线支付，从账户余额中扣费的，用户注册后自动设置余额为指定值。</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> ResponseUtil.errorToClient();</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;mainToAdminSnackinfo&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">mainToAdminImg</span><span class="params">(ModelAndView model)</span></span>&#123;</span><br><span class="line">	model.setViewName(<span class="string">&quot;admin/snackinfo/adminSnackinfo&quot;</span>);</span><br><span class="line">	List&lt;DoSnackType&gt; allDoType = TypeUtil.getAllDoType();</span><br><span class="line">	model.addObject(<span class="string">&quot;typeList&quot;</span>, allDoType);</span><br><span class="line">	<span class="keyword">return</span> model;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//商品</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;adminSnackinfoLimit&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataTables <span class="title">adminOrderLimit</span><span class="params">(<span class="keyword">int</span> start,<span class="keyword">int</span> length,</span></span></span><br><span class="line"><span class="function"><span class="params">		String sName,String sType,String startDate,String endDate)</span></span>&#123;</span><br><span class="line">	Map&lt;Object,Object&gt; map=<span class="keyword">new</span> HashMap&lt;Object, Object&gt;();</span><br><span class="line">		map.put(<span class="string">&quot;pageStart&quot;</span>,start);</span><br><span class="line">		map.put(<span class="string">&quot;pageSize&quot;</span>,length);</span><br><span class="line">		map.put(<span class="string">&quot;sType&quot;</span>,sType);</span><br><span class="line">		map.put(<span class="string">&quot;sName&quot;</span>,sName);</span><br><span class="line">		map.put(<span class="string">&quot;startDate&quot;</span>,startDate);</span><br><span class="line">		map.put(<span class="string">&quot;endDate&quot;</span>,endDate);</span><br><span class="line">	PageHelp&lt;Snackinfo&gt; pageHelp = adminSnackInfoService.selectAdminSnackinfoLimit(map);</span><br><span class="line">	DataTables datatable=<span class="keyword">new</span> DataTables();</span><br><span class="line">	datatable.setData(pageHelp.getList());</span><br><span class="line">	datatable.setRecordsFiltered(pageHelp.getRecord());</span><br><span class="line">	datatable.setRecordsTotal(pageHelp.getRecord());</span><br><span class="line">	<span class="keyword">return</span> datatable;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除用户</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;delAdminUserinfo&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">delUserinfoById</span><span class="params">(<span class="keyword">int</span> sId)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> ResponseUtil.successToClient(adminSnackInfoService.delAdminSnackinfo(sId));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//加载用户</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">	<span class="comment">//删除订单</span></span><br><span class="line">		<span class="meta">@RequestMapping(&quot;deleteMyOrder&quot;)</span></span><br><span class="line">		<span class="meta">@ResponseBody</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">deleteAdminOrder</span><span class="params">(String oId)</span></span>&#123;</span><br><span class="line">			<span class="keyword">return</span> ResponseUtil.successToClient(adminOrderService.deleteAdminOrder(oId));</span><br><span class="line">		&#125; </span><br><span class="line">	</span><br><span class="line">	<span class="comment">//跳转管理员信息</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;mainToAdminuser&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">mainToAdminuser</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;admin/persionInfo/adminInfo&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//加载管理员信息</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;mainSelectAdminuser&quot;)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">mainSelectAdminuser</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> adId =(<span class="keyword">int</span>)request.getSession().getAttribute(<span class="string">&quot;adminId&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> ResponseUtil.successToClient(userService.selectAdminInfo(adId));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//更新管理员信息</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;mainUpdateAdminuser&quot;)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">mainUpdateAdminuser</span><span class="params">(DoAdminInfo admin)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> ResponseUtil.successToClient(userService.updateAdminInfo(admin));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.snack.web;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查看当前订单</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;userOrderLimit&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataTables <span class="title">userOrderLimit</span><span class="params">(HttpServletRequest request,<span class="keyword">int</span> start,<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">	Map&lt;Object,Object&gt; map=<span class="keyword">new</span> HashMap&lt;Object, Object&gt;();</span><br><span class="line">	map.put(<span class="string">&quot;uId&quot;</span>,request.getSession().getAttribute(<span class="string">&quot;frontuserId&quot;</span>));</span><br><span class="line">	map.put(<span class="string">&quot;pageStart&quot;</span>,start);</span><br><span class="line">	map.put(<span class="string">&quot;pageSize&quot;</span>,length);</span><br><span class="line">	PageHelp&lt;DoMyOrder&gt; pageHelp= userService.selectOrderLimit(map);</span><br><span class="line">	DataTables datatable=<span class="keyword">new</span> DataTables();</span><br><span class="line">	datatable.setData(pageHelp.getList());</span><br><span class="line">	datatable.setRecordsFiltered(pageHelp.getRecord());</span><br><span class="line">	datatable.setRecordsTotal(pageHelp.getRecord());</span><br><span class="line">	<span class="keyword">return</span> datatable;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//跳转订单页面</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;userGoOrder&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">userGoOrder</span><span class="params">(HttpSession session)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;user/myOrder&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//跳转历史订单</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;userGoSuccessOrder&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">userGoSuccessOrder</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;user/myOrderSuccess&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查看当前订单</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;userSucOrderLimit&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataTables <span class="title">userSucOrderLimit</span><span class="params">(HttpServletRequest request,<span class="keyword">int</span> start,<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">	Map&lt;Object,Object&gt; map=<span class="keyword">new</span> HashMap&lt;Object, Object&gt;();</span><br><span class="line">	map.put(<span class="string">&quot;uId&quot;</span>,request.getSession().getAttribute(<span class="string">&quot;frontuserId&quot;</span>));</span><br><span class="line">	map.put(<span class="string">&quot;pageStart&quot;</span>,start);</span><br><span class="line">	map.put(<span class="string">&quot;pageSize&quot;</span>,length);</span><br><span class="line">	PageHelp&lt;DoMyOrder&gt; pageHelp= userService.selectMySuccessOrderLimit(map);</span><br><span class="line">	DataTables datatable=<span class="keyword">new</span> DataTables();</span><br><span class="line">	datatable.setData(pageHelp.getList());</span><br><span class="line">	datatable.setRecordsFiltered(pageHelp.getRecord());</span><br><span class="line">	datatable.setRecordsTotal(pageHelp.getRecord());</span><br><span class="line">	<span class="keyword">return</span> datatable;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/admin/order/&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdminOrderControll</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> adminOrderService adminOrderService;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> userService userService; </span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> adminUserService adminUserService;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@RequestMapping(&quot;mainToAdminOrder&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ModelAndView <span class="title">mainToAdminOrder</span><span class="params">(ModelAndView model)</span></span>&#123;</span><br><span class="line">		Map&lt;Object,Object&gt; map=<span class="keyword">new</span> HashMap&lt;Object, Object&gt;();</span><br><span class="line">		map.put(<span class="string">&quot;pageStart&quot;</span>,<span class="number">0</span>);</span><br><span class="line">		map.put(<span class="string">&quot;pageSize&quot;</span>,<span class="number">999</span>);</span><br><span class="line">		PageHelp&lt;Admin&gt; selectAdminLimit = adminUserService.selectAdminLimit(map, <span class="keyword">null</span>);</span><br><span class="line">		model.addObject(<span class="string">&quot;adminList&quot;</span>, selectAdminLimit.getList());</span><br><span class="line">		model.setViewName(<span class="string">&quot;admin/order/adminOrder&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> model;</span><br><span class="line">	&#125; </span><br><span class="line">	</span><br><span class="line">	<span class="comment">//订单</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;adminOrderLimit&quot;)</span></span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">	System.out.println(<span class="string">&quot;00&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;user/index&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//登录</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;userLoginGet&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">gotoUserLogin</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;user/userLogin&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;userLoginPost&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">gotoUserLogin</span><span class="params">(Userinfo userinfo,HttpServletRequest request)</span></span>&#123;</span><br><span class="line">	Userinfo exituser =  shopService.userLogin(userinfo);</span><br><span class="line">	<span class="keyword">if</span>(exituser ==<span class="keyword">null</span>)&#123;</span><br><span class="line">		request.setAttribute(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;用户名或密码错误&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;user/userLogin&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	request.getSession().setAttribute(<span class="string">&quot;exituser&quot;</span>, exituser);</span><br><span class="line">	request.getSession().setAttribute(<span class="string">&quot;frontuser&quot;</span>, exituser.getuUsername());</span><br><span class="line">	request.getSession().setAttribute(<span class="string">&quot;frontuserId&quot;</span>, exituser.getuId());</span><br><span class="line">	request.getSession().setAttribute(<span class="string">&quot;money&quot;</span>, exituser.getuMoney());</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect:index&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//退出登录</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;userlogout&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">showlogin</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">	HttpSession session = request.getSession();</span><br><span class="line">	session.removeAttribute(<span class="string">&quot;frontuser&quot;</span>);</span><br><span class="line">	session.removeAttribute(<span class="string">&quot;frontuserId&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;redirect:userLoginGet&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//商品详情</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;proDatail&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">gotoProDatail</span><span class="params">(HttpServletRequest request,Snackinfo snack)</span></span>&#123;</span><br><span class="line">	Snackinfo sck = shopService.selectById(snack);</span><br><span class="line">	request.setAttribute(<span class="string">&quot;sck&quot;</span>, sck);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;product/proDetail&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询订单</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;selectOrderSnack&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataTables <span class="title">selectOrderSnack</span><span class="params">(String oId,<span class="keyword">int</span> start,<span class="keyword">int</span> length)</span></span>&#123;</span><br><span class="line">	Map&lt;Object,Object&gt; map=<span class="keyword">new</span> HashMap&lt;Object, Object&gt;();</span><br><span class="line">	map.put(<span class="string">&quot;oId&quot;</span>, oId);</span><br><span class="line">	map.put(<span class="string">&quot;pageStart&quot;</span>,start);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataTables <span class="title">adminOrderLimit</span><span class="params">(<span class="keyword">int</span> start,<span class="keyword">int</span> length,</span></span></span><br><span class="line"><span class="function"><span class="params">		String oId,String oTimeStart,String oTimeEnd,String adUserName)</span></span>&#123;</span><br><span class="line">	Map&lt;Object,Object&gt; map=<span class="keyword">new</span> HashMap&lt;Object, Object&gt;();</span><br><span class="line">		map.put(<span class="string">&quot;pageStart&quot;</span>,start);</span><br><span class="line">		map.put(<span class="string">&quot;pageSize&quot;</span>,length);</span><br><span class="line">		map.put(<span class="string">&quot;oId&quot;</span>,oId);</span><br><span class="line">		map.put(<span class="string">&quot;oTimeStart&quot;</span>,oTimeStart);</span><br><span class="line">		map.put(<span class="string">&quot;oTimeEnd&quot;</span>,oTimeEnd);</span><br><span class="line">		map.put(<span class="string">&quot;adUserName&quot;</span>,adUserName);</span><br><span class="line">	PageHelp&lt;DoAdminOrder&gt; pageHelp= adminOrderService.selectAdminOrderLimit(map);</span><br><span class="line">	DataTables datatable=<span class="keyword">new</span> DataTables();</span><br><span class="line">	datatable.setData(pageHelp.getList());</span><br><span class="line">	datatable.setRecordsFiltered(pageHelp.getRecord());</span><br><span class="line">	datatable.setRecordsTotal(pageHelp.getRecord());</span><br><span class="line">	<span class="keyword">return</span> datatable;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除订单</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;deleteAdminOrder&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">deleteAdminOrder</span><span class="params">(String oId)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> ResponseUtil.successToClient(adminOrderService.deleteAdminOrder(oId));</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//update加载订单</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;updateSelectAdminOrder&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">updateSelectAdminOrder</span><span class="params">(<span class="keyword">int</span> rId)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> ResponseUtil.successToClient(adminOrderService.updateSelectAdminOrder(rId));</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//update订单</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;updateAdminOrder&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">updateAdminOrder</span><span class="params">(Receiptinfo receiptinfo)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> ResponseUtil.successToClient(adminOrderService.updateAdminOrder(receiptinfo));</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//updateOrderDetial加载订单</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;updateSelectAdminOrderDetial&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">updateSelectAdminOrderDetial</span><span class="params">(<span class="keyword">int</span> dId)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> ResponseUtil.successToClient(adminOrderService.updateSelectAdminOrderDetial(dId));</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//updateOrderDetial订单</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;updateOrderdetail&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">updateOrderdetail</span><span class="params">(Orderdetail orderdetail)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> ResponseUtil.successToClient(adminOrderService.updateOrderdetail(orderdetail));</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=031422332105200ln<br>https://javayms.pages.dev?id=031422332105200ln</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
+			<a href="/tags/%E9%A3%9F/" rel="tag"><i class="fa fa-tag"></i> 食</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

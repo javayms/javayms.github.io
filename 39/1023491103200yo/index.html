@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SSH微信小程序商城+后台管理系统(java+ssh+jsp+jquery+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/391023491103200yo/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SSH微信小程序商城+后台管理系统(java+ssh+jsp+jquery+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/391023491103200yo/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SSH微信小程序商城+后台管理系统(java+ssh+jsp+jquery+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Tomcat≥8</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/080923541103.jpg" alt="080923541103"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/090923541103.jpg" alt="090923541103"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/100923541103.jpg" alt="100923541103"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/110923541103.jpg" alt="110923541103"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/120923541103.jpg" alt="120923541103"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/140923541103.jpg" alt="140923541103"></p>
+<p>基于javaweb的SSH微信小程序商城+后台管理系统(java+ssh+jsp+jquery+mysql)</p>
+<p>项目介绍</p>
+<p>本项目为小程序商城系统前后台，前台为普通会员用户登录，后台为管理员登录；</p>
+<p>程序功能： 1.小程序前台：用户注册登录、首页、轮播图、新品推荐、分类、购物车、我的订单。 2.网站后台：管理员登录、用户管理、商品类别管理、商品管理、订单管理、公告管理；</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； 5.数据库：MySql 5.7版本； 6.是否Maven项目: 否；</p>
+<p>技术栈</p>
+<ol>
+<li>后端：spring+struts+hibernate 2. 前端：JSP+css+javascript+jquery</li>
+</ol>
+<p>使用说明</p>
+<p>后台运行： 1. 使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven; 若为maven项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中config/jdbc.properties配置文件中的数据库配置改为自己的配置; 4. 运行项目，在浏览器中输入<a target="_blank" rel="noopener" href="http://localhost:8080/shop">http://localhost:8080/shop</a> 管理员：admin/111111</p>
+<p>前台小程序运行： 1.使用微信开发者工具导入项目； 2.导入成功后编译运行； 3.运行成功后登录账号； 普通用户：ceshi/111111  </p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------------华丽分割线---------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//============文件上传start=======================================================</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Integer <span class="title">getLbId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> lbId;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLbId</span><span class="params">(Integer lbId)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.lbId = lbId;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> File file;</span><br><span class="line"><span class="comment">//提交过来的file的名字</span></span><br><span class="line">   <span class="keyword">private</span> String fileFileName;</span><br><span class="line">   <span class="comment">//提交过来的file的MIME类型</span></span><br><span class="line">   <span class="keyword">private</span> String fileContentType;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> File <span class="title">getFile</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> file;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFile</span><span class="params">(File file)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.file = file;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getFileFileName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fileFileName;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFileFileName</span><span class="params">(String fileFileName)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.fileFileName = fileFileName;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getFileContentType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fileContentType;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFileContentType</span><span class="params">(String fileContentType)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.fileContentType = fileContentType;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="comment">//============文件上传end=========================================================</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">jsonAction</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	  <span class="comment">// dataMap中的数据将会被Struts2转换成JSON字符串，所以这里要先清空其中的数据</span></span><br><span class="line">	  jsonMap.clear();</span><br><span class="line">	  jsonMap.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">	  <span class="keyword">return</span> JSON_TYPE;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="comment">//-------------------------华丽分割线---------------------------------------------//</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//=============公=======共=======方=======法==========区=========start============//</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 列表分页查询</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">pp</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Map&lt;String,Object&gt; alias = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">	StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">	sb = sb.append(<span class="string">&quot;from Pp where 1=1 and  lb.id=&quot;</span>+lbId);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">	 * <span class="meta">@return</span></span><br><span class="line">	 */</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">exUpdate</span><span class="params">()</span></span>&#123;</span><br><span class="line">		User n = userService.getById(user.getId());</span><br><span class="line">		userService.update(n);</span><br><span class="line">		ActionContext.getContext().put(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;/user_user.do&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 删除</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">()</span></span>&#123;</span><br><span class="line">		User n = userService.getById(user.getId());</span><br><span class="line">		n.setIsDelete(<span class="number">1</span>);</span><br><span class="line">		userService.update(n);</span><br><span class="line">		ActionContext.getContext().put(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;/user_user.do&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//=============公=======共=======方=======法==========区=========end============//</span></span><br><span class="line">	</span><br><span class="line">	 <span class="comment">//-------------------------华丽分割线---------------------------------------------//</span></span><br><span class="line">	</span><br><span class="line">	 <span class="comment">//=============自=======定=======义=========方=======法==========区=========start============//</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//=============自=======定=======义=========方=======法==========区=========end============//</span></span><br><span class="line">		</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.my.pro.action;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">		n.setIsDelete(<span class="number">1</span>);</span><br><span class="line">		userService.update(n);</span><br><span class="line">		ActionContext.getContext().put(<span class="string">&quot;url&quot;</span>, <span class="string">&quot;/user_user.do&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//=============公=======共=======方=======法==========区=========end============//</span></span><br><span class="line">	</span><br><span class="line">	 <span class="comment">//-------------------------华丽分割线---------------------------------------------//</span></span><br><span class="line">	</span><br><span class="line">	 <span class="comment">//=============自=======定=======义=========方=======法==========区=========start============//</span></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//=============自=======定=======义=========方=======法==========区=========end============//</span></span><br><span class="line">		</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.my.pro.action;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用户登陆</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">utlogin</span><span class="params">()</span></span>&#123;</span><br><span class="line">	String hql = <span class="string">&quot;from User where userName = :userName and passWord = :passWord&quot;</span>;</span><br><span class="line">	  Map&lt;String,Object&gt; alias = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">	  alias.put(<span class="string">&quot;userName&quot;</span>,name);</span><br><span class="line">	  alias.put(<span class="string">&quot;passWord&quot;</span>, pass);</span><br><span class="line">	List&lt;User&gt; manageList=userService.getByHQL(hql, alias);</span><br><span class="line">	<span class="keyword">if</span>(manageList.size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="comment">//将用户信息放入session</span></span><br><span class="line">		HttpSession session = ServletActionContext.getRequest()</span><br><span class="line">				.getSession();</span><br><span class="line">		session.setAttribute(<span class="string">&quot;userName&quot;</span>, manageList.get(<span class="number">0</span>).getRealName());</span><br><span class="line">		session.setAttribute(<span class="string">&quot;userId&quot;</span>,manageList.get(<span class="number">0</span>).getId() );</span><br><span class="line">		session.setAttribute(<span class="string">&quot;manage&quot;</span>, manageList.get(<span class="number">0</span>));</span><br><span class="line">		session.setAttribute(<span class="string">&quot;roleId&quot;</span>, role);</span><br><span class="line">		jsonMap.put(<span class="string">&quot;result&quot;</span>, <span class="number">1</span>);</span><br><span class="line">		jsonMap.put(<span class="string">&quot;userId&quot;</span>, manageList.get(<span class="number">0</span>).getId() );</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;json&quot;</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		jsonMap.put(<span class="string">&quot;result&quot;</span>, <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;json&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">     <span class="comment">//登录</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toLogin</span><span class="params">()</span></span>&#123;</span><br><span class="line">			String hql = <span class="string">&quot;from Manage where name = :userName and passWord = :passWord&quot;</span>;</span><br><span class="line">			  Map&lt;String,Object&gt; alias = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">			  alias.put(<span class="string">&quot;userName&quot;</span>,userName);</span><br><span class="line">			  alias.put(<span class="string">&quot;passWord&quot;</span>, passWord);</span><br><span class="line">			List&lt;Manage&gt; manageList=manageService.getByHQL(hql, alias);</span><br><span class="line">			<span class="keyword">if</span>(manageList.size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="comment">//将用户信息放入session</span></span><br><span class="line">				HttpSession session = ServletActionContext.getRequest()</span><br><span class="line">						.getSession();</span><br><span class="line">				session.setAttribute(<span class="string">&quot;role&quot;</span>,  manageList.get(<span class="number">0</span>).getType());</span><br><span class="line">				session.setAttribute(<span class="string">&quot;userName&quot;</span>, manageList.get(<span class="number">0</span>).getRealName());</span><br><span class="line">				session.setAttribute(<span class="string">&quot;userId&quot;</span>,manageList.get(<span class="number">0</span>).getId() );</span><br><span class="line">				session.setAttribute(<span class="string">&quot;manage&quot;</span>, manageList.get(<span class="number">0</span>));</span><br><span class="line">				session.setAttribute(<span class="string">&quot;roleId&quot;</span>, role);</span><br><span class="line">				<span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="string">&quot;login&quot;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//退出</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">tuichu</span><span class="params">()</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Controller(&quot;manageAction&quot;)</span></span><br><span class="line"><span class="meta">@Scope(&quot;prototype&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ManageAction</span> <span class="keyword">extends</span> <span class="title">BaseAction</span> <span class="keyword">implements</span> <span class="title">ModelDriven</span>&lt;<span class="title">Manage</span>&gt;</span>&#123;</span><br><span class="line">   <span class="keyword">private</span> Manage manage;</span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> UserService userService;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">   <span class="keyword">private</span> ManageService manageService;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> userId;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> sayId;</span><br><span class="line">    <span class="keyword">private</span> String new1;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getNew1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> new1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNew1</span><span class="params">(String new1)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.new1 = new1;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 登陆以后进入首页</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Manage ma =	manageService.login(manage);</span><br><span class="line">		<span class="keyword">if</span>(ma == <span class="keyword">null</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="string">&quot;login&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		HttpSession session =	ServletActionContext.getRequest().getSession();</span><br><span class="line">		session.setAttribute(<span class="string">&quot;userName&quot;</span>, ma.getName());</span><br><span class="line">		session.setAttribute(<span class="string">&quot;userIdLogo&quot;</span>, ma.getId());</span><br><span class="line">		session.setAttribute(<span class="string">&quot;userType&quot;</span>, ma.getType());</span><br><span class="line">		session.setAttribute(<span class="string">&quot;userId&quot;</span>, ma.getType());</span><br><span class="line">	    <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 跳到管理员页面,并且顺带查询管理员列表分页</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	jsonMap.put(<span class="string">&quot;newgoods&quot;</span>,list);</span><br><span class="line">	<span class="keyword">return</span> JSON_TYPE;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">home</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//注册</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">res</span><span class="params">()</span> <span class="keyword">throws</span> UnsupportedEncodingException</span>&#123;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	User user = <span class="keyword">new</span> User();</span><br><span class="line">	<span class="keyword">if</span>(!isEmpty(realName))&#123;</span><br><span class="line">		String str =  URLDecoder.decode((<span class="keyword">new</span> String(realName.getBytes(<span class="string">&quot;ISO8859-1&quot;</span>), <span class="string">&quot;UTF-8&quot;</span>)), <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">		user.setRealName(str);</span><br><span class="line">	&#125;</span><br><span class="line">	user.setCreateTime(<span class="keyword">new</span> Date());</span><br><span class="line">	user.setPassWord(pass);</span><br><span class="line">	user.setPhone(phone);</span><br><span class="line">	user.setIsDelete(<span class="number">0</span>);</span><br><span class="line">	user.setUserName(name);</span><br><span class="line">	Integer id = userService.save2(user);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;json&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用户登陆</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">utlogin</span><span class="params">()</span></span>&#123;</span><br><span class="line">	String hql = <span class="string">&quot;from User where userName = :userName and passWord = :passWord&quot;</span>;</span><br><span class="line">	  Map&lt;String,Object&gt; alias = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">	  alias.put(<span class="string">&quot;userName&quot;</span>,name);</span><br><span class="line">	  alias.put(<span class="string">&quot;passWord&quot;</span>, pass);</span><br><span class="line">	List&lt;User&gt; manageList=userService.getByHQL(hql, alias);</span><br><span class="line">	<span class="keyword">if</span>(manageList.size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		<span class="comment">//将用户信息放入session</span></span><br><span class="line">		HttpSession session = ServletActionContext.getRequest()</span><br><span class="line">				.getSession();</span><br><span class="line">		session.setAttribute(<span class="string">&quot;userName&quot;</span>, manageList.get(<span class="number">0</span>).getRealName());</span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=159&price1=119&price2=119" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=391023491103200yo<br>https://javayms.pages.dev?id=391023491103200yo</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SSH/" rel="tag"><i class="fa fa-tag"></i> SSH</a>
+			<a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"><i class="fa fa-tag"></i> 小程序</a>
+			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

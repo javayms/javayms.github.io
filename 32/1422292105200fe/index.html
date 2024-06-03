@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot网上家具商城平台设计和实现(java+springboot+mysql+jpa+thymeleaf+html+maven)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/321422292105200fe/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot网上家具商城平台设计和实现(java+springboot+mysql+jpa+thymeleaf+html+maven) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/321422292105200fe/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot网上家具商城平台设计和实现(java+springboot+mysql+jpa+thymeleaf+html+maven)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p>前台用户</p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/440023032402.jpg" alt="440023032402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/450023032402.jpg" alt="450023032402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/460023032402.jpg" alt="460023032402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/481824310203.jpg" alt="481824310203"></p>
+<p>后台管理员</p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/470023032402.jpg" alt="470023032402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/480023032402.jpg" alt="480023032402"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project20/490023032402.jpg" alt="490023032402"></p>
+<p>基于javaweb的SpringBoot网上家具商城平台设计和实现(java+springboot+mysql+jpa+thymeleaf+html+maven)</p>
+<p>主要技术：springmvc  springboot mybatis mysql jquery layui 等技术</p>
+<p>具体功能模块：</p>
+<p>(1) 用户注册和登录登录功能：</p>
+<p>①用户的注册功能 : 访问网站的人根据网站的提示注册自己的账户</p>
+<p>②用户的登录功能 : 用户可以输入用户名和密码进行登录操作，当没有该账户的时 候，提示错误，用户必须通过注册完成或者从数据库中获取才能进行会员权限级别的操 作。登录成功之后可以购买商品，查询订单的详细信息</p>
+<p>(2) 、个人信息的管理：</p>
+<p>①用户信息的修改操作，其中包括会员名、密码、性别、联系方式 e-mail 和个人介 绍等用户信息的修改操作。但是会员邮箱是绑定账号的，会员邮箱不能进行更改操作。</p>
+<p>②订单管理操作：订单只能查询和删除操作，不能有修改操作，修改操作是属于管理员的权限。</p>
+<p>③用户退出操作：当点击用户退出时，就会退出当前用户的登录状态，恢复到游客 状态。</p>
+<p>(3) 、商品的操作：</p>
+<p>①搜索商品操作： 当在 Search 栏输入想搜索的家居用品时， 会使用模糊查询， 搜索 出客户想到查询的家居用品。</p>
+<p>②商品列表展示：</p>
+<p>③商品详细信息展示：</p>
+<p>(4) 、购物车的管理操作：</p>
+<p>①显示商品信息：当我们一进入购物车页面，就会显示出商品的详细信息，以及购 物车界面的功能信息。</p>
+<p>②修改商品的数量：用户可以自己输入不同数量的商品，当商品的数量变动时，商 品的库存就会相应的减少，也会根据商品的数量得到购买这一种商品的金额小计。</p>
+<p>③删除购物车中的商品：</p>
+<p>④购物流程变动：</p>
+<p>(5) 、订单管理操作：</p>
+<p>①订单生成：进入结算中心，会提示用户已经登录成功并来到结算中心，然后在提 交订单的时候生成了一份订单，会显示在确认订单页面。</p>
+<p>②确认订单：当点击确认订单的时候会进入支付页面，那里会真正的付款操作。</p>
+<p>③订单查询：在我的订单页面会显示订单的详细信息，我们可以查询我们想要的订 单信息。</p>
+<p>④订单管理：在我的订单页面会显示所有订单的信息，可以在那里删除订单，查询 订单等。</p>
+<p>后台管理员主要设计:</p>
+<p>系统的后台是专门为管理家居商城系统的人员设计的，功能如下：</p>
+<p>(1) 、超级管理员：拥有管理该系统的最大权限，他有两个特有的功能</p>
+<p>①数据字典：可以对后台的不同分类的分类列表具有增删改查的操作。</p>
+<p>②角色管理：将拥有不同权限的管理员分成不同的角色，每个不同角色有自己的权限，不能执行越权操作</p>
+<p>(2) 、商品分类的管理：</p>
+<p>①添加编辑分类：点击添加按钮，会跳转到分类添加页面，需要编写分类名称，分类描述信息。</p>
+<p>2.删除分类：当点击删除按钮时，会弹出一个提醒框，当点击确定，删除分类，点击取消，保持原来不变。</p>
+<p>(3) 、商品管理功能：</p>
+<p>①查询商品 : 查询所有商品列表， 还有通过商品的名称、 商品的类别和价格区间查询</p>
+<p>②添加修改商品 : 点击添加商品会转到添加商品页面， 需要提供商品名称、 商品图片、商 5 6 品类别、商品价格、库存数量、商品描述等内容。</p>
+<p>④删除商品：删除商品。  </p>
+<p>给大家截一部分效果图吧</p>
+<p>系统客户端首页:</p>
+<p>登录注册以及后台用户管理:</p>
+<p>后台商品信息管理:</p>
+<p>功能选择:</p>
+<p>用户信息管理修改:</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">     * <span class="meta">@param</span> username</span><br><span class="line">     * <span class="meta">@param</span> password</span><br><span class="line">     */</span><br><span class="line">    <span class="comment">//@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping(method = RequestMethod.POST, value = &quot;/login.do&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">login</span><span class="params">(String username, String password, HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        AdminUser adminUser = adminUserService.checkLogin(request, username, password);</span><br><span class="line">        response.sendRedirect(<span class="string">&quot;/mall/admin/toIndex.html&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 退出登录</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/logout.do&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logout</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        request.getSession().removeAttribute(<span class="string">&quot;login_user&quot;</span>);</span><br><span class="line">        response.sendRedirect(<span class="string">&quot;toLogin.html&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> priv.jesse.mall.service.impl;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdminUserServiceImpl</span> <span class="keyword">implements</span> <span class="title">AdminUserService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AdminUserDao adminUserDao;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> AdminUser <span class="title">findById</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> adminUserDao.getOne(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Page&lt;AdminUser&gt; <span class="title">findAll</span><span class="params">(Pageable pageable)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> adminUserDao.findAll(pageable);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * WEB层日志切面,用来记录请求信息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Order(5)</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebLogAspect</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(WebLogAspect.class);</span><br><span class="line"></span><br><span class="line">    ThreadLocal&lt;Long&gt; startTime = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Pointcut(&quot;execution(public * priv.jesse.mall.controller.*.*(..))&quot;)</span><span class="comment">//切入点</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">webLog</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before(&quot;webLog()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doBefore</span><span class="params">(JoinPoint joinPoint)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        startTime.set(System.currentTimeMillis());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 接收到请求，记录请求内容</span></span><br><span class="line">        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();</span><br><span class="line">        HttpServletRequest request = attributes.getRequest();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 记录下请求内容</span></span><br><span class="line">        LOGGER.info(<span class="string">&quot;**************Start API Request**************&quot;</span>);</span><br><span class="line">        LOGGER.info(<span class="string">&quot;URL : &quot;</span> + request.getRequestURI().toString());</span><br><span class="line">        LOGGER.info(<span class="string">&quot;HTTP_METHOD : &quot;</span> + request.getMethod());</span><br><span class="line">        LOGGER.info(<span class="string">&quot;IP : &quot;</span> + request.getRemoteAddr());</span><br><span class="line">        LOGGER.info(<span class="string">&quot;CLASS_METHOD : &quot;</span> + joinPoint.getSignature().getDeclaringTypeName() + <span class="string">&quot;.&quot;</span> + joinPoint.getSignature().getName());</span><br><span class="line">        LOGGER.info(<span class="string">&quot;ARGS : &quot;</span> + Arrays.toString(joinPoint.getArgs()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterReturning(returning = &quot;ret&quot;, pointcut = &quot;webLog()&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doAfterReturning</span><span class="params">(Object ret)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        <span class="comment">// 处理完请求，返回内容</span></span><br><span class="line">        LOGGER.info(<span class="string">&quot;RESPONSE : &quot;</span> + ret);</span><br><span class="line">        LOGGER.info(<span class="string">&quot;SPEND TIME : &quot;</span> + (System.currentTimeMillis() - startTime.get()));</span><br><span class="line">        LOGGER.info(<span class="string">&quot;***************End API Request***************&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> priv.jesse.mall.service;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Transactional</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">submit</span><span class="params">(String name, String phone, String addr, HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Object user = request.getSession().getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (user == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> LoginException(<span class="string">&quot;请登录！&quot;</span>);</span><br><span class="line">        User loginUser = (User) user;</span><br><span class="line">        Order order = <span class="keyword">new</span> Order();</span><br><span class="line">        order.setName(name);</span><br><span class="line">        order.setPhone(phone);</span><br><span class="line">        order.setAddr(addr);</span><br><span class="line">        order.setOrderTime(<span class="keyword">new</span> Date());</span><br><span class="line">        order.setUserId(loginUser.getId());</span><br><span class="line">        order.setState(STATE_NO_PAY);</span><br><span class="line">        List&lt;OrderItem&gt; orderItems = shopCartService.listCart(request);</span><br><span class="line">        Double total = <span class="number">0.0</span>;</span><br><span class="line">        order.setTotal(total);</span><br><span class="line">        order = orderDao.save(order);</span><br><span class="line">        <span class="keyword">for</span> (OrderItem orderItem : orderItems) &#123;</span><br><span class="line">            orderItem.setOrderId(order.getId());</span><br><span class="line">            total += orderItem.getSubTotal();</span><br><span class="line">            orderItemDao.save(orderItem);</span><br><span class="line">        &#125;</span><br><span class="line">        order.setTotal(total);</span><br><span class="line">        orderDao.save(order);</span><br><span class="line">        <span class="comment">//重定向到订单列表页面</span></span><br><span class="line">        response.sendRedirect(<span class="string">&quot;/mall/order/toList.html&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 确认收货</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> orderId</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receive</span><span class="params">(<span class="keyword">int</span> orderId)</span> </span>&#123;</span><br><span class="line">        Order order = orderDao.findOne(orderId);</span><br><span class="line">        <span class="keyword">if</span> (order == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;订单不存在&quot;</span>);</span><br><span class="line">        orderDao.updateState(STATE_COMPLETE,order.getId());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> priv.jesse.mall.filter;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateStatus</span><span class="params">(<span class="keyword">int</span> id, <span class="keyword">int</span> status)</span> </span>&#123;</span><br><span class="line">    Order order = orderDao.findOne(id);</span><br><span class="line">    order.setState(status);</span><br><span class="line">    orderDao.save(order);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查找用户的订单列表</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Order&gt; <span class="title">findUserOrder</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//从session中获取登录用户的id，查找他的订单</span></span><br><span class="line">    Object user = request.getSession().getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (user == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> LoginException(<span class="string">&quot;请登录！&quot;</span>);</span><br><span class="line">    User loginUser = (User) user;</span><br><span class="line">    List&lt;Order&gt; orders = orderDao.findByUserId(loginUser.getId());</span><br><span class="line">    <span class="keyword">return</span> orders;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 支付</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> orderId</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pay</span><span class="params">(<span class="keyword">int</span> orderId)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//具体逻辑就不实现了，直接更改状态为 待发货</span></span><br><span class="line">    Order order = orderDao.findOne(orderId);</span><br><span class="line">    <span class="keyword">if</span> (order == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;订单不存在&quot;</span>);</span><br><span class="line">    orderDao.updateState(STATE_WAITE_SEND,order.getId());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 提交订单</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> phone</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> addr</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="meta">@Transactional</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">submit</span><span class="params">(String name, String phone, String addr, HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Object user = request.getSession().getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (user == <span class="keyword">null</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/toEdit.html&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toEdit</span><span class="params">(<span class="keyword">int</span> id, Map&lt;String, Object&gt; map)</span> </span>&#123;</span><br><span class="line">    User user = userService.findById(id);</span><br><span class="line">    map.put(<span class="string">&quot;user&quot;</span>, user);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;admin/user/edit&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取所有用户列表</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> pageindex</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/list.do&quot;)</span></span><br><span class="line"><span class="keyword">public</span> ResultBean&lt;List&lt;User&gt;&gt; findAllUser(<span class="keyword">int</span> pageindex,</span><br><span class="line">                                          <span class="meta">@RequestParam(value = &quot;pageSize&quot;, defaultValue = &quot;15&quot;)</span> <span class="keyword">int</span> pageSize) &#123;</span><br><span class="line">    Pageable pageable = <span class="keyword">new</span> PageRequest(pageindex, pageSize, <span class="keyword">null</span>);</span><br><span class="line">    List&lt;User&gt; users = userService.findAll(pageable).getContent();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ResultBean&lt;&gt;(users);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/getTotal.do&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ResultBean&lt;Integer&gt; <span class="title">geTotal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Pageable pageable = <span class="keyword">new</span> PageRequest(<span class="number">1</span>, <span class="number">15</span>, <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">int</span> total = (<span class="keyword">int</span>) userService.findAll(pageable).getTotalElements();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ResultBean&lt;&gt;(total);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/del.do&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ResultBean&lt;Boolean&gt; <span class="title">del</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">    userService.delById(id);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ResultBean&lt;&gt;(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(method = RequestMethod.POST, value = &quot;/update.do&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ResultBean&lt;Boolean&gt; <span class="title">update</span><span class="params">(<span class="keyword">int</span> id,String username,</span></span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">     * <span class="meta">@param</span> phone</span><br><span class="line">     * <span class="meta">@param</span> addr</span><br><span class="line">     * <span class="meta">@param</span> request</span><br><span class="line">     * <span class="meta">@param</span> response</span><br><span class="line">     */</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">submit</span><span class="params">(String name, String phone, String addr, HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 确认收货</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> orderId</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">receive</span><span class="params">(<span class="keyword">int</span> orderId)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> priv.jesse.mall.web.admin;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/admin&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdminController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AdminUserService adminUserService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 访问首页</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/toIndex.html&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;admin/index&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 访问登录页面</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=321422292105200fe<br>https://javayms.pages.dev?id=321422292105200fe</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

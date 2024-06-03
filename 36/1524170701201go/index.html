@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SSM仓库管理系统(java+ssm+jsp+js+layui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/361524170701201go/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SSM仓库管理系统(java+ssm+jsp+js+layui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/361524170701201go/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SSM仓库管理系统(java+ssm+jsp+js+layui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Tomcat≥8</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/541424000701.jpg" alt="541424000701"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/551424000701.jpg" alt="551424000701"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/561424000701.jpg" alt="561424000701"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/571424000701.jpg" alt="571424000701"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/581424000701.jpg" alt="581424000701"></p>
+<p>基于javaweb的SSM仓库管理系统(java+ssm+jsp+js+layui+mysql)</p>
+<p>项目介绍</p>
+<p>基于SSM的仓库管理系统</p>
+<p>角色：管理员、用户</p>
+<p>员工：员工登录系统后，可以查看主页，个人中心，客户信息管理，供应商管理，货物信息管理，货物入库管理，货物出库管理等功能，还能对每个功能逐一进行相应操作</p>
+<p>管理员：管理员登录系统后，可以查看主页，个人中心，员工管理，客户信息管理，供应商管理，仓库信息管理，货物类型管理，货物信息管理，货物入库管理，货物出库管理等功能，还能对每个功能逐一进行相应操作</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； 4.数据库：MySql 5.7/8.0版本均可； 5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SSM(Spring+SpringMVC+Mybatis)</p>
+<p>前端：JSP+CSS+JS+JQUERY+Layui</p>
+<p>使用说明</p>
+<p>项目运行： 1. 使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p> 库存管理控制层：</p>
+<p>@RestController</p>
+<p>@RequestMapping(“/input”)</p>
+<p>public class InputFormController {</p>
+<p>@Resource</p>
+<p>private GoodsService goodsService;</p>
+<p>@Resource</p>
+<p>private ProviderService providerService;</p>
+<p>@Resource</p>
+<p>private InputFormService inputFormService;</p>
+<p>@Resource</p>
+<p>private StockService stockService;</p>
+<p>@Resource</p>
+<p>private WarehouseService warehouseService;</p>
+<p>@Resource</p>
+<p>private TbUserService tbUserService;</p>
+<p>@RequestMapping(“loadAllInput”)</p>
+<p>public DataGridView loadAllInput(InputFormVo inputFormVo) {</p>
+<p>IPage<InputForm> page = new Page&lt;&gt;(inputFormVo.getPage(), inputFormVo.getLimit());</InputForm></p>
+<p>QueryWrapper<InputForm> queryWrapper = new QueryWrapper();</InputForm></p>
+<p>queryWrapper.eq(null!=inputFormVo.getFormId(),”form_id”,inputFormVo.getFormId());</p>
+<p>queryWrapper.eq(null != inputFormVo.getProviderId() &amp;&amp; inputFormVo.getProviderId()!=0,”provider_id”,inputFormVo.getProviderId());</p>
+<p>//        queryWrapper.like(StringUtils.isNotBlank(inputFormVo.getName()),”name”,inputFormVo.getName());</p>
+<p>//        queryWrapper.eq(inputFormVo.getPrice()!=null,”price”,inputFormVo.getPrice());</p>
+<p>TbUser user = (TbUser) WebUtils.getSession().getAttribute(“user”);</p>
+<p>queryWrapper.eq(0!=user.getRoleId(),”house_id”,user.getRoleId());</p>
+<p>inputFormService.page(page,queryWrapper);</p>
+<p>List<InputForm> records = page.getRecords();</InputForm></p>
+<p>for(InputForm inputForm : records){</p>
+<p>Provider provider = providerService.getById(inputForm.getProviderId());</p>
+<p>if (null != provider){</p>
+<p>inputForm.setProviderName(provider.getName());</p>
+<p>inputForm.setAddress(provider.getAddress());</p>
+<p>Goods goods = goodsService.getById(inputForm.getGoodsId());</p>
+<p>if(null != goods){</p>
+<p>inputForm.setGoodsName(goods.getName());</p>
+<p>inputForm.setSize(goods.getSize());</p>
+<p>inputForm.setPackages(goods.getPackages());</p>
+<p>inputForm.setPrice(goods.getPrice());</p>
+<p>TbUser tbUser = tbUserService.getById(inputForm.getUserId());</p>
+<p>if(null != tbUser){</p>
+<p>inputForm.setUserName(tbUser.getName());</p>
+<p>Warehouse warehouse = warehouseService.getById(inputForm.getHouseId());</p>
+<p>if(null != warehouse){</p>
+<p>inputForm.setHouseName(warehouse.getName());</p>
+<p>return new DataGridView(page.getTotal(),page.getRecords());</p>
+<p>@RequestMapping(“addInput”)</p>
+<p>public ResultObj addInput(InputFormVo inputFormVo){</p>
+<p>try {</p>
+<p>TbUser tbUser = (TbUser) WebUtils.getSession().getAttribute(“user”);</p>
+<p>inputFormVo.setCreateTime(new Date());</p>
+<p>inputFormVo.setUserId(tbUser.getUserId());</p>
+<p>Integer goodsId = inputFormVo.getGoodsId();</p>
+<p>Integer houseId = inputFormVo.getHouseId();</p>
+<p>Integer changeNumber = inputFormVo.getChangeNumber();</p>
+<p>QueryWrapper<Stock> queryWrapper = new QueryWrapper&lt;&gt;();</Stock></p>
+<p>queryWrapper.eq(“goods_id”,goodsId);</p>
+<p>queryWrapper.eq(“house_id”,houseId);</p>
+<p>Stock stock = stockService.getOne(queryWrapper);</p>
+<p>UpdateWrapper<Stock> updateWrapper = new UpdateWrapper&lt;&gt;();</Stock></p>
+<p>if(null != stock){              //如果库存中有这件商品</p>
+<p>updateWrapper.eq(“goods_id”,stock.getGoodsId());</p>
+<p>updateWrapper.eq(“house_id”,stock.getHouseId());</p>
+<p>}else {                         //如果库存中没有这件商品</p>
+<p>QueryWrapper<Stock> query = new QueryWrapper();</Stock></p>
+<p>query.eq(“house_id”,houseId);</p>
+<p>query.eq(“goods_id”,0);</p>
+<p>Integer upperAlert = stockService.getOne(query).getUpperAlert();</p>
+<p>if(changeNumber &lt; upperAlert){</p>
+<p>Stock stock1 = new Stock(goodsId,houseId,changeNumber,upperAlert,0);</p>
+<p>System.out.println(“stock1 = “ + stock1);</p>
+<p>stockService.save(stock1);</p>
+<p>inputFormService.save(inputFormVo);</p>
+<p>return ResultObj.ADD_SUCCESS;</p>
+<p>if(changeNumber+stock.getNumber() &gt; stock.getUpperAlert()){</p>
+<p>return ResultObj.ADD_ERROR_EXCEED;</p>
+<p>}else if(inputFormVo.getChangeNumber() ==0){</p>
+<p>return ResultObj.ERROR_ZERO;</p>
+<p>} else {</p>
+<p>stock.setNumber(inputFormVo.getChangeNumber()+stock.getNumber());</p>
+<p>inputFormService.save(inputFormVo);</p>
+<p>stockService.update(stock,updateWrapper);</p>
+<p>return ResultObj.ADD_SUCCESS;</p>
+<p>catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return ResultObj.ADD_ERROR;</p>
+<p>@RequestMapping(“deleteInput”)</p>
+<p>public ResultObj deleteInput(Integer id){</p>
+<p>try {</p>
+<p>inputFormService.removeById(id);</p>
+<p>return ResultObj.DELETE_SUCCESS;</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return ResultObj.DELETE_ERROR;</p>
+<p>供应商管理控制层： </p>
+<p>@RestController</p>
+<p>@RequestMapping(“/provider”)</p>
+<p>public class ProviderController {</p>
+<p>@Resource</p>
+<p>private ProviderService providerService;</p>
+<p>@RequestMapping(“loadAllProvider”)</p>
+<p>public DataGridView loadAllProvider(ProviderVo providerVo){</p>
+<p>//1.声明一个分页page对象</p>
+<p>IPage<Provider> page = new Page(providerVo.getPage(),providerVo.getLimit());</Provider></p>
+<p>//2.声明一个queryWrapper</p>
+<p>QueryWrapper<Provider> queryWrapper = new QueryWrapper();</Provider></p>
+<p>queryWrapper.eq(null != providerVo.getProviderId() &amp;&amp; providerVo.getProviderId()!=0,”provider_id”,providerVo.getProviderId());</p>
+<p>queryWrapper.like(StringUtils.isNotBlank(providerVo.getManager()),”manager”,providerVo.getManager());</p>
+<p>queryWrapper.like(StringUtils.isNotBlank(providerVo.getTalePhone()),”tale_phone”,providerVo.getTalePhone());</p>
+<p>providerService.page(page,queryWrapper);</p>
+<p>return new DataGridView(page.getTotal(),page.getRecords());</p>
+<p>/**</p>
+<ul>
+<li><p>添加一个供应商</p>
+</li>
+<li><p>@param providerVo</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“addProvider”)</p>
+<p>public ResultObj addProvider(ProviderVo providerVo){</p>
+<p>try {</p>
+<p>providerService.save(providerVo);</p>
+<p>return ResultObj.ADD_SUCCESS;</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return ResultObj.ADD_ERROR;</p>
+<p>/**</p>
+<ul>
+<li><p>修改一个供应商</p>
+</li>
+<li><p>@param providerVo</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“updateProvider”)</p>
+<p>public ResultObj updateProvider(ProviderVo providerVo){</p>
+<p>try {</p>
+<p>providerService.updateById(providerVo);</p>
+<p>return ResultObj.UPDATE_SUCCESS;</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return ResultObj.UPDATE_ERROR;</p>
+<p>/**</p>
+<ul>
+<li><p>删除一个供应商</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“deleteProvider”)</p>
+<p>public ResultObj deleteProvider(Integer id){</p>
+<p>try {</p>
+<p>providerService.removeById(id);</p>
+<p>return ResultObj.DELETE_SUCCESS;</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return ResultObj.DELETE_ERROR;</p>
+<p>//提供下拉框</p>
+<p>@RequestMapping(“loadAllProviderForSelect”)</p>
+<p>public DataGridView loadAllProviderForSelect(){</p>
+<p>QueryWrapper<Provider> queryWrapper = new QueryWrapper<Provider>();</Provider></Provider></p>
+<p>List<Provider> list = providerService.list(queryWrapper);</Provider></p>
+<p>return new DataGridView(list);</p>
+<p>出货管理控制层：</p>
+<p>@RestController</p>
+<p>@RequestMapping(“/output”)</p>
+<p>public class OutputFormController {</p>
+<p>@Resource</p>
+<p>private GoodsService goodsService;</p>
+<p>@Resource</p>
+<p>private CustomerService customerService;</p>
+<p>@Resource</p>
+<p>private OutputFormService outputFormService;</p>
+<p>@Resource</p>
+<p>private StockService stockService;</p>
+<p>@Resource</p>
+<p>private WarehouseService warehouseService;</p>
+<p>@Resource</p>
+<p>private TbUserService tbUserService;</p>
+<p>@RequestMapping(“loadAllOutput”)</p>
+<p>public DataGridView loadAllOutput(OutputFormVo outputFormVo) {</p>
+<p>IPage<OutputForm> page = new Page&lt;&gt;(outputFormVo.getPage(),outputFormVo.getLimit());</OutputForm></p>
+<p>QueryWrapper<OutputForm> queryWrapper = new QueryWrapper();</OutputForm></p>
+<p>queryWrapper.eq(null!=outputFormVo.getFormId(),”form_id”,outputFormVo.getFormId());</p>
+<p>queryWrapper.eq(null != outputFormVo.getCustomerId() &amp;&amp; outputFormVo.getCustomerId()!=0,”customer_id”,outputFormVo.getCustomerId());</p>
+<p>TbUser user = (TbUser) WebUtils.getSession().getAttribute(“user”);</p>
+<p>queryWrapper.eq(null!=user.getRoleId() &amp;&amp; 0!=user.getRoleId(),”house_id”,user.getRoleId());</p>
+<p>outputFormService.page(page,queryWrapper);</p>
+<p>List<OutputForm> records = page.getRecords();</OutputForm></p>
+<p>for(OutputForm outputForm : records){</p>
+<p>Customer customer = customerService.getById(outputForm.getCustomerId());</p>
+<p>if (null != customer){</p>
+<p>outputForm.setCustomerName(customer.getName());</p>
+<p>outputForm.setAddress(customer.getAddress());</p>
+<p>Goods goods = goodsService.getById(outputForm.getGoodsId());</p>
+<p>if(null != goods){</p>
+<p>outputForm.setGoodsName(goods.getName());</p>
+<p>outputForm.setSize(goods.getSize());</p>
+<p>outputForm.setPackages(goods.getPackages());</p>
+<p>outputForm.setPrice(goods.getPrice());</p>
+<p>TbUser tbUser = tbUserService.getById(outputForm.getUserId());</p>
+<p>if(null != tbUser){</p>
+<p>outputForm.setUserName(tbUser.getName());</p>
+<p>Warehouse warehouse = warehouseService.getById(outputForm.getHouseId());</p>
+<p>if(null != warehouse){</p>
+<p>outputForm.setHouseName(warehouse.getName());</p>
+<p>return new DataGridView(page.getTotal(),page.getRecords());</p>
+<p>@RequestMapping(“addOutput”)</p>
+<p>public ResultObj addOutput(OutputFormVo outputFormVo){</p>
+<p>try {</p>
+<p>TbUser tbUser = (TbUser) WebUtils.getSession().getAttribute(“user”);</p>
+<p>outputFormVo.setCreateTime(new Date());</p>
+<p>outputFormVo.setUserId(tbUser.getUserId());</p>
+<p>QueryWrapper<Stock> queryWrapper = new QueryWrapper&lt;&gt;();</Stock></p>
+<p>queryWrapper.eq(“goods_id”,outputFormVo.getGoodsId());</p>
+<p>queryWrapper.eq(“house_id”,outputFormVo.getHouseId());</p>
+<p>Stock stock = stockService.getOne(queryWrapper);</p>
+<p>UpdateWrapper<Stock> updateWrapper = new UpdateWrapper&lt;&gt;();</Stock></p>
+<p>updateWrapper.eq(“goods_id”,stock.getGoodsId());</p>
+<p>updateWrapper.eq(“house_id”,stock.getHouseId());</p>
+<p>System.out.println(“stock = “ + stock);</p>
+<p>if(stock.getNumber()-outputFormVo.getChangeNumber() &lt; stock.getUnderAlert()){</p>
+<p>return ResultObj.ADD_ERROR_UNDER;</p>
+<p>} else if(outputFormVo.getChangeNumber() ==0){</p>
+<p>return ResultObj.ERROR_ZERO;</p>
+<p>} else {</p>
+<p>stock.setNumber(stock.getNumber()-outputFormVo.getChangeNumber());</p>
+<p>outputFormService.save(outputFormVo);</p>
+<p>stockService.update(stock,updateWrapper);</p>
+<p>return ResultObj.ADD_SUCCESS;</p>
+<p>catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return ResultObj.ADD_ERROR;</p>
+<p>@RequestMapping(“deleteOutput”)</p>
+<p>public ResultObj deleteInput(Integer id){</p>
+<p>try {</p>
+<p>outputFormService.removeById(id);</p>
+<p>return ResultObj.DELETE_SUCCESS;</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return ResultObj.DELETE_ERROR;</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=361524170701201go<br>https://javayms.pages.dev?id=361524170701201go</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+			<a href="/tags/%E8%BF%9B%E9%94%80%E5%AD%98-%E4%BB%93%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 进销存 | 仓库</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
