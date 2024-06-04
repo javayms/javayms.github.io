@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
           let resultItem = '';
 
           if (slicesOfTitle.length !== 0) {
-            resultItem += `<li><a href="${url.substring(0, 3) + url}" class="search-result-title">${highlightKeyword(title, slicesOfTitle[0])}</a>`;
+            resultItem += `<li><a href="${url.substring(0, 3) +'/'+ url.substring(3)}" class="search-result-title">${highlightKeyword(title, slicesOfTitle[0])}</a>`;
           } else {
             resultItem += `<li><a href="${url}" class="search-result-title">${title}</a>`;
           }
