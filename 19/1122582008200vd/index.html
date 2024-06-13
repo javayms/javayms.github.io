@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SSM药品进货销售仓储信息管理系统(java+ssm+js+html+jsp+mysql)">
+<meta property="og:title" content="基于javaweb的SSM药品进货销售仓储信息管理系统(java+ssm+js+jsp+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SSM药品进货销售仓储信息管理系统(java+ssm+js+html+jsp+mysql) | Java源码社</title>
+  <title>基于javaweb的SSM药品进货销售仓储信息管理系统(java+ssm+js+jsp+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SSM药品进货销售仓储信息管理系统(java+ssm+js+html+jsp+mysql)
+			基于javaweb的SSM药品进货销售仓储信息管理系统(java+ssm+js+jsp+mysql)
             
         </h1>
 
@@ -223,654 +223,41 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/390023552402.jpg" alt="390023552402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/400023552402.jpg" alt="400023552402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/410023552402.jpg" alt="410023552402"></p>
-<p>基于javaweb的SSM药品进货销售仓储信息管理系统(java+ssm+js+html+jsp+mysql)</p>
-<p>项目介绍</p>
-<p>管理员角色包含以下功能： 管理员登录,用户信息管理,个人信息管理,药品信息管理,药品类别信息管理,选购药品管理,订单管理,订单记录管理,库存信息管理,进货记录管理等功能。</p>
-<p>操作员角色包含以下功能： 操作员登录,药品管理,类别管理,销售订单管理,进货管理等功能。</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  5.数据库：MySql 5.7版本；</p>
+<p>基于javaweb的SSM药品进货销售仓储信息管理系统(java+ssm+js+jsp+mysql)</p>
+<p>SSM药品进货销售仓储信息管理系统</p>
+<p>项目介绍<br>本项目包含管理员与操作员两种角色<br>管理员角色包含以下功能：<br>管理员登录,用户信息管理,个人信息管理,药品信息管理,药品类别信息管理,选购药品管理,订单管理,订单记录管理,库存信息管理,进货记录管理等功能。</p>
+<p>操作员角色包含以下功能：<br>操作员登录,药品管理,类别管理,销售订单管理,进货管理等功能。</p>
 <p>技术栈</p>
 <ol>
-<li>后端：Spring+SpringMVC+Mybatis 2. 前端：HTML+CSS+JavaScript+jsp</li>
+<li>后端：Spring+SpringMVC+Mybatis</li>
+<li>前端：JSP+CSS+JavaScript+jQuery+easyUI+bootstrap</li>
 </ol>
-<p>使用说明</p>
-<ol>
-<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，Eclipse/MyEclipse导入时，若为maven项目请选择maven;若为maven项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中application.yml配置文件中的数据库配置改为自己的配置; 4. 运行项目，输入localhost:8080/ 登录</li>
-</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">管理员</span><br><span class="line">admin	123456</span><br><span class="line"></span><br><span class="line">操作员</span><br><span class="line">user	123456</span><br><span class="line">lisi	123456</span><br><span class="line">wangwu	123456</span><br><span class="line">zhaoliu	123456</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>用户管理控制层：</p>
-<p>@Controller</p>
-<p>@RequestMapping(value = “user/user”, method = {RequestMethod.POST})</p>
-<p>public class UserController {</p>
-<p>@Autowired</p>
-<p>UserService userService;</p>
-<p>/**</p>
-<ul>
-<li><p>登录Controller</p>
-</li>
-<li><p>@param request HttpServletRequest 对象</p>
-</li>
-<li><p>@param username 用户名</p>
-</li>
-<li><p>@param password 密码</p>
-</li>
-<li><p>@return Map 返回相关状态</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “login”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, String&gt; login(HttpServletRequest request, @RequestParam(value = “username”, defaultValue = “”) String username,</p>
-<p>@RequestParam(value = “password”, defaultValue = “”) String password) throws Exception {</p>
-<p>System.out.println(“username: “ + username + “, password: “ + password);</p>
-<p>User user = userService.loginCheck(username, password);</p>
-<p>Map&lt;String, String&gt; resultMap =new HashMap&lt;String, String&gt;();</p>
-<p>if (user != null) {</p>
-<p>request.getSession().setAttribute(“userid”, user.getUid());</p>
-<p>request.getSession().setAttribute(“username”, user.getUsername());</p>
-<p>request.getSession().setAttribute(“identity”, “user”);</p>
-<p>resultMap.put(“state”, “success”);</p>
-<p>} else {</p>
-<p>resultMap.put(“state”, “fail”);</p>
-<p>resultMap.put(“reason”, ErrorInfoUtil.getErrorInfo(“user.login.check.null”));</p>
-<p>return resultMap;</p>
-<p>/**</p>
-<ul>
-<li><p>获取指定用户ID的用户信息</p>
-</li>
-<li><p>@param userIds 用户ID数组</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “getSomeUser”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; getSomeUser(@RequestParam(value = “userIds[]”) String[] userIds) throws Exception {</p>
-<p>List<User> users = userService.getSomeUser(userIds);</User></p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (users.size() &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, users);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, null);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>获取用户总量</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “getUserCount”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; getUserCount() throws Exception {</p>
-<p>int count = userService.count();</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (count &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, count);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, 0);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>获取指定数量的用户信息</p>
-</li>
-<li><p>@param offset 偏移量</p>
-</li>
-<li><p>@param limit 限制返回条数</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “getLimitUser”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; getLimitUser(@RequestParam(value = “offset”) int offset,</p>
-<p>@RequestParam(value = “limit”) int limit) throws Exception {</p>
-<p>List<User> userList = userService.getLimitUser(offset, limit);</User></p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (userList.size() &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, userList);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, null);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>根据用户ID更新用户信息</p>
-</li>
-<li><p>@param user 新的用户信息</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “updateUserById”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; updateUserById(@RequestBody User user) throws Exception {</p>
-<p>int updateCount = userService.updateById(user);</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (updateCount &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, updateCount);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, 0);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>根据用户ID数组删除一些用户信息</p>
-</li>
-<li><p>@param userIds 用户ID数组</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “deleteSomeUser”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; deleteSomeUser(@RequestParam(value = “userIds[]”) String[] userIds) throws Exception {</p>
-<p>int deleteNum = userService.deleteSomeUser(userIds);</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (deleteNum &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, deleteNum);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, null);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>添加用户</p>
-</li>
-<li><p>@param user 用户信息</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = {“addUser”, “registerUser”})</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; addUser(@RequestBody User user) throws Exception {</p>
-<p>int addCount = userService.addUser(user);</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (addCount &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, addCount);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, 0);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>根据用户ID更新用户密码</p>
-</li>
-<li><p>@param uid 用户ID</p>
-</li>
-<li><p>@param originalPasswd 原密码</p>
-</li>
-<li><p>@param newPasswd 新密码</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “updateUserPasswdById”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; updateUserPasswdById(@RequestParam(value = “uid”, defaultValue = “”) String uid,</p>
-<p>@RequestParam(value = “originalPasswd”, defaultValue = “”) String originalPasswd,</p>
-<p>@RequestParam(value = “newPasswd”, defaultValue = “”) String newPasswd) throws Exception {</p>
-<p>int updateCount = userService.updatePasswdById(uid, originalPasswd, newPasswd);</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (updateCount &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, updateCount);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, 0);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>获取当前登录用户</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “getCurrentUser”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; getCurrentUser(HttpServletRequest request) throws Exception {</p>
-<p>String userId = (String) request.getSession().getAttribute(“userid”);</p>
-<p>User user = null;</p>
-<p>if (userId != null &amp;&amp; !””.equals(userId)) {</p>
-<p>user = userService.getUserById(userId);</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (user != null) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, user);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, null);</p>
-<p>return result;</p>
-<p>后台管理员管理控制层：</p>
-<p>@Controller</p>
-<p>@RequestMapping(value = “user/admin”, method = {RequestMethod.POST})</p>
-<p>public class AdminController {</p>
-<p>@Autowired</p>
-<p>AdminService adminService;</p>
-<p>/**</p>
-<ul>
-<li><p>登录Controller</p>
-</li>
-<li><p>@param request HttpServletRequest 对象</p>
-</li>
-<li><p>@param username 用户名</p>
-</li>
-<li><p>@param password 密码</p>
-</li>
-<li><p>@return Map 返回相关状态</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “login”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, String&gt; login(HttpServletRequest request, @RequestParam(value = “username”, defaultValue = “”) String username,</p>
-<p>@RequestParam(value = “password”, defaultValue = “”) String password) throws Exception {</p>
-<p>Admin admin = adminService.loginCheck(username, password);</p>
-<p>Map&lt;String, String&gt; resultMap =new HashMap&lt;String, String&gt;();</p>
-<p>if (admin != null) {</p>
-<p>request.getSession().setAttribute(“userid”, admin.getUid());</p>
-<p>request.getSession().setAttribute(“username”, admin.getUsername());</p>
-<p>request.getSession().setAttribute(“identity”, “admin”);</p>
-<p>resultMap.put(“state”, “success”);</p>
-<p>} else {</p>
-<p>resultMap.put(“state”, “fail”);</p>
-<p>resultMap.put(“reason”, ErrorInfoUtil.getErrorInfo(“user.login.check.null”));</p>
-<p>return resultMap;</p>
-<p>/**</p>
-<ul>
-<li><p>获取管理员总量</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “getAdminCount”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; getAdminCount() throws Exception {</p>
-<p>int count = adminService.count();</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (count &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, count);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, 0);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>获取指定数量的管理员信息</p>
-</li>
-<li><p>@param offset 偏移量</p>
-</li>
-<li><p>@param limit 限制返回条数</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “getLimitAdmin”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; getLimitAdmin(@RequestParam(value = “offset”) int offset,</p>
-<p>@RequestParam(value = “limit”) int limit) throws Exception {</p>
-<p>List<Admin> adminList = adminService.getLimitAdmin(offset, limit);</Admin></p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (adminList.size() &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, adminList);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, null);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>根据管理员ID更新管理员信息</p>
-</li>
-<li><p>@param admin 新的管理员信息</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “updateAdminById”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; updateAdminById(@RequestBody Admin admin) throws Exception {</p>
-<p>int updateCount = adminService.updateById(admin);</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (updateCount &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, updateCount);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, 0);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>根据管理员ID数组删除一些管理员信息</p>
-</li>
-<li><p>@param adminIds 管理员ID数组</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “deleteSomeAdmin”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; deleteSomeAdmin(@RequestParam(value = “adminIds[]”) String[] adminIds) throws Exception {</p>
-<p>int deleteNum = adminService.deleteSomeAdmin(adminIds);</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (deleteNum &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, deleteNum);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, null);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>添加管理员</p>
-</li>
-<li><p>@param admin 用户信息</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “addAdmin”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; addAdmin(@RequestBody Admin admin) throws Exception {</p>
-<p>int addCount = adminService.addAdmin(admin);</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (addCount &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, addCount);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, 0);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>根据管理员ID更新用户密码</p>
-</li>
-<li><p>@param uid 管理员ID</p>
-</li>
-<li><p>@param originalPasswd 原密码</p>
-</li>
-<li><p>@param newPasswd 新密码</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “updateAdminPasswdById”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; updateAdminPasswdById(@RequestParam(value = “uid”, defaultValue = “”) String uid,</p>
-<p>@RequestParam(value = “originalPasswd”, defaultValue = “”) String originalPasswd,</p>
-<p>@RequestParam(value = “newPasswd”, defaultValue = “”) String newPasswd) throws Exception {</p>
-<p>int updateCount = adminService.updatePasswdById(uid, originalPasswd, newPasswd);</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (updateCount &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, updateCount);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, 0);</p>
-<p>return result;</p>
-<p>药品管理控制层：</p>
-<p>@Controller</p>
-<p>@RequestMapping(value = “medicine/medicine”, method = {RequestMethod.POST})</p>
-<p>public class MedicineController {</p>
-<p>@Autowired</p>
-<p>MedicineService medicineService;</p>
-<p>/**</p>
-<ul>
-<li><p>获取指定数量的药品信息</p>
-</li>
-<li><p>@param offset 偏移量</p>
-</li>
-<li><p>@param limit 返回限制条数</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “getFilteredLimitMedicine”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; getFilteredLimitMedicine(@RequestParam(value = “medTypeId”, defaultValue = “”) String medTypeId,</p>
-<p>@RequestParam(value = “offset”) int offset,</p>
-<p>@RequestParam(value = “limit”) int limit) throws Exception {</p>
-<p>medTypeId = “”.equals(medTypeId) ? null : medTypeId;</p>
-<p>List<Medicine> medicines = medicineService.getFilteredLimitMedicine(medTypeId, offset, limit);</Medicine></p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (medicines.size() &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, medicines);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, null);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>获取指定ID的药品信息</p>
-</li>
-<li><p>@param medicineIds String[] 药品ID数组</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “getSomeMedicine”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; getSomeMedicine(@RequestParam(value = “medicineIds[]”) String[] medicineIds) throws Exception {</p>
-<p>List<Medicine> medicines = medicineService.getSomeMedicine(medicineIds);</Medicine></p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (medicines.size() &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, medicines);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, null);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>获取药品总量</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “getMedicineCount”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; getMedicineCount() throws Exception {</p>
-<p>int count = medicineService.count();</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (count &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, count);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, 0);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>根据药品ID更新药品信息</p>
-</li>
-<li><p>@param medicine 新的药品信息</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “updateMedicineById”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; updateMedicineById(@RequestBody Medicine medicine) throws Exception {</p>
-<p>int updateCount = medicineService.updateById(medicine);</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (updateCount &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, updateCount);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, 0);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>根据药品ID数组删除一些药品信息</p>
-</li>
-<li><p>@param medicineIds 药品ID数组</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “deleteSomeMedicine”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; deleteSomeMedicine(@RequestParam(value = “medicineIds[]”) String[] medicineIds) throws Exception {</p>
-<p>int deleteNum = medicineService.deleteSomeMedicine(medicineIds);</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (deleteNum &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, deleteNum);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, null);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>添加药品</p>
-</li>
-<li><p>@param medicine 药品信息</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “addMedicine”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; addMedicine(@RequestBody Medicine medicine) throws Exception {</p>
-<p>int addCount = medicineService.addMedicine(medicine);</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>if (addCount &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, addCount);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, 0);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>药品图片上传</p>
-</li>
-<li><p>@param medicinePic 药品图片</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “addMedicinePic”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; addMedicinePic(HttpServletRequest request,</p>
-<p>@RequestParam(“medicinePic”) MultipartFile medicinePic) throws Exception {</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>String imgPath = medicineService.uploadFile(request, medicinePic);</p>
-<p>System.out.println(“upload img path: “ + imgPath);</p>
-<p>if (imgPath != null) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, imgPath);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, null);</p>
-<p>return result;</p>
-<p>/**</p>
-<ul>
-<li><p>根据过滤条件过滤查询药品总数</p>
-</li>
-<li><p>@param medicine 药品过滤信息</p>
-</li>
-<li><p>@return Map 返回相关状态及信息</p>
-</li>
-<li><p>@throws Exception 异常</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = “getFilteredMedicineCount”)</p>
-<p>public @ResponseBody</p>
-<p>Map&lt;String, Object&gt; getFilteredMedicineCount(@RequestBody Medicine medicine) throws Exception {</p>
-<p>System.out.println(“getFilteredMedicineCount — medicine: “ + medicine);</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;String, Object&gt;();</p>
-<p>int count = medicineService.getFilteredCount(medicine);</p>
-<p>if (count &gt; 0) {</p>
-<p>result.put(“state”, “success”);</p>
-<p>result.put(“result”, count);</p>
-<p>} else {</p>
-<p>result.put(“state”, “fail”);</p>
-<p>result.put(“reason”, null);</p>
-<p>return result;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">	medicine.setNums(Integer.parseInt(nums));</span><br><span class="line">	medicine.setPrice(Double.parseDouble(price));</span><br><span class="line">	medicine.setProductDate(DateUtil.formatString(productDate, <span class="string">&quot;yyyy-MM-dd&quot;</span>));</span><br><span class="line">	medicine.setSafeDate(safeDate);</span><br><span class="line">	medicine.setStandard(standard);</span><br><span class="line">	medicine.setTypeId(Integer.parseInt(typeId));</span><br><span class="line">	medicine.setId(Integer.parseInt(id));</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> resultNum = medicineService.update(medicine);</span><br><span class="line">	JSONObject result=<span class="keyword">new</span> JSONObject();</span><br><span class="line">	<span class="keyword">if</span>(resultNum&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		result.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">		ResponseUtil.write(response, result);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		result.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">		ResponseUtil.write(response, result);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除药品信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> ids</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">(HttpServletRequest request,HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">		<span class="meta">@RequestParam(value=&quot;ids&quot;,required=false)</span>String ids)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> resultNum = <span class="number">0</span>;</span><br><span class="line">	String[] id = ids.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;id.length;i++)&#123;</span><br><span class="line">		resultNum = medicineService.delete(Integer.parseInt(id[i]));</span><br><span class="line">	&#125;</span><br><span class="line">	JSONObject result=<span class="keyword">new</span> JSONObject();</span><br><span class="line">	<span class="keyword">if</span>(resultNum&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		result.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">	 * <span class="meta">@param</span> request</span><br><span class="line">	 * <span class="meta">@param</span> response</span><br><span class="line">	 * <span class="meta">@param</span> userName</span><br><span class="line">	 * <span class="meta">@param</span> passWord</span><br><span class="line">	 * <span class="meta">@param</span> sex</span><br><span class="line">	 * <span class="meta">@param</span> IDCard</span><br><span class="line">	 * <span class="meta">@param</span> address</span><br><span class="line">	 * <span class="meta">@param</span> email</span><br><span class="line">	 * <span class="meta">@param</span> phone</span><br><span class="line">	 * <span class="meta">@param</span> trueName</span><br><span class="line">	 * <span class="meta">@param</span> id</span><br><span class="line">	 * <span class="meta">@return</span></span><br><span class="line">	 * <span class="meta">@throws</span> Exception</span><br><span class="line">	 */</span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/update_personal&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">update_personal</span><span class="params">(HttpServletRequest request,HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="meta">@RequestParam(value=&quot;userName&quot;,required=false)</span>String userName,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="meta">@RequestParam(value=&quot;passWord&quot;,required=false)</span>String passWord,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="meta">@RequestParam(value=&quot;sex&quot;,required=false)</span>String sex,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="meta">@RequestParam(value=&quot;IDCard&quot;,required=false)</span>String IDCard,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="meta">@RequestParam(value=&quot;address&quot;,required=false)</span>String address,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="meta">@RequestParam(value=&quot;email&quot;,required=false)</span>String email,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="meta">@RequestParam(value=&quot;phone&quot;,required=false)</span>String phone,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="meta">@RequestParam(value=&quot;trueName&quot;,required=false)</span>String trueName,</span></span></span><br><span class="line"><span class="function"><span class="params">			<span class="meta">@RequestParam(value=&quot;id&quot;,required=false)</span>String id)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		</span><br><span class="line">		User user = <span class="keyword">new</span> User();</span><br><span class="line">		user.setAddress(address);</span><br><span class="line">		user.setEmail(email);</span><br><span class="line">		user.setIDCard(IDCard);</span><br><span class="line">		user.setPassWord(passWord);</span><br><span class="line">		user.setPhone(phone);</span><br><span class="line">		user.setSex(sex);</span><br><span class="line">		user.setTrueName(trueName);</span><br><span class="line">		user.setUserName(userName);</span><br><span class="line">		user.setId(Integer.parseInt(id));</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> resultNum = userService.update(user);</span><br><span class="line">		</span><br><span class="line">		User currentUser = userService.findById(Integer.parseInt(id));</span><br><span class="line">		request.getSession().setAttribute(<span class="string">&quot;currentUser&quot;</span>, currentUser);  <span class="comment">//更新信息</span></span><br><span class="line">		</span><br><span class="line">		JSONObject result=<span class="keyword">new</span> JSONObject();</span><br><span class="line">		<span class="keyword">if</span>(resultNum&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			result.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">			ResponseUtil.write(response, result);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			result.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">			ResponseUtil.write(response, result);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (size &gt;= mb) &#123;</span><br><span class="line">           <span class="keyword">float</span> f = (<span class="keyword">float</span>) size / mb;</span><br><span class="line">           <span class="keyword">return</span> String.format(f &gt; <span class="number">100</span> ? <span class="string">&quot;%.0fMB&quot;</span> : <span class="string">&quot;%.1fMB&quot;</span>, f);</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (size &gt;= kb) &#123;</span><br><span class="line">           <span class="keyword">float</span> f = (<span class="keyword">float</span>) size / kb;</span><br><span class="line">           <span class="keyword">return</span> String.format(f &gt; <span class="number">100</span> ? <span class="string">&quot;%.0fKB&quot;</span> : <span class="string">&quot;%.1fKB&quot;</span>, f);</span><br><span class="line">       &#125; <span class="keyword">else</span></span><br><span class="line">           <span class="keyword">return</span> String.format(<span class="string">&quot;%dB&quot;</span>, size);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获得以当月命名的文件夹</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> uploadPath</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getChildDirectory</span><span class="params">(String uploadPath)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">	Date now = <span class="keyword">new</span> Date();</span><br><span class="line">	DateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM&quot;</span>);</span><br><span class="line">	String str = df.format(now);</span><br><span class="line">	</span><br><span class="line">	File file = <span class="keyword">new</span> File(uploadPath,str);</span><br><span class="line">	<span class="keyword">if</span>(!file.exists())&#123;</span><br><span class="line">		file.mkdirs();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 文件下载</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> fileName</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> downloadPath</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">download</span><span class="params">(HttpServletResponse response,String fileName,String downloadPath)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	</span><br><span class="line">	fileName = <span class="keyword">new</span> String(fileName.getBytes(<span class="string">&quot;UTF-8&quot;</span>),<span class="string">&quot;ISO-8859-1&quot;</span>);</span><br><span class="line">	</span><br><span class="line">	response.setContentType( <span class="string">&quot;application/x-msdownload&quot;</span>);</span><br><span class="line">	response.setHeader(<span class="string">&quot;Content-disposition&quot;</span>, String.format(<span class="string">&quot;attachment; filename=\&quot;%s\&quot;&quot;</span>, fileName));</span><br><span class="line">	</span><br><span class="line">	InputStream in = <span class="keyword">new</span> FileInputStream(downloadPath);</span><br><span class="line">	OutputStream out = response.getOutputStream();</span><br><span class="line">	<span class="keyword">int</span> len = -<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">byte</span>[] buff = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">	<span class="keyword">while</span>((len=in.read(buff))!=-<span class="number">1</span>)&#123;</span><br><span class="line">		out.write(buff, <span class="number">0</span>, len);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">		<span class="meta">@RequestParam(value=&quot;page&quot;,required=false)</span>String page,</span><br><span class="line">		<span class="meta">@RequestParam(value=&quot;rows&quot;,required=false)</span>String rows,</span><br><span class="line">		<span class="meta">@RequestParam(value=&quot;cName&quot;,required=false)</span>String cName) <span class="keyword">throws</span> Exception&#123;</span><br><span class="line">	</span><br><span class="line">	PageBean pageBean = <span class="keyword">new</span> PageBean(Integer.parseInt(page),Integer.parseInt(rows));</span><br><span class="line">	</span><br><span class="line">	Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">	map.put(<span class="string">&quot;start&quot;</span>, pageBean.getStart());</span><br><span class="line">	map.put(<span class="string">&quot;pageSize&quot;</span>, pageBean.getPageSize());</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(StringUtil.isNotEmpty(cName))&#123;</span><br><span class="line">		map.put(<span class="string">&quot;cName&quot;</span>, cName);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> total = sellOrderService.getNCount(map);</span><br><span class="line">	List&lt;SellOrder&gt; list = sellOrderService.Nlist(map);</span><br><span class="line">	</span><br><span class="line">	JsonConfig jsonConfig=<span class="keyword">new</span> JsonConfig();</span><br><span class="line">	jsonConfig.setExcludes(<span class="keyword">new</span> String[]&#123;<span class="string">&quot;orderList&quot;</span>&#125;);</span><br><span class="line">	jsonConfig.registerJsonValueProcessor(java.util.Date.class, <span class="keyword">new</span> DateJsonValueProcessor(<span class="string">&quot;yyyy-MM-dd&quot;</span>));</span><br><span class="line">	JSONArray rows1 =JSONArray.fromObject(list, jsonConfig);</span><br><span class="line">	</span><br><span class="line">	JSONObject result=<span class="keyword">new</span> JSONObject();</span><br><span class="line">	result.put(<span class="string">&quot;total&quot;</span>, total);</span><br><span class="line">	result.put(<span class="string">&quot;rows&quot;</span>, rows1);</span><br><span class="line">	</span><br><span class="line">	ResponseUtil.write(response, result);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取所有已结账的订单的信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> page</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> rows</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;Ylist&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">Ylist</span><span class="params">(HttpServletRequest request,HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">		<span class="meta">@RequestParam(value=&quot;page&quot;,required=false)</span>String page,</span></span></span><br><span class="line"><span class="function"><span class="params">		<span class="meta">@RequestParam(value=&quot;rows&quot;,required=false)</span>String rows,</span></span></span><br><span class="line"><span class="function"><span class="params">		<span class="meta">@RequestParam(value=&quot;cName&quot;,required=false)</span>String cName)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	</span><br><span class="line">	PageBean pageBean = <span class="keyword">new</span> PageBean(Integer.parseInt(page),Integer.parseInt(rows));</span><br><span class="line">	</span><br><span class="line">	Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">	map.put(<span class="string">&quot;start&quot;</span>, pageBean.getStart());</span><br><span class="line">	map.put(<span class="string">&quot;pageSize&quot;</span>, pageBean.getPageSize());</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(StringUtil.isNotEmpty(cName))&#123;</span><br><span class="line">		map.put(<span class="string">&quot;cName&quot;</span>, cName);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">	jsonConfig.setExcludes(<span class="keyword">new</span> String[]&#123;<span class="string">&quot;orderList&quot;</span>&#125;);</span><br><span class="line">	jsonConfig.registerJsonValueProcessor(java.util.Date.class, <span class="keyword">new</span> DateJsonValueProcessor(<span class="string">&quot;yyyy-MM-dd&quot;</span>));</span><br><span class="line">	JSONArray rows1 =JSONArray.fromObject(list, jsonConfig);</span><br><span class="line">	</span><br><span class="line">	JSONObject result=<span class="keyword">new</span> JSONObject();</span><br><span class="line">	result.put(<span class="string">&quot;total&quot;</span>, total);</span><br><span class="line">	result.put(<span class="string">&quot;rows&quot;</span>, rows1);</span><br><span class="line">	</span><br><span class="line">	ResponseUtil.write(response, result);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除订单信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> ids</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">(HttpServletRequest request,HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">		<span class="meta">@RequestParam(value=&quot;ids&quot;,required=false)</span>String ids)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> resultNum = <span class="number">0</span>;</span><br><span class="line">	String[] id = ids.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;id.length;i++)&#123;</span><br><span class="line">		resultNum = sellOrderService.delete(Integer.parseInt(id[i]));</span><br><span class="line">	&#125;</span><br><span class="line">	JSONObject result=<span class="keyword">new</span> JSONObject();</span><br><span class="line">	<span class="keyword">if</span>(resultNum&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		result.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">		ResponseUtil.write(response, result);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		result.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">		ResponseUtil.write(response, result);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">	List&lt;User&gt; list = userService.list(map);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 如果集合里面含有时间类型的数据，可以通过以下方式格式化Date类型</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	JsonConfig jsonConfig=<span class="keyword">new</span> JsonConfig();</span><br><span class="line">	jsonConfig.setExcludes(<span class="keyword">new</span> String[]&#123;<span class="string">&quot;orderList&quot;</span>&#125;);</span><br><span class="line">	jsonConfig.registerJsonValueProcessor(java.util.Date.class, <span class="keyword">new</span> DateJsonValueProcessor(<span class="string">&quot;yyyy-MM-dd&quot;</span>));</span><br><span class="line">	JSONArray rows1 =JSONArray.fromObject(list, jsonConfig);</span><br><span class="line">	</span><br><span class="line">	JSONObject result=<span class="keyword">new</span> JSONObject();</span><br><span class="line">	result.put(<span class="string">&quot;total&quot;</span>, total);</span><br><span class="line">	result.put(<span class="string">&quot;rows&quot;</span>, rows1);</span><br><span class="line">	</span><br><span class="line">	ResponseUtil.write(response, result);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除用户信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> ids</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/deleteUser&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">deleteUser</span><span class="params">(HttpServletRequest request,HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">		<span class="meta">@RequestParam(value=&quot;ids&quot;,required=false)</span>String ids)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> resultNum = <span class="number">0</span>;</span><br><span class="line">	String[] id = ids.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;id.length;i++)&#123;</span><br><span class="line">		resultNum = userService.delete(Integer.parseInt(id[i]));</span><br><span class="line">	&#125;</span><br><span class="line">	JSONObject result=<span class="keyword">new</span> JSONObject();</span><br><span class="line">	<span class="keyword">if</span>(resultNum&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		result.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">		ResponseUtil.write(response, result);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		result.put(<span class="string">&quot;success&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">		ResponseUtil.write(response, result);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
-<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=89&price2=79" style="height: 260px;" frameborder="0"></iframe>
 <blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=191122582008200vd<br>https://javayms.pages.dev?id=191122582008200vd</p></blockquote>
     </div>
 
@@ -882,6 +269,7 @@
           
           <div class="post-tags">
 			<a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
 			<a href="/tags/%E8%8D%AF/" rel="tag"><i class="fa fa-tag"></i> 药</a>
 
           </div>
