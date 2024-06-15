@@ -94,27 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return result;
   };
 
-  const inputEventFunction = () => {
-    if (!isfetched) return;
-    let searchText = input.value.trim().toLowerCase();
-    // 2023-03-05，排除单个无意义字符的搜索
-    //console.log("keyword1:" + searchText)
-    if (searchText == '(' || searchText == ')' || searchText == '+' || searchText == '_' || searchText == ',' || searchText.indexOf("【") > -1 /*|| searchText.indexOf("】") > -1 || /^[0-9a-zA-Z]$/.test(searchText)*/) {
-      return;
-    }
-    let subIndex = searchText.indexOf("+mysql的");
-    if (subIndex > 0) {
-      searchText = searchText.substring(subIndex + 7);
-    }
-    //console.log("keyword2:" + searchText)
-    let keywords = searchText.split(/[-\s]+/);
-    if (keywords.length > 1) {
-      keywords.push(searchText);
-    }
-    let resultItems = [];
+  function performLocalSearch(keywords, searchText, resultItems) {
     if (searchText.length > 0) {
       // Perform local searching
-      datas.forEach(({ title, content, url }) => {
+      datas.forEach(({title, content, url}) => {
         let titleInLowerCase = title.toLowerCase();
         let contentInLowerCase = content.toLowerCase();
         let indexOfTitle = [];
@@ -148,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
           let slicesOfContent = [];
           while (indexOfContent.length !== 0) {
             let item = indexOfContent[indexOfContent.length - 1];
-            let { position, word } = item;
+            let {position, word} = item;
             // Cut out 100 characters
             let start = position - 20;
             let end = position + 80;
@@ -185,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
           let resultItem = '';
 
           if (slicesOfTitle.length !== 0) {
-            resultItem += `<li><a href="${url.substring(0, 3) +'/'+ url.substring(3)}" class="search-result-title">${highlightKeyword(title, slicesOfTitle[0])}</a>`;
+            resultItem += `<li><a href="${url.substring(0, 3) + '/' + url.substring(3)}" class="search-result-title">${highlightKeyword(title, slicesOfTitle[0])}</a>`;
           } else {
             resultItem += `<li><a href="${url}" class="search-result-title">${title}</a>`;
           }
@@ -197,13 +180,45 @@ document.addEventListener('DOMContentLoaded', () => {
           resultItem += '</li>';
           resultItems.push({
             item: resultItem,
-            id  : resultItems.length,
+            id: resultItems.length,
             hitCount,
             searchTextCount
           });
         }
       });
     }
+  }
+
+  const inputEventFunction = () => {
+    if (!isfetched) return;
+    let searchText = input.value.trim().toLowerCase();
+    // 2023-03-05，排除单个无意义字符的搜索
+    // console.log("q1:" + searchText)
+    if (searchText == '(' || searchText == ')' || searchText == '+' || searchText == '_' || searchText == ',' || searchText.indexOf("【") > -1 /*|| searchText.indexOf("】") > -1 || /^[0-9a-zA-Z]$/.test(searchText)*/) {
+      return;
+    }
+    let subIndex = searchText.indexOf("+mysql的");
+    if (subIndex > 0) {
+      searchText = searchText.substring(subIndex + 7);
+    }
+    // console.log("q2:" + searchText)
+    let keywords = searchText.split(/[-\s]+/);
+    if (keywords.length > 1) {
+      keywords.push(searchText);
+    }
+    let resultItems = [];
+    //2024-06-15 如果查询无结果，则将标题简化，再查一次
+    performLocalSearch(keywords, searchText, resultItems);
+    if (resultItems.length === 0 && searchText.indexOf("(") > -1) {
+      searchText = searchText.substring(0, searchText.indexOf('('));
+      // console.log("q3:" + searchText)
+      keywords = searchText.split(/[-\s]+/);
+      if (keywords.length > 1) {
+        keywords.push(searchText);
+      }
+      performLocalSearch(keywords, searchText, resultItems);
+    }
+
     if (keywords.length === 1 && keywords[0] === '') {
       resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>';
     } else if (resultItems.length === 0) {
