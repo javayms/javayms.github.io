@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot中小医院信息管理系统(java+springboot+mysql+maven+html)">
+<meta property="og:title" content="基于javaweb的SpringBoot中小医院信息管理系统(java+springboot+mysql+maven+html+thymeleaf)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot中小医院信息管理系统(java+springboot+mysql+maven+html) | Java源码社</title>
+  <title>基于javaweb的SpringBoot中小医院信息管理系统(java+springboot+mysql+maven+html+thymeleaf) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot中小医院信息管理系统(java+springboot+mysql+maven+html)
+			基于javaweb的SpringBoot中小医院信息管理系统(java+springboot+mysql+maven+html+thymeleaf)
             
         </h1>
 
@@ -221,7 +221,7 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/440023532402.jpg" alt="440023532402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/450023532402.jpg" alt="450023532402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/460023532402.jpg" alt="460023532402"></p>
-<p>基于javaweb的SpringBoot中小医院信息管理系统(java+springboot+mysql+maven+html)</p>
+<p>基于javaweb的SpringBoot中小医院信息管理系统(java+springboot+mysql+maven+html+thymeleaf)</p>
 <p>本系统功能包括：实现了挂号收费，门诊管理，划价收 费，药房取药，体检管理，药房管理，系统维护等各个模块功能，非常不错。</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> BaseResponse&lt;String&gt; <span class="title">getDefaultGetCardId</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> iRegisterService.getDefaultGetCardId();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 办就诊卡</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> reqVO</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(value = &quot;/addPatientInfor&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> BaseResponse&lt;String&gt; <span class="title">addPatientInfor</span><span class="params">(<span class="meta">@RequestBody</span> <span class="meta">@Validated</span> PatientInforReqVO reqVO)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> iRegisterService.addPatientInfor(reqVO);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 补办就诊卡</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> reqVO</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(value = &quot;/coverCardId&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> BaseResponse&lt;String&gt; <span class="title">coverCardId</span><span class="params">(<span class="meta">@RequestBody</span> <span class="meta">@Validated</span> PatientInforReqVO reqVO)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> iRegisterService.coverCardId(reqVO);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取医生</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> reqVO</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(value = &quot;/getAllRegisterDoctor&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;RegisterDoctorRspVO&gt; <span class="title">getAllRegisterDoctor</span><span class="params">(RegisterTypeReqVO reqVO)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> iRegisterService.getAllRegisterDoctor(reqVO);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

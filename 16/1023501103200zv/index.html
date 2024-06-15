@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SSM+Maven防盗门进销存管理系统(java+ssm+html+bootstrap+mysql)">
+<meta property="og:title" content="基于javaweb的SSM+Maven防盗门进销存管理系统(java+ssm+html+thymeleaf+bootstrap+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SSM+Maven防盗门进销存管理系统(java+ssm+html+bootstrap+mysql) | Java源码社</title>
+  <title>基于javaweb的SSM+Maven防盗门进销存管理系统(java+ssm+html+thymeleaf+bootstrap+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SSM+Maven防盗门进销存管理系统(java+ssm+html+bootstrap+mysql)
+			基于javaweb的SSM+Maven防盗门进销存管理系统(java+ssm+html+thymeleaf+bootstrap+mysql)
             
         </h1>
 
@@ -222,7 +222,7 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/030923531103.jpg" alt="030923531103"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/040923531103.jpg" alt="040923531103"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/050923531103.jpg" alt="050923531103"></p>
-<p>基于javaweb的SSM+Maven防盗门进销存管理系统(java+ssm+html+bootstrap+mysql)</p>
+<p>基于javaweb的SSM+Maven防盗门进销存管理系统(java+ssm+html+thymeleaf+bootstrap+mysql)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">admin   	123456	系统管理员</span><br><span class="line">warehouser	123456	库存管理员</span><br><span class="line">purchaser	123456	采购员</span><br><span class="line">saler	    123456	销售员</span><br><span class="line">auditor 	123456	订单审核员</span><br><span class="line"></span><br><span class="line">采购-入库流程：</span><br><span class="line">1 采购员purchaser-采购</span><br><span class="line">2 订单审核员auditor-审核</span><br><span class="line">3 库存管理员warehouser-入库审核（此时【库存管理】出现库存量）</span><br><span class="line"></span><br><span class="line">销售-出库流程：</span><br><span class="line">1 销售员saler-销售</span><br><span class="line">2 订单审核员auditor-审核</span><br><span class="line">3 库存管理员warehouser-出库审核（此时【库存管理】出现销售量）</span><br></pre></td></tr></table></figure>
 <p>项目介绍</p>
 <p>本项目分为系统管理员、库存管理员、采购员、销售员、订单审核员等角色。 各角色主要功能如下所示：</p>
