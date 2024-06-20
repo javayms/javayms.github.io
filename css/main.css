@@ -2063,7 +2063,7 @@ ul.breadcrumb li + li:last-child {
   top: 10%;
   transform: scale(0);
   transition: transform 0.2s;
-  width: 700px;
+  width: 800px;
   z-index: 1500;
 }
 .search-active .search-popup {
