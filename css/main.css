@@ -2438,19 +2438,25 @@ a:hover,
 .post-title a:hover {
   color: #f0f;
 }
-/* 隐藏 gutter */
 .highlight .gutter {
   display: none;
 }
-/* 缩小 code 区域的字体 */
 .highlight .code {
-  font-size: 12px; /* 调整字体大小 */
+  font-size: 12px;
 }
 .post-title-link img {
-  max-width: 120px; /* 或者其他你希望的最大宽度 */
-  max-height: 70px; /* 或者其他你希望的最大高度 */
+  max-width: 120px;
+  max-height: 70px;
   width: auto;
   height: auto;
   display: inline-block; /* 使图片与文字在同一行显示 */
   vertical-align: middle; /* 调整图片和文字的垂直对齐 */
+}
+.post-title-link .price {
+  font-size: smaller;
+  color: #d8373e;
+}
+.post-title-link .doc-included {
+  font-size: xx-small;
+  color: #42b983;
 }
