@@ -130,7 +130,7 @@ function getMonsDay() {
 
 let dateTextElement1 = document.getElementById("dateText");
 if (dateTextElement1) {
-  dateTextElement1.innerHTML = '更新:' + getMonsDay();
+  dateTextElement1.innerHTML = '更新: ' + getMonsDay();
 }
 let dateTextElement2 = document.getElementById("dateText2");
 if (dateTextElement2) {
@@ -139,4 +139,28 @@ if (dateTextElement2) {
 let dateTextElement3 = document.getElementById("dateText3");
 if (dateTextElement3) {
   dateTextElement3.innerHTML = getMonsDay();
+}
+
+function getIdFromUrl() {
+  let url = window.location.href;
+  //console.log("url=="+url)
+  let matches = url.match(/\/(\d{2}\/\d{10})\d{3}[\da-zA-Z]{2}/);
+  // console.log("matches=="+matches)
+  // if(matches){
+  //   console.log("matches[0]=="+matches[0])
+  // }
+  if (matches && matches[1]) {
+    //console.log("matches[1]=="+matches[1])
+    let idPart = matches[1].replace(/\//g, '');
+    //console.log("idPart=="+idPart)
+    return idPart;
+  }
+  //console.log("没匹配到")
+  return null;
+}
+
+let idTextElement = document.getElementById("idText");
+if (idTextElement) {
+  let idFromUrl = getIdFromUrl();
+  idTextElement.innerHTML = idFromUrl ? 'ID: ' + idFromUrl : '';
 }
