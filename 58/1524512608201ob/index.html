@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot心理咨询评估系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/581524512608201ob/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot心理咨询评估系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/581524512608201ob/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot心理咨询评估系统(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/441524132608.jpg" alt="441524132608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/451524132608.jpg" alt="451524132608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/461524132608.jpg" alt="461524132608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/471524132608.jpg" alt="471524132608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/481524132608.jpg" alt="481524132608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/491524132608.jpg" alt="491524132608"></p>
+<p>基于javaweb的SpringBoot心理咨询评估系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>项目介绍</p>
+<p>基于Springboot + vue实现的学生心理咨询评估系统</p>
+<p>系统有管理员和用户。</p>
+<p>管理员可以管理个人中心，用户管理，试题管理，试卷管理，考试管理等。</p>
+<p>用户参加考试。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue + elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：</p>
+</li>
+</ol>
+<p>后台登录页面</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/springbootvtgh9/admin/dist/index.html">http://localhost:8080/springbootvtgh9/admin/dist/index.html</a></p>
+<p>管理员：abo 密码：abo</p>
+<p>用户：用户1 密码：123456</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p>文档结构展示：</p>
+<p>用户管理展示：</p>
+<p>试题管理展示：</p>
+<p>错题本管理：</p>
+<p>试题管理展示页面：</p>
+<p>考试记录展示页面：</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>考试控制层，负责试卷提交等：</p>
+<p>/**</p>
+<ul>
+<li>考试控制层，负责试卷提交等</li>
+</ul>
+<p>*/</p>
+<p>@RestController</p>
+<p>@RequestMapping(“/v1/exam”)</p>
+<p>public class ExamController {</p>
+<p>@Autowired</p>
+<p>ExamService examService;</p>
+<p>@Autowired</p>
+<p>AnswerPaperService answerPaperService;</p>
+<p>@Autowired</p>
+<p>AnswerQuestionService answerQuestionService;</p>
+<p>@Autowired</p>
+<p>AnswerPaperQuestionService answerPaperQuestionService;</p>
+<p>@Autowired</p>
+<p>QuestionService questionService;</p>
+<p>@Autowired</p>
+<p>PaperService paperService;</p>
+<p>@Autowired</p>
+<p>WrongQuestionService wrongQuestionService;</p>
+<p>@Autowired</p>
+<p>PaperAnswerPaperService paperAnswerPaperService;</p>
+<p>@ApiOperation(value = “根据试卷id和题目编号获取题目信息”, notes = “根据题目id获取题目详细信息”)</p>
+<p>@ApiImplicitParams({</p>
+<p>@ApiImplicitParam(name = “paperId”, value = “试卷ID”, required = true, dataType = “String”, paramType = “path”),</p>
+<p>@ApiImplicitParam(name = “number”, value = “题目编号”, required = true, dataType = “String”, paramType = “path”)</p>
+<p>})</p>
+<p>@RequestMapping(value = “/questions/{number}”, method = RequestMethod.GET)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘) or hasAuthority(‘“ + Role.ROLE_STUDENT + “‘)”)</p>
+<p>public Question getQuestionByPaperIdAndQuestionId(@RequestParam String paperId,</p>
+<p>@RequestParam String username,</p>
+<p>@RequestParam(required = false) String answerPaperId,</p>
+<p>@PathVariable Integer number) {</p>
+<p>Question question = null;</p>
+<p>AnswerQuestion answerQuestion = null;</p>
+<p>if(answerPaperId == null) {</p>
+<p>Paper paper = paperService.getPaperById(paperId);</p>
+<p>if(paper != null) {</p>
+<p>AnswerPaper answerPaper = answerPaperService.findByAnswerUserAndPaperName(username, paper.getName());</p>
+<p>if(answerPaper != null) {</p>
+<p>answerQuestion = answerQuestionService.getAnswerQuestionByPaperIdAndQuestionNumber(answerPaper.getId(), number);</p>
+<p>}else {</p>
+<p>answerQuestion = answerQuestionService.getAnswerQuestionByPaperIdAndQuestionNumber(answerPaperId, number);</p>
+<p>if(answerQuestion == null) {</p>
+<p>question = questionService.getQuestionByPaperIdAndQuestionNumber(paperId, number);</p>
+<p>if(question != null) {</p>
+<p>//答案不返回</p>
+<p>question.setAnswer(“”);</p>
+<p>} else {</p>
+<p>question = new Question();</p>
+<p>question.setId(answerQuestion.getId());</p>
+<p>question.setNumber(answerQuestion.getNumber());</p>
+<p>question.setTitle(answerQuestion.getTitle());</p>
+<p>question.setScore(answerQuestion.getScore());</p>
+<p>question.setType(answerQuestion.getType());</p>
+<p>question.setOptionA(answerQuestion.getOptionA());</p>
+<p>question.setOptionB(answerQuestion.getOptionB());</p>
+<p>question.setOptionC(answerQuestion.getOptionC());</p>
+<p>question.setOptionD(answerQuestion.getOptionD());</p>
+<p>question.setAnswer(answerQuestion.getAnswer());</p>
+<p>return question;</p>
+<p>@RequestMapping(value = “/submit/{type}/{username}”, method = RequestMethod.POST)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘) or hasAuthority(‘“ + Role.ROLE_STUDENT + “‘)”)</p>
+<p>public ResponseEntity&lt;?&gt; submit(@RequestBody Paper paper, @PathVariable String type,</p>
+<p>@PathVariable String username,</p>
+<p>@RequestParam(required = false) String answerPaperId) {</p>
+<p>/**</p>
+<ul>
+<li>更改试卷状态，finished:true</li>
+</ul>
+<p>*/</p>
+<p>if(type.equals(“official”)) {</p>
+<p>/**</p>
+<ul>
+<li>正式考试</li>
+</ul>
+<p>*/</p>
+<p>AnswerPaper answerPaper = new AnswerPaper();</p>
+<p>if(answerPaperId != null) {</p>
+<p>answerPaper.setId(answerPaperId);</p>
+<p>}else {</p>
+<p>return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);</Object></p>
+<p>answerPaper.setAnswerTime(new SimpleDateFormat(“yyyy-MM-dd HH:mm:ss”).format(new Date()));</p>
+<p>answerPaper.setPaperName(paper.getName());</p>
+<p>answerPaper.setAnswerUser(username);</p>
+<p>answerPaper.setChecked(“false”);</p>
+<p>answerPaper.setFinished(“true”);</p>
+<p>answerPaper.setType(“official”);</p>
+<p>examService.updateAnswerPaper(answerPaper);</p>
+<p>} else if(type.equals(“simulate”)) {</p>
+<p>/**</p>
+<ul>
+<li>模拟考试</li>
+</ul>
+<p>*/</p>
+<p>AnswerPaper answerPaper = new AnswerPaper();</p>
+<p>if(answerPaperId != null) {</p>
+<p>answerPaper.setId(answerPaperId);</p>
+<p>}else {</p>
+<p>return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);</Object></p>
+<p>answerPaper.setAnswerTime(new SimpleDateFormat(“yyyy-MM-dd HH:mm:ss”).format(new Date()));</p>
+<p>answerPaper.setPaperName(paper.getName());</p>
+<p>answerPaper.setAnswerUser(username);</p>
+<p>answerPaper.setChecked(“false”);</p>
+<p>answerPaper.setFinished(“true”);</p>
+<p>answerPaper.setType(“simulate”);</p>
+<p>examService.updateAnswerPaper(answerPaper);</p>
+<p>}else if(type.equals(“practice”)) {</p>
+<p>/**</p>
+<ul>
+<li><p>1.接收提交的试卷</p>
+</li>
+<li><p>2.计算成绩</p>
+</li>
+<li><p>3.记录考试记录</p>
+</li>
+<li><p>4.返回计算结果</p>
+</li>
+</ul>
+<p>*/</p>
+<p>int score = 0;</p>
+<p>//正确题目数</p>
+<p>double right = 0.0;</p>
+<p>//错误题目数</p>
+<p>double wrong = 0.0;</p>
+<p>double correctRate = 0.0;</p>
+<p>List<Question> questions = questionService.getQuestionByPaperId(paper.getId());</Question></p>
+<p>AnswerPaper answerPaper = answerPaperService.findByAnswerUserAndPaperName(username, paper.getName());</p>
+<p>List<AnswerQuestion> answerQuestions = answerQuestionService.findByAnswerPaperId(answerPaper.getId());</AnswerQuestion></p>
+<p>/<em>保存题目信息，返回给前端</em>/</p>
+<p>List<DtoRightAndWrong> results = new ArrayList<DtoRightAndWrong>();</DtoRightAndWrong></DtoRightAndWrong></p>
+<p>DtoRightAndWrong dtoRightAndWrong = null;</p>
+<p>//遍历提交的试卷的题目</p>
+<p>for(AnswerQuestion answerQuestion : answerQuestions) {</p>
+<p>//遍历包含正确答案的题目</p>
+<p>for(Question question : questions) {</p>
+<p>/**</p>
+<ul>
+<li><p>1.题目序号相同</p>
+</li>
+<li><p>2.结果与答案相同</p>
+</li>
+</ul>
+<p>*/</p>
+<p>if(answerQuestion.getNumber().equals(question.getNumber())) {</p>
+<p>if(answerQuestion.getAnswer().equals(question.getAnswer())) {</p>
+<p>/<em>累计得分</em>/</p>
+<p>score += Integer.parseInt(question.getScore());</p>
+<p>right ++;</p>
+<p>}else {</p>
+<p>wrong ++;</p>
+<p>//记录错题</p>
+<p>dtoRightAndWrong = new DtoRightAndWrong();</p>
+<p>dtoRightAndWrong.setQuestion(question);</p>
+<p>dtoRightAndWrong.setAnswerQuestion(answerQuestion);</p>
+<p>results.add(dtoRightAndWrong);</p>
+<p>//保存错题</p>
+<p>WrongQuestion wrongQuestion = new WrongQuestion();</p>
+<p>try{</p>
+<p>BeanUtils.copyProperties(wrongQuestion, answerQuestion);</p>
+<p>wrongQuestion.setUsername(username);</p>
+<p>wrongQuestion.setRightAnswer(question.getAnswer());</p>
+<p>wrongQuestion.setAnalysis(question.getAnalysis());</p>
+<p>if(wrongQuestionService.getWrongQuestion(wrongQuestion.getId()) == null) {</p>
+<p>wrongQuestionService.saveQuestion(wrongQuestion);</p>
+<p>}catch (Exception e) {</p>
+<p>System.out.println(wrongQuestion.toString());</p>
+<p>//计算正确率</p>
+<p>correctRate = (right/(right + wrong)) * 100;</p>
+<p>DtoResult result = new DtoResult();</p>
+<p>result.setScore(score);</p>
+<p>result.setRight(right);</p>
+<p>result.setWrong(wrong);</p>
+<p>result.setCorrectRate(correctRate);</p>
+<p>result.setResults(results);</p>
+<p>Paper paper1 = paperService.getPaperById(paper.getId());</p>
+<p>//更新参与人数</p>
+<p>paper1.setPeoples(String.valueOf(Integer.parseInt(paper1.getPeoples()) + 1));</p>
+<p>paperService.updatePaper(paper1);</p>
+<p>return new ResponseEntity<Object>(result, HttpStatus.OK);</Object></p>
+<p>Paper paper1 = paperService.getPaperById(paper.getId());</p>
+<p>//更新参与人数</p>
+<p>paper1.setPeoples(String.valueOf(Integer.parseInt(paper1.getPeoples() + 1)));</p>
+<p>paperService.updatePaper(paper1);</p>
+<p>return new ResponseEntity<Object>(HttpStatus.OK);</Object></p>
+<p>/**</p>
+<ul>
+<li><p>提交题目</p>
+</li>
+<li><p>@param username</p>
+</li>
+<li><p>@param dtoAnswerPaper</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/submit/one/{username}”, method = RequestMethod.POST)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘) or hasAuthority(‘“ + Role.ROLE_STUDENT + “‘)”)</p>
+<p>public ResponseEntity&lt;?&gt; submitOne(@PathVariable String username, @RequestBody DtoAnswerPaper dtoAnswerPaper) {</p>
+<p>Paper paper = dtoAnswerPaper.getPaper();</p>
+<p>Question question = dtoAnswerPaper.getQuestion();</p>
+<p>//判断数据库是否保存了这次答卷</p>
+<p>AnswerPaper answerPaper = answerPaperService.getAnswerPaperByNameAndUser(paper.getName(), username);</p>
+<p>AnswerQuestion answerQuestion = null;</p>
+<p>AnswerPaperQuestion answerPaperQuestion = null;</p>
+<p>List<AnswerQuestion> answerQuestions = null;</AnswerQuestion></p>
+<p>//重新生成id</p>
+<p>String answerPaperId = IdGen.uuid();</p>
+<p>String answerQuestionId = IdGen.uuid();</p>
+<p>//答卷为空，则执行保存</p>
+<p>if(answerPaper == null) {</p>
+<p>answerPaper = new AnswerPaper();</p>
+<p>answerPaper.setId(answerPaperId);</p>
+<p>answerPaper.setAnswerTime(new SimpleDateFormat(“yyyy-MM-dd HH:mm:ss”).format(new Date()));</p>
+<p>answerPaper.setPaperName(paper.getName());</p>
+<p>answerPaper.setType(paper.getType());</p>
+<p>answerPaper.setAnswerUser(username);</p>
+<p>answerPaper.setChecked(“false”);</p>
+<p>answerPaper.setFinished(“false”);</p>
+<p>//保存答卷</p>
+<p>answerPaperService.saveAnswerPaper(answerPaper);</p>
+<p>// TODO: 2017-04-17 保存试卷答卷</p>
+<p>PaperAnswerPaper paperAnswerPaper = new PaperAnswerPaper();</p>
+<p>paperAnswerPaper.setPaperId(paper.getId());</p>
+<p>paperAnswerPaper.setAnswerPaperId(answerPaperId);</p>
+<p>paperAnswerPaperService.save(paperAnswerPaper);</p>
+<p>//新记录</p>
+<p>answerQuestion = new AnswerQuestion();</p>
+<p>//初始化信息</p>
+<p>answerQuestion.setId(answerQuestionId);</p>
+<p>answerQuestion.setTitle(question.getTitle());</p>
+<p>answerQuestion.setType(question.getType());</p>
+<p>answerQuestion.setNumber(question.getNumber());</p>
+<p>answerQuestion.setOptionA(question.getOptionA());</p>
+<p>answerQuestion.setOptionB(question.getOptionB());</p>
+<p>answerQuestion.setOptionC(question.getOptionC());</p>
+<p>answerQuestion.setOptionD(question.getOptionD());</p>
+<p>answerQuestion.setContent(question.getContent());</p>
+<p>answerQuestion.setScore(question.getScore());</p>
+<p>answerQuestion.setAnalysis(question.getAnalysis());</p>
+<p>answerQuestion.setAnswer(question.getAnswer());</p>
+<p>answerPaperQuestion = new AnswerPaperQuestion();</p>
+<p>answerPaperQuestion.setAnswerPaperId(answerPaper.getId());</p>
+<p>answerPaperQuestion.setAnswerQuestionId(answerQuestionId);</p>
+<p>//保存</p>
+<p>answerQuestionService.saveAnswerQuestion(answerQuestion);</p>
+<p>answerPaperQuestionService.saveAnswerPaperQuestion(answerPaperQuestion);</p>
+<p>return new ResponseEntity<Object>(answerPaper, HttpStatus.OK);</Object></p>
+<p>} else {</p>
+<p>answerQuestions = answerQuestionService.findByAnswerPaperId(answerPaper.getId());</p>
+<p>if(answerQuestions != null &amp;&amp; answerQuestions.size() &gt; 0) {</p>
+<p>int count = 0;</p>
+<p>AnswerQuestion existAnswerQuestion = null;</p>
+<p>for(AnswerQuestion question1 : answerQuestions) {</p>
+<p>if (question1.getNumber().equals(question.getNumber())) {</p>
+<p>count++;</p>
+<p>existAnswerQuestion = question1;//保存当前存在的记录</p>
+<p>//记录不存在</p>
+<p>if(count == 0) {</p>
+<p>//新记录</p>
+<p>answerQuestion = new AnswerQuestion();</p>
+<p>answerPaperQuestion = new AnswerPaperQuestion();</p>
+<p>answerQuestion = new AnswerQuestion();</p>
+<p>//初始化信息</p>
+<p>answerQuestion.setId(answerQuestionId);</p>
+<p>answerQuestion.setTitle(question.getTitle());</p>
+<p>answerQuestion.setType(question.getType());</p>
+<p>answerQuestion.setNumber(question.getNumber());</p>
+<p>answerQuestion.setOptionA(question.getOptionA());</p>
+<p>answerQuestion.setOptionB(question.getOptionB());</p>
+<p>answerQuestion.setOptionC(question.getOptionC());</p>
+<p>answerQuestion.setOptionD(question.getOptionD());</p>
+<p>answerQuestion.setContent(question.getContent());</p>
+<p>answerQuestion.setScore(question.getScore());</p>
+<p>answerQuestion.setAnalysis(question.getAnalysis());</p>
+<p>answerQuestion.setAnswer(question.getAnswer());</p>
+<p>answerPaperQuestion = new AnswerPaperQuestion();</p>
+<p>answerPaperQuestion.setAnswerPaperId(answerPaper.getId());</p>
+<p>answerPaperQuestion.setAnswerQuestionId(answerQuestionId);</p>
+<p>//保存</p>
+<p>answerQuestionService.saveAnswerQuestion(answerQuestion);</p>
+<p>answerPaperQuestionService.saveAnswerPaperQuestion(answerPaperQuestion);</p>
+<p>} else {</p>
+<p>//记录存在，则执行更新</p>
+<p>// TODO: 2017/3/30</p>
+<p>//更新当前存在的记录</p>
+<p>existAnswerQuestion.setAnswer(question.getAnswer());</p>
+<p>answerQuestionService.updateAnswerQuestion(existAnswerQuestion);</p>
+<p>return new ResponseEntity<Object>(answerPaper, HttpStatus.OK);</Object></p>
+<p>获取试卷题目：</p>
+<p>@RestController</p>
+<p>@RequestMapping(“/v1/answer-questions”)</p>
+<p>public class AnswerQuestionController {</p>
+<p>@Autowired</p>
+<p>AnswerQuestionService answerQuestionService;</p>
+<p>/**</p>
+<ul>
+<li><p>获取试卷题目分页列表</p>
+</li>
+<li><p>@param paperId</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/{paperId}”, method = RequestMethod.GET)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘) or hasAuthority(‘“ + Role.ROLE_STUDENT + “‘)”)</p>
+<p>public List<AnswerQuestion> getAnswerQuestionListByPaper(@PathVariable String paperId) {</AnswerQuestion></p>
+<p>return answerQuestionService.findByAnswerPaperId(paperId);</p>
+<p>@RequestMapping(value = “”, method = RequestMethod.PUT)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘) or hasAuthority(‘“ + Role.ROLE_STUDENT + “‘)”)</p>
+<p>public ResponseEntity&lt;?&gt; putPaper(@RequestBody AnswerQuestion answerQuestion) {</p>
+<p>answerQuestionService.updateAnswerQuestion(answerQuestion);</p>
+<p>return new ResponseEntity(HttpStatus.OK);</p>
+<p>答卷控制层，用于获取已经提交的答卷：</p>
+<p>/**</p>
+<ul>
+<li>答卷控制层，用于获取已经提交的答卷</li>
+</ul>
+<p>*/</p>
+<p>@RestController</p>
+<p>@RequestMapping(“/v1/answer-papers”)</p>
+<p>public class AnswerPaperController {</p>
+<p>@Autowired</p>
+<p>AnswerPaperService answerPaperService;</p>
+<p>@Autowired</p>
+<p>AnswerQuestionService answerQuestionService;</p>
+<p>/**</p>
+<ul>
+<li><p>根据ID查找</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/{id}”, method = RequestMethod.GET)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘) or hasAuthority(‘“ + Role.ROLE_STUDENT + “‘)”)</p>
+<p>public AnswerPaper getAnswerPaper(@PathVariable String id) {</p>
+<p>return answerPaperService.getAnswerPaperById(id);</p>
+<p>/**</p>
+<ul>
+<li><p>根据name查找</p>
+</li>
+<li><p>@param name</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/name/{name}”, method = RequestMethod.GET)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘)”)</p>
+<p>public List<AnswerPaper> getAnswerPaperByName(@PathVariable String name) {</AnswerPaper></p>
+<p>return answerPaperService.getAnswerPaperFuzzy(name);</p>
+<p>/**</p>
+<ul>
+<li><p>根据答卷id和题目编号获取题目信息</p>
+</li>
+<li><p>@param paperId</p>
+</li>
+<li><p>@param number</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/papers/{paperId}/questions/{number}”, method = RequestMethod.GET)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘) or hasAuthority(‘“ + Role.ROLE_STUDENT + “‘)”)</p>
+<p>public AnswerQuestion getQuestionByPaperIdAndQuestionId(@PathVariable String paperId, @PathVariable Integer number) {</p>
+<p>AnswerQuestion answerQuestion = answerQuestionService.getAnswerQuestionByPaperIdAndQuestionNumber(paperId, number);</p>
+<p>return answerQuestion;</p>
+<p>/**</p>
+<ul>
+<li><p>已分页方式获取数据</p>
+</li>
+<li><p>@param username</p>
+</li>
+<li><p>@param pageIndex</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@param limit</p>
+</li>
+<li><p>@param offset</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/users/{username}”, method = RequestMethod.GET)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘) or hasAuthority(‘“ + Role.ROLE_STUDENT + “‘)”)</p>
+<p>public PageInfo<AnswerPaper> getListByUser(@PathVariable(“username”) String username,</AnswerPaper></p>
+<p>@RequestParam(required = false) Integer pageIndex,</p>
+<p>@RequestParam(required = false) Integer pageSize,</p>
+<p>@RequestParam(required = false) Integer limit,</p>
+<p>@RequestParam(required = false) Integer offset) {</p>
+<p>if(pageIndex != null &amp;&amp; pageSize != null) {</p>
+<p>PageHelper.startPage(pageIndex, pageSize);</p>
+<p>List<AnswerPaper> answerPapers = answerPaperService.getAnswerPaperListByAnswerUser(username);</AnswerPaper></p>
+<p>PageInfo pageInfo = new PageInfo(answerPapers);</p>
+<p>return pageInfo;</p>
+<p>@RequestMapping(value = “/users/{username}/type/{type}”, method = RequestMethod.GET)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘) or hasAuthority(‘“ + Role.ROLE_STUDENT + “‘)”)</p>
+<p>public PageInfo<AnswerPaper> getListByUserAndType(@PathVariable(“username”) String username,</AnswerPaper></p>
+<p>@PathVariable(“type”) String type,</p>
+<p>@RequestParam(required = false) Integer pageIndex,</p>
+<p>@RequestParam(required = false) Integer pageSize,</p>
+<p>@RequestParam(required = false) Integer limit,</p>
+<p>@RequestParam(required = false) Integer offset) {</p>
+<p>if(pageIndex != null &amp;&amp; pageSize != null) {</p>
+<p>PageHelper.startPage(pageIndex, pageSize);</p>
+<p>List<AnswerPaper> answerPapers = answerPaperService.getAnswerPaperListByAnswerUserAndType(username, type);</AnswerPaper></p>
+<p>PageInfo pageInfo = new PageInfo(answerPapers);</p>
+<p>return pageInfo;</p>
+<p>/**</p>
+<ul>
+<li><p>获取未批改或已批改的答卷数量，</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/check”)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘)”)</p>
+<p>public DtoTask countUnCheckAnswerPaper() {</p>
+<p>DtoTask dtoTask = new DtoTask();</p>
+<p>Integer checked = answerPaperService.countCheck(“true”);</p>
+<p>Integer unChecked = answerPaperService.countCheck(“false”);</p>
+<p>dtoTask.setChecked(checked);</p>
+<p>dtoTask.setUnChecked(unChecked);</p>
+<p>return dtoTask;</p>
+<p>/**</p>
+<ul>
+<li><p>以分页方式获取数据</p>
+</li>
+<li><p>@param pageIndex</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@param limit</p>
+</li>
+<li><p>@param offset</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “”, method = RequestMethod.GET)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘)”)</p>
+<p>public PageInfo<AnswerPaper> getListByUser(@RequestParam(required = false) Integer pageIndex,</AnswerPaper></p>
+<p>@RequestParam(required = false) Integer pageSize,</p>
+<p>@RequestParam(required = false) Integer limit,</p>
+<p>@RequestParam(required = false) Integer offset) {</p>
+<p>if(pageIndex != null &amp;&amp; pageSize != null) {</p>
+<p>PageHelper.startPage(pageIndex, pageSize);</p>
+<p>List<AnswerPaper> answerPapers = answerPaperService.getAnswerPaperList();</AnswerPaper></p>
+<p>PageInfo pageInfo = new PageInfo(answerPapers);</p>
+<p>return pageInfo;</p>
+<p>/**</p>
+<ul>
+<li><p>更新</p>
+</li>
+<li><p>@param answerPaper</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “”, method = RequestMethod.PUT)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘)”)</p>
+<p>public ResponseEntity&lt;?&gt; putPaper(@RequestBody AnswerPaper answerPaper) {</p>
+<p>answerPaperService.updatePaper(answerPaper);</p>
+<p>return new ResponseEntity(HttpStatus.OK);</p>
+<p>/**</p>
+<ul>
+<li><p>计算考试成绩</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/{id}/calculate”, method = RequestMethod.PUT)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘) or hasAuthority(‘“ + Role.ROLE_STUDENT + “‘)”)</p>
+<p>public ResponseEntity&lt;?&gt; CalculationScore(@PathVariable String id) {</p>
+<p>/**</p>
+<ul>
+<li>计算成绩</li>
+</ul>
+<p>*/</p>
+<p>List<AnswerQuestion> questions = answerQuestionService.findByAnswerPaperId(id);</AnswerQuestion></p>
+<p>if(questions != null &amp;&amp; questions.size() &gt; 0) {</p>
+<p>int score = 0;</p>
+<p>try {</p>
+<p>for(AnswerQuestion question : questions) {</p>
+<p>score += Integer.parseInt(question.getMarkScore());</p>
+<p>} catch (Exception e) {</p>
+<p>// TODO: 2017/4/1</p>
+<p>/**</p>
+<ul>
+<li>保存成绩</li>
+</ul>
+<p>*/</p>
+<p>AnswerPaper answerPaper = new AnswerPaper();</p>
+<p>answerPaper.setId(id);</p>
+<p>answerPaper.setScore(Integer.toString(score));</p>
+<p>answerPaper.setChecked(“true”);</p>
+<p>answerPaperService.updatePaper(answerPaper);</p>
+<p>} else {</p>
+<p>// TODO: 2017/4/1</p>
+<p>return new ResponseEntity<Object>(HttpStatus.OK);</Object></p>
+<p>@RequestMapping(value = “/analysis/paper”)</p>
+<p>@PreAuthorize(“hasAuthority(‘“ + Role.ROLE_TEACHER + “‘) or hasAuthority(‘“ + Role.ROLE_ADMIN + “‘)”)</p>
+<p>public List<PaperAnalysis> analysisPaper() {</PaperAnalysis></p>
+<p>return answerPaperService.analysisPaper();</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=581524512608201ob<br>https://javayms.pages.dev?id=581524512608201ob</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E5%BF%83%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> 心理</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot宠物平台系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/481524512608201ns/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot宠物平台系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/481524512608201ns/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot宠物平台系统(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/411524372608.jpg" alt="411524372608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/421524372608.jpg" alt="421524372608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/431524372608.jpg" alt="431524372608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/441524372608.jpg" alt="441524372608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/451524372608.jpg" alt="451524372608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/461524372608.jpg" alt="461524372608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/471524372608.jpg" alt="471524372608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/481524372608.jpg" alt="481524372608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/491524372608.jpg" alt="491524372608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/501524372608.jpg" alt="501524372608"></p>
+<p>基于javaweb的SpringBoot宠物平台系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>项目介绍</p>
+<p>基于Spring+Boot的宠物平台设计与实现</p>
+<p>本系统分为前后台，包含管理员、用户两个角色。</p>
+<p>管理员角色主要功能为：</p>
+<p>登录、个人中心、用户管理、宠物分类管理、宠物科普管理、宠物信息管理、领养申请管理、爱心捐赠管理、捐赠信息管理、宠物救助管理、宠物论坛、社区留言板、系统管理等功能；</p>
+<p>用户：登录、注册、个人中心管理、美食鉴赏管理、好友管理、收藏管理、个人信息管理、美食鉴赏发布与管理</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits-Plus</p>
+<p>前端：Vue+elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：</p>
+</li>
+</ol>
+<p>前台地址：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/springboot3148x/front/dist/index.html">http://localhost:8080/springboot3148x/front/dist/index.html</a></p>
+<p>用户: 用户账号1 密码 123456</p>
+<p>后台地址</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/springboot3148x/admin/dist/index.html#/login">http://localhost:8080/springboot3148x/admin/dist/index.html#/login</a></p>
+<p>管理员：admin 密码:admin</p>
+<p>用户: 用户账号1 密码:123456</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p>宠物信息展示：</p>
+<p>首页展示：</p>
+<p>爱心捐赠页面展示：</p>
+<p>宠物科普展示：</p>
+<p>首页展示页面：</p>
+<p>宠物论坛页面展示：</p>
+<p>宠物科普页面展示：</p>
+<p> 感谢公告页面展示：</p>
+<p>社区留言板页面：</p>
+<p>注册页面展示：</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>后台管理员控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(“admin/user”)</p>
+<p>public class adminUserController {</p>
+<p>@Autowired</p>
+<p>UserService userService;</p>
+<p>@Autowired</p>
+<p>PostMapper postMapper;</p>
+<p>@Autowired</p>
+<p>ShareMapper shareMapper;</p>
+<p>@Autowired</p>
+<p>SponsorMapper sponsorMapper;</p>
+<p>@GetMapping(“”)</p>
+<p>public String write(Model model, HttpSession session,</p>
+<p>@RequestParam(value = “page”, defaultValue = “1”) int page,</p>
+<p>@RequestParam(value = “limit”, defaultValue = “12”) int limit){</p>
+<p>model.addAttribute(“info”,userService.queryUserAll(page,limit));</p>
+<p>return “admin/admin_user”;</p>
+<p>@GetMapping(“delete”)</p>
+<p>public String deleteUser(@RequestParam(“userId”) int userId){</p>
+<p>User user=userService.queryUserById(userId);</p>
+<p>if(user.getUserPhone().equals(“1111”)){</p>
+<p>return “redirect:/admin/user”;</p>
+<p>postMapper.deletePostByPhone(user.getUserPhone());</p>
+<p>shareMapper.deleteShareByPhone(user.getUserPhone());</p>
+<p>sponsorMapper.deleteSponsorByPhone(user.getUserPhone());</p>
+<p>userService.deleteUser(userId);</p>
+<p>return “redirect:/admin/user”;</p>
+<p>详情管理控制层： </p>
+<p>@Controller</p>
+<p>@RequestMapping(“details”)</p>
+<p>public class detailsController {</p>
+<p>@Autowired</p>
+<p>IndexService indexService;</p>
+<p>@Autowired</p>
+<p>NoticeService noticeService;</p>
+<p>@Autowired</p>
+<p>DetailsService detailsService;</p>
+<p>@Autowired</p>
+<p>PostService postService;</p>
+<p>@Autowired</p>
+<p>SponsorService sponsorService;</p>
+<p>@Autowired</p>
+<p>ShareService shareService;</p>
+<p>@Autowired</p>
+<p>CommentMapper commentMapper;</p>
+<p>@Autowired</p>
+<p>HttpSession session;</p>
+<p>@Autowired</p>
+<p>ReportService reportService;</p>
+<p>@Autowired</p>
+<p>SentenceService sentenceService;</p>
+<p>@GetMapping</p>
+<p>public String index(Model model,Integer id,String status){</p>
+<p>int i=-1;</p>
+<p>if(status.equals(IndexFrom.Post.getDesc())){</p>
+<p>i=0;</p>
+<p>}else if(status.equals(IndexFrom.Share.getDesc())){</p>
+<p>i=1;</p>
+<p>} else if(status.equals(IndexFrom.Sponsor.getDesc())){</p>
+<p>i=2;</p>
+<p>session.setAttribute(CatConst.USER_DETAILS_STATUS,i);</p>
+<p>session.setAttribute(CatConst.USER_DETAILS_CODE,id);</p>
+<p>model.addAttribute(“comments”,detailsService.findComment(i,id));</p>
+<p>detailsService.addCount(id,i);</p>
+<p>model.addAttribute(“count”,commentMapper.queryCount1(id,i));</p>
+<p>model.addAttribute(“recommends”,detailsService.findRecommends(i));</p>
+<p>IndexVo info=detailsService.findDetails(id,i);</p>
+<p>model.addAttribute(“info”,info);</p>
+<p>model.addAttribute(“url”,TitleUtil.getUrl());</p>
+<p>List<IndexVo> indexMax=indexService.findMaxCount();</IndexVo></p>
+<p>List<Notice> notices=noticeService.queryNotice();</Notice></p>
+<p>model.addAttribute(“notices”,notices);</p>
+<p>model.addAttribute(“indexMax”,indexMax);</p>
+<p>Sentence sentence=sentenceService.findSentence();</p>
+<p>model.addAttribute(“sentence”,sentence);</p>
+<p>return “details”;</p>
+<p>@PostMapping(“interceptor/addComment”)</p>
+<p>public String comment(String comment,Model model){</p>
+<p>int i= (int) session.getAttribute(CatConst.USER_DETAILS_STATUS);</p>
+<p>int id= (int) session.getAttribute(CatConst.USER_DETAILS_CODE);</p>
+<p>User user= (User) session.getAttribute(“user_session”);</p>
+<p>Comment comment1=new Comment();</p>
+<p>comment1.setCommentContent(comment);</p>
+<p>comment1.setCommentPhone(user.getUserPhone());</p>
+<p>comment1.setCommentCreatetime(new Date());</p>
+<p>comment1.setCommentPsId(id);</p>
+<p>comment1.setCommentSource(i);</p>
+<p>commentMapper.addComment(comment1);</p>
+<p>model.addAttribute(“comments”,detailsService.findComment(i,id));</p>
+<p>detailsService.addCount(id,i);</p>
+<p>model.addAttribute(“count”,commentMapper.queryCount1(id,i));</p>
+<p>model.addAttribute(“recommends”,detailsService.findRecommends(i));</p>
+<p>IndexVo info=detailsService.findDetails(id,i);</p>
+<p>model.addAttribute(“info”,info);</p>
+<p>List<IndexVo> indexMax=indexService.findMaxCount();</IndexVo></p>
+<p>List<Notice> notices=noticeService.queryNotice();</Notice></p>
+<p>model.addAttribute(“notices”,notices);</p>
+<p>model.addAttribute(“indexMax”,indexMax);</p>
+<p>Sentence sentence=sentenceService.findSentence();</p>
+<p>model.addAttribute(“sentence”,sentence);</p>
+<p>model.addAttribute(“url”,TitleUtil.getUrl());</p>
+<p>return “details”;</p>
+<p>@PostMapping(“interceptor/report”)</p>
+<p>public String report(String reason,Model model){</p>
+<p>int i= (int) session.getAttribute(CatConst.USER_DETAILS_STATUS);</p>
+<p>int id= (int) session.getAttribute(CatConst.USER_DETAILS_CODE);</p>
+<p>User user= (User) session.getAttribute(“user_session”);</p>
+<p>if(reason.equals(“”)==false){</p>
+<p>Report report=new Report();</p>
+<p>report.setReportUser(user.getUserNickname());</p>
+<p>report.setReportCreatetime(new Date());</p>
+<p>report.setReportContent(reason);</p>
+<p>if(i==0){</p>
+<p>report.setReportFrom(“启示”);</p>
+<p>}if(i==1){</p>
+<p>report.setReportFrom(“分享”);</p>
+<p>}if(i==2){</p>
+<p>report.setReportFrom(“赞助”);</p>
+<p>report.setReportFromId(id);</p>
+<p>reportService.addReport(report);</p>
+<p>model.addAttribute(“comments”,detailsService.findComment(i,id));</p>
+<p>detailsService.addCount(id,i);</p>
+<p>model.addAttribute(“recommends”,detailsService.findRecommends(i));</p>
+<p>IndexVo info=detailsService.findDetails(id,i);</p>
+<p>model.addAttribute(“info”,info);</p>
+<p>List<IndexVo> indexMax=indexService.findMaxCount();</IndexVo></p>
+<p>List<Notice> notices=noticeService.queryNotice();</Notice></p>
+<p>model.addAttribute(“notices”,notices);</p>
+<p>model.addAttribute(“indexMax”,indexMax);</p>
+<p>Sentence sentence=sentenceService.findSentence();</p>
+<p>model.addAttribute(“sentence”,sentence);</p>
+<p>model.addAttribute(“url”,TitleUtil.getUrl());</p>
+<p>return “details”;</p>
+<p>登录管理控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(“”)</p>
+<p>public class loginController {</p>
+<p>@Autowired</p>
+<p>UserService userService;</p>
+<p>@GetMapping(value = {“/login”})</p>
+<p>public String login(){</p>
+<p>return “login”;</p>
+<p>@GetMapping(“reBack”)</p>
+<p>public String reBack(HttpSession session){</p>
+<p>String url= (String) session.getAttribute(“user_old_url”);</p>
+<p>if(url==null){</p>
+<p>url=”/“;</p>
+<p>return “redirect:”+url;</p>
+<p>@GetMapping(value = {“login1”})</p>
+<p>public String login1(@RequestParam(value =”userUrl”) String userUrl,HttpSession session){</p>
+<p>if(userUrl!=null){</p>
+<p>session.setAttribute(CatConst.USER_SESSION_URL,userUrl);</p>
+<p>return “login”;</p>
+<p>@PostMapping(“login/getLogin”)</p>
+<p>@ResponseBody</p>
+<p>public LoginResult getLogin(@RequestParam(value =”phone”) String phone,</p>
+<p>@RequestParam(value =”password”) String password, HttpSession session) {</p>
+<p>User user = userService.queryByPhone(phone);</p>
+<p>if(user!=null){</p>
+<p>if(user.getUserPassword().equals(MD5Util.getMD5(password))){</p>
+<p>session.setAttribute(CatConst.USER_SESSION_KEY, user);</p>
+<p>if(user.getUserPhone().equals(“1111”)){</p>
+<p>session.setAttribute(CatConst.USER_SESSION_administrators, user.getUserPhone());</p>
+<p>return new LoginResult(true, “登录成功”);</p>
+<p>}else {</p>
+<p>return new LoginResult(false, “密码错误”);</p>
+<p>}else {</p>
+<p>return new LoginResult(false, “用户名错误”);</p>
+<p>@PostMapping(“/login/register”)</p>
+<p>@ResponseBody</p>
+<p>public JsonResult register(User user,@RequestParam(value =”userCode”) String userCode,HttpSession session){</p>
+<p>String code=session.getAttribute(CatConst.USER_SESSION_CODE).toString();</p>
+<p>if(code.equals(userCode)){</p>
+<p>if(userService.queryByPhone(user.getUserPhone())!=null){</p>
+<p>return new JsonResult(false, “电话号码已经注册！”);</p>
+<p>}else {</p>
+<p>user.setUserPassword(MD5Util.getMD5(user.getUserPassword()));</p>
+<p>user.setUserCreatetime(new Date());</p>
+<p>user.setUserUrl(TitleUtil.getUrl());</p>
+<p>int i=userService.addUser(user);</p>
+<p>if(i==1){</p>
+<p>session.removeAttribute(CatConst.USER_SESSION_CODE);</p>
+<p>return new JsonResult(true, “注册成功！”);</p>
+<p>}else {</p>
+<p>return new JsonResult(false, “注册失败！”);</p>
+<p>}else {</p>
+<p>return new JsonResult(false, “验证码错误！”);</p>
+<p>@PostMapping(“login/updatePassword”)</p>
+<p>@ResponseBody</p>
+<p>public JsonResult updatePassword(@RequestParam(value =”userPhone”) String userPhone,</p>
+<p>@RequestParam(value =”userCode”) String userCode,</p>
+<p>@RequestParam(value =”userPassword”) String userPassword,HttpSession session){</p>
+<p>String code=session.getAttribute(CatConst.USER_SESSION_CODE).toString();</p>
+<p>if(code.equals(userCode)){</p>
+<p>int i=userService.updateUserPhone(MD5Util.getMD5(userPassword),userPhone);</p>
+<p>if(i==1){</p>
+<p>session.removeAttribute(CatConst.USER_SESSION_CODE);</p>
+<p>return new JsonResult(true, “密码更新成功！”);</p>
+<p>}else {</p>
+<p>return new JsonResult(false, “密码更新失败！”);</p>
+<p>}else {</p>
+<p>return new JsonResult(false, “验证码错误！”);</p>
+<p>@PostMapping(“login/getCode”)</p>
+<p>@ResponseBody</p>
+<p>public JsonResult getCode(@RequestParam(value =”userPhone”) String userPhone,HttpSession session){</p>
+<p>DuanxinService duanxinService=new DuanxinService();</p>
+<p>//       int code=duanxinService.duanXin(userPhone);</p>
+<p>session.setAttribute(CatConst.USER_SESSION_CODE,”1234”);</p>
+<p>return new JsonResult(true,”发送成功”);</p>
+<p>//    有时，一些网站的部分操作需要登录才能访问。如果跳转到登录界面登录成功后，怎样才能返回到登录之前的界面呢？</p>
+<p>//    很简单，我们在代码部分中添加一部分很少的代码即可。在从一个页面跳转到登录界面之前的代码，我们用session保</p>
+<p>//    存当前界面的url信息，在跳转到登录界面，登录成功后的代码中，判读是否有这个session信息，如果有，则跳转到</p>
+<p>//    session所存的url，记住跳转前清空这个session，否则在未关闭浏览器重新登录时可能又会跳到session中所存储url的界面。</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=481524512608201ns<br>https://javayms.pages.dev?id=481524512608201ns</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E5%AE%A0%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 宠物</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

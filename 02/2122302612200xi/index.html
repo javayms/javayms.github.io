@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于java的Swing+Java+MySQL餐厅在线点餐系统(管理员、用户)">
+<meta property="og:title" content="基于java的Swing餐厅在线点餐系统(管理员、用户)(java+swing+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于java的Swing+Java+MySQL餐厅在线点餐系统(管理员、用户) | Java源码社</title>
+  <title>基于java的Swing餐厅在线点餐系统(管理员、用户)(java+swing+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于java的Swing+Java+MySQL餐厅在线点餐系统(管理员、用户)
+			基于java的Swing餐厅在线点餐系统(管理员、用户)(java+swing+mysql)
             
         </h1>
 
@@ -227,7 +227,7 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/120023342402.jpg" alt="120023342402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/130023342402.jpg" alt="130023342402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project21/140023342402.jpg" alt="140023342402"></p>
-<p>基于java的Swing+Java+MySQL餐厅在线点餐系统(管理员、用户)</p>
+<p>基于java的Swing餐厅在线点餐系统(管理员、用户)(java+swing+mysql)</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">														javax.swing.GroupLayout.PREFERRED_SIZE,</span><br><span class="line">														javax.swing.GroupLayout.DEFAULT_SIZE,</span><br><span class="line">														javax.swing.GroupLayout.PREFERRED_SIZE)))</span><br><span class="line">				.addGroup(</span><br><span class="line">						layout</span><br><span class="line">								.createSequentialGroup()</span><br><span class="line">								.addGap(</span><br><span class="line">										<span class="number">18</span>,</span><br><span class="line">										<span class="number">18</span>,</span><br><span class="line">										<span class="number">18</span>)</span><br><span class="line">								.addGroup(</span><br><span class="line">										layout</span><br><span class="line">												.createParallelGroup(</span><br><span class="line">														javax.swing.GroupLayout.Alignment.BASELINE)</span><br><span class="line">												.addComponent(</span><br><span class="line">														orderIdTxt,</span><br><span class="line">														javax.swing.GroupLayout.PREFERRED_SIZE,</span><br><span class="line">														javax.swing.GroupLayout.DEFAULT_SIZE,</span><br><span class="line">														javax.swing.GroupLayout.PREFERRED_SIZE)</span><br><span class="line">												.addComponent(</span><br><span class="line">														jLabel5)</span><br><span class="line">												.addComponent(</span><br><span class="line">														jb_search))))</span><br><span class="line">.addGap(<span class="number">23</span>, <span class="number">23</span>, <span class="number">23</span>)</span><br><span class="line">.addGroup(</span><br><span class="line">		layout</span><br><span class="line">				.createParallelGroup(</span><br><span class="line">						javax.swing.GroupLayout.Alignment.LEADING)</span><br><span class="line">				.addGroup(</span><br><span class="line">						layout</span><br><span class="line">								.createSequentialGroup()</span><br><span class="line">								.addComponent(</span><br><span class="line">										jScrollPane2,</span><br><span class="line">										javax.swing.GroupLayout.PREFERRED_SIZE,</span><br><span class="line">										<span class="number">169</span>,</span><br><span class="line">										javax.swing.GroupLayout.PREFERRED_SIZE)</span><br><span class="line">								.addGap(</span><br><span class="line">										<span class="number">38</span>,</span><br><span class="line">										<span class="number">38</span>,</span><br><span class="line">										<span class="number">38</span>)</span><br><span class="line">								.addGroup(</span><br><span class="line">										layout</span><br><span class="line">												.createParallelGroup(</span><br><span class="line">														javax.swing.GroupLayout.Alignment.BASELINE)</span><br></pre></td></tr></table></figure>
 

@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot奶茶商城外卖点餐(springboot+mysql+jsp+maven)">
+<meta property="og:title" content="基于javaweb的SpringBoot奶茶商城外卖点餐(java+springboot+mysql+jsp+maven)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot奶茶商城外卖点餐(springboot+mysql+jsp+maven) | Java源码社</title>
+  <title>基于javaweb的SpringBoot奶茶商城外卖点餐(java+springboot+mysql+jsp+maven) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot奶茶商城外卖点餐(springboot+mysql+jsp+maven)
+			基于javaweb的SpringBoot奶茶商城外卖点餐(java+springboot+mysql+jsp+maven)
             
         </h1>
 
@@ -221,7 +221,7 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/481923422708.jpg" alt="481923422708"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/491923422708.jpg" alt="491923422708"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project29/501923422708.jpg" alt="501923422708"></p>
-<p>基于javaweb的SpringBoot奶茶商城外卖点餐(springboot+mysql+jsp+maven)</p>
+<p>基于javaweb的SpringBoot奶茶商城外卖点餐(java+springboot+mysql+jsp+maven)</p>
 <p>密码均为：12346</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">YhqController</span> <span class="keyword">extends</span> <span class="title">BaseController</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	YhqDAO yhqDAO;</span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	CategoryDAO categoryDAO;</span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	MemberDAO memberDAO;</span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	Saveobject saveobject;</span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	TicketDAO ticketDAO;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//后台查询优惠券列表</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/admin/yhqList&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">yhqList</span><span class="params">(<span class="meta">@RequestParam(defaultValue = &quot;1&quot;,value = &quot;pageNum&quot;)</span> Integer pageNum,HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">		String key = request.getParameter(<span class="string">&quot;key&quot;</span>);</span><br><span class="line">		HashMap map = <span class="keyword">new</span> HashMap();</span><br><span class="line">		map.put(<span class="string">&quot;key&quot;</span>, key);</span><br><span class="line">		PageHelper.startPage(pageNum, <span class="number">10</span>);</span><br><span class="line">		List&lt;Yhq&gt; list = yhqDAO.selectAll(map);</span><br><span class="line">		PageInfo&lt;Yhq&gt; pageInfo =  <span class="keyword">new</span> PageInfo&lt;Yhq&gt;(list);</span><br><span class="line">		request.setAttribute(<span class="string">&quot;key&quot;</span>,key);</span><br><span class="line">		request.setAttribute(<span class="string">&quot;pageInfo&quot;</span>,pageInfo);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;yhqlist&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//添加活动 </span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/admin/yhqAdd&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">yhqAdd</span><span class="params">(Yhq yhq,HttpServletRequest request)</span></span>&#123;</span><br><span class="line">		yhqDAO.add(yhq);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect:yhqList&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>

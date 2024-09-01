@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot民俗管理系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/181524522608201ot/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot民俗管理系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/181524522608201ot/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot民俗管理系统(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/001524102608.jpg" alt="001524102608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/021524102608.jpg" alt="021524102608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/031524102608.jpg" alt="031524102608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/041524102608.jpg" alt="041524102608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/551524092608.jpg" alt="551524092608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/561524092608.jpg" alt="561524092608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/571524092608.jpg" alt="571524092608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/581524092608.jpg" alt="581524092608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/591524092608.jpg" alt="591524092608"></p>
+<p>基于javaweb的SpringBoot民俗管理系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>项目介绍</p>
+<p>基于Springboot + vue实现的民俗</p>
+<p>本系统包含管理员、用户两个角色。</p>
+<p>管理员角色：登录、用户管理功能、民俗介绍管理功能（发布和管理民俗文化的介绍文章）、公告信息管理功能（发布网站的重要通知和活动信息）、商品管理功能（对商家发布的商品进行监管）、商品评价管理功能（监管商品评价内容，确保评价的公正性和真实性）、用户管理功能（管理注册用户的信息，包括用户资料的编辑、权限的设置等）。</p>
+<p>用户角色：浏览民俗文化内容功能、查看公告信息功能、购买商品功能（包括商品浏览、下单、支付、查看订单状态等）、商品评价功能（对购买的商品进行评价和打分）、商品收藏功能（收藏感兴趣的商品）、用户信息管理功能（编辑个人资料、查看和修改收货地址等）。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； </p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue+elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+</ol>
+<p>4.运行项目，在浏览器中输入地址：</p>
+<p>前台登录页面</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/zhongguoshanximinsuwang/front/index.html">http://localhost:8080/zhongguoshanximinsuwang/front/index.html</a></p>
+<p>用户账户:a1 密码：123456</p>
+<p>后台登录页面</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/zhongguoshanximinsuwang/admin/dist/index.html#/login">http://localhost:8080/zhongguoshanximinsuwang/admin/dist/index.html#/login</a></p>
+<p>管理员账户:admin 密码：admin</p>
+<p>用户账户:a1 密码：123456</p>
+<p>文档结构展示：</p>
+<p>民俗介绍展示：</p>
+<p>商品展示页面：</p>
+<p>购物车展示页面：</p>
+<p>个人中心展示： </p>
+<p>后台登陆管理页面： </p>
+<p>后台首页展示：</p>
+<p>商品管理展示页面：</p>
+<p>用户管理展示页面：</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>购物车管理控制层：</p>
+<p>/**</p>
+<ul>
+<li>前台地址管理控制器</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/home/cart”)</p>
+<p>@Controller</p>
+<p>public class HomeCartController {</p>
+<p>@Autowired</p>
+<p>private ICartService cartService;</p>
+<p>/**</p>
+<ul>
+<li><p>购物车首页</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/index”,method= RequestMethod.GET)</p>
+<p>public String index(Model model, HttpServletRequest request) {</p>
+<p>//获取当前用户的购物车</p>
+<p>String id = (String) request.getAttribute(“id”);</p>
+<p>model.addAttribute(“CartVo”, cartService.list(Long.valueOf(id)).getData());</p>
+<p>return “home/cart/index”;</p>
+<p>/**</p>
+<ul>
+<li><p>添加购物车操作处理</p>
+</li>
+<li><p>@param cart</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/add”,method=RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Boolean> add(Cart cart, HttpServletRequest request){</Boolean></p>
+<p>//获取当前登录用户的id</p>
+<p>String id = (String) request.getAttribute(“id”);</p>
+<p>return cartService.add(Long.valueOf(id), cart);</p>
+<p>/**</p>
+<ul>
+<li><p>购物车商品数量变更</p>
+</li>
+<li><p>@param productId</p>
+</li>
+<li><p>@param method</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/update”,method=RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Boolean> update(Long productId, String method, HttpServletRequest request){</Boolean></p>
+<p>//获取当前登录用户的id</p>
+<p>String id = (String) request.getAttribute(“id”);</p>
+<p>return cartService.update(Long.valueOf(id), productId, method);</p>
+<p>/**</p>
+<ul>
+<li><p>删除购物车商品操作处理</p>
+</li>
+<li><p>@param productId</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/delete”,method=RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Boolean> delete(Long productId, HttpServletRequest request){</Boolean></p>
+<p>//获取当前登录用户的id</p>
+<p>String id = (String) request.getAttribute(“id”);</p>
+<p>return cartService.delete(Long.valueOf(id), productId);</p>
+<p> 用户管理控制层：</p>
+<p>/**</p>
+<ul>
+<li>前台用户管理控制器</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/home/user”)</p>
+<p>@Controller</p>
+<p>public class HomeUserController {</p>
+<p>@Autowired</p>
+<p>private IUserService userService;</p>
+<p>@Autowired</p>
+<p>private IOrderService orderService;</p>
+<p>@Autowired</p>
+<p>private ICommentService commentService;</p>
+<p>/**</p>
+<ul>
+<li><p>注册页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/register”,method=RequestMethod.GET)</p>
+<p>public String register(Model model) {</p>
+<p>return “home/user/register”;</p>
+<p>/**</p>
+<ul>
+<li><p>登录页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/login”,method=RequestMethod.GET)</p>
+<p>public String login(Model model) {</p>
+<p>return “home/user/login”;</p>
+<p>/**</p>
+<ul>
+<li><p>个人信息页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/info”,method=RequestMethod.GET)</p>
+<p>public String info(Model model) {</p>
+<p>model.addAttribute(“url”, “info”);</p>
+<p>return “home/user/info”;</p>
+<p>/**</p>
+<ul>
+<li><p>修改密码页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/update_passwd”,method=RequestMethod.GET)</p>
+<p>public String updatePasswd(Model model) {</p>
+<p>return “home/user/update_passwd”;</p>
+<p>/**</p>
+<ul>
+<li><p>我的评论页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param pageNum</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/comment”,method=RequestMethod.GET)</p>
+<p>public String comment(Model model,HttpServletRequest request,</p>
+<p>@RequestParam(required = false, defaultValue = “1”) Integer pageNum,</p>
+<p>@RequestParam(required = false, defaultValue = “5”) Integer pageSize //每页5个数据</p>
+<p>){</p>
+<p>String uid = (String) request.getAttribute(“id”);</p>
+<p>model.addAttribute(“PageInfo”, commentService.selectByPageAndUserId(pageNum, pageSize, Long.valueOf(uid)).getData());</p>
+<p>return “home/user/comment”;</p>
+<p>/**</p>
+<ul>
+<li><p>我的订单页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param pageNum</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/order”,method=RequestMethod.GET)</p>
+<p>public String order(Model model, HttpServletRequest request,</p>
+<p>@RequestParam(required = false, defaultValue = “1”) Integer pageNum,</p>
+<p>@RequestParam(required = false, defaultValue = “1”) Integer pageSize //每页1个数据</p>
+<p>){</p>
+<p>//获取当前登录用户的id</p>
+<p>String uid = (String) request.getAttribute(“id”);</p>
+<p>model.addAttribute(“PageInfo”, orderService.selectByPageAndUserIdAndIsDeleted(Long.valueOf(uid), OrderDeleteEnum.NO.getCode(), pageNum, pageSize).getData());</p>
+<p>//model.addAttribute(“OrderList”, orderMapper.selectByUserIdAndIsDeleted(Long.valueOf(uid), 0));</p>
+<p>model.addAttribute(“Send”, orderService.selectByOrderStateAndUserIdAndIsDeleted(OrderStateEnum.SEND.getCode(), Long.valueOf(uid), OrderDeleteEnum.NO.getCode()).size());</p>
+<p>model.addAttribute(“Sign”, orderService.selectByOrderStateAndUserIdAndIsDeleted(OrderStateEnum.SIGN.getCode(), Long.valueOf(uid), OrderDeleteEnum.NO.getCode()).size());</p>
+<p>return “/home/user/order”;</p>
+<p>/**</p>
+<ul>
+<li><p>用户登录操作处理</p>
+</li>
+<li><p>@param username</p>
+</li>
+<li><p>@param password</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/login”,method=RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Boolean> login(String username, String password){</Boolean></p>
+<p>return userService.login(username, password);</p>
+<p>/**</p>
+<ul>
+<li><p>用户注册操作处理</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@param repassword</p>
+</li>
+<li><p>@param cpacha</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/register”,method=RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Boolean> register(User user, String repassword, String cpacha, HttpServletRequest request) {</Boolean></p>
+<p>return userService.register(user, repassword, cpacha, request);</p>
+<p>/**</p>
+<ul>
+<li><p>用户个人信息修改操作处理</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/update_info”,method=RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<String> updateInfo(User user){</String></p>
+<p>return userService.updateInfo(user);</p>
+<p>/**</p>
+<ul>
+<li><p>用户修改密码操作处理</p>
+</li>
+<li><p>@param prePassword</p>
+</li>
+<li><p>@param newPassword</p>
+</li>
+<li><p>@param reNewPassword</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/update_passwd”,method=RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Boolean> updatePasswd(String prePassword, String newPassword, String reNewPassword, HttpServletRequest request){</Boolean></p>
+<p>return userService.updatePasswd(prePassword, newPassword, reNewPassword, request);</p>
+<p> 前台订单管理控制器：</p>
+<p>/**</p>
+<ul>
+<li>前台订单管理控制器</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/home/order”)</p>
+<p>@Controller</p>
+<p>public class HomeOrderController {</p>
+<p>@Autowired</p>
+<p>private IOrderService orderService;</p>
+<p>@Autowired</p>
+<p>private IAddressService addressService;</p>
+<p>/**</p>
+<ul>
+<li><p>订单结算页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@param orderId</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/index”,method= RequestMethod.GET)</p>
+<p>public String index(Model model, Long orderId, HttpServletRequest request){</p>
+<p>//获取当前登录用户的id</p>
+<p>String uid = (String) request.getAttribute(“id”);</p>
+<p>Order order = orderService.selectByOrderIdAndUserId(Long.valueOf(uid), orderId);</p>
+<p>if(order == null){</p>
+<p>return “error/404”;</p>
+<p>model.addAttribute(“Order”, order);</p>
+<p>model.addAttribute(“Address”, addressService.selectByUserIdAndFirstSelected(Long.valueOf(uid), AddressFirstSelectedEnum.YES.getCode()));</p>
+<p>return “home/order/index”;</p>
+<p>/**</p>
+<ul>
+<li><p>订单生成操作处理</p>
+</li>
+<li><p>@param ids</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/generate”,method= RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Long> generate(String ids, HttpServletRequest request){</Long></p>
+<p>return orderService.generate(ids, request);</p>
+<p>/**</p>
+<ul>
+<li><p>订单提交操作处理</p>
+</li>
+<li><p>@param remark</p>
+</li>
+<li><p>@param orderId</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/submit”,method= RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Boolean> submit(String remark, Long orderId, HttpServletRequest request){</Boolean></p>
+<p>//获取当前登录用户的id和邮箱</p>
+<p>String uid = (String) request.getAttribute(“id”);</p>
+<p>String email = (String) request.getAttribute(“email”);</p>
+<p>return orderService.submit(remark, orderId, Long.valueOf(uid), email);</p>
+<p>/**</p>
+<ul>
+<li><p>修改订单状态</p>
+</li>
+<li><p>@param orderId</p>
+</li>
+<li><p>@param state</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/update_order_state”,method= RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Boolean> updateOrderState(Long orderId, Integer state){</Boolean></p>
+<p>return orderService.updateOrderState(orderId, state);</p>
+<p>/**</p>
+<ul>
+<li><p>用户删除订单操作处理</p>
+</li>
+<li><p>@param orderId</p>
+</li>
+<li><p>@param isDeleted</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/user_delete”,method= RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Boolean> userDelete(Long orderId, Integer isDeleted){</Boolean></p>
+<p>return orderService.userDelete(orderId, isDeleted);</p>
+<p>后台管理系统管理员控制器： </p>
+<p>/**</p>
+<ul>
+<li>后台管理系统管理员控制器</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/admin/admin”)</p>
+<p>@Controller</p>
+<p>public class AdminController {</p>
+<p>@Autowired</p>
+<p>private IMenuService menuService;</p>
+<p>@Autowired</p>
+<p>private MenuMapper menuMapper;</p>
+<p>@Autowired</p>
+<p>private AdminMapper adminMapper;</p>
+<p>@Autowired</p>
+<p>private IAdminService adminService;</p>
+<p>@Autowired</p>
+<p>private RoleMapper roleMapper;</p>
+<p>@Autowired</p>
+<p>private AuthorityMapper authorityMapper;</p>
+<p>/**</p>
+<ul>
+<li><p>管理员列表页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/index”,method=RequestMethod.GET)</p>
+<p>public String index(Model model,Integer id,String name,HttpServletRequest request,</p>
+<p>@RequestParam(required = false, defaultValue = “1”) Integer pageNum,</p>
+<p>@RequestParam(required = false, defaultValue = “5”) Integer pageSize //每页5个数据</p>
+<p>) {</p>
+<p>//获取列表展示有关信息</p>
+<p>if(StringUtil.isEmpty(name)) {</p>
+<p>//如果查询信息为空</p>
+<p>model.addAttribute(“PageInfo”, adminService.getAdminListByPage(pageNum, pageSize).getData());</p>
+<p>}else {</p>
+<p>model.addAttribute(“PageInfo”, adminService.getAdminListByPageAndName(pageNum, pageSize, name).getData());</p>
+<p>model.addAttribute(“name”,name);</p>
+<p>model.addAttribute(“RoleList”, roleMapper.selectAll());</p>
+<p>//获取路径上有关信息</p>
+<p>Menu selectByPrimaryKey = menuMapper.selectByPrimaryKey(id);</p>
+<p>if(selectByPrimaryKey == null) {</p>
+<p>return “error/404”;</p>
+<p>Admin loginedAdmin = (Admin) request.getSession().getAttribute(SessionConstant.SESSION_ADMIN_LOGIN_KEY);</p>
+<p>List<Authority> selectByRoleId = authorityMapper.selectByRoleId(loginedAdmin.getRoleId()); //获取当前用户所有权限</Authority></p>
+<p>Set<Integer> menuIdSet = selectByRoleId.stream().map(Authority :: getMenuId).collect(Collectors.toSet());//把权限中所有菜单id取出来</Integer></p>
+<p>List<Menu> allMenusByStateAndPrimaryKeys = menuMapper.selectByStateAndPrimaryKeys(MenuStateEnum.OPEN.getCode(), menuIdSet);</Menu></p>
+<p>model.addAttribute(“onThirdMenus”, menuService.getThirdMenus(allMenusByStateAndPrimaryKeys).getData());</p>
+<p>model.addAttribute(“parentMenu”, menuMapper.selectByPrimaryKey(selectByPrimaryKey.getParentId()));</p>
+<p>model.addAttribute(“currentMenu”, selectByPrimaryKey);</p>
+<p>return “admin/admin/index”;</p>
+<p>/**</p>
+<ul>
+<li><p>管理员添加页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/add”,method=RequestMethod.GET)</p>
+<p>public String add(Model model) {</p>
+<p>model.addAttribute(“RoleList”, roleMapper.selectAll());</p>
+<p>return “admin/admin/add”;</p>
+<p>/**</p>
+<ul>
+<li><p>管理员编辑页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/edit”,method=RequestMethod.GET)</p>
+<p>public String edit(Model model,Integer id) {</p>
+<p>Admin selectByPrimaryKey = adminMapper.selectByPrimaryKey(id);</p>
+<p>if(selectByPrimaryKey == null) {</p>
+<p>return “error/404”;</p>
+<p>model.addAttribute(“RoleList”, roleMapper.selectAll());</p>
+<p>model.addAttribute(“editAdmin”, selectByPrimaryKey);</p>
+<p>return “admin/admin/edit”;</p>
+<p>/**</p>
+<ul>
+<li><p>管理员添加表单处理</p>
+</li>
+<li><p>@param admin</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/add”,method=RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Boolean> add(Admin admin){</Boolean></p>
+<p>return adminService.add(admin);</p>
+<p>/**</p>
+<ul>
+<li><p>管理员编辑表单处理</p>
+</li>
+<li><p>@param admin</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/edit”,method=RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Boolean> edit(Admin admin,HttpServletRequest request){</Boolean></p>
+<p>Admin loginedAdmin = (Admin) request.getSession().getAttribute(SessionConstant.SESSION_ADMIN_LOGIN_KEY);</p>
+<p>ResponseVo<Admin> editAdmin = adminService.edit(admin);</Admin></p>
+<p>if(editAdmin.getCode().intValue() == CodeMsg.SUCCESS.getCode()) {</p>
+<p>if(loginedAdmin.getId().intValue() == editAdmin.getData().getId().intValue()) {</p>
+<p>//更新权限</p>
+<p>request.getSession().setAttribute(SessionConstant.SESSION_ADMIN_LOGIN_KEY, editAdmin.getData());</p>
+<p>return ResponseVo.successByMsg(true, “编辑成功！”);</p>
+<p>}else {</p>
+<p>CodeMsg codeMsg = new CodeMsg();</p>
+<p>codeMsg.setCode(editAdmin.getCode());</p>
+<p>codeMsg.setMsg(editAdmin.getMsg());</p>
+<p>return ResponseVo.errorByMsg(codeMsg);</p>
+<p>/**</p>
+<ul>
+<li><p>管理员删除处理</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/delete”,method=RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Boolean> delete(Integer id){</Boolean></p>
+<p>return adminService.delete(id);</p>
+<p>/**</p>
+<ul>
+<li><p>管理员更改状态处理</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/change_state”,method=RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ResponseVo<Boolean> chageState(Integer id){</Boolean></p>
+<p>return adminService.chageState(id);</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=181524522608201ot<br>https://javayms.pages.dev?id=181524522608201ot</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E6%9C%AA%E5%88%86%E7%B1%BB/" rel="tag"><i class="fa fa-tag"></i> 未分类</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

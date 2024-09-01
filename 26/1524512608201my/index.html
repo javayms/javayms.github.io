@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot公司日常考勤系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/261524512608201my/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot公司日常考勤系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/261524512608201my/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot公司日常考勤系统(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/391524142608.jpg" alt="391524142608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/401524142608.jpg" alt="401524142608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/411524142608.jpg" alt="411524142608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/421524142608.jpg" alt="421524142608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/431524142608.jpg" alt="431524142608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/441524142608.jpg" alt="441524142608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/451524142608.jpg" alt="451524142608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/461524142608.jpg" alt="461524142608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/481524142608.jpg" alt="481524142608"></p>
+<p>基于javaweb的SpringBoot公司日常考勤系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>项目介绍</p>
+<p>基于Springboot + vue实现的公司日常考勤系统</p>
+<p>系统包含员工和管理员两个角色</p>
+<p>员工：登录、个人中心、通知公告管理、员工管理、部门信息管理、考勤基点管理、员工工资管理等功能</p>
+<p>管理员：登录、个人中心、通知公告管理、员工管理、部门信息管理、考勤基点管理、员工请假管理、员工考勤管理、员工工资管理等功能</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； </p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue+elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：</p>
+</li>
+</ol>
+<p>登录页面</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/springbootqi5ww/admin/dist/index.html">http://localhost:8080/springbootqi5ww/admin/dist/index.html</a></p>
+<p>管理员：abo 密码 abo</p>
+<p>员工账户：员工1 密码：123456</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p>登录页面展示：</p>
+<p>文档展示： </p>
+<p>通知公告展示：</p>
+<p>员工考勤页面：</p>
+<p>员工管理展示页面：</p>
+<p>员工请假展示：</p>
+<p>考勤信息展示：</p>
+<p>部门信息展示：</p>
+<p>员工工资展示：</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>用户管理控制层：</p>
+<p>@RestController</p>
+<p>@RequestMapping(“/user”)</p>
+<p>public class AccountController {</p>
+<p>@Autowired</p>
+<p>private UserService userService;</p>
+<p>@Autowired</p>
+<p>private DataService dataService;</p>
+<p>/**</p>
+<ul>
+<li><p>注册</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/register”)</p>
+<p>public String register(@RequestBody User user) {</p>
+<p>String username = user.getUsername();</p>
+<p>String choice = user.getChoice();</p>
+<p>String checkChoice = dataService.getChoice(username);</p>
+<p>if(checkChoice.equals(“empty”)) {</p>
+<p>//            学生信息不存在，请核对信息或者先进行录入</p>
+<p>return “empty”;</p>
+<p>}else {</p>
+<p>if(choice.equals(checkChoice)) {</p>
+<p>//                学生姓名和学号与真实对应，可进行注册</p>
+<p>return userService.insertUser(user);</p>
+<p>}else {</p>
+<p>//                选择用户错误</p>
+<p>return “error”;</p>
+<p>/**</p>
+<ul>
+<li><p>登录</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/login”)</p>
+<p>public String login(@RequestBody User user) {</p>
+<p>String username = user.getUsername();</p>
+<p>String password = user.getPassword();</p>
+<p>String check = user.getChoice();</p>
+<p>User test =  userService.findAllByUsername(username);</p>
+<p>if(test != null){</p>
+<p>String choice = test.getChoice();</p>
+<p>String encrypassword = test.getPassword();</p>
+<p>if (check.equals(choice)) {</p>
+<p>String matches = userService.matchesEncoder(password, encrypassword);</p>
+<p>return matches;</p>
+<p>}else {</p>
+<p>return “check”;</p>
+<p>}else {</p>
+<p>if(username.equals(“admin”)||username.equals(“Admin”)){</p>
+<p>return userService.loginAdmin(user);</p>
+<p>} else {</p>
+<p>return “empty”;</p>
+<p>/**</p>
+<ul>
+<li><p>通过旧密码或者验证码修改密码</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/updatePassword”)</p>
+<p>public String updatePassword(@RequestBody User user) {</p>
+<p>String username = user.getUsername();</p>
+<p>String check = user.getChoice();//前端输入的密码或验证码</p>
+<p>String newpassword = user.getPassword();</p>
+<p>User test =  userService.findAllByUsername(username);</p>
+<p>if(test != null){</p>
+<p>String oldpassword = test.getPassword();</p>
+<p>String oldverifyCode = test.getVerifyCode();</p>
+<p>String passwordMatches =userService.matchesEncoder(check, oldpassword);</p>
+<p>String verifyCodeMatches =userService.matchesEncoder(check, oldverifyCode);</p>
+<p>if(passwordMatches.equals(“success”)||verifyCodeMatches.equals(“success”)) {</p>
+<p>userService.updatePassword(username,newpassword);</p>
+<p>return “success”;</p>
+<p>else {</p>
+<p>return “error”;</p>
+<p>}else {</p>
+<p>return “empty”;</p>
+<p>/**</p>
+<ul>
+<li><p>通过验证码修改邮箱</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/changeEmial”)</p>
+<p>public String changeEmial(@RequestBody User user){</p>
+<p>String username = user.getUsername();</p>
+<p>String email = user.getEmail();</p>
+<p>String verifyCode = user.getVerifyCode();</p>
+<p>User test =  userService.findAllByUsername(username);</p>
+<p>if(test != null){</p>
+<p>String oldverifyCode = test.getVerifyCode();</p>
+<p>String matches =userService.matchesEncoder(verifyCode, oldverifyCode);</p>
+<p>if(matches.equals(“success”)) {</p>
+<p>userService.updateEmail(username, email);</p>
+<p>return “success”;</p>
+<p>}else {</p>
+<p>return “error”;</p>
+<p>}else {</p>
+<p>return “empty”;</p>
+<p>/**</p>
+<ul>
+<li><p>发送邮箱并获取验证码</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/getCheckemail”)</p>
+<p>public String sendCodeToMail(@RequestBody User user){</p>
+<p>String username = user.getUsername();</p>
+<p>String email = user.getEmail();</p>
+<p>String choice = user.getChoice();</p>
+<p>User test = userService.findAllByUsername(username);</p>
+<p>if(test != null){        //判断用户是否存在</p>
+<p>String mailAddress = test.getEmail();</p>
+<p>String checkchoice = test.getChoice();</p>
+<p>String checkusername = test.getUsername();</p>
+<p>if (checkusername.equals(username)&amp;&amp;choice.equals(checkchoice)) {</p>
+<p>//根据username获取保存的邮箱</p>
+<p>if(email.equals(mailAddress)){        //用户输入邮箱与绑定邮箱一致→发送验证码</p>
+<p>try{</p>
+<p>//生成验证码</p>
+<p>String verifyCode = RandomUtil.getCode();</p>
+<p>//邮件主题</p>
+<p>String emailTitle = “邮箱验证”;</p>
+<p>//邮件内容</p>
+<p>String emailContent = “您正在进行邮箱验证，您的验证码为：” + verifyCode</p>
+<p>+”\n\n 验证码将于5分钟后失效！”;</p>
+<p>//发送邮件</p>
+<p>SendMailUtil.sendEmail(mailAddress, emailTitle, emailContent);</p>
+<p>/* 将验证码注入数据库 */</p>
+<p>userService.updateCode(username, verifyCode);</p>
+<p>/* 验证码在指定时间内失效 */</p>
+<p>Timer timer = new Timer();</p>
+<p>timer.schedule(new TimerTask() {</p>
+<p>public void run() {</p>
+<p>String RandomCode = RandomUtil.getCode();</p>
+<p>userService.updateCode(username, RandomCode);</p>
+<p>},300000);//300000ms(300s)即5分钟</p>
+<p>return “success”;</p>
+<p>}catch(Exception e){</p>
+<p>return “error”;</p>
+<p>}else{</p>
+<p>//邮箱地址错误</p>
+<p>return “addressError”;</p>
+<p>}else {</p>
+<p>//用户或选择用户错误</p>
+<p>return “userError”;</p>
+<p>}else{</p>
+<p>//用户不存在</p>
+<p>return “empty”;</p>
+<p>/**</p>
+<ul>
+<li><p>按用户名查找单个账号信息</p>
+</li>
+<li><p>@param username</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/findAllByUsername/{username}”)</p>
+<p>public User findAllByUsername(@PathVariable(“username”) String username) {</p>
+<p>return userService.findAllByUsername(username);</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询所有账号信息</p>
+</li>
+<li><p>@param currentPage</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“findAll/{currentPage}/{pageSize}”)</p>
+<p>public Map&lt;String,Object&gt;  findAll(@PathVariable(“currentPage”) Integer currentPage, @PathVariable(“pageSize”) Integer pageSize){</p>
+<p>PageHelper.startPage(currentPage, pageSize);</p>
+<p>Map&lt;String,Object&gt; returnMap=new HashMap&lt;String,Object&gt;();</p>
+<p>List<User> list=null;</User></p>
+<p>returnMap.put(“content”, list);</p>
+<p>list= userService.findAll();</p>
+<p>returnMap.put(“content”, list);</p>
+<p>return returnMap;</p>
+<p>/**</p>
+<ul>
+<li><p>按用户类型查询账号所有信息</p>
+</li>
+<li><p>@param currentPage</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@param choice</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“findAllByChoice/{currentPage}/{pageSize}/{choice}”)</p>
+<p>public Map&lt;String,Object&gt;  findAllByChoice(@PathVariable(“currentPage”) Integer currentPage, @PathVariable(“pageSize”) Integer pageSize</p>
+<p>, @PathVariable(“choice”) String choice){</p>
+<p>PageHelper.startPage(currentPage, pageSize);</p>
+<p>Map&lt;String,Object&gt; returnMap=new HashMap&lt;String,Object&gt;();</p>
+<p>List<User> list=null;</User></p>
+<p>returnMap.put(“content”, list);</p>
+<p>list= userService.findAllByChoice(choice);</p>
+<p>returnMap.put(“content”, list);</p>
+<p>return returnMap;</p>
+<p>/**</p>
+<ul>
+<li><p>删除用户信息</p>
+</li>
+<li><p>@param username</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@DeleteMapping(“deleteByUsername/{username}”)</p>
+<p>public void deleteByUsername(@PathVariable(“username”) String username) {</p>
+<p>userService.deleteByUsername(username);</p>
+<p>/**</p>
+<ul>
+<li><p>删除用户信息</p>
+</li>
+<li><p>@param username</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@DeleteMapping(“deleteAll”)</p>
+<p>public void deleteByUsername() {</p>
+<p>userService.deleteAll();</p>
+<p>/**</p>
+<ul>
+<li><p>通过验证码注销账号</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@SuppressWarnings(“unused”)</p>
+<p>@PostMapping(“/delUser”)</p>
+<p>public String delUserByCode(@RequestBody User user){</p>
+<p>String username = user.getUsername();</p>
+<p>String email = user.getEmail();</p>
+<p>String verifyCode = user.getVerifyCode();</p>
+<p>User test =  userService.findAllByUsername(username);</p>
+<p>if(test != null){</p>
+<p>String oldverifyCode = test.getVerifyCode();</p>
+<p>String matches =userService.matchesEncoder(verifyCode, oldverifyCode);</p>
+<p>if(matches.equals(“success”)) {</p>
+<p>userService.deleteByUsername(username);</p>
+<p>return “success”;</p>
+<p>}else {</p>
+<p>return “error”;</p>
+<p>}else {</p>
+<p>return “empty”;</p>
+<p>/**</p>
+<ul>
+<li><p>按姓名模糊查询全部</p>
+</li>
+<li><p>@param currentPage</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@param realname</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“FuzzyQuery/{currentPage}/{pageSize}/{realname}”)</p>
+<p>public Map&lt;String, Object&gt; FuzzyQuery(@PathVariable(“currentPage”) Integer currentPage,</p>
+<p>@PathVariable(“pageSize”) Integer pageSize, @PathVariable(“realname”) String realname) {</p>
+<p>PageHelper.startPage(currentPage, pageSize);</p>
+<p>Map&lt;String, Object&gt; returnMap = new HashMap&lt;String, Object&gt;();</p>
+<p>List<User> list = null;</User></p>
+<p>returnMap.put(“content”, list);</p>
+<p>list = userService.FuzzyQueryByRealname(realname);</p>
+<p>returnMap.put(“content”, list);</p>
+<p>return returnMap;</p>
+<p>/**</p>
+<ul>
+<li><p>按用户类型通过姓名模糊查询</p>
+</li>
+<li><p>@param currentPage</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@param realname</p>
+</li>
+<li><p>@param choice</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“FuzzyQuery/{currentPage}/{pageSize}/{realname}/{choice}”)</p>
+<p>public Map&lt;String, Object&gt; FuzzyQueryByChoice(@PathVariable(“currentPage”) Integer currentPage,</p>
+<p>@PathVariable(“pageSize”) Integer pageSize, @PathVariable(“realname”) String realname,</p>
+<p>@PathVariable(“choice”) String choice) {</p>
+<p>PageHelper.startPage(currentPage, pageSize);</p>
+<p>Map&lt;String, Object&gt; returnMap = new HashMap&lt;String, Object&gt;();</p>
+<p>List<User> list = null;</User></p>
+<p>returnMap.put(“content”, list);</p>
+<p>list = userService.FuzzyQueryByChioce(realname, choice);</p>
+<p>returnMap.put(“content”, list);</p>
+<p>return returnMap;</p>
+<p>申请管理控制层：</p>
+<p>@RestController</p>
+<p>@RequestMapping(“/leave”)</p>
+<p>public class LeaveController {</p>
+<p>@Autowired</p>
+<p>private LeaveService leaveService;</p>
+<p>/**</p>
+<ul>
+<li><p>发送申请表</p>
+</li>
+<li><p>@param leave</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/sendLeave”)</p>
+<p>public String sendLeave(@RequestBody Leave leave) {</p>
+<p>return leaveService.InsertLeave(leave);</p>
+<p>/**</p>
+<ul>
+<li><p>修改申请表</p>
+</li>
+<li><p>@param leave</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/updateLeave”)</p>
+<p>public String updateLeave(@RequestBody Leave leave) {</p>
+<p>return leaveService.UpdateLeave(leave);</p>
+<p>/**</p>
+<p>*查找单个申请表</p>
+<ul>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/findAllById/{id}”)</p>
+<p>public Leave findAllByUsername(@PathVariable(“id”) Integer id) {</p>
+<p>return leaveService.findAllById(id);</p>
+<p>/**</p>
+<ul>
+<li><p>学生查询申请表当前状态</p>
+</li>
+<li><p>@param username</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/ShowOwnLeave/{username}”)</p>
+<p>public Map&lt;String, Object&gt; ShowOwnLeave(@PathVariable(“username”) String username) {</p>
+<p>Map&lt;String, Object&gt; returnMap = new HashMap&lt;String, Object&gt;();</p>
+<p>List<Leave> list = new ArrayList<Leave>();</Leave></Leave></p>
+<p>Leave ownleave =  leaveService.ShowOwnLeave(username);</p>
+<p>if(ownleave == null) {</p>
+<p>return returnMap;</p>
+<p>}else {</p>
+<p>returnMap.put(“content”, list);</p>
+<p>list.add(ownleave);</p>
+<p>returnMap.put(“content”, list);</p>
+<p>return returnMap;</p>
+<p>/**</p>
+<ul>
+<li><p>查询以往申请记录</p>
+</li>
+<li><p>@param currentPage</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@param username</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/ShowOldLeave/{currentPage}/{pageSize}/{username}”)</p>
+<p>public Map&lt;String, Object&gt; ShowOldLeave(@PathVariable(“currentPage”) Integer currentPage,</p>
+<p>@PathVariable(“pageSize”) Integer pageSize,</p>
+<p>@PathVariable(“username”) String username) {</p>
+<p>List<Leave> test = leaveService.findAll(username);</Leave></p>
+<p>Integer size = test.size();//数据库中所有请假信息的总数</p>
+<p>PageHelper.startPage(currentPage, pageSize);</p>
+<p>Integer total = currentPage * pageSize; //分页可展示的总数</p>
+<p>Map&lt;String, Object&gt; returnMap = new HashMap&lt;String, Object&gt;();</p>
+<p>List<Leave> list = null;</Leave></p>
+<p>returnMap.put(“content”, list);</p>
+<p>list = leaveService.showAOldLeave(username,total,size);</p>
+<p>returnMap.put(“content”, list);</p>
+<p>return returnMap;</p>
+<p>/**</p>
+<ul>
+<li><p>按审核状态查询以往审核记录</p>
+</li>
+<li><p>@param currentPage</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@param username</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/ShowLeave/{currentPage}/{pageSize}/{username}/{state}”)</p>
+<p>public Map&lt;String, Object&gt; ShowLeave(@PathVariable(“currentPage”) Integer currentPage,</p>
+<p>@PathVariable(“pageSize”) Integer pageSize,</p>
+<p>@PathVariable(“username”) String username,</p>
+<p>@PathVariable(“state”) String state){</p>
+<p>Map&lt;String, Object&gt; returnMap = new HashMap&lt;String, Object&gt;();</p>
+<p>List<Leave> list = null;</Leave></p>
+<p>List<Leave> pagelist = null;</Leave></p>
+<p>returnMap.put(“content”, list);</p>
+<p>list = leaveService.showLeave(username, state);</p>
+<p>pagelist = leaveService.startPage(list, currentPage, pageSize);</p>
+<p>returnMap.put(“content”, pagelist);</p>
+<p>return returnMap;</p>
+<p>/**</p>
+<ul>
+<li><p>删除申请表</p>
+</li>
+<li><p>@param id</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@DeleteMapping(“deleteLeave/{id}”)</p>
+<p>public void deleteData(@PathVariable(“id”) Integer id) {</p>
+<p>leaveService.deleteLeave(id);</p>
+<p>/**</p>
+<ul>
+<li><p>查找辅导员管理的班级</p>
+</li>
+<li><p>@param checkname</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/findClass/{checkname}”)</p>
+<p>public List<String>  findClass(@PathVariable(“checkname”) String checkname) {</String></p>
+<p>List<Audit> audit =  leaveService.FindClass(checkname);</Audit></p>
+<p>List<String> list = new ArrayList<String>();</String></String></p>
+<p>for(int i = 0 ; i &lt; audit.size(); i++) {</p>
+<p>String classes  =  audit.get(i).getClasses();</p>
+<p>list.add(classes);</p>
+<p>return list;</p>
+<p>/**</p>
+<ul>
+<li><p>删除辅导员管理的班级</p>
+</li>
+<li><p>@param classes</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@DeleteMapping(“delClass/{classes}”)</p>
+<p>public void delClass(@PathVariable(“classes”) String  classes) {</p>
+<p>leaveService.delClass(classes);</p>
+<p>/**</p>
+<ul>
+<li><p>添加辅导员要管理的班级</p>
+</li>
+<li><p>@param classes</p>
+</li>
+<li><p>@param realname</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/insertClass”)</p>
+<p>public String insertClass(@RequestBody Audit aidit) {</p>
+<p>return leaveService.insertAudit(aidit);</p>
+<p>/**</p>
+<ul>
+<li><p>按班级查找对应的辅导员</p>
+</li>
+<li><p>@param classes</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/findCheckname/{classes}”)</p>
+<p>public String findCheckname(@PathVariable(“classes”) String classes) {</p>
+<p>String checkname = leaveService.FindCheckname(classes);</p>
+<p>if(checkname == null) {</p>
+<p>return “error”;</p>
+<p>} else {</p>
+<p>return checkname;</p>
+<p>/**</p>
+<ul>
+<li><p>查询需要审核的请假表</p>
+</li>
+<li><p>@param currentPage</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@param username</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/showExamLeave/{currentPage}/{pageSize}/{username}”)</p>
+<p>public Map&lt;String, Object&gt; showExamLeave(@PathVariable(“currentPage”) Integer currentPage,</p>
+<p>@PathVariable(“pageSize”) Integer pageSize,</p>
+<p>@PathVariable(“username”) String username) {</p>
+<p>PageHelper.startPage(currentPage, pageSize);</p>
+<p>Map&lt;String, Object&gt; returnMap = new HashMap&lt;String, Object&gt;();</p>
+<p>List<Leave> list =  leaveService.showExamLeave(username);</Leave></p>
+<p>if(list == null) {</p>
+<p>return returnMap;</p>
+<p>}else {</p>
+<p>returnMap.put(“content”, list);</p>
+<p>return returnMap;</p>
+<p>/**</p>
+<ul>
+<li><p>审核请假表</p>
+</li>
+<li><p>@param username</p>
+</li>
+<li><p>@param leave</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/examLeave/{username}”)</p>
+<p>public String examLeave(@PathVariable(“username”) String username,@RequestBody Leave leave) {</p>
+<p>String StuUsername = leave.getUsername();</p>
+<p>Leave ownleave =  leaveService.ShowOwnLeave(StuUsername);</p>
+<p>Integer oldId = ownleave.getId();</p>
+<p>Integer id = leave.getId();</p>
+<p>if(oldId == id) {</p>
+<p>return leaveService.examLeave(leave, username);</p>
+<p>}else {</p>
+<p>return “repeat”;</p>
+<p>考勤管理控制层： </p>
+<p>@RestController</p>
+<p>@RequestMapping(“/attend”)</p>
+<p>public class AttendController {</p>
+<p>@Autowired</p>
+<p>private AttendService attendService;</p>
+<p>@Autowired</p>
+<p>private DataService dataService;</p>
+<p>/**</p>
+<ul>
+<li><p>添加学生考勤信息</p>
+</li>
+<li><p>@param attend</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/insertAttend”)</p>
+<p>public String insertAttend(@RequestBody Attend attend) {</p>
+<p>String username = attend.getUsername();</p>
+<p>Attend test = attendService.findAllByUsername(username);</p>
+<p>if (test == null) {</p>
+<p>return attendService.insertAttend(attend);</p>
+<p>} else {</p>
+<p>return “repeat”;</p>
+<p>/**</p>
+<ul>
+<li><p>按用户类型显示学生考勤信息</p>
+</li>
+<li><p>@param currentPage</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@param username</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“findAll/{currentPage}/{pageSize}/{username}”)</p>
+<p>public Map&lt;String,Object&gt;  findAll(@PathVariable(“currentPage”) Integer currentPage,</p>
+<p>@PathVariable(“pageSize”) Integer pageSize,</p>
+<p>@PathVariable(“username”) String username){</p>
+<p>Map&lt;String,Object&gt; returnMap=new HashMap&lt;String,Object&gt;();</p>
+<p>Data data =  dataService.findAllByUsername(username);</p>
+<p>if(data == null) {</p>
+<p>return returnMap;</p>
+<p>}else {</p>
+<p>String choice = data.getChoice();</p>
+<p>if(choice.equals(“辅导员”)) {</p>
+<p>String realname = data.getRealname();</p>
+<p>List<Attend> list=null;</Attend></p>
+<p>returnMap.put(“content”, list);</p>
+<p>list = attendService.findAll(realname);</p>
+<p>List<Attend> pageList = attendService.startPage(list, currentPage, pageSize);</Attend></p>
+<p>returnMap.put(“content”, pageList);</p>
+<p>return returnMap;</p>
+<p>}else if(choice.equals(“院领导”)) {</p>
+<p>String dept = data.getDept();</p>
+<p>List<Attend> list=null;</Attend></p>
+<p>returnMap.put(“content”, list);</p>
+<p>list = attendService.findByDept(dept);</p>
+<p>List<Attend> pageList = attendService.startPage(list, currentPage, pageSize);</Attend></p>
+<p>returnMap.put(“content”, pageList);</p>
+<p>return returnMap;</p>
+<p>}else {</p>
+<p>List<Attend> list=null;</Attend></p>
+<p>returnMap.put(“content”, list);</p>
+<p>list = attendService.findAll();</p>
+<p>List<Attend> pageList = attendService.startPage(list, currentPage, pageSize);</Attend></p>
+<p>returnMap.put(“content”, pageList);</p>
+<p>return returnMap;</p>
+<p>/**</p>
+<ul>
+<li><p>按班级查询</p>
+</li>
+<li><p>@param currentPage</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@param classes</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“findByClass/{currentPage}/{pageSize}/{classes}/{username}”)</p>
+<p>public Map&lt;String,Object&gt;  findByClass(@PathVariable(“currentPage”) Integer currentPage,</p>
+<p>@PathVariable(“pageSize”) Integer pageSize,</p>
+<p>@PathVariable(“classes”) String classes,</p>
+<p>@PathVariable(“username”) String username</p>
+<p>){</p>
+<p>Map&lt;String,Object&gt; returnMap = new HashMap&lt;String,Object&gt;();</p>
+<p>Data data = dataService.findAllByUsername(username);</p>
+<p>List<Attend> attend = attendService.findAll();</Attend></p>
+<p>int[] arr = {0};</p>
+<p>if(data !=null || attend.isEmpty() == false) {</p>
+<p>String choice =data.getChoice();</p>
+<p>String dept = data.getDept();</p>
+<p>if(choice.equals(“院领导”)) {</p>
+<p>for(int i = 0; i&lt;attend.size();i++) {</p>
+<p>String checkdept = attend.get(i).getDept();</p>
+<p>String checkclasses = attend.get(i).getClasses();</p>
+<p>if(checkdept.equals(dept)&amp;&amp;checkclasses.equals(classes)) {</p>
+<p>arr[0] = 1;</p>
+<p>if(arr[0] == 1) {</p>
+<p>PageHelper.startPage(currentPage, pageSize);</p>
+<p>List<Attend> list=null;</Attend></p>
+<p>returnMap.put(“content”, list);</p>
+<p>list = attendService.findByClass(classes);</p>
+<p>returnMap.put(“content”, list);</p>
+<p>return returnMap;</p>
+<p>}else {</p>
+<p>return returnMap;</p>
+<p>PageHelper.startPage(currentPage, pageSize);</p>
+<p>List<Attend> list=null;</Attend></p>
+<p>returnMap.put(“content”, list);</p>
+<p>list = attendService.findByClass(classes);</p>
+<p>returnMap.put(“content”, list);</p>
+<p>return returnMap;</p>
+<p>return returnMap;</p>
+<p>/**</p>
+<ul>
+<li><p>将考勤信息单独传给后端做个人考勤信息柱状图</p>
+</li>
+<li><p>@param username</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“showChatrStudent/{username}”)</p>
+<p>public Integer[]  showChatrStudent(@PathVariable(“username”) String username){</p>
+<p>return attendService.showChartStudent(username);</p>
+<p>/**</p>
+<ul>
+<li><p>将考勤信息单独传给后端做考勤信息饼图图</p>
+</li>
+<li><p>@param classes</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“showChatrAttend/{classes}”)</p>
+<p>public List<Census>  showChatrAttend(@PathVariable(“classes”) String classes){</Census></p>
+<p>return attendService.showChatrAttend(classes);</p>
+<p>@GetMapping(“showChatrScore/{classes}”)</p>
+<p>public Integer[]   showChatrScore(@PathVariable(“classes”) String classes){</p>
+<p>return attendService.showChatrScore(classes);</p>
+<p>/**</p>
+<ul>
+<li><p>查找单个考勤信息</p>
+</li>
+<li><p>@param username</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“findAllByUsername/{username}”)</p>
+<p>public Attend  findAllByUsername(@PathVariable(“username”) String username){</p>
+<p>return attendService.findAllByUsername(username);</p>
+<p>/**</p>
+<ul>
+<li><p>查找单个考勤信息（表格）</p>
+</li>
+<li><p>@param username</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“findAllOwn/{username}”)</p>
+<p>public Map&lt;String,Object&gt;   findAllOwn(@PathVariable(“username”) String username){</p>
+<p>Map&lt;String,Object&gt; returnMap = new HashMap&lt;String,Object&gt;();</p>
+<p>Attend attend =  attendService.findAllByUsername(username);</p>
+<p>List<Attend> list = new ArrayList<Attend>();</Attend></Attend></p>
+<p>returnMap.put(“content”, list);</p>
+<p>if(attend == null) {</p>
+<p>return returnMap;</p>
+<p>}else {</p>
+<p>list.add(attend);</p>
+<p>returnMap.put(“content”, list);</p>
+<p>return returnMap;</p>
+<p>/**</p>
+<ul>
+<li><p>修改考勤信息</p>
+</li>
+<li><p>@param attend</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/updateAttend”)</p>
+<p>public String updateAttend(@RequestBody Attend attend) {</p>
+<p>String username = attend.getUsername();</p>
+<p>Attend test = attendService.findAllByUsername(username);</p>
+<p>if (test != null) {</p>
+<p>attendService.saveAttend(attend);</p>
+<p>return “success”;</p>
+<p>} else {</p>
+<p>return “empty”;</p>
+<p>/**</p>
+<ul>
+<li><p>删除考勤信息</p>
+</li>
+<li><p>@param username</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@DeleteMapping(“deleteAttend/{username}”)</p>
+<p>public void deleteData(@PathVariable(“username”) String username) {</p>
+<p>attendService.delAttend(username);</p>
+<p>/**</p>
+<ul>
+<li>删除全部的考勤信息</li>
+</ul>
+<p>*/</p>
+<p>@DeleteMapping(“deleteAttend”)</p>
+<p>public void deleteData() {</p>
+<p>attendService.delAttend();</p>
+<p>/**</p>
+<ul>
+<li><p>按姓名模糊查询某一种用户</p>
+</li>
+<li><p>@param currentPage</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@param realname</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“FuzzyQuery/{currentPage}/{pageSize}/{realname}”)</p>
+<p>public Map&lt;String, Object&gt; FuzzyQuery(@PathVariable(“currentPage”) Integer currentPage,</p>
+<p>@PathVariable(“pageSize”) Integer pageSize, @PathVariable(“realname”) String realname) {</p>
+<p>PageHelper.startPage(currentPage, pageSize);</p>
+<p>Map&lt;String, Object&gt; returnMap = new HashMap&lt;String, Object&gt;();</p>
+<p>List<Attend> list = null;</Attend></p>
+<p>returnMap.put(“content”, list);</p>
+<p>list = attendService.FuzzyQueryByRealname(realname);</p>
+<p>returnMap.put(“content”, list);</p>
+<p>return returnMap;</p>
+<p>/**</p>
+<ul>
+<li><p>按用户类型通过姓名模糊查询</p>
+</li>
+<li><p>@param currentPage</p>
+</li>
+<li><p>@param pageSize</p>
+</li>
+<li><p>@param realname</p>
+</li>
+<li><p>@param choice</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“FuzzyQuery/{currentPage}/{pageSize}/{realname}/{classes}”)</p>
+<p>public Map&lt;String, Object&gt; FuzzyQueryByChoice(@PathVariable(“currentPage”) Integer currentPage,</p>
+<p>@PathVariable(“pageSize”) Integer pageSize, @PathVariable(“realname”) String realname,</p>
+<p>@PathVariable(“classes”) String classes) {</p>
+<p>PageHelper.startPage(currentPage, pageSize);</p>
+<p>Map&lt;String, Object&gt; returnMap = new HashMap&lt;String, Object&gt;();</p>
+<p>List<Attend> list = null;</Attend></p>
+<p>returnMap.put(“content”, list);</p>
+<p>list = attendService.FuzzyQueryByChioce(realname, classes);</p>
+<p>returnMap.put(“content”, list);</p>
+<p>return returnMap;</p>
+<p>/**</p>
+<ul>
+<li><p>批量上传excel文件导入用户信息</p>
+</li>
+<li><p>@param multipartFile</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@SuppressWarnings(“unused”)</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/fileUpload”)</p>
+<p>public String handlerForUpload(@RequestParam(“fileList”) MultipartFile multipartFile, HttpServletRequest request)</p>
+<p>throws IOException {</p>
+<p>// 判断所上传文件是否存在</p>
+<p>List<String> test = new ArrayList<String>();</String></String></p>
+<p>if (multipartFile.isEmpty()) {</p>
+<p>return “error”;</p>
+<p>} else {</p>
+<p>InputStream in = null;</p>
+<p>try {</p>
+<p>// 将file转InputStream</p>
+<p>in = multipartFile.getInputStream();</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>// 将InputStream转XLSX对象（即表格对象）</p>
+<p>@SuppressWarnings(“resource”)</p>
+<p>XSSFWorkbook xssfWorkbook = new XSSFWorkbook(in);</p>
+<p>// 获取表格的第一页</p>
+<p>XSSFSheet xssfSheet = xssfWorkbook.getSheetAt(0);</p>
+<p>// 获取该页有多少数据</p>
+<p>int rowNum = xssfSheet.getLastRowNum();</p>
+<p>for (int i = 1; i &lt;= rowNum; i++) {</p>
+<p>// 获取当前行</p>
+<p>XSSFRow xssfRow = xssfSheet.getRow(i);</p>
+<p>if(xssfRow == null) {</p>
+<p>return “error”;</p>
+<p>// 默认纯数字是以double传的，写进据库会变成科学计数法格式的，需要改为以string传进来</p>
+<p>xssfRow.getCell(1).setCellType(CellType.STRING);</p>
+<p>xssfRow.getCell(2).setCellType(CellType.STRING);</p>
+<p>xssfRow.getCell(4).setCellType(CellType.STRING);</p>
+<p>xssfRow.getCell(5).setCellType(CellType.STRING);</p>
+<p>xssfRow.getCell(6).setCellType(CellType.STRING);</p>
+<p>xssfRow.getCell(7).setCellType(CellType.STRING);</p>
+<p>//                xssfRow.getCell(8).setCellType(CellType.STRING);</p>
+<p>// 以此获得该行的所有单元格</p>
+<p>//                String realname = xssfRow.getCell(0).getStringCellValue();</p>
+<p>//                String username = xssfRow.getCell(1).getStringCellValue();</p>
+<p>//                String classes = xssfRow.getCell(2).getStringCellValue();</p>
+<p>//                String dept = xssfRow.getCell(3).getStringCellValue();</p>
+<p>//</p>
+<p>//</p>
+<p>//                String earlyString = xssfRow.getCell(4).getStringCellValue();</p>
+<p>//                String lateString = xssfRow.getCell(5).getStringCellValue();</p>
+<p>//                String vacationString = xssfRow.getCell(6).getStringCellValue();</p>
+<p>//                String truancyString = xssfRow.getCell(7).getStringCellValue();</p>
+<p>String realname = xssfRow.getCell(0).toString();</p>
+<p>String username = xssfRow.getCell(1).toString();</p>
+<p>String classes = xssfRow.getCell(2).toString();</p>
+<p>String dept = xssfRow.getCell(3).toString();</p>
+<p>String earlyString = xssfRow.getCell(4).toString();</p>
+<p>String lateString = xssfRow.getCell(5).toString();</p>
+<p>String vacationString = xssfRow.getCell(6).toString();</p>
+<p>String truancyString = xssfRow.getCell(7).toString();</p>
+<p>//                String scoreString = xssfRow.getCell(8).toString();</p>
+<p>Integer early = Integer.valueOf(earlyString);</p>
+<p>Integer late = Integer.valueOf(lateString);</p>
+<p>Integer vacation = Integer.valueOf(vacationString);</p>
+<p>Integer truancy = Integer.valueOf(truancyString);</p>
+<p>//                Integer score = Integer.valueOf(scoreString);</p>
+<p>// 将数据写入实体类</p>
+<p>//                 data = new Data();</p>
+<p>Attend attend = new Attend();</p>
+<p>attend.setRealname(realname);</p>
+<p>attend.setUsername(username);</p>
+<p>attend.setClasses(classes);</p>
+<p>attend.setDept(dept);</p>
+<p>attend.setEarly(early);</p>
+<p>attend.setLate(late);</p>
+<p>attend.setVacation(vacation);</p>
+<p>attend.setTruancy(truancy);</p>
+<p>//                attend.setScore(score);</p>
+<p>// 将实体类插入数据库</p>
+<p>//                dataService.InsertData(data);</p>
+<p>String isRepeat = attendService.insertAttend(attend);</p>
+<p>test.add(isRepeat);</p>
+<p>//                 System.out.println(“循环监视”);</p>
+<p>for(int j = 0;j &lt;test.size();j++ ) {</p>
+<p>if(test.get(j).equals(“success”)) {</p>
+<p>//                    System.out.println(test.get(j));</p>
+<p>return “success”;</p>
+<p>}else {</p>
+<p>//                    System.out.println(test.get(j));</p>
+<p>return “repeat”;</p>
+<p>return “repeat”;</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=261524512608201my<br>https://javayms.pages.dev?id=261524512608201my</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E8%AF%B7%E5%81%87-%E8%80%83%E5%8B%A4/" rel="tag"><i class="fa fa-tag"></i> 请假 | 考勤</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

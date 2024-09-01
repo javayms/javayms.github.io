@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot社区维修平台(java+springboot+mybatis+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/281524522608201pc/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot社区维修平台(java+springboot+mybatis+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/281524522608201pc/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot社区维修平台(java+springboot+mybatis+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/371524062608.jpg" alt="371524062608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/381524062608.jpg" alt="381524062608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/391524062608.jpg" alt="391524062608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/401524062608.jpg" alt="401524062608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/411524062608.jpg" alt="411524062608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/421524062608.jpg" alt="421524062608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/441524062608.jpg" alt="441524062608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/451524062608.jpg" alt="451524062608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/461524062608.jpg" alt="461524062608"></p>
+<p>基于javaweb的SpringBoot社区维修平台(java+springboot+mybatis+vue+elementui+mysql)</p>
+<p>项目介绍</p>
+<p>基于Springboot Vue社区维修平台</p>
+<p>角色：管理员、住户、维修工三种角色，分为前后台；</p>
+<p>住户：住户通过住户登录页面可以填写用户名和密码，等信息进行登录操作，用户登录成功后，进入用户后台系统页面可以查看个人中心、维修订单管理、接单信息管理、订单信息管理、在线沟通管理、举报信息管理模块等功能模块，进行相对应操作</p>
+<p>维修工：维修工登录后，进入后台系统页面可以查看个人中心、维修订单管理、接单信息管理、订单信息管理、在线沟通管理、举报信息管理模块等功能模块，进行相对应操作</p>
+<p>管理员：管理员登录成功后进入到系统操作界面，可以对个人中心、住户管理、社区公告管理、维修工管理、维修订单管理、接单信息管理、订单信息管理、在线沟通管理、举报信息管理、留言板管理、系统管理等功能模块进行相对应操作。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue +ElementUI +Layui +HTML+CSS+JS</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+</ol>
+<p>4.运行项目，在浏览器中输入地址：</p>
+<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springboot78n92/front/index.html">http://localhost:8080/springboot78n92/front/index.html</a></p>
+<p>住户：001/001</p>
+<p>维修工：001/001</p>
+<p>后台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springboot78n92/admin/dist/index.html#/login">http://localhost:8080/springboot78n92/admin/dist/index.html#/login</a></p>
+<p>管理员：abo/abo</p>
+<p>住户：001/001</p>
+<p>维修工：001/001</p>
+<p>系统架构图：</p>
+<p> 首页展示：</p>
+<p> 维修订单：</p>
+<p>用户登录页面：</p>
+<p>维修订单展示：</p>
+<p> 留言返回页面：</p>
+<p> 后台展示页面：</p>
+<p>社区公告展示页面：</p>
+<p>住户展示页面：</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>用户Controller控制器：</p>
+<p>/**</p>
+<ul>
+<li>用户Controller控制器</li>
+</ul>
+<p>*/</p>
+<p>@Api(value = “用户管理接口”)</p>
+<p>@RestController</p>
+<p>public class UserController {</p>
+<p>private Logger logger = LoggerFactory.getLogger(this.getClass());</p>
+<p>//注入业务</p>
+<p>@Autowired</p>
+<p>private UserService userService;</p>
+<p>/**</p>
+<ul>
+<li><p>table数据列表</p>
+</li>
+<li><p>@param page</p>
+</li>
+<li><p>@param limit</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ApiOperation(value = “用户列表”, notes = “查询用户结果集”)</p>
+<p>@GetMapping(“/admin/user/tableList”)</p>
+<p>public ServerLayResult userList(@RequestParam(value = “page”, defaultValue = “1”) Integer page,</p>
+<p>@RequestParam(value = “limit”, defaultValue = “10”) Integer limit,</p>
+<p>@RequestParam(value = “keyword”, defaultValue = “”) String keyword) {</p>
+<p>if (keyword == null || keyword.equals(“”)) {</p>
+<p>logger.info(“====================================1======” + keyword);</p>
+<p>//封装Json数据对象</p>
+<p>ServerLayResult result = new ServerLayResult(0, “”, userService.count(), userService.selectAll(page, limit));</p>
+<p>return result;</p>
+<p>} else if (keyword != null) {</p>
+<p>logger.info(“====================================2======” + keyword);</p>
+<p>ServerLayResult result = new ServerLayResult(0, “”, userService.selectByUsername(keyword, page, limit).size(),</p>
+<p>userService.selectByUsername(keyword, page, limit));</p>
+<p>return result;</p>
+<p>logger.info(“====================================3======” + keyword);</p>
+<p>return null;</p>
+<p>/**</p>
+<ul>
+<li><p>根据id删除</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ApiOperation(value = “用户删除”, notes = “根据用户ID删除用户”)</p>
+<p>@GetMapping(“/admin/user/del”)</p>
+<p>public String del(@RequestParam(“id”) Integer id) {</p>
+<p>if (id != null &amp;&amp; id != 0) {</p>
+<p>int del = userService.deleteByPrimaryKey(id);</p>
+<p>if (del &gt; 0) {</p>
+<p>return “success”;</p>
+<p>return “error”;</p>
+<p>/**</p>
+<ul>
+<li><p>根据用户传入的对象进行更新</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ApiOperation(value = “用户对象更新”, notes = “根据用户对象更新”)</p>
+<p>@PostMapping(“/admin/user/update”)</p>
+<p>public String updateUser(@RequestBody User user) {</p>
+<p>if (user != null) {</p>
+<p>//根据用户对象的id 查询用户的密码，防止密码丢失</p>
+<p>User user1 = userService.selectByPrimaryKey(user.getId());</p>
+<p>//再次封装进对象中</p>
+<p>if (user1 != null) {</p>
+<p>user.setPassword(user1.getPassword());</p>
+<p>//更新对象</p>
+<p>int update = userService.updateByPrimaryKey(user);</p>
+<p>if (update &gt; 0) {</p>
+<p>return “success”;</p>
+<p>return “error”;</p>
+<p>/**</p>
+<ul>
+<li><p>重置用户密码</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ApiOperation(value = “重置密码接口”, notes = “根据用户ID查询用户重置密码为123456，最后进行MD5加密”)</p>
+<p>@GetMapping(“/admin/user/resetPwd”)</p>
+<p>public String restPwd(@RequestParam(“id”) Integer id) {</p>
+<p>if (id != null &amp;&amp; id &gt; 0) {</p>
+<p>//根据id查询出用户</p>
+<p>User user = userService.selectByPrimaryKey(id);</p>
+<p>//开始重置密码，重置密码使用的Spring提供的工具类进行对密码123456进行加密</p>
+<p>user.setPassword(DigestUtils.md5DigestAsHex(“123456”.getBytes()));</p>
+<p>//调用更新方法</p>
+<p>int restPwd = userService.updateByPrimaryKey(user);</p>
+<p>if (restPwd &gt; 0) {</p>
+<p>return “success”;</p>
+<p>return “error”;</p>
+<p>@ApiOperation(value = “Excel表格接口”, notes = “表格导出”)</p>
+<p>@GetMapping(value = “/admin/exportBtn”)</p>
+<p>public void export(HttpServletResponse response) throws IOException {</p>
+<p>List<User> users = userService.selectAll();</User></p>
+<p>HSSFWorkbook wb = new HSSFWorkbook();</p>
+<p>HSSFSheet sheet = wb.createSheet(“获取excel测试表格”);</p>
+<p>HSSFRow row = null;</p>
+<p>row = sheet.createRow(0);//创建第一个单元格</p>
+<p>row.setHeight((short) (26.25 * 20));</p>
+<p>row.createCell(0).setCellValue(“用户信息表”);//为第一行单元格设值</p>
+<p>/*为标题设计空间</p>
+<ul>
+<li><p>firstRow从第1行开始</p>
+</li>
+<li><p>lastRow从第0行结束</p>
+</li>
+</ul>
+<p>*从第1个单元格开始</p>
+<ul>
+<li>从第3个单元格结束</li>
+</ul>
+<p>*/</p>
+<p>CellRangeAddress rowRegion = new CellRangeAddress(0, 0, 0, 2);</p>
+<p>sheet.addMergedRegion(rowRegion);</p>
+<p>/*CellRangeAddress columnRegion = new CellRangeAddress(1,4,0,0);</p>
+<p>sheet.addMergedRegion(columnRegion);*/</p>
+<p>/*</p>
+<ul>
+<li><p>动态获取数据库列 sql语句 select COLUMN_NAME from INFORMATION_SCHEMA.Columns where table_name=’user’ and table_schema=’test’</p>
+</li>
+<li><p>第一个table_name 表名字</p>
+</li>
+<li><p>第二个table_name 数据库名称</p>
+</li>
+<li><p>*/</p>
+</li>
+</ul>
+<p>row = sheet.createRow(1);</p>
+<p>row.setHeight((short) (22.50 * 20));//设置行高</p>
+<p>row.createCell(0).setCellValue(“用户Id”);//为第一个单元格设值</p>
+<p>row.createCell(1).setCellValue(“用户登入名”);//为第二个单元格设值</p>
+<p>row.createCell(2).setCellValue(“用户密码”);//为第三个单元格设值</p>
+<p>row.createCell(3).setCellValue(“用户邮箱”);//为第三个单元格设值</p>
+<p>row.createCell(4).setCellValue(“用户名”);//为第三个单元格设值</p>
+<p>row.createCell(5).setCellValue(“用户地址”);//为第三个单元格设值</p>
+<p>row.createCell(6).setCellValue(“用户电话”);//为第三个单元格设值</p>
+<p>for (int i = 0; i &lt; users.size(); i++) {</p>
+<p>row = sheet.createRow(i + 2);</p>
+<p>User user = users.get(i);</p>
+<p>row.createCell(0).setCellValue(user.getId());</p>
+<p>row.createCell(1).setCellValue(user.getUsername());</p>
+<p>row.createCell(2).setCellValue(user.getPassword());</p>
+<p>row.createCell(3).setCellValue(user.getEmail());</p>
+<p>row.createCell(4).setCellValue(user.getName());</p>
+<p>row.createCell(5).setCellValue(user.getAddress());</p>
+<p>row.createCell(6).setCellValue(user.getPhone());</p>
+<p>sheet.setDefaultRowHeight((short) (16.5 * 20));</p>
+<p>//列宽自适应</p>
+<p>for (int i = 0; i &lt;= 13; i++) {</p>
+<p>sheet.autoSizeColumn(i);</p>
+<p>response.setContentType(“application/vnd.ms-excel;charset=utf-8”);</p>
+<p>OutputStream os = response.getOutputStream();</p>
+<p>response.setHeader(“Content-disposition”, “attachment;filename=user.xls”);//默认Excel名称</p>
+<p>wb.write(os);</p>
+<p>os.flush();</p>
+<p>os.close();</p>
+<p>@RequestMapping(value = “/import”)</p>
+<p>public String exImport(@RequestParam(value = “filename”) MultipartFile file, HttpSession session) {</p>
+<p>return null;</p>
+<p>订单管理控制层：</p>
+<p>/**</p>
+<ul>
+<li>订单Controller</li>
+</ul>
+<p>*/</p>
+<p>@Api(“后台订单接口”)</p>
+<p>@RestController</p>
+<p>public class OrderController {</p>
+<p>private Logger logger = LoggerFactory.getLogger(this.getClass());</p>
+<p>// 注入Service</p>
+<p>@Autowired</p>
+<p>private OrderService orderService;</p>
+<p>// 注入订单详情Service</p>
+<p>@Autowired</p>
+<p>private OrderDetailService orderDetailService;</p>
+<p>/**</p>
+<ul>
+<li><p>订单列表</p>
+</li>
+<li><p>@param page</p>
+</li>
+<li><p>@param limit</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ApiOperation(value = “订单列表”, notes = “查询结果集合数据”)</p>
+<p>@GetMapping(“/admin/order/list”)</p>
+<p>public ServerLayResult<Order> OrderList(@RequestParam(value = “page”, defaultValue = “1”) Integer page,</Order></p>
+<p>@RequestParam(value = “limit”, defaultValue = “10”) Integer limit) {</p>
+<p>return new ServerLayResult(0, “”, orderService.count(), orderService.selectAll(page, limit));</p>
+<p>/**</p>
+<ul>
+<li><p>根据id删除</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ApiOperation(value = “订单删除”, notes = “根据订单的id删除订单”)</p>
+<p>@GetMapping(“/admin/order/del”)</p>
+<p>public String orderDel(@RequestParam(value = “id”) Integer id) {</p>
+<p>logger.info(“订单id—-“ + id);</p>
+<p>if (id != null &amp;&amp; id &gt; 0) {</p>
+<p>// 删除关联订单详情</p>
+<p>int index = orderDetailService.deleteByOrderId(id);</p>
+<p>if (index &gt; 0) {</p>
+<p>int delete = orderService.deleteByPrimaryKey(id);</p>
+<p>if (delete &gt; 0) {</p>
+<p>return “success”;</p>
+<p>return “error”;</p>
+<p>配件管理控制器：</p>
+<p>/**</p>
+<ul>
+<li>配件控制器</li>
+</ul>
+<p>*/</p>
+<p>@Api(“配件接口API”)</p>
+<p>@RestController</p>
+<p>public class GoodsController {</p>
+<p>private Logger logger = LoggerFactory.getLogger(this.getClass());</p>
+<p>@Autowired</p>
+<p>private GoodsService goodsService;</p>
+<p>private String image = “”;</p>
+<p>@ApiOperation(value = “配件列表接口”, notes = “配件结果集列表”)</p>
+<p>@GetMapping(“/admin/goodsList”)</p>
+<p>public ServerLayResult<Goods> list(@RequestParam(value = “page”, defaultValue = “1”) Integer page,</Goods></p>
+<p>@RequestParam(value = “limit”, defaultValue = “10”) Integer limit) {</p>
+<p>//查询结果总数</p>
+<p>int count = goodsService.count();</p>
+<p>List<Goods> goods = goodsService.selectAll(page, limit);</Goods></p>
+<p>//组装Json数据</p>
+<p>ServerLayResult result = new ServerLayResult(0, “”, count, goods);</p>
+<p>return result;</p>
+<p>@ApiOperation(value = “配件删除接口”, notes = “根据配件ID删除配件”)</p>
+<p>@GetMapping(“/admin/goods/del”)</p>
+<p>public String delete(Integer id) {</p>
+<p>System.out.println(“id = “ + id);</p>
+<p>int row = goodsService.deleteByPrimaryKey(id);</p>
+<p>if (row &gt; 0) {</p>
+<p>return “success”;</p>
+<p>return “error”;</p>
+<p>@ApiOperation(value = “配件更新接口”, notes = “根据json数据对象来更新接口”)</p>
+<p>@PostMapping(“/admin/goods/update”)</p>
+<p>public String update(@RequestBody JSONObject ob) {</p>
+<p>com.alibaba.fastjson.JSONObject json = JSON.parseObject(ob.toJSONString());</p>
+<p>logger.info(ob.toJSONString());</p>
+<p>String gname = json.getString(“gname”);</p>
+<p>Integer id = json.getInteger(“id”);</p>
+<p>Double goprice = json.getDouble(“goprice”);</p>
+<p>Double grprice = json.getDouble(“grprice”);</p>
+<p>Integer gstore = json.getInteger(“gstore”);</p>
+<p>String goodstypeId = json.getString(“goodstypeId”);</p>
+<p>if (goodstypeId == null) {</p>
+<p>return “error”;</p>
+<p>Goods goods = new Goods();</p>
+<p>goods.setId(id);</p>
+<p>goods.setGname(gname);</p>
+<p>goods.setGoprice(goprice);</p>
+<p>goods.setGrprice(grprice);</p>
+<p>goods.setGstore(gstore);</p>
+<p>GoodsType goodsType = new GoodsType();</p>
+<p>goodsType.setId(Integer.parseInt(goodstypeId));</p>
+<p>goods.setGoodstypeId(goodsType);</p>
+<p>goods.setIputTime(new Date());</p>
+<p>//        goods.setGpicture(“<a target="_blank" rel="noopener" href="http://www.csbishe.cn:18081/views/upload/&quot;">http://www.csbishe.cn:18081/views/upload/&quot;</a> + image);</p>
+<p>goods.setGpicture(“<a target="_blank" rel="noopener" href="http://localhost:18081/views/upload/&quot;">http://localhost:18081/views/upload/&quot;</a> + image);</p>
+<p>logger.info(String.valueOf(goods));</p>
+<p>int insert = goodsService.updateByPrimaryKey(goods);</p>
+<p>if (insert &gt; 0) {</p>
+<p>return “success”;</p>
+<p>return “error”;</p>
+<p>@ApiOperation(value = “配件保存接口”, notes = “根据json数据来保存配件”)</p>
+<p>@PostMapping(“/admin/goods/add”)</p>
+<p>public String addGoods(@RequestBody JSONObject ob) {</p>
+<p>com.alibaba.fastjson.JSONObject json = JSON.parseObject(ob.toJSONString());</p>
+<p>String gname = json.getString(“gname”);</p>
+<p>Double goprice = json.getDouble(“goprice”);</p>
+<p>Double grprice = json.getDouble(“grprice”);</p>
+<p>Integer gstore = json.getInteger(“gstore”);</p>
+<p>String goodstypeId = json.getString(“goodstypeId”);</p>
+<p>Goods goods = new Goods();</p>
+<p>goods.setGname(gname);</p>
+<p>goods.setGoprice(goprice);</p>
+<p>goods.setGrprice(grprice);</p>
+<p>goods.setGstore(gstore);</p>
+<p>GoodsType goodsType = new GoodsType();</p>
+<p>goodsType.setId(Integer.parseInt(goodstypeId));</p>
+<p>goods.setGoodstypeId(goodsType);</p>
+<p>goods.setIputTime(new Date());</p>
+<p>goods.setGpicture(“<a target="_blank" rel="noopener" href="http://localhost:18081/views/upload/&quot;">http://localhost:18081/views/upload/&quot;</a> + image);</p>
+<p>int insert = goodsService.insert(goods);</p>
+<p>if (insert &gt; 0) {</p>
+<p>return “success”;</p>
+<p>return “error”;</p>
+<p>/**</p>
+<ul>
+<li>实现文件上传</li>
+</ul>
+<p>*/</p>
+<p>@ApiOperation(value = “图片上传接口”, notes = “根据MultipartFile类上传文件”)</p>
+<p>@PostMapping(value = “/admin/uploadImg”)</p>
+<p>public Map&lt;String, Object&gt; ramanage(@RequestParam(“file”) MultipartFile file,</p>
+<p>HttpServletRequest request) {</p>
+<p>Map&lt;String, Object&gt; result = new HashMap&lt;&gt;();</p>
+<p>try {</p>
+<p>//获取跟目录</p>
+<p>File path = new File(ResourceUtils.getURL(“classpath:”).getPath());</p>
+<p>if (!path.exists()) path = new File(“”);</p>
+<p>System.out.println(“path:” + path.getAbsolutePath());</p>
+<p>File upload = new File(path.getAbsolutePath(), “stat<a target="_blank" rel="noopener" href="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/upload/&quot;">https://yms-1257401191.cos.ap-nanjing.myqcloud.com/upload/&quot;</a>);</p>
+<p>if (!upload.exists())</p>
+<p>upload.mkdirs();</p>
+<p>String realPath = path.getAbsolutePath() + “/static/views/upload”;</p>
+<p>request.setAttribute(“path”, realPath);</p>
+<p>image = FileUploadUtils.uploadFile(file, realPath);</p>
+<p>result.put(“code”, 0);</p>
+<p>result.put(“image”, image);</p>
+<p>} catch (Exception e) {</p>
+<p>result.put(“code”, 1);</p>
+<p>e.printStackTrace();</p>
+<p>return result;</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=281524522608201pc<br>https://javayms.pages.dev?id=281524522608201pc</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E7%BB%B4%E4%BF%AE/" rel="tag"><i class="fa fa-tag"></i> 维修</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

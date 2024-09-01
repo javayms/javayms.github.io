@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot医护人员排班系统(java+springboot+mybaits+vue+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/311524512608201nd/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot医护人员排班系统(java+springboot+mybaits+vue+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/311524512608201nd/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot医护人员排班系统(java+springboot+mybaits+vue+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified">更新:1970年01月</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/241524132608.jpg" alt="241524132608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/251524132608.jpg" alt="251524132608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/261524132608.jpg" alt="261524132608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/271524132608.jpg" alt="271524132608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/281524132608.jpg" alt="281524132608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/291524132608.jpg" alt="291524132608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/311524132608.jpg" alt="311524132608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/321524132608.jpg" alt="321524132608"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/331524132608.jpg" alt="331524132608"></p>
+<p>基于javaweb的SpringBoot医护人员排班系统(java+springboot+mybaits+vue+mysql)</p>
+<p>项目介绍</p>
+<p>基于Springboot + vue实现的医护人员排班系统</p>
+<p>本医护人员排班系统包括管理员，医护；本项目分为前台与后台界面；</p>
+<p>管理员功能有个人中心，医院信息管理，医护信息管理，医护类型管理，排班信息管理，排班类型管理，科室信息管理，投诉信息管理。</p>
+<p>医护人员可以修改自己的个人信息，查看自己的排班信息，查看我的收藏信息。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端:SpringBoot+Mybaits</p>
+<p>前端:Vue+elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：</p>
+</li>
+</ol>
+<p>前台地址：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/springbootjf5zc/front/index.html">http://localhost:8080/springbootjf5zc/front/index.html</a></p>
+<p>医护：工号1 密码：123456</p>
+<p>后台登录页面</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/springbootjf5zc/admin/dist/index.html#/login">http://localhost:8080/springbootjf5zc/admin/dist/index.html#/login</a></p>
+<p>管理员：abo 密码：abo</p>
+<p>医护：医护1 密码：123456</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p>文档结构展示：</p>
+<p> 医院信息展示：</p>
+<p>科室信息展示：</p>
+<p>医护信息展示：</p>
+<p> 后台医护信息展示：</p>
+<p> 医院信息展示：</p>
+<p>医护类型展示：</p>
+<p> 科室信息展示：</p>
+<p>排班类型展示：</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>医生管理控制层：</p>
+<p>@Controller</p>
+<p>public class DoctorController {</p>
+<p>@Autowired</p>
+<p>DoctorService doctorService;</p>
+<p>@Autowired</p>
+<p>AppointmentService appointmentService;</p>
+<p>@Autowired</p>
+<p>PatientService patientService;</p>
+<p>@Autowired</p>
+<p>DrugsService drugsService;</p>
+<p>@Autowired</p>
+<p>HospitalizationService hospitalizationService;</p>
+<p>@Autowired</p>
+<p>MedicalhistoryService medicalhistoryService;</p>
+<p>@Autowired</p>
+<p>OptionService optionService;</p>
+<p>@Autowired</p>
+<p>SeekService seekService;</p>
+<p>@Value(“${filepath.seekpdfpath}”)</p>
+<p>private String path;</p>
+<p>@RequestMapping(“/admin/doctorManage”)</p>
+<p>public String doctorManage(HttpServletRequest request,@RequestParam(value=”name”,required = false) String name,@RequestParam(value=”certId”,required = false) String certId){</p>
+<p>request.setAttribute(“name”,name);</p>
+<p>request.setAttribute(“certId”,certId);</p>
+<p>request.setAttribute(“doctors”,doctorService.getAllDoctor(name,certId));</p>
+<p>return “admin/doctorManage”;</p>
+<p>@RequestMapping(value = “/admin/doctor/{id}”,method = RequestMethod.DELETE)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject delDoctor(@PathVariable Integer id){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>json.put(“message”,doctorService.delDoctor(id));</p>
+<p>return json;</p>
+<p>@RequestMapping(value = “/admin/doctor/{id}”,method = RequestMethod.GET)</p>
+<p>public String doctorInfo(@PathVariable Integer id,HttpServletRequest request){</p>
+<p>request.setAttribute(“doctor”,doctorService.getDoctor(id));</p>
+<p>return “admin/info/doctorinfo”;</p>
+<p>@RequestMapping(value = “/admin/doctor”,method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject AddDoctor(@RequestBody Doctor doctor){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>json.put(“message”,doctorService.addDoctor(doctor));</p>
+<p>return json;</p>
+<p>@RequestMapping(value = “/admin/doctor”,method = RequestMethod.PUT)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject updateDoctor(@RequestBody Doctor doctor){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>json.put(“message”,doctorService.upDoctor(doctor));</p>
+<p>return json;</p>
+<p>@RequestMapping(“/admin/doctorAdd”)</p>
+<p>public String doctorAddPage(){</p>
+<p>return “admin/add/doctoradd”;</p>
+<p>@RequestMapping(“/doctor/seekMedicalAdvice”)</p>
+<p>public String seekMedicalAdvice(HttpServletRequest request, HttpSession session,@RequestParam(value = “patientname”,required = false)String patientname,@RequestParam(value = “time”,required = false)String time){</p>
+<p>Login login=(Login)session.getAttribute(“login”);</p>
+<p>Doctor doctor=doctorService.getDoctorByLoginId(login.getId());</p>
+<p>request.setAttribute(“appointments” ,appointmentService.selectByDoctorId(doctor.getId(),patientname,time));</p>
+<p>return “doctor/seekMedicalAdvice”;</p>
+<p>@RequestMapping(“/doctor/seek/{id}”)</p>
+<p>public String seek(@PathVariable Integer id,HttpServletRequest request){</p>
+<p>request.setAttribute(“options”,optionService.getAll());</p>
+<p>request.setAttribute(“patient”,patientService.getPatient(id));</p>
+<p>request.setAttribute(“drugs”,drugsService.getAllDrugs());</p>
+<p>return “doctor/seek”;</p>
+<p>@RequestMapping(value = “/doctor/drug”,method = RequestMethod.PUT)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject drug(@RequestBody Map map){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>Patient patient=new Patient();</p>
+<p>patient.setDrugsids(DrugsUtils.vaild(map));</p>
+<p>patient.setId(Integer.parseInt((String)map.get(“patientid”)));</p>
+<p>json.put(“message”,patientService.seek(patient));</p>
+<p>return json;</p>
+<p>@RequestMapping(value = “/doctor/zation”,method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject zation(@RequestBody Hospitalization hospitalization){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>json.put(“message”,hospitalizationService.AddHospitalization(hospitalization));</p>
+<p>return json;</p>
+<p>@RequestMapping(value = “/doctor/medicalhistory/{id}”)</p>
+<p>public String medicalhistory(@PathVariable Integer id,HttpServletRequest request){</p>
+<p>request.setAttribute(“medicalhistorys”,medicalhistoryService.getMedicalhistoryByPatientId(id));</p>
+<p>return “doctor/medicalhistory”;</p>
+<p>@RequestMapping( value = “/doctor/{department}”,method = RequestMethod.GET)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject getDoctorByDepartment(@PathVariable String department) throws UnsupportedEncodingException{</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>department = URLDecoder.decode(department,”UTF-8”);</p>
+<p>json.put(“doctors”,doctorService.getDoctorByDepartment(department));</p>
+<p>return json;</p>
+<p>@RequestMapping( value = “/doctor/seekinfo”,method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject seekinfo(@RequestBody Map map){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>String message=doctorService.seekInfo(map);</p>
+<p>json.put(“message”,message);</p>
+<p>return json;</p>
+<p>@RequestMapping( value = “/doctor/printseek/{id}”,method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject printseek(@PathVariable Integer id,HttpSession session){</p>
+<p>Login login=(Login)session.getAttribute(“login”);</p>
+<p>Doctor doctor=doctorService.getDoctorByLoginId(login.getId());</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>Seek seek=seekService.getSeekByPatientId(id);</p>
+<p>seek.setPatientname(patientService.getPatient(id).getName());</p>
+<p>seek.setDoctorname(doctor.getName());</p>
+<p>//createSeekInfo，第三个参数填空字符串就是生成在项目根目录里面，要是想生成在别的路径，例：D:\ 就是生成在D盘根目录</p>
+<p>path = Thread.currentThread().getContextClassLoader().getResource(“”).getPath().substring(0,Thread.currentThread().getContextClassLoader().getResource(“”).getPath().length()-16)+”/“;</p>
+<p>String message= PDFUtils.createSeekInfo(seek,optionService,path);</p>
+<p>json.put(“message”,message);</p>
+<p>return json;</p>
+<p>登录管理控制层：</p>
+<p>@Controller</p>
+<p>public class LoginController {</p>
+<p>@Autowired</p>
+<p>LoginService loginService;</p>
+<p>@RequestMapping(value = “/hospital/login”)</p>
+<p>public String loginAndregist(){</p>
+<p>return “login&amp;regist”;</p>
+<p>@RequestMapping(“/admin/adminManage”)</p>
+<p>public String adminManage(HttpServletRequest request,@RequestParam(value = “username”,required = false)String username){</p>
+<p>request.setAttribute(“username”,username);</p>
+<p>request.setAttribute(“admins”,loginService.findAllAdmin(username));</p>
+<p>return “/admin/adminManage”;</p>
+<p>@RequestMapping(“/admin/admin/{id}”)</p>
+<p>public String adminInfo(HttpServletRequest request,@PathVariable Integer id){</p>
+<p>request.setAttribute(“admin”,loginService.getAdmin(id));</p>
+<p>return “/admin/info/admininfo”;</p>
+<p>@RequestMapping(“/admin/adminAdd”)</p>
+<p>public String adminAddPage(){</p>
+<p>return”admin/add/adminadd”;</p>
+<p>@RequestMapping(value = “/admin/admin”,method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject adminAdd(@RequestBody Login login){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>json.put(“message”,loginService.addAmin(login));</p>
+<p>return json;</p>
+<p>@RequestMapping(value = “/admin/admin”,method = RequestMethod.PUT)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject upAdmin(@RequestBody Login login){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>json.put(“message”,loginService.updateAdmin(login));</p>
+<p>return json;</p>
+<p>@RequestMapping(value = “/admin/admin/{id}”,method = RequestMethod.DELETE)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject delAdmin(@PathVariable Integer id){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>json.put(“message”,loginService.delAdmin(id));</p>
+<p>return json;</p>
+<p>@RequestMapping(value = “/loginout”,method = RequestMethod.GET)</p>
+<p>public String loginout(HttpSession session){</p>
+<p>session.removeAttribute(“login”);</p>
+<p>return “/hospital”;</p>
+<p>@RequestMapping(value = “/login”,method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject login(@RequestBody Login login,HttpSession session){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>json.put(“message”,loginService.login(login));</p>
+<p>session.setAttribute(“login”,login);</p>
+<p>return json;</p>
+<p>@RequestMapping(value = “/regest”,method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject regest(@RequestBody Login login){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>json.put(“message”,loginService.regist(login));</p>
+<p>return json;</p>
+<p>@RequestMapping(“/hospital”)</p>
+<p>public String hospital(){</p>
+<p>return “index”;</p>
+<p>@RequestMapping(“/hospital/patient/index”)</p>
+<p>public String patientIndex(){</p>
+<p>return “/patient/search”;</p>
+<p>@RequestMapping(“/hospital/doctor/index”)</p>
+<p>public String doctorIndex(){</p>
+<p>return “/doctor/index”;</p>
+<p>@RequestMapping(“/hospital/admin/index”)</p>
+<p>public String adminIndex(){</p>
+<p>return “/admin/index”;</p>
+<p>预约管理控制层：</p>
+<p>@Controller</p>
+<p>public class AppointmentController {</p>
+<p>@Autowired</p>
+<p>AppointmentService appointmentService;</p>
+<p>@Autowired</p>
+<p>DoctorService doctorService;</p>
+<p>@Autowired</p>
+<p>PatientService patientService;</p>
+<p>@RequestMapping(“/admin/appointmentManage”)</p>
+<p>public String appointmentManage(HttpServletRequest request,@RequestParam(value = “doctorname”,required = false)String doctorname,@RequestParam(value = “patientname”,required = false)String patientname){</p>
+<p>request.setAttribute(“doctorname”,doctorname);</p>
+<p>request.setAttribute(“patientname”,patientname);</p>
+<p>List<Appointment> appointmentList=appointmentService.getAllAppointments(doctorname,patientname);</Appointment></p>
+<p>request.setAttribute(“appointments” ,appointmentList);</p>
+<p>return”admin/appointmentManage”;</p>
+<p>@RequestMapping(“/admin/appointmentAdd”)</p>
+<p>public String appointmentAddPage(HttpServletRequest request){</p>
+<p>request.setAttribute(“patients”,patientService.getAllPatients());</p>
+<p>//request.setAttribute(“doctors”,doctorService.getAllDoctor());</p>
+<p>return”admin/add/appointmentadd”;</p>
+<p>@RequestMapping(value = “/admin/appointment/{id}”,method = RequestMethod.DELETE)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject delAppointment(@PathVariable Integer id){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>json.put(“message”,appointmentService.delAppointment(id));</p>
+<p>return json;</p>
+<p>@RequestMapping(value = “/admin/appointment/{id}”,method = RequestMethod.GET)</p>
+<p>public String AppointmentInfo(@PathVariable Integer id,HttpServletRequest request){</p>
+<p>request.setAttribute(“patients”,patientService.getAllPatients());</p>
+<p>request.setAttribute(“doctors”,doctorService.getAllDoctor());</p>
+<p>request.setAttribute(“appointment”,appointmentService.getAppointment(id));</p>
+<p>return “admin/info/appointmentInfo”;</p>
+<p>@RequestMapping(value = “/admin/appointment”,method = RequestMethod.PUT)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject AppointmentUpdate(@RequestBody Appointment appointment){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>json.put(“message”,appointmentService.UpdateAppointment(appointment));</p>
+<p>return json;</p>
+<p>@RequestMapping(value = “/admin/appointment”,method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public JSONObject AppointmentAdd(@RequestBody Appointment appointment){</p>
+<p>JSONObject json=new JSONObject();</p>
+<p>json.put(“message”,appointmentService.addAppointment(appointment));</p>
+<p>return json;</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=311524512608201nd<br>https://javayms.pages.dev?id=311524512608201nd</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E4%BA%BA%E4%BA%8B/" rel="tag"><i class="fa fa-tag"></i> 人事</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

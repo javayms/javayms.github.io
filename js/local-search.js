@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isfetched) return;
     let searchText = input.value.trim().toLowerCase();
     // 2023-03-05，排除单个无意义字符的搜索
-    // console.log("q1:" + searchText)
+    //console.log("q1:" + searchText)
     if (searchText == '(' || searchText == ')' || searchText == '+' || searchText == '_' || searchText == ',' || searchText.indexOf("【") > -1 /*|| searchText.indexOf("】") > -1 || /^[0-9a-zA-Z]$/.test(searchText)*/) {
       return;
     }
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (subIndex > 0) {
       searchText = searchText.substring(subIndex + 7);
     }
-    // console.log("q2:" + searchText)
+    //console.log("q2:" + searchText)
     let keywords = searchText.split(/[-\s]+/);
     if (keywords.length > 1) {
       keywords.push(searchText);
@@ -211,8 +211,33 @@ document.addEventListener('DOMContentLoaded', () => {
     performLocalSearch(keywords, searchText, resultItems);
     if (resultItems.length === 0 && searchText.indexOf("(") > -1) {
       searchText = searchText.substring(0, searchText.indexOf('('));
-      // console.log("q3:" + searchText)
+      //console.log("q3:" + searchText)
       keywords = searchText.split(/[-\s]+/);
+      if (keywords.length > 1) {
+        keywords.push(searchText);
+      }
+      performLocalSearch(keywords, searchText, resultItems);
+    }
+    //2024-08-31 如果再查询无结果，则再将标题简化
+    if (resultItems.length === 0 && searchText.length > 0) {
+      const tags = [
+        'JSP+Servlet',
+        'SSM+Maven',
+        'SSM',
+        'SpringBoot',
+        'SSH',
+        'Swing',
+        'Python'
+      ];
+      for (let i = 0; i < tags.length; i++) {
+        let tag = tags[i].toLowerCase();
+        let index = searchText.indexOf(tag);
+        if (index > -1) {
+          searchText = searchText.substring(index + tag.length).trim();
+        }
+      }
+      //console.log("q4:" + searchText);
+      let keywords = searchText.split(/[-\s]+/);
       if (keywords.length > 1) {
         keywords.push(searchText);
       }

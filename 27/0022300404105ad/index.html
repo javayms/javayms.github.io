@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot+JPA电影售票网站购票平台管理系统(前台、后台)(javaweb+springboot+jpa+freemarker+bootstrap+mysql+maven)">
+<meta property="og:title" content="基于javaweb的SpringBoot+JPA电影售票网站购票平台管理系统(前台、后台)(java+springboot+jpa+freemarker+bootstrap+mysql+maven)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot+JPA电影售票网站购票平台管理系统(前台、后台)(javaweb+springboot+jpa+freemarker+bootstrap+mysql+maven) | Java源码社</title>
+  <title>基于javaweb的SpringBoot+JPA电影售票网站购票平台管理系统(前台、后台)(java+springboot+jpa+freemarker+bootstrap+mysql+maven) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot+JPA电影售票网站购票平台管理系统(前台、后台)(javaweb+springboot+jpa+freemarker+bootstrap+mysql+maven)
+			基于javaweb的SpringBoot+JPA电影售票网站购票平台管理系统(前台、后台)(java+springboot+jpa+freemarker+bootstrap+mysql+maven)
             
         </h1>
 
@@ -242,7 +242,7 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/070123212502.jpg" alt="070123212502"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/080123212502.jpg" alt="080123212502"></p>
 <h3 id="技术框架"><a href="#技术框架" class="headerlink" title="技术框架"></a>技术框架</h3><p>JavaWeb SpringBoot JPA Freemarker Bootstrap JavaScript SpringMVC MySQL</p>
-<p>基于javaweb的SpringBoot+JPA电影售票网站购票平台管理系统(前台、后台)(javaweb+springboot+jpa+freemarker+bootstrap+mysql+maven)</p>
+<p>基于javaweb的SpringBoot+JPA电影售票网站购票平台管理系统(前台、后台)(java+springboot+jpa+freemarker+bootstrap+mysql+maven)</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">if</span>(StringUtils.isEmpty(newPwd))&#123;</span><br><span class="line">		<span class="keyword">return</span> Result.error(CodeMsg.ADMIN_USER_UPDATE_PWD_EMPTY);</span><br><span class="line">	&#125;</span><br><span class="line">	loginedUser.setPassword(newPwd);</span><br><span class="line">	<span class="comment">//保存数据库</span></span><br><span class="line">	userService.save(loginedUser);</span><br><span class="line">	<span class="comment">//更新session</span></span><br><span class="line">	SessionUtil.set(SessionConstant.SESSION_USER_LOGIN_KEY, loginedUser);</span><br><span class="line">	<span class="keyword">return</span> Result.success(<span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 日志管理列表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> model</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> operaterLog</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> pageBean</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;/operator_log_list&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">operatorLogList</span><span class="params">(Model model, OperaterLog operaterLog, PageBean&lt;OperaterLog&gt; pageBean)</span></span>&#123;</span><br><span class="line">	model.addAttribute(<span class="string">&quot;pageBean&quot;</span>, operaterLogService.findList(operaterLog, pageBean));</span><br><span class="line">	model.addAttribute(<span class="string">&quot;operator&quot;</span>, operaterLog.getOperator());</span><br><span class="line">	model.addAttribute(<span class="string">&quot;title&quot;</span>, <span class="string">&quot;日志列表&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;admin/system/operator_log_list&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除操作日志，可删除多个</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> ids</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(value=&quot;/delete_operator_log&quot;,method=RequestMethod.POST)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result&lt;Boolean&gt; <span class="title">delete</span><span class="params">(String ids)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!StringUtils.isEmpty(ids))&#123;</span><br><span class="line">		String[] splitIds = ids.split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">		<span class="keyword">for</span>(String id : splitIds)&#123;</span><br><span class="line">			operaterLogService.delete(Long.valueOf(id));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> Result.success(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
 
