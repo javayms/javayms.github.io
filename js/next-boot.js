@@ -2,7 +2,7 @@
 
 NexT.boot = {};
 
-NexT.boot.registerEvents = function() {
+NexT.boot.registerEvents = function () {
 
   NexT.utils.registerScrollPercent();
   NexT.utils.registerCanIUseTag();
@@ -16,7 +16,7 @@ NexT.boot.registerEvents = function() {
     if (typeof Velocity === 'function') {
       Velocity(siteNav, animateAction, {
         duration: 200,
-        complete: function() {
+        complete: function () {
           siteNav.classList.toggle('site-nav-on');
         }
       });
@@ -37,20 +37,20 @@ NexT.boot.registerEvents = function() {
       var target = targets[index];
       var currentTarget = targets[1 - index];
       window.anime({
-        targets : currentTarget,
+        targets: currentTarget,
         duration: TAB_ANIMATE_DURATION,
-        easing  : 'linear',
-        opacity : 0,
+        easing: 'linear',
+        opacity: 0,
         complete: () => {
           // Prevent adding TOC to Overview if Overview was selected when close & open sidebar.
           currentTarget.classList.remove(activePanelClassName);
           target.style.opacity = 0;
           target.classList.add(activePanelClassName);
           window.anime({
-            targets : target,
+            targets: target,
             duration: TAB_ANIMATE_DURATION,
-            easing  : 'linear',
-            opacity : 1
+            easing: 'linear',
+            opacity: 1
           });
         }
       });
@@ -73,7 +73,7 @@ NexT.boot.registerEvents = function() {
   });
 };
 
-NexT.boot.refresh = function() {
+NexT.boot.refresh = function () {
 
   /**
    * Register JS handlers by condition option.
@@ -94,7 +94,7 @@ NexT.boot.refresh = function() {
   NexT.utils.registerVideoIframe();
 };
 
-NexT.boot.motion = function() {
+NexT.boot.motion = function () {
   // Define Motion Sequence & Bootstrap Motion.
   if (CONFIG.motion.enable) {
     NexT.motion.integrator
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function getMonsDay() {
-	let nowTemp = new Date(); //当前时间
+  let nowTemp = new Date(); //当前时间
   let oneDayLong = 24 * 60 * 60 * 1000; //一天的毫秒数
   let c_time = nowTemp.getTime(); //当前时间的毫秒时间
   let c_day = nowTemp.getDay() || 7; //当前时间的星期几
@@ -125,7 +125,7 @@ function getMonsDay() {
   let m_month = monday.getMonth() + 1;
   let m_date = monday.getDate();
   let val = m_year + "-" + m_month + "-" + m_date;
-	return m_year+'年'+m_month+'月';
+  return m_year + '年' + m_month + '月';
 }
 
 let dateTextElement1 = document.getElementById("dateText");
@@ -164,3 +164,28 @@ if (idTextElement) {
   let idFromUrl = getIdFromUrl();
   idTextElement.innerHTML = idFromUrl ? 'ID: ' + idFromUrl : '';
 }
+
+
+//2024-09-08 增加浏览器提示
+function getBrowserWarningMessage() {
+  const userAgent = navigator.userAgent;
+  const currentUrl = window.location.href;
+  let browser = "";
+  if (userAgent.includes("MQQBrowser/")) {
+    browser = "<strong><s>QQ</s></strong>";
+  } else if (userAgent.includes("MicroMessenger/")) {
+    browser = "<strong><s>微信</s></strong>";
+  }
+  return browser ? `建议用<strong>Edge/Chrome</strong>等浏览器打开本页 (勿在${browser}中直接打开),当前URL：${currentUrl}` : "";
+}
+
+const browserWarningTextElement = document.getElementById("browserWarningText");
+const warningMessage = getBrowserWarningMessage();
+if (browserWarningTextElement) {
+  if (warningMessage) {
+    browserWarningTextElement.innerHTML = warningMessage; // 使用 innerHTML 解析 <br> 和 <s> 标签
+  } else {
+    browserWarningTextElement.remove(); // 没有警告信息则移除元素
+  }
+}
+
