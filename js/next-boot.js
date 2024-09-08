@@ -180,12 +180,13 @@ function getBrowserWarningMessage() {
 }
 
 const browserWarningTextElement = document.getElementById("browserWarningText");
-const warningMessage = getBrowserWarningMessage();
 if (browserWarningTextElement) {
-  if (warningMessage) {
-    browserWarningTextElement.innerHTML = warningMessage; // 使用 innerHTML 解析 <br> 和 <s> 标签
-  } else {
-    browserWarningTextElement.remove(); // 没有警告信息则移除元素
-  }
+  browserWarningTextElement.remove();
+  // const warningMessage = getBrowserWarningMessage();
+  // if (warningMessage) {
+  //   browserWarningTextElement.innerHTML = warningMessage;
+  // } else {
+  //   browserWarningTextElement.remove();
+  // }
 }
 
