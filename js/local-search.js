@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const inputEventFunction = () => {
     if (!isfetched) return;
-    let searchText = input.value.trim().toLowerCase();
+    let searchText = input.value.trim().toLowerCase().replace(/\s+/g, '');
     // 2023-03-05，排除单个无意义字符的搜索
     //console.log("q1:" + searchText)
     if (searchText == '(' || searchText == ')' || searchText == '+' || searchText == '_' || searchText == ',' || searchText.indexOf("【") > -1 /*|| searchText.indexOf("】") > -1 || /^[0-9a-zA-Z]$/.test(searchText)*/) {
@@ -237,6 +237,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
       //console.log("q4:" + searchText);
+      let keywords = searchText.split(/[-\s]+/);
+      if (keywords.length > 1) {
+        keywords.push(searchText);
+      }
+      performLocalSearch(keywords, searchText, resultItems);
+    }
+    //2024-09-10 如果再查询无结果，则再将标题简化
+    if (resultItems.length === 0 && searchText.length > 0) {
+      let subIndex = searchText.indexOf("的");
+      if (subIndex > 0) {
+        searchText = searchText.substring(subIndex + 1);
+      }
+      //console.log("q5:" + searchText);
       let keywords = searchText.split(/[-\s]+/);
       if (keywords.length > 1) {
         keywords.push(searchText);
