@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let searchText = input.value.trim().toLowerCase().replace(/\s+/g, '');
     // 2023-03-05，排除单个无意义字符的搜索
     //console.log("q1:" + searchText)
-    if (searchText == '(' || searchText == ')' || searchText == '+' || searchText == '_' || searchText == ',' || searchText.indexOf("【") > -1 /*|| searchText.indexOf("】") > -1 || /^[0-9a-zA-Z]$/.test(searchText)*/) {
+    if (searchText == '(' || searchText == ')' || searchText == '+' || searchText == '_' || searchText == ',' /*|| searchText.indexOf("【") > -1 || searchText.indexOf("】") > -1 || /^[0-9a-zA-Z]$/.test(searchText)*/) {
       return;
     }
     let subIndex = searchText.indexOf("+mysql的");
