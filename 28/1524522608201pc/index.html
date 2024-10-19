@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot社区维修平台(java+springboot+mybatis+vue+elementui+mysql)">
+<meta property="og:title" content="基于javaweb的SpringBoot社区维修平台(java+springboot+maven+mybatis+vue+elementui+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot社区维修平台(java+springboot+mybatis+vue+elementui+mysql) | Java源码社</title>
+  <title>基于javaweb的SpringBoot社区维修平台(java+springboot+maven+mybatis+vue+elementui+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot社区维修平台(java+springboot+mybatis+vue+elementui+mysql)
+			基于javaweb的SpringBoot社区维修平台(java+springboot+maven+mybatis+vue+elementui+mysql)
             
         </h1>
 
@@ -232,395 +232,35 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/441524062608.jpg" alt="441524062608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/451524062608.jpg" alt="451524062608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/461524062608.jpg" alt="461524062608"></p>
-<p>基于javaweb的SpringBoot社区维修平台(java+springboot+mybatis+vue+elementui+mysql)</p>
+<p>基于javaweb的SpringBoot社区维修平台(java+springboot+maven+mybatis+vue+elementui+mysql)</p>
 <p>项目介绍</p>
 <p>基于Springboot Vue社区维修平台</p>
 <p>角色：管理员、住户、维修工三种角色，分为前后台；</p>
 <p>住户：住户通过住户登录页面可以填写用户名和密码，等信息进行登录操作，用户登录成功后，进入用户后台系统页面可以查看个人中心、维修订单管理、接单信息管理、订单信息管理、在线沟通管理、举报信息管理模块等功能模块，进行相对应操作</p>
 <p>维修工：维修工登录后，进入后台系统页面可以查看个人中心、维修订单管理、接单信息管理、订单信息管理、在线沟通管理、举报信息管理模块等功能模块，进行相对应操作</p>
 <p>管理员：管理员登录成功后进入到系统操作界面，可以对个人中心、住户管理、社区公告管理、维修工管理、维修订单管理、接单信息管理、订单信息管理、在线沟通管理、举报信息管理、留言板管理、系统管理等功能模块进行相对应操作。</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
-<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
-<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
-<p>4.数据库：MySql 5.7/8.0版本均可；</p>
-<p>5.是否Maven项目：是；</p>
 <p>技术栈</p>
 <p>后端：SpringBoot+Mybaits</p>
 <p>前端：Vue +ElementUI +Layui +HTML+CSS+JS</p>
-<p>使用说明</p>
-<p>项目运行：</p>
-<ol>
-<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
-</li>
-<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
-</li>
-<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
-</li>
-</ol>
-<p>4.运行项目，在浏览器中输入地址：</p>
-<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springboot78n92/front/index.html">http://localhost:8080/springboot78n92/front/index.html</a></p>
-<p>住户：001/001</p>
-<p>维修工：001/001</p>
-<p>后台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springboot78n92/admin/dist/index.html#/login">http://localhost:8080/springboot78n92/admin/dist/index.html#/login</a></p>
-<p>管理员：abo/abo</p>
-<p>住户：001/001</p>
-<p>维修工：001/001</p>
-<p>系统架构图：</p>
-<p> 首页展示：</p>
-<p> 维修订单：</p>
-<p>用户登录页面：</p>
-<p>维修订单展示：</p>
-<p> 留言返回页面：</p>
-<p> 后台展示页面：</p>
-<p>社区公告展示页面：</p>
-<p>住户展示页面：</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>用户Controller控制器：</p>
-<p>/**</p>
-<ul>
-<li>用户Controller控制器</li>
-</ul>
-<p>*/</p>
-<p>@Api(value = “用户管理接口”)</p>
-<p>@RestController</p>
-<p>public class UserController {</p>
-<p>private Logger logger = LoggerFactory.getLogger(this.getClass());</p>
-<p>//注入业务</p>
-<p>@Autowired</p>
-<p>private UserService userService;</p>
-<p>/**</p>
-<ul>
-<li><p>table数据列表</p>
-</li>
-<li><p>@param page</p>
-</li>
-<li><p>@param limit</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@ApiOperation(value = “用户列表”, notes = “查询用户结果集”)</p>
-<p>@GetMapping(“/admin/user/tableList”)</p>
-<p>public ServerLayResult userList(@RequestParam(value = “page”, defaultValue = “1”) Integer page,</p>
-<p>@RequestParam(value = “limit”, defaultValue = “10”) Integer limit,</p>
-<p>@RequestParam(value = “keyword”, defaultValue = “”) String keyword) {</p>
-<p>if (keyword == null || keyword.equals(“”)) {</p>
-<p>logger.info(“====================================1======” + keyword);</p>
-<p>//封装Json数据对象</p>
-<p>ServerLayResult result = new ServerLayResult(0, “”, userService.count(), userService.selectAll(page, limit));</p>
-<p>return result;</p>
-<p>} else if (keyword != null) {</p>
-<p>logger.info(“====================================2======” + keyword);</p>
-<p>ServerLayResult result = new ServerLayResult(0, “”, userService.selectByUsername(keyword, page, limit).size(),</p>
-<p>userService.selectByUsername(keyword, page, limit));</p>
-<p>return result;</p>
-<p>logger.info(“====================================3======” + keyword);</p>
-<p>return null;</p>
-<p>/**</p>
-<ul>
-<li><p>根据id删除</p>
-</li>
-<li><p>@param id</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@ApiOperation(value = “用户删除”, notes = “根据用户ID删除用户”)</p>
-<p>@GetMapping(“/admin/user/del”)</p>
-<p>public String del(@RequestParam(“id”) Integer id) {</p>
-<p>if (id != null &amp;&amp; id != 0) {</p>
-<p>int del = userService.deleteByPrimaryKey(id);</p>
-<p>if (del &gt; 0) {</p>
-<p>return “success”;</p>
-<p>return “error”;</p>
-<p>/**</p>
-<ul>
-<li><p>根据用户传入的对象进行更新</p>
-</li>
-<li><p>@param user</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@ApiOperation(value = “用户对象更新”, notes = “根据用户对象更新”)</p>
-<p>@PostMapping(“/admin/user/update”)</p>
-<p>public String updateUser(@RequestBody User user) {</p>
-<p>if (user != null) {</p>
-<p>//根据用户对象的id 查询用户的密码，防止密码丢失</p>
-<p>User user1 = userService.selectByPrimaryKey(user.getId());</p>
-<p>//再次封装进对象中</p>
-<p>if (user1 != null) {</p>
-<p>user.setPassword(user1.getPassword());</p>
-<p>//更新对象</p>
-<p>int update = userService.updateByPrimaryKey(user);</p>
-<p>if (update &gt; 0) {</p>
-<p>return “success”;</p>
-<p>return “error”;</p>
-<p>/**</p>
-<ul>
-<li><p>重置用户密码</p>
-</li>
-<li><p>@param id</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@ApiOperation(value = “重置密码接口”, notes = “根据用户ID查询用户重置密码为123456，最后进行MD5加密”)</p>
-<p>@GetMapping(“/admin/user/resetPwd”)</p>
-<p>public String restPwd(@RequestParam(“id”) Integer id) {</p>
-<p>if (id != null &amp;&amp; id &gt; 0) {</p>
-<p>//根据id查询出用户</p>
-<p>User user = userService.selectByPrimaryKey(id);</p>
-<p>//开始重置密码，重置密码使用的Spring提供的工具类进行对密码123456进行加密</p>
-<p>user.setPassword(DigestUtils.md5DigestAsHex(“123456”.getBytes()));</p>
-<p>//调用更新方法</p>
-<p>int restPwd = userService.updateByPrimaryKey(user);</p>
-<p>if (restPwd &gt; 0) {</p>
-<p>return “success”;</p>
-<p>return “error”;</p>
-<p>@ApiOperation(value = “Excel表格接口”, notes = “表格导出”)</p>
-<p>@GetMapping(value = “/admin/exportBtn”)</p>
-<p>public void export(HttpServletResponse response) throws IOException {</p>
-<p>List<User> users = userService.selectAll();</User></p>
-<p>HSSFWorkbook wb = new HSSFWorkbook();</p>
-<p>HSSFSheet sheet = wb.createSheet(“获取excel测试表格”);</p>
-<p>HSSFRow row = null;</p>
-<p>row = sheet.createRow(0);//创建第一个单元格</p>
-<p>row.setHeight((short) (26.25 * 20));</p>
-<p>row.createCell(0).setCellValue(“用户信息表”);//为第一行单元格设值</p>
-<p>/*为标题设计空间</p>
-<ul>
-<li><p>firstRow从第1行开始</p>
-</li>
-<li><p>lastRow从第0行结束</p>
-</li>
-</ul>
-<p>*从第1个单元格开始</p>
-<ul>
-<li>从第3个单元格结束</li>
-</ul>
-<p>*/</p>
-<p>CellRangeAddress rowRegion = new CellRangeAddress(0, 0, 0, 2);</p>
-<p>sheet.addMergedRegion(rowRegion);</p>
-<p>/*CellRangeAddress columnRegion = new CellRangeAddress(1,4,0,0);</p>
-<p>sheet.addMergedRegion(columnRegion);*/</p>
-<p>/*</p>
-<ul>
-<li><p>动态获取数据库列 sql语句 select COLUMN_NAME from INFORMATION_SCHEMA.Columns where table_name=’user’ and table_schema=’test’</p>
-</li>
-<li><p>第一个table_name 表名字</p>
-</li>
-<li><p>第二个table_name 数据库名称</p>
-</li>
-<li><p>*/</p>
-</li>
-</ul>
-<p>row = sheet.createRow(1);</p>
-<p>row.setHeight((short) (22.50 * 20));//设置行高</p>
-<p>row.createCell(0).setCellValue(“用户Id”);//为第一个单元格设值</p>
-<p>row.createCell(1).setCellValue(“用户登入名”);//为第二个单元格设值</p>
-<p>row.createCell(2).setCellValue(“用户密码”);//为第三个单元格设值</p>
-<p>row.createCell(3).setCellValue(“用户邮箱”);//为第三个单元格设值</p>
-<p>row.createCell(4).setCellValue(“用户名”);//为第三个单元格设值</p>
-<p>row.createCell(5).setCellValue(“用户地址”);//为第三个单元格设值</p>
-<p>row.createCell(6).setCellValue(“用户电话”);//为第三个单元格设值</p>
-<p>for (int i = 0; i &lt; users.size(); i++) {</p>
-<p>row = sheet.createRow(i + 2);</p>
-<p>User user = users.get(i);</p>
-<p>row.createCell(0).setCellValue(user.getId());</p>
-<p>row.createCell(1).setCellValue(user.getUsername());</p>
-<p>row.createCell(2).setCellValue(user.getPassword());</p>
-<p>row.createCell(3).setCellValue(user.getEmail());</p>
-<p>row.createCell(4).setCellValue(user.getName());</p>
-<p>row.createCell(5).setCellValue(user.getAddress());</p>
-<p>row.createCell(6).setCellValue(user.getPhone());</p>
-<p>sheet.setDefaultRowHeight((short) (16.5 * 20));</p>
-<p>//列宽自适应</p>
-<p>for (int i = 0; i &lt;= 13; i++) {</p>
-<p>sheet.autoSizeColumn(i);</p>
-<p>response.setContentType(“application/vnd.ms-excel;charset=utf-8”);</p>
-<p>OutputStream os = response.getOutputStream();</p>
-<p>response.setHeader(“Content-disposition”, “attachment;filename=user.xls”);//默认Excel名称</p>
-<p>wb.write(os);</p>
-<p>os.flush();</p>
-<p>os.close();</p>
-<p>@RequestMapping(value = “/import”)</p>
-<p>public String exImport(@RequestParam(value = “filename”) MultipartFile file, HttpSession session) {</p>
-<p>return null;</p>
-<p>订单管理控制层：</p>
-<p>/**</p>
-<ul>
-<li>订单Controller</li>
-</ul>
-<p>*/</p>
-<p>@Api(“后台订单接口”)</p>
-<p>@RestController</p>
-<p>public class OrderController {</p>
-<p>private Logger logger = LoggerFactory.getLogger(this.getClass());</p>
-<p>// 注入Service</p>
-<p>@Autowired</p>
-<p>private OrderService orderService;</p>
-<p>// 注入订单详情Service</p>
-<p>@Autowired</p>
-<p>private OrderDetailService orderDetailService;</p>
-<p>/**</p>
-<ul>
-<li><p>订单列表</p>
-</li>
-<li><p>@param page</p>
-</li>
-<li><p>@param limit</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@ApiOperation(value = “订单列表”, notes = “查询结果集合数据”)</p>
-<p>@GetMapping(“/admin/order/list”)</p>
-<p>public ServerLayResult<Order> OrderList(@RequestParam(value = “page”, defaultValue = “1”) Integer page,</Order></p>
-<p>@RequestParam(value = “limit”, defaultValue = “10”) Integer limit) {</p>
-<p>return new ServerLayResult(0, “”, orderService.count(), orderService.selectAll(page, limit));</p>
-<p>/**</p>
-<ul>
-<li><p>根据id删除</p>
-</li>
-<li><p>@param id</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@ApiOperation(value = “订单删除”, notes = “根据订单的id删除订单”)</p>
-<p>@GetMapping(“/admin/order/del”)</p>
-<p>public String orderDel(@RequestParam(value = “id”) Integer id) {</p>
-<p>logger.info(“订单id—-“ + id);</p>
-<p>if (id != null &amp;&amp; id &gt; 0) {</p>
-<p>// 删除关联订单详情</p>
-<p>int index = orderDetailService.deleteByOrderId(id);</p>
-<p>if (index &gt; 0) {</p>
-<p>int delete = orderService.deleteByPrimaryKey(id);</p>
-<p>if (delete &gt; 0) {</p>
-<p>return “success”;</p>
-<p>return “error”;</p>
-<p>配件管理控制器：</p>
-<p>/**</p>
-<ul>
-<li>配件控制器</li>
-</ul>
-<p>*/</p>
-<p>@Api(“配件接口API”)</p>
-<p>@RestController</p>
-<p>public class GoodsController {</p>
-<p>private Logger logger = LoggerFactory.getLogger(this.getClass());</p>
-<p>@Autowired</p>
-<p>private GoodsService goodsService;</p>
-<p>private String image = “”;</p>
-<p>@ApiOperation(value = “配件列表接口”, notes = “配件结果集列表”)</p>
-<p>@GetMapping(“/admin/goodsList”)</p>
-<p>public ServerLayResult<Goods> list(@RequestParam(value = “page”, defaultValue = “1”) Integer page,</Goods></p>
-<p>@RequestParam(value = “limit”, defaultValue = “10”) Integer limit) {</p>
-<p>//查询结果总数</p>
-<p>int count = goodsService.count();</p>
-<p>List<Goods> goods = goodsService.selectAll(page, limit);</Goods></p>
-<p>//组装Json数据</p>
-<p>ServerLayResult result = new ServerLayResult(0, “”, count, goods);</p>
-<p>return result;</p>
-<p>@ApiOperation(value = “配件删除接口”, notes = “根据配件ID删除配件”)</p>
-<p>@GetMapping(“/admin/goods/del”)</p>
-<p>public String delete(Integer id) {</p>
-<p>System.out.println(“id = “ + id);</p>
-<p>int row = goodsService.deleteByPrimaryKey(id);</p>
-<p>if (row &gt; 0) {</p>
-<p>return “success”;</p>
-<p>return “error”;</p>
-<p>@ApiOperation(value = “配件更新接口”, notes = “根据json数据对象来更新接口”)</p>
-<p>@PostMapping(“/admin/goods/update”)</p>
-<p>public String update(@RequestBody JSONObject ob) {</p>
-<p>com.alibaba.fastjson.JSONObject json = JSON.parseObject(ob.toJSONString());</p>
-<p>logger.info(ob.toJSONString());</p>
-<p>String gname = json.getString(“gname”);</p>
-<p>Integer id = json.getInteger(“id”);</p>
-<p>Double goprice = json.getDouble(“goprice”);</p>
-<p>Double grprice = json.getDouble(“grprice”);</p>
-<p>Integer gstore = json.getInteger(“gstore”);</p>
-<p>String goodstypeId = json.getString(“goodstypeId”);</p>
-<p>if (goodstypeId == null) {</p>
-<p>return “error”;</p>
-<p>Goods goods = new Goods();</p>
-<p>goods.setId(id);</p>
-<p>goods.setGname(gname);</p>
-<p>goods.setGoprice(goprice);</p>
-<p>goods.setGrprice(grprice);</p>
-<p>goods.setGstore(gstore);</p>
-<p>GoodsType goodsType = new GoodsType();</p>
-<p>goodsType.setId(Integer.parseInt(goodstypeId));</p>
-<p>goods.setGoodstypeId(goodsType);</p>
-<p>goods.setIputTime(new Date());</p>
-<p>//        goods.setGpicture(“<a target="_blank" rel="noopener" href="http://www.csbishe.cn:18081/views/upload/&quot;">http://www.csbishe.cn:18081/views/upload/&quot;</a> + image);</p>
-<p>goods.setGpicture(“<a target="_blank" rel="noopener" href="http://localhost:18081/views/upload/&quot;">http://localhost:18081/views/upload/&quot;</a> + image);</p>
-<p>logger.info(String.valueOf(goods));</p>
-<p>int insert = goodsService.updateByPrimaryKey(goods);</p>
-<p>if (insert &gt; 0) {</p>
-<p>return “success”;</p>
-<p>return “error”;</p>
-<p>@ApiOperation(value = “配件保存接口”, notes = “根据json数据来保存配件”)</p>
-<p>@PostMapping(“/admin/goods/add”)</p>
-<p>public String addGoods(@RequestBody JSONObject ob) {</p>
-<p>com.alibaba.fastjson.JSONObject json = JSON.parseObject(ob.toJSONString());</p>
-<p>String gname = json.getString(“gname”);</p>
-<p>Double goprice = json.getDouble(“goprice”);</p>
-<p>Double grprice = json.getDouble(“grprice”);</p>
-<p>Integer gstore = json.getInteger(“gstore”);</p>
-<p>String goodstypeId = json.getString(“goodstypeId”);</p>
-<p>Goods goods = new Goods();</p>
-<p>goods.setGname(gname);</p>
-<p>goods.setGoprice(goprice);</p>
-<p>goods.setGrprice(grprice);</p>
-<p>goods.setGstore(gstore);</p>
-<p>GoodsType goodsType = new GoodsType();</p>
-<p>goodsType.setId(Integer.parseInt(goodstypeId));</p>
-<p>goods.setGoodstypeId(goodsType);</p>
-<p>goods.setIputTime(new Date());</p>
-<p>goods.setGpicture(“<a target="_blank" rel="noopener" href="http://localhost:18081/views/upload/&quot;">http://localhost:18081/views/upload/&quot;</a> + image);</p>
-<p>int insert = goodsService.insert(goods);</p>
-<p>if (insert &gt; 0) {</p>
-<p>return “success”;</p>
-<p>return “error”;</p>
-<p>/**</p>
-<ul>
-<li>实现文件上传</li>
-</ul>
-<p>*/</p>
-<p>@ApiOperation(value = “图片上传接口”, notes = “根据MultipartFile类上传文件”)</p>
-<p>@PostMapping(value = “/admin/uploadImg”)</p>
-<p>public Map&lt;String, Object&gt; ramanage(@RequestParam(“file”) MultipartFile file,</p>
-<p>HttpServletRequest request) {</p>
-<p>Map&lt;String, Object&gt; result = new HashMap&lt;&gt;();</p>
-<p>try {</p>
-<p>//获取跟目录</p>
-<p>File path = new File(ResourceUtils.getURL(“classpath:”).getPath());</p>
-<p>if (!path.exists()) path = new File(“”);</p>
-<p>System.out.println(“path:” + path.getAbsolutePath());</p>
-<p>File upload = new File(path.getAbsolutePath(), “stat<a target="_blank" rel="noopener" href="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/upload/&quot;">https://yms-1257401191.cos.ap-nanjing.myqcloud.com/upload/&quot;</a>);</p>
-<p>if (!upload.exists())</p>
-<p>upload.mkdirs();</p>
-<p>String realPath = path.getAbsolutePath() + “/static/views/upload”;</p>
-<p>request.setAttribute(“path”, realPath);</p>
-<p>image = FileUploadUtils.uploadFile(file, realPath);</p>
-<p>result.put(“code”, 0);</p>
-<p>result.put(“image”, image);</p>
-<p>} catch (Exception e) {</p>
-<p>result.put(“code”, 1);</p>
-<p>e.printStackTrace();</p>
-<p>return result;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">    */</span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Long[] ids)</span></span>&#123;</span><br><span class="line">       jiedanxinxiService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 提醒接口</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/remind/&#123;columnName&#125;/&#123;type&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">remindCount</span><span class="params">(<span class="meta">@PathVariable(&quot;columnName&quot;)</span> String columnName, HttpServletRequest request, </span></span></span><br><span class="line"><span class="function"><span class="params">					 <span class="meta">@PathVariable(&quot;type&quot;)</span> String type,<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; map)</span> </span>&#123;</span><br><span class="line">	map.put(<span class="string">&quot;column&quot;</span>, columnName);</span><br><span class="line">	map.put(<span class="string">&quot;type&quot;</span>, type);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(type.equals(<span class="string">&quot;2&quot;</span>)) &#123;</span><br><span class="line">		SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line">		Calendar c = Calendar.getInstance();</span><br><span class="line">		Date remindStartDate = <span class="keyword">null</span>;</span><br><span class="line">		Date remindEndDate = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			Integer remindStart = Integer.parseInt(map.get(<span class="string">&quot;remindstart&quot;</span>).toString());</span><br><span class="line">			c.setTime(<span class="keyword">new</span> Date()); </span><br><span class="line">			c.add(Calendar.DAY_OF_MONTH,remindStart);</span><br><span class="line">			remindStartDate = c.getTime();</span><br><span class="line">			map.put(<span class="string">&quot;remindstart&quot;</span>, sdf.format(remindStartDate));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			Integer remindEnd = Integer.parseInt(map.get(<span class="string">&quot;remindend&quot;</span>).toString());</span><br><span class="line">			c.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">			c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">			remindEndDate = c.getTime();</span><br><span class="line">			map.put(<span class="string">&quot;remindend&quot;</span>, sdf.format(remindEndDate));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	Wrapper&lt;JiedanxinxiEntity&gt; wrapper = <span class="keyword">new</span> EntityWrapper&lt;JiedanxinxiEntity&gt;();</span><br><span class="line">	<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">		wrapper.ge(columnName, map.get(<span class="string">&quot;remindstart&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">		wrapper.le(columnName, map.get(<span class="string">&quot;remindend&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	String tableName = request.getSession().getAttribute(<span class="string">&quot;tableName&quot;</span>).toString();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.le(columnName, map.get(<span class="string">&quot;remindend&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		String tableName = request.getSession().getAttribute(<span class="string">&quot;tableName&quot;</span>).toString();</span><br><span class="line">		<span class="keyword">if</span>(tableName.equals(<span class="string">&quot;zhuhu&quot;</span>)) &#123;</span><br><span class="line">			wrapper.eq(<span class="string">&quot;yonghuming&quot;</span>, (String)request.getSession().getAttribute(<span class="string">&quot;username&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(tableName.equals(<span class="string">&quot;weixiugong&quot;</span>)) &#123;</span><br><span class="line">			wrapper.eq(<span class="string">&quot;zhanghao&quot;</span>, (String)request.getSession().getAttribute(<span class="string">&quot;username&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> count = jiedanxinxiService.selectCount(wrapper);</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">			<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				Integer remindStart = Integer.parseInt(map.get(<span class="string">&quot;remindstart&quot;</span>).toString());</span><br><span class="line">				c.setTime(<span class="keyword">new</span> Date()); </span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindStart);</span><br><span class="line">				remindStartDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindstart&quot;</span>, sdf.format(remindStartDate));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				Integer remindEnd = Integer.parseInt(map.get(<span class="string">&quot;remindend&quot;</span>).toString());</span><br><span class="line">				c.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">				remindEndDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindend&quot;</span>, sdf.format(remindEndDate));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Wrapper&lt;DingdanxinxiEntity&gt; wrapper = <span class="keyword">new</span> EntityWrapper&lt;DingdanxinxiEntity&gt;();</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.ge(columnName, map.get(<span class="string">&quot;remindstart&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.le(columnName, map.get(<span class="string">&quot;remindend&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		String tableName = request.getSession().getAttribute(<span class="string">&quot;tableName&quot;</span>).toString();</span><br><span class="line">		<span class="keyword">if</span>(tableName.equals(<span class="string">&quot;zhuhu&quot;</span>)) &#123;</span><br><span class="line">			wrapper.eq(<span class="string">&quot;yonghuming&quot;</span>, (String)request.getSession().getAttribute(<span class="string">&quot;username&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(tableName.equals(<span class="string">&quot;weixiugong&quot;</span>)) &#123;</span><br><span class="line">			wrapper.eq(<span class="string">&quot;zhanghao&quot;</span>, (String)request.getSession().getAttribute(<span class="string">&quot;username&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> count = dingdanxinxiService.selectCount(wrapper);</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">	 * （按值统计）</span><br><span class="line">	 */</span><br><span class="line">	<span class="meta">@IgnoreAuth</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/value/&#123;tableName&#125;/&#123;xColumnName&#125;/&#123;yColumnName&#125;&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> R <span class="title">value</span><span class="params">(<span class="meta">@PathVariable(&quot;tableName&quot;)</span> String tableName, <span class="meta">@PathVariable(&quot;yColumnName&quot;)</span> String yColumnName, <span class="meta">@PathVariable(&quot;xColumnName&quot;)</span> String xColumnName)</span> </span>&#123;</span><br><span class="line">		Map&lt;String, Object&gt; params = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">		params.put(<span class="string">&quot;table&quot;</span>, tableName);</span><br><span class="line">		params.put(<span class="string">&quot;xColumn&quot;</span>, xColumnName);</span><br><span class="line">		params.put(<span class="string">&quot;yColumn&quot;</span>, yColumnName);</span><br><span class="line">		List&lt;Map&lt;String, Object&gt;&gt; result = commonService.selectValue(params);</span><br><span class="line">		SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line">		<span class="keyword">for</span>(Map&lt;String, Object&gt; m : result) &#123;</span><br><span class="line">			<span class="keyword">for</span>(String k : m.keySet()) &#123;</span><br><span class="line">				<span class="keyword">if</span>(m.get(k) <span class="keyword">instanceof</span> Date) &#123;</span><br><span class="line">					m.put(k, sdf.format((Date)m.get(k)));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, result);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">						 <span class="meta">@PathVariable(&quot;type&quot;)</span> String type,<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; map) &#123;</span><br><span class="line">		map.put(<span class="string">&quot;column&quot;</span>, columnName);</span><br><span class="line">		map.put(<span class="string">&quot;type&quot;</span>, type);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(type.equals(<span class="string">&quot;2&quot;</span>)) &#123;</span><br><span class="line">			SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line">			Calendar c = Calendar.getInstance();</span><br><span class="line">			Date remindStartDate = <span class="keyword">null</span>;</span><br><span class="line">			Date remindEndDate = <span class="keyword">null</span>;</span><br><span class="line">			<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				Integer remindStart = Integer.parseInt(map.get(<span class="string">&quot;remindstart&quot;</span>).toString());</span><br><span class="line">				c.setTime(<span class="keyword">new</span> Date()); </span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindStart);</span><br><span class="line">				remindStartDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindstart&quot;</span>, sdf.format(remindStartDate));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				Integer remindEnd = Integer.parseInt(map.get(<span class="string">&quot;remindend&quot;</span>).toString());</span><br><span class="line">				c.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">				remindEndDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindend&quot;</span>, sdf.format(remindEndDate));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Wrapper&lt;ZhuhuEntity&gt; wrapper = <span class="keyword">new</span> EntityWrapper&lt;ZhuhuEntity&gt;();</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.ge(columnName, map.get(<span class="string">&quot;remindstart&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.le(columnName, map.get(<span class="string">&quot;remindend&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> count = zhuhuService.selectCount(wrapper);</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
-<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=99&price2=89" style="height: 260px;" frameborder="0"></iframe>
 <blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=281524522608201pc<br>https://javayms.pages.dev?id=281524522608201pc</p></blockquote>
     </div>
 
@@ -633,6 +273,7 @@
           <div class="post-tags">
 			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
 			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
 			<a href="/tags/%E7%BB%B4%E4%BF%AE/" rel="tag"><i class="fa fa-tag"></i> 维修</a>
 
           </div>
