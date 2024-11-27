@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SSM高校研招信息共享系统(java+ssm+js+jquery+layui+mysql)">
+<meta property="og:title" content="基于javaweb的SSM+Maven高校研招信息共享系统(java+ssm+js+jquery+layui+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SSM高校研招信息共享系统(java+ssm+js+jquery+layui+mysql) | Java源码社</title>
+  <title>基于javaweb的SSM+Maven高校研招信息共享系统(java+ssm+js+jquery+layui+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SSM高校研招信息共享系统(java+ssm+js+jquery+layui+mysql)
+			基于javaweb的SSM+Maven高校研招信息共享系统(java+ssm+js+jquery+layui+mysql)
             
         </h1>
 
@@ -231,287 +231,36 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/511524082608.jpg" alt="511524082608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/521524082608.jpg" alt="521524082608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/531524082608.jpg" alt="531524082608"></p>
-<p>基于javaweb的SSM高校研招信息共享系统(java+ssm+js+jquery+layui+mysql)</p>
-<p>项目介绍</p>
+<p>基于javaweb的SSM+Maven高校研招信息共享系统(java+ssm+js+jquery+layui+mysql)</p>
 <p>基于SSM的高校研招信息及专业信息共享系统</p>
 <p>角色：管理员、学生、第三方，分为前后台；</p>
 <p>管理员：登录进入高校研招信息及专业信息共享系统可以查看主页、个人中心、学生管理、第三方管理、院系管理、专业管理、院校信息管理、专业信息管理、专业辅导管理、交流论坛、系统管理等信息进行详细操作；</p>
 <p>学生：学生登录进入系统可以查看首页、院校信息、专业信息、专业辅导、交流论坛、新闻资讯、在线客服、个人中心等内容，并进行详细操作</p>
 <p>第三方：第三方登录进入高校研招信息及专业信息共享系统可以查看主页、院校信息、专业信息、专业辅导、交流论坛、新闻资讯、在线客服、个人中心等内容，</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
-<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
-<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
-<p>4.Tomcat环境：Tomcat 7.x,8.x,9.x版本均可</p>
-<p>5.数据库：MySql 5.7/8.0版本均可；</p>
-<p>6.是否Maven项目：是；</p>
-<p>技术栈</p>
-<p>后端：SSM(Spring+SpringMVC+Mybatis)</p>
-<p>前端：JSP+CSS+JS+JQUERY+Layui</p>
-<p>使用说明</p>
-<p>项目运行：</p>
-<ol>
-<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
-</li>
-<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令，然后运行；</p>
-</li>
-<li><p>将项目中config.properties配置文件中的数据库配置改为自己的配置，然后运行；</p>
-</li>
-</ol>
-<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/jspml609s/front/index.jsp">http://localhost:8080/jspml609s/front/index.jsp</a></p>
-<p>学生账号密码：学号1 密码：123456</p>
-<p>第三方：第三方账号1 密码：123456</p>
-<p>后台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/jspml609s/jsp/login.jsp">http://localhost:8080/jspml609s/jsp/login.jsp</a></p>
-<p>管理员账号密码:admin 密码：admin</p>
-<p>首页展示：</p>
-<p>专业信息推荐展示：</p>
-<p>专业辅导展示：</p>
-<p>交流论坛展示：</p>
-<p>个人中心展示：</p>
-<p>登录页面展示：</p>
-<p>统计页面展示：</p>
-<p>学生管理信息展示： </p>
-<p>专业列表展示：</p>
-<p>轮播图管理展示：</p>
+<p>使用人群：<br>由于本程序规模不大，可供课程设计，毕业设计学习演示之用</p>
+<h4 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h4><p>后端：SSM(Spring+SpringMVC+Mybatis)<br>前端：JSP+CSS+JS+JQUERY+Layui</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>用户管理控制层：</p>
-<p>@Controller</p>
-<p>@RequestMapping(“UsersServlet”)</p>
-<p>public class UsersController {</p>
-<p>private UsersDao usersDao = new UsersDao();</p>
-<p>@Autowired</p>
-<p>private HttpServletRequest request;</p>
-<p>@RequestMapping(“/loginadmin”)</p>
-<p>public String loginadmin() {</p>
-<p>String username = request.getParameter(“username”);</p>
-<p>String password = request.getParameter(“password”);</p>
-<p>Users users = usersDao.login(username, password);</p>
-<p>if (users != null) {</p>
-<p>request.getSession().setAttribute(“loginUsers”, users);</p>
-<p>return “admin_index”;</p>
-<p>} else {</p>
-<p>request.setAttribute(“msg”, “登录失败，账号密码不匹配”);</p>
-<p>return “admin_login”;</p>
-<p>@RequestMapping(“/userlogin”)</p>
-<p>public String userlogin() {</p>
-<p>String userName = request.getParameter(“username”);</p>
-<p>String password = request.getParameter(“password”);</p>
-<p>String clientCheckcode = request.getParameter(“validateCode”);</p>
-<p>String serverCheckcode = (String) request.getSession().getAttribute(“checkcode”);</p>
-<p>if (clientCheckcode.equals(serverCheckcode)) {</p>
-<p>// 2. 去访问dao ， 看看是否满足登录。</p>
-<p>Users Users = usersDao.userlogin(userName, password);</p>
-<p>// 3. 针对dao的返回结果，做出响应</p>
-<p>if (Users != null) {</p>
-<p>request.getSession().setAttribute(“usersLogin”, Users);</p>
-<p>CategoryDao categoryDao = new CategoryDao();</p>
-<p>List<Category> categoryList = categoryDao.queryAll();</Category></p>
-<p>request.setAttribute(“categoryList”, categoryList.stream().filter(x -&gt; x.getState().equals(“1”)).collect(Collectors.toList()));</p>
-<p>return “index”;</p>
-<p>} else {</p>
-<p>request.setAttribute(“error”, “用户名或密码错误！”);</p>
-<p>return “login”;</p>
-<p>} else {</p>
-<p>request.setAttribute(“error”, “登录失败，验证码不正确！”);</p>
-<p>return “login”;</p>
-<p>@RequestMapping(“/userreg”)</p>
-<p>public String userreg() {</p>
-<p>String username = request.getParameter(“username”);</p>
-<p>String password = request.getParameter(“password”);</p>
-<p>String account = request.getParameter(“account”);</p>
-<p>String email = request.getParameter(“email”);</p>
-<p>String password2 = request.getParameter(“password2”);</p>
-<p>if (!password.equals(password2)) {</p>
-<p>request.setAttribute(“error”, “注册失败，密码与确认密码不一致！”);</p>
-<p>return “reg”;</p>
-<p>} else {</p>
-<p>boolean isSuccess = usersDao.isReg(account);</p>
-<p>if (!isSuccess) {</p>
-<p>request.setAttribute(“error”, “注册失败，该用户名已存在！”);</p>
-<p>return “reg”;</p>
-<p>} else {</p>
-<p>usersDao.reg(username, account, password, email);</p>
-<p>request.setAttribute(“error”, “注册成功！”);</p>
-<p>return “reg”;</p>
-<p>@RequestMapping(“/listforadmin”)</p>
-<p>public String listforadmin() {</p>
-<p>List<Users> list = usersDao.getUsers();</Users></p>
-<p>request.setAttribute(“list”, list);</p>
-<p>return “listusers”;</p>
-<p>@RequestMapping(“/del”)</p>
-<p>public String del(Integer id) {</p>
-<p>usersDao.del(id);</p>
-<p>List<Users> list = usersDao.getUsers();</Users></p>
-<p>request.setAttribute(“list”, list);</p>
-<p>return “listusers”;</p>
-<p>新闻管理控制层： </p>
-<p>@Controller</p>
-<p>@RequestMapping(“NewsServlet”)</p>
-<p>public class NewsController {</p>
-<p>@Autowired</p>
-<p>private HttpServletRequest request;</p>
-<p>private NewsDao newsDao = new NewsDao();</p>
-<p>private CategoryDao categoryDao = new CategoryDao();</p>
-<p>private CommentsDao commentsDao = new CommentsDao();</p>
-<p>@RequestMapping(“/publish”)</p>
-<p>public String publish(){</p>
-<p>String title = request.getParameter(“title”);</p>
-<p>String content = request.getParameter(“content”);</p>
-<p>String categoryid = request.getParameter(“categoryid”);</p>
-<p>Users users = (Users) request.getSession().getAttribute(“loginUsers”);</p>
-<p>Integer usersId = users.getId();</p>
-<p>Integer deptid = users.getDeptid();</p>
-<p>News news = new News();</p>
-<p>news.setCategoryid(Integer.parseInt(categoryid));</p>
-<p>news.setClicks(0);</p>
-<p>news.setContent(content);</p>
-<p>news.setPbdate(new Date());</p>
-<p>news.setPbdeptid(deptid);</p>
-<p>news.setPublisher(usersId);</p>
-<p>news.setCategoryid(Integer.parseInt(categoryid));</p>
-<p>news.setTitle(title);</p>
-<p>newsDao.save(news);</p>
-<p>return “redirect:listforadmin”;</p>
-<p>@RequestMapping(“/listforadmin”)</p>
-<p>public String listforadmin(){</p>
-<p>List<News> newsList = newsDao.queryAll();</News></p>
-<p>request.setAttribute(“list”, newsList);</p>
-<p>return “listnews”;</p>
-<p>@RequestMapping(“/toaddnews”)</p>
-<p>public String toaddnews(){</p>
-<p>List<News> newsList = newsDao.queryAll();</News></p>
-<p>request.setAttribute(“list”, newsList);</p>
-<p>List<Category> categoryList = categoryDao.queryAll();</Category></p>
-<p>request.setAttribute(“categoryList”, categoryList);</p>
-<p>return “addnews”;</p>
-<p>@RequestMapping(“/edit”)</p>
-<p>public String edit(){</p>
-<p>String title = request.getParameter(“title”);</p>
-<p>String content = request.getParameter(“content”);</p>
-<p>String categoryid = request.getParameter(“categoryid”);</p>
-<p>News news = new News();</p>
-<p>news.setCategoryid(Integer.parseInt(categoryid));</p>
-<p>news.setContent(content);</p>
-<p>news.setPbdate(new Date());</p>
-<p>news.setId(Integer.parseInt(request.getParameter(“id”)));</p>
-<p>news.setTitle(title);</p>
-<p>newsDao.edit(news);</p>
-<p>return “redirect:listforadmin”;</p>
-<p>@RequestMapping(“/del”)</p>
-<p>public String del(){</p>
-<p>newsDao.deleteById(Integer.parseInt(request.getParameter(“id”)));</p>
-<p>List<News> newsList = newsDao.queryAll();</News></p>
-<p>request.setAttribute(“list”, newsList);</p>
-<p>return “listnews”;</p>
-<p>@RequestMapping(“/toeditnews”)</p>
-<p>public String toeditnews(){</p>
-<p>News news = newsDao.queryByid(Integer.parseInt(request.getParameter(“id”)));</p>
-<p>request.setAttribute(“v”, news);</p>
-<p>List<Category> categoryList = categoryDao.queryAll();</Category></p>
-<p>request.setAttribute(“categoryList”, categoryList);</p>
-<p>return “editnews”;</p>
-<p>@RequestMapping(“/queryByType”)</p>
-<p>public String queryByType(){</p>
-<p>String categoryid = request.getParameter(“categoryid”);</p>
-<p>List<News> newsList = newsDao.queryAll();</News></p>
-<p>request.setAttribute(“list”, newsList.stream()</p>
-<p>.filter(x -&gt; x.getCategoryid().equals(Integer.parseInt(categoryid))).collect(Collectors.toList()));</p>
-<p>List<Category> categoryList = categoryDao.queryAll();</Category></p>
-<p>request.setAttribute(“categoryList”,</p>
-<p>categoryList.stream().filter(x -&gt; x.getState().equals(“1”)).collect(Collectors.toList()));</p>
-<p>return “typenews”;</p>
-<p>@RequestMapping(“/detail”)</p>
-<p>public String detail(){</p>
-<p>//测试</p>
-<p>String id =  request.getParameter(“id”);</p>
-<p>if(id.contains(“.jsp”))</p>
-<p>id= request.getParameter(“id”).replaceAll(“.jsp”,””);</p>
-<p>News news = newsDao.queryByid(Integer.parseInt(id));</p>
-<p>news.setClicks(news.getClicks() + 1);</p>
-<p>newsDao.setClicksIncrement(news);</p>
-<p>NewsDetail detail = new NewsDetail();</p>
-<p>detail.setNews(news);</p>
-<p>Category category = categoryDao.queryById(news.getCategoryid());</p>
-<p>detail.setCategory(category);</p>
-<p>String content = news.getContent();</p>
-<p>int length = content.length();</p>
-<p>length = length / 60;</p>
-<p>length = length * 27 + 10;</p>
-<p>request.setAttribute(“length”, length);</p>
-<p>request.setAttribute(“v”, detail);</p>
-<p>List<Category> categoryList = categoryDao.queryAll();</Category></p>
-<p>List<Comments> commentsList = commentsDao.getByNewsId(news.getId());</Comments></p>
-<p>request.setAttribute(“commentsList”, commentsList);</p>
-<p>request.setAttribute(“contentstr”, content);</p>
-<p>request.setAttribute(“categoryList”,</p>
-<p>categoryList.stream().filter(x -&gt; x.getState().equals(“1”)).collect(Collectors.toList()));</p>
-<p>return “detailnews”;</p>
-<p>@RequestMapping(“/search”)</p>
-<p>public String search(){</p>
-<p>String search = request.getParameter(“search”);</p>
-<p>request.setAttribute(“searchStr”, search);</p>
-<p>List<News> newsList = newsDao.queryAll();</News></p>
-<p>newsList=newsList.stream().filter(x -&gt; x.getTitle().contains(search)).collect(Collectors.toList());</p>
-<p>newsList=    newsList.stream().map(x-&gt;{</p>
-<p>String title = x.getTitle();</p>
-<p>/*            String[] split = title.split(search);</p>
-<p>*/</p>
-<p>/*if(split.length&gt;=2){</p>
-<p>for(int i=0;i&lt;split.length-1;i++){</p>
-<p>title=split[i]+”<font color="red">“+search+”</font>“+split[i+1];</p>
-<p>}else{</p>
-<p>title=split[0]+”<font color="red">“+search+”</font>“;</p>
-<p>}*/</p>
-<p>title=title.replace(search, “<font color="red">“+search+”</font>“);</p>
-<p>System.out.println(title);</p>
-<p>x.setTitle(title);</p>
-<p>return x;</p>
-<p>}).collect(Collectors.toList());</p>
-<p>request.setAttribute(“list”,newsList</p>
-<p>);</p>
-<p>List<Category> categoryList = categoryDao.queryAll();</Category></p>
-<p>request.setAttribute(“categoryList”,</p>
-<p>categoryList.stream().filter(x -&gt; x.getState().equals(“1”)).collect(Collectors.toList()));</p>
-<p>return “searchnews”;</p>
-<p>管理控制层：</p>
-<p>@Controller</p>
-<p>@RequestMapping(“CategoryServlet”)</p>
-<p>public class CategoryController {</p>
-<p>@Autowired</p>
-<p>private HttpServletRequest request;</p>
-<p>private CategoryDao categoryDao=new CategoryDao();</p>
-<p>@RequestMapping(“/listforadmin”)</p>
-<p>public String listforadmin(){</p>
-<p>List<Category> categoryList = categoryDao.queryAll();</Category></p>
-<p>request.setAttribute(“list”, categoryList);</p>
-<p>return “listcategory”;</p>
-<p>@RequestMapping(“/show”)</p>
-<p>public String show(){</p>
-<p>List<Category> categoryList = categoryDao.queryAll();</Category></p>
-<p>categoryList=categoryList.stream().filter(x-&gt;x.getState().equals(“1”)).collect(Collectors.toList());</p>
-<p>if(categoryList.size()&gt;=5)</p>
-<p>request.setAttribute(“list”, categoryDao.queryAll());</p>
-<p>request.setAttribute(“msg”,”设置栏目显示失败，前台栏目最多显示5个”);</p>
-<p>return “listcategory”;</p>
-<p>}else {</p>
-<p>categoryDao.show(Integer.parseInt(request.getParameter(“id”)));</p>
-<p>return “redirect:listforadmin”;</p>
-<p>@RequestMapping(“/hidden”)</p>
-<p>public String hidden(){</p>
-<p>categoryDao.hidden(Integer.parseInt(request.getParameter(“id”)));</p>
-<p>return “redirect:listforadmin”;</p>
-<p>@RequestMapping(“/add”)</p>
-<p>public String add(){</p>
-<p>String name=request.getParameter(“name”);</p>
-<p>String state=request.getParameter(“state”);</p>
-<p>Category category=new Category();</p>
-<p>category.setName(name);</p>
-<p>category.setState(state);</p>
-<p>categoryDao.save(category);</p>
-<p>return “redirect:listforadmin”;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">return</span> R.error(<span class="string">&quot;用户已存在&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">disanfang.setId(<span class="keyword">new</span> Date().getTime());</span><br><span class="line">      disanfangService.insert(disanfang);</span><br><span class="line">      <span class="keyword">return</span> R.ok();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 前端保存</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/add&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> R <span class="title">add</span><span class="params">(<span class="meta">@RequestBody</span> DisanfangEntity disanfang, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">  	disanfang.setId(<span class="keyword">new</span> Date().getTime()+<span class="keyword">new</span> Double(Math.floor(Math.random()*<span class="number">1000</span>)).longValue());</span><br><span class="line">  	<span class="comment">//ValidatorUtils.validateEntity(disanfang);</span></span><br><span class="line">  	DisanfangEntity u = disanfangService.selectOne(<span class="keyword">new</span> EntityWrapper&lt;DisanfangEntity&gt;().eq(<span class="string">&quot;disanfangzhanghao&quot;</span>, disanfang.getDisanfangzhanghao()));</span><br><span class="line"><span class="keyword">if</span>(u!=<span class="keyword">null</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> R.error(<span class="string">&quot;用户已存在&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">disanfang.setId(<span class="keyword">new</span> Date().getTime());</span><br><span class="line">      disanfangService.insert(disanfang);</span><br><span class="line">      <span class="keyword">return</span> R.ok();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 修改</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/update&quot;)</span></span><br><span class="line">  <span class="meta">@Transactional</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> R <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> DisanfangEntity disanfang, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">      <span class="comment">//ValidatorUtils.validateEntity(disanfang);</span></span><br><span class="line">      disanfangService.updateById(disanfang);<span class="comment">//全部更新</span></span><br><span class="line">      <span class="keyword">return</span> R.ok();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 删除</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Long[] ids)</span></span>&#123;</span><br><span class="line">      disanfangService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line">      <span class="keyword">return</span> R.ok();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 院校信息</span></span><br><span class="line"><span class="comment"> * 后端接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@email</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/yuanxiaoxinxi&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">YuanxiaoxinxiController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> YuanxiaoxinxiService yuanxiaoxinxiService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StoreupService storeupService;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 后端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">page</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,YuanxiaoxinxiEntity yuanxiaoxinxi, </span></span></span><br><span class="line"><span class="function"><span class="params">		HttpServletRequest request)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        EntityWrapper&lt;YuanxiaoxinxiEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;YuanxiaoxinxiEntity&gt;();</span><br><span class="line"></span><br><span class="line">    	PageUtils page = yuanxiaoxinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, yuanxiaoxinxi), params), params));</span><br><span class="line">		request.setAttribute(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 后端保存</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/save&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">save</span><span class="params">(<span class="meta">@RequestBody</span> DiscusszhuanyexinxiEntity discusszhuanyexinxi, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">	discusszhuanyexinxi.setId(<span class="keyword">new</span> Date().getTime()+<span class="keyword">new</span> Double(Math.floor(Math.random()*<span class="number">1000</span>)).longValue());</span><br><span class="line">	<span class="comment">//ValidatorUtils.validateEntity(discusszhuanyexinxi);</span></span><br><span class="line"></span><br><span class="line">    discusszhuanyexinxiService.insert(discusszhuanyexinxi);</span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 前端保存</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/add&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">add</span><span class="params">(<span class="meta">@RequestBody</span> DiscusszhuanyexinxiEntity discusszhuanyexinxi, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">	discusszhuanyexinxi.setId(<span class="keyword">new</span> Date().getTime()+<span class="keyword">new</span> Double(Math.floor(Math.random()*<span class="number">1000</span>)).longValue());</span><br><span class="line">	<span class="comment">//ValidatorUtils.validateEntity(discusszhuanyexinxi);</span></span><br><span class="line"></span><br><span class="line">    discusszhuanyexinxiService.insert(discusszhuanyexinxi);</span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/update&quot;)</span></span><br><span class="line"><span class="meta">@Transactional</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> DiscusszhuanyexinxiEntity discusszhuanyexinxi, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    <span class="comment">//ValidatorUtils.validateEntity(discusszhuanyexinxi);</span></span><br><span class="line">    discusszhuanyexinxiService.updateById(discusszhuanyexinxi);<span class="comment">//全部更新</span></span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Transactional</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> SystemintroEntity systemintro, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        <span class="comment">//ValidatorUtils.validateEntity(systemintro);</span></span><br><span class="line">        systemintroService.updateById(systemintro);<span class="comment">//全部更新</span></span><br><span class="line">        <span class="keyword">return</span> R.ok();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Long[] ids)</span></span>&#123;</span><br><span class="line">        systemintroService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line">        <span class="keyword">return</span> R.ok();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * （按值统计）时间统计类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/value/&#123;xColumnName&#125;/&#123;yColumnName&#125;/&#123;timeStatType&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">valueDay</span><span class="params">(<span class="meta">@PathVariable(&quot;yColumnName&quot;)</span> String yColumnName, <span class="meta">@PathVariable(&quot;xColumnName&quot;)</span> String xColumnName, <span class="meta">@PathVariable(&quot;timeStatType&quot;)</span> String timeStatType,HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">    Map&lt;String, Object&gt; params = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">    params.put(<span class="string">&quot;xColumn&quot;</span>, xColumnName);</span><br><span class="line">    params.put(<span class="string">&quot;yColumn&quot;</span>, yColumnName);</span><br><span class="line">    params.put(<span class="string">&quot;timeStatType&quot;</span>, timeStatType);</span><br><span class="line">    EntityWrapper&lt;ZhuanyexinxiEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;ZhuanyexinxiEntity&gt;();</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; result = zhuanyexinxiService.selectTimeStatValue(params, ew);</span><br><span class="line">    SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(Map&lt;String, Object&gt; m : result) &#123;</span><br><span class="line">        <span class="keyword">for</span>(String k : m.keySet()) &#123;</span><br><span class="line">            <span class="keyword">if</span>(m.get(k) <span class="keyword">instanceof</span> Date) &#123;</span><br><span class="line">                m.put(k, sdf.format((Date)m.get(k)));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 分组统计</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/group/&#123;columnName&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">group</span><span class="params">(<span class="meta">@PathVariable(&quot;columnName&quot;)</span> String columnName,HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">    Map&lt;String, Object&gt; params = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">    params.put(<span class="string">&quot;column&quot;</span>, columnName);</span><br><span class="line">    EntityWrapper&lt;ZhuanyexinxiEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;ZhuanyexinxiEntity&gt;();</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; result = zhuanyexinxiService.selectGroup(params, ew);</span><br><span class="line">    SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(Map&lt;String, Object&gt; m : result) &#123;</span><br><span class="line">        <span class="keyword">for</span>(String k : m.keySet()) &#123;</span><br><span class="line">            <span class="keyword">if</span>(m.get(k) <span class="keyword">instanceof</span> Date) &#123;</span><br><span class="line">                m.put(k, sdf.format((Date)m.get(k)));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 总数量</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 后端列表</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">page</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,DisanfangEntity disanfang, </span></span></span><br><span class="line"><span class="function"><span class="params">	HttpServletRequest request)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">       EntityWrapper&lt;DisanfangEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;DisanfangEntity&gt;();</span><br><span class="line"></span><br><span class="line">   	PageUtils page = disanfangService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, disanfang), params), params));</span><br><span class="line">	request.setAttribute(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 前端列表</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">@IgnoreAuth</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/list&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,DisanfangEntity disanfang, </span></span></span><br><span class="line"><span class="function"><span class="params">	HttpServletRequest request)</span></span>&#123;</span><br><span class="line">       EntityWrapper&lt;DisanfangEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;DisanfangEntity&gt;();</span><br><span class="line"></span><br><span class="line">   	PageUtils page = disanfangService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, disanfang), params), params));</span><br><span class="line">	request.setAttribute(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 列表</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/lists&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">( DisanfangEntity disanfang)</span></span>&#123;</span><br><span class="line">      	EntityWrapper&lt;DisanfangEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;DisanfangEntity&gt;();</span><br><span class="line">     	ew.allEq(MPUtil.allEQMapPre( disanfang, <span class="string">&quot;disanfang&quot;</span>)); </span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, disanfangService.selectListView(ew));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 查询</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/query&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">query</span><span class="params">(DisanfangEntity disanfang)</span></span>&#123;</span><br><span class="line">       EntityWrapper&lt; DisanfangEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt; DisanfangEntity&gt;();</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
-<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=89&price2=79" style="height: 260px;" frameborder="0"></iframe>
 <blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=411524522608201pn<br>https://javayms.pages.dev?id=411524522608201pn</p></blockquote>
     </div>
 
@@ -522,8 +271,9 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-			<a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+			<a href="/tags/SSM-Maven/" rel="tag"><i class="fa fa-tag"></i> SSM+Maven</a>
 			<a href="/tags/%E5%8D%9A%E5%AE%A2-%E8%AE%BA%E5%9D%9B/" rel="tag"><i class="fa fa-tag"></i> 博客 | 论坛</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
 
           </div>
 

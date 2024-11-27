@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot体检管理系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:title" content="基于javaweb的SpringBoot体检管理系统(java+springboot+maven+mybaits+vue+elementui+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot体检管理系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  <title>基于javaweb的SpringBoot体检管理系统(java+springboot+maven+mybaits+vue+elementui+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot体检管理系统(java+springboot+mybaits+vue+elementui+mysql)
+			基于javaweb的SpringBoot体检管理系统(java+springboot+maven+mybaits+vue+elementui+mysql)
             
         </h1>
 
@@ -233,7 +233,7 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/521524102608.jpg" alt="521524102608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/531524102608.jpg" alt="531524102608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/541524102608.jpg" alt="541524102608"></p>
-<p>基于javaweb的SpringBoot体检管理系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>基于javaweb的SpringBoot体检管理系统(java+springboot+maven+mybaits+vue+elementui+mysql)</p>
 <p>项目介绍</p>
 <p>基于Springboot + vue实现的体检管理系统</p>
 <p>系统包含用户和管理员两个角色,分为前后台；</p>
@@ -254,457 +254,28 @@
 <p>在线咨询：通过系统向医生或客服人员在线咨询，获取专业的解答和建议。</p>
 <p>浏览健康常识和疾病预防信息：了解健康知识和预防措施，提升个人健康意识。</p>
 <p>论坛参与：在论坛中发布讨论、分享经验、提问等，与其他用户互动交流。</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
-<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
-<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； </p>
-<p>4.数据库：MySql 5.7/8.0版本均可；</p>
-<p>5.是否Maven项目：是；</p>
 <p>技术栈</p>
 <p>后端：SpringBoot+Mybaits</p>
 <p>前端：Vue+elementui</p>
-<p>使用说明</p>
-<p>项目运行：</p>
-<ol>
-<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
-</li>
-<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
-</li>
-<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
-</li>
-</ol>
-<p>4.运行项目，在浏览器中输入地址：</p>
-<p>前台登录页面</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:8080/laonianrentijian/front/index.html">http://localhost:8080/laonianrentijian/front/index.html</a></p>
-<p>用户账户:a1 密码：123456</p>
-<p>后台登录页面</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:8080/laonianrentijian/admin/dist/index.html#/login">http://localhost:8080/laonianrentijian/admin/dist/index.html#/login</a></p>
-<p>管理员账户:admin 密码：admin</p>
-<p>用户账户:a1 密码：123456</p>
-<p>文档结构展示：</p>
-<p>首页展示页面：</p>
-<p>健康常识展示：</p>
-<p>疾病预防展示：</p>
-<p>体检项目展示：</p>
-<p>个人中心展示：</p>
-<p>在线咨询展示：</p>
-<p> 后台管理健康常识：</p>
-<p>疾病预防管理：</p>
-<p>体检项目管理：</p>
-<p>医生管理控制层：</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>/**</p>
-<ul>
-<li>@author：yy</li>
-</ul>
-<p>*/</p>
-<p>package vip.penint.dandp.controller;</p>
-<p>import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;</p>
-<p>import org.springframework.beans.factory.annotation.Autowired;</p>
-<p>import org.springframework.web.bind.annotation.*;</p>
-<p>import vip.penint.dandp.entity.User;</p>
-<p>import vip.penint.dandp.service.IUserService;</p>
-<p>import vip.penint.dandp.utils.MD5Util;</p>
-<p>import vip.penint.dandp.utils.QueryRequest;</p>
-<p>import vip.penint.dandp.utils.ResultVo;</p>
-<p>import javax.servlet.http.HttpServletRequest;</p>
-<p>import java.util.Date;</p>
-<p>@RestController</p>
-<p>@RequestMapping(“/adminApi/doctor”)</p>
-<p>public class DoctorController {</p>
-<p>@Autowired</p>
-<p>private IUserService userService;</p>
-<p>@GetMapping(“/list”)</p>
-<p>public ResultVo list(QueryRequest queryRequest, User user) {</p>
-<p>return ResultVo.oK(userService.queryDoctorFuzz(queryRequest, user));</p>
-<p>/**</p>
-<ul>
-<li><p>修改账户状态，禁用或者取消</p>
-</li>
-<li><p>@param user</p>
-</li>
-<li><p>@param request</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@PutMapping(“/changeStatus”)</p>
-<p>public ResultVo changeStatus(@RequestBody User user, HttpServletRequest request) {</p>
-<p>userService.updateById(user);</p>
-<p>return ResultVo.oK();</p>
-<p>/**</p>
-<ul>
-<li><p>根据ID查询用户详情</p>
-</li>
-<li><p>@param userId</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/{userId}”)</p>
-<p>public ResultVo getUserInfo(@PathVariable Integer userId) {</p>
-<p>User info = userService.getById(userId);</p>
-<p>return ResultVo.oK(info);</p>
-<p>/**</p>
-<ul>
-<li>新增用户</li>
-</ul>
-<p>*/</p>
-<p>@PostMapping</p>
-<p>public ResultVo add(@RequestBody User user) {</p>
-<p>// 查询用户名是否存在数据库中</p>
-<p>LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();</User></p>
-<p>lambdaQueryWrapper.eq(User::getUsername, user.getUsername());</p>
-<p>User entity = userService.getOne(lambdaQueryWrapper);</p>
-<p>if (entity == null) {</p>
-<p>user.setCreateTime(new Date());</p>
-<p>// 设置默认密码1234qwer</p>
-<p>user.setPassword(MD5Util.md5(“1234qwer”));</p>
-<p>user.setRoleId(1);</p>
-<p>userService.save(user);</p>
-<p>return ResultVo.oK(“用户:” + user.getUsername() + “新增成功，默认密码为：” + “1234qwer”);</p>
-<p>} else {</p>
-<p>return ResultVo.failed(201, “用户新增失败，用户名：” + user.getUsername() + “已存在”);</p>
-<p>/**</p>
-<ul>
-<li>删除用户</li>
-</ul>
-<p>*/</p>
-<p>@DeleteMapping(“/{userIds}”)</p>
-<p>public ResultVo remove(@PathVariable Integer[] userIds) {</p>
-<p>for (Integer userId : userIds) {</p>
-<p>userService.removeById(userId);</p>
-<p>return ResultVo.oK();</p>
-<p>return null;</p>
-<p>/**</p>
-<ul>
-<li><p>修改用户</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@PutMapping</p>
-<p>public ResultVo edit(@RequestBody User user) {</p>
-<p>user.setModifyTime(new Date());</p>
-<p>userService.updateById(user);</p>
-<p>return ResultVo.oK();</p>
-<p>/**</p>
-<ul>
-<li>重置密码</li>
-</ul>
-<p>*/</p>
-<p>@PutMapping(“/resetPwd”)</p>
-<p>public ResultVo reSetPwd(@RequestBody User user) {</p>
-<p>user.setPassword(MD5Util.md5(user.getPassword()));</p>
-<p>userService.updateById(user);</p>
-<p>return ResultVo.oK();</p>
-<p>登录用户控制层：</p>
-<p>/**</p>
-<ul>
-<li>@author： yy</li>
-</ul>
-<p>*/</p>
-<p>@RestController</p>
-<p>@RequestMapping(“/adminApi/common”)</p>
-<p>public class CommonController {</p>
-<p>@Autowired</p>
-<p>private IUserService userService;</p>
-<p>@Autowired</p>
-<p>private IDepartmentService departmentService;</p>
-<p>@PostMapping(“/login”)</p>
-<p>public Object adminLogin(String username, String password) {</p>
-<p>User user = userService.selectByUsername(username);</p>
-<p>if (user == null) {</p>
-<p>return ResultVo.failed(201, “账号不存在,请检查账号是否正确或联系管理员”);</p>
-<p>} else {</p>
-<p>if (!MD5Util.md5(password).equals(user.getPassword())) {</p>
-<p>return ResultVo.failed(201, “密码错误”);</p>
-<p>} else {</p>
-<p>JSONObject obj = new JSONObject();</p>
-<p>obj.put(“userInfo”, user);</p>
-<p>obj.put(“token”, TokenUtil.getAdminToken(user));</p>
-<p>return ResultVo.oK(obj);</p>
-<p>@ApiOperation(“根据Token获取用户信息”)</p>
-<p>@GetMapping(“/getUserInfo”)</p>
-<p>@AdminLoginToken</p>
-<p>public Object getUserInfo(HttpServletRequest request) {</p>
-<p>User user = userService.getById(TokenUtil.getAdminUserId(request.getHeader(“Authorization”)));</p>
-<p>if (user == null) {</p>
-<p>return ResultVo.failed(201, “账号不存在,请检查账号是否正确或联系管理员”);</p>
-<p>} else {</p>
-<p>JSONObject obj = new JSONObject();</p>
-<p>obj.put(“userInfo”, user);</p>
-<p>obj.put(“token”, TokenUtil.getAdminToken(user));</p>
-<p>return ResultVo.oK(obj);</p>
-<p>@ApiOperation(“退出登录”)</p>
-<p>@GetMapping(“/outLogin”)</p>
-<p>public Object outLogin() {</p>
-<p>return ResultVo.oK();</p>
-<p>@ApiOperation(“文件上传”)</p>
-<p>@PostMapping(“/file”)</p>
-<p>public ResultVo uploadFile(@RequestParam(“file”) MultipartFile file) {</p>
-<p>String uploadUrl = FileUpload.uploadAccessory(file);</p>
-<p>if (uploadUrl != null &amp;&amp; uploadUrl != “”) {</p>
-<p>return ResultVo.oK(uploadUrl);</p>
-<p>return ResultVo.failed(500, “失败”);</p>
-<p>@PostMapping(“/getMeInfo”)</p>
-<p>@AdminLoginToken</p>
-<p>public ResultVo getMeInfo(HttpServletRequest request) {</p>
-<p>User user = userService.getById(TokenUtil.getAdminUserId(request.getHeader(“Authorization”)));</p>
-<p>return ResultVo.oK(user);</p>
-<p>/**</p>
-<ul>
-<li><p>判断库中用户名 有没有被使用</p>
-</li>
-<li><p>@param username</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/checkUsername/{username}”)</p>
-<p>public ResultVo checkUsername(@PathVariable String username) {</p>
-<p>LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();</User></p>
-<p>lambdaQueryWrapper.eq(User::getUsername, username);</p>
-<p>if (userService.getOne(lambdaQueryWrapper) != null) {</p>
-<p>return ResultVo.oK(true);</p>
-<p>} else {</p>
-<p>return ResultVo.oK(false);</p>
-<p>/**</p>
-<ul>
-<li><p>判断请求方法的该用户原密码是否正确</p>
-</li>
-<li><p>@param password</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/checkPassword/{password}”)</p>
-<p>public ResultVo checkPassword(@PathVariable String password, HttpServletRequest request) {</p>
-<p>Integer userId = TokenUtil.getAdminUserId(request.getHeader(“Authorization”));</p>
-<p>String encrypt = MD5Util.md5(password);// 用户输入的密码加密字符串</p>
-<p>if (userService.getById(userId).getPassword().equalsIgnoreCase(encrypt)) {</p>
-<p>return ResultVo.oK(true);</p>
-<p>} else {</p>
-<p>return ResultVo.oK(false);</p>
-<p>/**</p>
-<ul>
-<li>获取科室下拉框</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/getDepartment”)</p>
-<p>public ResultVo getDepartment() {</p>
-<p>LambdaQueryWrapper<Department> lambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();</Department></p>
-<p>lambdaQueryWrapper.select(Department::getId, Department::getDepName);</p>
-<p>return ResultVo.oK(departmentService.list(lambdaQueryWrapper));</p>
-<p>/**</p>
-<ul>
-<li>通过科室id查询医生</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/getDoctor/{id}”)</p>
-<p>public ResultVo getDoctor(@PathVariable Integer id) {</p>
-<p>LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();</User></p>
-<p>lambdaQueryWrapper.select(User::getNickName, User::getUserId);</p>
-<p>lambdaQueryWrapper.eq(User::getDepId, id);</p>
-<p>return ResultVo.oK(userService.list(lambdaQueryWrapper));</p>
-<p>@PostMapping(“/registerDoctor”)</p>
-<p>public ResultVo registerStudent(User user) {</p>
-<p>user.setPassword(MD5Util.md5(user.getPassword()));</p>
-<p>user.setCreateTime(new Date());</p>
-<p>user.setRoleId(1);</p>
-<p>userService.save(user);</p>
-<p>return ResultVo.oK();</p>
-<p>@PostMapping(“/registerPatients”)</p>
-<p>public ResultVo registerTeacher(User user) {</p>
-<p>user.setPassword(MD5Util.md5(user.getPassword()));</p>
-<p>user.setCreateTime(new Date());</p>
-<p>user.setRoleId(2);</p>
-<p>userService.save(user);</p>
-<p>return ResultVo.oK();</p>
-<p>/**</p>
-<ul>
-<li>忘记密码</li>
-</ul>
-<p>*/</p>
-<p>@PutMapping(“/forgotPassword”)</p>
-<p>public ResultVo forgotPassword(User sysUser) {</p>
-<p>LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();</User></p>
-<p>lambdaQueryWrapper.eq(!StringUtils.isEmpty(sysUser.getUsername()), User::getUsername, sysUser.getUsername());</p>
-<p>// 先判断用户名在不在库中</p>
-<p>User user = userService.getOne(lambdaQueryWrapper);</p>
-<p>if (user != null) {</p>
-<p>sysUser.setPassword(MD5Util.md5(sysUser.getPassword()));</p>
-<p>sysUser.setUserId(user.getUserId());</p>
-<p>userService.updateById(sysUser);</p>
-<p>return ResultVo.oK();</p>
-<p>} else {</p>
-<p>return ResultVo.failed(201, “请输入正确的用户名”);</p>
-<p>/**</p>
-<ul>
-<li>通过用户名查询医生详情，科室</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/getDoctorInfoByUsername/{username}”)</p>
-<p>public ResultVo getDoctorInfoByUsername(@PathVariable String username){</p>
-<p>return ResultVo.oK(userService.getDoctorInfoByUsername(username));</p>
-<p>用户管理控制层： </p>
-<p>/**</p>
-<ul>
-<li><p>
-</p></li>
-<li><p>系统用户 前端控制器</p>
-</li>
-<li><p></p>
-</li>
-<li><p>@author yy</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RestController</p>
-<p>@RequestMapping(“/adminApi/user”)</p>
-<p>public class UserController {</p>
-<p>@Autowired</p>
-<p>private IUserService userService;</p>
-<p>@GetMapping(“/list”)</p>
-<p>public ResultVo list(QueryRequest queryRequest, User user) {</p>
-<p>return ResultVo.oK(userService.queryFuzz(queryRequest, user));</p>
-<p>/**</p>
-<ul>
-<li><p>修改账户状态，禁用或者取消</p>
-</li>
-<li><p>@param user</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@PutMapping(“/changeStatus”)</p>
-<p>public ResultVo changeStatus(@RequestBody User user) {</p>
-<p>userService.updateById(user);</p>
-<p>return ResultVo.oK();</p>
-<p>/**</p>
-<ul>
-<li><p>根据ID查询用户详情</p>
-</li>
-<li><p>@param userId</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/{userId}”)</p>
-<p>public ResultVo getUserInfo(@PathVariable Integer userId) {</p>
-<p>User info = userService.getById(userId);</p>
-<p>return ResultVo.oK(info);</p>
-<p>/**</p>
-<ul>
-<li>新增用户</li>
-</ul>
-<p>*/</p>
-<p>@PostMapping</p>
-<p>public ResultVo add(@RequestBody User entity) {</p>
-<p>// 查询用户名是否存在数据库中</p>
-<p>LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper&lt;&gt;();</User></p>
-<p>lambdaQueryWrapper.eq(User::getUsername, entity.getUsername());</p>
-<p>User user = userService.getOne(lambdaQueryWrapper);</p>
-<p>if (user == null) {</p>
-<p>entity.setCreateTime(new Date());</p>
-<p>// 设置默认密码1234qwer</p>
-<p>entity.setPassword(MD5Util.md5(“1234qwer”));</p>
-<p>entity.setRoleId(0);</p>
-<p>userService.save(entity);</p>
-<p>// 插入返回ID</p>
-<p>return ResultVo.oK(“用户:” + entity.getUsername() + “新增成功，默认密码为：1234qwer”);</p>
-<p>} else {</p>
-<p>return ResultVo.failed(201, “用户新增失败，用户名：” + entity.getUsername() + “已存在”);</p>
-<p>/**</p>
-<ul>
-<li>删除用户</li>
-</ul>
-<p>*/</p>
-<p>@DeleteMapping(“/{userIds}”)</p>
-<p>public ResultVo remove(@PathVariable Integer[] userIds) {</p>
-<p>boolean flag = false;</p>
-<p>for (Integer userId : userIds) {</p>
-<p>User entity = userService.getById(userId);</p>
-<p>if (!entity.getUsername().equals(“admin”)) {</p>
-<p>userService.removeById(userId);</p>
-<p>} else {</p>
-<p>flag = true;</p>
-<p>if (flag) {</p>
-<p>return ResultVo.failed(201, “admin用户不能删除”);</p>
-<p>} else {</p>
-<p>return ResultVo.oK();</p>
-<p>/**</p>
-<ul>
-<li>修改用户</li>
-</ul>
-<p>*/</p>
-<p>@PutMapping</p>
-<p>public ResultVo edit(@RequestBody User user) {</p>
-<p>userService.updateById(user);</p>
-<p>return ResultVo.oK();</p>
-<p>/**</p>
-<ul>
-<li>重置密码</li>
-</ul>
-<p>*/</p>
-<p>@PutMapping(“/resetPwd”)</p>
-<p>public ResultVo reSetPwd(@RequestBody User user) {</p>
-<p>user.setPassword(MD5Util.md5(user.getPassword()));</p>
-<p>userService.updateById(user);</p>
-<p>return ResultVo.oK();</p>
-<p>/**</p>
-<ul>
-<li>个人中心配置</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/profile”)</p>
-<p>public ResultVo profile(HttpServletRequest request) {</p>
-<p>Integer userId = TokenUtil.getAdminUserId(request.getHeader(“Authorization”));</p>
-<p>return ResultVo.oK(userService.getById(userId));</p>
-<p>/**</p>
-<ul>
-<li>个人中心配置</li>
-</ul>
-<p>*/</p>
-<p>@PutMapping(“/profile”)</p>
-<p>public ResultVo updateProfile(@RequestBody User user) {</p>
-<p>userService.updateById(user);</p>
-<p>return ResultVo.oK();</p>
-<p>@PutMapping(“/profile/updatePwd”)</p>
-<p>public ResultVo profileUpdatePwd(QueryRequest queryRequest, HttpServletRequest request) {</p>
-<p>Integer userId = TokenUtil.getAdminUserId(request.getHeader(“Authorization”));</p>
-<p>User user = userService.getById(userId);</p>
-<p>if (user.getPassword().equalsIgnoreCase(MD5Util.md5(queryRequest.getOldPassword()))) {</p>
-<p>User u = new User();</p>
-<p>u.setUserId(userId);</p>
-<p>u.setPassword(MD5Util.md5(queryRequest.getNewPassword()));</p>
-<p>userService.updateById(u);</p>
-<p>return ResultVo.oK();</p>
-<p>} else {</p>
-<p>return ResultVo.failed(201, “原密码不正确”);</p>
-<p>@PostMapping(“/profile/avatar”)</p>
-<p>public ResultVo avatarUpload(@RequestParam(“avatarfile”) MultipartFile file, HttpServletRequest request) {</p>
-<p>Integer userId = TokenUtil.getAdminUserId(request.getHeader(“Authorization”));</p>
-<p>JSONObject result = UploadFileUtils.upload(file);</p>
-<p>if (result.getInteger(“status”) == 200) {</p>
-<p>if (result.getBoolean(“isImage”)) {</p>
-<p>User user = new User();</p>
-<p>user.setAvatar(result.getString(“requestUrl”));</p>
-<p>user.setUserId(userId);</p>
-<p>userService.updateById(user);</p>
-<p>// 缓存</p>
-<p>return ResultVo.oK(result.getString(“requestUrl”));</p>
-<p>} else {</p>
-<p>return ResultVo.failed(201, “不是图片文件”);</p>
-<p>} else {</p>
-<p>return ResultVo.failed(201, “文件上传失败,请联系管理员”);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">				two =<span class="string">&quot;joinTypes0&quot;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; result = commonService.barSum(params);</span><br><span class="line"></span><br><span class="line">List&lt;String&gt; xAxis = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//报表x轴</span></span><br><span class="line">List&lt;List&lt;String&gt;&gt; yAxis = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//y轴</span></span><br><span class="line">List&lt;String&gt; legend = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//标题</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(StringUtil.isEmpty(two))&#123;<span class="comment">//不包含第二列</span></span><br><span class="line">	List&lt;String&gt; yAxis0 = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	yAxis.add(yAxis0);</span><br><span class="line">	legend.add(<span class="string">&quot;数值&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span>(Map&lt;String, Object&gt; map :result)&#123;</span><br><span class="line">		String oneValue = String.valueOf(map.get(one));</span><br><span class="line">		String value = String.valueOf(map.get(<span class="string">&quot;value&quot;</span>));</span><br><span class="line">		xAxis.add(oneValue);</span><br><span class="line">		yAxis0.add(value);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;<span class="comment">//包含第二列</span></span><br><span class="line">	Map&lt;String, HashMap&lt;String, String&gt;&gt; dataMap = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">	<span class="keyword">if</span>(StringUtil.isNotEmpty(two))&#123;</span><br><span class="line">		<span class="keyword">for</span>(Map&lt;String, Object&gt; map :result)&#123;</span><br><span class="line">			String oneValue = String.valueOf(map.get(one));</span><br><span class="line">			String twoValue = String.valueOf(map.get(two));</span><br><span class="line">			String value = String.valueOf(map.get(<span class="string">&quot;value&quot;</span>));</span><br><span class="line">			<span class="keyword">if</span>(!legend.contains(twoValue))&#123;</span><br><span class="line">				legend.add(twoValue);<span class="comment">//添加完成后 就是最全的第二列的类型</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(dataMap.containsKey(oneValue))&#123;</span><br><span class="line">				dataMap.get(oneValue).put(twoValue,value);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				HashMap&lt;String, String&gt; oneData = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">				oneData.put(twoValue,value);</span><br><span class="line">				dataMap.put(oneValue,oneData);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> R.ok().put(<span class="string">&quot;maxCodeIndex&quot;</span>,<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 批量上传</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/batchInsert&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">save</span><span class="params">( String fileName)</span></span>&#123;</span><br><span class="line">        logger.debug(<span class="string">&quot;batchInsert方法:,,Controller:&#123;&#125;,,fileName:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),fileName);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            List&lt;DictionaryEntity&gt; dictionaryList = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//上传的东西</span></span><br><span class="line">            Map&lt;String, List&lt;String&gt;&gt; seachFields= <span class="keyword">new</span> HashMap&lt;&gt;();<span class="comment">//要查询的字段</span></span><br><span class="line">            Date date = <span class="keyword">new</span> Date();</span><br><span class="line">            <span class="keyword">int</span> lastIndexOf = fileName.lastIndexOf(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span>(lastIndexOf == -<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;该文件没有后缀&quot;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                String suffix = fileName.substring(lastIndexOf);</span><br><span class="line">                <span class="keyword">if</span>(!<span class="string">&quot;.xls&quot;</span>.equals(suffix))&#123;</span><br><span class="line">                    <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;只支持后缀为xls的excel文件&quot;</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    URL resource = <span class="keyword">this</span>.getClass().getClassLoader().getResource(<span class="string">&quot;static/upload/&quot;</span> + fileName);<span class="comment">//获取文件路径</span></span><br><span class="line">                    File file = <span class="keyword">new</span> File(resource.getFile());</span><br><span class="line">                    <span class="keyword">if</span>(!file.exists())&#123;</span><br><span class="line">                        <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;找不到上传文件，请联系管理员&quot;</span>);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        List&lt;List&lt;String&gt;&gt; dataList = PoiUtil.poiImport(file.getPath());<span class="comment">//读取xls文件</span></span><br><span class="line">                        dataList.remove(<span class="number">0</span>);<span class="comment">//删除第一行，因为第一行是提示</span></span><br><span class="line">                        <span class="keyword">for</span>(List&lt;String&gt; data:dataList)&#123;</span><br><span class="line">                            <span class="comment">//循环</span></span><br><span class="line">                            DictionaryEntity dictionaryEntity = <span class="keyword">new</span> DictionaryEntity();</span><br><span class="line"><span class="comment">//                            dictionaryEntity.setDicCode(data.get(0));                    //字段 要改的</span></span><br><span class="line"><span class="comment">//                            dictionaryEntity.setDicName(data.get(0));                    //字段名 要改的</span></span><br><span class="line"><span class="comment">//                            dictionaryEntity.setCodeIndex(Integer.valueOf(data.get(0)));   //编码 要改的</span></span><br><span class="line"><span class="comment">//                            dictionaryEntity.setIndexName(data.get(0));                    //编码名字 要改的</span></span><br><span class="line"><span class="comment">//                            dictionaryEntity.setSuperId(Integer.valueOf(data.get(0)));   //父字段id 要改的</span></span><br><span class="line"><span class="comment">//                            dictionaryEntity.setBeizhu(data.get(0));                    //备注 要改的</span></span><br><span class="line"><span class="comment">//                            dictionaryEntity.setCreateTime(date);//时间</span></span><br><span class="line">                            dictionaryList.add(dictionaryEntity);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                            <span class="comment">//把要查询是否重复的字段放入map中</span></span><br><span class="line">                        &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">			two =<span class="string">&quot;thisTypes0&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(isJoinTableFlag)&#123;<span class="comment">//级联表类型</span></span><br><span class="line">	Map&lt;String, Object&gt; joinTable = (Map&lt;String, Object&gt;) params.get(<span class="string">&quot;joinTable&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(StringUtil.isNotEmpty(String.valueOf(joinTable.get(<span class="string">&quot;types&quot;</span>))))&#123;</span><br><span class="line">		joinTable.put(<span class="string">&quot;types&quot;</span>,String.valueOf(joinTable.get(<span class="string">&quot;types&quot;</span>)).split(<span class="string">&quot;,&quot;</span>));</span><br><span class="line">		<span class="keyword">if</span>(StringUtil.isEmpty(one))&#123;</span><br><span class="line">			one =<span class="string">&quot;joinTypes0&quot;</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(StringUtil.isEmpty(two))&#123;</span><br><span class="line">				two =<span class="string">&quot;joinTypes0&quot;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; result = commonService.barSum(params);</span><br><span class="line"></span><br><span class="line">List&lt;String&gt; xAxis = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//报表x轴</span></span><br><span class="line">List&lt;List&lt;String&gt;&gt; yAxis = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//y轴</span></span><br><span class="line">List&lt;String&gt; legend = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//标题</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(StringUtil.isEmpty(two))&#123;<span class="comment">//不包含第二列</span></span><br><span class="line">	List&lt;String&gt; yAxis0 = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	yAxis.add(yAxis0);</span><br><span class="line">	legend.add(<span class="string">&quot;数值&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span>(Map&lt;String, Object&gt; map :result)&#123;</span><br><span class="line">		String oneValue = String.valueOf(map.get(one));</span><br><span class="line">		String value = String.valueOf(map.get(<span class="string">&quot;value&quot;</span>));</span><br><span class="line">		xAxis.add(oneValue);</span><br><span class="line">		yAxis0.add(value);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;<span class="comment">//包含第二列</span></span><br><span class="line">	Map&lt;String, HashMap&lt;String, String&gt;&gt; dataMap = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">	<span class="keyword">if</span>(StringUtil.isNotEmpty(two))&#123;</span><br><span class="line">		<span class="keyword">for</span>(Map&lt;String, Object&gt; map :result)&#123;</span><br><span class="line">			String oneValue = String.valueOf(map.get(one));</span><br><span class="line">			String twoValue = String.valueOf(map.get(two));</span><br><span class="line">			String value = String.valueOf(map.get(<span class="string">&quot;value&quot;</span>));</span><br><span class="line">			<span class="keyword">if</span>(!legend.contains(twoValue))&#123;</span><br><span class="line">				legend.add(twoValue);<span class="comment">//添加完成后 就是最全的第二列的类型</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(dataMap.containsKey(oneValue))&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">         * 不需要验证权限的方法直接放过</span><br><span class="line">         */</span><br><span class="line">        <span class="keyword">if</span>(annotation!=<span class="keyword">null</span>) &#123;</span><br><span class="line">        	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        TokenEntity tokenEntity = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(StringUtils.isNotBlank(token)) &#123;</span><br><span class="line">        	tokenEntity = tokenService.getTokenEntity(token);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(tokenEntity != <span class="keyword">null</span>) &#123;</span><br><span class="line">        	request.getSession().setAttribute(<span class="string">&quot;userId&quot;</span>, tokenEntity.getUserid());</span><br><span class="line">        	request.getSession().setAttribute(<span class="string">&quot;role&quot;</span>, tokenEntity.getRole());</span><br><span class="line">        	request.getSession().setAttribute(<span class="string">&quot;tableName&quot;</span>, tokenEntity.getTablename());</span><br><span class="line">        	request.getSession().setAttribute(<span class="string">&quot;username&quot;</span>, tokenEntity.getUsername());</span><br><span class="line">        	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">		PrintWriter writer = <span class="keyword">null</span>;</span><br><span class="line">		response.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">		response.setContentType(<span class="string">&quot;application/json; charset=utf-8&quot;</span>);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">		    writer = response.getWriter();</span><br><span class="line">		    writer.print(JSONObject.toJSONString(R.error(<span class="number">401</span>, <span class="string">&quot;请先登录&quot;</span>)));</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">		    <span class="keyword">if</span>(writer != <span class="keyword">null</span>)&#123;</span><br><span class="line">		        writer.close();</span><br><span class="line">		    &#125;</span><br><span class="line">		&#125;</span><br><span class="line"><span class="comment">//				throw new EIException(&quot;请先登录&quot;, 401);</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;查不到数据&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 前端保存</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/add&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">add</span><span class="params">(<span class="meta">@RequestBody</span> ForumEntity forum, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        logger.debug(<span class="string">&quot;add方法:,,Controller:&#123;&#125;,,forum:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),forum.toString());</span><br><span class="line">        Wrapper&lt;ForumEntity&gt; queryWrapper = <span class="keyword">new</span> EntityWrapper&lt;ForumEntity&gt;()</span><br><span class="line">            .eq(<span class="string">&quot;forum_name&quot;</span>, forum.getForumName())</span><br><span class="line">            .eq(<span class="string">&quot;yonghu_id&quot;</span>, forum.getYonghuId())</span><br><span class="line">            .eq(<span class="string">&quot;users_id&quot;</span>, forum.getUsersId())</span><br><span class="line">            .eq(<span class="string">&quot;super_ids&quot;</span>, forum.getSuperIds())</span><br><span class="line">            .eq(<span class="string">&quot;forum_state_types&quot;</span>, forum.getForumStateTypes())</span><br><span class="line">            ;</span><br><span class="line">        logger.info(<span class="string">&quot;sql语句:&quot;</span>+queryWrapper.getSqlSegment());</span><br><span class="line">        ForumEntity forumEntity = forumService.selectOne(queryWrapper);</span><br><span class="line">        <span class="keyword">if</span>(forumEntity==<span class="keyword">null</span>)&#123;</span><br><span class="line">            forum.setInsertTime(<span class="keyword">new</span> Date());</span><br><span class="line">            forum.setCreateTime(<span class="keyword">new</span> Date());</span><br><span class="line">        forumService.insert(forum);</span><br><span class="line">            <span class="keyword">return</span> R.ok();</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;表中有相同数据&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">		MatchRequest req2 = <span class="keyword">new</span> MatchRequest(img2, <span class="string">&quot;BASE64&quot;</span>);</span><br><span class="line">		ArrayList&lt;MatchRequest&gt; requests = <span class="keyword">new</span> ArrayList&lt;MatchRequest&gt;();</span><br><span class="line">		requests.add(req1);</span><br><span class="line">		requests.add(req2);</span><br><span class="line">		res = client.match(requests);</span><br><span class="line">		System.out.println(res.get(<span class="string">&quot;result&quot;</span>));</span><br><span class="line">	&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">return</span> R.error(<span class="string">&quot;文件不存在&quot;</span>);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, com.alibaba.fastjson.JSONObject.parse(res.get(<span class="string">&quot;result&quot;</span>).toString()));</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取table表中的column列表(联动接口)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/option/&#123;tableName&#125;/&#123;columnName&#125;&quot;)</span></span><br><span class="line"><span class="meta">@IgnoreAuth</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">getOption</span><span class="params">(<span class="meta">@PathVariable(&quot;tableName&quot;)</span> String tableName, <span class="meta">@PathVariable(&quot;columnName&quot;)</span> String columnName,String level,String parent)</span> </span>&#123;</span><br><span class="line">	Map&lt;String, Object&gt; params = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">	params.put(<span class="string">&quot;table&quot;</span>, tableName);</span><br><span class="line">	params.put(<span class="string">&quot;column&quot;</span>, columnName);</span><br><span class="line">	<span class="keyword">if</span>(StringUtils.isNotBlank(level)) &#123;</span><br><span class="line">		params.put(<span class="string">&quot;level&quot;</span>, level);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(StringUtils.isNotBlank(parent)) &#123;</span><br><span class="line">		params.put(<span class="string">&quot;parent&quot;</span>, parent);</span><br><span class="line">	&#125;</span><br><span class="line">	List&lt;String&gt; data = commonService.getOption(params);</span><br><span class="line">	<span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据table中的column获取单条记录</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/follow/&#123;tableName&#125;/&#123;columnName&#125;&quot;)</span></span><br><span class="line"><span class="meta">@IgnoreAuth</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">getFollowByOption</span><span class="params">(<span class="meta">@PathVariable(&quot;tableName&quot;)</span> String tableName, <span class="meta">@PathVariable(&quot;columnName&quot;)</span> String columnName, <span class="meta">@RequestParam</span> String columnValue)</span> </span>&#123;</span><br><span class="line">	Map&lt;String, Object&gt; params = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">	params.put(<span class="string">&quot;table&quot;</span>, tableName);</span><br><span class="line">	params.put(<span class="string">&quot;column&quot;</span>, columnName);</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
 <iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
