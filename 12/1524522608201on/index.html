@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot校园失物招领系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:title" content="基于javaweb的SpringBoot校园失物招领系统(java+springboot+maven+mybaits+vue+elementui+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot校园失物招领系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  <title>基于javaweb的SpringBoot校园失物招领系统(java+springboot+maven+mybaits+vue+elementui+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot校园失物招领系统(java+springboot+mybaits+vue+elementui+mysql)
+			基于javaweb的SpringBoot校园失物招领系统(java+springboot+maven+mybaits+vue+elementui+mysql)
             
         </h1>
 
@@ -233,204 +233,40 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/281524122608.jpg" alt="281524122608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/291524122608.jpg" alt="291524122608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/301524122608.jpg" alt="301524122608"></p>
-<p>基于javaweb的SpringBoot校园失物招领系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>基于javaweb的SpringBoot校园失物招领系统(java+springboot+maven+mybaits+vue+elementui+mysql)</p>
 <p>项目介绍</p>
 <p>基于Springboot + vue实现的校园失物招领系统</p>
 <p>本项目分为前后台，包含用户和管理员两个角色</p>
 <p>用户：登录、注册、留言板、公告信息、失物招领、失物认领、寻物启事、个人中心、我发布的失物信息、我的失物认领、我发布的寻物启事、寻物启事留言等功能。</p>
 <p>管理员：登录、基础数据管理、系统管理、留言板管理、失物信息管理、失物认领管理、寻物启事管理等功能。</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
-<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
-<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
-<p>4.数据库：MySql 5.7/8.0版本均可；</p>
-<p>5.是否Maven项目：是；</p>
 <p>技术栈</p>
 <p>后端：SpringBoot+Mybaits</p>
 <p>前端：Vue+elementui</p>
-<p>使用说明</p>
-<p>项目运行：</p>
-<ol>
-<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
-</li>
-<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
-</li>
-<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
-</li>
-<li><p>运行项目，在浏览器中输入地址：</p>
-</li>
-</ol>
-<p>前台地址：</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:8080/xiaoyuanshiwu/front/index.html">http://localhost:8080/xiaoyuanshiwu/front/index.html</a></p>
-<p>用户账户:a1 密码：123456</p>
-<p>后台登录页面</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:8080/xiaoyuanshiwu/admin/dist/index.html">http://localhost:8080/xiaoyuanshiwu/admin/dist/index.html</a></p>
-<p>管理员账户:admin 密码：admin</p>
-<p>文档展示：</p>
-<p>首页展示：</p>
-<p>首页物品详情：</p>
-<p>个人中心展示：</p>
-<p>个人发布的失物列表：</p>
-<p>失物认领列表：</p>
-<p>后台失物信息管理：</p>
-<p>失物认领管理：</p>
-<p>寻物启事管理：</p>
-<p>寻物信息留言管理：</p>
+<p>管理员：<br>admin   123456</p>
+<p>用户：<br>a1    123456<br>a2    123456<br>a3    123456<br>a5    123456</p>
+<p>后端启动类：StartApplication<br>前端启动命令：npm run serve</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>用户管理控制层：</p>
-<p>@Controller</p>
-<p>@RequestMapping(“/user”)</p>
-<p>public class UserCenterController {</p>
-<p>@Autowired</p>
-<p>private UserCenterService userCenterService;</p>
-<p>@RequestMapping(“/centerUI”)</p>
-<p>public String centerUI(Model model, HttpServletRequest request) {</p>
-<p>User user = userCenterService.getUser(request);</p>
-<p>model.addAttribute(“user”, user);</p>
-<p>return “center/user-center”;</p>
-<p>@RequestMapping(“/centerEditUI”)</p>
-<p>public String centerEditUI(Model model, HttpServletRequest request) {</p>
-<p>User user = userCenterService.getUser(request);</p>
-<p>model.addAttribute(“user”, user);</p>
-<p>return “center/user-center-edit”;</p>
-<p>@RequestMapping(“/centerEdit”)</p>
-<p>@ResponseBody</p>
-<p>public Result centerEdit(Model model, User user) {</p>
-<p>return userCenterService.centerEdit(user);</p>
-<p>@RequestMapping(“/centerEditPWUI”)</p>
-<p>public String centerEditPWUI(Model model, HttpServletRequest request) {</p>
-<p>User user = userCenterService.getUser(request);</p>
-<p>model.addAttribute(“id”, user.getId());</p>
-<p>return “center/user-center-editpw”;</p>
-<p>@RequestMapping(“/centerEditPW”)</p>
-<p>@ResponseBody</p>
-<p>public Result centerEditPW(HttpServletRequest request, HttpServletResponse response, Model model, @RequestParam(“id”) String id, @RequestParam(“oldPassword”) String oldPassword, @RequestParam(“newPassword”) String newPassword) {</p>
-<p>return userCenterService.centerEditPW(request, response, id, oldPassword, newPassword);</p>
-<p>系统管理控制层：</p>
-<p>@Controller</p>
-<p>@RequestMapping(“/system”)</p>
-<p>public class SystemController {</p>
-<p>@Autowired</p>
-<p>private SystemService systemService;</p>
-<p>@RequestMapping(“”)</p>
-<p>public String loginUI() {</p>
-<p>return “system/login/login”;</p>
-<p>@RequestMapping(“/login”)</p>
-<p>@ResponseBody</p>
-<p>public Result login(SysUser sysUser, HttpServletResponse response) {</p>
-<p>return systemService.login(sysUser,response);</p>
-<p>@RequestMapping(“/userListUI”)</p>
-<p>public String userListUI(Model model, @PageableDefault(size = 10) Pageable pageable) {</p>
-<p>Page<User> page = systemService.getUserPage(pageable);</User></p>
-<p>model.addAttribute(“page”,page);</p>
-<p>return “system/user/list”;</p>
-<p>@RequestMapping(“/saveUser”)</p>
-<p>@ResponseBody</p>
-<p>public Result saveUser(User user) {</p>
-<p>return systemService.saveUser(user);</p>
-<p>@RequestMapping(“/getUserById”)</p>
-<p>@ResponseBody</p>
-<p>public Result getUserById(String id) {</p>
-<p>return ResultGenerator.genSuccessResult(systemService.getUserById(id));</p>
-<p>@RequestMapping(“/logout”)</p>
-<p>public String logout(HttpServletRequest request, HttpServletResponse response) {</p>
-<p>systemService.logout(request,response);</p>
-<p>return “redirect:/system”;</p>
-<p>@RequestMapping(“/hotelListUI”)</p>
-<p>public String hotelListUI(Model model, @PageableDefault(size = 10) Pageable pageable) {</p>
-<p>Page<Hotel> page = systemService.getHotelPage(pageable);</Hotel></p>
-<p>model.addAttribute(“page”, page);</p>
-<p>return “system/hotel/list”;</p>
-<p>@RequestMapping(“/saveHotel”)</p>
-<p>@ResponseBody</p>
-<p>public Result saveHotel(Hotel hotel) {</p>
-<p>return systemService.saveHotel(hotel);</p>
-<p>@RequestMapping(“/updateStatus”)</p>
-<p>@ResponseBody</p>
-<p>public Result updateStatus(String id) {</p>
-<p>return systemService.updateStatus(id);</p>
-<p>@RequestMapping(“/getHotelById”)</p>
-<p>@ResponseBody</p>
-<p>public Result getHotelById(String id) {</p>
-<p>return ResultGenerator.genSuccessResult(systemService.getHotelById(id));</p>
-<p>@RequestMapping(“/attractionsListUI”)</p>
-<p>public String attractionsListUI(Model model, @PageableDefault(size = 10) Pageable pageable) {</p>
-<p>Page<Attractions> page = systemService.getAttractionsPage(pageable);</Attractions></p>
-<p>model.addAttribute(“page”, page);</p>
-<p>return “system/attractions/list”;</p>
-<p>@RequestMapping(“/getAttractionsById”)</p>
-<p>@ResponseBody</p>
-<p>public Result getAttractionsById(String id) {</p>
-<p>return ResultGenerator.genSuccessResult(systemService.getAttractionsById(id));</p>
-<p>@RequestMapping(“/updateAttractionsStatus”)</p>
-<p>@ResponseBody</p>
-<p>public Result updateAttractionsStatus(String id) {</p>
-<p>return systemService.updateAttractionsStatus(id);</p>
-<p>@RequestMapping(“/saveAttractions”)</p>
-<p>@ResponseBody</p>
-<p>public Result saveAttractions(Attractions attractions) {</p>
-<p>return systemService.saveAttractions(attractions);</p>
-<p>@RequestMapping(“/travelRouteListUI”)</p>
-<p>public String travelRouteListUI(Model model, @PageableDefault(size = 10) Pageable pageable) {</p>
-<p>Page<TravelRoute> page = systemService.getTravelRoutePage(pageable);</TravelRoute></p>
-<p>model.addAttribute(“page”, page);</p>
-<p>return “system/route/list”;</p>
-<p>@RequestMapping(“/getTravelRouteById”)</p>
-<p>@ResponseBody</p>
-<p>public Result getTravelRouteById(String id) {</p>
-<p>return ResultGenerator.genSuccessResult(systemService.getTravelRouteById(id));</p>
-<p>@RequestMapping(“/updateTravelRouteStatus”)</p>
-<p>@ResponseBody</p>
-<p>public Result updateTravelRouteStatus(String id) {</p>
-<p>return systemService.updateTravelRouteStatus(id);</p>
-<p>@RequestMapping(“/saveTravelRoute”)</p>
-<p>@ResponseBody</p>
-<p>public Result saveTravelRoute(TravelRoute travelRoute) {</p>
-<p>return systemService.saveTravelRoute(travelRoute);</p>
-<p>@RequestMapping(“/travelStrategyListUI”)</p>
-<p>public String travelStrategyListUI(Model model, @PageableDefault(size = 10) Pageable pageable) {</p>
-<p>Page<TravelStrategy> page = systemService.getTravelStrategyPage(pageable);</TravelStrategy></p>
-<p>model.addAttribute(“page”, page);</p>
-<p>return “system/strategy/list”;</p>
-<p>@RequestMapping(“/getTravelStrategyById”)</p>
-<p>@ResponseBody</p>
-<p>public Result getTravelStrategyById(String id) {</p>
-<p>return ResultGenerator.genSuccessResult(systemService.getTravelStrategyById(id));</p>
-<p>@RequestMapping(“/updateTravelStrategyStatus”)</p>
-<p>@ResponseBody</p>
-<p>public Result updateTravelStrategyStatus(String id) {</p>
-<p>return systemService.updateTravelStrategyStatus(id);</p>
-<p>@RequestMapping(“/saveTravelStrategy”)</p>
-<p>@ResponseBody</p>
-<p>public Result saveTravelStrategy(HttpServletRequest request,TravelStrategy travelStrategy) {</p>
-<p>return systemService.saveTravelStrategy(request,travelStrategy);</p>
-<p>登录管理控制层：</p>
-<p>@Controller</p>
-<p>public class LoginController {</p>
-<p>@Autowired</p>
-<p>private LoginService loginService;</p>
-<p>@RequestMapping(“/loginUI”)</p>
-<p>public String loginUI() {</p>
-<p>return “login/index-login”;</p>
-<p>@RequestMapping(“/login”)</p>
-<p>@ResponseBody</p>
-<p>public Result login(Model model, User user, HttpServletResponse response) {</p>
-<p>return loginService.login(user, response);</p>
-<p>@RequestMapping(“/logout”)</p>
-<p>public String logout(HttpServletRequest request, HttpServletResponse response) {</p>
-<p>loginService.logout(request, response);</p>
-<p>//SpringMVC重定向</p>
-<p>return “redirect:/“;</p>
-<p>@RequestMapping(“/registerUI”)</p>
-<p>public String registerUI() {</p>
-<p>return “login/index-register”;</p>
-<p>@RequestMapping(“/register”)</p>
-<p>@ResponseBody</p>
-<p>public Result register(Model model, User user) {</p>
-<p>return loginService.register(user);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">        caozuorizhiService.insertCaozuorizhi(String.valueOf(request.getSession().getAttribute(<span class="string">&quot;role&quot;</span>)),TABLE_NAME,String.valueOf(request.getSession().getAttribute(<span class="string">&quot;username&quot;</span>)),<span class="string">&quot;修改&quot;</span>,strings.toString());</span><br><span class="line">        <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 删除</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Integer[] ids, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    logger.debug(<span class="string">&quot;delete:,,Controller:&#123;&#125;,,ids:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),ids.toString());</span><br><span class="line">    List&lt;XunwuqishiLiuyanEntity&gt; oldXunwuqishiLiuyanList =xunwuqishiLiuyanService.selectBatchIds(Arrays.asList(ids));<span class="comment">//要删除的数据</span></span><br><span class="line">    xunwuqishiLiuyanService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line"></span><br><span class="line">    caozuorizhiService.insertCaozuorizhi(String.valueOf(request.getSession().getAttribute(<span class="string">&quot;role&quot;</span>)),TABLE_NAME,String.valueOf(request.getSession().getAttribute(<span class="string">&quot;username&quot;</span>)),<span class="string">&quot;删除&quot;</span>,oldXunwuqishiLiuyanList.toString());</span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 批量上传</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/batchInsert&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">save</span><span class="params">( String fileName, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    logger.debug(<span class="string">&quot;batchInsert方法:,,Controller:&#123;&#125;,,fileName:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),fileName);</span><br><span class="line">    Integer yonghuId = Integer.valueOf(String.valueOf(request.getSession().getAttribute(<span class="string">&quot;userId&quot;</span>)));</span><br><span class="line">    SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">    <span class="comment">//.eq(&quot;time&quot;, new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).format(new Date()))</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        List&lt;XunwuqishiLiuyanEntity&gt; xunwuqishiLiuyanList = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//上传的东西</span></span><br><span class="line">        Map&lt;String, List&lt;String&gt;&gt; seachFields= <span class="keyword">new</span> HashMap&lt;&gt;();<span class="comment">//要查询的字段</span></span><br><span class="line">        Date date = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="keyword">int</span> lastIndexOf = fileName.lastIndexOf(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(lastIndexOf == -<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;该文件没有后缀&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            String suffix = fileName.substring(lastIndexOf);</span><br><span class="line">            <span class="keyword">if</span>(!<span class="string">&quot;.xls&quot;</span>.equals(suffix))&#123;</span><br><span class="line">                <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;只支持后缀为xls的excel文件&quot;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                URL resource = <span class="keyword">this</span>.getClass().getClassLoader().getResource(<span class="string">&quot;static/upload/&quot;</span> + fileName);<span class="comment">//获取文件路径</span></span><br><span class="line">                File file = <span class="keyword">new</span> File(resource.getFile());</span><br><span class="line">                <span class="keyword">if</span>(!file.exists())&#123;</span><br><span class="line">                    <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;找不到上传文件，请联系管理员&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">                        dataList.remove(<span class="number">0</span>);<span class="comment">//删除第一行，因为第一行是提示</span></span><br><span class="line">                        <span class="keyword">for</span>(List&lt;String&gt; data:dataList)&#123;</span><br><span class="line">                            <span class="comment">//循环</span></span><br><span class="line">                            YonghuEntity yonghuEntity = <span class="keyword">new</span> YonghuEntity();</span><br><span class="line"><span class="comment">//                            yonghuEntity.setUsername(data.get(0));                    //账户 要改的</span></span><br><span class="line"><span class="comment">//                            yonghuEntity.setPassword(&quot;123456&quot;);//密码</span></span><br><span class="line"><span class="comment">//                            yonghuEntity.setYonghuUuidNumber(data.get(0));                    //用户编号 要改的</span></span><br><span class="line"><span class="comment">//                            yonghuEntity.setYonghuName(data.get(0));                    //用户姓名 要改的</span></span><br><span class="line"><span class="comment">//                            yonghuEntity.setYonghuPhone(data.get(0));                    //用户手机号 要改的</span></span><br><span class="line"><span class="comment">//                            yonghuEntity.setYonghuIdNumber(data.get(0));                    //用户身份证号 要改的</span></span><br><span class="line"><span class="comment">//                            yonghuEntity.setYonghuPhoto(&quot;&quot;);//详情和图片</span></span><br><span class="line"><span class="comment">//                            yonghuEntity.setSexTypes(Integer.valueOf(data.get(0)));   //性别 要改的</span></span><br><span class="line"><span class="comment">//                            yonghuEntity.setYonghuEmail(data.get(0));                    //用户邮箱 要改的</span></span><br><span class="line"><span class="comment">//                            yonghuEntity.setJinyongTypes(Integer.valueOf(data.get(0)));   //账户状态 要改的</span></span><br><span class="line"><span class="comment">//                            yonghuEntity.setCreateTime(date);//时间</span></span><br><span class="line">                            yonghuList.add(yonghuEntity);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                            <span class="comment">//把要查询是否重复的字段放入map中</span></span><br><span class="line">                                <span class="comment">//账户</span></span><br><span class="line">                                <span class="keyword">if</span>(seachFields.containsKey(<span class="string">&quot;username&quot;</span>))&#123;</span><br><span class="line">                                    List&lt;String&gt; username = seachFields.get(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">                                    username.add(data.get(<span class="number">0</span>));<span class="comment">//要改的</span></span><br><span class="line">                                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                                    List&lt;String&gt; username = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                                    username.add(data.get(<span class="number">0</span>));<span class="comment">//要改的</span></span><br><span class="line">                                    seachFields.put(<span class="string">&quot;username&quot;</span>,username);</span><br><span class="line">                                &#125;</span><br><span class="line">                                <span class="comment">//用户编号</span></span><br><span class="line">                                <span class="keyword">if</span>(seachFields.containsKey(<span class="string">&quot;yonghuUuidNumber&quot;</span>))&#123;</span><br><span class="line">                                    List&lt;String&gt; yonghuUuidNumber = seachFields.get(<span class="string">&quot;yonghuUuidNumber&quot;</span>);</span><br><span class="line">                                    yonghuUuidNumber.add(data.get(<span class="number">0</span>));<span class="comment">//要改的</span></span><br><span class="line">                                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                                    List&lt;String&gt; yonghuUuidNumber = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                                    yonghuUuidNumber.add(data.get(<span class="number">0</span>));<span class="comment">//要改的</span></span><br><span class="line">                                    seachFields.put(<span class="string">&quot;yonghuUuidNumber&quot;</span>,yonghuUuidNumber);</span><br><span class="line">                                &#125;</span><br><span class="line">                                <span class="comment">//用户手机号</span></span><br><span class="line">                                <span class="keyword">if</span>(seachFields.containsKey(<span class="string">&quot;yonghuPhone&quot;</span>))&#123;</span><br><span class="line">                                    List&lt;String&gt; yonghuPhone = seachFields.get(<span class="string">&quot;yonghuPhone&quot;</span>);</span><br><span class="line">                                    yonghuPhone.add(data.get(<span class="number">0</span>));<span class="comment">//要改的</span></span><br><span class="line">                                &#125;<span class="keyword">else</span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 列表</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@IgnoreAuth</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/list&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,ConfigEntity config)</span></span>&#123;</span><br><span class="line">       EntityWrapper&lt;ConfigEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;ConfigEntity&gt;();</span><br><span class="line">   	PageUtils page = configService.queryPage(params);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 信息</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">info</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> String id)</span></span>&#123;</span><br><span class="line">       ConfigEntity config = configService.selectById(id);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, config);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 详情</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@IgnoreAuth</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/detail/&#123;id&#125;&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">detail</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> String id)</span></span>&#123;</span><br><span class="line">       ConfigEntity config = configService.selectById(id);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, config);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 根据name获取信息</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/info&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">infoByName</span><span class="params">(<span class="meta">@RequestParam</span> String name)</span></span>&#123;</span><br><span class="line">       ConfigEntity config = configService.selectOne(<span class="keyword">new</span> EntityWrapper&lt;ConfigEntity&gt;().eq(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;faceFile&quot;</span>));</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, config);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 保存</span></span><br><span class="line"><span class="comment">    */</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">            OutputStream out = child1.getOutputStream();<span class="comment">//控制台的输入信息作为输出流</span></span><br><span class="line">            String inStr;</span><br><span class="line">            StringBuffer sb = <span class="keyword">new</span> StringBuffer(<span class="string">&quot;&quot;</span>);</span><br><span class="line">            String outStr;</span><br><span class="line">            BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(savePath+<span class="string">&quot;/&quot;</span>+fileName), <span class="string">&quot;utf-8&quot;</span>));</span><br><span class="line">            <span class="keyword">while</span> ((inStr = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                sb.append(inStr + <span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            outStr = sb.toString();</span><br><span class="line">            OutputStreamWriter writer = <span class="keyword">new</span> OutputStreamWriter(out, <span class="string">&quot;utf8&quot;</span>);</span><br><span class="line">            writer.write(outStr);</span><br><span class="line"><span class="comment">// 注：这里如果用缓冲方式写入文件的话，会导致中文乱码，用flush()方法则可以避免</span></span><br><span class="line">            writer.flush();</span><br><span class="line">            out.close();</span><br><span class="line">            br.close();</span><br><span class="line">            writer.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> R.error(<span class="string">&quot;数据导入出错&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> R.ok();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 饼状图求和</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/pieSum&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">pieSum</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String,Object&gt; params)</span> </span>&#123;</span><br><span class="line">        logger.debug(<span class="string">&quot;饼状图求和:,,Controller:&#123;&#125;,,params:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),params);</span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; result = commonService.pieSum(params);</span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 饼状图统计</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/pieCount&quot;)</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">    * 后端保存</span><br><span class="line">    */</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/save&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">save</span><span class="params">(<span class="meta">@RequestBody</span> LiuyanEntity liuyan, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        logger.debug(<span class="string">&quot;save方法:,,Controller:&#123;&#125;,,liuyan:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),liuyan.toString());</span><br><span class="line"></span><br><span class="line">        String role = String.valueOf(request.getSession().getAttribute(<span class="string">&quot;role&quot;</span>));</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">false</span>)</span><br><span class="line">            <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;永远不会进入&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;用户&quot;</span>.equals(role))</span><br><span class="line">            liuyan.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute(<span class="string">&quot;userId&quot;</span>))));</span><br><span class="line"></span><br><span class="line">        Wrapper&lt;LiuyanEntity&gt; queryWrapper = <span class="keyword">new</span> EntityWrapper&lt;LiuyanEntity&gt;()</span><br><span class="line">            .eq(<span class="string">&quot;yonghu_id&quot;</span>, liuyan.getYonghuId())</span><br><span class="line">            .eq(<span class="string">&quot;liuyan_name&quot;</span>, liuyan.getLiuyanName())</span><br><span class="line">            ;</span><br><span class="line"></span><br><span class="line">        logger.info(<span class="string">&quot;sql语句:&quot;</span>+queryWrapper.getSqlSegment());</span><br><span class="line">        LiuyanEntity liuyanEntity = liuyanService.selectOne(queryWrapper);</span><br><span class="line">        <span class="keyword">if</span>(liuyanEntity==<span class="keyword">null</span>)&#123;</span><br><span class="line">            liuyan.setInsertTime(<span class="keyword">new</span> Date());</span><br><span class="line">            liuyan.setCreateTime(<span class="keyword">new</span> Date());</span><br><span class="line">            liuyanService.insert(liuyan);</span><br><span class="line">            caozuorizhiService.insertCaozuorizhi(String.valueOf(request.getSession().getAttribute(<span class="string">&quot;role&quot;</span>)),TABLE_NAME,String.valueOf(request.getSession().getAttribute(<span class="string">&quot;username&quot;</span>)),<span class="string">&quot;新增&quot;</span>,liuyan.toString());</span><br><span class="line">            <span class="keyword">return</span> R.ok();</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;表中有相同数据&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 后端修改</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/update&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> LiuyanEntity liuyan, HttpServletRequest request)</span> <span class="keyword">throws</span> NoSuchFieldException, ClassNotFoundException, IllegalAccessException, InstantiationException </span>&#123;</span><br><span class="line">        logger.debug(<span class="string">&quot;update方法:,,Controller:&#123;&#125;,,liuyan:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),liuyan.toString());</span><br><span class="line">        LiuyanEntity oldLiuyanEntity = liuyanService.selectById(liuyan.getId());<span class="comment">//查询原先数据</span></span><br><span class="line"></span><br><span class="line">        String role = String.valueOf(request.getSession().getAttribute(<span class="string">&quot;role&quot;</span>));</span><br><span class="line"><span class="comment">//        if(false)</span></span><br><span class="line"><span class="comment">//            return R.error(511,&quot;永远不会进入&quot;);</span></span><br><span class="line"><span class="comment">//        else if(&quot;用户&quot;.equals(role))</span></span><br><span class="line"><span class="comment">//            liuyan.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute(&quot;userId&quot;))));</span></span><br><span class="line">        liuyan.setUpdateTime(<span class="keyword">new</span> Date());</span><br><span class="line"></span><br><span class="line">            liuyanService.updateById(liuyan);<span class="comment">//根据id更新</span></span><br><span class="line">            List&lt;String&gt; strings = caozuorizhiService.clazzDiff(liuyan, oldLiuyanEntity, request,<span class="keyword">new</span> String[]&#123;<span class="string">&quot;updateTime&quot;</span>&#125;);</span><br><span class="line">            caozuorizhiService.insertCaozuorizhi(String.valueOf(request.getSession().getAttribute(<span class="string">&quot;role&quot;</span>)),TABLE_NAME,String.valueOf(request.getSession().getAttribute(<span class="string">&quot;username&quot;</span>)),<span class="string">&quot;修改&quot;</span>,strings.toString());</span><br><span class="line">            <span class="keyword">return</span> R.ok();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 留言板</span></span><br><span class="line"><span class="comment"> * 后端接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@email</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/liuyan&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LiuyanController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(LiuyanController.class);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
-<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=89&price2=79" style="height: 260px;" frameborder="0"></iframe>
 <blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=121524522608201on<br>https://javayms.pages.dev?id=121524522608201on</p></blockquote>
     </div>
 
@@ -444,6 +280,7 @@
 			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
 			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
 			<a href="/tags/%E5%A4%B1%E7%89%A9%E6%8B%9B%E9%A2%86/" rel="tag"><i class="fa fa-tag"></i> 失物招领</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
 
           </div>
 
