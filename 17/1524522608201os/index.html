@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot毕业生信息招聘平台(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:title" content="基于javaweb的SpringBoot毕业生信息招聘平台(java+springboot+maven+mybaits+vue+elementui+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot毕业生信息招聘平台(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  <title>基于javaweb的SpringBoot毕业生信息招聘平台(java+springboot+maven+mybaits+vue+elementui+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot毕业生信息招聘平台(java+springboot+mybaits+vue+elementui+mysql)
+			基于javaweb的SpringBoot毕业生信息招聘平台(java+springboot+maven+mybaits+vue+elementui+mysql)
             
         </h1>
 
@@ -233,357 +233,35 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/411524052608.jpg" alt="411524052608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/421524052608.jpg" alt="421524052608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/431524052608.jpg" alt="431524052608"></p>
-<p>基于javaweb的SpringBoot毕业生信息招聘平台(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>基于javaweb的SpringBoot毕业生信息招聘平台(java+springboot+maven+mybaits+vue+elementui+mysql)</p>
 <p>项目介绍</p>
 <p>基于springboot Vue毕业生信息招聘平台</p>
 <p>角色：管理员、企业、毕业生三种角色</p>
 <p>毕业生：用户系统，在系统首页可以查看首页，空中宣讲会，招聘岗位查看，求职信息查看，论坛信息查看，试卷列表，招聘咨讯、个人中心等内容</p>
 <p>企业：企业登录系统后，可以对首页，个人中心，空中宣讲会管理、招聘岗位管理、信息咨询管理、岗位应聘管理、线上面试管理、面试回复管理、试卷管理、试题管理、考试管理等</p>
 <p>管理员：管理员登录进入毕业生信息招聘平台可以查看首页、个人中心、企业管理、空中宣讲会管理、招聘岗位管理、毕业生管理、个人简历管理、求职信息管理、信息咨询管理、岗位应聘管理、线上面试管理、面试回复管理、试卷管理、试题管理、管理员管理、论坛管理、系统管理、考试管理等内容</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
-<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
-<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
-<p>4.数据库：MySql 5.7/8.0版本均可；</p>
-<p>5.是否Maven项目：是；</p>
 <p>技术栈</p>
 <p>后端：SpringBoot+Mybaits</p>
 <p>前端：Vue+ElementUI+Layui+HTML+CSS+JS</p>
-<p>使用说明</p>
-<p>项目运行：</p>
-<ol>
-<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
-</li>
-<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
-</li>
-<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
-</li>
-</ol>
-<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootan251/front/index.html">http://localhost:8080/springbootan251/front/index.html</a></p>
-<p>后台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootan251/admin/dist/index.html#/login">http://localhost:8080/springbootan251/admin/dist/index.html#/login</a></p>
-<p>管理员： abo/abo</p>
-<p>企业：000/000</p>
-<p>毕业生：001/001</p>
-<p> 企业架构图例子:</p>
-<p>文档介绍:</p>
-<p>首页展示:</p>
-<p> 岗位介绍:</p>
-<p>论坛信息页面展示:</p>
-<p>咨询信息展示:</p>
-<p> 毕业生角色注册页面:</p>
-<p> 登录页面:</p>
-<p>毕业生角色后台用户信息查看:</p>
-<p>管理员后台信息管理:</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>用户管理控制层： </p>
-<p>/**</p>
-<ul>
-<li>后端用户管理控制器</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“/admin/user”)</p>
-<p>@Controller</p>
-<p>public class UserController {</p>
-<p>@Autowired</p>
-<p>private UserService userService;</p>
-<p>@Autowired</p>
-<p>private ResumeService resumeService;</p>
-<p>@Autowired</p>
-<p>private WorkExperienceService workExperienceService;</p>
-<p>@Autowired</p>
-<p>private WorkShowService workShowService;</p>
-<p>@Autowired</p>
-<p>private ProjectExperienceService projectExperienceService;</p>
-<p>@Autowired</p>
-<p>private ExpectWorkService expectWorkService;</p>
-<p>@Autowired</p>
-<p>private EducationBackgroundService educationBackgroundService;</p>
-<p>@Autowired</p>
-<p>private CompanyService companyService;</p>
-<p>@Autowired</p>
-<p>private PositionService PositionService;</p>
-<p>/**</p>
-<ul>
-<li><p>后台用户管理信息页面</p>
-</li>
-<li><p>@param model</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value=”/user_info”,method=RequestMethod.GET)</p>
-<p>public String myInfo(Model model){</p>
-<p>return “admin/admin/user_info”;</p>
-<p>/**</p>
-<ul>
-<li><p>后台用户信息列表</p>
-</li>
-<li><p>@param request</p>
-</li>
-<li><p>@param page</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value=”/user_info_list”,method=RequestMethod.POST)</p>
-<p>@ResponseBody</p>
-<p>public  Map&lt;String, Object&gt;  userInfoList(HttpServletRequest request,Page page){</p>
-<p>Map&lt;String, Object&gt; ret = new HashMap&lt;String, Object&gt;();</p>
-<p>List<User> findAllUserList = userService.findAllUserList(page.getOffset(), page.getRows());</User></p>
-<p>ret.put(“rows”, findAllUserList);</p>
-<p>ret.put(“total”, userService.total());</p>
-<p>return ret;</p>
-<p>/**</p>
-<ul>
-<li><p>删除用户</p>
-</li>
-<li><p>@param id</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value=”/delete”,method=RequestMethod.POST)</p>
-<p>@ResponseBody</p>
-<p>public Result<Boolean> delete(@RequestParam(name=”id”,required=true)Long id){</Boolean></p>
-<p>User user = userService.find(id);</p>
-<p>try {</p>
-<p>if(user.getType() == 1) {</p>
-<p>//如果用户身份是招聘者</p>
-<p>Company findCompany = companyService.findByUserId(id);</p>
-<p>if(findCompany != null) {</p>
-<p>//删除该用户认证的公司下所有简历</p>
-<p>List<Resume> findResumeList = resumeService.findByCompanyId(findCompany.getId());</Resume></p>
-<p>for(Resume resume : findResumeList) {</p>
-<p>resumeService.delete(resume.getId());</p>
-<p>//删除该用户认证的公司下所有职位</p>
-<p>List<Position> findPositionList = PositionService.findPositionByCompanyId(findCompany.getId());</Position></p>
-<p>for(Position position : findPositionList) {</p>
-<p>PositionService.delete(position.getId());</p>
-<p>//删除该用户所属公司</p>
-<p>companyService.delete(findCompany.getId());</p>
-<p>if(user.getType() == 0) {</p>
-<p>//如果用户身份是应聘者</p>
-<p>//删除该用户的所有简历</p>
-<p>List<Resume> findResume = resumeService.findByUserId(id);</Resume></p>
-<p>for(Resume resume : findResume) {</p>
-<p>resumeService.delete(resume.getId());</p>
-<p>//删除该用户的工作经验</p>
-<p>WorkExperience findWorkExperience = workExperienceService.findWorkExperienceByUserId(id);</p>
-<p>if(findWorkExperience != null) {</p>
-<p>workExperienceService.delete(findWorkExperience.getId());</p>
-<p>//删除该用户的作品展示</p>
-<p>WorkShow findWorkShow = workShowService.findWorkShowByUserId(id);</p>
-<p>if(findWorkShow != null) {</p>
-<p>workShowService.delete(findWorkShow.getId());</p>
-<p>//删除该用户的项目经验</p>
-<p>ProjectExperience findProjectExperience = projectExperienceService.findProjectExperienceByUserId(id);</p>
-<p>if(findProjectExperience != null) {</p>
-<p>projectExperienceService.delete(findProjectExperience.getId());</p>
-<p>//删除该用户的期望工作</p>
-<p>ExpectWork findExpectWork = expectWorkService.findExpectWorkByUserId(id);</p>
-<p>if(findExpectWork != null) {</p>
-<p>expectWorkService.delete(findExpectWork.getId());</p>
-<p>//删除该用户的教育背景</p>
-<p>EducationBackground findEducationBackground = educationBackgroundService.findEducationBackgroundByUserId(id);</p>
-<p>if(findEducationBackground != null) {</p>
-<p>educationBackgroundService.delete(findEducationBackground.getId());</p>
-<p>//最后删除该用户</p>
-<p>userService.delete(id);</p>
-<p>}catch(Exception e){</p>
-<p>e.printStackTrace();</p>
-<p>return Result.error(CodeMsg.FOREIGN_KEY_RESTRAIN);</p>
-<p>return Result.success(true);</p>
-<p>管理员控制类： </p>
-<p>/**</p>
-<ul>
-<li>管理员控制类</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“/admin/admin”)</p>
-<p>@Controller</p>
-<p>public class AdminController {</p>
-<p>@Autowired</p>
-<p>private AdminService adminService;</p>
-<p>@Autowired</p>
-<p>private OperaterLogService  operaterLogService;</p>
-<p>/**</p>
-<ul>
-<li><p>后台管理员管理</p>
-</li>
-<li><p>@param model</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value=”/my_info”,method=RequestMethod.GET)</p>
-<p>public String myInfo(Model model){</p>
-<p>return “admin/admin/my_info”;</p>
-<p>/**</p>
-<ul>
-<li><p>后台管理员信息列表</p>
-</li>
-<li><p>@param request</p>
-</li>
-<li><p>@param page</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value=”/my_info_list”,method=RequestMethod.POST)</p>
-<p>@ResponseBody</p>
-<p>public  Map&lt;String, Object&gt;  myInfoList(HttpServletRequest request,Page page){</p>
-<p>Map&lt;String, Object&gt; ret = new HashMap&lt;String, Object&gt;();</p>
-<p>Admin admin = (Admin) request.getSession().getAttribute(SessionConstant.SESSION_ADMIN_LOGIN_KEY);</p>
-<p>List<Admin> findList = adminService.findAdminList(admin.getId(),page.getOffset(), page.getRows());</Admin></p>
-<p>ret.put(“rows”, findList);</p>
-<p>ret.put(“total”, 1);</p>
-<p>return ret;</p>
-<p>/**</p>
-<ul>
-<li><p>管理员信息修改处理</p>
-</li>
-<li><p>@param admin</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value=”/edit”,method=RequestMethod.POST)</p>
-<p>@ResponseBody</p>
-<p>public Result<Boolean> edit(Admin admin)</Boolean></p>
-<p>if(admin == null)</p>
-<p>return Result.error(CodeMsg.DATA_ERROR);</p>
-<p>//用统一验证实体方法验证是否合法</p>
-<p>CodeMsg validate = ValidateEntityUtil.validate(admin);</p>
-<p>if(validate.getCode() != CodeMsg.SUCCESS.getCode()){</p>
-<p>return Result.error(validate);</p>
-<p>//判断有无接收到对应管理员的id</p>
-<p>if(admin.getId() == null || admin.getId().longValue() &lt;= 0)</p>
-<p>return Result.error(CodeMsg.USER_EDIT_ID_EMPTY);</p>
-<p>Admin findAdmin = adminService.find(admin.getId());</p>
-<p>//将提交的管理员信息指定字段复制到已存在的admin对象findAdmin中,该方法会覆盖新字段内容</p>
-<p>BeanUtils.copyProperties(admin, findAdmin, “id”,”createTime”,”updateTime”);</p>
-<p>//进行修改操作</p>
-<p>if(adminService.save(findAdmin) == null)</p>
-<p>return Result.error(CodeMsg.USER_EDIT_ERROR);</p>
-<p>//添加操作日志</p>
-<p>OperaterLog operaterLog  = new OperaterLog();</p>
-<p>operaterLog.setOperator(“【”+findAdmin.getAdminName()+”】：”);</p>
-<p>operaterLog.setContent(“修改了管理员信息：【”+findAdmin+”】。”);</p>
-<p>operaterLogService.save(operaterLog);</p>
-<p>return Result.success(true);</p>
-<p>公司管理控制层：</p>
-<p>/**</p>
-<p>*后端公司管理控制器</p>
-<p>*/</p>
-<p>@RequestMapping(“/admin/company”)</p>
-<p>@Controller</p>
-<p>public class CompanyController {</p>
-<p>@Autowired</p>
-<p>private CompanyService companyService;</p>
-<p>@Autowired</p>
-<p>private ResumeService resumeService;</p>
-<p>@Autowired</p>
-<p>private PositionService positionService;</p>
-<p>/**</p>
-<ul>
-<li><p>后台公司管理信息页面</p>
-</li>
-<li><p>@param model</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value=”/list”,method=RequestMethod.GET)</p>
-<p>public String list(Model model){</p>
-<p>return “admin/company/list”;</p>
-<p>/**</p>
-<ul>
-<li><p>获取后台公司信息列表</p>
-</li>
-<li><p>@param request</p>
-</li>
-<li><p>@param page</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value=”/list”,method=RequestMethod.POST)</p>
-<p>@ResponseBody</p>
-<p>public  Map&lt;String, Object&gt; list(@RequestParam(name=”state”,required=false,defaultValue=””) String state,Page page){</p>
-<p>Map&lt;String, Object&gt; ret = new HashMap&lt;String, Object&gt;();</p>
-<p>if(!StringUtil.isEmpty(state)) {</p>
-<p>//如果state不为空</p>
-<p>List<Company> findCompanyList = companyService.findCompanyList(state, page.getOffset(), page.getRows());</Company></p>
-<p>ret.put(“rows”, findCompanyList);</p>
-<p>ret.put(“total”, companyService.getCompanyTotal(state));</p>
-<p>}else {</p>
-<p>//如果state为空</p>
-<p>List<Company> findAllCompanyList = companyService.findAllCompanyList(page.getOffset(), page.getRows());</Company></p>
-<p>ret.put(“rows”, findAllCompanyList);</p>
-<p>ret.put(“total”, companyService.total());</p>
-<p>return ret;</p>
-<p>/**</p>
-<ul>
-<li><p>改变公司状态</p>
-</li>
-<li><p>@param request</p>
-</li>
-<li><p>@param page</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value=”/change_state”,method=RequestMethod.POST)</p>
-<p>@ResponseBody</p>
-<p>public  Result<Boolean> changeState(Company company){</Boolean></p>
-<p>if(company == null) {</p>
-<p>return Result.error(CodeMsg.DATA_ERROR);</p>
-<p>Company findCompany = companyService.find(company.getId());</p>
-<p>findCompany.setState(company.getState());</p>
-<p>if(companyService.save(findCompany) == null) {</p>
-<p>return Result.error(CodeMsg.COMPANY_CHANGE_STATE_ERROR);</p>
-<p>return Result.success(true);</p>
-<p>/**</p>
-<p>*删除公司</p>
-<ul>
-<li><p>@param request</p>
-</li>
-<li><p>@param page</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value=”/delete”,method=RequestMethod.POST)</p>
-<p>@ResponseBody</p>
-<p>public  Result<Boolean> delete(@RequestParam(name=”id”,required=true)Long id){</Boolean></p>
-<p>try {</p>
-<p>List<Resume> findResumeList = resumeService.findByCompanyId(id);</Resume></p>
-<p>//先删除该公司所有的简历</p>
-<p>for(Resume resume : findResumeList) {</p>
-<p>resumeService.delete(resume.getId());</p>
-<p>//再删除该公司所有职位</p>
-<p>List<Position> findPositionList = positionService.findPositionByCompanyId(id);</Position></p>
-<p>for(Position position : findPositionList) {</p>
-<p>positionService.delete(position.getId());</p>
-<p>//最后删除公司</p>
-<p>companyService.delete(id);</p>
-<p>}catch(Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return Result.error(CodeMsg.FOREIGN_KEY_RESTRAIN);</p>
-<p>return Result.success(true);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"> * 退出</span><br><span class="line"> */</span><br><span class="line"><span class="meta">@RequestMapping(&quot;/logout&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">logout</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">	request.getSession().invalidate();</span><br><span class="line">	<span class="keyword">return</span> R.ok(<span class="string">&quot;退出成功&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 获取用户的session用户信息</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/session&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">getCurrUser</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">   	Long id = (Long)request.getSession().getAttribute(<span class="string">&quot;userId&quot;</span>);</span><br><span class="line">       QiyeEntity user = qiyeService.selectById(id);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, user);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 密码重置</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@IgnoreAuth</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/resetPass&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">resetPass</span><span class="params">(String username, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">   	QiyeEntity user = qiyeService.selectOne(<span class="keyword">new</span> EntityWrapper&lt;QiyeEntity&gt;().eq(<span class="string">&quot;qiyebianhao&quot;</span>, username));</span><br><span class="line">   	<span class="keyword">if</span>(user==<span class="keyword">null</span>) &#123;</span><br><span class="line">   		<span class="keyword">return</span> R.error(<span class="string">&quot;账号不存在&quot;</span>);</span><br><span class="line">   	&#125;</span><br><span class="line">   	user.setMima(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line">       qiyeService.updateById(user);</span><br><span class="line">       <span class="keyword">return</span> R.ok(<span class="string">&quot;密码已重置为：123456&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 后端列表</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">page</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,QiyeEntity qiye, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">       EntityWrapper&lt;QiyeEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;QiyeEntity&gt;();</span><br><span class="line">	PageUtils page = qiyeService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, qiye), params), params));</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">     * 删除</span><br><span class="line">     */</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Long[] ids)</span></span>&#123;</span><br><span class="line">        qiyeService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line">        <span class="keyword">return</span> R.ok();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 提醒接口</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/remind/&#123;columnName&#125;/&#123;type&#125;&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> R <span class="title">remindCount</span><span class="params">(<span class="meta">@PathVariable(&quot;columnName&quot;)</span> String columnName, HttpServletRequest request, </span></span></span><br><span class="line"><span class="function"><span class="params">						 <span class="meta">@PathVariable(&quot;type&quot;)</span> String type,<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; map)</span> </span>&#123;</span><br><span class="line">		map.put(<span class="string">&quot;column&quot;</span>, columnName);</span><br><span class="line">		map.put(<span class="string">&quot;type&quot;</span>, type);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(type.equals(<span class="string">&quot;2&quot;</span>)) &#123;</span><br><span class="line">			SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line">			Calendar c = Calendar.getInstance();</span><br><span class="line">			Date remindStartDate = <span class="keyword">null</span>;</span><br><span class="line">			Date remindEndDate = <span class="keyword">null</span>;</span><br><span class="line">			<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				Integer remindStart = Integer.parseInt(map.get(<span class="string">&quot;remindstart&quot;</span>).toString());</span><br><span class="line">				c.setTime(<span class="keyword">new</span> Date()); </span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindStart);</span><br><span class="line">				remindStartDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindstart&quot;</span>, sdf.format(remindStartDate));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				Integer remindEnd = Integer.parseInt(map.get(<span class="string">&quot;remindend&quot;</span>).toString());</span><br><span class="line">				c.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">				remindEndDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindend&quot;</span>, sdf.format(remindEndDate));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Wrapper&lt;QiyeEntity&gt; wrapper = <span class="keyword">new</span> EntityWrapper&lt;QiyeEntity&gt;();</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.ge(columnName, map.get(<span class="string">&quot;remindstart&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.le(columnName, map.get(<span class="string">&quot;remindend&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> count = qiyeService.selectCount(wrapper);</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">       EntityWrapper&lt;BiyeshengEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;BiyeshengEntity&gt;();</span><br><span class="line">	PageUtils page = biyeshengService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, biyesheng), params), params));</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 前端列表</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/list&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,BiyeshengEntity biyesheng, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">       EntityWrapper&lt;BiyeshengEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;BiyeshengEntity&gt;();</span><br><span class="line">	PageUtils page = biyeshengService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, biyesheng), params), params));</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 列表</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/lists&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">( BiyeshengEntity biyesheng)</span></span>&#123;</span><br><span class="line">      	EntityWrapper&lt;BiyeshengEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;BiyeshengEntity&gt;();</span><br><span class="line">     	ew.allEq(MPUtil.allEQMapPre( biyesheng, <span class="string">&quot;biyesheng&quot;</span>)); </span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, biyeshengService.selectListView(ew));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 查询</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/query&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">query</span><span class="params">(BiyeshengEntity biyesheng)</span></span>&#123;</span><br><span class="line">       EntityWrapper&lt; BiyeshengEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt; BiyeshengEntity&gt;();</span><br><span class="line">		ew.allEq(MPUtil.allEQMapPre( biyesheng, <span class="string">&quot;biyesheng&quot;</span>)); </span><br><span class="line">	BiyeshengView biyeshengView =  biyeshengService.selectView(ew);</span><br><span class="line">	<span class="keyword">return</span> R.ok(<span class="string">&quot;查询毕业生成功&quot;</span>).put(<span class="string">&quot;data&quot;</span>, biyeshengView);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 后端详情</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">info</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> String id)</span></span>&#123;</span><br><span class="line">       BiyeshengEntity biyesheng = biyeshengService.selectById(id);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, biyesheng);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 前端详情</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/detail/&#123;id&#125;&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">detail</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> String id)</span></span>&#123;</span><br><span class="line">       BiyeshengEntity biyesheng = biyeshengService.selectById(id);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, biyesheng);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">	 * 单列求和</span><br><span class="line">	 */</span><br><span class="line">	<span class="meta">@IgnoreAuth</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/cal/&#123;tableName&#125;/&#123;columnName&#125;&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> R <span class="title">cal</span><span class="params">(<span class="meta">@PathVariable(&quot;tableName&quot;)</span> String tableName, <span class="meta">@PathVariable(&quot;columnName&quot;)</span> String columnName)</span> </span>&#123;</span><br><span class="line">		Map&lt;String, Object&gt; params = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">		params.put(<span class="string">&quot;table&quot;</span>, tableName);</span><br><span class="line">		params.put(<span class="string">&quot;column&quot;</span>, columnName);</span><br><span class="line">		Map&lt;String, Object&gt; result = commonService.selectCal(params);</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, result);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 分组统计</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@IgnoreAuth</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/group/&#123;tableName&#125;/&#123;columnName&#125;&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> R <span class="title">group</span><span class="params">(<span class="meta">@PathVariable(&quot;tableName&quot;)</span> String tableName, <span class="meta">@PathVariable(&quot;columnName&quot;)</span> String columnName)</span> </span>&#123;</span><br><span class="line">		Map&lt;String, Object&gt; params = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">		params.put(<span class="string">&quot;table&quot;</span>, tableName);</span><br><span class="line">		params.put(<span class="string">&quot;column&quot;</span>, columnName);</span><br><span class="line">		List&lt;Map&lt;String, Object&gt;&gt; result = commonService.selectGroup(params);</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, result);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * （按值统计）</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@IgnoreAuth</span></span><br><span class="line">	<span class="meta">@RequestMapping(&quot;/value/&#123;tableName&#125;/&#123;xColumnName&#125;/&#123;yColumnName&#125;&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> R <span class="title">value</span><span class="params">(<span class="meta">@PathVariable(&quot;tableName&quot;)</span> String tableName, <span class="meta">@PathVariable(&quot;yColumnName&quot;)</span> String yColumnName, <span class="meta">@PathVariable(&quot;xColumnName&quot;)</span> String xColumnName)</span> </span>&#123;</span><br><span class="line">		Map&lt;String, Object&gt; params = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">		params.put(<span class="string">&quot;table&quot;</span>, tableName);</span><br><span class="line">		params.put(<span class="string">&quot;xColumn&quot;</span>, xColumnName);</span><br><span class="line">		params.put(<span class="string">&quot;yColumn&quot;</span>, yColumnName);</span><br><span class="line">		List&lt;Map&lt;String, Object&gt;&gt; result = commonService.selectValue(params);</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, result);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 试题表</span></span><br><span class="line"><span class="comment"> * 后端接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@email</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/examquestion&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExamquestionController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ExamquestionService examquestionService;</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
-<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=99&price2=89" style="height: 260px;" frameborder="0"></iframe>
 <blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=171524522608201os<br>https://javayms.pages.dev?id=171524522608201os</p></blockquote>
     </div>
 
@@ -597,6 +275,7 @@
 			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
 			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
 			<a href="/tags/%E6%8B%9B%E8%81%98-%E5%B0%B1%E4%B8%9A/" rel="tag"><i class="fa fa-tag"></i> 招聘 | 就业</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
 
           </div>
 

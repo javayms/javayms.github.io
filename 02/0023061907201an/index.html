@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SSM图书馆管理系统(java+html+ssm+javascript+layui+mysql)">
+<meta property="og:title" content="基于javaweb的SSM+Maven图书馆管理系统(java+html+ssm+javascript+layui+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SSM图书馆管理系统(java+html+ssm+javascript+layui+mysql) | Java源码社</title>
+  <title>基于javaweb的SSM+Maven图书馆管理系统(java+html+ssm+javascript+layui+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SSM图书馆管理系统(java+html+ssm+javascript+layui+mysql)
+			基于javaweb的SSM+Maven图书馆管理系统(java+html+ssm+javascript+layui+mysql)
             
         </h1>
 
@@ -227,299 +227,30 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/472323411807.jpg" alt="472323411807"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/482323411807.jpg" alt="482323411807"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/492323411807.jpg" alt="492323411807"></p>
-<p>基于javaweb的SSM图书馆管理系统(java+html+ssm+javascript+layui+mysql)</p>
-<p>项目介绍</p>
-<p>SSM图书馆管理系统，角色：管理员和读者。 </p>
-<p>管理员角色功能如下： 登录、图书管理、读者管理、公告管理、借阅管理、类型管理、首页、统计分析、图书馆系统、修改密码</p>
-<p>读者角色功能如下： 登录、公告管理、借阅管理、修改密码；</p>
-<p>环境需要:</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； 5.是否Maven项目: 否；查看源码目录中是否包含pom.xml；若包含，则为maven项目，否则为非maven项目  6.数据库：MySql 5.7/8.0等版本均可；</p>
-<p>技术栈:</p>
-<p>后端：SSM(Spring+SpringMVC+Mybatis) 前端：HTML+CSS+Javascript+Layui</p>
-<p>使用说明</p>
-<ol>
-<li>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，修改配置，运行项目； 3. 将项目中db.properties配置文件中的数据库配置改为自己的配置，然后运行； 4. 在浏览器中输入<a target="_blank" rel="noopener" href="http://localhost:8080/LibraryProject/login">http://localhost:8080/LibraryProject/login</a> 管理员用户名密码：admin/12345 读者用户名密码：zhangsan/12345</li>
-</ol>
+<p>基于javaweb的SSM+Maven图书馆管理系统(java+html+ssm+javascript+layui+mysql)</p>
+<p>管理员角色功能如下：<br>登录、图书管理、读者管理、公告管理、借阅管理、类型管理、首页、统计分析、图书馆系统、修改密码</p>
+<p>读者角色功能如下：<br>登录、公告管理、借阅管理、修改密码；</p>
+<p>后端：SSM(Spring+SpringMVC+Mybatis)<br>前端：HTML+CSS+Javascript+Layui</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">管理员：</span><br><span class="line">admin       123456</span><br><span class="line"></span><br><span class="line">读者：</span><br><span class="line">zhangsan	123456</span><br><span class="line">mary    	123456</span><br><span class="line">cindy	    123456</span><br></pre></td></tr></table></figure>
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>读者信息控制层：</p>
-<p>@Controller</p>
-<p>public class ReaderController {</p>
-<p>@Autowired</p>
-<p>private ReaderInfoService readerInfoService;</p>
-<p>@Autowired</p>
-<p>private LoginService loginService;</p>
-<p>@Autowired</p>
-<p>private ReaderCardService readerCardService;</p>
-<p>private ReaderInfo getReaderInfo(long readerId, String name, String sex, String birth, String address, String phone) {</p>
-<p>ReaderInfo readerInfo = new ReaderInfo();</p>
-<p>Date date = new Date();</p>
-<p>try {</p>
-<p>SimpleDateFormat df = new SimpleDateFormat(“yyyy-MM-dd”);</p>
-<p>date = df.parse(birth);</p>
-<p>} catch (ParseException e) {</p>
-<p>e.printStackTrace();</p>
-<p>readerInfo.setAddress(address);</p>
-<p>readerInfo.setName(name);</p>
-<p>readerInfo.setReaderId(readerId);</p>
-<p>readerInfo.setPhone(phone);</p>
-<p>readerInfo.setSex(sex);</p>
-<p>readerInfo.setBirth(date);</p>
-<p>return readerInfo;</p>
-<p>@RequestMapping(“allreaders.html”)</p>
-<p>public ModelAndView allBooks() {</p>
-<p>ArrayList<ReaderInfo> readers = readerInfoService.readerInfos();</ReaderInfo></p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_readers”);</p>
-<p>modelAndView.addObject(“readers”, readers);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“reader_delete.html”)</p>
-<p>public String readerDelete(HttpServletRequest request, RedirectAttributes redirectAttributes) {</p>
-<p>long readerId = Long.parseLong(request.getParameter(“readerId”));</p>
-<p>if (readerInfoService.deleteReaderInfo(readerId) &amp;&amp; readerCardService.deleteReaderCard(readerId)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “删除成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “删除失败！”);</p>
-<p>return “redirect:/allreaders.html”;</p>
-<p>@RequestMapping(“/reader_info.html”)</p>
-<p>public ModelAndView toReaderInfo(HttpServletRequest request) {</p>
-<p>ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>ReaderInfo readerInfo = readerInfoService.getReaderInfo(readerCard.getReaderId());</p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_info”);</p>
-<p>modelAndView.addObject(“readerinfo”, readerInfo);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“reader_edit.html”)</p>
-<p>public ModelAndView readerInfoEdit(HttpServletRequest request) {</p>
-<p>long readerId = Long.parseLong(request.getParameter(“readerId”));</p>
-<p>ReaderInfo readerInfo = readerInfoService.getReaderInfo(readerId);</p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_reader_edit”);</p>
-<p>modelAndView.addObject(“readerInfo”, readerInfo);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“reader_edit_do.html”)</p>
-<p>public String readerInfoEditDo(HttpServletRequest request, String name, String sex, String birth, String address, String phone, RedirectAttributes redirectAttributes) {</p>
-<p>long readerId = Long.parseLong(request.getParameter(“readerId”));</p>
-<p>ReaderInfo readerInfo = getReaderInfo(readerId, name, sex, birth, address, phone);</p>
-<p>if (readerInfoService.editReaderInfo(readerInfo) &amp;&amp; readerInfoService.editReaderCard(readerInfo)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “读者信息修改成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “读者信息修改失败！”);</p>
-<p>return “redirect:/allreaders.html”;</p>
-<p>@RequestMapping(“reader_add.html”)</p>
-<p>public ModelAndView readerInfoAdd() {</p>
-<p>return new ModelAndView(“admin_reader_add”);</p>
-<p>@RequestMapping(“reader_add_do.html”)</p>
-<p>public String readerInfoAddDo(String name, String sex, String birth, String address, String phone, String password, RedirectAttributes redirectAttributes) {</p>
-<p>ReaderInfo readerInfo = getReaderInfo(0, name, sex, birth, address, phone);</p>
-<p>long readerId = readerInfoService.addReaderInfo(readerInfo);</p>
-<p>readerInfo.setReaderId(readerId);</p>
-<p>if (readerId &gt; 0 &amp;&amp; readerCardService.addReaderCard(readerInfo, password)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “添加读者信息成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “添加读者信息失败！”);</p>
-<p>return “redirect:/allreaders.html”;</p>
-<p>@RequestMapping(“reader_info_edit.html”)</p>
-<p>public ModelAndView readerInfoEditReader(HttpServletRequest request) {</p>
-<p>ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>ReaderInfo readerInfo = readerInfoService.getReaderInfo(readerCard.getReaderId());</p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_info_edit”);</p>
-<p>modelAndView.addObject(“readerinfo”, readerInfo);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“reader_edit_do_r.html”)</p>
-<p>public String readerInfoEditDoReader(HttpServletRequest request, String name, String sex, String birth, String address, String phone, RedirectAttributes redirectAttributes) {</p>
-<p>ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>ReaderInfo readerInfo = getReaderInfo(readerCard.getReaderId(), name, sex, birth, address, phone);</p>
-<p>if (readerInfoService.editReaderInfo(readerInfo) &amp;&amp; readerInfoService.editReaderCard(readerInfo)) {</p>
-<p>ReaderCard readerCardNew = loginService.findReaderCardByReaderId(readerCard.getReaderId());</p>
-<p>request.getSession().setAttribute(“readercard”, readerCardNew);</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “信息修改成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “信息修改失败！”);</p>
-<p>return “redirect:/reader_info.html”;</p>
-<p>登录控制层：</p>
-<p>@Controller</p>
-<p>public class LoginController {</p>
-<p>private LoginService loginService;</p>
-<p>@Autowired</p>
-<p>public void setLoginService(LoginService loginService) {</p>
-<p>this.loginService = loginService;</p>
-<p>@RequestMapping(value = {“/“, “/login.html”})</p>
-<p>public String toLogin(HttpServletRequest request) {</p>
-<p>request.getSession().invalidate();</p>
-<p>return “index”;</p>
-<p>@RequestMapping(“/logout.html”)</p>
-<p>public String logout(HttpServletRequest request) {</p>
-<p>request.getSession().invalidate();</p>
-<p>return “redirect:/login.html”;</p>
-<p>//负责处理loginCheck.html请求</p>
-<p>//请求参数会根据参数名称默认契约自动绑定到相应方法的入参中</p>
-<p>@RequestMapping(value = “/api/loginCheck”, method = RequestMethod.POST)</p>
-<p>public @ResponseBody</p>
-<p>Object loginCheck(HttpServletRequest request) {</p>
-<p>long id = Long.parseLong(request.getParameter(“id”));</p>
-<p>String passwd = request.getParameter(“passwd”);</p>
-<p>boolean isReader = loginService.hasMatchReader(id, passwd);</p>
-<p>boolean isAdmin = loginService.hasMatchAdmin(id, passwd);</p>
-<p>HashMap&lt;String, String&gt; res = new HashMap&lt;&gt;();</p>
-<p>if (isAdmin) {</p>
-<p>Admin admin = new Admin();</p>
-<p>admin.setAdminId(id);</p>
-<p>admin.setPassword(passwd);</p>
-<p>String username = loginService.getAdminUsername(id);</p>
-<p>admin.setUsername(username);</p>
-<p>request.getSession().setAttribute(“admin”, admin);</p>
-<p>res.put(“stateCode”, “1”);</p>
-<p>res.put(“msg”, “管理员登陆成功！”);</p>
-<p>} else if (isReader) {</p>
-<p>ReaderCard readerCard = loginService.findReaderCardByReaderId(id);</p>
-<p>request.getSession().setAttribute(“readercard”, readerCard);</p>
-<p>res.put(“stateCode”, “2”);</p>
-<p>res.put(“msg”, “读者登陆成功！”);</p>
-<p>} else {</p>
-<p>res.put(“stateCode”, “0”);</p>
-<p>res.put(“msg”, “账号或密码错误！”);</p>
-<p>return res;</p>
-<p>@RequestMapping(“/admin_main.html”)</p>
-<p>public ModelAndView toAdminMain(HttpServletResponse response) {</p>
-<p>return new ModelAndView(“admin_main”);</p>
-<p>@RequestMapping(“/reader_main.html”)</p>
-<p>public ModelAndView toReaderMain(HttpServletResponse response) {</p>
-<p>return new ModelAndView(“reader_main”);</p>
-<p>@RequestMapping(“/admin_repasswd.html”)</p>
-<p>public ModelAndView reAdminPasswd() {</p>
-<p>return new ModelAndView(“admin_repasswd”);</p>
-<p>@RequestMapping(“/admin_repasswd_do”)</p>
-<p>public String reAdminPasswdDo(HttpServletRequest request, String oldPasswd, String newPasswd, String reNewPasswd, RedirectAttributes redirectAttributes) {</p>
-<p>Admin admin = (Admin) request.getSession().getAttribute(“admin”);</p>
-<p>long id = admin.getAdminId();</p>
-<p>String password = loginService.getAdminPassword(id);</p>
-<p>if (password.equals(oldPasswd)) {</p>
-<p>if (loginService.adminRePassword(id, newPasswd)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “密码修改成功！”);</p>
-<p>return “redirect:/admin_repasswd.html”;</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “密码修改失败！”);</p>
-<p>return “redirect:/admin_repasswd.html”;</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “旧密码错误！”);</p>
-<p>return “redirect:/admin_repasswd.html”;</p>
-<p>@RequestMapping(“/reader_repasswd.html”)</p>
-<p>public ModelAndView reReaderPasswd() {</p>
-<p>return new ModelAndView(“reader_repasswd”);</p>
-<p>@RequestMapping(“/reader_repasswd_do”)</p>
-<p>public String reReaderPasswdDo(HttpServletRequest request, String oldPasswd, String newPasswd, String reNewPasswd, RedirectAttributes redirectAttributes) {</p>
-<p>ReaderCard reader = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>long id = reader.getReaderId();</p>
-<p>String password = loginService.getReaderPassword(id);</p>
-<p>if (password.equals(oldPasswd)) {</p>
-<p>if (loginService.readerRePassword(id, newPasswd)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “密码修改成功！”);</p>
-<p>return “redirect:/reader_repasswd.html”;</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “密码修改失败！”);</p>
-<p>return “redirect:/reader_repasswd.html”;</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “旧密码错误！”);</p>
-<p>return “redirect:/reader_repasswd.html”;</p>
-<p>//配置404页面</p>
-<p>@RequestMapping(“*”)</p>
-<p>public String notFind() {</p>
-<p>return “404”;</p>
-<p>图书管理系统：</p>
-<p>@Controller</p>
-<p>public class BookController {</p>
-<p>@Autowired</p>
-<p>private BookService bookService;</p>
-<p>@Autowired</p>
-<p>private LendService lendService;</p>
-<p>private Date getDate(String pubstr) {</p>
-<p>try {</p>
-<p>SimpleDateFormat df = new SimpleDateFormat(“yyyy-MM-dd”);</p>
-<p>return df.parse(pubstr);</p>
-<p>} catch (ParseException e) {</p>
-<p>e.printStackTrace();</p>
-<p>return new Date();</p>
-<p>@RequestMapping(“/queryBook.html”)</p>
-<p>public ModelAndView queryBookDo(String searchWord) {</p>
-<p>if (bookService.matchBook(searchWord)) {</p>
-<p>ArrayList<Book> books = bookService.queryBook(searchWord);</Book></p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_books”);</p>
-<p>modelAndView.addObject(“books”, books);</p>
-<p>return modelAndView;</p>
-<p>} else {</p>
-<p>return new ModelAndView(“admin_books”, “error”, “没有匹配的图书”);</p>
-<p>@RequestMapping(“/reader_querybook_do.html”)</p>
-<p>public ModelAndView readerQueryBookDo(String searchWord) {</p>
-<p>if (bookService.matchBook(searchWord)) {</p>
-<p>ArrayList<Book> books = bookService.queryBook(searchWord);</Book></p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_books”);</p>
-<p>modelAndView.addObject(“books”, books);</p>
-<p>return modelAndView;</p>
-<p>} else {</p>
-<p>return new ModelAndView(“reader_books”, “error”, “没有匹配的图书”);</p>
-<p>@RequestMapping(“/admin_books.html”)</p>
-<p>public ModelAndView adminBooks() {</p>
-<p>ArrayList<Book> books = bookService.getAllBooks();</Book></p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_books”);</p>
-<p>modelAndView.addObject(“books”, books);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/book_add.html”)</p>
-<p>public ModelAndView addBook() {</p>
-<p>return new ModelAndView(“admin_book_add”);</p>
-<p>@RequestMapping(“/book_add_do.html”)</p>
-<p>public String addBookDo(@RequestParam(value = “pubstr”) String pubstr, Book book, RedirectAttributes redirectAttributes) {</p>
-<p>book.setPubdate(getDate(pubstr));</p>
-<p>if (bookService.addBook(book)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “图书添加成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “图书添加失败！”);</p>
-<p>return “redirect:/admin_books.html”;</p>
-<p>@RequestMapping(“/updatebook.html”)</p>
-<p>public ModelAndView bookEdit(HttpServletRequest request) {</p>
-<p>long bookId = Long.parseLong(request.getParameter(“bookId”));</p>
-<p>Book book = bookService.getBook(bookId);</p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_book_edit”);</p>
-<p>modelAndView.addObject(“detail”, book);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/book_edit_do.html”)</p>
-<p>public String bookEditDo(@RequestParam(value = “pubstr”) String pubstr, Book book, RedirectAttributes redirectAttributes) {</p>
-<p>book.setPubdate(getDate(pubstr));</p>
-<p>if (bookService.editBook(book)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “图书修改成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “图书修改失败！”);</p>
-<p>return “redirect:/admin_books.html”;</p>
-<p>@RequestMapping(“/admin_book_detail.html”)</p>
-<p>public ModelAndView adminBookDetail(HttpServletRequest request) {</p>
-<p>long bookId = Long.parseLong(request.getParameter(“bookId”));</p>
-<p>Book book = bookService.getBook(bookId);</p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_book_detail”);</p>
-<p>modelAndView.addObject(“detail”, book);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/reader_book_detail.html”)</p>
-<p>public ModelAndView readerBookDetail(HttpServletRequest request) {</p>
-<p>long bookId = Long.parseLong(request.getParameter(“bookId”));</p>
-<p>Book book = bookService.getBook(bookId);</p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_book_detail”);</p>
-<p>modelAndView.addObject(“detail”, book);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/admin_header.html”)</p>
-<p>public ModelAndView admin_header() {</p>
-<p>return new ModelAndView(“admin_header”);</p>
-<p>@RequestMapping(“/reader_header.html”)</p>
-<p>public ModelAndView reader_header() {</p>
-<p>return new ModelAndView(“reader_header”);</p>
-<p>@RequestMapping(“/reader_books.html”)</p>
-<p>public ModelAndView readerBooks(HttpServletRequest request) {</p>
-<p>ArrayList<Book> books = bookService.getAllBooks();</Book></p>
-<p>ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>ArrayList<Lend> myAllLendList = lendService.myLendList(readerCard.getReaderId());</Lend></p>
-<p>ArrayList<Long> myLendList = new ArrayList&lt;&gt;();</Long></p>
-<p>for (Lend lend : myAllLendList) {</p>
-<p>// 是否已归还</p>
-<p>if (lend.getBackDate() == null) {</p>
-<p>myLendList.add(lend.getBookId());</p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_books”);</p>
-<p>modelAndView.addObject(“books”, books);</p>
-<p>modelAndView.addObject(“myLendList”, myLendList);</p>
-<p>return modelAndView;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 修改提交功能</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/updateTypeSubmit&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataInfo <span class="title">updateTypeSubmit</span><span class="params">(<span class="meta">@RequestBody</span> TypeInfo info)</span></span>&#123;</span><br><span class="line">        typeInfoService.updateTypeSubmit(info);</span><br><span class="line">        <span class="keyword">return</span> DataInfo.ok();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 类型删除</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/deleteType&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataInfo <span class="title">deleteType</span><span class="params">(String ids)</span></span>&#123;</span><br><span class="line">        List&lt;String&gt; list= Arrays.asList(ids.split(<span class="string">&quot;,&quot;</span>));</span><br><span class="line">        typeInfoService.deleteTypeByIds(list);</span><br><span class="line">        <span class="keyword">return</span> DataInfo.ok();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NoticeController</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AdminService adminService;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ReaderInfoService readerService;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 登录页面的转发</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/login&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">login</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;login&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取验证码方法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> request</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/verifyCode&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">verifyCode</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> </span>&#123;</span><br><span class="line">        IVerifyCodeGen iVerifyCodeGen = <span class="keyword">new</span> SimpleCharVerifyCodeGenImpl();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//设置长宽</span></span><br><span class="line">            VerifyCode verifyCode = iVerifyCodeGen.generate(<span class="number">80</span>, <span class="number">28</span>);</span><br><span class="line">            String code = verifyCode.getCode();</span><br><span class="line">            <span class="comment">//将VerifyCode绑定session</span></span><br><span class="line">            request.getSession().setAttribute(<span class="string">&quot;VerifyCode&quot;</span>, code);</span><br><span class="line">            <span class="comment">//设置响应头</span></span><br><span class="line">            response.setHeader(<span class="string">&quot;Pragma&quot;</span>, <span class="string">&quot;no-cache&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">            <span class="keyword">return</span> <span class="string">&quot;login&quot;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//验证码正确则判断用户名和密码</span></span><br><span class="line">            <span class="keyword">if</span>(type.equals(<span class="string">&quot;1&quot;</span>))&#123;<span class="comment">//管理员信息</span></span><br><span class="line">                <span class="comment">//用户名和密码是否正确</span></span><br><span class="line">                Admin admin=adminService.queryUserByNameAndPassword(username,password);</span><br><span class="line">                <span class="keyword">if</span>(admin==<span class="keyword">null</span>)&#123;<span class="comment">//该用户不存在</span></span><br><span class="line">                    model.addAttribute(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;用户名或密码错误&quot;</span>);</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">&quot;login&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                session.setAttribute(<span class="string">&quot;user&quot;</span>,admin);</span><br><span class="line">                session.setAttribute(<span class="string">&quot;type&quot;</span>,<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;<span class="comment">//来自读者信息表</span></span><br><span class="line">                ReaderInfo readerInfo=readerService.queryUserInfoByNameAndPassword(username,password);</span><br><span class="line">                <span class="keyword">if</span>(readerInfo==<span class="keyword">null</span>)&#123;</span><br><span class="line">                    model.addAttribute(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;用户名或密码错误&quot;</span>);</span><br><span class="line">                    <span class="keyword">return</span> <span class="string">&quot;login&quot;</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                session.setAttribute(<span class="string">&quot;user&quot;</span>,readerInfo);</span><br><span class="line">                session.setAttribute(<span class="string">&quot;type&quot;</span>,<span class="string">&quot;reader&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 退出功能</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;loginOut&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">loginOut</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        HttpSession session = request.getSession();</span><br><span class="line">        session.invalidate();<span class="comment">//注销</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;/login&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> ReaderInfoService readerService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> BookInfoService bookInfoService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&quot;/lendListIndex&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">lendListIndex</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;lend/lendListIndex&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查询所有的列表</span></span><br><span class="line"><span class="comment"> * 1 request获取</span></span><br><span class="line"><span class="comment"> * 2、参数绑定</span></span><br><span class="line"><span class="comment"> * 3、对象绑定</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/lendListAll&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataInfo <span class="title">lendListAll</span><span class="params">(Integer type, String readerNumber, String name, Integer status,</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="meta">@RequestParam(defaultValue = &quot;1&quot;)</span>Integer page,<span class="meta">@RequestParam(defaultValue = &quot;15&quot;)</span>Integer limit)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    LendList info=<span class="keyword">new</span> LendList();</span><br><span class="line">    info.setBackType(type);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建读者对象</span></span><br><span class="line">    ReaderInfo reader=<span class="keyword">new</span> ReaderInfo();</span><br><span class="line">    reader.setReaderNumber(readerNumber);</span><br><span class="line">    <span class="comment">//把以上对象交给info</span></span><br><span class="line">    info.setReaderInfo(reader);</span><br><span class="line"></span><br><span class="line">   <span class="comment">//图书对象</span></span><br><span class="line">    BookInfo book=<span class="keyword">new</span> BookInfo();</span><br><span class="line">    book.setName(name);</span><br><span class="line">    book.setStatus(status);</span><br><span class="line">    info.setBookInfo(book);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//分页查询所有的记录信息</span></span><br><span class="line">    PageInfo pageInfo=lendListService.queryLendListAll(info,page,limit);</span><br><span class="line">    <span class="keyword">return</span> DataInfo.ok(<span class="string">&quot;ok&quot;</span>,pageInfo.getTotal(),pageInfo.getList());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加跳转</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/addLendList&quot;)</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LendListController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> LendListService lendListService;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ReaderInfoService readerService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BookInfoService bookInfoService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/lendListIndex&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">lendListIndex</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;lend/lendListIndex&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查询所有的列表</span></span><br><span class="line"><span class="comment">     * 1 request获取</span></span><br><span class="line"><span class="comment">     * 2、参数绑定</span></span><br><span class="line"><span class="comment">     * 3、对象绑定</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/lendListAll&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataInfo <span class="title">lendListAll</span><span class="params">(Integer type, String readerNumber, String name, Integer status,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="meta">@RequestParam(defaultValue = &quot;1&quot;)</span>Integer page,<span class="meta">@RequestParam(defaultValue = &quot;15&quot;)</span>Integer limit)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        LendList info=<span class="keyword">new</span> LendList();</span><br><span class="line">        info.setBackType(type);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建读者对象</span></span><br><span class="line">        ReaderInfo reader=<span class="keyword">new</span> ReaderInfo();</span><br><span class="line">        reader.setReaderNumber(readerNumber);</span><br><span class="line">        <span class="comment">//把以上对象交给info</span></span><br><span class="line">        info.setReaderInfo(reader);</span><br><span class="line"></span><br><span class="line">       <span class="comment">//图书对象</span></span><br><span class="line">        BookInfo book=<span class="keyword">new</span> BookInfo();</span><br><span class="line">        book.setName(name);</span><br><span class="line">        book.setStatus(status);</span><br><span class="line">        info.setBookInfo(book);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//分页查询所有的记录信息</span></span><br><span class="line">        PageInfo pageInfo=lendListService.queryLendListAll(info,page,limit);</span><br><span class="line">        <span class="keyword">return</span> DataInfo.ok(<span class="string">&quot;ok&quot;</span>,pageInfo.getTotal(),pageInfo.getList());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/adminIndex&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">adminIndex</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;admin/adminIndex&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/adminAll&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataInfo <span class="title">queryAdminAll</span><span class="params">(Admin admin, <span class="meta">@RequestParam(defaultValue = &quot;1&quot;)</span> Integer pageNum, <span class="meta">@RequestParam(defaultValue = &quot;15&quot;)</span> Integer limit)</span></span>&#123;</span><br><span class="line">    PageInfo&lt;Admin&gt; pageInfo = adminService.queryAdminAll(admin,pageNum,limit);</span><br><span class="line">    <span class="keyword">return</span> DataInfo.ok(<span class="string">&quot;成功&quot;</span>,pageInfo.getTotal(),pageInfo.getList());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加页面的跳转</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/adminAdd&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">adminAdd</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;admin/adminAdd&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加提交</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> admin</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/addAdminSubmit&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataInfo <span class="title">addBookSubmit</span><span class="params">(Admin admin)</span></span>&#123;</span><br><span class="line">    adminService.addAdminSubmit(admin);</span><br><span class="line">    <span class="keyword">return</span> DataInfo.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据id查询</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/queryAdminById&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">queryAdminById</span><span class="params">(Integer id, Model model)</span></span>&#123;</span><br><span class="line">    model.addAttribute(<span class="string">&quot;id&quot;</span>,id);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;admin/updateAdmin&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改提交</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/updatePwdSubmit&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> DataInfo <span class="title">updatePwdSubmit</span><span class="params">(Integer id,String oldPwd,String newPwd)</span></span>&#123;</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
 <iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
@@ -533,7 +264,7 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-			<a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+			<a href="/tags/SSM-Maven/" rel="tag"><i class="fa fa-tag"></i> SSM+Maven</a>
 			<a href="/tags/%E5%9B%BE%E4%B9%A6%E5%80%9F%E9%98%85/" rel="tag"><i class="fa fa-tag"></i> 图书借阅</a>
 
           </div>
