@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot图书个性化推荐系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:title" content="基于javaweb的SpringBoot图书个性化推荐系统(java+springboot+maven+mybaits+vue+elementui+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot图书个性化推荐系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  <title>基于javaweb的SpringBoot图书个性化推荐系统(java+springboot+maven+mybaits+vue+elementui+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot图书个性化推荐系统(java+springboot+mybaits+vue+elementui+mysql)
+			基于javaweb的SpringBoot图书个性化推荐系统(java+springboot+maven+mybaits+vue+elementui+mysql)
             
         </h1>
 
@@ -233,296 +233,29 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/271524392608.jpg" alt="271524392608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/281524392608.jpg" alt="281524392608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/291524392608.jpg" alt="291524392608"></p>
-<p>基于javaweb的SpringBoot图书个性化推荐系统(java+springboot+mybaits+vue+elementui+mysql)</p>
-<p>项目介绍</p>
-<p>基于Springboot+vue图书个性化推荐系统的设计与实现</p>
-<p>本系统为分为前后台，包含管理员、学生两种角色,前台为学生登录，后台为管理员登录。</p>
-<p>学生：首页、图书信息、好书推荐、图书预约、图书收藏、留言反馈、个人中心等。</p>
-<p>管理员：首页、个人中心、学生管理、图书分类管理、图书信息管理、图书预约管理、退换图书管理、管理员管理、留言板管理、系统管理等。</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
-<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
-<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
-<p>4.数据库：MySql 5.7/8.0版本均可；</p>
-<p>5.是否Maven项目：是；</p>
-<p>技术栈</p>
-<p>后端：SpringBoot+Mybaits</p>
-<p>前端：Vue+elementui</p>
-<p>使用说明</p>
-<p>项目运行：</p>
-<ol>
-<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
-</li>
-<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
-</li>
-<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
-</li>
-<li><p>运行项目，在浏览器中输入地址：</p>
-</li>
-</ol>
-<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootxs5o6/front/index.html">http://localhost:8080/springbootxs5o6/front/index.html</a></p>
-<p>学生账户:学生1  密码：123456</p>
-<p>后台地址</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:8080/springbootxs5o6/admin/dist/index.html">http://localhost:8080/springbootxs5o6/admin/dist/index.html</a></p>
-<p>管理员 abo 密码 abo</p>
-<p>学生账户:学生1  密码：123456</p>
-<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
-<p>文档展示：</p>
-<p>首页推荐展示页面：</p>
-<p>好书推荐页面展示：</p>
-<p>留言反馈页面展示：</p>
-<p> 首页图书信息推荐页面展示：</p>
-<p> 推荐页面展示：</p>
-<p>个人中心页面展示：</p>
-<p>后台管理页面展示：</p>
-<p> 图书信息管理页面展示：</p>
-<p>登录页面展示：</p>
+<p>基于javaweb的SpringBoot图书个性化推荐系统(java+springboot+maven+mybaits+vue+elementui+mysql)</p>
+<p>管理员：<br>admin    123456</p>
+<p>学生：<br>学生1    123456<br>学生2    123456<br>学生3    123456<br>学生4    123456<br>学生5    123456<br>学生6    123456</p>
+<p>后端启动类：StartApplication<br>前端启动命令：npm run serve</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>读者管理控制层：</p>
-<p>@Controller</p>
-<p>public class ReaderController {</p>
-<p>@Autowired</p>
-<p>private ReaderInfoService readerInfoService;</p>
-<p>@Autowired</p>
-<p>private LoginService loginService;</p>
-<p>@Autowired</p>
-<p>private ReaderCardService readerCardService;</p>
-<p>private ReaderInfo getReaderInfo(long readerId, String name, String sex, String birth, String address, String phone) {</p>
-<p>ReaderInfo readerInfo = new ReaderInfo();</p>
-<p>Date date = new Date();</p>
-<p>try {</p>
-<p>SimpleDateFormat df = new SimpleDateFormat(“yyyy-MM-dd”);</p>
-<p>date = df.parse(birth);</p>
-<p>} catch (ParseException e) {</p>
-<p>e.printStackTrace();</p>
-<p>readerInfo.setAddress(address);</p>
-<p>readerInfo.setName(name);</p>
-<p>readerInfo.setReaderId(readerId);</p>
-<p>readerInfo.setPhone(phone);</p>
-<p>readerInfo.setSex(sex);</p>
-<p>readerInfo.setBirth(date);</p>
-<p>return readerInfo;</p>
-<p>@RequestMapping(“allreaders.html”)</p>
-<p>public ModelAndView allBooks() {</p>
-<p>ArrayList<ReaderInfo> readers = readerInfoService.readerInfos();</ReaderInfo></p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_readers”);</p>
-<p>modelAndView.addObject(“readers”, readers);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“reader_delete.html”)</p>
-<p>public String readerDelete(HttpServletRequest request, RedirectAttributes redirectAttributes) {</p>
-<p>long readerId = Long.parseLong(request.getParameter(“readerId”));</p>
-<p>if (readerInfoService.deleteReaderInfo(readerId) &amp;&amp; readerCardService.deleteReaderCard(readerId)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “删除成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “删除失败！”);</p>
-<p>return “redirect:/allreaders.html”;</p>
-<p>@RequestMapping(“/reader_info.html”)</p>
-<p>public ModelAndView toReaderInfo(HttpServletRequest request) {</p>
-<p>ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>ReaderInfo readerInfo = readerInfoService.getReaderInfo(readerCard.getReaderId());</p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_info”);</p>
-<p>modelAndView.addObject(“readerinfo”, readerInfo);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“reader_edit.html”)</p>
-<p>public ModelAndView readerInfoEdit(HttpServletRequest request) {</p>
-<p>long readerId = Long.parseLong(request.getParameter(“readerId”));</p>
-<p>ReaderInfo readerInfo = readerInfoService.getReaderInfo(readerId);</p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_reader_edit”);</p>
-<p>modelAndView.addObject(“readerInfo”, readerInfo);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“reader_edit_do.html”)</p>
-<p>public String readerInfoEditDo(HttpServletRequest request, String name, String sex, String birth, String address, String phone, RedirectAttributes redirectAttributes) {</p>
-<p>long readerId = Long.parseLong(request.getParameter(“readerId”));</p>
-<p>ReaderInfo readerInfo = getReaderInfo(readerId, name, sex, birth, address, phone);</p>
-<p>if (readerInfoService.editReaderInfo(readerInfo) &amp;&amp; readerInfoService.editReaderCard(readerInfo)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “读者信息修改成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “读者信息修改失败！”);</p>
-<p>return “redirect:/allreaders.html”;</p>
-<p>@RequestMapping(“reader_add.html”)</p>
-<p>public ModelAndView readerInfoAdd() {</p>
-<p>return new ModelAndView(“admin_reader_add”);</p>
-<p>@RequestMapping(“reader_add_do.html”)</p>
-<p>public String readerInfoAddDo(String name, String sex, String birth, String address, String phone, String password, RedirectAttributes redirectAttributes) {</p>
-<p>ReaderInfo readerInfo = getReaderInfo(0, name, sex, birth, address, phone);</p>
-<p>long readerId = readerInfoService.addReaderInfo(readerInfo);</p>
-<p>readerInfo.setReaderId(readerId);</p>
-<p>if (readerId &gt; 0 &amp;&amp; readerCardService.addReaderCard(readerInfo, password)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “添加读者信息成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “添加读者信息失败！”);</p>
-<p>return “redirect:/allreaders.html”;</p>
-<p>@RequestMapping(“reader_info_edit.html”)</p>
-<p>public ModelAndView readerInfoEditReader(HttpServletRequest request) {</p>
-<p>ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>ReaderInfo readerInfo = readerInfoService.getReaderInfo(readerCard.getReaderId());</p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_info_edit”);</p>
-<p>modelAndView.addObject(“readerinfo”, readerInfo);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“reader_edit_do_r.html”)</p>
-<p>public String readerInfoEditDoReader(HttpServletRequest request, String name, String sex, String birth, String address, String phone, RedirectAttributes redirectAttributes) {</p>
-<p>ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>ReaderInfo readerInfo = getReaderInfo(readerCard.getReaderId(), name, sex, birth, address, phone);</p>
-<p>if (readerInfoService.editReaderInfo(readerInfo) &amp;&amp; readerInfoService.editReaderCard(readerInfo)) {</p>
-<p>ReaderCard readerCardNew = loginService.findReaderCardByReaderId(readerCard.getReaderId());</p>
-<p>request.getSession().setAttribute(“readercard”, readerCardNew);</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “信息修改成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “信息修改失败！”);</p>
-<p>return “redirect:/reader_info.html”;</p>
-<p>图书管理控制层：</p>
-<p>@Controller</p>
-<p>public class BookController {</p>
-<p>@Autowired</p>
-<p>private BookService bookService;</p>
-<p>@Autowired</p>
-<p>private LendService lendService;</p>
-<p>private Date getDate(String pubstr) {</p>
-<p>try {</p>
-<p>SimpleDateFormat df = new SimpleDateFormat(“yyyy-MM-dd”);</p>
-<p>return df.parse(pubstr);</p>
-<p>} catch (ParseException e) {</p>
-<p>e.printStackTrace();</p>
-<p>return new Date();</p>
-<p>@RequestMapping(“/queryBook.html”)</p>
-<p>public ModelAndView queryBookDo(String searchWord) {</p>
-<p>if (bookService.matchBook(searchWord)) {</p>
-<p>ArrayList<Book> books = bookService.queryBook(searchWord);</Book></p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_books”);</p>
-<p>modelAndView.addObject(“books”, books);</p>
-<p>return modelAndView;</p>
-<p>} else {</p>
-<p>return new ModelAndView(“admin_books”, “error”, “没有匹配的图书”);</p>
-<p>@RequestMapping(“/reader_querybook_do.html”)</p>
-<p>public ModelAndView readerQueryBookDo(String searchWord) {</p>
-<p>if (bookService.matchBook(searchWord)) {</p>
-<p>ArrayList<Book> books = bookService.queryBook(searchWord);</Book></p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_books”);</p>
-<p>modelAndView.addObject(“books”, books);</p>
-<p>return modelAndView;</p>
-<p>} else {</p>
-<p>return new ModelAndView(“reader_books”, “error”, “没有匹配的图书”);</p>
-<p>@RequestMapping(“/admin_books.html”)</p>
-<p>public ModelAndView adminBooks() {</p>
-<p>ArrayList<Book> books = bookService.getAllBooks();</Book></p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_books”);</p>
-<p>modelAndView.addObject(“books”, books);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/book_add.html”)</p>
-<p>public ModelAndView addBook() {</p>
-<p>return new ModelAndView(“admin_book_add”);</p>
-<p>@RequestMapping(“/book_add_do.html”)</p>
-<p>public String addBookDo(@RequestParam(value = “pubstr”) String pubstr, Book book, RedirectAttributes redirectAttributes) {</p>
-<p>book.setPubdate(getDate(pubstr));</p>
-<p>if (bookService.addBook(book)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “图书添加成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “图书添加失败！”);</p>
-<p>return “redirect:/admin_books.html”;</p>
-<p>@RequestMapping(“/updatebook.html”)</p>
-<p>public ModelAndView bookEdit(HttpServletRequest request) {</p>
-<p>long bookId = Long.parseLong(request.getParameter(“bookId”));</p>
-<p>Book book = bookService.getBook(bookId);</p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_book_edit”);</p>
-<p>modelAndView.addObject(“detail”, book);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/book_edit_do.html”)</p>
-<p>public String bookEditDo(@RequestParam(value = “pubstr”) String pubstr, Book book, RedirectAttributes redirectAttributes) {</p>
-<p>book.setPubdate(getDate(pubstr));</p>
-<p>if (bookService.editBook(book)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “图书修改成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “图书修改失败！”);</p>
-<p>return “redirect:/admin_books.html”;</p>
-<p>@RequestMapping(“/admin_book_detail.html”)</p>
-<p>public ModelAndView adminBookDetail(HttpServletRequest request) {</p>
-<p>long bookId = Long.parseLong(request.getParameter(“bookId”));</p>
-<p>Book book = bookService.getBook(bookId);</p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_book_detail”);</p>
-<p>modelAndView.addObject(“detail”, book);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/reader_book_detail.html”)</p>
-<p>public ModelAndView readerBookDetail(HttpServletRequest request) {</p>
-<p>long bookId = Long.parseLong(request.getParameter(“bookId”));</p>
-<p>Book book = bookService.getBook(bookId);</p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_book_detail”);</p>
-<p>modelAndView.addObject(“detail”, book);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/admin_header.html”)</p>
-<p>public ModelAndView admin_header() {</p>
-<p>return new ModelAndView(“admin_header”);</p>
-<p>@RequestMapping(“/reader_header.html”)</p>
-<p>public ModelAndView reader_header() {</p>
-<p>return new ModelAndView(“reader_header”);</p>
-<p>@RequestMapping(“/reader_books.html”)</p>
-<p>public ModelAndView readerBooks(HttpServletRequest request) {</p>
-<p>ArrayList<Book> books = bookService.getAllBooks();</Book></p>
-<p>ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>ArrayList<Lend> myAllLendList = lendService.myLendList(readerCard.getReaderId());</Lend></p>
-<p>ArrayList<Long> myLendList = new ArrayList&lt;&gt;();</Long></p>
-<p>for (Lend lend : myAllLendList) {</p>
-<p>// 是否已归还</p>
-<p>if (lend.getBackDate() == null) {</p>
-<p>myLendList.add(lend.getBookId());</p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_books”);</p>
-<p>modelAndView.addObject(“books”, books);</p>
-<p>modelAndView.addObject(“myLendList”, myLendList);</p>
-<p>return modelAndView;</p>
-<p>借阅管理控制层：</p>
-<p>@Controller</p>
-<p>public class LendController {</p>
-<p>@Autowired</p>
-<p>private LendService lendService;</p>
-<p>@Autowired</p>
-<p>private BookService bookService;</p>
-<p>@RequestMapping(“/deletebook.html”)</p>
-<p>public String deleteBook(HttpServletRequest request, RedirectAttributes redirectAttributes) {</p>
-<p>long bookId = Long.parseLong(request.getParameter(“bookId”));</p>
-<p>if (bookService.deleteBook(bookId)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “图书删除成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “图书删除失败！”);</p>
-<p>return “redirect:/admin_books.html”;</p>
-<p>@RequestMapping(“/lendlist.html”)</p>
-<p>public ModelAndView lendList(HttpServletRequest request) {</p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_lend_list”);</p>
-<p>modelAndView.addObject(“list”, lendService.lendList());</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/mylend.html”)</p>
-<p>public ModelAndView myLend(HttpServletRequest request) {</p>
-<p>ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_lend_list”);</p>
-<p>modelAndView.addObject(“list”, lendService.myLendList(readerCard.getReaderId()));</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/deletelend.html”)</p>
-<p>public String deleteLend(HttpServletRequest request, RedirectAttributes redirectAttributes) {</p>
-<p>long serNum = Long.parseLong(request.getParameter(“serNum”));</p>
-<p>if (lendService.deleteLend(serNum) &gt; 0) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “记录删除成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “记录删除失败！”);</p>
-<p>return “redirect:/lendlist.html”;</p>
-<p>@RequestMapping(“/lendbook.html”)</p>
-<p>public String bookLend(HttpServletRequest request, RedirectAttributes redirectAttributes) {</p>
-<p>long bookId = Long.parseLong(request.getParameter(“bookId”));</p>
-<p>long readerId = ((ReaderCard) request.getSession().getAttribute(“readercard”)).getReaderId();</p>
-<p>if (lendService.lendBook(bookId, readerId)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “图书借阅成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “图书借阅成功！”);</p>
-<p>return “redirect:/reader_books.html”;</p>
-<p>@RequestMapping(“/returnbook.html”)</p>
-<p>public String bookReturn(HttpServletRequest request, RedirectAttributes redirectAttributes) {</p>
-<p>long bookId = Long.parseLong(request.getParameter(“bookId”));</p>
-<p>long readerId = ((ReaderCard) request.getSession().getAttribute(“readercard”)).getReaderId();</p>
-<p>if (lendService.returnBook(bookId, readerId)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “图书归还成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “图书归还失败！”);</p>
-<p>return “redirect:/reader_books.html”;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">    * 修改</span><br><span class="line">    */</span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/update&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> TuihuantushuEntity tuihuantushu, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">       <span class="comment">//ValidatorUtils.validateEntity(tuihuantushu);</span></span><br><span class="line">       tuihuantushuService.updateById(tuihuantushu);<span class="comment">//全部更新</span></span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 删除</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Long[] ids)</span></span>&#123;</span><br><span class="line">       tuihuantushuService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 提醒接口</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/remind/&#123;columnName&#125;/&#123;type&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">remindCount</span><span class="params">(<span class="meta">@PathVariable(&quot;columnName&quot;)</span> String columnName, HttpServletRequest request, </span></span></span><br><span class="line"><span class="function"><span class="params">					 <span class="meta">@PathVariable(&quot;type&quot;)</span> String type,<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; map)</span> </span>&#123;</span><br><span class="line">	map.put(<span class="string">&quot;column&quot;</span>, columnName);</span><br><span class="line">	map.put(<span class="string">&quot;type&quot;</span>, type);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(type.equals(<span class="string">&quot;2&quot;</span>)) &#123;</span><br><span class="line">		SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line">		Calendar c = Calendar.getInstance();</span><br><span class="line">		Date remindStartDate = <span class="keyword">null</span>;</span><br><span class="line">		Date remindEndDate = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			Integer remindStart = Integer.parseInt(map.get(<span class="string">&quot;remindstart&quot;</span>).toString());</span><br><span class="line">			c.setTime(<span class="keyword">new</span> Date()); </span><br><span class="line">			c.add(Calendar.DAY_OF_MONTH,remindStart);</span><br><span class="line">			remindStartDate = c.getTime();</span><br><span class="line">			map.put(<span class="string">&quot;remindstart&quot;</span>, sdf.format(remindStartDate));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			Integer remindEnd = Integer.parseInt(map.get(<span class="string">&quot;remindend&quot;</span>).toString());</span><br><span class="line">			c.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">			c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">			remindEndDate = c.getTime();</span><br><span class="line">			map.put(<span class="string">&quot;remindend&quot;</span>, sdf.format(remindEndDate));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	Wrapper&lt;TuihuantushuEntity&gt; wrapper = <span class="keyword">new</span> EntityWrapper&lt;TuihuantushuEntity&gt;();</span><br><span class="line">	<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">		wrapper.ge(columnName, map.get(<span class="string">&quot;remindstart&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">			Date remindStartDate = <span class="keyword">null</span>;</span><br><span class="line">			Date remindEndDate = <span class="keyword">null</span>;</span><br><span class="line">			<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				Integer remindStart = Integer.parseInt(map.get(<span class="string">&quot;remindstart&quot;</span>).toString());</span><br><span class="line">				c.setTime(<span class="keyword">new</span> Date()); </span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindStart);</span><br><span class="line">				remindStartDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindstart&quot;</span>, sdf.format(remindStartDate));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				Integer remindEnd = Integer.parseInt(map.get(<span class="string">&quot;remindend&quot;</span>).toString());</span><br><span class="line">				c.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">				remindEndDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindend&quot;</span>, sdf.format(remindEndDate));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Wrapper&lt;MessagesEntity&gt; wrapper = <span class="keyword">new</span> EntityWrapper&lt;MessagesEntity&gt;();</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.ge(columnName, map.get(<span class="string">&quot;remindstart&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.le(columnName, map.get(<span class="string">&quot;remindend&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> count = messagesService.selectCount(wrapper);</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/tushuxinxi&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TushuxinxiController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> TushuxinxiService tushuxinxiService;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 后端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">page</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,TushuxinxiEntity tushuxinxi, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        EntityWrapper&lt;TushuxinxiEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;TushuxinxiEntity&gt;();</span><br><span class="line">		PageUtils page = tushuxinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, tushuxinxi), params), params));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 前端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="meta">@IgnoreAuth</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/list&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,TushuxinxiEntity tushuxinxi, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        EntityWrapper&lt;TushuxinxiEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;TushuxinxiEntity&gt;();</span><br><span class="line">		PageUtils page = tushuxinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, tushuxinxi), params), params));</span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/lists&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">( TushuxinxiEntity tushuxinxi)</span></span>&#123;</span><br><span class="line">       	EntityWrapper&lt;TushuxinxiEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;TushuxinxiEntity&gt;();</span><br><span class="line">      	ew.allEq(MPUtil.allEQMapPre( tushuxinxi, <span class="string">&quot;tushuxinxi&quot;</span>)); </span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, tushuxinxiService.selectListView(ew));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	 <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查询</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/query&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">query</span><span class="params">(TushuxinxiEntity tushuxinxi)</span></span>&#123;</span><br><span class="line">        EntityWrapper&lt; TushuxinxiEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt; TushuxinxiEntity&gt;();</span><br><span class="line"> 		ew.allEq(MPUtil.allEQMapPre( tushuxinxi, <span class="string">&quot;tushuxinxi&quot;</span>)); </span><br><span class="line">		TushuxinxiView tushuxinxiView =  tushuxinxiService.selectView(ew);</span><br><span class="line">		<span class="keyword">return</span> R.ok(<span class="string">&quot;查询图书信息成功&quot;</span>).put(<span class="string">&quot;data&quot;</span>, tushuxinxiView);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">/**</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">		map.put(<span class="string">&quot;type&quot;</span>, type);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(type.equals(<span class="string">&quot;2&quot;</span>)) &#123;</span><br><span class="line">			SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line">			Calendar c = Calendar.getInstance();</span><br><span class="line">			Date remindStartDate = <span class="keyword">null</span>;</span><br><span class="line">			Date remindEndDate = <span class="keyword">null</span>;</span><br><span class="line">			<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				Integer remindStart = Integer.parseInt(map.get(<span class="string">&quot;remindstart&quot;</span>).toString());</span><br><span class="line">				c.setTime(<span class="keyword">new</span> Date()); </span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindStart);</span><br><span class="line">				remindStartDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindstart&quot;</span>, sdf.format(remindStartDate));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				Integer remindEnd = Integer.parseInt(map.get(<span class="string">&quot;remindend&quot;</span>).toString());</span><br><span class="line">				c.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">				remindEndDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindend&quot;</span>, sdf.format(remindEndDate));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Wrapper&lt;TushufenleiEntity&gt; wrapper = <span class="keyword">new</span> EntityWrapper&lt;TushufenleiEntity&gt;();</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.ge(columnName, map.get(<span class="string">&quot;remindstart&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.le(columnName, map.get(<span class="string">&quot;remindend&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> count = tushufenleiService.selectCount(wrapper);</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 图书信息</span></span><br><span class="line"><span class="comment"> * 后端接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@email</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/tushuxinxi&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TushuxinxiController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> TushuxinxiService tushuxinxiService;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 后端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">page</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,TushuxinxiEntity tushuxinxi, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        EntityWrapper&lt;TushuxinxiEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;TushuxinxiEntity&gt;();</span><br><span class="line">		PageUtils page = tushuxinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, tushuxinxi), params), params));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 前端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
-<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=99&price2=89" style="height: 260px;" frameborder="0"></iframe>
 <blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=361524512608201nh<br>https://javayms.pages.dev?id=361524512608201nh</p></blockquote>
     </div>
 
@@ -536,6 +269,7 @@
 			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
 			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
 			<a href="/tags/%E5%9B%BE%E4%B9%A6%E5%80%9F%E9%98%85/" rel="tag"><i class="fa fa-tag"></i> 图书借阅</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
 
           </div>
 
