@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot外卖点餐小程序(java+springboot+maven+mysql+redis+vue+uniapp)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/502325071003201pu/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot外卖点餐小程序(java+springboot+maven+mysql+redis+vue+uniapp) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/502325071003201pu/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot外卖点餐小程序(java+springboot+maven+mysql+redis+vue+uniapp)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified"></time>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tag"></i>
+                </span>
+                <time id="idText" itemprop="dateModified"></time>
+              </span>
+              <p id="browserWarningText" style="color:#FF0000;"></p>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/352225181003.jpg" alt="352225181003"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/512325071003.jpg" alt="512325071003"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/522325071003.jpg" alt="522325071003"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/532325071003.jpg" alt="532325071003"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/542325071003.jpg" alt="542325071003"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/552325071003.jpg" alt="552325071003"></p>
+<p>基于javaweb的SpringBoot外卖点餐小程序(java+springboot+maven+mysql+redis+vue+uniapp)</p>
+<p>后端：springboot+mysql+redis<br>前端小程序：uniapp<br>前端web管理：vue</p>
+<p>项目后端使用springboot进行开发，其中使用redis进行缓存。使用springcache进行redis缓存时候的管理。使用shardingjdbc完成mysql主从分离的设置。使用swagger生成开发文档。<br>前端商家平台使用vue2.x脚手架开发，使用elementui开发前端ui。使用axios获取api，使用vue.router进行路由<br>前端用户界面使用uniapp开发,使用vuex做组件数据存储。</p>
+<p>后端启动前先修改配置（用于保存上传的图片）：<br>reggie.path</p>
+<p>web管理员：<br>admin    123456</p>
+<p>小程序用户：<br>13511111111    验证码为1234</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">     */</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/TakeOut&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R&lt;Page&gt; <span class="title">TakeOut</span><span class="params">(<span class="keyword">int</span> page, <span class="keyword">int</span> pageSize, String phone)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.构造分页构造器</span></span><br><span class="line">        <span class="comment">//当前在第几页 查几条</span></span><br><span class="line">        Page pageInfo = <span class="keyword">new</span> Page(page, pageSize);</span><br><span class="line">        <span class="comment">//2.条件构造器</span></span><br><span class="line">        LambdaQueryWrapper&lt;Orders&gt; queryWrapper = <span class="keyword">new</span> LambdaQueryWrapper&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        queryWrapper.like(StringUtils.isNotEmpty(phone), Orders::getPhone, phone);</span><br><span class="line">        queryWrapper.isNull(Orders::getRemark).or().eq(Orders::getRemark,<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//添加排序条件</span></span><br><span class="line">        queryWrapper.orderByDesc(Orders::getOrderTime);</span><br><span class="line">        <span class="comment">//3.执行查询</span></span><br><span class="line">        Page list = orderService.page(pageInfo, queryWrapper);</span><br><span class="line">        <span class="keyword">return</span> R.success(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DeleteMapping(&quot;delete&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R&lt;String&gt; <span class="title">delete</span><span class="params">(Long id)</span> </span>&#123;</span><br><span class="line">        System.out.println(id);</span><br><span class="line">        LambdaQueryWrapper&lt;Orders&gt; queryWrapper = <span class="keyword">new</span> LambdaQueryWrapper&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        queryWrapper.eq(Orders::getNumber, id);</span><br><span class="line">        orderService.remove(queryWrapper);</span><br><span class="line">        <span class="keyword">return</span> R.success(<span class="string">&quot;删除成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PutMapping(&quot;/update&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R&lt;String&gt; <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> Orders orders)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        System.out.println(orders);</span></span><br><span class="line">        LambdaQueryWrapper&lt;Orders&gt; queryWrapper = <span class="keyword">new</span> LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(Orders::getNumber, orders.getNumber());</span><br><span class="line">        Orders serviceOne = orderService.getOne(queryWrapper);</span><br><span class="line">        serviceOne.setStatus(orders.getStatus());</span><br><span class="line">        orderService.updateById(serviceOne);</span><br><span class="line">        <span class="keyword">return</span> R.success(<span class="string">&quot;成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/getById/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> R&lt;List&lt;OrderDetail&gt;&gt; getById(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line"><span class="comment">//        System.out.println(id);</span></span><br><span class="line">        LambdaQueryWrapper&lt;OrderDetail&gt; queryWrapper = <span class="keyword">new</span> LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(OrderDetail::getOrderId, id);</span><br><span class="line">        List&lt;OrderDetail&gt; list = orderDetailService.list(queryWrapper);</span><br><span class="line">        <span class="keyword">return</span> R.success(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span> 2088-11-01 16:50</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/user&quot;)</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@CrossOrigin</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/save&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R&lt;String&gt; <span class="title">save</span><span class="params">(<span class="meta">@RequestBody</span> User user)</span></span>&#123;</span><br><span class="line"><span class="comment">//        System.out.println(user);</span></span><br><span class="line">          LambdaQueryWrapper&lt;User&gt; queryWrapper=<span class="keyword">new</span> LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">          queryWrapper.eq(User::getPhone,user.getPhone());</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CacheManager cacheManager;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 新增菜品</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dishDto</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping</span></span><br><span class="line">    <span class="meta">@CacheEvict(value = &quot;dish&quot;, allEntries = true)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R&lt;String&gt; <span class="title">save</span><span class="params">(<span class="meta">@RequestBody</span> DishDto dishDto)</span> </span>&#123;</span><br><span class="line">        dishService.saveWithFlavor(dishDto);</span><br><span class="line"><span class="comment">//        String key=&quot;dish_&quot;+dishDto.getCategoryId()+&quot;_1&quot;;</span></span><br><span class="line"><span class="comment">//        redisTemplate.delete(key);</span></span><br><span class="line">        <span class="keyword">return</span> R.success(<span class="string">&quot;新增成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 菜品信息分页 js在food.js中</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> page</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pageSize</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R&lt;Page&gt; <span class="title">page</span><span class="params">(<span class="keyword">int</span> page, <span class="keyword">int</span> pageSize, String name)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//构造分页构造器</span></span><br><span class="line">        Page&lt;Dish&gt; pageInfo = <span class="keyword">new</span> Page&lt;&gt;(page, pageSize);</span><br><span class="line">        Page&lt;DishDto&gt; dishDtoPage = <span class="keyword">new</span> Page&lt;&gt;(page, pageSize);</span><br><span class="line">        <span class="comment">//构造条件构造器</span></span><br><span class="line">        LambdaQueryWrapper&lt;Dish&gt; queryWrapper = <span class="keyword">new</span> LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        <span class="comment">//添加过滤条件</span></span><br><span class="line">        queryWrapper.like(name != <span class="keyword">null</span>, Dish::getName, name);</span><br><span class="line">        <span class="comment">//添加排序条件</span></span><br><span class="line">        queryWrapper.orderByDesc(Dish::getUpdateTime);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//执行分页查询</span></span><br><span class="line">        dishService.page(pageInfo, queryWrapper);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//对象clone 拷贝的是页数之类的</span></span><br><span class="line">        BeanUtils.copyProperties(pageInfo, dishDtoPage, <span class="string">&quot;records&quot;</span>);</span><br><span class="line">        <span class="comment">//获取列表页 这边要将查询出来的list中的分类名称改好 然后再赋值给dto对象 最后将新的list 给到上面的dto</span></span><br><span class="line">        List&lt;Dish&gt; records = pageInfo.getRecords();</span><br><span class="line">        List&lt;DishDto&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (Dish dish : records) &#123;</span><br><span class="line">            DishDto dishDto = <span class="keyword">new</span> DishDto();</span><br><span class="line">            <span class="comment">//先拿到原来的list中的分类id</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">            DishDto dishDto = <span class="keyword">new</span> DishDto();</span><br><span class="line">            BeanUtils.copyProperties(item, dishDto);</span><br><span class="line">            Long categoryId = item.getCategoryId();</span><br><span class="line">            Category category = categoryService.getById(categoryId);</span><br><span class="line">            <span class="keyword">if</span> (category != <span class="keyword">null</span>) &#123;</span><br><span class="line">                String categoryName = category.getName();</span><br><span class="line">                dishDto.setCategoryName(categoryName);</span><br><span class="line">            &#125;</span><br><span class="line">            Long dishId = item.getId();</span><br><span class="line">            LambdaQueryWrapper&lt;DishFlavor&gt; queryWrapper1 = <span class="keyword">new</span> LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">            queryWrapper1.eq(DishFlavor::getDishId, dishId);</span><br><span class="line">            List&lt;DishFlavor&gt; dishFlavors = dishFlavorService.list(queryWrapper1);</span><br><span class="line">            dishDto.setFlavors(dishFlavors);</span><br><span class="line">            <span class="keyword">return</span> dishDto;</span><br><span class="line">        &#125;).collect(Collectors.toList());</span><br><span class="line"><span class="comment">//        redisTemplate.opsForValue().set(key, dishDtos,60, TimeUnit.MINUTES);</span></span><br><span class="line">        <span class="keyword">return</span> R.success(dishDtos);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    @GetMapping(&quot;/list&quot;)</span></span><br><span class="line"><span class="comment">//    public R&lt;List&lt;Dish&gt;&gt; list(Dish dish) &#123;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        LambdaQueryWrapper&lt;Dish&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;();</span></span><br><span class="line"><span class="comment">//        queryWrapper.eq(dish.getCategoryId() != null, Dish::getCategoryId, dish.getCategoryId());</span></span><br><span class="line"><span class="comment">//        queryWrapper.eq(Dish::getStatus, 1);</span></span><br><span class="line"><span class="comment">//        queryWrapper.orderByAsc(Dish::getSort).orderByDesc(Dish::getUpdateTime);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        List&lt;Dish&gt; list = dishService.list(queryWrapper);</span></span><br><span class="line"><span class="comment">//        return R.success(list);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 停售与起售</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> status</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> ids</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">     <span class="meta">@PostMapping(&quot;/status/&#123;status&#125;&quot;)</span></span><br><span class="line">     <span class="meta">@CacheEvict(value = &quot;dish&quot;, allEntries = true)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R&lt;String&gt; <span class="title">status</span><span class="params">(<span class="meta">@PathVariable</span> Long status,<span class="meta">@RequestParam</span> List&lt;Long&gt; ids)</span></span>&#123;</span><br><span class="line">         System.out.println(status);</span><br><span class="line">         System.out.println(ids);</span><br><span class="line"></span><br><span class="line">         <span class="keyword">for</span> (Long id:ids)&#123;</span><br><span class="line">             Dish dish = dishService.getById(id);</span><br><span class="line">             dish.setStatus(status.intValue());</span><br><span class="line">             dishService.updateById(dish);</span><br><span class="line">         &#125;</span><br><span class="line">           <span class="keyword">return</span> R.success(<span class="string">&quot;修改成功&quot;</span>);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@DeleteMapping</span></span><br><span class="line">    <span class="meta">@CacheEvict(value = &quot;setmealCache&quot;, allEntries = true)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R&lt;String&gt; <span class="title">delete</span><span class="params">(<span class="meta">@RequestParam</span> List&lt;Long&gt; ids)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        log.info(ids.toString());</span></span><br><span class="line">        setmealService.removeWithDish(ids);</span><br><span class="line">        <span class="keyword">return</span> R.success(<span class="string">&quot;删除成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据条件查询套餐数据</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> setmeal</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/list&quot;)</span></span><br><span class="line">    <span class="meta">@Cacheable(value = &quot;setmealCache&quot;, key = &quot;#setmeal.categoryId+&#x27;_&#x27;+#setmeal.status&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> R&lt;List&lt;Setmeal&gt;&gt; list(Setmeal setmeal) &#123;</span><br><span class="line">        LambdaQueryWrapper&lt;Setmeal&gt; queryWrapper = <span class="keyword">new</span> LambdaQueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(setmeal.getCategoryId() != <span class="keyword">null</span>, Setmeal::getCategoryId, setmeal.getCategoryId());</span><br><span class="line">        queryWrapper.eq(setmeal.getStatus() != <span class="keyword">null</span>, Setmeal::getStatus, setmeal.getStatus());</span><br><span class="line">        queryWrapper.orderByDesc(Setmeal::getUpdateTime);</span><br><span class="line"></span><br><span class="line">        List&lt;Setmeal&gt; list = setmealService.list(queryWrapper);</span><br><span class="line">        <span class="keyword">return</span> R.success(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 起手停售操作</span></span><br><span class="line"><span class="comment">     * 采用rest风格</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/status/&#123;status&#125;&quot;)</span></span><br><span class="line">    <span class="meta">@CacheEvict(value = &quot;setmealCache&quot;, allEntries = true)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R&lt;String&gt; <span class="title">status</span><span class="params">(<span class="meta">@PathVariable</span> Long status, <span class="meta">@RequestParam</span> List&lt;Long&gt; ids)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        System.out.println(ids+&quot;---&quot;+status);</span></span><br><span class="line">        <span class="comment">//拿到需要修改的状态和id</span></span><br><span class="line">        <span class="keyword">for</span> (Long id : ids) &#123;</span><br><span class="line">            Setmeal setmeal = setmealService.getById(id);</span><br><span class="line">            setmeal.setStatus(status.intValue());</span><br><span class="line">            setmealService.updateById(setmeal);</span><br><span class="line">        &#125; ;</span><br><span class="line">        <span class="comment">//根据id修改状态</span></span><br><span class="line">        <span class="keyword">return</span> R.success(<span class="string">&quot;修改成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据id查询套餐信息，然后将此信息渲染到修改套餐详情中</span></span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=139&price1=99&price2=99" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=502325071003201pu<br>https://javayms.pages.dev?id=502325071003201pu</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"><i class="fa fa-tag"></i> 小程序</a>
+			<a href="/tags/%E7%82%B9%E9%A4%90/" rel="tag"><i class="fa fa-tag"></i> 点餐</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
