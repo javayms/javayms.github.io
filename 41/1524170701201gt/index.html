@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SSM农家乐管理系统(java+ssm+vue+elementui+axios+mysql)">
+<meta property="og:title" content="基于javaweb的SSM+Maven农家乐管理系统(java+ssm+vue+elementui+axios+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SSM农家乐管理系统(java+ssm+vue+elementui+axios+mysql) | Java源码社</title>
+  <title>基于javaweb的SSM+Maven农家乐管理系统(java+ssm+vue+elementui+axios+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SSM农家乐管理系统(java+ssm+vue+elementui+axios+mysql)
+			基于javaweb的SSM+Maven农家乐管理系统(java+ssm+vue+elementui+axios+mysql)
             
         </h1>
 
@@ -230,371 +230,40 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/361324580701.jpg" alt="361324580701"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/371324580701.jpg" alt="371324580701"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/381324580701.jpg" alt="381324580701"></p>
-<p>基于javaweb的SSM农家乐管理系统(java+ssm+vue+elementui+axios+mysql)</p>
+<p>基于javaweb的SSM+Maven农家乐管理系统(java+ssm+vue+elementui+axios+mysql)</p>
 <p>项目介绍</p>
 <p>基于SSM的农家乐管理系统</p>
 <p>角色：管理员、用户</p>
 <p>本课程设计了农家乐管理系统 ,</p>
 <p>用户可以此系统实现美食信息、住宿信息、活动信息、活动报名、客房预订等信息，管理员通过后台会对此美食信息进行审核，管理员在还可以进行首页、个人中心、农家乐管理、美食信息管理、住宿信息管理、活动信息管理、用户管理、活动报名管理、客房预订管理、用户评价管理、论坛交流、管理员管理、系统管理，前台首页；首页、农家乐、美食信息、住宿信息、活动信息、论坛交流、系统公告、个人中心、后台管理、在线客服，用户；首页、个人中心、活动报名管理、客房预订管理、用户评价管理、我的收藏管理等操作。</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.tomcat环境：Tomcat 7.x,8.x,9.x版本均可 4.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； 5.是否Maven项目: 否；查看源码目录中是否包含pom.xml；若包含，则为maven项目，否则为非maven项目 6.数据库：MySql 5.7/8.0等版本均可；</p>
 <p>技术栈</p>
 <p>后端：SSM(Spring+SpringMVC+Mybatis)</p>
 <p>前端：ElementUI+Vue</p>
-<p>使用说明</p>
-<ol>
-<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，修改配置，运行项目； 3. 将项目中db.xml配置文件中的数据库配置改为自己的配置，然后运行；</li>
-</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">管理员：</span><br><span class="line">admin   123456</span><br><span class="line"></span><br><span class="line">用户：</span><br><span class="line">用户1	123456</span><br><span class="line">用户2	123456</span><br><span class="line">用户3	123456</span><br><span class="line">用户4	123456</span><br><span class="line">用户5	123456</span><br><span class="line">用户6	123456</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p> 美食管理控制层：</p>
-<p>@WebServlet(“/FoodServlet”) // 用户类</p>
-<p>@MultipartConfig</p>
-<p>public class FoodServlet extends HttpServlet {</p>
-<p>private static final long serialVersionUID = 1L;</p>
-<p>BaseDao dao = new BaseDaoImpl();</p>
-<p>PrintWriter out = null;</p>
-<p>@Override</p>
-<p>protected void service(HttpServletRequest request, HttpServletResponse response)</p>
-<p>throws ServletException, IOException {</p>
-<p>request.setCharacterEncoding(“UTF-8”);</p>
-<p>response.setContentType(“text/html;charset=utf-8”);</p>
-<p>// service</p>
-<p>// 方法类—————————————————————————————————–</p>
-<p>ObjectService service = new ObjectService();</p>
-<p>FoodEntity foo = service.setObject(request, FoodEntity.class);</p>
-<p>out = response.getWriter();</p>
-<p>// 全局变量类———————————————————————————————————-</p>
-<p>String method = request.getParameter(“method”);</p>
-<p>System.out.println(method);</p>
-<p>if (“foodList”.equals(method)) {// 列表</p>
-<p>try {</p>
-<p>JSONArray food = dao</p>
-<p>.findJSONArray(“select s.sce_name,f.* from food f left join scenic s on s.sce_id=f.sce_id”);</p>
-<p>request.setAttribute(“food”, food);</p>
-<p>request.getRequestDispatcher(“admin-food.jsp”).forward(request, response);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“searchFood”.equals(method)) {// 查询</p>
-<p>try {</p>
-<p>System.out.println(foo.getFooName());</p>
-<p>JSONArray food = dao.findJSONArray(</p>
-<p>“select s.sce_name,f.* from food f left join scenic s on s.sce_id=f.sce_id where f.foo_name like ‘%”</p>
-<ul>
-<li>foo.getFooName() + “%’”);</li>
-</ul>
-<p>String sceId = request.getParameter(“sceId”);</p>
-<p>System.out.println(sceId);</p>
-<p>if (sceId != null &amp;&amp; sceId != “”) {</p>
-<p>food = dao.findJSONArray(</p>
-<p>“select s.sce_name,f.* from food f left join scenic s on s.sce_id=f.sce_id where f.sce_id=”</p>
-<ul>
-<li>sceId + “ and f.foo_name like ‘%” + foo.getFooName() + “%’”);</li>
-</ul>
-<p>request.setAttribute(“food”, food);</p>
-<p>request.getRequestDispatcher(“admin-food.jsp”).forward(request, response);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“foodAdd”.equals(method)) {// 增加</p>
-<p>Part part = request.getPart(“Savatar”);</p>
-<p>String heads_url = service.imagepath(part);</p>
-<p>String img_url = heads_url;</p>
-<p>Object[] params = { foo.getFooName(), img_url, foo.getAddress(), foo.getSceId(), foo.getDescription() };</p>
-<p>try {</p>
-<p>int i = dao.update(“INSERT INTO food(foo_name,img_url,address,sce_id,description) VALUES(?,?,?,?,?)”,</p>
-<p>params);</p>
-<p>if (i &gt; 0) {</p>
-<p>response.sendRedirect(“FoodServlet?method=foodList”);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“deleteFood”.equals(method)) {// 删除</p>
-<p>try {</p>
-<p>int i = dao.update(“delete from food where foo_id=?”, foo.getFooId());</p>
-<p>if (i &gt; 0) {</p>
-<p>response.sendRedirect(“FoodServlet?method=foodList”);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“updateFood”.equals(method)) {// 修改</p>
-<p>Object[] params = { foo.getFooId() };</p>
-<p>try {</p>
-<p>JSONObject food = dao.findJSONObject(</p>
-<p>“select s.sce_name,f.* from food f left join scenic s on s.sce_id=f.sce_id where f.foo_id = ?”,</p>
-<p>params);</p>
-<p>request.setAttribute(“food”, food);</p>
-<p>request.getRequestDispatcher(“admin-foodUpdate.jsp”).forward(request, response);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“updateFood1”.equals(method)) {// 完成修改</p>
-<p>String img_url = null;</p>
-<p>Part part1 = request.getPart(“Savatar”);</p>
-<p>if (part1.getSize() &gt; 0) {</p>
-<p>String savepath = service.imagepath(part1);</p>
-<p>img_url = savepath;</p>
-<p>} else {</p>
-<p>img_url = foo.getImgUrl();</p>
-<p>Object[] params = { foo.getFooName(), img_url, foo.getAddress(), foo.getSceId(), foo.getDescription(),</p>
-<p>foo.getFooId() };</p>
-<p>try {</p>
-<p>int i = dao.update(</p>
-<p>“update food set foo_name = ?,img_url=?,address=?,sce_id=?,description=? where foo_id=?”,</p>
-<p>params);</p>
-<p>if (i &gt; 0) {</p>
-<p>response.sendRedirect(“FoodServlet?method=foodList”);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“foodCllentList”.equals(method)) {// 用户查看列表</p>
-<p>String ctel = (String) request.getSession().getAttribute(“ctel”);</p>
-<p>try {</p>
-<p>String sql = “select IF(ISNULL(c.ctel),’0’,’1’) count,IF(ISNULL(fo.foo_id),’0’,CONVERT( COUNT(<em>) USING UTF8)) num ,f.</em> “</p>
-<ul>
-<li><p>“from foo_collect fo “ + “left join food f on fo.foo_id=f.foo_id “</p>
-</li>
-<li><p>“left join cllent c on c.ctel=fo.ctel “ + “and c.ctel=? where f.sce_id=? “</p>
-</li>
-<li><p>“GROUP BY f.foo_id order by num desc”;</p>
-</li>
-</ul>
-<p>JSONArray food = dao.findJSONArray(sql, ctel, foo.getSceId());</p>
-<p>request.setAttribute(“food”, food);</p>
-<p>request.getRequestDispatcher(“food-list.jsp”).forward(request, response);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“foodCllentSearch”.equals(method)) {// 用户搜索列表</p>
-<p>String ctel = (String) request.getSession().getAttribute(“ctel”);</p>
-<p>try {</p>
-<p>String sql = “select IF(ISNULL(c.ctel),’0’,’1’) count,IF(ISNULL(fo.foo_id),’0’,CONVERT( COUNT(<em>) USING UTF8)) num ,f.</em> “</p>
-<ul>
-<li><p>“from foo_collect fo “ + “left join food f on fo.foo_id=f.foo_id “</p>
-</li>
-<li><p>“left join cllent c on c.ctel=fo.ctel “ + “and c.ctel=” + ctel + “ where f.sce_id = “</p>
-</li>
-<li><p>foo.getSceId() + “ and f.foo_name like ‘%” + foo.getFooName() + “%’ “</p>
-</li>
-<li><p>“GROUP BY f.foo_id order by num desc”;</p>
-</li>
-</ul>
-<p>JSONArray food = dao.findJSONArray(sql);</p>
-<p>request.setAttribute(“food”, food);</p>
-<p>request.getRequestDispatcher(“food-list.jsp”).forward(request, response);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“detailFood”.equals(method)) {// 美食详情</p>
-<p>try {</p>
-<p>JSONObject food = dao.findJSONObject(“select * from food where foo_id=?”, foo.getFooId());</p>
-<p>request.setAttribute(“food”, food);</p>
-<p>request.getRequestDispatcher(“food-detail.jsp”).forward(request, response);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>登陆管理控制层：</p>
-<p>@WebServlet(“/Login”)</p>
-<p>public class LoginServlet extends HttpServlet {</p>
-<p>private static final long serialVersionUID = 1L;</p>
-<p>BaseDao dao = new BaseDaoImpl();</p>
-<p>PrintWriter out = null;</p>
-<p>@Override</p>
-<p>protected void service(HttpServletRequest request, HttpServletResponse response)</p>
-<p>throws ServletException, IOException {</p>
-<p>request.setCharacterEncoding(“UTF-8”);</p>
-<p>response.setContentType(“text/html;charset=utf-8”);</p>
-<p>// service</p>
-<p>// 方法类—————————————————————————————————–</p>
-<p>ObjectService service = new ObjectService();</p>
-<p>HttpSession session = request.getSession();</p>
-<p>UsersEntity use = service.setObject(request, UsersEntity.class);</p>
-<p>// 全局变量类———————————————————————————————————-</p>
-<p>String method = request.getParameter(“method”);</p>
-<p>System.out.println(method);</p>
-<p>out = response.getWriter();</p>
-<p>File[] files = File.listRoots();</p>
-<p>String rootpath = files[files.length - 1].getPath();</p>
-<p>if (“login”.equals(method)) {// 登录</p>
-<p>Object[] params = { use.getUname(), use.getPassword() };</p>
-<p>System.out.println(use.getUname() + use.getPassword());</p>
-<p>JSONObject user = null;</p>
-<p>try {</p>
-<p>user = dao.findJSONObject(“select * from users where uname = ? and password = ?”, params);</p>
-<p>System.out.println(user);</p>
-<p>System.out.println(user.get(“uname”));</p>
-<p>System.out.println(user.get(“utype”));</p>
-<p>request.getSession().setAttribute(“uname”, user.get(“uname”));</p>
-<p>request.getSession().setAttribute(“utype”, user.get(“utype”));</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} finally {</p>
-<p>if (user.size() &gt; 0) {</p>
-<p>out.write(“1”);</p>
-<p>out.flush();</p>
-<p>out.close();</p>
-<p>} else if (“exit”.equals(method)) {// 退出登录</p>
-<p>request.getSession().removeAttribute(“uname”);</p>
-<p>request.getSession().removeAttribute(“utype”);</p>
-<p>request.getSession().removeAttribute(“rootpath”);</p>
-<p>response.sendRedirect(“login.jsp”);</p>
-<p>} else if (“index”.equals(method)) {// 进入首页</p>
-<p>String uname = (String) session.getAttribute(“uname”);</p>
-<p>System.out.println(uname);</p>
-<p>String utype = “” + session.getAttribute(“utype”);</p>
-<p>request.getSession().setAttribute(“rootpath”, rootpath);</p>
-<p>System.out.println(utype);</p>
-<p>if (utype.equals(“1”)) {</p>
-<p>request.getRequestDispatcher(“index.jsp”).forward(request, response);</p>
-<p>} else if (“updateUsers”.equals(method)) {// 修改密码</p>
-<p>String pwd = request.getParameter(“pwd”);</p>
-<p>String pwd1 = request.getParameter(“pwd1”);</p>
-<p>System.out.println(pwd);</p>
-<p>System.out.println(pwd1);</p>
-<p>String uname = (String) request.getSession().getAttribute(“uname”);</p>
-<p>Object[] params = { pwd1, uname };</p>
-<p>try {</p>
-<p>int m = (int) dao.getCount(“select count(*) from users where password = ?”, pwd);</p>
-<p>if (m &gt; 0) {</p>
-<p>dao.update(“update users set password = ? where uname = ?”, params);</p>
-<p>out.write(“1”);</p>
-<p>out.flush();</p>
-<p>out.close();</p>
-<p>} else {</p>
-<p>out.write(“2”);</p>
-<p>out.flush();</p>
-<p>out.close();</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“users”.equals(method)) {// 管理员信息</p>
-<p>JSONArray records;</p>
-<p>try {</p>
-<p>records = dao.findJSONArray(“select * from users where uname=?”, use.getUname());</p>
-<p>request.setAttribute(“records”, records);</p>
-<p>request.getRequestDispatcher(“admin-info.jsp”).forward(request, response);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>地点管理控制层： </p>
-<p>@WebServlet(“/ScenicServlet”) // 景点类</p>
-<p>@MultipartConfig</p>
-<p>public class ScenicServlet extends HttpServlet {</p>
-<p>private static final long serialVersionUID = 1L;</p>
-<p>BaseDao dao = new BaseDaoImpl();</p>
-<p>PrintWriter out = null;</p>
-<p>@Override</p>
-<p>protected void service(HttpServletRequest request, HttpServletResponse response)</p>
-<p>throws ServletException, IOException {</p>
-<p>request.setCharacterEncoding(“UTF-8”);</p>
-<p>response.setContentType(“text/html;charset=utf-8”);</p>
-<p>// service</p>
-<p>// 方法类—————————————————————————————————–</p>
-<p>ObjectService service = new ObjectService();</p>
-<p>ScenicEntity sce = service.setObject(request, ScenicEntity.class);</p>
-<p>out = response.getWriter();</p>
-<p>// 全局变量类———————————————————————————————————-</p>
-<p>String method = request.getParameter(“method”);</p>
-<p>System.out.println(method);</p>
-<p>int currentPage=1;</p>
-<p>if (“scenicList”.equals(method)) {// 列表</p>
-<p>try {</p>
-<p>JSONArray scenic = dao.findJSONArray(“select * from scenic”);</p>
-<p>request.setAttribute(“scenic”, scenic);</p>
-<p>request.getRequestDispatcher(“admin-scenic.jsp”).forward(request, response);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“scenic”.equals(method)) {// 列表</p>
-<p>try {</p>
-<p>JSONArray scenic = dao.findJSONArray(“select * from scenic”);</p>
-<p>service.outWrite(out, scenic.toString());</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“searchScenic”.equals(method)) {// 查询</p>
-<p>try {</p>
-<p>JSONArray scenic = dao</p>
-<p>.findJSONArray(“select * from scenic where sce_name like ‘%” + sce.getSceName() + “%’”);</p>
-<p>request.setAttribute(“scenic”, scenic);</p>
-<p>request.getRequestDispatcher(“admin-scenic.jsp”).forward(request, response);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“scenicAdd”.equals(method)) {// 增加</p>
-<p>Part part = request.getPart(“Savatar”);</p>
-<p>String heads_url = service.imagepath(part);</p>
-<p>String img_url = heads_url;</p>
-<p>System.out.println(sce.getRegionId());</p>
-<p>Object[] params = { sce.getSceName(), sce.getRegionId(), img_url, sce.getAddress(), sce.getDescription() };</p>
-<p>try {</p>
-<p>int i = dao.update(</p>
-<p>“INSERT INTO scenic(sce_name,region_id,img_url,address,description) VALUES(?,?,?,?,?)”, params);</p>
-<p>if (i &gt; 0) {</p>
-<p>response.sendRedirect(“ScenicServlet?method=scenicList”);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“deleteScenic”.equals(method)) {// 删除</p>
-<p>try {</p>
-<p>int i = dao.update(“delete from scenic where sce_id=?”, sce.getSceId());</p>
-<p>if (i &gt; 0) {</p>
-<p>response.sendRedirect(“ScenicServlet?method=scenicList”);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“updateScenic”.equals(method)) {// 修改</p>
-<p>Object[] params = { sce.getSceId() };</p>
-<p>try {</p>
-<p>JSONObject scenic = dao.findJSONObject(“select * from scenic where sce_id = ?”, params);</p>
-<p>request.setAttribute(“scenic”, scenic);</p>
-<p>request.getRequestDispatcher(“admin-scenicUpdate.jsp”).forward(request, response);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“updateScenic1”.equals(method)) {// 完成修改</p>
-<p>String img_url = null;</p>
-<p>Part part1 = request.getPart(“Savatar”);</p>
-<p>if (part1.getSize() &gt; 0) {</p>
-<p>String savepath = service.imagepath(part1);</p>
-<p>img_url = savepath;</p>
-<p>} else {</p>
-<p>img_url = sce.getImgUrl();</p>
-<p>Object[] params = { sce.getSceName(), img_url, sce.getAddress(), sce.getDescription(), sce.getSceId() };</p>
-<p>try {</p>
-<p>int i = dao.update(“update scenic set sce_name = ?,img_url=?,address=?,description=? where sce_id=?”,</p>
-<p>params);</p>
-<p>if (i &gt; 0) {</p>
-<p>response.sendRedirect(“ScenicServlet?method=scenicList”);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“scenicCllentList”.equals(method)) {// 用户查看列表</p>
-<p>String ctel = (String) request.getSession().getAttribute(“ctel”);</p>
-<p>//            int pageSize=6;</p>
-<p>//            String currentPage1 = request.getParameter(“currentPage”);</p>
-<p>//            System.out.println(currentPage1);</p>
-<p>//            if(currentPage1!=null) {</p>
-<p>//                currentPage=Integer.parseInt(currentPage1);</p>
-<p>//            }</p>
-<p>//            int pagestart = (currentPage-1)*pageSize;</p>
-<p>//            System.out.println(pagestart);</p>
-<p>try {</p>
-<p>//                int total=(int) dao.getCount(“select count(*) from scenic”);</p>
-<p>//                int pages=(total%pageSize&gt;0?total/pageSize+1:total/pageSize);</p>
-<p>JSONArray scenic = dao.findJSONArray(“select IF(ISNULL(c.ctel),’0’,’1’) count,IF(ISNULL(sc.sce_id),’0’,CONVERT( COUNT(<em>) USING UTF8)) num ,s.</em> from scenic s” +</p>
-<p>“ left join sce_collect sc on s.sce_id=sc.sce_id “ +</p>
-<p>“left join cllent c on c.ctel=sc.ctel “+</p>
-<p>“and c.ctel=”+ctel+</p>
-<p>“ GROUP BY s.sce_id order by num desc”);</p>
-<p>request.setAttribute(“scenic”, scenic);</p>
-<p>request.getRequestDispatcher(“scenic-list.jsp”).forward(request, response);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“searchCllentList”.equals(method)) {// 用户查看列表</p>
-<p>String ctel = (String) request.getSession().getAttribute(“ctel”);</p>
-<p>try {</p>
-<p>JSONArray scenic = dao.findJSONArray(“select IF(ISNULL(c.ctel),’0’,’1’) count,IF(ISNULL(sc.sce_id),’0’,CONVERT( COUNT(<em>) USING UTF8)) num ,s.</em> from scenic s “ +</p>
-<p>“ left join sce_collect sc on s.sce_id=sc.sce_id “ +</p>
-<p>“left join cllent c on c.ctel=sc.ctel “ +</p>
-<p>“and c.ctel=”+ctel+ “  where s.region_id like ‘%” + sce.getRegionId() + “%’ and  s.sce_name like ‘%” + sce.getSceName() + “%’ “ +</p>
-<p>“GROUP BY s.sce_id order by num desc “);</p>
-<p>request.setAttribute(“scenic”, scenic);</p>
-<p>request.getRequestDispatcher(“scenic-list.jsp”).forward(request, response);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
-<p>} else if (“detailScenic”.equals(method)) {// 美食详情</p>
-<p>try {</p>
-<p>JSONObject scenic = dao.findJSONObject(“select * from scenic where sce_id=?”, sce.getSceId());</p>
-<p>request.setAttribute(“scenic”, scenic);</p>
-<p>request.getRequestDispatcher(“scenic-detail.jsp”).forward(request, response);</p>
-<p>} catch (SQLException e) {</p>
-<p>e.printStackTrace();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">    KefangyudingEntity kefangyuding = kefangyudingService.selectById(id);</span><br><span class="line">    <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, kefangyuding);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 后端保存</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/save&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">save</span><span class="params">(<span class="meta">@RequestBody</span> KefangyudingEntity kefangyuding, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">	kefangyuding.setId(<span class="keyword">new</span> Date().getTime()+<span class="keyword">new</span> Double(Math.floor(Math.random()*<span class="number">1000</span>)).longValue());</span><br><span class="line">	<span class="comment">//ValidatorUtils.validateEntity(kefangyuding);</span></span><br><span class="line"></span><br><span class="line">    kefangyudingService.insert(kefangyuding);</span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 前端保存</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/add&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">add</span><span class="params">(<span class="meta">@RequestBody</span> KefangyudingEntity kefangyuding, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">	kefangyuding.setId(<span class="keyword">new</span> Date().getTime()+<span class="keyword">new</span> Double(Math.floor(Math.random()*<span class="number">1000</span>)).longValue());</span><br><span class="line">	<span class="comment">//ValidatorUtils.validateEntity(kefangyuding);</span></span><br><span class="line"></span><br><span class="line">    kefangyudingService.insert(kefangyuding);</span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/update&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> KefangyudingEntity kefangyuding, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    <span class="comment">//ValidatorUtils.validateEntity(kefangyuding);</span></span><br><span class="line">    kefangyudingService.updateById(kefangyuding);<span class="comment">//全部更新</span></span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Long[] ids)</span></span>&#123;</span><br><span class="line">    kefangyudingService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 提醒接口</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">@RequestMapping(&quot;/lists&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">( DiscussnongjialeEntity discussnongjiale)</span></span>&#123;</span><br><span class="line">     	EntityWrapper&lt;DiscussnongjialeEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;DiscussnongjialeEntity&gt;();</span><br><span class="line">    	ew.allEq(MPUtil.allEQMapPre( discussnongjiale, <span class="string">&quot;discussnongjiale&quot;</span>)); </span><br><span class="line">      <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, discussnongjialeService.selectListView(ew));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 查询</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/query&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> R <span class="title">query</span><span class="params">(DiscussnongjialeEntity discussnongjiale)</span></span>&#123;</span><br><span class="line">      EntityWrapper&lt; DiscussnongjialeEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt; DiscussnongjialeEntity&gt;();</span><br><span class="line">	ew.allEq(MPUtil.allEQMapPre( discussnongjiale, <span class="string">&quot;discussnongjiale&quot;</span>)); </span><br><span class="line">DiscussnongjialeView discussnongjialeView =  discussnongjialeService.selectView(ew);</span><br><span class="line"><span class="keyword">return</span> R.ok(<span class="string">&quot;查询农家乐评论表成功&quot;</span>).put(<span class="string">&quot;data&quot;</span>, discussnongjialeView);</span><br><span class="line">  &#125;</span><br><span class="line">	</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 后端详情</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> R <span class="title">info</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id)</span></span>&#123;</span><br><span class="line">      DiscussnongjialeEntity discussnongjiale = discussnongjialeService.selectById(id);</span><br><span class="line">      <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, discussnongjiale);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 前端详情</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/detail/&#123;id&#125;&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> R <span class="title">detail</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id)</span></span>&#123;</span><br><span class="line">      DiscussnongjialeEntity discussnongjiale = discussnongjialeService.selectById(id);</span><br><span class="line">      <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, discussnongjiale);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 后端保存</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 活动信息评论表</span></span><br><span class="line"><span class="comment"> * 后端接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@email</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/discusshuodongxinxi&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiscusshuodongxinxiController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> DiscusshuodongxinxiService discusshuodongxinxiService;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 后端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">page</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,DiscusshuodongxinxiEntity discusshuodongxinxi, HttpServletRequest request)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        EntityWrapper&lt;DiscusshuodongxinxiEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;DiscusshuodongxinxiEntity&gt;();</span><br><span class="line">		PageUtils page = discusshuodongxinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, discusshuodongxinxi), params), params));</span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 前端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="meta">@IgnoreAuth</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 前端列表</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/list&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,HuodongbaomingEntity huodongbaoming, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">       EntityWrapper&lt;HuodongbaomingEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;HuodongbaomingEntity&gt;();</span><br><span class="line">	PageUtils page = huodongbaomingService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, huodongbaoming), params), params));</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 列表</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/lists&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">( HuodongbaomingEntity huodongbaoming)</span></span>&#123;</span><br><span class="line">      	EntityWrapper&lt;HuodongbaomingEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;HuodongbaomingEntity&gt;();</span><br><span class="line">     	ew.allEq(MPUtil.allEQMapPre( huodongbaoming, <span class="string">&quot;huodongbaoming&quot;</span>)); </span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, huodongbaomingService.selectListView(ew));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 查询</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/query&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">query</span><span class="params">(HuodongbaomingEntity huodongbaoming)</span></span>&#123;</span><br><span class="line">       EntityWrapper&lt; HuodongbaomingEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt; HuodongbaomingEntity&gt;();</span><br><span class="line">		ew.allEq(MPUtil.allEQMapPre( huodongbaoming, <span class="string">&quot;huodongbaoming&quot;</span>)); </span><br><span class="line">	HuodongbaomingView huodongbaomingView =  huodongbaomingService.selectView(ew);</span><br><span class="line">	<span class="keyword">return</span> R.ok(<span class="string">&quot;查询活动报名成功&quot;</span>).put(<span class="string">&quot;data&quot;</span>, huodongbaomingView);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 后端详情</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">info</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id)</span></span>&#123;</span><br><span class="line">       HuodongbaomingEntity huodongbaoming = huodongbaomingService.selectById(id);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, huodongbaoming);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 前端详情</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/detail/&#123;id&#125;&quot;)</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 列表</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@IgnoreAuth</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/flist&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">flist</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,ForumEntity forum, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">       EntityWrapper&lt;ForumEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;ForumEntity&gt;();</span><br><span class="line">   	PageUtils page = forumService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.allEq(ew, forum), params), params));</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 查询</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/query&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">query</span><span class="params">(ForumEntity forum)</span></span>&#123;</span><br><span class="line">       EntityWrapper&lt; ForumEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt; ForumEntity&gt;();</span><br><span class="line">		ew.allEq(MPUtil.allEQMapPre( forum, <span class="string">&quot;forum&quot;</span>)); </span><br><span class="line">	ForumView forumView =  forumService.selectView(ew);</span><br><span class="line">	<span class="keyword">return</span> R.ok(<span class="string">&quot;查询论坛交流成功&quot;</span>).put(<span class="string">&quot;data&quot;</span>, forumView);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 后端详情</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">info</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id)</span></span>&#123;</span><br><span class="line">       ForumEntity forum = forumService.selectById(id);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, forum);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 前端详情</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/detail/&#123;id&#125;&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">detail</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id)</span></span>&#123;</span><br><span class="line">       ForumEntity forum = forumService.selectById(id);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, forum);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 论坛详情</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">@IgnoreAuth</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/list/&#123;id&#125;&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> String id)</span></span>&#123;</span><br><span class="line">       ForumEntity forum = forumService.selectById(id);</span><br><span class="line">       getChilds(forum);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, forum);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">			c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">			remindEndDate = c.getTime();</span><br><span class="line">			map.put(<span class="string">&quot;remindend&quot;</span>, sdf.format(remindEndDate));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	Wrapper&lt;MeishixinxiEntity&gt; wrapper = <span class="keyword">new</span> EntityWrapper&lt;MeishixinxiEntity&gt;();</span><br><span class="line">	<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">		wrapper.ge(columnName, map.get(<span class="string">&quot;remindstart&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">		wrapper.le(columnName, map.get(<span class="string">&quot;remindend&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> count = meishixinxiService.selectCount(wrapper);</span><br><span class="line">	<span class="keyword">return</span> R.ok().put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 前端智能排序</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">@IgnoreAuth</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/autoSort&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">autoSort</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,MeishixinxiEntity meishixinxi, HttpServletRequest request,String pre)</span></span>&#123;</span><br><span class="line">       EntityWrapper&lt;MeishixinxiEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;MeishixinxiEntity&gt;();</span><br><span class="line">       Map&lt;String, Object&gt; newMap = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">       Map&lt;String, Object&gt; param = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">	Iterator&lt;Map.Entry&lt;String, Object&gt;&gt; it = param.entrySet().iterator();</span><br><span class="line">	<span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">		Map.Entry&lt;String, Object&gt; entry = it.next();</span><br><span class="line">		String key = entry.getKey();</span><br><span class="line">		String newKey = entry.getKey();</span><br><span class="line">		<span class="keyword">if</span> (pre.endsWith(<span class="string">&quot;.&quot;</span>)) &#123;</span><br><span class="line">			newMap.put(pre + newKey, entry.getValue());</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (StringUtils.isEmpty(pre)) &#123;</span><br><span class="line">			newMap.put(newKey, entry.getValue());</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			newMap.put(pre + <span class="string">&quot;.&quot;</span> + newKey, entry.getValue());</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
-<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=139&price1=99&price2=99" style="height: 260px;" frameborder="0"></iframe>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=99&price2=89" style="height: 260px;" frameborder="0"></iframe>
 <blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=411524170701201gt<br>https://javayms.pages.dev?id=411524170701201gt</p></blockquote>
     </div>
 
@@ -605,9 +274,10 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-			<a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+			<a href="/tags/SSM-Maven/" rel="tag"><i class="fa fa-tag"></i> SSM+Maven</a>
 			<a href="/tags/%E5%86%9C/" rel="tag"><i class="fa fa-tag"></i> 农</a>
 			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
 
           </div>
 
