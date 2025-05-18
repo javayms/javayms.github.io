@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot财务收支记账账单管理系统(java+springboot+maven+mybatis+layui+thymeleaf+html)">
+<meta property="og:title" content="基于javaweb的SpringBoot财务收支记账账单管理系统(java+springboot+mysql+maven+mybatis+layui+thymeleaf+html)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot财务收支记账账单管理系统(java+springboot+maven+mybatis+layui+thymeleaf+html) | Java源码社</title>
+  <title>基于javaweb的SpringBoot财务收支记账账单管理系统(java+springboot+mysql+maven+mybatis+layui+thymeleaf+html) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot财务收支记账账单管理系统(java+springboot+maven+mybatis+layui+thymeleaf+html)
+			基于javaweb的SpringBoot财务收支记账账单管理系统(java+springboot+mysql+maven+mybatis+layui+thymeleaf+html)
             
         </h1>
 
@@ -225,7 +225,7 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/082024221606.jpg" alt="082024221606"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/092024221606.jpg" alt="092024221606"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/102024221606.jpg" alt="102024221606"></p>
-<p>基于javaweb的SpringBoot财务收支记账账单管理系统(java+springboot+maven+mybatis+layui+thymeleaf+html)<br>登录：<br>member1    123456<br>member2    123456</p>
+<p>基于javaweb的SpringBoot财务收支记账账单管理系统(java+springboot+mysql+maven+mybatis+layui+thymeleaf+html)<br>登录：<br>member1    123456<br>member2    123456</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line"> *  前端控制器</span><br><span class="line"> * <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;/bills&quot;)</span><br><span class="line">public class BillsController &#123;</span><br><span class="line">	</span><br><span class="line">	@Autowired</span><br><span class="line">	private BillsService billService;</span><br><span class="line">	</span><br><span class="line">	@Autowired </span><br><span class="line">	private BilltypeService billTypeService;</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 跳转到系统主页</span><br><span class="line">	 */</span><br><span class="line">	@RequestMapping(&quot;toBillsList&quot;)</span><br><span class="line">	public String toBillsList() &#123;</span><br><span class="line">		return &quot;list&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">	 * 加载帐单数据</span><br><span class="line">	 */</span><br><span class="line">	@RequestMapping(&quot;loadAllBills&quot;)</span><br><span class="line">	@ResponseBody</span><br><span class="line">	public DataGridView loadAllBills(BillsVo billsVo) &#123;</span><br><span class="line">		IPage<span class="tag">&lt;<span class="name">Bills</span>&gt;</span> page=new Page<span class="tag">&lt;&gt;</span>(billsVo.getPage(), billsVo.getLimit());</span><br><span class="line">		QueryWrapper<span class="tag">&lt;<span class="name">Bills</span>&gt;</span> queryWrapper=new QueryWrapper<span class="tag">&lt;&gt;</span>();</span><br><span class="line">		queryWrapper.eq(null!=billsVo.getTypeid()&amp;&amp;billsVo.getTypeid()!=0, &quot;typeid&quot;, billsVo.getTypeid());</span><br><span class="line">		queryWrapper.ge(billsVo.getStartDate()!=null,&quot;billtime&quot;, billsVo.getStartDate());</span><br><span class="line">		queryWrapper.le(billsVo.getEndDate()!=null, &quot;billtime&quot;,billsVo.getEndDate());</span><br><span class="line">		queryWrapper.orderByDesc(&quot;billtime&quot;);</span><br><span class="line">		billService.page(page, queryWrapper);</span><br><span class="line">		</span><br><span class="line">		List<span class="tag">&lt;<span class="name">Bills</span>&gt;</span> records = page.getRecords();</span><br><span class="line">		for (Bills bills : records) &#123;</span><br><span class="line">			Billtype billtype = this.billTypeService.getById(bills.getTypeid());</span><br><span class="line">			bills.setTypeName(billtype.getName());</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
 

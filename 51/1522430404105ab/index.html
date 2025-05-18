@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot+JPA旅行网站旅游管理系统(前台、后台)(java+springboot+jpa+thymeleaf+html+bootstrap+maven)">
+<meta property="og:title" content="基于javaweb的SpringBoot+JPA旅行网站旅游管理系统(前台、后台)(java+springboot+mysql+jpa+thymeleaf+html+bootstrap+maven)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot+JPA旅行网站旅游管理系统(前台、后台)(java+springboot+jpa+thymeleaf+html+bootstrap+maven) | Java源码社</title>
+  <title>基于javaweb的SpringBoot+JPA旅行网站旅游管理系统(前台、后台)(java+springboot+mysql+jpa+thymeleaf+html+bootstrap+maven) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot+JPA旅行网站旅游管理系统(前台、后台)(java+springboot+jpa+thymeleaf+html+bootstrap+maven)
+			基于javaweb的SpringBoot+JPA旅行网站旅游管理系统(前台、后台)(java+springboot+mysql+jpa+thymeleaf+html+bootstrap+maven)
             
         </h1>
 
@@ -241,7 +241,7 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/270123202502.jpg" alt="270123202502"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/290123202502.jpg" alt="290123202502"></p>
 <h3 id="技术框架"><a href="#技术框架" class="headerlink" title="技术框架"></a>技术框架</h3><p>JavaWeb SpringBoot JPA Thymeleaf HTML Bootstrap JavaScript SpringMVC MySQL</p>
-<p>基于javaweb的SpringBoot+JPA旅行网站旅游管理系统(前台、后台)(java+springboot+jpa+thymeleaf+html+bootstrap+maven)</p>
+<p>基于javaweb的SpringBoot+JPA旅行网站旅游管理系统(前台、后台)(java+springboot+mysql+jpa+thymeleaf+html+bootstrap+maven)</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">        Page&lt;Attractions&gt; page = reserveService.reserveAttractionsListUI(searchName,pageable);</span><br><span class="line">        List&lt;Hotel&gt; top10Hotel = reserveService.getTop10Hotel();</span><br><span class="line">        List&lt;Attractions&gt; top10Attractions = reserveService.getTop10Attractions();</span><br><span class="line">        model.addAttribute(<span class="string">&quot;top10Hotel&quot;</span>, top10Hotel);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;top10Attractions&quot;</span>, top10Attractions);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;page&quot;</span>, page);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;reserve/reserve-attractions&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/attractionsDetailsUI&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">attractionsDetailsUI</span><span class="params">(Model model, HttpServletRequest request, <span class="meta">@RequestParam(name = &quot;id&quot;)</span> String id)</span> </span>&#123;</span><br><span class="line">        Attractions attractions = reserveService.findAttractionsById(id);</span><br><span class="line">        <span class="comment">//如果用户显示已经预约,就是查看预约列表</span></span><br><span class="line">        Boolean flag = reserveService.isReserveAttractions(request, id);</span><br><span class="line">        List&lt;Hotel&gt; top10Hotel = reserveService.getTop10Hotel();</span><br><span class="line">        List&lt;Attractions&gt; top10Attractions = reserveService.getTop10Attractions();</span><br><span class="line">        model.addAttribute(<span class="string">&quot;top10Hotel&quot;</span>, top10Hotel);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;top10Attractions&quot;</span>, top10Attractions);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;attractions&quot;</span>, attractions);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;flag&quot;</span>, flag);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;reserve/reserve-attractions-details&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/cancelAttractionsReserve&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result <span class="title">cancelAttractionsReserve</span><span class="params">(HttpServletRequest request,String id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> reserveService.cancelAttractionsReserve(request,id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.demo.controller;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
