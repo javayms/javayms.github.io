@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot员工绩效考核系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:title" content="基于javaweb的SpringBoot员工绩效考核系统(java+springboot+maven+mybaits+vue+elementui+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot员工绩效考核系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  <title>基于javaweb的SpringBoot员工绩效考核系统(java+springboot+maven+mybaits+vue+elementui+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot员工绩效考核系统(java+springboot+mybaits+vue+elementui+mysql)
+			基于javaweb的SpringBoot员工绩效考核系统(java+springboot+maven+mybaits+vue+elementui+mysql)
             
         </h1>
 
@@ -231,7 +231,7 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/311524102608.jpg" alt="311524102608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/321524102608.jpg" alt="321524102608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/331524102608.jpg" alt="331524102608"></p>
-<p>基于javaweb的SpringBoot员工绩效考核系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>基于javaweb的SpringBoot员工绩效考核系统(java+springboot+maven+mybaits+vue+elementui+mysql)</p>
 <p>项目介绍</p>
 <p>基于Springboot+vue实现的员工绩效考核管理系统</p>
 <p>系统包含员工和管理员两个角色</p>
@@ -248,272 +248,28 @@
 <p>接收反馈：查看系统或上级给出的绩效反馈和改进建议，了解自己的工作表现和不足。</p>
 <p>公告查看：查看系统发布的公告信息，确保自己了解公司的最新政策和通知。</p>
 <p>报表查看：查看并理解自己的绩效考核报表，了解自己的绩效趋势和改进方向。</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
-<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
-<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； </p>
-<p>4.数据库：MySql 5.7/8.0版本均可；</p>
-<p>5.是否Maven项目：是；</p>
 <p>技术栈</p>
 <p>后端：SpringBoot+Mybaits</p>
 <p>前端：Vue+elementui</p>
-<p>使用说明</p>
-<p>项目运行：</p>
-<ol>
-<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
-</li>
-<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
-</li>
-<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
-</li>
-</ol>
-<p>4.运行项目，在浏览器中输入地址：</p>
-<p>后台登录页面</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:8080/springboot57n6g/admin/dist/index.html">http://localhost:8080/springboot57n6g/admin/dist/index.html</a></p>
-<p>管理员账户:abo 密码：abo</p>
-<p>用户账户:员工1 密码：123456</p>
-<p>文档结构展示：</p>
-<p>系统登录展示：</p>
-<p>公告管理展示：</p>
-<p>部门展示：</p>
-<p>岗位展示页面：</p>
-<p>员工展示页面：</p>
-<p>绩效指标展示：</p>
-<p>绩效考核展示页面：</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>员工管理控制层：</p>
-<p>@RestController</p>
-<p>@RequestMapping(“/employee”)</p>
-<p>@CrossOrigin</p>
-<p>@Slf4j</p>
-<p>public class EmployeeController {</p>
-<p>@Autowired</p>
-<p>private EmployeeService employeeService;</p>
-<p>@Autowired</p>
-<p>private DepartmentService departmentService;</p>
-<p>@Autowired</p>
-<p>private JobService jobService;</p>
-<p>@Autowired</p>
-<p>private EduLevelMapper eduLevelMapper;</p>
-<p>@Autowired</p>
-<p>private EmployeeMapper employeeMapper;</p>
-<p>/**</p>
-<ul>
-<li>搜索接口</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/search”)</p>
-<p>public Result search(@RequestParam(name = “name”, required = false,defaultValue = “”) String name,</p>
-<p>@RequestParam(name = “current”, required = false, defaultValue = “1”) Integer current,</p>
-<p>@RequestParam(name = “size”, required = false, defaultValue = “10”) Integer size) {</p>
-<p>return employeeService.list(current, size, name);</p>
-<p>/**</p>
-<ul>
-<li><p>分页查询接口</p>
-</li>
-<li><p>@param current</p>
-</li>
-<li><p>@param size</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/list”)</p>
-<p>public Result list(@RequestParam(name = “current”, required = false, defaultValue = “1”) Integer current,</p>
-<p>@RequestParam(name = “size”, required = false, defaultValue = “10”) Integer size) {</p>
-<p>return employeeService.list(current, size, null);</p>
-<p>/**</p>
-<ul>
-<li><p>根据id获取员工具体信息</p>
-</li>
-<li><p>@param id</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/getUserById”)</p>
-<p>public EmployeeDTO getUserAllInfoById(@RequestParam(name = “id”) Integer id) {</p>
-<p>return employeeService.getUserById(id);</p>
-<p>/**</p>
-<ul>
-<li><p>根据员工获取信息</p>
-</li>
-<li><p>@param id</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/getEmployeeById”)</p>
-<p>public Employee getUserById(@RequestParam(name = “id”) Integer id) {</p>
-<p>return employeeMapper.selectById(id);</p>
-<p>/**</p>
-<ul>
-<li><p>增加员工接口</p>
-</li>
-<li><p>@param employee</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@PostMapping(“/add”)</p>
-<p>public Map&lt;String, Object&gt; addUser(@RequestBody Employee employee) {</p>
-<p>log.info(employee.toString());</p>
-<p>return employeeService.add(employee);</p>
-<p>/**</p>
-<ul>
-<li><p>更新用户</p>
-</li>
-<li><p>@param employee</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@PostMapping(“/update”)</p>
-<p>public Map&lt;String, Object&gt; updateUser(@RequestBody Employee employee) {</p>
-<p>log.info(employee.toString());</p>
-<p>return employeeService.update(employee);</p>
-<p>/**</p>
-<ul>
-<li><p>删除用户</p>
-</li>
-<li><p>@param id</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/delete”)</p>
-<p>public Result deleteEmployeeById(@RequestParam(name = “id”) Integer id) {</p>
-<p>return employeeService.deleteEmployeeById(id);</p>
-<p>/**</p>
-<ul>
-<li><p>辞退员工</p>
-</li>
-<li><p>@param id</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/dismiss”)</p>
-<p>public Map&lt;String, Object&gt; dismissEmployeeById(@RequestParam(name = “id”) Integer id) {</p>
-<p>return employeeService.dismissEmployeeById(id);</p>
-<p>/**</p>
-<ul>
-<li><p>得到所以工作，部门，学历信息</p>
-</li>
-<li><p>@return</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@GetMapping(“/otherInfo”)</p>
-<p>public Result getAllOtherInfo() {</p>
-<p>Map&lt;String, Object&gt; info = new HashMap&lt;&gt;();</p>
-<p>info.put(“departments”, departmentService.selectAll());</p>
-<p>info.put(“jobs”, jobService.selectAll());</p>
-<p>info.put(“eduLevels”, eduLevelMapper.selectList(null));</p>
-<p>return Result.success(info);</p>
-<p>@GetMapping(“/map”)</p>
-<p>public Result getMap() {</p>
-<p>return employeeService.getMap();</p>
-<p>登录管理业务处理层：</p>
-<p>@Service</p>
-<p>public class AuthServiceImpl implements AuthService {</p>
-<p>@Autowired</p>
-<p>private EmployeeMapper employeeMapper;</p>
-<p>@Override</p>
-<p>public Result login(String email, String password) {</p>
-<p>//先用邮箱查询是否有这个员工</p>
-<p>LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper&lt;&gt;();</Employee></p>
-<p>queryWrapper.eq(Employee::getEmail, email);</p>
-<p>//        queryWrapper.eq(Employee::getPassword, password);</p>
-<p>Employee employee = employeeMapper.selectOne(queryWrapper);</p>
-<p>//判断员工是否存在</p>
-<p>if (employee == null) {</p>
-<p>return Result.failure(ResponseCode.USER_NOT_FOUND);</p>
-<p>} else {</p>
-<p>//判断密码是否正确</p>
-<p>if (!employee.getPassword().equals(password)) {</p>
-<p>return Result.failure(ResponseCode.PASSWORD_ERROR);</p>
-<p>// 生成token</p>
-<p>String token = UUID.randomUUID().toString();</p>
-<p>LoginDTO loginDTO = new LoginDTO();</p>
-<p>if (employee.getAuthority() == 1) {</p>
-<p>loginDTO.setSuper(true);</p>
-<p>} else {</p>
-<p>loginDTO.setSuper(false);</p>
-<p>loginDTO.setToken(token);</p>
-<p>loginDTO.setUserId(employee.getId());</p>
-<p>return Result.success(loginDTO);</p>
-<p>部门管理控制层： </p>
-<p>@Service</p>
-<p>public class DepartmentServiceImpl implements DepartmentService {</p>
-<p>@Autowired</p>
-<p>private DepartmentMapper departmentMapper;</p>
-<p>@Autowired</p>
-<p>private DeptManagerMapper deptManagerMapper;</p>
-<p>@Autowired</p>
-<p>private EmployeeMapper employeeMapper;</p>
-<p>@Override</p>
-<p>public List<DepartmentDTO> selectAll() {</DepartmentDTO></p>
-<p>List<DepartmentDTO> departmentDTOS = departmentMapper.selectAll();</DepartmentDTO></p>
-<p>for (DepartmentDTO departmentDTO : departmentDTOS) {</p>
-<p>LambdaQueryWrapper<DeptManager> queryWrapper = new LambdaQueryWrapper&lt;&gt;();</DeptManager></p>
-<p>queryWrapper.eq(DeptManager::getDeptId, departmentDTO.getId());</p>
-<p>DeptManager deptManager = deptManagerMapper.selectOne(queryWrapper);</p>
-<p>// fixes bug  #空指针异常,  如果部门没有经理, 会抛出空指针异常</p>
-<p>if (deptManager != null) {</p>
-<p>EmployeeDTO manager = employeeMapper.getUserById(deptManager.getEmpId());</p>
-<p>departmentDTO.setManager(manager);</p>
-<p>return departmentDTOS;</p>
-<p>@Override</p>
-<p>public Map&lt;String, Object&gt; add(Map&lt;String, Object&gt; map) {</p>
-<p>//先查询是否有部门</p>
-<p>String name = (String) map.get(“name”);</p>
-<p>Integer managerId = Integer.parseInt((String) map.get(“managerId”));</p>
-<p>LambdaQueryWrapper<Department> wrapper = new LambdaQueryWrapper&lt;&gt;();</Department></p>
-<p>wrapper.eq(Department::getName, name);</p>
-<p>Integer count = departmentMapper.selectCount(wrapper);</p>
-<p>if (count != 0) {</p>
-<p>map.put(“code”, 511);</p>
-<p>map.put(“message”, “部门存在”);</p>
-<p>return map;</p>
-<p>//查询经理是否存在</p>
-<p>LambdaQueryWrapper<Employee> wrapper1 = new LambdaQueryWrapper&lt;&gt;();</Employee></p>
-<p>wrapper1.eq(Employee::getId, managerId);</p>
-<p>Integer count1 = employeeMapper.selectCount(wrapper1);</p>
-<p>if (count1 == 0) {</p>
-<p>map.put(“code”, 404);</p>
-<p>map.put(“message”, “用户不存在”);</p>
-<p>return map;</p>
-<p>//定义返回结果</p>
-<p>Map&lt;String, Object&gt; resultMap = new HashMap&lt;&gt;();</p>
-<p>Department department = new Department();</p>
-<p>department.setIntro((String) map.get(“description”));</p>
-<p>department.setName((String) map.get(“name”));</p>
-<p>//插入部门</p>
-<p>int i = departmentMapper.insert(department);</p>
-<p>//部门经理表</p>
-<p>DeptManager deptManager = new DeptManager();</p>
-<p>deptManager.setDeptId(department.getId());</p>
-<p>deptManager.setEmpId(managerId);</p>
-<p>int insert = deptManagerMapper.insert(deptManager);</p>
-<p>if (i !=0 ) {</p>
-<p>map.put(“code”, 200);</p>
-<p>map.put(“message”, “添加成功”);</p>
-<p>return map;</p>
-<p>} else {</p>
-<p>map.put(“code”, 500);</p>
-<p>map.put(“message”, “添加失败”);</p>
-<p>return map;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"> * </span><br><span class="line"> * <span class="meta">@param</span> face1 人脸<span class="number">1</span></span><br><span class="line"> * <span class="meta">@param</span> face2 人脸<span class="number">2</span></span><br><span class="line"> * <span class="meta">@return</span></span><br><span class="line"> */</span><br><span class="line"><span class="meta">@RequestMapping(&quot;/matchFace&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">matchFace</span><span class="params">(String face1, String face2)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(client==<span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="comment">/*String AppID = configService.selectOne(new EntityWrapper&lt;ConfigEntity&gt;().eq(&quot;name&quot;, &quot;AppID&quot;)).getValue();*/</span></span><br><span class="line">		String APIKey = configService.selectOne(<span class="keyword">new</span> EntityWrapper&lt;ConfigEntity&gt;().eq(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;APIKey&quot;</span>)).getValue();</span><br><span class="line">		String SecretKey = configService.selectOne(<span class="keyword">new</span> EntityWrapper&lt;ConfigEntity&gt;().eq(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;SecretKey&quot;</span>)).getValue();</span><br><span class="line">		String token = BaiduUtil.getAuth(APIKey, SecretKey);</span><br><span class="line">		<span class="keyword">if</span>(token==<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> R.error(<span class="string">&quot;请在配置管理中正确配置APIKey和SecretKey&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		client = <span class="keyword">new</span> AipFace(<span class="keyword">null</span>, APIKey, SecretKey);</span><br><span class="line">		client.setConnectionTimeoutInMillis(<span class="number">2000</span>);</span><br><span class="line">		client.setSocketTimeoutInMillis(<span class="number">60000</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	JSONObject res = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		File file1 = <span class="keyword">new</span> File(ResourceUtils.getFile(<span class="string">&quot;classpath:static/upload&quot;</span>).getAbsolutePath()+<span class="string">&quot;/&quot;</span>+face1);</span><br><span class="line">		File file2 = <span class="keyword">new</span> File(ResourceUtils.getFile(<span class="string">&quot;classpath:static/upload&quot;</span>).getAbsolutePath()+<span class="string">&quot;/&quot;</span>+face2);</span><br><span class="line">		String img1 = Base64Util.encode(FileUtil.FileToByte(file1));</span><br><span class="line">		String img2 = Base64Util.encode(FileUtil.FileToByte(file2));</span><br><span class="line">		MatchRequest req1 = <span class="keyword">new</span> MatchRequest(img1, <span class="string">&quot;BASE64&quot;</span>);</span><br><span class="line">		MatchRequest req2 = <span class="keyword">new</span> MatchRequest(img2, <span class="string">&quot;BASE64&quot;</span>);</span><br><span class="line">		ArrayList&lt;MatchRequest&gt; requests = <span class="keyword">new</span> ArrayList&lt;MatchRequest&gt;();</span><br><span class="line">		requests.add(req1);</span><br><span class="line">		requests.add(req2);</span><br><span class="line">		res = client.match(requests);</span><br><span class="line">		System.out.println(res.get(<span class="string">&quot;result&quot;</span>));</span><br><span class="line">	&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">return</span> R.error(<span class="string">&quot;文件不存在&quot;</span>);</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, com.alibaba.fastjson.JSONObject.parse(res.get(<span class="string">&quot;result&quot;</span>).toString()));</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取table表中的column列表(联动接口)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> table</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> column</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@IgnoreAuth</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/option/&#123;tableName&#125;/&#123;columnName&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">getOption</span><span class="params">(<span class="meta">@PathVariable(&quot;tableName&quot;)</span> String tableName, <span class="meta">@PathVariable(&quot;columnName&quot;)</span> String columnName,String level,String parent)</span> </span>&#123;</span><br><span class="line">	Map&lt;String, Object&gt; params = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 岗位</span></span><br><span class="line"><span class="comment"> * 后端接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@email</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/gangwei&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GangweiController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> GangweiService gangweiService;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 后端列表</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 公告信息</span></span><br><span class="line"><span class="comment"> * 后端接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@email</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/gonggaoxinxi&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GonggaoxinxiController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> GonggaoxinxiService gonggaoxinxiService;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 后端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">page</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,GonggaoxinxiEntity gonggaoxinxi,</span></span></span><br><span class="line"><span class="function"><span class="params">		HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        EntityWrapper&lt;GonggaoxinxiEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;GonggaoxinxiEntity&gt;();</span><br><span class="line">		PageUtils page = gonggaoxinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, gonggaoxinxi), params), params));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 前端列表</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">			<span class="keyword">if</span>(!path.exists()) &#123;</span><br><span class="line">			    path = <span class="keyword">new</span> File(<span class="string">&quot;&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			File upload = <span class="keyword">new</span> File(path.getAbsolutePath(),<span class="string">&quot;/upload/&quot;</span>);</span><br><span class="line">			<span class="keyword">if</span>(!upload.exists()) &#123;</span><br><span class="line">			    upload.mkdirs();</span><br><span class="line">			&#125;</span><br><span class="line">			File file = <span class="keyword">new</span> File(upload.getAbsolutePath()+<span class="string">&quot;/&quot;</span>+fileName);</span><br><span class="line">			<span class="keyword">if</span>(file.exists())&#123;</span><br><span class="line">				<span class="comment">/*if(!fileService.canRead(file, SessionManager.getSessionUser()))&#123;</span></span><br><span class="line"><span class="comment">					getResponse().sendError(403);</span></span><br><span class="line"><span class="comment">				&#125;*/</span></span><br><span class="line">				HttpHeaders headers = <span class="keyword">new</span> HttpHeaders();</span><br><span class="line">			    headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);    </span><br><span class="line">			    headers.setContentDispositionFormData(<span class="string">&quot;attachment&quot;</span>, fileName);    </span><br><span class="line">			    <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity&lt;<span class="keyword">byte</span>[]&gt;(FileUtils.readFileToByteArray(file),headers, HttpStatus.CREATED);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> ResponseEntity&lt;<span class="keyword">byte</span>[]&gt;(HttpStatus.INTERNAL_SERVER_ERROR);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 权限(Token)验证</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 后端保存</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/save&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">save</span><span class="params">(<span class="meta">@RequestBody</span> GangweiEntity gangwei, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">   	gangwei.setId(<span class="keyword">new</span> Date().getTime()+<span class="keyword">new</span> Double(Math.floor(Math.random()*<span class="number">1000</span>)).longValue());</span><br><span class="line">   	<span class="comment">//ValidatorUtils.validateEntity(gangwei);</span></span><br><span class="line">       gangweiService.insert(gangwei);</span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 前端保存</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/add&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">add</span><span class="params">(<span class="meta">@RequestBody</span> GangweiEntity gangwei, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">   	gangwei.setId(<span class="keyword">new</span> Date().getTime()+<span class="keyword">new</span> Double(Math.floor(Math.random()*<span class="number">1000</span>)).longValue());</span><br><span class="line">   	<span class="comment">//ValidatorUtils.validateEntity(gangwei);</span></span><br><span class="line">       gangweiService.insert(gangwei);</span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 修改</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/update&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> GangweiEntity gangwei, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">       <span class="comment">//ValidatorUtils.validateEntity(gangwei);</span></span><br><span class="line">       gangweiService.updateById(gangwei);<span class="comment">//全部更新</span></span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 删除</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Long[] ids)</span></span>&#123;</span><br><span class="line">       gangweiService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 提醒接口</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/remind/&#123;columnName&#125;/&#123;type&#125;&quot;)</span></span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
-<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=99&price2=89" style="height: 260px;" frameborder="0"></iframe>
 <blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=351524512608201ng<br>https://javayms.pages.dev?id=351524512608201ng</p></blockquote>
     </div>
 
@@ -526,6 +282,7 @@
           <div class="post-tags">
 			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
 			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
 			<a href="/tags/%E7%BB%A9%E6%95%88-%E5%B7%A5%E8%B5%84/" rel="tag"><i class="fa fa-tag"></i> 绩效 | 工资</a>
 
           </div>
