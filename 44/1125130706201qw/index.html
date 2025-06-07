@@ -1,0 +1,2605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot宠物咖啡馆系统平台(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/441125130706201qw/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot宠物咖啡馆系统平台(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/441125130706201qw/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot宠物咖啡馆系统平台(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified"></time>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tag"></i>
+                </span>
+                <time id="idText" itemprop="dateModified"></time>
+              </span>
+              <p id="browserWarningText" style="color:#FF0000;"></p>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/481125000706.jpg" alt="481125000706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/501125000706.jpg" alt="501125000706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/511125000706.jpg" alt="511125000706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/521125000706.jpg" alt="521125000706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/531125000706.jpg" alt="531125000706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/541125000706.jpg" alt="541125000706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/551125000706.jpg" alt="551125000706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/561125000706.jpg" alt="561125000706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/571125000706.jpg" alt="571125000706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/581125000706.jpg" alt="581125000706"></p>
+<p>基于javaweb的SpringBoot宠物咖啡馆系统平台(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是javajdk1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows7/8/101G内存以上；或者MacOS；</p>
+<p>4.数据库：MySql5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue+elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<p>1.使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+<p>2.使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行mavenclean;maveninstall命令；</p>
+<p>3.将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+<p>4.运行项目，在浏览器中输入地址：</p>
+<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/front/index.html">http://localhost:8080/springbootrpj39/front/index.html</a></p>
+<p>后台地址</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/admin/dist/index.html">http://localhost:8080/springbootrpj39/admin/dist/index.html</a></p>
+<p>管理员abo密码abo</p>
+<p>用户：用户1密码：123456</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>用户管理控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/user”)</p>
+<p>public class UserController extends BaseController {</p>
+<p>/**</p>
+<ul>
+<li>依赖注入 start dao/service/===</li>
+</ul>
+<p>*/</p>
+<p>@Autowired</p>
+<p>private UserService userService;</p>
+<p>// ————————————— 华丽分割线 ——————————</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>查询列表【不分页】**<strong><strong>****</strong></strong></em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>/**</p>
+<ul>
+<li><p>【不分页 =&gt; 查询列表 =&gt; 无条件】</p>
+</li>
+<li><p>@Title: listAll</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listAll”)</p>
+<p>public String listAll(User user, Model model, HttpServletRequest request, HttpServletResponse response){</p>
+<p>List<User> listAll = userService.listAll();</User></p>
+<p>model.addAttribute(“list”, listAll);</p>
+<p>return “user/user”;</p>
+<p>/**</p>
+<ul>
+<li><p> 【不分页=》查询列表=&gt;有条件】</p>
+</li>
+<li><p>@Title: listByEntity</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listByEntity”)</p>
+<p>public String listByEntity(User user, Model model, HttpServletRequest request, HttpServletResponse response){</p>
+<p>List<User> listAll = userService.listAllByEntity(user);</User></p>
+<p>model.addAttribute(“list”, listAll);</p>
+<p>return “user/user”;</p>
+<p>/**</p>
+<ul>
+<li><p> 【不分页=》查询列表=&gt;有条件】</p>
+</li>
+<li><p>@Title: listByMap</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listByMap”)</p>
+<p>public String listByMap(User user, Model model, HttpServletRequest request, HttpServletResponse response){</p>
+<p>//通过map查询</p>
+<p>Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>if(!isEmpty(user.getUserName())){</p>
+<p>params.put(“userName”, user.getUserName());</p>
+<p>if(!isEmpty(user.getPassWord())){</p>
+<p>params.put(“passWord”, user.getPassWord());</p>
+<p>if(!isEmpty(user.getPhone())){</p>
+<p>params.put(“phone”, user.getPhone());</p>
+<p>if(!isEmpty(user.getRealName())){</p>
+<p>params.put(“realName”, user.getRealName());</p>
+<p>if(!isEmpty(user.getSex())){</p>
+<p>params.put(“sex”, user.getSex());</p>
+<p>if(!isEmpty(user.getAddress())){</p>
+<p>params.put(“address”, user.getAddress());</p>
+<p>if(!isEmpty(user.getEmail())){</p>
+<p>params.put(“email”, user.getEmail());</p>
+<p>List<User> listAll = userService.listByMap(params);</User></p>
+<p>model.addAttribute(“list”, listAll);</p>
+<p>return “user/user”;</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>查询列表【分页】**<strong><strong>****</strong></strong></em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list对象(通过对象)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findByObj”)</p>
+<p>public String findByObj(User user, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//分页查询</p>
+<p>Pager<User> pagers = userService.findByEntity(user);</User></p>
+<p>model.addAttribute(“pagers”, pagers);</p>
+<p>//存储查询条件</p>
+<p>model.addAttribute(“obj”, user);</p>
+<p>return “user/user”;</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list对象(通过对By Sql)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findBySql”)</p>
+<p>public String findBySql(User user, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//分页查询</p>
+<p>String sql = “SELECT * FROM user WHERE 1=1 “;</p>
+<p>if(!isEmpty(user.getUserName())){</p>
+<p>sql += “ and userName like ‘%”+user.getUserName()+”%’”;</p>
+<p>if(!isEmpty(user.getPassWord())){</p>
+<p>sql += “ and passWord like ‘%”+user.getPassWord()+”%’”;</p>
+<p>if(!isEmpty(user.getPhone())){</p>
+<p>sql += “ and phone like ‘%”+user.getPhone()+”%’”;</p>
+<p>if(!isEmpty(user.getRealName())){</p>
+<p>sql += “ and realName like ‘%”+user.getRealName()+”%’”;</p>
+<p>if(!isEmpty(user.getSex())){</p>
+<p>sql += “ and sex like ‘%”+user.getSex()+”%’”;</p>
+<p>if(!isEmpty(user.getAddress())){</p>
+<p>sql += “ and address like ‘%”+user.getAddress()+”%’”;</p>
+<p>if(!isEmpty(user.getEmail())){</p>
+<p>sql += “ and email like ‘%”+user.getEmail()+”%’”;</p>
+<p>sql += “ ORDER BY ID DESC “;</p>
+<p>Pager<User> pagers = userService.findBySqlRerturnEntity(sql);</User></p>
+<p>model.addAttribute(“pagers”, pagers);</p>
+<p>//存储查询条件</p>
+<p>model.addAttribute(“obj”, user);</p>
+<p>return “user/user”;</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list对象(通过Map)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findByMap”)</p>
+<p>public String findByMap(User user, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//通过map查询</p>
+<p>Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>if(!isEmpty(user.getUserName())){</p>
+<p>params.put(“userName”, user.getUserName());</p>
+<p>if(!isEmpty(user.getPassWord())){</p>
+<p>params.put(“passWord”, user.getPassWord());</p>
+<p>if(!isEmpty(user.getPhone())){</p>
+<p>params.put(“phone”, user.getPhone());</p>
+<p>if(!isEmpty(user.getRealName())){</p>
+<p>params.put(“realName”, user.getRealName());</p>
+<p>if(!isEmpty(user.getSex())){</p>
+<p>params.put(“sex”, user.getSex());</p>
+<p>if(!isEmpty(user.getAddress())){</p>
+<p>params.put(“address”, user.getAddress());</p>
+<p>if(!isEmpty(user.getEmail())){</p>
+<p>params.put(“email”, user.getEmail());</p>
+<p>//分页查询</p>
+<p>Pager<User> pagers = userService.findByMap(params);</User></p>
+<p>model.addAttribute(“pagers”, pagers);</p>
+<p>//存储查询条件</p>
+<p>model.addAttribute(“obj”, user);</p>
+<p>return “user/user”;</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong>【增删改】**<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>/**</p>
+<ul>
+<li><p>跳至添加页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/add”)</p>
+<p>public String add() {</p>
+<p>return “user/add”;</p>
+<p>/**</p>
+<ul>
+<li><p>跳至详情页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/view”)</p>
+<p>public String view(Model model,HttpServletRequest request) {</p>
+<p>Object attribute = request.getSession().getAttribute(“userId”);</p>
+<p>if (attribute == null){</p>
+<p>return “redirect:/login/uLogin”;</p>
+<p>JSONObject js = new JSONObject();</p>
+<p>Integer userId = Integer.valueOf(attribute.toString());</p>
+<p>User obj = userService.load(userId);</p>
+<p>model.addAttribute(“obj”,obj);</p>
+<p>return “user/view”;</p>
+<p>/**</p>
+<ul>
+<li><p>添加执行</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/exAdd”)</p>
+<p>public String exAdd(User user, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>userService.insert(user);</p>
+<p>return “redirect:/user/findBySql.action”;</p>
+<p>/**</p>
+<ul>
+<li><p>跳至修改页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/update”)</p>
+<p>public String update(Integer id,Model model) {</p>
+<p>User obj = userService.load(id);</p>
+<p>model.addAttribute(“obj”,obj);</p>
+<p>return “user/update”;</p>
+<p>/**</p>
+<ul>
+<li><p>添加修改</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/exUpdate”)</p>
+<p>public String exUpdate(User user, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//1.通过实体类修改，可以多传修改条件</p>
+<p>Object attribute = request.getSession().getAttribute(“userId”);</p>
+<p>if (attribute == null){</p>
+<p>return “redirect:/login/uLogin”;</p>
+<p>JSONObject js = new JSONObject();</p>
+<p>user.setId(Integer.valueOf(attribute.toString()));</p>
+<p>userService.updateById(user);</p>
+<p>//2.通过主键id修改</p>
+<p>//userService.updateById(user);</p>
+<p>return “redirect:/user/view.action”;</p>
+<p>/**</p>
+<ul>
+<li><p>删除通过主键</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/delete”)</p>
+<p>public String delete(Integer id, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>///1.通过主键删除</p>
+<p>userService.deleteById(id);</p>
+<p>/<em>以下是多种删除方式</em>/</p>
+<p>//        //2.通过实体条件删除</p>
+<p>//        userService.deleteByEntity(user);</p>
+<p>//        //3.通过参数删除</p>
+<p>//     //通过map查询</p>
+<p>//        Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getUserName())){</p>
+<p>//            params.put(“userName”, user.getUserName());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getPassWord())){</p>
+<p>//            params.put(“passWord”, user.getPassWord());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getPhone())){</p>
+<p>//            params.put(“phone”, user.getPhone());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getRealName())){</p>
+<p>//            params.put(“realName”, user.getRealName());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getSex())){</p>
+<p>//            params.put(“sex”, user.getSex());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getAddress())){</p>
+<p>//            params.put(“address”, user.getAddress());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getEmail())){</p>
+<p>//            params.put(“email”, user.getEmail());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        userService.deleteByMap(params);</p>
+<p>//        //4.状态删除</p>
+<p>//        User load = userService.getById(user.getId())</p>
+<p>//        load.setIsDelete(1);</p>
+<p>//        userService.update(load);</p>
+<p>//5.状态删除</p>
+<p>//User load = userService.load(id);</p>
+<p>//load.setIsDelete(1);</p>
+<p>//userService.update(load);</p>
+<p>return “redirect:/user/findBySql.action”;</p>
+<p>// ————————————— 华丽分割线 ——————————</p>
+<p>// ————————————— 【下面是ajax操作的方法。】 ——————————</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>查询列表【不分页】**<strong><strong>****</strong></strong></em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>/**</p>
+<ul>
+<li><p>【不分页 =&gt; 查询列表 =&gt; 无条件】</p>
+</li>
+<li><p>@Title: listAll</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listAllJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String listAllJson(User user, HttpServletRequest request, HttpServletResponse response){</p>
+<p>List<User> listAll = userService.listAll();</User></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“list”, listAll);</p>
+<p>jsonObject.put(“obj”, user);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p> 【不分页=》查询列表=&gt;有条件】</p>
+</li>
+<li><p>@Title: listByEntity</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listByEntityJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String listByEntityJson(User user,  HttpServletRequest request, HttpServletResponse response){</p>
+<p>List<User> listAll = userService.listAllByEntity(user);</User></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“list”, listAll);</p>
+<p>jsonObject.put(“obj”, user);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p> 【不分页=》查询列表=&gt;有条件】</p>
+</li>
+<li><p>@Title: listByMap</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listByMapJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String listByMapJson(User user,HttpServletRequest request, HttpServletResponse response){</p>
+<p>//通过map查询</p>
+<p>Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>if(!isEmpty(user.getUserName())){</p>
+<p>params.put(“userName”, user.getUserName());</p>
+<p>if(!isEmpty(user.getPassWord())){</p>
+<p>params.put(“passWord”, user.getPassWord());</p>
+<p>if(!isEmpty(user.getPhone())){</p>
+<p>params.put(“phone”, user.getPhone());</p>
+<p>if(!isEmpty(user.getRealName())){</p>
+<p>params.put(“realName”, user.getRealName());</p>
+<p>if(!isEmpty(user.getSex())){</p>
+<p>params.put(“sex”, user.getSex());</p>
+<p>if(!isEmpty(user.getAddress())){</p>
+<p>params.put(“address”, user.getAddress());</p>
+<p>if(!isEmpty(user.getEmail())){</p>
+<p>params.put(“email”, user.getEmail());</p>
+<p>List<User> listAll = userService.listByMap(params);</User></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“list”, listAll);</p>
+<p>jsonObject.put(“obj”, user);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list json(通过对象)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findByObjJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String findByObjByEntityJson(User user, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//分页查询</p>
+<p>Pager<User> pagers = userService.findByEntity(user);</User></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“pagers”, pagers);</p>
+<p>jsonObject.put(“obj”, user);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list json(通过Map)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findByMapJson”,  method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String findByMapJson(User user,HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//通过map查询</p>
+<p>Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>if(!isEmpty(user.getUserName())){</p>
+<p>params.put(“userName”, user.getUserName());</p>
+<p>if(!isEmpty(user.getPassWord())){</p>
+<p>params.put(“passWord”, user.getPassWord());</p>
+<p>if(!isEmpty(user.getPhone())){</p>
+<p>params.put(“phone”, user.getPhone());</p>
+<p>if(!isEmpty(user.getRealName())){</p>
+<p>params.put(“realName”, user.getRealName());</p>
+<p>if(!isEmpty(user.getSex())){</p>
+<p>params.put(“sex”, user.getSex());</p>
+<p>if(!isEmpty(user.getAddress())){</p>
+<p>params.put(“address”, user.getAddress());</p>
+<p>if(!isEmpty(user.getEmail())){</p>
+<p>params.put(“email”, user.getEmail());</p>
+<p>//分页查询</p>
+<p>Pager<User> pagers = userService.findByMap(params);</User></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“pagers”, pagers);</p>
+<p>jsonObject.put(“obj”, user);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>ajax 添加</p>
+</li>
+<li><p>@param</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/exAddJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String exAddJson(User user, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>userService.insert(user);</p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“message”, “添加成功”);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>ajax 修改</p>
+</li>
+<li><p>@param</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/exUpdate.json”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String exUpdateJson(User user, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//1.通过实体类修改，可以多传修改条件</p>
+<p>userService.updateById(user);</p>
+<p>//2.通过主键id修改</p>
+<p>//userService.updateById(user);</p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“message”, “修改成功”);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>ajax 删除</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/delete.json”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String exDeleteJson(Integer id, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>///1.通过主键删除</p>
+<p>userService.deleteById(id);</p>
+<p>/<em>以下是多种删除方式</em>/</p>
+<p>//        //2.通过实体条件删除</p>
+<p>//        userService.deleteByEntity(user);</p>
+<p>//        //3.通过参数删除</p>
+<p>//        //通过map查询</p>
+<p>//        Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getUserName())){</p>
+<p>//            params.put(“userName”, user.getUserName());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getPassWord())){</p>
+<p>//            params.put(“passWord”, user.getPassWord());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getPhone())){</p>
+<p>//            params.put(“phone”, user.getPhone());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getRealName())){</p>
+<p>//            params.put(“realName”, user.getRealName());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getSex())){</p>
+<p>//            params.put(“sex”, user.getSex());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getAddress())){</p>
+<p>//            params.put(“address”, user.getAddress());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(user.getEmail())){</p>
+<p>//            params.put(“email”, user.getEmail());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        userService.deleteByMap(params);</p>
+<p>//        //4.状态删除</p>
+<p>//        User load = userService.getById(user.getId())</p>
+<p>//        load.setIsDelete(1);</p>
+<p>//        userService.updateById(load);</p>
+<p>//5.状态删除</p>
+<p>//User load = userService.load(id);</p>
+<p>//load.setIsDelete(1);</p>
+<p>//userService.updateById(load);</p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“message”, “删除成功”);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>单文件上传</p>
+</li>
+<li><p>@param file</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/saveFile”)</p>
+<p>public String saveFile(@RequestParam(value = “file”, required = false) MultipartFile file, HttpServletRequest request, Model model) {</p>
+<p>System.out.println(“开始”);</p>
+<p>String path = request.getSession().getServletContext().getRealPath(“/upload”);</p>
+<p>String fileName = file.getOriginalFilename();</p>
+<p>System.out.println(path);</p>
+<p>File targetFile = new File(path, fileName);</p>
+<p>if(!targetFile.exists()){</p>
+<p>targetFile.mkdirs();</p>
+<p>//保存</p>
+<p>try {</p>
+<p>file.transferTo(targetFile);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return “”;</p>
+<p>/**</p>
+<ul>
+<li><p>springMvc多文件上传</p>
+</li>
+<li><p>@param files</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/saveFiles”)</p>
+<p>public String saveFiles(@RequestParam(“file”) CommonsMultipartFile[] files,Integer id,HttpServletRequest request){</p>
+<p>for(int i = 0;i&lt;files.length;i++){</p>
+<p>System.out.println(“fileName———-&gt;” + files[i].getOriginalFilename());</p>
+<p>if(!files[i].isEmpty()){</p>
+<p>int pre = (int) System.currentTimeMillis();</p>
+<p>try {</p>
+<p>//拿到输出流，同时重命名上传的文件</p>
+<p>String filePath = request.getRealPath(“/upload”);</p>
+<p>File f=new File(filePath);</p>
+<p>if(!f.exists()){</p>
+<p>f.mkdirs();</p>
+<p>String fileNmae=new Date().getTime() + files[i].getOriginalFilename();</p>
+<p>File file=new File(filePath+”/“+pre + files[i].getOriginalFilename());</p>
+<p>if(!file.exists()){</p>
+<p>file.createNewFile();</p>
+<p>files[i].transferTo(file);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>System.out.println(“上传出错”);</p>
+<p>return “”;</p>
+<p>// ————————————— 华丽分割线 ——————————</p>
+<p>订单管理控制层： </p>
+<p>@Controller</p>
+<p>@RequestMapping(“/orderDetail”)</p>
+<p>public class OrderDetailController extends BaseController {</p>
+<p>/**</p>
+<ul>
+<li>依赖注入 start dao/service/===</li>
+</ul>
+<p>*/</p>
+<p>@Autowired</p>
+<p>private OrderDetailService orderDetailService;</p>
+<p>// ————————————— 华丽分割线 ——————————</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>查询列表【不分页】**<strong><strong>****</strong></strong></em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>/**</p>
+<ul>
+<li><p>【不分页 =&gt; 查询列表 =&gt; 无条件】</p>
+</li>
+<li><p>@Title: listAll</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listAll”)</p>
+<p>public String listAll(OrderDetail orderDetail, Model model, HttpServletRequest request, HttpServletResponse response){</p>
+<p>List<OrderDetail> listAll = orderDetailService.listAll();</OrderDetail></p>
+<p>model.addAttribute(“list”, listAll);</p>
+<p>return “orderDetail/orderDetail”;</p>
+<p>/**</p>
+<ul>
+<li><p> 【不分页=》查询列表=&gt;有条件】</p>
+</li>
+<li><p>@Title: listByEntity</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listByEntity”)</p>
+<p>public String listByEntity(OrderDetail orderDetail, Model model, HttpServletRequest request, HttpServletResponse response){</p>
+<p>List<OrderDetail> listAll = orderDetailService.listAllByEntity(orderDetail);</OrderDetail></p>
+<p>model.addAttribute(“list”, listAll);</p>
+<p>return “orderDetail/orderDetail”;</p>
+<p>/**</p>
+<ul>
+<li><p> 【不分页=》查询列表=&gt;有条件】</p>
+</li>
+<li><p>@Title: listByMap</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listByMap”)</p>
+<p>public String listByMap(OrderDetail orderDetail, Model model, HttpServletRequest request, HttpServletResponse response){</p>
+<p>//通过map查询</p>
+<p>Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>if(!isEmpty(orderDetail.getItemId())){</p>
+<p>params.put(“itemId”, orderDetail.getItemId());</p>
+<p>if(!isEmpty(orderDetail.getOrderId())){</p>
+<p>params.put(“orderId”, orderDetail.getOrderId());</p>
+<p>if(!isEmpty(orderDetail.getStatus())){</p>
+<p>params.put(“status”, orderDetail.getStatus());</p>
+<p>List<OrderDetail> listAll = orderDetailService.listByMap(params);</OrderDetail></p>
+<p>model.addAttribute(“list”, listAll);</p>
+<p>return “orderDetail/orderDetail”;</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>查询列表【分页】**<strong><strong>****</strong></strong></em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list对象(通过对象)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findByObj”)</p>
+<p>public String findByObj(OrderDetail orderDetail, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//分页查询</p>
+<p>Pager<OrderDetail> pagers = orderDetailService.findByEntity(orderDetail);</OrderDetail></p>
+<p>model.addAttribute(“pagers”, pagers);</p>
+<p>//存储查询条件</p>
+<p>model.addAttribute(“obj”, orderDetail);</p>
+<p>return “orderDetail/orderDetail”;</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list对象(通过对By Sql)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findBySql”)</p>
+<p>public String findBySql(OrderDetail orderDetail, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//分页查询</p>
+<p>String sql = “SELECT * FROM orderDetail WHERE 1=1 “;</p>
+<p>if(!isEmpty(orderDetail.getItemId())){</p>
+<p>sql += “ and itemId like ‘%”+orderDetail.getItemId()+”%’”;</p>
+<p>if(!isEmpty(orderDetail.getOrderId())){</p>
+<p>sql += “ and orderId like ‘%”+orderDetail.getOrderId()+”%’”;</p>
+<p>if(!isEmpty(orderDetail.getStatus())){</p>
+<p>sql += “ and status like ‘%”+orderDetail.getStatus()+”%’”;</p>
+<p>sql += “ ORDER BY ID DESC “;</p>
+<p>Pager<OrderDetail> pagers = orderDetailService.findBySqlRerturnEntity(sql);</OrderDetail></p>
+<p>model.addAttribute(“pagers”, pagers);</p>
+<p>//存储查询条件</p>
+<p>model.addAttribute(“obj”, orderDetail);</p>
+<p>return “orderDetail/orderDetail”;</p>
+<p>@RequestMapping(value = “/ulist”)</p>
+<p>public String ulist(OrderDetail orderDetail, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//分页查询</p>
+<p>String sql = “SELECT * FROM order_detail WHERE 1=1 and order_id=”+orderDetail.getOrderId();</p>
+<p>if(!isEmpty(orderDetail.getItemId())){</p>
+<p>sql += “ and itemId like ‘%”+orderDetail.getItemId()+”%’”;</p>
+<p>/* if(!isEmpty(orderDetail.getOrderId())){</p>
+<p>sql += “ and orderId like ‘%”+orderDetail.getOrderId()+”%’”;</p>
+<p>}*/</p>
+<p>if(!isEmpty(orderDetail.getStatus())){</p>
+<p>sql += “ and status like ‘%”+orderDetail.getStatus()+”%’”;</p>
+<p>sql += “ ORDER BY ID DESC “;</p>
+<p>Pager<OrderDetail> pagers = orderDetailService.findBySqlRerturnEntity(sql);</OrderDetail></p>
+<p>model.addAttribute(“pagers”, pagers);</p>
+<p>//存储查询条件</p>
+<p>model.addAttribute(“obj”, orderDetail);</p>
+<p>return “orderDetail/ulist”;</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list对象(通过Map)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findByMap”)</p>
+<p>public String findByMap(OrderDetail orderDetail, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//通过map查询</p>
+<p>Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>if(!isEmpty(orderDetail.getItemId())){</p>
+<p>params.put(“itemId”, orderDetail.getItemId());</p>
+<p>if(!isEmpty(orderDetail.getOrderId())){</p>
+<p>params.put(“orderId”, orderDetail.getOrderId());</p>
+<p>if(!isEmpty(orderDetail.getStatus())){</p>
+<p>params.put(“status”, orderDetail.getStatus());</p>
+<p>//分页查询</p>
+<p>Pager<OrderDetail> pagers = orderDetailService.findByMap(params);</OrderDetail></p>
+<p>model.addAttribute(“pagers”, pagers);</p>
+<p>//存储查询条件</p>
+<p>model.addAttribute(“obj”, orderDetail);</p>
+<p>return “orderDetail/orderDetail”;</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong>【增删改】**<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>/**</p>
+<ul>
+<li><p>跳至添加页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/add”)</p>
+<p>public String add() {</p>
+<p>return “orderDetail/add”;</p>
+<p>@RequestMapping(value = “/th”)</p>
+<p>public String th(Integer id,Model model) {</p>
+<p>OrderDetail obj = orderDetailService.load(id);</p>
+<p>obj.setStatus(1);</p>
+<p>orderDetailService.updateById(obj);</p>
+<p>model.addAttribute(“obj”,obj);</p>
+<p>return “redirect:/itemOrder/my”;</p>
+<p>/**</p>
+<ul>
+<li><p>跳至详情页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/view”)</p>
+<p>public String view(Integer id,Model model) {</p>
+<p>OrderDetail obj = orderDetailService.load(id);</p>
+<p>model.addAttribute(“obj”,obj);</p>
+<p>return “orderDetail/view”;</p>
+<p>/**</p>
+<ul>
+<li><p>添加执行</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/exAdd”)</p>
+<p>public String exAdd(OrderDetail orderDetail, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>orderDetailService.insert(orderDetail);</p>
+<p>return “redirect:/orderDetail/findBySql.action”;</p>
+<p>/**</p>
+<ul>
+<li><p>跳至修改页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/update”)</p>
+<p>public String update(Integer id,Model model) {</p>
+<p>OrderDetail obj = orderDetailService.load(id);</p>
+<p>model.addAttribute(“obj”,obj);</p>
+<p>return “orderDetail/update”;</p>
+<p>/**</p>
+<ul>
+<li><p>添加修改</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/exUpdate”)</p>
+<p>public String exUpdate(OrderDetail orderDetail, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//1.通过实体类修改，可以多传修改条件</p>
+<p>orderDetailService.updateById(orderDetail);</p>
+<p>//2.通过主键id修改</p>
+<p>//orderDetailService.updateById(orderDetail);</p>
+<p>return “redirect:/orderDetail/findBySql.action”;</p>
+<p>/**</p>
+<ul>
+<li><p>删除通过主键</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/delete”)</p>
+<p>public String delete(Integer id, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>///1.通过主键删除</p>
+<p>orderDetailService.deleteById(id);</p>
+<p>/<em>以下是多种删除方式</em>/</p>
+<p>//        //2.通过实体条件删除</p>
+<p>//        orderDetailService.deleteByEntity(orderDetail);</p>
+<p>//        //3.通过参数删除</p>
+<p>//     //通过map查询</p>
+<p>//        Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>//</p>
+<p>//        if(!isEmpty(orderDetail.getItemId())){</p>
+<p>//            params.put(“itemId”, orderDetail.getItemId());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(orderDetail.getOrderId())){</p>
+<p>//            params.put(“orderId”, orderDetail.getOrderId());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(orderDetail.getStatus())){</p>
+<p>//            params.put(“status”, orderDetail.getStatus());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        orderDetailService.deleteByMap(params);</p>
+<p>//        //4.状态删除</p>
+<p>//        OrderDetail load = orderDetailService.getById(orderDetail.getId())</p>
+<p>//        load.setIsDelete(1);</p>
+<p>//        orderDetailService.update(load);</p>
+<p>//5.状态删除</p>
+<p>//OrderDetail load = orderDetailService.load(id);</p>
+<p>//load.setIsDelete(1);</p>
+<p>//orderDetailService.update(load);</p>
+<p>return “redirect:/orderDetail/findBySql.action”;</p>
+<p>// ————————————— 华丽分割线 ——————————</p>
+<p>// ————————————— 【下面是ajax操作的方法。】 ——————————</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>查询列表【不分页】**<strong><strong>****</strong></strong></em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>/**</p>
+<ul>
+<li><p>【不分页 =&gt; 查询列表 =&gt; 无条件】</p>
+</li>
+<li><p>@Title: listAll</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listAllJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String listAllJson(OrderDetail orderDetail, HttpServletRequest request, HttpServletResponse response){</p>
+<p>List<OrderDetail> listAll = orderDetailService.listAll();</OrderDetail></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“list”, listAll);</p>
+<p>jsonObject.put(“obj”, orderDetail);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p> 【不分页=》查询列表=&gt;有条件】</p>
+</li>
+<li><p>@Title: listByEntity</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listByEntityJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String listByEntityJson(OrderDetail orderDetail,  HttpServletRequest request, HttpServletResponse response){</p>
+<p>List<OrderDetail> listAll = orderDetailService.listAllByEntity(orderDetail);</OrderDetail></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“list”, listAll);</p>
+<p>jsonObject.put(“obj”, orderDetail);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p> 【不分页=》查询列表=&gt;有条件】</p>
+</li>
+<li><p>@Title: listByMap</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listByMapJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String listByMapJson(OrderDetail orderDetail,HttpServletRequest request, HttpServletResponse response){</p>
+<p>//通过map查询</p>
+<p>Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>if(!isEmpty(orderDetail.getItemId())){</p>
+<p>params.put(“itemId”, orderDetail.getItemId());</p>
+<p>if(!isEmpty(orderDetail.getOrderId())){</p>
+<p>params.put(“orderId”, orderDetail.getOrderId());</p>
+<p>if(!isEmpty(orderDetail.getStatus())){</p>
+<p>params.put(“status”, orderDetail.getStatus());</p>
+<p>List<OrderDetail> listAll = orderDetailService.listByMap(params);</OrderDetail></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“list”, listAll);</p>
+<p>jsonObject.put(“obj”, orderDetail);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list json(通过对象)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findByObjJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String findByObjByEntityJson(OrderDetail orderDetail, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//分页查询</p>
+<p>Pager<OrderDetail> pagers = orderDetailService.findByEntity(orderDetail);</OrderDetail></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“pagers”, pagers);</p>
+<p>jsonObject.put(“obj”, orderDetail);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list json(通过Map)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findByMapJson”,  method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String findByMapJson(OrderDetail orderDetail,HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//通过map查询</p>
+<p>Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>if(!isEmpty(orderDetail.getItemId())){</p>
+<p>params.put(“itemId”, orderDetail.getItemId());</p>
+<p>if(!isEmpty(orderDetail.getOrderId())){</p>
+<p>params.put(“orderId”, orderDetail.getOrderId());</p>
+<p>if(!isEmpty(orderDetail.getStatus())){</p>
+<p>params.put(“status”, orderDetail.getStatus());</p>
+<p>//分页查询</p>
+<p>Pager<OrderDetail> pagers = orderDetailService.findByMap(params);</OrderDetail></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“pagers”, pagers);</p>
+<p>jsonObject.put(“obj”, orderDetail);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>ajax 添加</p>
+</li>
+<li><p>@param</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/exAddJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String exAddJson(OrderDetail orderDetail, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>orderDetailService.insert(orderDetail);</p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“message”, “添加成功”);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>ajax 修改</p>
+</li>
+<li><p>@param</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/exUpdate.json”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String exUpdateJson(OrderDetail orderDetail, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//1.通过实体类修改，可以多传修改条件</p>
+<p>orderDetailService.updateById(orderDetail);</p>
+<p>//2.通过主键id修改</p>
+<p>//orderDetailService.updateById(orderDetail);</p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“message”, “修改成功”);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>ajax 删除</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/delete.json”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String exDeleteJson(Integer id, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>///1.通过主键删除</p>
+<p>orderDetailService.deleteById(id);</p>
+<p>/<em>以下是多种删除方式</em>/</p>
+<p>//        //2.通过实体条件删除</p>
+<p>//        orderDetailService.deleteByEntity(orderDetail);</p>
+<p>//        //3.通过参数删除</p>
+<p>//        //通过map查询</p>
+<p>//        Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>//</p>
+<p>//        if(!isEmpty(orderDetail.getItemId())){</p>
+<p>//            params.put(“itemId”, orderDetail.getItemId());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(orderDetail.getOrderId())){</p>
+<p>//            params.put(“orderId”, orderDetail.getOrderId());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(orderDetail.getStatus())){</p>
+<p>//            params.put(“status”, orderDetail.getStatus());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        orderDetailService.deleteByMap(params);</p>
+<p>//        //4.状态删除</p>
+<p>//        OrderDetail load = orderDetailService.getById(orderDetail.getId())</p>
+<p>//        load.setIsDelete(1);</p>
+<p>//        orderDetailService.updateById(load);</p>
+<p>//5.状态删除</p>
+<p>//OrderDetail load = orderDetailService.load(id);</p>
+<p>//load.setIsDelete(1);</p>
+<p>//orderDetailService.updateById(load);</p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“message”, “删除成功”);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>单文件上传</p>
+</li>
+<li><p>@param file</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/saveFile”)</p>
+<p>public String saveFile(@RequestParam(value = “file”, required = false) MultipartFile file, HttpServletRequest request, Model model) {</p>
+<p>System.out.println(“开始”);</p>
+<p>String path = request.getSession().getServletContext().getRealPath(“/upload”);</p>
+<p>String fileName = file.getOriginalFilename();</p>
+<p>System.out.println(path);</p>
+<p>File targetFile = new File(path, fileName);</p>
+<p>if(!targetFile.exists()){</p>
+<p>targetFile.mkdirs();</p>
+<p>//保存</p>
+<p>try {</p>
+<p>file.transferTo(targetFile);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return “”;</p>
+<p>/**</p>
+<ul>
+<li><p>springMvc多文件上传</p>
+</li>
+<li><p>@param files</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/saveFiles”)</p>
+<p>public String saveFiles(@RequestParam(“file”) CommonsMultipartFile[] files,Integer id,HttpServletRequest request){</p>
+<p>for(int i = 0;i&lt;files.length;i++){</p>
+<p>System.out.println(“fileName———-&gt;” + files[i].getOriginalFilename());</p>
+<p>if(!files[i].isEmpty()){</p>
+<p>int pre = (int) System.currentTimeMillis();</p>
+<p>try {</p>
+<p>//拿到输出流，同时重命名上传的文件</p>
+<p>String filePath = request.getRealPath(“/upload”);</p>
+<p>File f=new File(filePath);</p>
+<p>if(!f.exists()){</p>
+<p>f.mkdirs();</p>
+<p>String fileNmae=new Date().getTime() + files[i].getOriginalFilename();</p>
+<p>File file=new File(filePath+”/“+pre + files[i].getOriginalFilename());</p>
+<p>if(!file.exists()){</p>
+<p>file.createNewFile();</p>
+<p>files[i].transferTo(file);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>System.out.println(“上传出错”);</p>
+<p>return “”;</p>
+<p>// ————————————— 华丽分割线 ——————————</p>
+<p>登录管理控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/login”)</p>
+<p>public class LoginController  extends BaseController{</p>
+<p>@Autowired</p>
+<p>private ManageService manageService;</p>
+<p>@Autowired</p>
+<p>private UserService userService;</p>
+<p>@Autowired</p>
+<p>private ItemOrderService itemOrderService;</p>
+<p>@Autowired</p>
+<p>private ItemService itemService;</p>
+<p>@Autowired</p>
+<p>private CarService carService;</p>
+<p>@Autowired</p>
+<p>private ItemCategoryService itemCategoryService;</p>
+<p>@Autowired</p>
+<p>private OrderDetailService orderDetailService;</p>
+<p>/**</p>
+<ul>
+<li><p>跳转登陆</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/login”)</p>
+<p>public String login(){</p>
+<p>return “login/mLogin”;</p>
+<p>@RequestMapping(“/uLogin”)</p>
+<p>public String uLogin(){</p>
+<p>return “login/uLogin”;</p>
+<p>@RequestMapping(“/res”)</p>
+<p>public String res(){</p>
+<p>return “login/res”;</p>
+<p>@RequestMapping(“/toRes”)</p>
+<p>public String toRes(User u){</p>
+<p>userService.insert(u);</p>
+<p>return “login/uLogin”;</p>
+<p>@RequestMapping(“/uIndex”)</p>
+<p>public String uIndex(Model model,Item item,String prices,Integer xl, HttpServletRequest request){</p>
+<p>String sql2 = “SELECT * FROM item_category WHERE isDelete = 0 and pid is null”;</p>
+<p>sql2 += “ ORDER BY ID DESC “;</p>
+<p>List<ItemCategory> fatherList = itemCategoryService.listBySqlReturnEntity(sql2);</ItemCategory></p>
+<p>List<CategoryDto> list = new ArrayList<CategoryDto>();</CategoryDto></CategoryDto></p>
+<p>if (!CollectionUtils.isEmpty(fatherList)){</p>
+<p>for (ItemCategory ic : fatherList){</p>
+<p>CategoryDto dto = new CategoryDto();</p>
+<p>dto.setFather(ic);</p>
+<p>//查询儿子</p>
+<p>String sql3 = “SELECT * FROM item_category WHERE isDelete = 0 and pid = “+ic.getId();</p>
+<p>List<ItemCategory> childrens = itemCategoryService.listBySqlReturnEntity(sql3);</ItemCategory></p>
+<p>dto.setChildrens(childrens);</p>
+<p>list.add(dto);</p>
+<p>System.out.println(“====================================================”);</p>
+<p>model.addAttribute(“lbs”,list);</p>
+<p>//在redis中查询所有分类</p>
+<p>/*String string = RedisUtil.getJedis().get(“lbs”);</p>
+<p>List<CategoryDto> parseArray = JSONArray.parseArray(string, CategoryDto.class);</CategoryDto></p>
+<p>System.out.println(JSONObject.toJSONString(parseArray));</p>
+<p>model.addAttribute(“lbs”,parseArray);*/</p>
+<p>// 1-500</p>
+<p>//热销</p>
+<p>List<Item> listBySqlReturnEntity = itemService.listBySqlReturnEntity(“SELECT * FROM item WHERE 1=1 and isDelete =0 order by gmNum desc limit 0,10”);</Item></p>
+<p>model.addAttribute(“rxs”,listBySqlReturnEntity);</p>
+<p>//折扣</p>
+<p>List<Item> zks = itemService.listBySqlReturnEntity(“SELECT * FROM item WHERE 1=1 and isDelete =0 and zk is not null order by zk desc limit 0,10”);</Item></p>
+<p>model.addAttribute(“zks”,zks);</p>
+<p>//做推荐</p>
+<p>Object attribute = request.getSession().getAttribute(“userId”);</p>
+<p>if (attribute != null){</p>
+<p>Integer userId = Integer.valueOf(attribute.toString());</p>
+<p>//协同过滤</p>
+<p>List<Item> tjs =  getListByUCF(userId);</Item></p>
+<p>model.addAttribute(“tjs”,tjs);</p>
+<p>model.addAttribute(“obj”,item);</p>
+<p>model.addAttribute(“prices”,prices);</p>
+<p>model.addAttribute(“xl”,xl);</p>
+<p>return “login/uIndex”;</p>
+<p>private List<Item> getListByUCF(Integer userId) {</Item></p>
+<p>List<Item> returnList = new ArrayList<Item> ();</Item></Item></p>
+<p>List<User> listAll = userService.listAll();</User></p>
+<p>List<Integer> userIds = new ArrayList<Integer>();</Integer></Integer></p>
+<p>List<ItemDto> res = new ArrayList<ItemDto>();</ItemDto></ItemDto></p>
+<p>//判断这些人，有咩有买过东西</p>
+<p>for (User u : listAll){</p>
+<p>userIds.add(u.getId());</p>
+<p>//输入用户总量</p>
+<p>int N = userIds.size();</p>
+<p>int[][] sparseMatrix = new int[N][N];//建立用户稀疏矩阵，用于用户相似度计算【相似度矩阵】</p>
+<p>Map&lt;String, Integer&gt; userItemLength = new HashMap&lt;String, Integer&gt;();//存储每一个用户对应的不同物品总数  eg: A 3</p>
+<p>Map&lt;String, Set<String>&gt; itemUserCollection = new HashMap&lt;String, Set<String>&gt;();//建立物品到用户的倒排表 eg: a A B</String></String></p>
+<p>Set<String> items = new HashSet<String>();//辅助存储物品集合</String></String></p>
+<p>Map&lt;String, Integer&gt; userID = new HashMap&lt;String, Integer&gt;();//辅助存储每一个用户的用户ID映射</p>
+<p>Map&lt;Integer, String&gt; idUser = new HashMap&lt;Integer, String&gt;();//辅助存储每一个ID对应的用户映射</p>
+<p>Integer a = 0;</p>
+<p>for (User u : listAll){</p>
+<p>ItemOrder or = new ItemOrder();</p>
+<p>or.setUserId(u.getId());</p>
+<p>List<ItemOrder> listAllByEntity = itemOrderService.listAllByEntity(or);</ItemOrder></p>
+<p>if (!CollectionUtils.isEmpty(listAllByEntity)){</p>
+<p>for (ItemOrder ors : listAllByEntity){</p>
+<p>OrderDetail de = new OrderDetail();</p>
+<p>de.setOrderId(ors.getId());</p>
+<p>List<OrderDetail> listAllByEntity2 = orderDetailService.listAllByEntity(de);</OrderDetail></p>
+<p>if (!CollectionUtils.isEmpty(listAllByEntity2)){</p>
+<p>for (OrderDetail dd : listAllByEntity2){</p>
+<p>items.add(String.valueOf(dd.getItemId()));</p>
+<p>String[] user_item = new String[items.size()+1];</p>
+<p>List<String> isitems = new ArrayList<String>(items);</String></String></p>
+<p>user_item[0] = String.valueOf(u.getId());</p>
+<p>for(int k = 1; k &lt; items.size()+1 ; k++){</p>
+<p>user_item[k] = String.valueOf(isitems.get(k-1));</p>
+<p>int length = user_item.length;</p>
+<p>userItemLength.put(user_item[0], length);//eg: A 3</p>
+<p>userID.put(user_item[0], a);//用户ID与稀疏矩阵建立对应关系</p>
+<p>idUser.put(a, user_item[0]);</p>
+<p>//建立物品–用户倒排表</p>
+<p>for(int j = 1; j &lt; length; j ++){</p>
+<p>if(items.contains(user_item[j])){//如果已经包含对应的物品–用户映射，直接添加对应的用户</p>
+<p>Set<String> set2 = itemUserCollection.get(user_item[j]);</String></p>
+<p>if (!CollectionUtils.isEmpty(set2)){</p>
+<p>set2.add(user_item[0]);</p>
+<p>}else{</p>
+<p>itemUserCollection.put(user_item[j], new HashSet<String>());//创建物品–用户倒排关系</String></p>
+<p>itemUserCollection.get(user_item[j]).add(user_item[0]);</p>
+<p>//itemUserCollection.get(user_item[j]).add(user_item[0]);</p>
+<p>}else{//否则创建对应物品–用户集合映射</p>
+<p>items.add(user_item[j]);</p>
+<p>itemUserCollection.put(user_item[j], new HashSet<String>());//创建物品–用户倒排关系</String></p>
+<p>itemUserCollection.get(user_item[j]).add(user_item[0]);</p>
+<p>a++;</p>
+<p>System.out.println(itemUserCollection.toString());</p>
+<p>//计算相似度矩阵【稀疏】</p>
+<p>Set&lt;Entry&lt;String, Set<String>&gt;&gt; entrySet = itemUserCollection.entrySet();</String></p>
+<p>Iterator&lt;Entry&lt;String, Set<String>&gt;&gt; iterator = entrySet.iterator();</String></p>
+<p>while(iterator.hasNext()){</p>
+<p>Set<String> commonUsers = iterator.next().getValue();</String></p>
+<p>for (String user_u : commonUsers) {</p>
+<p>for (String user_v : commonUsers) {</p>
+<p>if(user_u.equals(user_v)){</p>
+<p>continue;</p>
+<p>sparseMatrix[userID.get(user_u)][userID.get(user_v)] += 1;//计算用户u与用户v都有正反馈的物品总数</p>
+<p>System.out.println(userItemLength.toString());</p>
+<p>String recommendUser = String.valueOf(userId);</p>
+<p>System.out.println(userID.get(recommendUser));</p>
+<p>//计算用户之间的相似度【余弦相似性】</p>
+<p>Integer s = userID.get(recommendUser);</p>
+<p>int recommendUserId = 0;</p>
+<p>if (s != null){</p>
+<p>recommendUserId = s;</p>
+<p>}else{</p>
+<p>//判断当前用户的index</p>
+<p>Integer index = 0;</p>
+<p>for(int j = 0; j &lt; userIds.size(); j ++){</p>
+<p>if (userIds.get(j).equals(recommendUserId)){</p>
+<p>index = j;</p>
+<p>recommendUserId = index;</p>
+<p>for (int j = 0;j &lt; sparseMatrix.length; j++) {</p>
+<p>if(j != recommendUserId){</p>
+<p>//    System.out.println(idUser.get(recommendUserId)+”–”+idUser.get(j)+”相似度:”+sparseMatrix[recommendUserId][j]/Math.sqrt(userItemLength.get(idUser.get(recommendUserId))*userItemLength.get(idUser.get(j))));</p>
+<p>//计算指定用户recommendUser的物品推荐度</p>
+<p>for(String item: items){//遍历每一件物品</p>
+<p>Set<String> users = itemUserCollection.get(item);//得到购买当前物品的所有用户集合</String></p>
+<p>if (users == null){</p>
+<p>continue;</p>
+<p>//</p>
+<p>double itemRecommendDegree = 0.0;</p>
+<p>for(String user: users){</p>
+<p>itemRecommendDegree += sparseMatrix[userID.get(user)][userID.get(user)]/Math.sqrt(userItemLength.get(recommendUser)*userItemLength.get(recommendUser));//推荐度计算</p>
+<p>System.out.println(“The item “+item+” for “+recommendUser +”‘s recommended degree:”+itemRecommendDegree);</p>
+<p>ItemDto itd = new ItemDto();</p>
+<p>itd.setItemId(Integer.valueOf(item));</p>
+<p>itd.setItemRecommendDegree(itemRecommendDegree);</p>
+<p>res.add(itd);</p>
+<p>if (!CollectionUtils.isEmpty(res)){</p>
+<p>Collections.sort(res, new Comparator<ItemDto>() {</ItemDto></p>
+<p>public int compare(ItemDto o1, ItemDto o2) {</p>
+<p>return Double.compare(o1.getItemRecommendDegree(),o2.getItemRecommendDegree());</p>
+<p>});</p>
+<p>Integer b = 1;</p>
+<p>for (ItemDto i :res){</p>
+<p>if(b&lt;=10){</p>
+<p>Item byId = itemService.getById(i.getItemId());</p>
+<p>returnList.add(byId);</p>
+<p>b++;</p>
+<p>return returnList;</p>
+<p>@RequestMapping(“/mtuichu”)</p>
+<p>public String mtuichu(HttpServletRequest request){</p>
+<p>//request.getSession().invalidate();</p>
+<p>return “login/mLogin”;</p>
+<p>@RequestMapping(“/welcome”)</p>
+<p>private String welcome(){</p>
+<p>return “login/welcome”;</p>
+<p>@RequestMapping(“/toLogin”)</p>
+<p>public String toLogin(Manage manage, HttpServletRequest request, HttpServletResponse response){</p>
+<p>Manage byEntity = manageService.getByEntity(manage);</p>
+<p>if(byEntity == null){</p>
+<p>return “redirect:/login/mtuichu”;</p>
+<p>}else{</p>
+<p>/*request.getSession().setAttribute(“role”, 1);</p>
+<p>request.getSession().setAttribute(“username”, byEntity.getUserName());</p>
+<p>request.getSession().setAttribute(“userId”, byEntity.getId());*/</p>
+<p>return “login/mIndex”;</p>
+<p>@RequestMapping(“/utoLogin”)</p>
+<p>public String utoLogin(User manage, HttpServletRequest request, HttpServletResponse response){</p>
+<p>User byEntity = userService.getByEntity(manage);</p>
+<p>if(byEntity == null){</p>
+<p>return “redirect:/login/res.action”;</p>
+<p>}else{</p>
+<p>request.getSession().setAttribute(“role”, 2);</p>
+<p>request.getSession().setAttribute(“username”, byEntity.getUserName());</p>
+<p>request.getSession().setAttribute(“userId”, byEntity.getId());</p>
+<p>return “redirect:/login/uIndex.action”;</p>
+<p>@RequestMapping(“/pass”)</p>
+<p>public String pass(HttpServletRequest request){</p>
+<p>Object attribute = request.getSession().getAttribute(“userId”);</p>
+<p>if (attribute == null){</p>
+<p>return “redirect:/login/uLogin.action”;</p>
+<p>Integer userId = Integer.valueOf(attribute.toString());</p>
+<p>User load = userService.load(userId);</p>
+<p>request.setAttribute(“obj”, load);</p>
+<p>return “login/pass”;</p>
+<p>@RequestMapping(“/upass”)</p>
+<p>@ResponseBody</p>
+<p>public String upass(HttpServletRequest request,String password){</p>
+<p>Object attribute = request.getSession().getAttribute(“userId”);</p>
+<p>JSONObject j = new  JSONObject();</p>
+<p>if (attribute == null){</p>
+<p>j.put(“res”, 0);</p>
+<p>return j.toString();</p>
+<p>Integer userId = Integer.valueOf(attribute.toString());</p>
+<p>User load = userService.load(userId);</p>
+<p>load.setPassWord(password);</p>
+<p>userService.updateById(load);</p>
+<p>j.put(“res”, 1);</p>
+<p>return j.toString();</p>
+<p>//    @RequestMapping(“/toLogin2”)</p>
+<p>//    public String toLogin(Student student, HttpServletRequest request, HttpServletResponse response){</p>
+<p>//        student.setIsdel(0);</p>
+<p>//        Student byEntity = studentService.getByEntity(student);</p>
+<p>//        if(byEntity == null){</p>
+<p>//            return “redirect:/login/login.action”;</p>
+<p>//        }else{</p>
+<p>//            request.getSession().setAttribute(“role”,2);</p>
+<p>//            request.getSession().setAttribute(“type”,3);</p>
+<p>//            request.getSession().setAttribute(“username”, byEntity.getXh());</p>
+<p>//            request.getSession().setAttribute(“userId”, byEntity.getId());</p>
+<p>//        }</p>
+<p>//        return “login/index”;</p>
+<p>//    }</p>
+<p>/**</p>
+<ul>
+<li><p>退出</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/tuichu”)</p>
+<p>public String tuichu( HttpServletRequest request, HttpServletResponse response){</p>
+<p>HttpSession session = request.getSession();</p>
+<p>session.invalidate();</p>
+<p>return “login/login”;</p>
+<p>@RequestMapping(“/uTui”)</p>
+<p>public String uTui( HttpServletRequest request, HttpServletResponse response){</p>
+<p>HttpSession session = request.getSession();</p>
+<p>session.invalidate();</p>
+<p>return “redirect:/login/uLogin.action”;</p>
+<p>@RequestMapping(“/head”)</p>
+<p>private String head(){</p>
+<p>return “inc/head”;</p>
+<p>@RequestMapping(“/left”)</p>
+<p>private String left(){</p>
+<p>return “inc/left”;</p>
+<p>@RequestMapping(“/main”)</p>
+<p>private String main(HttpServletRequest request){</p>
+<p>Object attribute = request.getSession().getAttribute(“userId”);</p>
+<p>if (attribute == null){</p>
+<p>return “redirect:/login/uLogin.action”;</p>
+<p>Integer userId = Integer.valueOf(attribute.toString());</p>
+<p>User load = userService.load(userId);</p>
+<p>request.setAttribute(“user”, load);</p>
+<p>return “login/main”;</p>
+<p>@RequestMapping(“/info”)</p>
+<p>private String info(HttpServletRequest request){</p>
+<p>Object attribute = request.getSession().getAttribute(“userId”);</p>
+<p>Integer userId = Integer.valueOf(attribute.toString());</p>
+<p>User load = userService.load(userId);</p>
+<p>request.setAttribute(“user”, load);</p>
+<p>return “login/info”;</p>
+<p>购物车管理控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/car”)</p>
+<p>public class CarController extends BaseController {</p>
+<p>@Autowired</p>
+<p>private ItemService itemService;</p>
+<p>@Autowired</p>
+<p>private AddressService addressService;</p>
+<p>/**</p>
+<ul>
+<li>依赖注入 start dao/service/===</li>
+</ul>
+<p>*/</p>
+<p>@Autowired</p>
+<p>private CarService carService;</p>
+<p>// ————————————— 华丽分割线 ——————————</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>查询列表【不分页】**<strong><strong>****</strong></strong></em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>/**</p>
+<ul>
+<li><p>【不分页 =&gt; 查询列表 =&gt; 无条件】</p>
+</li>
+<li><p>@Title: listAll</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listAll”)</p>
+<p>public String listAll(Car car, Model model, HttpServletRequest request, HttpServletResponse response){</p>
+<p>List<Car> listAll = carService.listAll();</Car></p>
+<p>model.addAttribute(“list”, listAll);</p>
+<p>return “car/car”;</p>
+<p>/**</p>
+<ul>
+<li><p> 【不分页=》查询列表=&gt;有条件】</p>
+</li>
+<li><p>@Title: listByEntity</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listByEntity”)</p>
+<p>public String listByEntity(Car car, Model model, HttpServletRequest request, HttpServletResponse response){</p>
+<p>List<Car> listAll = carService.listAllByEntity(car);</Car></p>
+<p>model.addAttribute(“list”, listAll);</p>
+<p>return “car/car”;</p>
+<p>/**</p>
+<ul>
+<li><p> 【不分页=》查询列表=&gt;有条件】</p>
+</li>
+<li><p>@Title: listByMap</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listByMap”)</p>
+<p>public String listByMap(Car car, Model model, HttpServletRequest request, HttpServletResponse response){</p>
+<p>//通过map查询</p>
+<p>Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>if(!isEmpty(car.getItemId())){</p>
+<p>params.put(“itemId”, car.getItemId());</p>
+<p>if(!isEmpty(car.getUserId())){</p>
+<p>params.put(“userId”, car.getUserId());</p>
+<p>if(!isEmpty(car.getNum())){</p>
+<p>params.put(“num”, car.getNum());</p>
+<p>if(!isEmpty(car.getTotal())){</p>
+<p>params.put(“total”, car.getTotal());</p>
+<p>List<Car> listAll = carService.listByMap(params);</Car></p>
+<p>model.addAttribute(“list”, listAll);</p>
+<p>return “car/car”;</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>查询列表【分页】**<strong><strong>****</strong></strong></em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list对象(通过对象)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findByObj”)</p>
+<p>public String findByObj(Car car, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//分页查询</p>
+<p>Pager<Car> pagers = carService.findByEntity(car);</Car></p>
+<p>model.addAttribute(“pagers”, pagers);</p>
+<p>//存储查询条件</p>
+<p>model.addAttribute(“obj”, car);</p>
+<p>return “car/car”;</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list对象(通过对By Sql)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findBySql”)</p>
+<p>public String findBySql(Car car, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>Object attribute = request.getSession().getAttribute(“userId”);</p>
+<p>if (attribute == null){</p>
+<p>return “redirect:/login/uLogin”;</p>
+<p>JSONObject js = new JSONObject();</p>
+<p>Integer userId = Integer.valueOf(attribute.toString());</p>
+<p>//分页查询</p>
+<p>String sql = “SELECT * FROM car WHERE 1=1 and user_id = “+userId;</p>
+<p>if(!isEmpty(car.getItemId())){</p>
+<p>sql += “ and itemId like ‘%”+car.getItemId()+”%’”;</p>
+<p>if(!isEmpty(car.getUserId())){</p>
+<p>sql += “ and userId like ‘%”+car.getUserId()+”%’”;</p>
+<p>if(!isEmpty(car.getNum())){</p>
+<p>sql += “ and num like ‘%”+car.getNum()+”%’”;</p>
+<p>if(!isEmpty(car.getTotal())){</p>
+<p>sql += “ and total like ‘%”+car.getTotal()+”%’”;</p>
+<p>sql += “ ORDER BY ID DESC “;</p>
+<p>List<Car> listBySqlReturnEntity = carService.listBySqlReturnEntity(sql);</Car></p>
+<p>model.addAttribute(“list”, listBySqlReturnEntity);</p>
+<p>//存储查询条件</p>
+<p>model.addAttribute(“obj”, car);</p>
+<p>return “car/car”;</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list对象(通过Map)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findByMap”)</p>
+<p>public String findByMap(Car car, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//通过map查询</p>
+<p>Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>if(!isEmpty(car.getItemId())){</p>
+<p>params.put(“itemId”, car.getItemId());</p>
+<p>if(!isEmpty(car.getUserId())){</p>
+<p>params.put(“userId”, car.getUserId());</p>
+<p>if(!isEmpty(car.getNum())){</p>
+<p>params.put(“num”, car.getNum());</p>
+<p>if(!isEmpty(car.getTotal())){</p>
+<p>params.put(“total”, car.getTotal());</p>
+<p>//分页查询</p>
+<p>Pager<Car> pagers = carService.findByMap(params);</Car></p>
+<p>model.addAttribute(“pagers”, pagers);</p>
+<p>//存储查询条件</p>
+<p>model.addAttribute(“obj”, car);</p>
+<p>return “car/car”;</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong>【增删改】**<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>/**</p>
+<ul>
+<li><p>跳至添加页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/add”)</p>
+<p>public String add() {</p>
+<p>return “car/add”;</p>
+<p>/**</p>
+<ul>
+<li><p>跳至详情页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/view”)</p>
+<p>public String view(Model model,HttpServletRequest request,String code) {</p>
+<p>Object attribute = request.getSession().getAttribute(“userId”);</p>
+<p>if (attribute == null){</p>
+<p>return “redirect:/login/uLogin”;</p>
+<p>Integer userId = Integer.valueOf(attribute.toString());</p>
+<p>model.addAttribute(“code”, code);</p>
+<p>return “car/view”;</p>
+<p>/**</p>
+<ul>
+<li><p>添加执行</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/exAdd”)</p>
+<p>@ResponseBody</p>
+<p>public String exAdd(Car car, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>Object attribute = request.getSession().getAttribute(“userId”);</p>
+<p>JSONObject js = new JSONObject();</p>
+<p>if (attribute == null){</p>
+<p>js.put(“res”, 0);</p>
+<p>return js.toJSONString();</p>
+<p>Integer userId = Integer.valueOf(attribute.toString());</p>
+<p>car.setUserId(userId);</p>
+<p>Item load = itemService.load(car.getItemId());</p>
+<p>String price = load.getPrice();</p>
+<p>Double valueOf = Double.valueOf(price);</p>
+<p>car.setPrice(valueOf);</p>
+<p>if (load.getZk() != null){</p>
+<p>valueOf = (valueOf*load.getZk())/10;</p>
+<p>BigDecimal bg = new BigDecimal(valueOf).setScale(2, RoundingMode.UP);</p>
+<p>car.setPrice(bg.doubleValue());</p>
+<p>valueOf= bg.doubleValue();</p>
+<p>Integer num = car.getNum();</p>
+<p>Double t = valueOf*num;</p>
+<p>BigDecimal bg = new BigDecimal(t).setScale(2, RoundingMode.UP);</p>
+<p>double doubleValue = bg.doubleValue();</p>
+<p>car.setTotal(doubleValue+””);</p>
+<p>carService.insert(car);</p>
+<p>js.put(“res”, 1);</p>
+<p>return js.toJSONString();</p>
+<p>/**</p>
+<ul>
+<li><p>跳至修改页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/update”)</p>
+<p>public String update(Integer id,Model model) {</p>
+<p>Car obj = carService.load(id);</p>
+<p>model.addAttribute(“obj”,obj);</p>
+<p>return “car/update”;</p>
+<p>@RequestMapping(value = “/js”)</p>
+<p>@ResponseBody</p>
+<p>public String js(@RequestBody List<CarDto> list,Model model,HttpServletRequest request) {</CarDto></p>
+<p>Object attribute = request.getSession().getAttribute(“userId”);</p>
+<p>JSONObject js = new JSONObject();</p>
+<p>if (attribute == null){</p>
+<p>js.put(“res”, 0);</p>
+<p>return js.toJSONString();</p>
+<p>Integer userId = Integer.valueOf(attribute.toString());</p>
+<p>String key = “car_”+userId;</p>
+<p>request.getSession().setAttribute(key, list);</p>
+<p>js.put(“res”, 1);</p>
+<p>return js.toJSONString();</p>
+<p>@RequestMapping(value = “/js2”)</p>
+<p>@ResponseBody</p>
+<p>public String js2(Car car, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>Object attribute = request.getSession().getAttribute(“userId”);</p>
+<p>JSONObject js = new JSONObject();</p>
+<p>if (attribute == null){</p>
+<p>js.put(“res”, 0);</p>
+<p>return js.toJSONString();</p>
+<p>Integer userId = Integer.valueOf(attribute.toString());</p>
+<p>car.setUserId(userId);</p>
+<p>Item load = itemService.load(car.getItemId());</p>
+<p>String price = load.getPrice();</p>
+<p>Long valueOf = Long.valueOf(price);</p>
+<p>Integer num = car.getNum();</p>
+<p>Long t = valueOf*num;</p>
+<p>car.setTotal(t.toString());</p>
+<p>carService.insert(car);</p>
+<p>String key = “car_”+userId;</p>
+<p>List<CarDto> list = new ArrayList<CarDto>();</CarDto></CarDto></p>
+<p>CarDto d = new CarDto();</p>
+<p>d.setId(car.getId());</p>
+<p>d.setNum(car.getNum());</p>
+<p>list.add(d);</p>
+<p>request.getSession().setAttribute(key, list);</p>
+<p>js.put(“res”, 1);</p>
+<p>return js.toJSONString();</p>
+<p>/**</p>
+<ul>
+<li><p>添加修改</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/exUpdate”)</p>
+<p>public String exUpdate(Car car, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//1.通过实体类修改，可以多传修改条件</p>
+<p>carService.updateById(car);</p>
+<p>//2.通过主键id修改</p>
+<p>//carService.updateById(car);</p>
+<p>return “redirect:/car/findBySql.action”;</p>
+<p>/**</p>
+<ul>
+<li><p>删除通过主键</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/delete”)</p>
+<p>@ResponseBody</p>
+<p>public String delete(Integer id, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>///1.通过主键删除</p>
+<p>carService.deleteById(id);</p>
+<p>/<em>以下是多种删除方式</em>/</p>
+<p>//        //2.通过实体条件删除</p>
+<p>//        carService.deleteByEntity(car);</p>
+<p>//        //3.通过参数删除</p>
+<p>//     //通过map查询</p>
+<p>//        Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>//</p>
+<p>//        if(!isEmpty(car.getItemId())){</p>
+<p>//            params.put(“itemId”, car.getItemId());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(car.getUserId())){</p>
+<p>//            params.put(“userId”, car.getUserId());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(car.getNum())){</p>
+<p>//            params.put(“num”, car.getNum());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(car.getTotal())){</p>
+<p>//            params.put(“total”, car.getTotal());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        carService.deleteByMap(params);</p>
+<p>//        //4.状态删除</p>
+<p>//        Car load = carService.getById(car.getId())</p>
+<p>//        load.setIsDelete(1);</p>
+<p>//        carService.update(load);</p>
+<p>//5.状态删除</p>
+<p>//Car load = carService.load(id);</p>
+<p>//load.setIsDelete(1);</p>
+<p>//carService.update(load);</p>
+<p>return “redirect:/car/findBySql.action”;</p>
+<p>// ————————————— 华丽分割线 ——————————</p>
+<p>// ————————————— 【下面是ajax操作的方法。】 ——————————</p>
+<p>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>查询列表【不分页】**<strong><strong>****</strong></strong></em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/</p>
+<p>/**</p>
+<ul>
+<li><p>【不分页 =&gt; 查询列表 =&gt; 无条件】</p>
+</li>
+<li><p>@Title: listAll</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listAllJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String listAllJson(Car car, HttpServletRequest request, HttpServletResponse response){</p>
+<p>List<Car> listAll = carService.listAll();</Car></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“list”, listAll);</p>
+<p>jsonObject.put(“obj”, car);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p> 【不分页=》查询列表=&gt;有条件】</p>
+</li>
+<li><p>@Title: listByEntity</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listByEntityJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String listByEntityJson(Car car,  HttpServletRequest request, HttpServletResponse response){</p>
+<p>List<Car> listAll = carService.listAllByEntity(car);</Car></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“list”, listAll);</p>
+<p>jsonObject.put(“obj”, car);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p> 【不分页=》查询列表=&gt;有条件】</p>
+</li>
+<li><p>@Title: listByMap</p>
+</li>
+<li><p>@Description: TODO(这里用一句话描述这个方法的作用)</p>
+</li>
+<li><p>@param @return 设定文件</p>
+</li>
+<li><p>@author</p>
+</li>
+<li><p>@return String 返回类型</p>
+</li>
+<li><p>@throws</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/listByMapJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String listByMapJson(Car car,HttpServletRequest request, HttpServletResponse response){</p>
+<p>//通过map查询</p>
+<p>Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>if(!isEmpty(car.getItemId())){</p>
+<p>params.put(“itemId”, car.getItemId());</p>
+<p>if(!isEmpty(car.getUserId())){</p>
+<p>params.put(“userId”, car.getUserId());</p>
+<p>if(!isEmpty(car.getNum())){</p>
+<p>params.put(“num”, car.getNum());</p>
+<p>if(!isEmpty(car.getTotal())){</p>
+<p>params.put(“total”, car.getTotal());</p>
+<p>List<Car> listAll = carService.listByMap(params);</Car></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“list”, listAll);</p>
+<p>jsonObject.put(“obj”, car);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list json(通过对象)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findByObjJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String findByObjByEntityJson(Car car, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//分页查询</p>
+<p>Pager<Car> pagers = carService.findByEntity(car);</Car></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“pagers”, pagers);</p>
+<p>jsonObject.put(“obj”, car);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>分页查询 返回list json(通过Map)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/findByMapJson”,  method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String findByMapJson(Car car,HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//通过map查询</p>
+<p>Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>if(!isEmpty(car.getItemId())){</p>
+<p>params.put(“itemId”, car.getItemId());</p>
+<p>if(!isEmpty(car.getUserId())){</p>
+<p>params.put(“userId”, car.getUserId());</p>
+<p>if(!isEmpty(car.getNum())){</p>
+<p>params.put(“num”, car.getNum());</p>
+<p>if(!isEmpty(car.getTotal())){</p>
+<p>params.put(“total”, car.getTotal());</p>
+<p>//分页查询</p>
+<p>Pager<Car> pagers = carService.findByMap(params);</Car></p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“pagers”, pagers);</p>
+<p>jsonObject.put(“obj”, car);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>ajax 添加</p>
+</li>
+<li><p>@param</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/exAddJson”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String exAddJson(Car car, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>carService.insert(car);</p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“message”, “添加成功”);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>ajax 修改</p>
+</li>
+<li><p>@param</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/exUpdate.json”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String exUpdateJson(Car car, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>//1.通过实体类修改，可以多传修改条件</p>
+<p>carService.updateById(car);</p>
+<p>//2.通过主键id修改</p>
+<p>//carService.updateById(car);</p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“message”, “修改成功”);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>ajax 删除</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/delete.json”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public String exDeleteJson(Integer id, Model model, HttpServletRequest request, HttpServletResponse response) {</p>
+<p>///1.通过主键删除</p>
+<p>carService.deleteById(id);</p>
+<p>/<em>以下是多种删除方式</em>/</p>
+<p>//        //2.通过实体条件删除</p>
+<p>//        carService.deleteByEntity(car);</p>
+<p>//        //3.通过参数删除</p>
+<p>//        //通过map查询</p>
+<p>//        Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();</p>
+<p>//</p>
+<p>//        if(!isEmpty(car.getItemId())){</p>
+<p>//            params.put(“itemId”, car.getItemId());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(car.getUserId())){</p>
+<p>//            params.put(“userId”, car.getUserId());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(car.getNum())){</p>
+<p>//            params.put(“num”, car.getNum());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        if(!isEmpty(car.getTotal())){</p>
+<p>//            params.put(“total”, car.getTotal());</p>
+<p>//        }</p>
+<p>//</p>
+<p>//        carService.deleteByMap(params);</p>
+<p>//        //4.状态删除</p>
+<p>//        Car load = carService.getById(car.getId())</p>
+<p>//        load.setIsDelete(1);</p>
+<p>//        carService.updateById(load);</p>
+<p>//5.状态删除</p>
+<p>//Car load = carService.load(id);</p>
+<p>//load.setIsDelete(1);</p>
+<p>//carService.updateById(load);</p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>jsonObject.put(“message”, “删除成功”);</p>
+<p>return jsonObject.toString();</p>
+<p>/**</p>
+<ul>
+<li><p>单文件上传</p>
+</li>
+<li><p>@param file</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/saveFile”)</p>
+<p>public String saveFile(@RequestParam(value = “file”, required = false) MultipartFile file, HttpServletRequest request, Model model) {</p>
+<p>System.out.println(“开始”);</p>
+<p>String path = request.getSession().getServletContext().getRealPath(“/upload”);</p>
+<p>String fileName = file.getOriginalFilename();</p>
+<p>System.out.println(path);</p>
+<p>File targetFile = new File(path, fileName);</p>
+<p>if(!targetFile.exists()){</p>
+<p>targetFile.mkdirs();</p>
+<p>//保存</p>
+<p>try {</p>
+<p>file.transferTo(targetFile);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return “”;</p>
+<p>/**</p>
+<ul>
+<li><p>springMvc多文件上传</p>
+</li>
+<li><p>@param files</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/saveFiles”)</p>
+<p>public String saveFiles(@RequestParam(“file”) CommonsMultipartFile[] files,Integer id,HttpServletRequest request){</p>
+<p>for(int i = 0;i&lt;files.length;i++){</p>
+<p>System.out.println(“fileName———-&gt;” + files[i].getOriginalFilename());</p>
+<p>if(!files[i].isEmpty()){</p>
+<p>int pre = (int) System.currentTimeMillis();</p>
+<p>try {</p>
+<p>//拿到输出流，同时重命名上传的文件</p>
+<p>String filePath = request.getRealPath(“/upload”);</p>
+<p>File f=new File(filePath);</p>
+<p>if(!f.exists()){</p>
+<p>f.mkdirs();</p>
+<p>String fileNmae=new Date().getTime() + files[i].getOriginalFilename();</p>
+<p>File file=new File(filePath+”/“+pre + files[i].getOriginalFilename());</p>
+<p>if(!file.exists()){</p>
+<p>file.createNewFile();</p>
+<p>files[i].transferTo(file);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>System.out.println(“上传出错”);</p>
+<p>return “”;</p>
+<p>// ————————————— 华丽分割线 ——————————</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=441125130706201qw<br>https://javayms.pages.dev?id=441125130706201qw</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E5%AE%A0%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 宠物</a>
+			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

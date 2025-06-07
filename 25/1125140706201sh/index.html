@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot衣依服装销售平台(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/251125140706201sh/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot衣依服装销售平台(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/251125140706201sh/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot衣依服装销售平台(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified"></time>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tag"></i>
+                </span>
+                <time id="idText" itemprop="dateModified"></time>
+              </span>
+              <p id="browserWarningText" style="color:#FF0000;"></p>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/001025590706.jpg" alt="001025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/011025590706.jpg" alt="011025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/021025590706.jpg" alt="021025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/031025590706.jpg" alt="031025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/041025590706.jpg" alt="041025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/051025590706.jpg" alt="051025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/061025590706.jpg" alt="061025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/071025590706.jpg" alt="071025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/081025590706.jpg" alt="081025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/581025580706.jpg" alt="581025580706"></p>
+<p>基于javaweb的SpringBoot衣依服装销售平台(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>项目介绍</p>
+<p>基于springboot的“衣依”服装销售平台的设计与实现</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； </p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue + elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：</p>
+</li>
+</ol>
+<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/front/index.html">http://localhost:8080/springbootrpj39/front/index.html</a></p>
+<p>后台地址</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/admin/dist/index.html">http://localhost:8080/springbootrpj39/admin/dist/index.html</a></p>
+<p>管理员 abo 密码 abo</p>
+<p>用户：用户1 密码： 123456</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>后台管理-用户页:</p>
+<p>/**</p>
+<ul>
+<li>后台管理-用户页</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>public class UserController extends BaseController{</p>
+<p>@Resource(name=”userService”)</p>
+<p>private UserService userService;</p>
+<p>@Resource(name=”addressService”)</p>
+<p>private AddressService addressService;</p>
+<p>@Resource(name =”reviewService”)</p>
+<p>private ReviewService reviewService;</p>
+<p>@Resource(name = “productOrderItemService”)</p>
+<p>private ProductOrderItemService productOrderItemService;</p>
+<p>@Resource(name = “productService”)</p>
+<p>private ProductService productService;</p>
+<p>@Resource(name = “productImageService”)</p>
+<p>private ProductImageService productImageService;</p>
+<p>//转到后台管理-用户页-ajax</p>
+<p>@RequestMapping(value = “admin/user”, method = RequestMethod.GET)</p>
+<p>public String goUserManagePage(HttpSession session, Map&lt;String, Object&gt; map){</p>
+<p>logger.info(“获取前十条用户信息”);</p>
+<p>PageUtil pageUtil = new PageUtil(0, 10);</p>
+<p>List<User> userList = userService.getList(null, null, pageUtil);</User></p>
+<p>map.put(“userList”, userList);</p>
+<p>logger.info(“获取用户总数量”);</p>
+<p>Integer userCount = userService.getTotal(null);</p>
+<p>map.put(“userCount”, userCount);</p>
+<p>logger.info(“获取分页信息”);</p>
+<p>pageUtil.setTotal(userCount);</p>
+<p>map.put(“pageUtil”, pageUtil);</p>
+<p>logger.info(“转到后台管理-用户页-ajax方式”);</p>
+<p>return “admin/userManagePage”;</p>
+<p>//转到后台管理-用户详情页-ajax</p>
+<p>@RequestMapping(value = “admin/user/{uid}”, method = RequestMethod.GET)</p>
+<p>public String getUserById(HttpSession session, Map&lt;String,Object&gt; map, @PathVariable Integer uid/* 用户ID */){</p>
+<p>logger.info(“获取user_id为{}的用户信息”,uid);</p>
+<p>User user = userService.get(uid);</p>
+<p>logger.info(“获取用户详情-所在地地址信息”);</p>
+<p>Address address = addressService.get(user.getUser_address().getAddress_areaId());</p>
+<p>Stack<String> addressStack = new Stack&lt;&gt;();</String></p>
+<p>//最后一级地址</p>
+<p>addressStack.push(address.getAddress_name() + “ “);</p>
+<p>//如果不是第一级地址</p>
+<p>while (!address.getAddress_areaId().equals(address.getAddress_regionId().getAddress_areaId())) {</p>
+<p>address = addressService.get(address.getAddress_regionId().getAddress_areaId());</p>
+<p>addressStack.push(address.getAddress_name() + “ “);</p>
+<p>StringBuilder builder = new StringBuilder();</p>
+<p>while (!addressStack.empty()) {</p>
+<p>builder.append(addressStack.pop());</p>
+<p>logger.info(“所在地地址字符串：{}”, builder);</p>
+<p>user.setUser_address(new Address().setAddress_name(builder.toString()));</p>
+<p>logger.info(“获取用户详情-家乡地址信息”);</p>
+<p>address = addressService.get(user.getUser_homeplace().getAddress_areaId());</p>
+<p>//最后一级地址</p>
+<p>addressStack.push(address.getAddress_name() + “ “);</p>
+<p>//如果不是第一级地址</p>
+<p>while (!address.getAddress_areaId().equals(address.getAddress_regionId().getAddress_areaId())) {</p>
+<p>address = addressService.get(address.getAddress_regionId().getAddress_areaId());</p>
+<p>addressStack.push(address.getAddress_name() + “ “);</p>
+<p>builder = new StringBuilder();</p>
+<p>while (!addressStack.empty()) {</p>
+<p>builder.append(addressStack.pop());</p>
+<p>logger.info(“家乡地址字符串：{}”, builder);</p>
+<p>user.setUser_homeplace(new Address().setAddress_name(builder.toString()));</p>
+<p>logger.info(“获取用户详情-购物车订单项信息”);</p>
+<p>List<ProductOrderItem> productOrderItemList = productOrderItemService.getListByUserId(</ProductOrderItem></p>
+<p>user.getUser_id(), null</p>
+<p>);</p>
+<p>if (productOrderItemList != null) {</p>
+<p>logger.info(“获取用户详情-购物车订单项对应的产品信息”);</p>
+<p>for (ProductOrderItem productOrderItem : productOrderItemList) {</p>
+<p>Integer productId = productOrderItem.getProductOrderItem_product().getProduct_id();</p>
+<p>logger.warn(“获取产品ID为{}的产品信息”, productId);</p>
+<p>Product product = productService.get(productId);</p>
+<p>if (product != null) {</p>
+<p>logger.warn(“获取产品ID为{}的第一张预览图片信息”, productId);</p>
+<p>product.setSingleProductImageList(productImageService.getList(</p>
+<p>productId, (byte) 0, new PageUtil(0, 1))</p>
+<p>);</p>
+<p>productOrderItem.setProductOrderItem_product(product);</p>
+<p>user.setProductOrderItemList(productOrderItemList);</p>
+<p>if (user.getUser_realname() != null) {</p>
+<p>logger.info(“用户隐私加密”);</p>
+<p>user.setUser_realname(user.getUser_realname().substring(0, 1) + “*”);</p>
+<p>} else {</p>
+<p>user.setUser_realname(“未命名”);</p>
+<p>map.put(“user”,user);</p>
+<p>logger.info(“转到后台管理-用户详情页-ajax方式”);</p>
+<p>return “admin/include/userDetails”;</p>
+<p>//按条件查询用户-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “admin/user/{index}/{count}”, method = RequestMethod.GET, produces = “application/json;charset=UTF-8”)</p>
+<p>public String getUserBySearch(@RequestParam(required = false) String user_name/* 用户名称 */,</p>
+<p>@RequestParam(required = false) Byte[] user_gender_array/* 用户性别数组 */,</p>
+<p>@RequestParam(required = false) String orderBy/* 排序字段 */,</p>
+<p>@RequestParam(required = false,defaultValue = “true”) Boolean isDesc/* 是否倒序 */,</p>
+<p>@PathVariable Integer index/* 页数 */,</p>
+<p>@PathVariable Integer count/* 行数 */) throws UnsupportedEncodingException {</p>
+<p>//移除不必要条件</p>
+<p>Byte gender = null;</p>
+<p>if (user_gender_array != null &amp;&amp; user_gender_array.length == 1) {</p>
+<p>gender = user_gender_array[0];</p>
+<p>if (user_name != null) {</p>
+<p>//如果为非空字符串则解决中文乱码：URLDecoder.decode(String,”UTF-8”);</p>
+<p>user_name = “”.equals(user_name) ? null : URLDecoder.decode(user_name, “UTF-8”);</p>
+<p>if (orderBy != null &amp;&amp; “”.equals(orderBy)) {</p>
+<p>orderBy = null;</p>
+<p>//封装查询条件</p>
+<p>User user = new User()</p>
+<p>.setUser_name(user_name)</p>
+<p>.setUser_gender(gender);</p>
+<p>OrderUtil orderUtil = null;</p>
+<p>if (orderBy != null) {</p>
+<p>logger.info(“根据{}排序，是否倒序:{}”,orderBy,isDesc);</p>
+<p>orderUtil = new OrderUtil(orderBy, isDesc);</p>
+<p>JSONObject object = new JSONObject();</p>
+<p>logger.info(“按条件获取第{}页的{}条用户”, index + 1, count);</p>
+<p>PageUtil pageUtil = new PageUtil(index, count);</p>
+<p>List<User> userList = userService.getList(user, orderUtil, pageUtil);</User></p>
+<p>object.put(“userList”, JSONArray.parseArray(JSON.toJSONString(userList)));</p>
+<p>logger.info(“按条件获取用户总数量”);</p>
+<p>Integer userCount = userService.getTotal(user);</p>
+<p>object.put(“userCount”, userCount);</p>
+<p>logger.info(“获取分页信息”);</p>
+<p>pageUtil.setTotal(userCount);</p>
+<p>object.put(“totalPage”, pageUtil.getTotalPage());</p>
+<p>object.put(“pageUtil”, pageUtil);</p>
+<p>return object.toJSONString();</p>
+<p>后台管理-产品类型页:</p>
+<p>/**</p>
+<ul>
+<li>后台管理-产品类型页</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>public class CategoryController extends BaseController {</p>
+<p>@Resource(name = “categoryService”)</p>
+<p>private CategoryService categoryService;</p>
+<p>@Resource(name = “lastIDService”)</p>
+<p>private LastIDService lastIDService;</p>
+<p>@Resource(name = “propertyService”)</p>
+<p>private PropertyService propertyService;</p>
+<p>//转到后台管理-产品类型页-ajax</p>
+<p>@RequestMapping(value = “admin/category”, method = RequestMethod.GET)</p>
+<p>public String goToPage(HttpSession session, Map&lt;String, Object&gt; map) {</p>
+<p>logger.info(“获取前10条产品类型列表”);</p>
+<p>PageUtil pageUtil = new PageUtil(0, 10);</p>
+<p>List<Category> categoryList = categoryService.getList(null, pageUtil);</Category></p>
+<p>map.put(“categoryList”, categoryList);</p>
+<p>logger.info(“获取产品类型总数量”);</p>
+<p>Integer categoryCount = categoryService.getTotal(null);</p>
+<p>map.put(“categoryCount”, categoryCount);</p>
+<p>logger.info(“获取分页信息”);</p>
+<p>pageUtil.setTotal(categoryCount);</p>
+<p>map.put(“pageUtil”, pageUtil);</p>
+<p>logger.info(“转到后台管理-分类页-ajax方式”);</p>
+<p>return “admin/categoryManagePage”;</p>
+<p>//转到后台管理-产品类型详情页-ajax</p>
+<p>@RequestMapping(value = “admin/category/{cid}”, method = RequestMethod.GET)</p>
+<p>public String goToDetailsPage(HttpSession session, Map&lt;String, Object&gt; map, @PathVariable Integer cid/* 分类ID */) {</p>
+<p>logger.info(“获取category_id为{}的分类信息”, cid);</p>
+<p>Category category = categoryService.get(cid);</p>
+<p>logger.info(“获取分类子信息-属性列表”);</p>
+<p>category.setPropertyList(propertyService.getList(new Property().setProperty_category(category), null));</p>
+<p>map.put(“category”, category);</p>
+<p>logger.info(“转到后台管理-分类详情页-ajax方式”);</p>
+<p>return “admin/include/categoryDetails”;</p>
+<p>//转到后台管理-产品类型添加页-ajax</p>
+<p>@RequestMapping(value = “admin/category/new”, method = RequestMethod.GET)</p>
+<p>public String goToAddPage(HttpSession session, Map&lt;String, Object&gt; map) {</p>
+<p>logger.info(“转到后台管理-分类添加页-ajax方式”);</p>
+<p>return “admin/include/categoryDetails”;</p>
+<p>//添加产品类型信息-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “admin/category”, method = RequestMethod.POST, produces = “application/json;charset=utf-8”)</p>
+<p>public String addCategory(@RequestParam String category_name/* 分类名称 */,</p>
+<p>@RequestParam String category_image_src/* 分类图片路径 */) {</p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>logger.info(“整合分类信息”);</p>
+<p>Category category = new Category()</p>
+<p>.setCategory_name(category_name)</p>
+<p>.setCategory_image_src(category_image_src.substring(category_image_src.lastIndexOf(“/“) + 1));</p>
+<p>logger.info(“添加分类信息”);</p>
+<p>boolean yn = categoryService.add(category);</p>
+<p>if (yn) {</p>
+<p>int category_id = lastIDService.selectLastID();</p>
+<p>logger.info(“添加成功！,新增分类的ID值为：{}”, category_id);</p>
+<p>jsonObject.put(“success”, true);</p>
+<p>jsonObject.put(“category_id”, category_id);</p>
+<p>} else {</p>
+<p>jsonObject.put(“success”, false);</p>
+<p>logger.warn(“添加失败！事务回滚”);</p>
+<p>throw new RuntimeException();</p>
+<p>return jsonObject.toJSONString();</p>
+<p>//更新产品类型信息-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “admin/category/{category_id}”, method = RequestMethod.PUT, produces = “application/json;charset=utf-8”)</p>
+<p>public String updateCategory(@RequestParam String category_name/* 分类名称 */,</p>
+<p>@RequestParam String category_image_src/* 分类图片路径 */,</p>
+<p>@PathVariable(“category_id”) Integer category_id/* 分类ID */) {</p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>logger.info(“整合分类信息”);</p>
+<p>Category category = new Category()</p>
+<p>.setCategory_id(category_id)</p>
+<p>.setCategory_name(category_name)</p>
+<p>.setCategory_image_src(category_image_src.substring(category_image_src.lastIndexOf(“/“) + 1));</p>
+<p>logger.info(“更新分类信息，分类ID值为：{}”, category_id);</p>
+<p>boolean yn = categoryService.update(category);</p>
+<p>if (yn) {</p>
+<p>logger.info(“更新成功！”);</p>
+<p>jsonObject.put(“success”, true);</p>
+<p>jsonObject.put(“category_id”, category_id);</p>
+<p>} else {</p>
+<p>jsonObject.put(“success”, false);</p>
+<p>logger.info(“更新失败！事务回滚”);</p>
+<p>throw new RuntimeException();</p>
+<p>return jsonObject.toJSONString();</p>
+<p>//按条件查询产品类型-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “admin/category/{index}/{count}”, method = RequestMethod.GET, produces = “application/json;charset=utf-8”)</p>
+<p>public String getCategoryBySearch(@RequestParam(required = false) String category_name/* 分类名称 */,</p>
+<p>@PathVariable Integer index/* 页数 */,</p>
+<p>@PathVariable Integer count/* 行数 */) throws UnsupportedEncodingException {</p>
+<p>//移除不必要条件</p>
+<p>if (category_name != null) {</p>
+<p>//如果为非空字符串则解决中文乱码：URLDecoder.decode(String,”UTF-8”);</p>
+<p>category_name = “”.equals(category_name) ? null : URLDecoder.decode(category_name, “UTF-8”);</p>
+<p>JSONObject object = new JSONObject();</p>
+<p>logger.info(“按条件获取第{}页的{}条分类”, index + 1, count);</p>
+<p>PageUtil pageUtil = new PageUtil(index, count);</p>
+<p>List<Category> categoryList = categoryService.getList(category_name, pageUtil);</Category></p>
+<p>object.put(“categoryList”, JSONArray.parseArray(JSON.toJSONString(categoryList)));</p>
+<p>logger.info(“按条件获取分类总数量”);</p>
+<p>Integer categoryCount = categoryService.getTotal(category_name);</p>
+<p>object.put(“categoryCount”, categoryCount);</p>
+<p>logger.info(“获取分页信息”);</p>
+<p>pageUtil.setTotal(categoryCount);</p>
+<p>object.put(“totalPage”, pageUtil.getTotalPage());</p>
+<p>object.put(“pageUtil”, pageUtil);</p>
+<p>return object.toJSONString();</p>
+<p>// 上传产品类型图片-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “admin/uploadCategoryImage”, method = RequestMethod.POST, produces = “application/json;charset=utf-8”)</p>
+<p>public String uploadCategoryImage(@RequestParam MultipartFile file, HttpSession session) {</p>
+<p>String originalFileName = file.getOriginalFilename();</p>
+<p>logger.info(“获取图片原始文件名:  {}”, originalFileName);</p>
+<p>String extension = originalFileName.substring(originalFileName.lastIndexOf(‘.’));</p>
+<p>String fileName = UUID.randomUUID() + extension;</p>
+<p>String filePath = session.getServletContext().getRealPath(“/“) + “r<a target="_blank" rel="noopener" href="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/item/categoryPicture/&quot;">https://yms-1257401191.cos.ap-nanjing.myqcloud.com/item/categoryPicture/&quot;</a> + fileName;</p>
+<p>logger.info(“文件上传路径：{}”, filePath);</p>
+<p>JSONObject object = new JSONObject();</p>
+<p>try {</p>
+<p>logger.info(“文件上传中…”);</p>
+<p>file.transferTo(new File(filePath));</p>
+<p>logger.info(“文件上传完成”);</p>
+<p>object.put(“success”, true);</p>
+<p>object.put(“fileName”, fileName);</p>
+<p>} catch (IOException e) {</p>
+<p>logger.warn(“文件上传失败!”);</p>
+<p>e.printStackTrace();</p>
+<p>object.put(“success”, false);</p>
+<p>return object.toJSONString();</p>
+<p>订单列表页:</p>
+<p>/**</p>
+<ul>
+<li>订单列表页</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>public class ForeOrderController extends BaseController {</p>
+<p>@Resource(name = “productService”)</p>
+<p>private ProductService productService;</p>
+<p>@Resource(name = “userService”)</p>
+<p>private UserService userService;</p>
+<p>@Resource(name = “productOrderItemService”)</p>
+<p>private ProductOrderItemService productOrderItemService;</p>
+<p>@Resource(name = “addressService”)</p>
+<p>private AddressService addressService;</p>
+<p>@Resource(name = “categoryService”)</p>
+<p>private CategoryService categoryService;</p>
+<p>@Resource(name = “productImageService”)</p>
+<p>private ProductImageService productImageService;</p>
+<p>@Resource(name = “productOrderService”)</p>
+<p>private ProductOrderService productOrderService;</p>
+<p>@Resource(name = “reviewService”)</p>
+<p>private ReviewService reviewService;</p>
+<p>@Resource(name = “lastIDService”)</p>
+<p>private LastIDService lastIDService;</p>
+<p>//转到前台天猫-订单列表页</p>
+<p>@RequestMapping(value = “order”, method = RequestMethod.GET)</p>
+<p>public String goToPageSimple() {</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>@RequestMapping(value = “order/{index}/{count}”, method = RequestMethod.GET)</p>
+<p>public String goToPage(HttpSession session, Map&lt;String, Object&gt; map,</p>
+<p>@RequestParam(required = false) Byte status,</p>
+<p>@PathVariable(“index”) Integer index/* 页数 */,</p>
+<p>@PathVariable(“count”) Integer count/* 行数*/) {</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>User user;</p>
+<p>if (userId != null) {</p>
+<p>logger.info(“获取用户信息”);</p>
+<p>user = userService.get(Integer.parseInt(userId.toString()));</p>
+<p>map.put(“user”, user);</p>
+<p>} else {</p>
+<p>return “redirect:/login”;</p>
+<p>Byte[] status_array = null;</p>
+<p>if (status != null) {</p>
+<p>status_array = new Byte[]{status};</p>
+<p>PageUtil pageUtil = new PageUtil(index, count);</p>
+<p>logger.info(“根据用户ID:{}获取订单列表”, userId);</p>
+<p>List<ProductOrder> productOrderList = productOrderService.getList(</ProductOrder></p>
+<p>new ProductOrder().setProductOrder_user(</p>
+<p>new User().setUser_id(Integer.valueOf(userId.toString()))</p>
+<p>), status_array, new OrderUtil(“productOrder_id”, true), pageUtil</p>
+<p>);</p>
+<p>//订单总数量</p>
+<p>Integer orderCount = 0;</p>
+<p>if (productOrderList.size() &gt; 0) {</p>
+<p>orderCount = productOrderService.getTotal(new ProductOrder().setProductOrder_user(new User().setUser_id(Integer.valueOf(userId.toString()))), status_array);</p>
+<p>logger.info(“获取订单项信息及对应的产品信息”);</p>
+<p>for (ProductOrder order : productOrderList) {</p>
+<p>List<ProductOrderItem> productOrderItemList = productOrderItemService.getListByOrderId(</ProductOrderItem></p>
+<p>order.getProductOrder_id(), null</p>
+<p>);</p>
+<p>if (productOrderItemList != null) {</p>
+<p>for (ProductOrderItem productOrderItem : productOrderItemList) {</p>
+<p>Integer product_id = productOrderItem.getProductOrderItem_product().getProduct_id();</p>
+<p>Product product = productService.get(product_id);</p>
+<p>product.setSingleProductImageList(productImageService.getList(</p>
+<p>product_id, (byte) 0, new PageUtil(0, 1)</p>
+<p>));</p>
+<p>productOrderItem.setProductOrderItem_product(product);</p>
+<p>if (order.getProductOrder_status() == 3) {</p>
+<p>productOrderItem.setIsReview(reviewService.getTotalByOrderItemId(</p>
+<p>productOrderItem.getProductOrderItem_id()) &gt; 0</p>
+<p>);</p>
+<p>order.setProductOrderItemList(productOrderItemList);</p>
+<p>pageUtil.setTotal(orderCount);</p>
+<p>logger.info(“获取产品分类列表信息”);</p>
+<p>List<Category> categoryList = categoryService.getList(null, new PageUtil(0, 5));</Category></p>
+<p>map.put(“pageUtil”, pageUtil);</p>
+<p>map.put(“productOrderList”, productOrderList);</p>
+<p>map.put(“categoryList”, categoryList);</p>
+<p>map.put(“status”, status);</p>
+<p>logger.info(“转到前台天猫-订单列表页”);</p>
+<p>return “fore/orderListPage”;</p>
+<p>//转到前台天猫-订单建立页</p>
+<p>@RequestMapping(value = “order/create/{product_id}”, method = RequestMethod.GET)</p>
+<p>public String goToOrderConfirmPage(@PathVariable(“product_id”) Integer product_id,</p>
+<p>@RequestParam(required = false, defaultValue = “1”) Short product_number,</p>
+<p>Map&lt;String, Object&gt; map,</p>
+<p>HttpSession session,</p>
+<p>HttpServletRequest request) throws UnsupportedEncodingException {</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>User user;</p>
+<p>if (userId != null) {</p>
+<p>logger.info(“获取用户信息”);</p>
+<p>user = userService.get(Integer.parseInt(userId.toString()));</p>
+<p>map.put(“user”, user);</p>
+<p>} else {</p>
+<p>return “redirect:/login”;</p>
+<p>logger.info(“通过产品ID获取产品信息：{}”, product_id);</p>
+<p>Product product = productService.get(product_id);</p>
+<p>if (product == null) {</p>
+<p>return “redirect:/“;</p>
+<p>logger.info(“获取产品的详细信息”);</p>
+<p>product.setProduct_category(categoryService.get(product.getProduct_category().getCategory_id()));</p>
+<p>product.setSingleProductImageList(productImageService.getList(product_id, (byte) 0, new PageUtil(0, 1)));</p>
+<p>logger.info(“封装订单项对象”);</p>
+<p>ProductOrderItem productOrderItem = new ProductOrderItem();</p>
+<p>productOrderItem.setProductOrderItem_product(product);</p>
+<p>productOrderItem.setProductOrderItem_number(product_number);</p>
+<p>productOrderItem.setProductOrderItem_price(product.getProduct_sale_price() * product_number);</p>
+<p>productOrderItem.setProductOrderItem_user(new User().setUser_id(Integer.valueOf(userId.toString())));</p>
+<p>//初始化订单地址信息</p>
+<p>String addressId = “110000”;</p>
+<p>String cityAddressId = “110100”;</p>
+<p>String districtAddressId = “110101”;</p>
+<p>String detailsAddress = null;</p>
+<p>String order_post = null;</p>
+<p>String order_receiver = null;</p>
+<p>String order_phone = null;</p>
+<p>Cookie[] cookies = request.getCookies();</p>
+<p>//如果读取到了浏览器Cookie</p>
+<p>if (cookies != null) {</p>
+<p>for (Cookie cookie : cookies) {</p>
+<p>String cookieName = cookie.getName();</p>
+<p>String cookieValue = cookie.getValue();</p>
+<p>switch (cookieName) {</p>
+<p>case “addressId”:</p>
+<p>addressId = cookieValue;</p>
+<p>break;</p>
+<p>case “cityAddressId”:</p>
+<p>cityAddressId = cookieValue;</p>
+<p>break;</p>
+<p>case “districtAddressId”:</p>
+<p>districtAddressId = cookieValue;</p>
+<p>break;</p>
+<p>case “order_post”:</p>
+<p>order_post = URLDecoder.decode(cookieValue, “UTF-8”);</p>
+<p>break;</p>
+<p>case “order_receiver”:</p>
+<p>order_receiver = URLDecoder.decode(cookieValue, “UTF-8”);</p>
+<p>break;</p>
+<p>case “order_phone”:</p>
+<p>order_phone = URLDecoder.decode(cookieValue, “UTF-8”);</p>
+<p>break;</p>
+<p>case “detailsAddress”:</p>
+<p>detailsAddress = URLDecoder.decode(cookieValue, “UTF-8”);</p>
+<p>break;</p>
+<p>logger.info(“获取省份信息”);</p>
+<p>List<Address> addressList = addressService.getRoot();</Address></p>
+<p>logger.info(“获取addressId为{}的市级地址信息”, addressId);</p>
+<p>List<Address> cityAddress = addressService.getList(null, addressId);</Address></p>
+<p>logger.info(“获取cityAddressId为{}的区级地址信息”, cityAddressId);</p>
+<p>List<Address> districtAddress = addressService.getList(null, cityAddressId);</Address></p>
+<p>List<ProductOrderItem> productOrderItemList = new ArrayList&lt;&gt;();</ProductOrderItem></p>
+<p>productOrderItemList.add(productOrderItem);</p>
+<p>map.put(“orderItemList”, productOrderItemList);</p>
+<p>map.put(“addressList”, addressList);</p>
+<p>map.put(“cityList”, cityAddress);</p>
+<p>map.put(“districtList”, districtAddress);</p>
+<p>map.put(“orderTotalPrice”, productOrderItem.getProductOrderItem_price());</p>
+<p>map.put(“addressId”, addressId);</p>
+<p>map.put(“cityAddressId”, cityAddressId);</p>
+<p>map.put(“districtAddressId”, districtAddressId);</p>
+<p>map.put(“order_post”, order_post);</p>
+<p>map.put(“order_receiver”, order_receiver);</p>
+<p>map.put(“order_phone”, order_phone);</p>
+<p>map.put(“detailsAddress”, detailsAddress);</p>
+<p>logger.info(“转到前台天猫-订单建立页”);</p>
+<p>return “fore/productBuyPage”;</p>
+<p>//转到前台天猫-购物车订单建立页</p>
+<p>@RequestMapping(value = “order/create/byCart”, method = RequestMethod.GET)</p>
+<p>public String goToOrderConfirmPageByCart(Map&lt;String, Object&gt; map,</p>
+<p>HttpSession session, HttpServletRequest request,</p>
+<p>@RequestParam(required = false) Integer[] order_item_list) throws UnsupportedEncodingException {</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>User user;</p>
+<p>if (userId != null) {</p>
+<p>logger.info(“获取用户信息”);</p>
+<p>user = userService.get(Integer.parseInt(userId.toString()));</p>
+<p>map.put(“user”, user);</p>
+<p>} else {</p>
+<p>return “redirect:/login”;</p>
+<p>if (order_item_list == null || order_item_list.length == 0) {</p>
+<p>logger.warn(“用户订单项数组不存在，回到购物车页”);</p>
+<p>return “redirect:/cart”;</p>
+<p>logger.info(“通过订单项ID数组获取订单信息”);</p>
+<p>List<ProductOrderItem> orderItemList = new ArrayList&lt;&gt;(order_item_list.length);</ProductOrderItem></p>
+<p>for (Integer orderItem_id : order_item_list) {</p>
+<p>orderItemList.add(productOrderItemService.get(orderItem_id));</p>
+<p>logger.info(“——检查订单项合法性——“);</p>
+<p>if (orderItemList.size() == 0) {</p>
+<p>logger.warn(“用户订单项获取失败，回到购物车页”);</p>
+<p>return “redirect:/cart”;</p>
+<p>for (ProductOrderItem orderItem : orderItemList) {</p>
+<p>if (orderItem.getProductOrderItem_user().getUser_id() != userId) {</p>
+<p>logger.warn(“用户订单项与用户不匹配，回到购物车页”);</p>
+<p>return “redirect:/cart”;</p>
+<p>if (orderItem.getProductOrderItem_order() != null) {</p>
+<p>logger.warn(“用户订单项不属于购物车，回到购物车页”);</p>
+<p>return “redirect:/cart”;</p>
+<p>logger.info(“验证通过，获取订单项的产品信息”);</p>
+<p>double orderTotalPrice = 0.0;</p>
+<p>for (ProductOrderItem orderItem : orderItemList) {</p>
+<p>Product product = productService.get(orderItem.getProductOrderItem_product().getProduct_id());</p>
+<p>product.setProduct_category(categoryService.get(product.getProduct_category().getCategory_id()));</p>
+<p>product.setSingleProductImageList(productImageService.getList(product.getProduct_id(), (byte) 0, new PageUtil(0, 1)));</p>
+<p>orderItem.setProductOrderItem_product(product);</p>
+<p>orderTotalPrice += orderItem.getProductOrderItem_price();</p>
+<p>String addressId = “110000”;</p>
+<p>String cityAddressId = “110100”;</p>
+<p>String districtAddressId = “110101”;</p>
+<p>String detailsAddress = null;</p>
+<p>String order_post = null;</p>
+<p>String order_receiver = null;</p>
+<p>String order_phone = null;</p>
+<p>Cookie[] cookies = request.getCookies();</p>
+<p>if (cookies != null) {</p>
+<p>for (Cookie cookie : cookies) {</p>
+<p>String cookieName = cookie.getName();</p>
+<p>String cookieValue = cookie.getValue();</p>
+<p>switch (cookieName) {</p>
+<p>case “addressId”:</p>
+<p>addressId = cookieValue;</p>
+<p>break;</p>
+<p>case “cityAddressId”:</p>
+<p>cityAddressId = cookieValue;</p>
+<p>break;</p>
+<p>case “districtAddressId”:</p>
+<p>districtAddressId = cookieValue;</p>
+<p>break;</p>
+<p>case “order_post”:</p>
+<p>order_post = URLDecoder.decode(cookieValue, “UTF-8”);</p>
+<p>break;</p>
+<p>case “order_receiver”:</p>
+<p>order_receiver = URLDecoder.decode(cookieValue, “UTF-8”);</p>
+<p>break;</p>
+<p>case “order_phone”:</p>
+<p>order_phone = URLDecoder.decode(cookieValue, “UTF-8”);</p>
+<p>break;</p>
+<p>case “detailsAddress”:</p>
+<p>detailsAddress = URLDecoder.decode(cookieValue, “UTF-8”);</p>
+<p>break;</p>
+<p>logger.info(“获取省份信息”);</p>
+<p>List<Address> addressList = addressService.getRoot();</Address></p>
+<p>logger.info(“获取addressId为{}的市级地址信息”, addressId);</p>
+<p>List<Address> cityAddress = addressService.getList(null, addressId);</Address></p>
+<p>logger.info(“获取cityAddressId为{}的区级地址信息”, cityAddressId);</p>
+<p>List<Address> districtAddress = addressService.getList(null, cityAddressId);</Address></p>
+<p>map.put(“orderItemList”, orderItemList);</p>
+<p>map.put(“addressList”, addressList);</p>
+<p>map.put(“cityList”, cityAddress);</p>
+<p>map.put(“districtList”, districtAddress);</p>
+<p>map.put(“orderTotalPrice”, orderTotalPrice);</p>
+<p>map.put(“addressId”, addressId);</p>
+<p>map.put(“cityAddressId”, cityAddressId);</p>
+<p>map.put(“districtAddressId”, districtAddressId);</p>
+<p>map.put(“order_post”, order_post);</p>
+<p>map.put(“order_receiver”, order_receiver);</p>
+<p>map.put(“order_phone”, order_phone);</p>
+<p>map.put(“detailsAddress”, detailsAddress);</p>
+<p>logger.info(“转到前台天猫-订单建立页”);</p>
+<p>return “fore/productBuyPage”;</p>
+<p>//转到前台天猫-订单支付页</p>
+<p>@RequestMapping(value = “order/pay/{order_code}”, method = RequestMethod.GET)</p>
+<p>public String goToOrderPayPage(Map&lt;String, Object&gt; map, HttpSession session,</p>
+<p>@PathVariable(“order_code”) String order_code) {</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>User user;</p>
+<p>if (userId != null) {</p>
+<p>logger.info(“获取用户信息”);</p>
+<p>user = userService.get(Integer.parseInt(userId.toString()));</p>
+<p>map.put(“user”, user);</p>
+<p>} else {</p>
+<p>return “redirect:/login”;</p>
+<p>logger.info(“——验证订单信息——“);</p>
+<p>logger.info(“查询订单是否存在”);</p>
+<p>ProductOrder order = productOrderService.getByCode(order_code);</p>
+<p>if (order == null) {</p>
+<p>logger.warn(“订单不存在，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>logger.info(“验证订单状态”);</p>
+<p>if (order.getProductOrder_status() != 0) {</p>
+<p>logger.warn(“订单状态不正确，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>logger.info(“验证用户与订单是否一致”);</p>
+<p>if (order.getProductOrder_user().getUser_id() != Integer.parseInt(userId.toString())) {</p>
+<p>logger.warn(“用户与订单信息不一致，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>order.setProductOrderItemList(productOrderItemService.getListByOrderId(order.getProductOrder_id(), null));</p>
+<p>double orderTotalPrice = 0.00;</p>
+<p>if (order.getProductOrderItemList().size() == 1) {</p>
+<p>logger.info(“获取单订单项的产品信息”);</p>
+<p>ProductOrderItem productOrderItem = order.getProductOrderItemList().get(0);</p>
+<p>Product product = productService.get(productOrderItem.getProductOrderItem_product().getProduct_id());</p>
+<p>product.setProduct_category(categoryService.get(product.getProduct_category().getCategory_id()));</p>
+<p>productOrderItem.setProductOrderItem_product(product);</p>
+<p>orderTotalPrice = productOrderItem.getProductOrderItem_price();</p>
+<p>} else {</p>
+<p>for (ProductOrderItem productOrderItem : order.getProductOrderItemList()) {</p>
+<p>orderTotalPrice += productOrderItem.getProductOrderItem_price();</p>
+<p>logger.info(“订单总金额为：{}元”, orderTotalPrice);</p>
+<p>map.put(“productOrder”, order);</p>
+<p>map.put(“orderTotalPrice”, orderTotalPrice);</p>
+<p>logger.info(“转到前台天猫-订单支付页”);</p>
+<p>return “fore/productPayPage”;</p>
+<p>//转到前台天猫-订单支付成功页</p>
+<p>@RequestMapping(value = “order/pay/success/{order_code}”, method = RequestMethod.GET)</p>
+<p>public String goToOrderPaySuccessPage(Map&lt;String, Object&gt; map, HttpSession session,</p>
+<p>@PathVariable(“order_code”) String order_code) {</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>User user;</p>
+<p>if (userId != null) {</p>
+<p>logger.info(“获取用户信息”);</p>
+<p>user = userService.get(Integer.parseInt(userId.toString()));</p>
+<p>map.put(“user”, user);</p>
+<p>} else {</p>
+<p>return “redirect:/login”;</p>
+<p>logger.info(“——验证订单信息——“);</p>
+<p>logger.info(“查询订单是否存在”);</p>
+<p>ProductOrder order = productOrderService.getByCode(order_code);</p>
+<p>if (order == null) {</p>
+<p>logger.warn(“订单不存在，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>logger.info(“验证订单状态”);</p>
+<p>if (order.getProductOrder_status() != 1) {</p>
+<p>logger.warn(“订单状态不正确，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>logger.info(“验证用户与订单是否一致”);</p>
+<p>if (order.getProductOrder_user().getUser_id() != Integer.parseInt(userId.toString())) {</p>
+<p>logger.warn(“用户与订单信息不一致，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>order.setProductOrderItemList(productOrderItemService.getListByOrderId(order.getProductOrder_id(), null));</p>
+<p>double orderTotalPrice = 0.00;</p>
+<p>if (order.getProductOrderItemList().size() == 1) {</p>
+<p>logger.info(“获取单订单项的产品信息”);</p>
+<p>ProductOrderItem productOrderItem = order.getProductOrderItemList().get(0);</p>
+<p>//            Product pro = pro.setProduct_id(productOrderItem.getProductOrderItem_product().getProduct_id());</p>
+<p>Product pro = productService.get(productOrderItem.getProductOrderItem_product().getProduct_id());</p>
+<p>System.out.println(pro.getProduct_stock_count());</p>
+<p>System.out.println(productOrderItem.getProductOrderItem_number());</p>
+<p>pro.setProduct_stock_count(pro.getProduct_stock_count()-productOrderItem.getProductOrderItem_number());</p>
+<p>//            此处减库存</p>
+<p>productService.update(pro);</p>
+<p>orderTotalPrice = productOrderItem.getProductOrderItem_price();</p>
+<p>} else {</p>
+<p>for (ProductOrderItem productOrderItem : order.getProductOrderItemList()) {</p>
+<p>Product pro = productService.get(productOrderItem.getProductOrderItem_product().getProduct_id());</p>
+<p>System.out.println(pro.getProduct_stock_count());</p>
+<p>System.out.println(productOrderItem.getProductOrderItem_number());</p>
+<p>pro.setProduct_stock_count(pro.getProduct_stock_count()-productOrderItem.getProductOrderItem_number());</p>
+<p>//                   此处减库存</p>
+<p>productService.update(pro);</p>
+<p>orderTotalPrice += productOrderItem.getProductOrderItem_price();</p>
+<p>logger.info(“订单总金额为：{}元”, orderTotalPrice);</p>
+<p>logger.info(“获取订单详情-地址信息”);</p>
+<p>Address address = addressService.get(order.getProductOrder_address().getAddress_areaId());</p>
+<p>Stack<String> addressStack = new Stack&lt;&gt;();</String></p>
+<p>//详细地址</p>
+<p>addressStack.push(order.getProductOrder_detail_address());</p>
+<p>//最后一级地址</p>
+<p>addressStack.push(address.getAddress_name() + “ “);</p>
+<p>//如果不是第一级地址</p>
+<p>while (!address.getAddress_areaId().equals(address.getAddress_regionId().getAddress_areaId())) {</p>
+<p>address = addressService.get(address.getAddress_regionId().getAddress_areaId());</p>
+<p>addressStack.push(address.getAddress_name() + “ “);</p>
+<p>StringBuilder builder = new StringBuilder();</p>
+<p>while (!addressStack.empty()) {</p>
+<p>builder.append(addressStack.pop());</p>
+<p>logger.info(“订单地址字符串：{}”, builder);</p>
+<p>order.setProductOrder_detail_address(builder.toString());</p>
+<p>map.put(“productOrder”, order);</p>
+<p>map.put(“orderTotalPrice”, orderTotalPrice);</p>
+<p>logger.info(“转到前台天猫-订单支付成功页”);</p>
+<p>return “fore/productPaySuccessPage”;</p>
+<p>//转到前台天猫-订单确认页</p>
+<p>@RequestMapping(value = “order/confirm/{order_code}”, method = RequestMethod.GET)</p>
+<p>public String goToOrderConfirmPage(Map&lt;String, Object&gt; map, HttpSession session,</p>
+<p>@PathVariable(“order_code”) String order_code) {</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>User user;</p>
+<p>if (userId != null) {</p>
+<p>logger.info(“获取用户信息”);</p>
+<p>user = userService.get(Integer.parseInt(userId.toString()));</p>
+<p>map.put(“user”, user);</p>
+<p>} else {</p>
+<p>return “redirect:/login”;</p>
+<p>logger.info(“——验证订单信息——“);</p>
+<p>logger.info(“查询订单是否存在”);</p>
+<p>ProductOrder order = productOrderService.getByCode(order_code);</p>
+<p>if (order == null) {</p>
+<p>logger.warn(“订单不存在，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>logger.info(“验证订单状态”);</p>
+<p>if (order.getProductOrder_status() != 2) {</p>
+<p>logger.warn(“订单状态不正确，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>logger.info(“验证用户与订单是否一致”);</p>
+<p>if (order.getProductOrder_user().getUser_id() != Integer.parseInt(userId.toString())) {</p>
+<p>logger.warn(“用户与订单信息不一致，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>order.setProductOrderItemList(productOrderItemService.getListByOrderId(order.getProductOrder_id(), null));</p>
+<p>double orderTotalPrice = 0.00;</p>
+<p>if (order.getProductOrderItemList().size() == 1) {</p>
+<p>logger.info(“获取单订单项的产品信息”);</p>
+<p>ProductOrderItem productOrderItem = order.getProductOrderItemList().get(0);</p>
+<p>Integer product_id = productOrderItem.getProductOrderItem_product().getProduct_id();</p>
+<p>Product product = productService.get(product_id);</p>
+<p>product.setSingleProductImageList(productImageService.getList(product_id, (byte) 0, new PageUtil(0, 1)));</p>
+<p>productOrderItem.setProductOrderItem_product(product);</p>
+<p>orderTotalPrice = productOrderItem.getProductOrderItem_price();</p>
+<p>} else {</p>
+<p>logger.info(“获取多订单项的产品信息”);</p>
+<p>for (ProductOrderItem productOrderItem : order.getProductOrderItemList()) {</p>
+<p>Integer product_id = productOrderItem.getProductOrderItem_product().getProduct_id();</p>
+<p>Product product = productService.get(product_id);</p>
+<p>product.setSingleProductImageList(productImageService.getList(product_id, (byte) 0, new PageUtil(0, 1)));</p>
+<p>productOrderItem.setProductOrderItem_product(product);</p>
+<p>orderTotalPrice += productOrderItem.getProductOrderItem_price();</p>
+<p>logger.info(“订单总金额为：{}元”, orderTotalPrice);</p>
+<p>map.put(“productOrder”, order);</p>
+<p>map.put(“orderTotalPrice”, orderTotalPrice);</p>
+<p>logger.info(“转到前台天猫-订单确认页”);</p>
+<p>return “fore/orderConfirmPage”;</p>
+<p>//转到前台天猫-订单完成页</p>
+<p>@RequestMapping(value = “order/success/{order_code}”, method = RequestMethod.GET)</p>
+<p>public String goToOrderSuccessPage(Map&lt;String, Object&gt; map, HttpSession session,</p>
+<p>@PathVariable(“order_code”) String order_code) {</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>User user;</p>
+<p>if (userId != null) {</p>
+<p>logger.info(“获取用户信息”);</p>
+<p>user = userService.get(Integer.parseInt(userId.toString()));</p>
+<p>map.put(“user”, user);</p>
+<p>} else {</p>
+<p>return “redirect:/login”;</p>
+<p>logger.info(“——验证订单信息——“);</p>
+<p>logger.info(“查询订单是否存在”);</p>
+<p>ProductOrder order = productOrderService.getByCode(order_code);</p>
+<p>if (order == null) {</p>
+<p>logger.warn(“订单不存在，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>logger.info(“验证订单状态”);</p>
+<p>if (order.getProductOrder_status() != 3) {</p>
+<p>logger.warn(“订单状态不正确，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>logger.info(“验证用户与订单是否一致”);</p>
+<p>if (order.getProductOrder_user().getUser_id() != Integer.parseInt(userId.toString())) {</p>
+<p>logger.warn(“用户与订单信息不一致，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>logger.info(“获取订单中订单项数量”);</p>
+<p>Integer count = productOrderItemService.getTotalByOrderId(order.getProductOrder_id());</p>
+<p>Product product = null;</p>
+<p>if (count == 1) {</p>
+<p>logger.info(“获取订单中的唯一订单项”);</p>
+<p>ProductOrderItem productOrderItem = productOrderItemService.getListByOrderId(order.getProductOrder_id(), new PageUtil(0, 1)).get(0);</p>
+<p>if (productOrderItem != null) {</p>
+<p>logger.info(“获取订单项评论数量”);</p>
+<p>count = reviewService.getTotalByOrderItemId(productOrderItem.getProductOrderItem_id());</p>
+<p>if (count == 0) {</p>
+<p>logger.info(“获取订单项产品信息”);</p>
+<p>product = productService.get(productOrderItem.getProductOrderItem_product().getProduct_id());</p>
+<p>if (product != null) {</p>
+<p>product.setSingleProductImageList(productImageService.getList(product.getProduct_id(), (byte) 0, new PageUtil(0, 1)));</p>
+<p>map.put(“orderItem”, productOrderItem);</p>
+<p>map.put(“product”, product);</p>
+<p>logger.info(“转到前台天猫-订单完成页”);</p>
+<p>return “fore/orderSuccessPage”;</p>
+<p>//转到前台天猫-购物车页</p>
+<p>@RequestMapping(value = “cart”, method = RequestMethod.GET)</p>
+<p>public String goToCartPage(Map&lt;String, Object&gt; map, HttpSession session) {</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>User user;</p>
+<p>if (userId != null) {</p>
+<p>logger.info(“获取用户信息”);</p>
+<p>user = userService.get(Integer.parseInt(userId.toString()));</p>
+<p>map.put(“user”, user);</p>
+<p>} else {</p>
+<p>return “redirect:/login”;</p>
+<p>logger.info(“获取用户购物车信息”);</p>
+<p>List<ProductOrderItem> orderItemList = productOrderItemService.getListByUserId(Integer.valueOf(userId.toString()), null);</ProductOrderItem></p>
+<p>Integer orderItemTotal = 0;</p>
+<p>if (orderItemList.size() &gt; 0) {</p>
+<p>logger.info(“获取用户购物车的商品总数”);</p>
+<p>orderItemTotal = productOrderItemService.getTotalByUserId(Integer.valueOf(userId.toString()));</p>
+<p>logger.info(“获取用户购物车内的商品信息”);</p>
+<p>for (ProductOrderItem orderItem : orderItemList) {</p>
+<p>Integer product_id = orderItem.getProductOrderItem_product().getProduct_id();</p>
+<p>Product product = productService.get(product_id);</p>
+<p>product.setSingleProductImageList(productImageService.getList(product_id, (byte) 0, null));</p>
+<p>product.setProduct_category(categoryService.get(product.getProduct_category().getCategory_id()));</p>
+<p>orderItem.setProductOrderItem_product(product);</p>
+<p>map.put(“orderItemList”, orderItemList);</p>
+<p>map.put(“orderItemTotal”, orderItemTotal);</p>
+<p>logger.info(“转到前台天猫-购物车页”);</p>
+<p>return “fore/productBuyCarPage”;</p>
+<p>//更新订单信息为已支付，待发货-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “order/pay/{order_code}”, method = RequestMethod.PUT)</p>
+<p>public String orderPay(HttpSession session, @PathVariable(“order_code”) String order_code) {</p>
+<p>JSONObject object = new JSONObject();</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>if (userId == null) {</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/login”);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“——验证订单信息——“);</p>
+<p>logger.info(“查询订单是否存在”);</p>
+<p>ProductOrder order = productOrderService.getByCode(order_code);</p>
+<p>if (order == null) {</p>
+<p>logger.warn(“订单不存在，返回订单列表页”);</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/order/0/10”);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“验证订单状态”);</p>
+<p>if (order.getProductOrder_status() != 0) {</p>
+<p>logger.warn(“订单状态不正确，返回订单列表页”);</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/order/0/10”);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“验证用户与订单是否一致”);</p>
+<p>if (order.getProductOrder_user().getUser_id() != Integer.parseInt(userId.toString())) {</p>
+<p>logger.warn(“用户与订单信息不一致，返回订单列表页”);</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/order/0/10”);</p>
+<p>return object.toJSONString();</p>
+<p>order.setProductOrderItemList(productOrderItemService.getListByOrderId(order.getProductOrder_id(), null));</p>
+<p>double orderTotalPrice = 0.00;</p>
+<p>if (order.getProductOrderItemList().size() == 1) {</p>
+<p>logger.info(“获取单订单项的产品信息”);</p>
+<p>ProductOrderItem productOrderItem = order.getProductOrderItemList().get(0);</p>
+<p>Product product = productService.get(productOrderItem.getProductOrderItem_product().getProduct_id());</p>
+<p>product.setProduct_category(categoryService.get(product.getProduct_category().getCategory_id()));</p>
+<p>productOrderItem.setProductOrderItem_product(product);</p>
+<p>orderTotalPrice = productOrderItem.getProductOrderItem_price();</p>
+<p>logger.info(“更新产品销量信息”);</p>
+<p>Product updateProduct = new Product()</p>
+<p>.setProduct_id(product.getProduct_id())</p>
+<p>.setProduct_sale_count(product.getProduct_sale_count() + productOrderItem.getProductOrderItem_number());</p>
+<p>logger.info(“更新产品信息，产品ID值为：{}”, product.getProduct_id());</p>
+<p>boolean yn = productService.update(updateProduct);</p>
+<p>if (!yn) {</p>
+<p>logger.info(“产品销量信息更新失败！事务回滚”);</p>
+<p>object.put(“success”, false);</p>
+<p>throw new RuntimeException();</p>
+<p>logger.info(“产品销量信息更新成功！”);</p>
+<p>} else {</p>
+<p>for (ProductOrderItem productOrderItem : order.getProductOrderItemList()) {</p>
+<p>Product product = productService.get(productOrderItem.getProductOrderItem_product().getProduct_id());</p>
+<p>logger.info(“更新产品销量信息”);</p>
+<p>Product updateProduct = new Product()</p>
+<p>.setProduct_id(product.getProduct_id())</p>
+<p>.setProduct_sale_count(product.getProduct_sale_count() + productOrderItem.getProductOrderItem_number());</p>
+<p>logger.info(“更新产品信息，产品ID值为：{}”, product.getProduct_id());</p>
+<p>boolean yn = productService.update(updateProduct);</p>
+<p>if (!yn) {</p>
+<p>logger.info(“产品销量信息更新失败！事务回滚”);</p>
+<p>object.put(“success”, false);</p>
+<p>throw new RuntimeException();</p>
+<p>logger.info(“产品销量信息更新成功！”);</p>
+<p>orderTotalPrice += productOrderItem.getProductOrderItem_price();</p>
+<p>logger.info(“总共支付金额为：{}元”, orderTotalPrice);</p>
+<p>logger.info(“更新订单信息”);</p>
+<p>ProductOrder productOrder = new ProductOrder()</p>
+<p>.setProductOrder_id(order.getProductOrder_id())</p>
+<p>.setProductOrder_pay_date(new Date())</p>
+<p>.setProductOrder_status((byte) 1);</p>
+<p>boolean yn = productOrderService.update(productOrder);</p>
+<p>if (yn) {</p>
+<p>object.put(“success”, true);</p>
+<p>object.put(“url”, “/order/pay/success/“ + order_code);</p>
+<p>} else {</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/order/0/10”);</p>
+<p>return object.toJSONString();</p>
+<p>//更新订单信息为已发货，待确认-ajax</p>
+<p>@RequestMapping(value = “order/delivery/{order_code}”, method = RequestMethod.GET)</p>
+<p>public String orderDelivery(HttpSession session, @PathVariable(“order_code”) String order_code) {</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>if (userId == null) {</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>logger.info(“——验证订单信息——“);</p>
+<p>logger.info(“查询订单是否存在”);</p>
+<p>ProductOrder order = productOrderService.getByCode(order_code);</p>
+<p>if (order == null) {</p>
+<p>logger.warn(“订单不存在，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>logger.info(“验证订单状态”);</p>
+<p>if (order.getProductOrder_status() != 1) {</p>
+<p>logger.warn(“订单状态不正确，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>logger.info(“验证用户与订单是否一致”);</p>
+<p>if (order.getProductOrder_user().getUser_id() != Integer.parseInt(userId.toString())) {</p>
+<p>logger.warn(“用户与订单信息不一致，返回订单列表页”);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>logger.info(“更新订单信息”);</p>
+<p>ProductOrder productOrder = new ProductOrder()</p>
+<p>.setProductOrder_id(order.getProductOrder_id())</p>
+<p>.setProductOrder_delivery_date(new Date())</p>
+<p>.setProductOrder_status((byte) 2);</p>
+<p>productOrderService.update(productOrder);</p>
+<p>return “redirect:/order/0/10”;</p>
+<p>//更新订单信息为交易成功-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “order/success/{order_code}”, method = RequestMethod.PUT, produces = “application/json;charset=utf-8”)</p>
+<p>public String orderSuccess(HttpSession session, @PathVariable(“order_code”) String order_code) {</p>
+<p>JSONObject object = new JSONObject();</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>if (userId == null) {</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/login”);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“——验证订单信息——“);</p>
+<p>logger.info(“查询订单是否存在”);</p>
+<p>ProductOrder order = productOrderService.getByCode(order_code);</p>
+<p>if (order == null) {</p>
+<p>logger.warn(“订单不存在，返回订单列表页”);</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/order/0/10”);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“验证订单状态”);</p>
+<p>if (order.getProductOrder_status() != 2) {</p>
+<p>logger.warn(“订单状态不正确，返回订单列表页”);</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/order/0/10”);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“验证用户与订单是否一致”);</p>
+<p>if (order.getProductOrder_user().getUser_id() != Integer.parseInt(userId.toString())) {</p>
+<p>logger.warn(“用户与订单信息不一致，返回订单列表页”);</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/order/0/10”);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“更新订单信息”);</p>
+<p>ProductOrder productOrder = new ProductOrder()</p>
+<p>.setProductOrder_id(order.getProductOrder_id())</p>
+<p>.setProductOrder_status((byte) 3)</p>
+<p>.setProductOrder_confirm_date(new Date());</p>
+<p>boolean yn = productOrderService.update(productOrder);</p>
+<p>if (yn) {</p>
+<p>object.put(“success”, true);</p>
+<p>} else {</p>
+<p>object.put(“success”, false);</p>
+<p>return object.toJSONString();</p>
+<p>//更新订单信息为交易关闭-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “order/close/{order_code}”, method = RequestMethod.PUT, produces = “application/json;charset=utf-8”)</p>
+<p>public String orderClose(HttpSession session, @PathVariable(“order_code”) String order_code) {</p>
+<p>JSONObject object = new JSONObject();</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>if (userId == null) {</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/login”);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“——验证订单信息——“);</p>
+<p>logger.info(“查询订单是否存在”);</p>
+<p>ProductOrder order = productOrderService.getByCode(order_code);</p>
+<p>if (order == null) {</p>
+<p>logger.warn(“订单不存在，返回订单列表页”);</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/order/0/10”);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“验证订单状态”);</p>
+<p>if (order.getProductOrder_status() != 0) {</p>
+<p>logger.warn(“订单状态不正确，返回订单列表页”);</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/order/0/10”);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“验证用户与订单是否一致”);</p>
+<p>if (order.getProductOrder_user().getUser_id() != Integer.parseInt(userId.toString())) {</p>
+<p>logger.warn(“用户与订单信息不一致，返回订单列表页”);</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/order/0/10”);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“更新订单信息”);</p>
+<p>ProductOrder productOrder = new ProductOrder()</p>
+<p>.setProductOrder_id(order.getProductOrder_id())</p>
+<p>.setProductOrder_status((byte) 4);</p>
+<p>boolean yn = productOrderService.update(productOrder);</p>
+<p>if (yn) {</p>
+<p>object.put(“success”, true);</p>
+<p>} else {</p>
+<p>object.put(“success”, false);</p>
+<p>return object.toJSONString();</p>
+<p>//更新购物车订单项数量-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “orderItem”, method = RequestMethod.PUT, produces = “application/json;charset=utf-8”)</p>
+<p>public String updateOrderItem(HttpSession session, Map&lt;String, Object&gt; map, HttpServletResponse response,</p>
+<p>@RequestParam String orderItemMap) {</p>
+<p>JSONObject object = new JSONObject();</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>if (userId == null) {</p>
+<p>object.put(“success”, false);</p>
+<p>return object.toJSONString();</p>
+<p>JSONObject orderItemString = JSON.parseObject(orderItemMap);</p>
+<p>Set<String> orderItemIDSet = orderItemString.keySet();</String></p>
+<p>if (orderItemIDSet.size() &gt; 0) {</p>
+<p>logger.info(“更新产品订单项数量”);</p>
+<p>for (String key : orderItemIDSet) {</p>
+<p>ProductOrderItem productOrderItem = productOrderItemService.get(Integer.valueOf(key));</p>
+<p>if (productOrderItem == null || !productOrderItem.getProductOrderItem_user().getUser_id().equals(userId)) {</p>
+<p>logger.warn(“订单项为空或用户状态不一致！”);</p>
+<p>object.put(“success”, false);</p>
+<p>return object.toJSONString();</p>
+<p>if (productOrderItem.getProductOrderItem_order() != null) {</p>
+<p>logger.warn(“用户订单项不属于购物车，回到购物车页”);</p>
+<p>return “redirect:/cart”;</p>
+<p>Short number = Short.valueOf(orderItemString.getString(key));</p>
+<p>if (number &lt;= 0 || number &gt; 500) {</p>
+<p>logger.warn(“订单项产品数量不合法！”);</p>
+<p>object.put(“success”, false);</p>
+<p>return object.toJSONString();</p>
+<p>double price = productOrderItem.getProductOrderItem_price() / productOrderItem.getProductOrderItem_number();</p>
+<p>Boolean yn = productOrderItemService.update(new ProductOrderItem().setProductOrderItem_id(Integer.valueOf(key)).setProductOrderItem_number(number).setProductOrderItem_price(number * price));</p>
+<p>if (!yn) {</p>
+<p>throw new RuntimeException();</p>
+<p>Object[] orderItemIDArray = orderItemIDSet.toArray();</p>
+<p>object.put(“success”, true);</p>
+<p>object.put(“orderItemIDArray”, orderItemIDArray);</p>
+<p>return object.toJSONString();</p>
+<p>} else {</p>
+<p>logger.warn(“无订单项可以处理”);</p>
+<p>object.put(“success”, false);</p>
+<p>return object.toJSONString();</p>
+<p>//创建新订单-单订单项-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “order”, method = RequestMethod.POST, produces = “application/json;charset=utf-8”)</p>
+<p>public String createOrderByOne(HttpSession session, Map&lt;String, Object&gt; map, HttpServletResponse response,</p>
+<p>@RequestParam String addressId,</p>
+<p>@RequestParam String cityAddressId,</p>
+<p>@RequestParam String districtAddressId,</p>
+<p>@RequestParam String productOrder_detail_address,</p>
+<p>@RequestParam String productOrder_post,</p>
+<p>@RequestParam String productOrder_receiver,</p>
+<p>@RequestParam String productOrder_mobile,</p>
+<p>@RequestParam String userMessage,</p>
+<p>@RequestParam Integer orderItem_product_id,</p>
+<p>@RequestParam Short orderItem_number) throws UnsupportedEncodingException {</p>
+<p>JSONObject object = new JSONObject();</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>if (userId == null) {</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/login”);</p>
+<p>return object.toJSONString();</p>
+<p>Product product = productService.get(orderItem_product_id);</p>
+<p>if (product == null) {</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/“);</p>
+<p>return object.toJSONString();</p>
+<p>if(product.getProduct_stock_count()&lt;orderItem_number) {</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/not”);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“将收货地址等相关信息存入Cookie中,便于下次使用”);</p>
+<p>Cookie[] cookies = new Cookie[]{</p>
+<p>new Cookie(“addressId”, addressId),</p>
+<p>new Cookie(“cityAddressId”, cityAddressId),</p>
+<p>new Cookie(“districtAddressId”, districtAddressId),</p>
+<p>new Cookie(“order_post”, URLEncoder.encode(productOrder_post, “UTF-8”)),</p>
+<p>new Cookie(“order_receiver”, URLEncoder.encode(productOrder_receiver, “UTF-8”)),</p>
+<p>new Cookie(“order_phone”, URLEncoder.encode(productOrder_mobile, “UTF-8”)),</p>
+<p>new Cookie(“detailsAddress”, URLEncoder.encode(productOrder_detail_address, “UTF-8”))</p>
+<p>};</p>
+<p>int maxAge = 60 * 60 * 24 * 365;</p>
+<p>for(Cookie cookie : cookies){</p>
+<p>//设置过期时间为一年</p>
+<p>cookie.setMaxAge(maxAge);</p>
+<p>//存储Cookie</p>
+<p>response.addCookie(cookie);</p>
+<p>StringBuffer productOrder_code = new StringBuffer()</p>
+<p>.append(new SimpleDateFormat(“yyyyMMddHHmmss”).format(new Date()))</p>
+<p>.append(0)</p>
+<p>.append(userId);</p>
+<p>logger.info(“生成的订单号为：{}”, productOrder_code);</p>
+<p>logger.info(“整合订单对象”);</p>
+<p>ProductOrder productOrder = new ProductOrder()</p>
+<p>.setProductOrder_status((byte) 0)</p>
+<p>.setProductOrder_address(new Address().setAddress_areaId(districtAddressId))</p>
+<p>.setProductOrder_post(productOrder_post)</p>
+<p>.setProductOrder_user(new User().setUser_id(Integer.valueOf(userId.toString())))</p>
+<p>.setProductOrder_mobile(productOrder_mobile)</p>
+<p>.setProductOrder_receiver(productOrder_receiver)</p>
+<p>.setProductOrder_detail_address(productOrder_detail_address)</p>
+<p>.setProductOrder_pay_date(new Date())</p>
+<p>.setProductOrder_code(productOrder_code.toString());</p>
+<p>Boolean yn = productOrderService.add(productOrder);</p>
+<p>if (!yn) {</p>
+<p>throw new RuntimeException();</p>
+<p>Integer order_id = lastIDService.selectLastID();</p>
+<p>logger.info(“整合订单项对象”);</p>
+<p>ProductOrderItem productOrderItem = new ProductOrderItem()</p>
+<p>.setProductOrderItem_user(new User().setUser_id(Integer.valueOf(userId.toString())))</p>
+<p>.setProductOrderItem_product(productService.get(orderItem_product_id))</p>
+<p>.setProductOrderItem_number(orderItem_number)</p>
+<p>.setProductOrderItem_price(product.getProduct_sale_price() * orderItem_number)</p>
+<p>.setProductOrderItem_userMessage(userMessage)</p>
+<p>.setProductOrderItem_order(new ProductOrder().setProductOrder_id(order_id));</p>
+<p>yn = productOrderItemService.add(productOrderItem);</p>
+<p>if (!yn) {</p>
+<p>throw new RuntimeException();</p>
+<p>object.put(“success”, true);</p>
+<p>object.put(“url”, “/order/pay/“ + productOrder.getProductOrder_code());</p>
+<p>return object.toJSONString();</p>
+<p>//创建新订单-多订单项-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “order/list”, method = RequestMethod.POST, produces = “application/json;charset=utf-8”)</p>
+<p>public String createOrderByList(HttpSession session, Map&lt;String, Object&gt; map, HttpServletResponse response,</p>
+<p>@RequestParam String addressId,</p>
+<p>@RequestParam String cityAddressId,</p>
+<p>@RequestParam String districtAddressId,</p>
+<p>@RequestParam String productOrder_detail_address,</p>
+<p>@RequestParam String productOrder_post,</p>
+<p>@RequestParam String productOrder_receiver,</p>
+<p>@RequestParam String productOrder_mobile,</p>
+<p>@RequestParam String orderItemJSON) throws UnsupportedEncodingException {</p>
+<p>JSONObject object = new JSONObject();</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>if (userId == null) {</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/login”);</p>
+<p>return object.toJSONString();</p>
+<p>JSONObject orderItemMap = JSONObject.parseObject(orderItemJSON);</p>
+<p>Set<String> orderItem_id = orderItemMap.keySet();</String></p>
+<p>List<ProductOrderItem> productOrderItemList = new ArrayList&lt;&gt;(3);</ProductOrderItem></p>
+<p>if (orderItem_id.size() &gt; 0) {</p>
+<p>for (String id : orderItem_id) {</p>
+<p>ProductOrderItem orderItem = productOrderItemService.get(Integer.valueOf(id));</p>
+<p>if (orderItem == null || !orderItem.getProductOrderItem_user().getUser_id().equals(userId)) {</p>
+<p>logger.warn(“订单项为空或用户状态不一致！”);</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/cart”);</p>
+<p>return object.toJSONString();</p>
+<p>if(orderItem.getProductOrderItem_product().getProduct_stock_count()&lt;orderItem.getProductOrderItem_number()) {</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/not”);</p>
+<p>return object.toJSONString();</p>
+<p>if (orderItem.getProductOrderItem_order() != null) {</p>
+<p>logger.warn(“用户订单项不属于购物车，回到购物车页”);</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/cart”);</p>
+<p>return object.toJSONString();</p>
+<p>boolean yn = productOrderItemService.update(new ProductOrderItem().setProductOrderItem_id(Integer.valueOf(id)).setProductOrderItem_userMessage(orderItemMap.getString(id)));</p>
+<p>if (!yn) {</p>
+<p>throw new RuntimeException();</p>
+<p>orderItem.setProductOrderItem_product(productService.get(orderItem.getProductOrderItem_product().getProduct_id()));</p>
+<p>productOrderItemList.add(orderItem);</p>
+<p>} else {</p>
+<p>object.put(“success”, false);</p>
+<p>object.put(“url”, “/cart”);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“将收货地址等相关信息存入Cookie中,便于下次使用”);</p>
+<p>Cookie[] cookies = new Cookie[]{</p>
+<p>new Cookie(“addressId”, addressId),</p>
+<p>new Cookie(“cityAddressId”, cityAddressId),</p>
+<p>new Cookie(“districtAddressId”, districtAddressId),</p>
+<p>new Cookie(“order_post”, URLEncoder.encode(productOrder_post, “UTF-8”)),</p>
+<p>new Cookie(“order_receiver”, URLEncoder.encode(productOrder_receiver, “UTF-8”)),</p>
+<p>new Cookie(“order_phone”, URLEncoder.encode(productOrder_mobile, “UTF-8”)),</p>
+<p>new Cookie(“detailsAddress”, URLEncoder.encode(productOrder_detail_address, “UTF-8”))</p>
+<p>};</p>
+<p>int maxAge = 60 * 60 * 24 * 365;</p>
+<p>for(Cookie cookie : cookies){</p>
+<p>//设置过期时间为一年</p>
+<p>cookie.setMaxAge(maxAge);</p>
+<p>//存储Cookie</p>
+<p>response.addCookie(cookie);</p>
+<p>StringBuffer productOrder_code = new StringBuffer()</p>
+<p>.append(new SimpleDateFormat(“yyyyMMddHHmmss”).format(new Date()))</p>
+<p>.append(0)</p>
+<p>.append(userId);</p>
+<p>logger.info(“生成的订单号为：{}”, productOrder_code);</p>
+<p>logger.info(“整合订单对象”);</p>
+<p>ProductOrder productOrder = new ProductOrder()</p>
+<p>.setProductOrder_status((byte) 0)</p>
+<p>.setProductOrder_address(new Address().setAddress_areaId(districtAddressId))</p>
+<p>.setProductOrder_post(productOrder_post)</p>
+<p>.setProductOrder_user(new User().setUser_id(Integer.valueOf(userId.toString())))</p>
+<p>.setProductOrder_mobile(productOrder_mobile)</p>
+<p>.setProductOrder_receiver(productOrder_receiver)</p>
+<p>.setProductOrder_detail_address(productOrder_detail_address)</p>
+<p>.setProductOrder_pay_date(new Date())</p>
+<p>.setProductOrder_code(productOrder_code.toString());</p>
+<p>Boolean yn = productOrderService.add(productOrder);</p>
+<p>if (!yn) {</p>
+<p>throw new RuntimeException();</p>
+<p>Integer order_id = lastIDService.selectLastID();</p>
+<p>logger.info(“整合订单项对象”);</p>
+<p>for (ProductOrderItem orderItem : productOrderItemList) {</p>
+<p>orderItem.setProductOrderItem_order(new ProductOrder().setProductOrder_id(order_id));</p>
+<p>yn = productOrderItemService.update(orderItem);</p>
+<p>if (!yn) {</p>
+<p>throw new RuntimeException();</p>
+<p>object.put(“success”, true);</p>
+<p>object.put(“url”, “/order/pay/“ + productOrder.getProductOrder_code());</p>
+<p>return object.toJSONString();</p>
+<p>//创建订单项-购物车-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “orderItem/create/{product_id}”, method = RequestMethod.POST, produces = “application/json;charset=utf-8”)</p>
+<p>public String createOrderItem(@PathVariable(“product_id”) Integer product_id,</p>
+<p>@RequestParam(required = false, defaultValue = “1”) Short product_number,</p>
+<p>HttpSession session,</p>
+<p>HttpServletRequest request) {</p>
+<p>JSONObject object = new JSONObject();</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>if (userId == null) {</p>
+<p>object.put(“url”, “/login”);</p>
+<p>object.put(“success”, false);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“通过产品ID获取产品信息：{}”, product_id);</p>
+<p>Product product = productService.get(product_id);</p>
+<p>if (product == null) {</p>
+<p>object.put(“url”, “/login”);</p>
+<p>object.put(“success”, false);</p>
+<p>return object.toJSONString();</p>
+<p>ProductOrderItem productOrderItem = new ProductOrderItem();</p>
+<p>logger.info(“检查用户的购物车项”);</p>
+<p>List<ProductOrderItem> orderItemList = productOrderItemService.getListByUserId(Integer.valueOf(userId.toString()), null);</ProductOrderItem></p>
+<p>for (ProductOrderItem orderItem : orderItemList) {</p>
+<p>if (orderItem.getProductOrderItem_product().getProduct_id().equals(product_id)) {</p>
+<p>logger.info(“找到已有的产品，进行数量追加”);</p>
+<p>int number = orderItem.getProductOrderItem_number();</p>
+<p>number += 1;</p>
+<p>productOrderItem.setProductOrderItem_id(orderItem.getProductOrderItem_id());</p>
+<p>productOrderItem.setProductOrderItem_number((short) number);</p>
+<p>productOrderItem.setProductOrderItem_price(number * product.getProduct_sale_price());</p>
+<p>boolean yn = productOrderItemService.update(productOrderItem);</p>
+<p>if (yn) {</p>
+<p>object.put(“success”, true);</p>
+<p>} else {</p>
+<p>object.put(“success”, false);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“封装订单项对象”);</p>
+<p>productOrderItem.setProductOrderItem_product(product);</p>
+<p>productOrderItem.setProductOrderItem_number(product_number);</p>
+<p>productOrderItem.setProductOrderItem_price(product.getProduct_sale_price() * product_number);</p>
+<p>productOrderItem.setProductOrderItem_user(new User().setUser_id(Integer.valueOf(userId.toString())));</p>
+<p>boolean yn = productOrderItemService.add(productOrderItem);</p>
+<p>if (yn) {</p>
+<p>object.put(“success”, true);</p>
+<p>} else {</p>
+<p>object.put(“success”, false);</p>
+<p>return object.toJSONString();</p>
+<p>//删除订单项-购物车-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “orderItem/{orderItem_id}”, method = RequestMethod.DELETE, produces = “application/json;charset=utf-8”)</p>
+<p>public String deleteOrderItem(@PathVariable(“orderItem_id”) Integer orderItem_id,</p>
+<p>HttpSession session,</p>
+<p>HttpServletRequest request) {</p>
+<p>JSONObject object = new JSONObject();</p>
+<p>logger.info(“检查用户是否登录”);</p>
+<p>Object userId = checkUser(session);</p>
+<p>if (userId == null) {</p>
+<p>object.put(“url”, “/login”);</p>
+<p>object.put(“success”, false);</p>
+<p>return object.toJSONString();</p>
+<p>logger.info(“检查用户的购物车项”);</p>
+<p>List<ProductOrderItem> orderItemList = productOrderItemService.getListByUserId(Integer.valueOf(userId.toString()), null);</ProductOrderItem></p>
+<p>boolean isMine = false;</p>
+<p>for (ProductOrderItem orderItem : orderItemList) {</p>
+<p>logger.info(“找到匹配的购物车项”);</p>
+<p>if (orderItem.getProductOrderItem_id().equals(orderItem_id)) {</p>
+<p>isMine = true;</p>
+<p>break;</p>
+<p>if (isMine) {</p>
+<p>logger.info(“删除订单项信息”);</p>
+<p>boolean yn = productOrderItemService.deleteList(new Integer[]{orderItem_id});</p>
+<p>if (yn) {</p>
+<p>object.put(“success”, true);</p>
+<p>} else {</p>
+<p>object.put(“success”, false);</p>
+<p>} else {</p>
+<p>object.put(“success”, false);</p>
+<p>return object.toJSONString();</p>
+<p>用户登录页:</p>
+<p>/**</p>
+<ul>
+<li>登陆页</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>public class ForeLoginController extends BaseController {</p>
+<p>@Resource(name = “userService”)</p>
+<p>private UserService userService;</p>
+<p>//转到前台天猫-登录页</p>
+<p>@RequestMapping(value = “login”, method = RequestMethod.GET)</p>
+<p>public String goToPage(HttpSession session, Map&lt;String, Object&gt; map) {</p>
+<p>logger.info(“转到前台天猫-登录页”);</p>
+<p>return “fore/loginPage”;</p>
+<p>@RequestMapping(value = “not”, method = RequestMethod.GET)</p>
+<p>public String not(HttpSession session, Map&lt;String, Object&gt; map) {</p>
+<p>logger.info(“转到cuwu页”);</p>
+<p>return “fore/not”;</p>
+<p>//登陆验证-ajax</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “login/doLogin”, method = RequestMethod.POST, produces = “application/json;charset=utf-8”)</p>
+<p>public String checkLogin(HttpSession session, @RequestParam String username, @RequestParam String password) {</p>
+<p>logger.info(“用户验证登录”);</p>
+<p>User user = userService.login(username, password);</p>
+<p>JSONObject jsonObject = new JSONObject();</p>
+<p>if (user == null) {</p>
+<p>logger.info(“登录验证失败”);</p>
+<p>jsonObject.put(“success”, false);</p>
+<p>} else {</p>
+<p>logger.info(“登录验证成功,用户ID传入会话”);</p>
+<p>session.setAttribute(“userId”, user.getUser_id());</p>
+<p>jsonObject.put(“success”, true);</p>
+<p>return jsonObject.toJSONString();</p>
+<p>//退出当前账号</p>
+<p>@RequestMapping(value = “login/logout”, method = RequestMethod.GET)</p>
+<p>public String logout(HttpSession session) {</p>
+<p>Object o = session.getAttribute(“userId”);</p>
+<p>if (o != null) {</p>
+<p>session.removeAttribute(“userId”);</p>
+<p>session.invalidate();</p>
+<p>logger.info(“登录信息已清除，返回用户登录页”);</p>
+<p>return “redirect:/login”;</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=251125140706201sh<br>https://javayms.pages.dev?id=251125140706201sh</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

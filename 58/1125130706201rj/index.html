@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot旅游管理系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/581125130706201rj/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot旅游管理系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/581125130706201rj/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot旅游管理系统(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified"></time>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tag"></i>
+                </span>
+                <time id="idText" itemprop="dateModified"></time>
+              </span>
+              <p id="browserWarningText" style="color:#FF0000;"></p>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/501025540706.jpg" alt="501025540706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/511025540706.jpg" alt="511025540706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/521025540706.jpg" alt="521025540706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/531025540706.jpg" alt="531025540706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/541025540706.jpg" alt="541025540706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/551025540706.jpg" alt="551025540706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/561025540706.jpg" alt="561025540706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/581025540706.jpg" alt="581025540706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/591025540706.jpg" alt="591025540706"></p>
+<p>基于javaweb的SpringBoot旅游管理系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>项目介绍</p>
+<p>基于Springboot+vue的旅游网站的设计与实现</p>
+<p>本系统分为前后台，包含管理员、用户两种角色，前台为普通用户登录，后台为管理员、用户分别登录。</p>
+<p>前台主要功能：首页、旅游线路、最新线路、旅游资讯、个人中心、购物车、客服、用户登录、用户注册等功能；</p>
+<p>后台管理员主要功能：首页、个人中心、用户管理、线路分类管理、旅游线路管理、最新线路管理、系统管理、订单管理等。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue+elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：</p>
+</li>
+</ol>
+<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootmt74k/front/index.html">http://localhost:8080/springbootmt74k/front/index.html</a></p>
+<p>后台地址</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/springbootmt74k/admin/dist/index.html">http://localhost:8080/springbootmt74k/admin/dist/index.html</a></p>
+<p>管理员：abo 密码：abo</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>系统登录页面展示：</p>
+<p>旅游路线页面展示：</p>
+<p>最新线路页面展示：</p>
+<p> 轮播图管理页面展示：</p>
+<p>旅游咨询页面展示：</p>
+<p>旅游路线推荐页面展示：</p>
+<p>路线页面展示：</p>
+<p>路线名称管理页面展示：</p>
+<p> 旅游用户登录页面展示：</p>
+<p>用户管理控制层： </p>
+<p>@Controller</p>
+<p>@RequestMapping(“/manager”)</p>
+<p>public class UserController extends BaseController {</p>
+<p>@Autowired</p>
+<p>UserService userService;</p>
+<p>@RequestMapping(“/userList”)</p>
+<p>public ModelAndView userList(PageParam pageParam, @RequestParam(value = “query”, required = false) String query) {</p>
+<p>ModelAndView mv = this.getModeAndView();</p>
+<p>if(pageParam.getPageNumber()&lt;1){</p>
+<p>pageParam =new PageParam();</p>
+<p>long count = 0;</p>
+<p>try {</p>
+<p>count = userService.count();</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>pageParam.setCount(count);</p>
+<p>if(count&lt;=10){</p>
+<p>pageParam.setSize(1);</p>
+<p>}else{</p>
+<p>pageParam.setSize(count%10==0?count/10:count/10+1);</p>
+<p>pageParam.setPageNumber(1);</p>
+<p>pageParam.setPageSize(10);</p>
+<p>List<User> list = userService.findByPage(pageParam.getPageNumber(),pageParam.getPageSize(), query);</User></p>
+<p>mv.addObject(“pageData”, list);</p>
+<p>if (Tools.notEmpty(query)) {</p>
+<p>mv.addObject(“query”, query);</p>
+<p>pageParam.setCount(list.size());</p>
+<p>if (list.size() &gt; pageParam.getPageSize()) {</p>
+<p>pageParam.setSize(list.size() / pageParam.getPageSize());</p>
+<p>} else {</p>
+<p>pageParam.setSize(1);</p>
+<p>mv.addObject(“pageParam”,pageParam);</p>
+<p>mv.setViewName(“user/allUsers”);</p>
+<p>return mv;</p>
+<p>@RequestMapping(“/userAdd”)</p>
+<p>public ModelAndView userAdd(){</p>
+<p>ModelAndView mv = this.getModeAndView();</p>
+<p>mv.addObject(“entity”,new User());</p>
+<p>mv.setViewName(“user/userEdit”);</p>
+<p>return mv;</p>
+<p>@RequestMapping(“/userView”)</p>
+<p>public ModelAndView userView(String id){</p>
+<p>ModelAndView mv = this.getModeAndView();</p>
+<p>try {</p>
+<p>mv.addObject(“entity”,userService.findById(id));</p>
+<p>}catch (Exception e){</p>
+<p>e.printStackTrace();</p>
+<p>mv.setViewName(“user/userView”);</p>
+<p>return mv;</p>
+<p>@RequestMapping(“/userEdit”)</p>
+<p>public ModelAndView userEdit(String id){</p>
+<p>ModelAndView mv = this.getModeAndView();</p>
+<p>try {</p>
+<p>mv.addObject(“entity”,userService.findById(id));</p>
+<p>}catch (Exception e){</p>
+<p>e.printStackTrace();</p>
+<p>mv.setViewName(“user/userEdit”);</p>
+<p>return mv;</p>
+<p>@RequestMapping(“/userSave”)</p>
+<p>public ModelAndView userSave(HttpServletRequest request, String id, RedirectAttributes redirectAttributes){</p>
+<p>ModelAndView mv = this.getModeAndView();</p>
+<p>User entity = null;</p>
+<p>try {</p>
+<p>if(Tools.notEmpty(id)){</p>
+<p>entity = userService.findById(id);</p>
+<p>}else{</p>
+<p>entity = new User();</p>
+<p>this.bindValidateRequestEntity(request,entity);</p>
+<p>if (Tools.isEmpty(entity.getId())){</p>
+<p>User object = userService.findByUserName(entity.getUserName());</p>
+<p>if (object != null) {</p>
+<p>mv.addObject(“message”,”用户名已存在!”);</p>
+<p>mv.addObject(“entity”,entity);</p>
+<p>mv.setViewName(“user/userEdit”);</p>
+<p>return mv;</p>
+<p>entity.setId(Tools.getUUID());</p>
+<p>userService.save(entity);</p>
+<p>}else{</p>
+<p>userService.update(entity);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>mv.addObject(“pageData”, userService.findByPage(1, 10,null));</p>
+<p>PageParam pageParam =new PageParam();</p>
+<p>long count = 0;</p>
+<p>try {</p>
+<p>count = userService.count();</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>pageParam.setCount(count);</p>
+<p>if(count&lt;=10){</p>
+<p>pageParam.setSize(1);</p>
+<p>}else{</p>
+<p>pageParam.setSize(count%10==0?count/10:count/10+1);</p>
+<p>pageParam.setPageNumber(1);</p>
+<p>pageParam.setPageSize(10);</p>
+<p>mv.addObject(“pageParam”,pageParam);</p>
+<p>mv.setViewName(“user/allUsers”);</p>
+<p>return mv;</p>
+<p>@RequestMapping(“/userDelete”)</p>
+<p>public String userDelete(String id){</p>
+<p>if(Tools.notEmpty(id)){</p>
+<p>try {</p>
+<p>userService.deleteByid(id);</p>
+<p>}catch (Exception e){</p>
+<p>e.printStackTrace();</p>
+<p>return REDIRECT+”/manager/userList”;</p>
+<p> 管理员订单管理控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/manager”)</p>
+<p>public class OrderController extends BaseController {</p>
+<p>@Autowired</p>
+<p>OrderService orderService;</p>
+<p>@RequestMapping(“/orderList”)</p>
+<p>public ModelAndView orderList(PageParam pageParam, @RequestParam(value = “query”, required = false) String query) {</p>
+<p>ModelAndView mv = this.getModeAndView();</p>
+<p>if(pageParam.getPageNumber()&lt;1){</p>
+<p>pageParam =new PageParam();</p>
+<p>long count = 0;</p>
+<p>try {</p>
+<p>count = orderService.count();</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>pageParam.setCount(count);</p>
+<p>if(count&lt;=10){</p>
+<p>pageParam.setSize(1);</p>
+<p>}else{</p>
+<p>pageParam.setSize(count%10==0?count/10:count/10+1);</p>
+<p>pageParam.setPageNumber(1);</p>
+<p>pageParam.setPageSize(10);</p>
+<p>List<Order> list = orderService.findByPage(pageParam.getPageNumber(),pageParam.getPageSize(), query);</Order></p>
+<p>mv.addObject(“pageData”, list);</p>
+<p>if (Tools.notEmpty(query)) {</p>
+<p>mv.addObject(“query”, query);</p>
+<p>pageParam.setCount(list.size());</p>
+<p>if (list.size() &gt; pageParam.getPageSize()) {</p>
+<p>pageParam.setSize(list.size() / pageParam.getPageSize());</p>
+<p>} else {</p>
+<p>pageParam.setSize(1);</p>
+<p>mv.addObject(“pageParam”,pageParam);</p>
+<p>mv.setViewName(“order/orderList”);</p>
+<p>return mv;</p>
+<p>@RequestMapping(“/orderAdd”)</p>
+<p>public ModelAndView travelRouteAdd(){</p>
+<p>ModelAndView mv = this.getModeAndView();</p>
+<p>mv.addObject(“entity”,new Order());</p>
+<p>mv.setViewName(“order/orderEdit”);</p>
+<p>return mv;</p>
+<p>@RequestMapping(“/orderView”)</p>
+<p>public ModelAndView orderView(String id){</p>
+<p>ModelAndView mv = this.getModeAndView();</p>
+<p>try {</p>
+<p>mv.addObject(“entity”,orderService.findById(id));</p>
+<p>}catch (Exception e){</p>
+<p>e.printStackTrace();</p>
+<p>mv.setViewName(“order/orderView”);</p>
+<p>return mv;</p>
+<p>@RequestMapping(“/orderEdit”)</p>
+<p>public ModelAndView orderEdit(String id){</p>
+<p>ModelAndView mv = this.getModeAndView();</p>
+<p>try {</p>
+<p>mv.addObject(“entity”,orderService.findById(id));</p>
+<p>}catch (Exception e){</p>
+<p>e.printStackTrace();</p>
+<p>mv.setViewName(“order/orderEdit”);</p>
+<p>return mv;</p>
+<p>@RequestMapping(“/orderSave”)</p>
+<p>public String orderSave(HttpServletRequest request, String id){</p>
+<p>Order entity = null;</p>
+<p>try {</p>
+<p>if(Tools.notEmpty(id)){</p>
+<p>entity = orderService.findById(id);</p>
+<p>}else{</p>
+<p>entity = new Order();</p>
+<p>this.bindValidateRequestEntity(request,entity);</p>
+<p>if (Tools.isEmpty(entity.getId())){</p>
+<p>entity.setId(Tools.getUUID());</p>
+<p>orderService.save(entity);</p>
+<p>}else{</p>
+<p>orderService.update(entity);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return REDIRECT+”/manager/orderList”;</p>
+<p>@RequestMapping(“/orderDelete”)</p>
+<p>public String orderDelete(String id){</p>
+<p>if(Tools.notEmpty(id)){</p>
+<p>try {</p>
+<p>orderService.deleteByid(id);</p>
+<p>}catch (Exception e){</p>
+<p>e.printStackTrace();</p>
+<p>return REDIRECT+”/manager/orderList”;</p>
+<p>旅行路线管理控制层： </p>
+<p>@Controller</p>
+<p>@RequestMapping(“/manager”)</p>
+<p>public class TravelRouteController extends BaseController {</p>
+<p>@Autowired</p>
+<p>TravelRouteService travelRouteService;</p>
+<p>@Value(“${yuanlrc.filePath}”)</p>
+<p>private String filePath;</p>
+<p>@RequestMapping(“/travelRouteList”)</p>
+<p>public ModelAndView travelRouteList(PageParam pageParam, @RequestParam(value = “query”, required = false) String query){</p>
+<p>ModelAndView mv = this.getModeAndView();</p>
+<p>if(pageParam.getPageNumber()&lt;1){</p>
+<p>pageParam =new PageParam();</p>
+<p>long count = 0;</p>
+<p>try {</p>
+<p>count = travelRouteService.count();</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>pageParam.setCount(count);</p>
+<p>if(count&lt;=10){</p>
+<p>pageParam.setSize(1);</p>
+<p>}else{</p>
+<p>pageParam.setSize(count%10==0?count/10:count/10+1);</p>
+<p>pageParam.setPageNumber(1);</p>
+<p>pageParam.setPageSize(10);</p>
+<p>List<TravelRoute> list = travelRouteService.findByPage(pageParam.getPageNumber(),pageParam.getPageSize(), query);</TravelRoute></p>
+<p>mv.addObject(“pageData”, list);</p>
+<p>if (Tools.notEmpty(query)) {</p>
+<p>mv.addObject(“query”, query);</p>
+<p>pageParam.setCount(list.size());</p>
+<p>if (list.size() &gt; pageParam.getPageSize()) {</p>
+<p>pageParam.setSize(list.size() / pageParam.getPageSize());</p>
+<p>} else {</p>
+<p>pageParam.setSize(1);</p>
+<p>mv.addObject(“pageParam”,pageParam);</p>
+<p>mv.setViewName(“travelRoute/travelRouteList”);</p>
+<p>return mv;</p>
+<p>@RequestMapping(“/travelRouteAdd”)</p>
+<p>public ModelAndView travelRouteAdd(){</p>
+<p>ModelAndView mv = this.getModeAndView();</p>
+<p>mv.addObject(“entity”,new TravelRoute());</p>
+<p>mv.setViewName(“travelRoute/travelRouteEdit”);</p>
+<p>return mv;</p>
+<p>@RequestMapping(“/travelRouteView”)</p>
+<p>public ModelAndView travelRouteView(String id){</p>
+<p>ModelAndView mv = this.getModeAndView();</p>
+<p>try {</p>
+<p>mv.addObject(“entity”,travelRouteService.findById(id));</p>
+<p>}catch (Exception e){</p>
+<p>e.printStackTrace();</p>
+<p>mv.setViewName(“travelRoute/travelRouteView”);</p>
+<p>return mv;</p>
+<p>@RequestMapping(“/travelRouteEdit”)</p>
+<p>public ModelAndView travelRouteEdit(String id){</p>
+<p>ModelAndView mv = this.getModeAndView();</p>
+<p>try {</p>
+<p>mv.addObject(“entity”,travelRouteService.findById(id));</p>
+<p>}catch (Exception e){</p>
+<p>e.printStackTrace();</p>
+<p>mv.setViewName(“travelRoute/travelRouteEdit”);</p>
+<p>return mv;</p>
+<p>@RequestMapping(“/travelRouteSave”)</p>
+<p>public String travelRouteSave(HttpServletRequest request, String id, @RequestParam(“fileName”) MultipartFile file){</p>
+<p>TravelRoute entity = null;</p>
+<p>try {</p>
+<p>if(Tools.notEmpty(id)){</p>
+<p>entity = travelRouteService.findById(id);</p>
+<p>}else{</p>
+<p>entity = new TravelRoute();</p>
+<p>this.bindValidateRequestEntity(request,entity);</p>
+<p>if(file != null &amp;&amp; !file.isEmpty()){</p>
+<p>String fileName = file.getOriginalFilename();</p>
+<p>int size = (int) file.getSize();</p>
+<p>System.out.println(fileName + “–&gt;” + size);</p>
+<p>String path =filePath+”/travelRoute”;</p>
+<p>File dest = new File(path + “/“ + fileName);</p>
+<p>if(!dest.getParentFile().exists()){ //判断文件父目录是否存在</p>
+<p>dest.getParentFile().mkdir();</p>
+<p>try {</p>
+<p>file.transferTo(dest); //保存文件</p>
+<p>entity.setImgUrl(“/travelRoute/“ + fileName);</p>
+<p>} catch (IllegalStateException e) {</p>
+<p>e.printStackTrace();</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>if (Tools.isEmpty(entity.getId())){</p>
+<p>entity.setId(Tools.getUUID());</p>
+<p>travelRouteService.save(entity);</p>
+<p>}else{</p>
+<p>travelRouteService.update(entity);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return REDIRECT+”/manager/travelRouteList”;</p>
+<p>@RequestMapping(“/travelRouteDelete”)</p>
+<p>public String travelRouteDelete(String id){</p>
+<p>if(Tools.notEmpty(id)){</p>
+<p>try {</p>
+<p>travelRouteService.deleteByid(id);</p>
+<p>}catch (Exception e){</p>
+<p>e.printStackTrace();</p>
+<p>return REDIRECT+”/manager/travelRouteList”;</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=581125130706201rj<br>https://javayms.pages.dev?id=581125130706201rj</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E6%97%85%E6%B8%B8/" rel="tag"><i class="fa fa-tag"></i> 旅游</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

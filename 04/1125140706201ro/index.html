@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot智能物流管理系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/041125140706201ro/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot智能物流管理系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/041125140706201ro/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot智能物流管理系统(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified"></time>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tag"></i>
+                </span>
+                <time id="idText" itemprop="dateModified"></time>
+              </span>
+              <p id="browserWarningText" style="color:#FF0000;"></p>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/391125040706.jpg" alt="391125040706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/411125040706.jpg" alt="411125040706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/421125040706.jpg" alt="421125040706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/431125040706.jpg" alt="431125040706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/441125040706.jpg" alt="441125040706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/451125040706.jpg" alt="451125040706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/461125040706.jpg" alt="461125040706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/471125040706.jpg" alt="471125040706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/481125040706.jpg" alt="481125040706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/491125040706.jpg" alt="491125040706"></p>
+<p>基于javaweb的SpringBoot智能物流管理系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； </p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue + elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：</p>
+</li>
+</ol>
+<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/front/index.html">http://localhost:8080/springbootrpj39/front/index.html</a></p>
+<p>后台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/admin/dist/index.html">http://localhost:8080/springbootrpj39/admin/dist/index.html</a></p>
+<p>管理员 abo 密码 abo</p>
+<p>用户：用户1 密码： 123456</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>运输点管理控制层代码：</p>
+<p>/**</p>
+<ul>
+<li>运输点管理控制层</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/admin/transport”)</p>
+<p>@Controller</p>
+<p>public class TransportController {</p>
+<p>@Autowired</p>
+<p>private UserService userService;</p>
+<p>@Autowired</p>
+<p>private RoleService roleService;</p>
+<p>@Autowired</p>
+<p>private OperaterLogService operaterLogService;</p>
+<p>/**</p>
+<ul>
+<li><p>运输点列表页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@param pageBean</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/list”)</p>
+<p>public String list(Model model, User user, PageBean<User> pageBean){</User></p>
+<p>model.addAttribute(“title”, “运输点列表”);</p>
+<p>model.addAttribute(“username”, user.getUsername());</p>
+<p>model.addAttribute(“pageBean”, userService.findList(pageBean,user.getUsername(), UserRoleTypeEnum.TRANSPORT));</p>
+<p>return “admin/transport/list”;</p>
+<p>/**</p>
+<ul>
+<li><p>新增运输点页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/add”,method= RequestMethod.GET)</p>
+<p>public String add(Model model){</p>
+<p>model.addAttribute(“roles”, roleService.findAllByRoleType(UserRoleTypeEnum.TRANSPORT));</p>
+<p>return “admin/transport/add”;</p>
+<p>/**</p>
+<ul>
+<li><p>运输点添加表单提交处理</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/add”,method= RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public Result<Boolean> add(User user){</Boolean></p>
+<p>//用统一验证实体方法验证是否合法</p>
+<p>CodeMsg validate = ValidateEntityUtil.validate(user);</p>
+<p>if(validate.getCode() != CodeMsg.SUCCESS.getCode()){</p>
+<p>return Result.error(validate);</p>
+<p>if(user.getAddress() == null){</p>
+<p>return Result.error(CodeMsg.ADDRESS_ERROR);</p>
+<p>if(user.getRole() == null || user.getRole().getId() == null){</p>
+<p>return Result.error(CodeMsg.TRANSPORT_USER_ROLE_EMPTY);</p>
+<p>//判断运输点名是否存在</p>
+<p>if(userService.isExistUsername(user.getUsername(), 0L)){</p>
+<p>return Result.error(CodeMsg.TRANSPORT_USERNAME_EXIST);</p>
+<p>user.setUserType(UserRoleTypeEnum.TRANSPORT);</p>
+<p>//到这说明一切符合条件，进行数据库新增</p>
+<p>if(userService.save(user) == null){</p>
+<p>return Result.error(CodeMsg.TRANSPORT_USE_ADD_ERROR);</p>
+<p>operaterLogService.add(“添加运输点，运输点名：” + user.getUsername());</p>
+<p>return Result.success(true);</p>
+<p>/**</p>
+<ul>
+<li><p>运输点编辑页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/edit”,method= RequestMethod.GET)</p>
+<p>public String edit(Model model, @RequestParam(name=”id”)Long id){</p>
+<p>model.addAttribute(“roles”, roleService.findAllByRoleType(UserRoleTypeEnum.TRANSPORT));</p>
+<p>model.addAttribute(“user”, userService.find(id));</p>
+<p>return “admin/transport/edit”;</p>
+<p>/**</p>
+<ul>
+<li><p>编辑运输点信息表单提交处理</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/edit”,method= RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public Result<Boolean> edit(User user){</Boolean></p>
+<p>//用统一验证实体方法验证是否合法</p>
+<p>CodeMsg validate = ValidateEntityUtil.validate(user);</p>
+<p>if(validate.getCode() != CodeMsg.SUCCESS.getCode()){</p>
+<p>return Result.error(validate);</p>
+<p>if(user.getAddress() == null){</p>
+<p>return Result.error(CodeMsg.ADDRESS_ERROR);</p>
+<p>if(user.getRole() == null || user.getRole().getId() == null){</p>
+<p>return Result.error(CodeMsg.TRANSPORT_USER_ROLE_EMPTY);</p>
+<p>if(user.getId() == null || user.getId().longValue() &lt;= 0){</p>
+<p>return Result.error(CodeMsg.TRANSPORT_USE_NO_EXIST);</p>
+<p>if(userService.isExistUsername(user.getUsername(), user.getId())){</p>
+<p>return Result.error(CodeMsg.TRANSPORT_USERNAME_EXIST);</p>
+<p>//到这说明一切符合条件，进行数据库保存</p>
+<p>User findById = userService.find(user.getId());</p>
+<p>//讲提交的运输点信息指定字段复制到已存在的user对象中,该方法会覆盖新字段内容</p>
+<p>BeanUtils.copyProperties(user, findById, “id”,”createTime”,”updateTime”,”userType”);</p>
+<p>if(userService.save(findById) == null){</p>
+<p>return Result.error(CodeMsg.TRANSPORT_USE_EDIT_ERROR);</p>
+<p>operaterLogService.add(“编辑运输点，运输点名：” + user.getUsername());</p>
+<p>return Result.success(true);</p>
+<p>/**</p>
+<ul>
+<li><p>删除运输点</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/delete”,method= RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public Result<Boolean> delete(@RequestParam(name=”id”)Long id){</Boolean></p>
+<p>try {</p>
+<p>userService.delete(id);</p>
+<p>} catch (Exception e) {</p>
+<p>return Result.error(CodeMsg.TRANSPORT_USE_DELETE_ERROR);</p>
+<p>operaterLogService.add(“删除运输点，运输点ID：” + id);</p>
+<p>return Result.success(true);</p>
+<p>登录控制层：</p>
+<p>@RestController</p>
+<p>public class LoginController {</p>
+<p>@Autowired</p>
+<p>AuthenticationManager authenticationManager;</p>
+<p>@Autowired</p>
+<p>private SysResourceService sysResourceService;</p>
+<p>@Autowired</p>
+<p>private SysRoleService sysRoleService;</p>
+<p>@Autowired</p>
+<p>private SysRoleResService sysRoleResService;</p>
+<p>@Autowired</p>
+<p>private EmployeeService employeeService;</p>
+<p>@Autowired</p>
+<p>private SysRoleEmpService sysRoleEmpService;</p>
+<p>//登录</p>
+<p>@PostMapping(value = “/login”)</p>
+<p>public User login(@RequestBody Map&lt;String,String&gt; params)  {</p>
+<p>System.out.println(params.get(“pwd”));</p>
+<p>User userInfo = SecurityUtils.login(params.get(“username”), params.get(“password”), authenticationManager);</p>
+<p>userInfo.setResources(this.sysResourceService.user_res(userInfo.getId().intValue()));</p>
+<p>return userInfo;</p>
+<p>@RequestMapping(“user_res”)</p>
+<p>public List<SysResource> user_res(){</SysResource></p>
+<p>try {</p>
+<p>//            System.out.println(SecurityUtils.getUserInfo());</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return null;</p>
+<p>//查询所有的角色</p>
+<p>@RequestMapping(“selectRoleAll”)</p>
+<p>public IPage<SysRole> selectRoleAll(@RequestBody Page page){</SysRole></p>
+<p>return  this.sysRoleService.page(page);</p>
+<p>//添加角色</p>
+<p>@RequestMapping(“addRole”)</p>
+<p>public SysRole addRole(@RequestBody SysRole role){</p>
+<p>this.sysRoleService.save(role);</p>
+<p>return role;</p>
+<p>//修改角色</p>
+<p>@RequestMapping(“updateRole”)</p>
+<p>public SysRole updateRole(@RequestBody SysRole role){</p>
+<p>this.sysRoleService.updateById(role);</p>
+<p>return role;</p>
+<p>//删除角色</p>
+<p>@RequestMapping(“delRole”)</p>
+<p>public Boolean delRole(int roleid){</p>
+<p>return this.sysRoleService.removeById(roleid);</p>
+<p>//查询所有的资源</p>
+<p>@RequestMapping(“selectRes”)</p>
+<p>public List<SysResource> selectRes(){</SysResource></p>
+<p>return this.sysResourceService.resAll();</p>
+<p>//查询所分配资源的角色拥有的资源</p>
+<p>@RequestMapping(“selectRo_Res”)</p>
+<p>public List<Integer> selectRo_Res(int roleid){</Integer></p>
+<p>return this.sysResourceService.selectRo_Res(roleid);</p>
+<p>//修改角色所拥有的资源</p>
+<p>@RequestMapping(“updateRoRes”)</p>
+<p>public int updateRoRes(@RequestBody ResDto resDto){</p>
+<p>this.sysRoleResService.updateRoRe(resDto);</p>
+<p>return 1;</p>
+<p>//查询当前网点所有用户</p>
+<p>@RequestMapping(“findEmpBran”)</p>
+<p>public IPage<Employee> findEmpBran(@RequestBody QueryDto queryDto){</Employee></p>
+<p>return this.employeeService.selectEmpByBid(queryDto);</p>
+<p>//查询所有的角色，无分页</p>
+<p>@RequestMapping(“findRoleAll”)</p>
+<p>public List<SysRole> findRoleAll(){</SysRole></p>
+<p>return this.sysRoleService.list();</p>
+<p>//查询所分配角色的用户拥有的角色</p>
+<p>@RequestMapping(“selectRo_Emp”)</p>
+<p>public List<Integer> selectRo_Emp(int empid){</Integer></p>
+<p>return this.sysRoleEmpService.selectRoEmp(empid);</p>
+<p>//修改所选用户的角色</p>
+<p>@RequestMapping(“updateRoEmp”)</p>
+<p>public int updateRoEmp(@RequestBody ResDto resDto){</p>
+<p>return this.sysRoleEmpService.updateRoRe(resDto);</p>
+<p>//逻辑删除员工</p>
+<p>@RequestMapping(“delEmp”)</p>
+<p>public int delEmp(int empid){</p>
+<p>this.employeeService.removeById(empid);</p>
+<p>return 1;</p>
+<p>班次管理控制层：</p>
+<p>@RestController</p>
+<p>@RequestMapping(“shift”)</p>
+<p>public class ShiftController {</p>
+<p>@Autowired</p>
+<p>private ShiftService shiftService;</p>
+<p>//查询所有班次</p>
+<p>@RequestMapping(“findShiftAll”)</p>
+<p>public IPage<Shift> findShiftAll(@RequestBody Page page){</Shift></p>
+<p>return this.shiftService.page(page);</p>
+<p>// 添加班次</p>
+<p>@RequestMapping(“addShift”)</p>
+<p>public Shift addShift(@RequestBody Shift shift){</p>
+<p>this.shiftService.save(shift);</p>
+<p>return shift;</p>
+<p>//根据id查询班次</p>
+<p>@RequestMapping(“findShiftBid”)</p>
+<p>public Shift findShiftBid(int shiftid){</p>
+<p>return this.shiftService.getById(shiftid);</p>
+<p>//保存修改的班次</p>
+<p>@RequestMapping(“updateShift”)</p>
+<p>public int updateShift(@RequestBody Shift shift){</p>
+<p>this.shiftService.updateById(shift);</p>
+<p>return 1;</p>
+<p>//删除班次</p>
+<p>@RequestMapping(“delShift”)</p>
+<p>public int delShift(int shiftid){</p>
+<p>this.shiftService.removeById(shiftid);</p>
+<p>return 1;</p>
+<p>网点管理控制层：</p>
+<p>@RestController</p>
+<p>@RequestMapping(“/branch”)</p>
+<p>public class BranchControllers {</p>
+<p>@Autowired</p>
+<p>private BranchService branchService;</p>
+<p>//父子级别查询网点</p>
+<p>@RequestMapping(“findBranch”)</p>
+<p>public List<Branch> findBranch(){</Branch></p>
+<p>return this.branchService.findBranch();</p>
+<p>//查询所有网点</p>
+<p>@RequestMapping(“findBranchAll”)</p>
+<p>public List<Branch> findBranchAll(){</Branch></p>
+<p>return this.branchService.list();</p>
+<p>//根据ID查询网点</p>
+<p>@RequestMapping(“findBranchBid”)</p>
+<p>public Branch findBranchBid(int bid){</p>
+<p>return this.branchService.getById(bid);</p>
+<p>//添加网点</p>
+<p>@RequestMapping(“addBranch”)</p>
+<p>public Branch addBranch(@RequestBody Branch branch){</p>
+<p>this.branchService.save(branch);</p>
+<p>return branch;</p>
+<p>//修改网点</p>
+<p>@RequestMapping(“updateBranch”)</p>
+<p>public Branch updateBranch(@RequestBody Branch branch){</p>
+<p>this.branchService.updateById(branch);</p>
+<p>return branch;</p>
+<p>@RequestMapping(“findPath”)</p>
+<p>public List<Branch> findPath(String wid){</Branch></p>
+<p>return this.branchService.findPath(wid);</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=041125140706201ro<br>https://javayms.pages.dev?id=041125140706201ro</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E5%BF%AB%E9%80%92-%E7%89%A9%E6%B5%81/" rel="tag"><i class="fa fa-tag"></i> 快递 | 物流</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

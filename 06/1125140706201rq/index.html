@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot校园资料分享平台(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/061125140706201rq/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot校园资料分享平台(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/061125140706201rq/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot校园资料分享平台(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified"></time>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tag"></i>
+                </span>
+                <time id="idText" itemprop="dateModified"></time>
+              </span>
+              <p id="browserWarningText" style="color:#FF0000;"></p>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/001125000706.jpg" alt="001125000706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/011125000706.jpg" alt="011125000706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/021125000706.jpg" alt="021125000706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/031125000706.jpg" alt="031125000706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/531025590706.jpg" alt="531025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/551025590706.jpg" alt="551025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/561025590706.jpg" alt="561025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/571025590706.jpg" alt="571025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/581025590706.jpg" alt="581025590706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/591025590706.jpg" alt="591025590706"></p>
+<p>基于javaweb的SpringBoot校园资料分享平台(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>项目介绍</p>
+<p>springboot校园资料分享平台</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是javajdk1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows7/8/101G内存以上；或者MacOS；</p>
+<p>4.数据库：MySql5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue+elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<p>1.使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+<p>2.使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行mavenclean;maveninstall命令；</p>
+<p>3.将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+<p>4.运行项目，在浏览器中输入地址：</p>
+<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/front/index.html">http://localhost:8080/springbootrpj39/front/index.html</a></p>
+<p>后台地址</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/admin/dist/index.html">http://localhost:8080/springbootrpj39/admin/dist/index.html</a></p>
+<p>管理员abo密码abo</p>
+<p>用户：用户1密码：123456</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>用户管理控制层：</p>
+<p>@RequestMapping(“/user”)</p>
+<p>@RestController //标识为返回类型为Json的控制器</p>
+<p>public class UserController {</p>
+<p>//自动注入服务类</p>
+<p>@Autowired</p>
+<p>private IUserService userService;</p>
+<p>@Autowired</p>
+<p>private TStudentService studentService;</p>
+<p>//标识请求地址</p>
+<p>@RequestMapping(“/login”)</p>
+<p>public ResultObject&lt;List<User>&gt; getUsers(User user,HttpServletRequest request) {</User></p>
+<p>//查询用户列表</p>
+<p>List<User> list= userService.getUser(user);</User></p>
+<p>ResultObject&lt;List<User>&gt; rs=new ResultObject&lt;List<User>&gt;();</User></User></p>
+<p>if(list.isEmpty()) {</p>
+<p>//状态码</p>
+<p>rs.setCode(Constant.FAILURE_RETUEN_CODE);</p>
+<p>//提示</p>
+<p>rs.setMsg(“登录失败”);</p>
+<p>}else {</p>
+<p>//状态码</p>
+<p>rs.setCode(Constant.SUCCESS_RETUEN_CODE);</p>
+<p>request.getSession().setAttribute(“user”, list.get(0));</p>
+<p>//提示</p>
+<p>rs.setMsg(“登录成功”);</p>
+<p>//数据</p>
+<p>rs.setData(list);</p>
+<p>return rs;</p>
+<p>@RequestMapping(“/loginOut”)</p>
+<p>public ResultObject<Object> loginOut(HttpServletRequest request) {</Object></p>
+<p>//查询用户列表</p>
+<p>ResultObject<Object> rs=new ResultObject<Object>();</Object></Object></p>
+<p>request.getSession().removeAttribute(“user”);</p>
+<p>//数据</p>
+<p>rs.setCode(Constant.SUCCESS_RETUEN_CODE);</p>
+<p>rs.setMsg(“退出成功”);</p>
+<p>return rs;</p>
+<p>//标识请求地址</p>
+<p>@RequestMapping(“/studentLogin”)</p>
+<p>public ResultObject&lt;List<TStudent>&gt; studentLogin(User user,HttpServletRequest request) {</TStudent></p>
+<p>//查询用户列表</p>
+<p>TStudent student=new TStudent();</p>
+<p>student.setStudentNo(Integer.parseInt(user.getUserName()));</p>
+<p>student.setStuPass(user.getPassword());</p>
+<p>List<TStudent> list= studentService.selectloginStudent(student);</TStudent></p>
+<p>ResultObject&lt;List<TStudent>&gt; rs=new ResultObject&lt;List<TStudent>&gt;();</TStudent></TStudent></p>
+<p>if(list.isEmpty()) {</p>
+<p>//状态码</p>
+<p>rs.setCode(Constant.FAILURE_RETUEN_CODE);</p>
+<p>//提示</p>
+<p>rs.setMsg(“登录失败”);</p>
+<p>}else {</p>
+<p>//状态码</p>
+<p>rs.setCode(Constant.SUCCESS_RETUEN_CODE);</p>
+<p>request.getSession().setAttribute(“student”, list.get(0));</p>
+<p>//提示</p>
+<p>rs.setMsg(“登录成功”);</p>
+<p>//数据</p>
+<p>rs.setData(list);</p>
+<p>return rs;</p>
+<p>@RequestMapping(“/studentloginOut”)</p>
+<p>public ResultObject<Object> studentloginOut(HttpServletRequest request) {</Object></p>
+<p>//查询用户列表</p>
+<p>ResultObject<Object> rs=new ResultObject<Object>();</Object></Object></p>
+<p>request.getSession().removeAttribute(“student”);</p>
+<p>//数据</p>
+<p>rs.setCode(Constant.SUCCESS_RETUEN_CODE);</p>
+<p>rs.setMsg(“退出成功”);</p>
+<p>return rs;</p>
+<p>教师管理控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(value=”/teacher”)</p>
+<p>public class TeacherController {</p>
+<p>@Autowired</p>
+<p>private TeacherService teacherService;</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value=”/list”)</p>
+<p>public String getTeacherList(@RequestParam(defaultValue=”0”)int curr,@RequestParam(defaultValue=”10”)int nums,</p>
+<p>@RequestParam(defaultValue=””)String searchKey) {</p>
+<p>Pagination<Teacher> page = new Pagination<Teacher>();</Teacher></Teacher></p>
+<p>page.setTotalItemsCount(teacherService.getTotalItemsCount(searchKey));</p>
+<p>page.setPageSize(nums);</p>
+<p>page.setPageNum(curr);</p>
+<p>List<Teacher> list = teacherService.getTeacher(page, searchKey);</Teacher></p>
+<p>String jsonStr = StrUtil.RETURN_JONS_PRE_STR + page.getTotalItemsCount()</p>
+<ul>
+<li><p>StrUtil.RETURN_JONS_MID_STR</p>
+</li>
+<li><p>JSON.toJSONString(list) + StrUtil.RETURN_JONS_END_STR;</p>
+</li>
+</ul>
+<p>return jsonStr;</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value=”/listForSelect”)</p>
+<p>public String getTeacherListForSelect(@RequestParam(defaultValue=””) String searchKey) {</p>
+<p>List<Teacher> list = teacherService.getTeacherForSelect(searchKey);</Teacher></p>
+<p>String jsonStr = StrUtil.RETURN_JONS_PRE_STR + list.size()</p>
+<ul>
+<li><p>StrUtil.RETURN_JONS_MID_STR</p>
+</li>
+<li><p>JSON.toJSONString(list) + StrUtil.RETURN_JONS_END_STR;</p>
+</li>
+</ul>
+<p>return jsonStr;</p>
+<p>@RequestMapping(value=”/addPage”)</p>
+<p>public ModelAndView toAddPage() {</p>
+<p>return new ModelAndView(“/teacherAdd”);</p>
+<p>/**</p>
+<ul>
+<li><p>增加，或者修改teacher</p>
+</li>
+<li><p>@param opType</p>
+</li>
+<li><p>@param teacher</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value=”/add”)</p>
+<p>public String addTeacher(@RequestParam(defaultValue=”2”) int opType, Teacher teacher) {</p>
+<p>int res = 0;</p>
+<p>if (opType == 0) {</p>
+<p>try {</p>
+<p>teacher.setPassword(teacher.getPassword().toUpperCase());</p>
+<p>res = teacherService.addTeacher(teacher);</p>
+<p>} catch (Exception e) {</p>
+<p>System.out.println(“添加失败！学号重复！”);</p>
+<p>return “添加失败！工号重复！”;</p>
+<p>if (res &gt; 0)</p>
+<p>return StrUtil.RESULT_TRUE;</p>
+<p>return “添加失败”;</p>
+<p>} else if (opType == 1) {</p>
+<p>teacher.setPassword(null);</p>
+<p>res = teacherService.updateTeacher(teacher);</p>
+<p>if (res &gt; 0) return StrUtil.RESULT_TRUE;</p>
+<p>return “修改失败！”;</p>
+<p>return “error”;</p>
+<p>/**</p>
+<ul>
+<li><p>重置密码</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value=”/resetPswd”)</p>
+<p>public String resetPasswrd(String id) {</p>
+<p>Teacher teacher = new Teacher();</p>
+<p>teacher.setId(id);</p>
+<p>teacher.setPassword(MD5Util.MD5(“123456”));</p>
+<p>if (teacherService.updateTeacher(teacher) &gt; 0) return StrUtil.RESULT_TRUE;</p>
+<p>return “修改失败！”;</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value=”/delete”)</p>
+<p>public String deleteStudnet(Teacher t) {</p>
+<p>if (teacherService.deleteTeacher(t) &gt; 0) return StrUtil.RESULT_TRUE;</p>
+<p>return “删除失败！”;</p>
+<p>/**</p>
+<ul>
+<li><p>批量删除</p>
+</li>
+<li><p>@param tIds</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value=”/deleteList”)</p>
+<p>public String deleteStudnetList(String tIds) {</p>
+<p>List<String> list = new ArrayList<String>();</String></String></p>
+<p>try {</p>
+<p>String[] ids = tIds.split(“,”);</p>
+<p>for (String id: ids) {</p>
+<p>list.add(id);</p>
+<p>if (teacherService.deleteTeacher(list) &gt; 0) {</p>
+<p>return StrUtil.RESULT_TRUE;</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return “删除失败！参数出错！”;//</p>
+<p>return “删除失败！”;</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(“/import”)</p>
+<p>public String impotr(HttpServletRequest request, MultipartFile file) {</p>
+<p>//获取上传的文件</p>
+<p>InputStream in = null;</p>
+<p>try {</p>
+<p>in = file.getInputStream();</p>
+<p>//数据导入</p>
+<p>int res = teacherService.importExcelInfo(in,file);</p>
+<p>if (res &gt; 0) {</p>
+<p>return StrUtil.RETURN_JONS_PRE_STR+”0”</p>
+<p>+StrUtil.RETURN_JONS_MID_STR+”true”</p>
+<p>+StrUtil.RETURN_JONS_END_STR;</p>
+<p>} else {</p>
+<p>return StrUtil.RETURN_JONS_PRE_STR+”0”</p>
+<p>+StrUtil.RETURN_JONS_MID_STR+”false”</p>
+<p>+StrUtil.RETURN_JONS_END_STR;</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return StrUtil.RETURN_JONS_PRE_STR+”0”</p>
+<p>+StrUtil.RETURN_JONS_MID_STR+”error”</p>
+<p>+StrUtil.RETURN_JONS_END_STR;</p>
+<p>} finally {</p>
+<p>if (in != null)</p>
+<p>try {</p>
+<p>in.close();</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>登录管理控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(value=”/login”)</p>
+<p>public class LoginController {</p>
+<p>@Autowired</p>
+<p>AuthService authService;</p>
+<p>@Autowired</p>
+<p>AdminService adminServiceImpl;</p>
+<p>@Autowired</p>
+<p>TeacherService teacherServiceImpl;</p>
+<p>@Autowired</p>
+<p>StudentService studentServiceImpl;</p>
+<p>@RequestMapping(value=”/loginPage”)</p>
+<p>public ModelAndView toLoginPage() {</p>
+<p>return new ModelAndView(“login”);</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value=”/doLogin”)</p>
+<p>public String doLogin(@RequestParam(defaultValue=””) String username,</p>
+<p>@RequestParam(defaultValue=””) String password,</p>
+<p>@RequestParam(defaultValue=”0”) int userType,</p>
+<p>@RequestParam(defaultValue=””) String verifyCode, HttpSession session) {</p>
+<p>//比较验证码</p>
+<p>String sessionVerifyCode = (String) session.getAttribute(StrUtil.VERIFY_CODE);</p>
+<p>if (sessionVerifyCode == null || !sessionVerifyCode.equals(verifyCode.toUpperCase()) ) {</p>
+<p>return StrUtil.CODE_ERROR;</p>
+<p>Login loginUser = null;</p>
+<p>if (userType == 1) {</p>
+<p>loginUser = (Login) adminServiceImpl;</p>
+<p>} else if(userType == 2) {</p>
+<p>loginUser = (Login) teacherServiceImpl;</p>
+<p>} else if(userType == 3) {</p>
+<p>loginUser = (Login) studentServiceImpl;</p>
+<p>User user = loginUser.loginValidate(username, password.toUpperCase());//获得验证后user对象</p>
+<p>if (user != null) {</p>
+<p>//List<Auth> menuList = authService.getMenuList(user.getUserType());</Auth></p>
+<p>List<Auth> urlList = authService.getUrlList(user.getUserType());</Auth></p>
+<p>user.setUrlList(urlList);</p>
+<p>//user.setMenuList(menuList);</p>
+<p>session.setAttribute(StrUtil.USER, user);</p>
+<p>return JSON.toJSONString(user);</p>
+<p>return StrUtil.RESULT_FALSE;</p>
+<p>@RequestMapping(value=”/out”)</p>
+<p>public ModelAndView loginOut(HttpSession session) {</p>
+<p>session.invalidate();//销毁sessions</p>
+<p>//请求重定向到主页（login页）</p>
+<p>return new ModelAndView(“redirect:/“);</p>
+<p>@RequestMapping(value=”/getVerifyCode”)</p>
+<p>public void getVerifyCode(HttpServletResponse response, HttpSession session) {</p>
+<p>ByteArrayOutputStream output = new ByteArrayOutputStream();</p>
+<p>session.setAttribute(“verifyCode”, drawCodeImg(output));</p>
+<p>try {</p>
+<p>ServletOutputStream out = response.getOutputStream();</p>
+<p>output.writeTo(out);</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p>绘出验证码</p>
+</li>
+<li><p>@param output</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>private String drawCodeImg(ByteArrayOutputStream output) {</p>
+<p>String code = “”;</p>
+<p>for (int i = 0; i &lt; 4; i++) {</p>
+<p>code += randomChar();</p>
+<p>int width = 70;</p>
+<p>int height = 36;</p>
+<p>BufferedImage bImage = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);</p>
+<p>Font font = new Font(“Times New Roman”, Font.PLAIN, 20);</p>
+<p>Graphics2D graphics = bImage.createGraphics();</p>
+<p>graphics.setFont(font);</p>
+<p>graphics.setColor(new Color(66,2,82));</p>
+<p>graphics.setBackground(new Color(226,226,240));</p>
+<p>graphics.clearRect(0, 0, width, height);</p>
+<p>FontRenderContext context = graphics.getFontRenderContext();</p>
+<p>Rectangle2D bounds = font.getStringBounds(code, context);</p>
+<p>double x = (width - bounds.getWidth()) / 2;</p>
+<p>double y = (height - bounds.getHeight()) / 2;</p>
+<p>double ascent = bounds.getY();</p>
+<p>double baseY = y - ascent;</p>
+<p>graphics.drawString(code, (int) x, (int) baseY);</p>
+<p>graphics.dispose();</p>
+<p>try {</p>
+<p>ImageIO.write(bImage, “jpg”, output);</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>return code;</p>
+<p>/**</p>
+<ul>
+<li><p>返回一个随机字符</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>private char randomChar() {</p>
+<p>Random r = new Random();</p>
+<p>String str = “ABCDEFGHJKLMNPRSTUVWXYZ0123456789”;</p>
+<p>return str.charAt(r.nextInt(str.length()));</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=061125140706201rq<br>https://javayms.pages.dev?id=061125140706201rq</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 学习</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot网上超市系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/221125140706201se/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot网上超市系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/221125140706201se/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot网上超市系统(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified"></time>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tag"></i>
+                </span>
+                <time id="idText" itemprop="dateModified"></time>
+              </span>
+              <p id="browserWarningText" style="color:#FF0000;"></p>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/441025550706.jpg" alt="441025550706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/451025550706.jpg" alt="451025550706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/461025550706.jpg" alt="461025550706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/471025550706.jpg" alt="471025550706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/481025550706.jpg" alt="481025550706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/491025550706.jpg" alt="491025550706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/501025550706.jpg" alt="501025550706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/511025550706.jpg" alt="511025550706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/531025550706.jpg" alt="531025550706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project05/541025550706.jpg" alt="541025550706"></p>
+<p>基于javaweb的SpringBoot网上超市系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>项目介绍</p>
+<p>基于SpringBoot+vue网上超市的设计与实现</p>
+<p>本系统分为前后台，包含管理员、普通用户两种角色，前台为普通用户登录，后台为管理员、普通用户分别登录。</p>
+<p>前台主要功能：首页、商品信息、商品资讯、个人中心、我的订单、我的地址、我的收藏、用户登录、用户注册、购物车等功能；</p>
+<p>后台管理员主要功能：首页、个人中心、用户管理、商品分类管理、商品信息管理、商品评价管理、系统管理、订单管理等。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； </p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue+elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：</p>
+</li>
+</ol>
+<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/wangshangchaoshi/front/index.html">http://localhost:8080/wangshangchaoshi/front/index.html</a></p>
+<p>后台地址: <a target="_blank" rel="noopener" href="http://localhost:8080/wangshangchaoshi/admin/dist/index.html#/login">http://localhost:8080/wangshangchaoshi/admin/dist/index.html#/login</a> </p>
+<p>管理员 admin 密码：admin </p>
+<p>用户：用户1 密码： 123456</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>登录页面展示：</p>
+<p>管理员登录展示：</p>
+<p>用户信息管理：</p>
+<p>商品分类管理展示：</p>
+<p>用户登录管理页面：</p>
+<p>商品信息推荐页面：</p>
+<p>商品展示页面：</p>
+<p>商品信息展示：</p>
+<p>商品信息展示：</p>
+<p> 系统后台管理展示：</p>
+<p> 订单管理控制层：</p>
+<p>@RestController</p>
+<p>@RequestMapping(value = “/order”)</p>
+<p>public class OrderController {</p>
+<p>private OrderService orderServiceImpl;</p>
+<p>public OrderController(OrderService orderServiceImpl) {</p>
+<p>this.orderServiceImpl = orderServiceImpl;</p>
+<p>@PostMapping(value = “/addOrder”)</p>
+<p>public int addOrder(Order order, HttpServletRequest request) {</p>
+<p>HttpSession session = request.getSession();</p>
+<p>Employee emp = (Employee) session.getAttribute(“emp”);</p>
+<p>order.setCreater(emp.getName());</p>
+<p>order.setUpdater(emp.getName());</p>
+<p>return orderServiceImpl.addOrder(order);</p>
+<p>@PostMapping(value = “/delOrder/{id}”)</p>
+<p>public int delOrder(@PathVariable(“id”) int id) {</p>
+<p>return orderServiceImpl.delOrder(id);</p>
+<p>@PostMapping(value = “/updateOrder”)</p>
+<p>public int updateOrder(Order order, HttpServletRequest request) {</p>
+<p>HttpSession session = request.getSession();</p>
+<p>Employee emp = (Employee) session.getAttribute(“emp”);</p>
+<p>order.setUpdater(emp.getName());</p>
+<p>return orderServiceImpl.updateOrder(order);</p>
+<p>@GetMapping(value = “/findAllOrdersByPage”)</p>
+<p>public PageInfo<Order> findAllOrdersByPage(PageInfo<Order> info,</Order></Order></p>
+<p>@RequestParam(value = “no”, defaultValue = “”) String no) {</p>
+<p>return orderServiceImpl.findAllOrdersByPage(info, no);</p>
+<p>@GetMapping(value = “/findById/{id}”)</p>
+<p>public Order findById(@PathVariable(“id”) int id) {</p>
+<p>return orderServiceImpl.findById(id);</p>
+<p> 商品管理控制层：</p>
+<p>@RestController</p>
+<p>@RequestMapping(value = “/goods”)</p>
+<p>public class GoodsController {</p>
+<p>private Logger logger = LoggerFactory.getLogger(GoodsController.class);</p>
+<p>private GoodsService goodsServiceImpl;</p>
+<p>public GoodsController(GoodsService goodsServiceImpl) {</p>
+<p>this.goodsServiceImpl = goodsServiceImpl;</p>
+<p>@PostMapping(value = “/addGoodsType”)</p>
+<p>public int addGoodsType(GoodsType type) {</p>
+<p>return goodsServiceImpl.addGoodsType(type);</p>
+<p>@PostMapping(value = “/delGoodsType/{id}”)</p>
+<p>public int delGoodsType(@PathVariable(“id”) String id) {</p>
+<p>return goodsServiceImpl.delGoodsType(id);</p>
+<p>@PostMapping(value = “/updateGoodsType”)</p>
+<p>public int updateGoodsType(GoodsType type) {</p>
+<p>return goodsServiceImpl.updateGoodsType(type);</p>
+<p>@GetMapping(value = “/findById/{id}”)</p>
+<p>public GoodsType findById(@PathVariable(“id”) String id) {</p>
+<p>return goodsServiceImpl.findById(id);</p>
+<p>@GetMapping(value = “/findByName”)</p>
+<p>public GoodsType findByName(@RequestParam(“name”) String name) {</p>
+<p>return goodsServiceImpl.findByName(name);</p>
+<p>@GetMapping(value = “/findAllByPage”)</p>
+<p>public PageInfo<GoodsType> findAllByPage(PageInfo<GoodsType> info,</GoodsType></GoodsType></p>
+<p>@RequestParam(value = “name”, defaultValue = “”) String name) {</p>
+<p>return goodsServiceImpl.findAllByPage(info, name);</p>
+<p>@GetMapping(value = “/getEcharts”)</p>
+<p>public Map&lt;String, Object&gt; getGoodsTypeEcharts() {</p>
+<p>return goodsServiceImpl.getGoodsTypeEcharts();</p>
+<p>@GetMapping(value = “/findAllType”)</p>
+<p>public List<GoodsType> findAllType() {</GoodsType></p>
+<p>return goodsServiceImpl.findAllType();</p>
+<p>@PostMapping(value = “/addGoods”)</p>
+<p>public int addGoods(Goods goods) {</p>
+<p>return goodsServiceImpl.addGoods(goods);</p>
+<p>@PostMapping(value = “/delGoods/{id}”)</p>
+<p>public int delGoods(@PathVariable(“id”) int id) {</p>
+<p>return goodsServiceImpl.delGoods(id);</p>
+<p>@PostMapping(value = “/updateGoods”)</p>
+<p>public int updateGoods(Goods goods) {</p>
+<p>return goodsServiceImpl.updateGoods(goods);</p>
+<p>@GetMapping(value = “/findGoodsByPage”)</p>
+<p>public PageInfo<Goods> findGoodsByPage(PageInfo<Goods> info,</Goods></Goods></p>
+<p>@RequestParam(value = “type”, defaultValue = “”) String type,</p>
+<p>@RequestParam(value = “name”, defaultValue = “”) String name) {</p>
+<p>return goodsServiceImpl.findGoodsByPage(info, type, name);</p>
+<p>@GetMapping(value = “/findGoodsById/{id}”)</p>
+<p>public Goods findGoodsById(@PathVariable(“id”) int id) {</p>
+<p>return goodsServiceImpl.findGoodsById(id);</p>
+<p>@GetMapping(value = “/findAllGoodsByName”)</p>
+<p>public List<String> findAllGoodsByName(@RequestParam(value = “name”, defaultValue = “”) String name) {</String></p>
+<p>return goodsServiceImpl.findAllGoodsByName(name);</p>
+<p>供应商管理控制层：</p>
+<p>@RestController</p>
+<p>@RequestMapping(value = “/provider”)</p>
+<p>public class ProviderController {</p>
+<p>private Logger logger = LoggerFactory.getLogger(ProviderController.class);</p>
+<p>private ProviderService providerServiceImpl;</p>
+<p>public ProviderController(ProviderService providerServiceImpl) {</p>
+<p>this.providerServiceImpl = providerServiceImpl;</p>
+<p>@PostMapping(value = “/addProvider”)</p>
+<p>public int addProvider(Provider provider) {</p>
+<p>return providerServiceImpl.addProvider(provider);</p>
+<p>@PostMapping(value = “/delProvider/{id}”)</p>
+<p>public int delProvider(@PathVariable(“id”) String id) {</p>
+<p>return providerServiceImpl.delProvider(id);</p>
+<p>@PostMapping(value = “/updateProvider”)</p>
+<p>public int updateProvider(Provider provider) {</p>
+<p>return providerServiceImpl.updateProvider(provider);</p>
+<p>@GetMapping(value = “/findById/{id}”)</p>
+<p>public Provider findById(@PathVariable(“id”) int id) {</p>
+<p>return providerServiceImpl.findById(id);</p>
+<p>@GetMapping(value = “/findByName”)</p>
+<p>public Provider findByName(@RequestParam(“name”) String name) {</p>
+<p>return providerServiceImpl.findByName(name);</p>
+<p>@GetMapping(value = “/findAllByPage”)</p>
+<p>public PageInfo<Provider> findAllByPage(PageInfo<Provider> info,</Provider></Provider></p>
+<p>@RequestParam(value = “name”, defaultValue = “”) String name) {</p>
+<p>return providerServiceImpl.findAll(info, name);</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=221125140706201se<br>https://javayms.pages.dev?id=221125140706201se</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

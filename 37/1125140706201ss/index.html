@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot非物质文化系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/371125140706201ss/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot非物质文化系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/371125140706201ss/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot非物质文化系统(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified"></time>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tag"></i>
+                </span>
+                <time id="idText" itemprop="dateModified"></time>
+              </span>
+              <p id="browserWarningText" style="color:#FF0000;"></p>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/401025560706.jpg" alt="401025560706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/411025560706.jpg" alt="411025560706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/421025560706.jpg" alt="421025560706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/431025560706.jpg" alt="431025560706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/441025560706.jpg" alt="441025560706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/451025560706.jpg" alt="451025560706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/461025560706.jpg" alt="461025560706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/481025560706.jpg" alt="481025560706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/491025560706.jpg" alt="491025560706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/501025560706.jpg" alt="501025560706"></p>
+<p>基于javaweb的SpringBoot非物质文化系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>项目介绍</p>
+<p>基于Springboot+vue甘肃非物质文化网站的设计与开发</p>
+<p>本系统分为前后台，包含管理员、用户两种角色，前台为用户登录，后台为管理员、用户分别登录。</p>
+<p>前台主要功能：首页、商品信息、传承人展示、非物质文化展览、用户个人中心、我的订单、我的地址、我的收藏、购物车、客服等功能；</p>
+<p>后台管理员主要功能：首页、个人中心、用户管理、商品分类管理、申请管理、商品信息管理、商品评价管理、系统管理、订单管理等。</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； </p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue+elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：</p>
+</li>
+</ol>
+<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/feiwuzhiwenhua/front/pages/login/login.html">http://localhost:8080/feiwuzhiwenhua/front/pages/login/login.html</a> </p>
+<p>后台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/feiwuzhiwenhua/admin/dist/index.html#/login">http://localhost:8080/feiwuzhiwenhua/admin/dist/index.html#/login</a></p>
+<p>管理员 admin 密码：admin </p>
+<p>用户：用户1 密码： 123456</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>登录页面展示：</p>
+<p>用户页面展示：</p>
+<p>商品列表展示： </p>
+<p> 尚品佳管理页面展示：</p>
+<p>用户注册页面展示：</p>
+<p>商品介绍信息展示：</p>
+<p> 个人介绍信息展示：</p>
+<p>收货地址页面展示： </p>
+<p>用户信息服务：</p>
+<p>@WebServlet(“/toUserInfoServlet”)</p>
+<p>public class ToUserInfoServlet extends HttpServlet {</p>
+<p>protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p>
+<p>HttpSession session = request.getSession();</p>
+<p>User user = (User) session.getAttribute(“name”);</p>
+<p>if (user != null) {</p>
+<p>UserService service = new UserServiceImpl();</p>
+<p>User newUser = service.findUserByUserId(user.getUser_id());</p>
+<p>CategoryService service1 = new CategoryServiceImpl();</p>
+<p>List<Category> flist = service1.findCategoryListByName(“father”);</Category></p>
+<p>List<Category> clist = service1.findCategoryListByName(“child”);</Category></p>
+<p>request.setAttribute(“flist”,flist);</p>
+<p>request.setAttribute(“clist”,clist);</p>
+<p>request.setAttribute(“user”,newUser);</p>
+<p>//查看该用户的各种订单数量</p>
+<p>OrderService service2 = new OrderServiceImpl();</p>
+<p>List<Order> orders = service2.findOrderByUserId(user.getUser_id());</Order></p>
+<p>int a1 = 0;</p>
+<p>int a2 = 0;</p>
+<p>int a3 = 0;</p>
+<p>int a4 = 0;</p>
+<p>for (Order o:orders) {</p>
+<p>if (“0”.equals(o.getIs_pay()) &amp;&amp; “0”.equals(o.getIs_ship()) &amp;&amp; “0”.equals(o.getIs_receipt())) {</p>
+<p>a1++;</p>
+<p>if (“1”.equals(o.getIs_pay()) &amp;&amp; “0”.equals(o.getIs_ship()) &amp;&amp; “0”.equals(o.getIs_receipt())) {</p>
+<p>a2++;</p>
+<p>if (“1”.equals(o.getIs_pay()) &amp;&amp; “1”.equals(o.getIs_ship()) &amp;&amp; “0”.equals(o.getIs_receipt())) {</p>
+<p>a3++;</p>
+<p>if (“1”.equals(o.getIs_pay()) &amp;&amp; “1”.equals(o.getIs_ship()) &amp;&amp; “1”.equals(o.getIs_receipt())) {</p>
+<p>a4++;</p>
+<p>request.setAttribute(“a1”,a1);</p>
+<p>request.setAttribute(“a2”,a2);</p>
+<p>request.setAttribute(“a3”,a3);</p>
+<p>request.setAttribute(“a4”,a4);</p>
+<p>request.getRequestDispatcher(“mygxin.jsp”).forward(request, response);</p>
+<p>}else {</p>
+<p>response.sendRedirect(“login.jsp”);</p>
+<p>protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p>
+<p>doPost(request,response);</p>
+<p>购物车数量信息：</p>
+<p>@WebServlet(“/selectProductList”)</p>
+<p>public class SelectProductList extends HttpServlet {</p>
+<p>protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p>
+<p>//查询购物车数量</p>
+<p>HttpSession session = request.getSession();</p>
+<p>User user = (User) session.getAttribute(“name”);</p>
+<p>String cartCount = “0”;</p>
+<p>CartService service1 = new CartServiceImpl();</p>
+<p>if (user != null) {</p>
+<p>cartCount = String.valueOf(service1.findCartCountByUserId(user.getUser_id()));</p>
+<p>}else {</p>
+<p>cartCount = “?”;</p>
+<p>request.setAttribute(“cartCount”,cartCount);</p>
+<p>String cid = request.getParameter(“cid”);</p>
+<p>if (cid != null &amp;&amp; !cid.trim().equals(“”)) {</p>
+<p>ProductService service = new ProductServiceImpl();</p>
+<p>List<Product> list = service.findProductByCategoryCid(Integer.valueOf(cid));</Product></p>
+<p>request.setAttribute(“productList”,list);</p>
+<p>CategoryService service2 = new CategoryServiceImpl();</p>
+<p>Category c = service2.findCategoryByCid(Integer.valueOf(cid));</p>
+<p>System.out.println(c.getCategory_name());</p>
+<p>request.setAttribute(“childC”,c);</p>
+<p>Category f = service2.findCategoryByCid(c.getCategory_parentid());</p>
+<p>System.out.println(f.getCategory_name());</p>
+<p>request.setAttribute(“fatherC”,f);</p>
+<p>List<Category> flist =  service2.findCategoryListByName(“father”);</Category></p>
+<p>request.setAttribute(“flist”, flist);</p>
+<p>List<Category> clist =  service2.findCategoryListByName(“child”);</Category></p>
+<p>request.setAttribute(“clist”, clist);</p>
+<p>//没实现分类添加图片</p>
+<p>if (f.getCategory_id() == 1) {</p>
+<p>request.setAttribute(“link”, “images/temp/banner1.jpg”);</p>
+<p>}else if (f.getCategory_id() == 2){</p>
+<p>request.setAttribute(“link”, “images/temp/bzbig.jpg”);</p>
+<p>}else if (f.getCategory_id() == 3){</p>
+<p>request.setAttribute(“link”, “images/temp/banner2.jpg”);</p>
+<p>}else if (f.getCategory_id() == 4){</p>
+<p>request.setAttribute(“link”, “images/temp/perfume_Banner.jpg”);</p>
+<p>}else if (f.getCategory_id() == 5){</p>
+<p>request.setAttribute(“link”, “img/idea1.jpg”);</p>
+<p>}else {</p>
+<p>request.setAttribute(“link”, “img/banner1.jpg”);</p>
+<p>request.getRequestDispatcher(“productlist.jsp”).forward(request, response);</p>
+<p>}else {</p>
+<p>//有fid</p>
+<p>String fid = request.getParameter(“fid”);</p>
+<p>CategoryService service2 = new CategoryServiceImpl();</p>
+<p>Category f = service2.findCategoryByCid(Integer.valueOf(fid));</p>
+<p>request.setAttribute(“fatherC”,f);</p>
+<p>List<Category> flist =  service2.findCategoryListByName(“father”);</Category></p>
+<p>request.setAttribute(“flist”, flist);</p>
+<p>List<Category> clist =  service2.findCategoryListByName(“child”);</Category></p>
+<p>request.setAttribute(“clist”, clist);</p>
+<p>//没实现分类添加图片</p>
+<p>if (f.getCategory_id() == 1) {</p>
+<p>request.setAttribute(“link”, “images/temp/banner1.jpg”);</p>
+<p>}else if (f.getCategory_id() == 2){</p>
+<p>request.setAttribute(“link”, “images/temp/bzbig.jpg”);</p>
+<p>}else if (f.getCategory_id() == 3){</p>
+<p>request.setAttribute(“link”, “images/temp/banner2.jpg”);</p>
+<p>}else if (f.getCategory_id() == 4){</p>
+<p>request.setAttribute(“link”, “images/temp/perfume_Banner.jpg”);</p>
+<p>}else if (f.getCategory_id() == 5){</p>
+<p>request.setAttribute(“link”, “img/idea1.jpg”);</p>
+<p>}else {</p>
+<p>request.setAttribute(“link”, “img/banner1.jpg”);</p>
+<p>ProductService service = new ProductServiceImpl();</p>
+<p>List<Product> list = service.findProductByCategoryFid(Integer.valueOf(fid));</Product></p>
+<p>request.setAttribute(“productList”,list);</p>
+<p>request.getRequestDispatcher(“productlist.jsp”).forward(request, response);</p>
+<p>protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p>
+<p>doPost(request,response);</p>
+<p>订单信息业务：</p>
+<p>@WebServlet(“/toOrderServlet”)</p>
+<p>public class ToOrderServlet extends HttpServlet {</p>
+<p>protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p>
+<p>//判断是否登录</p>
+<p>HttpSession session = request.getSession();</p>
+<p>User user = (User) session.getAttribute(“name”);</p>
+<p>if (user != null) {</p>
+<p>//判断是否有参数uid</p>
+<p>String uid = request.getParameter(“uid”);</p>
+<p>if (uid == null) {</p>
+<p>//我的订单中心进入，无需添加商品</p>
+<p>CategoryService service1 = new CategoryServiceImpl();</p>
+<p>List<Category> flist = service1.findCategoryListByName(“father”);</Category></p>
+<p>List<Category> clist = service1.findCategoryListByName(“child”);</Category></p>
+<p>request.setAttribute(“flist”,flist);</p>
+<p>request.setAttribute(“clist”,clist);</p>
+<p>AddressService service = new AddressServiceImpl();</p>
+<p>List<Address> addresses = service.findAddressByUserId(user.getUser_id());</Address></p>
+<p>request.setAttribute(“address”,addresses);</p>
+<p>//计算商品价格</p>
+<p>String pid = request.getParameter(“pid”);</p>
+<p>String oid = request.getParameter(“oid”);</p>
+<p>String count = request.getParameter(“count”);</p>
+<p>ProductService service2 = new ProductServiceImpl();</p>
+<p>Product p = service2.findProductById(Integer.valueOf(pid));</p>
+<p>int price = p.getProduct_price();</p>
+<p>int totalPrice = price*Integer.valueOf(count);</p>
+<p>request.setAttribute(“price”,price);</p>
+<p>request.setAttribute(“count”,count);</p>
+<p>request.setAttribute(“product”,p);</p>
+<p>request.setAttribute(“totalPrice”,totalPrice);</p>
+<p>//查询购物车数量</p>
+<p>String cartCount = “0”;</p>
+<p>CartService service3 = new CartServiceImpl();</p>
+<p>if (user != null) {</p>
+<p>cartCount = String.valueOf(service3.findCartCountByUserId(user.getUser_id()));</p>
+<p>}else {</p>
+<p>cartCount = “?”;</p>
+<p>request.setAttribute(“cartCount”,cartCount);</p>
+<p>OrderService service4 = new OrderServiceImpl();</p>
+<p>Order o = service4.findOrderById(oid);</p>
+<p>request.setAttribute(“order”,o);</p>
+<p>}else {</p>
+<p>CategoryService service1 = new CategoryServiceImpl();</p>
+<p>List<Category> flist = service1.findCategoryListByName(“father”);</Category></p>
+<p>List<Category> clist = service1.findCategoryListByName(“child”);</Category></p>
+<p>request.setAttribute(“flist”,flist);</p>
+<p>request.setAttribute(“clist”,clist);</p>
+<p>AddressService service = new AddressServiceImpl();</p>
+<p>List<Address> addresses = service.findAddressByUserId(user.getUser_id());</Address></p>
+<p>request.setAttribute(“address”,addresses);</p>
+<p>//计算商品价格</p>
+<p>String pid = request.getParameter(“pid”);</p>
+<p>String count = request.getParameter(“count”);</p>
+<p>ProductService service2 = new ProductServiceImpl();</p>
+<p>Product p = service2.findProductById(Integer.valueOf(pid));</p>
+<p>int price = p.getProduct_price();</p>
+<p>int totalPrice = price*Integer.valueOf(count);</p>
+<p>request.setAttribute(“price”,price);</p>
+<p>request.setAttribute(“count”,count);</p>
+<p>request.setAttribute(“product”,p);</p>
+<p>request.setAttribute(“totalPrice”,totalPrice);</p>
+<p>//查询购物车数量</p>
+<p>String cartCount = “0”;</p>
+<p>CartService service3 = new CartServiceImpl();</p>
+<p>if (user != null) {</p>
+<p>cartCount = String.valueOf(service3.findCartCountByUserId(user.getUser_id()));</p>
+<p>}else {</p>
+<p>cartCount = “?”;</p>
+<p>request.setAttribute(“cartCount”,cartCount);</p>
+<p>//添加此订单为待支付订单</p>
+<p>//添加此订单的订单列表</p>
+<p>//查询该订单中商品及数量</p>
+<p>int product_quantity = Integer.valueOf(count);</p>
+<p>int product_id = p.getProduct_id();</p>
+<p>Order order = new Order(System.currentTimeMillis() +””+ user.getUser_id(),user.getUser_id(),totalPrice,new Date(),”0”,”0”,”0”,product_id,product_quantity);</p>
+<p>ProductService service5 = new ProductServiceImpl();</p>
+<p>Product product = service5.findProductById(product_id);</p>
+<p>order.setProduct_name(product.getProduct_name());</p>
+<p>order.setProduct_photo(product.getProduct_photo());</p>
+<p>order.setProduct_price(product.getProduct_price());</p>
+<p>request.setAttribute(“order”,order);</p>
+<p>OrderService service4 = new OrderServiceImpl();</p>
+<p>service4.addOrder(order);</p>
+<p>//            String product_quantity = count;</p>
+<p>//            String order_id = order.getOrder_id();</p>
+<p>//            int product_id = p.getProduct_id();</p>
+<p>//</p>
+<p>//            OrderList orderList = new OrderList(order_id,product_id,product_quantity);</p>
+<p>//</p>
+<p>//            OrderListService service5 = new OrderListServiceImpl();</p>
+<p>//            service5.addOrderList(orderList);</p>
+<p>request.getRequestDispatcher(“order.jsp”).forward(request, response);</p>
+<p>}else {</p>
+<p>response.sendRedirect(“login.jsp”);</p>
+<p>protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p>
+<p>doPost(request,response);</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=371125140706201ss<br>https://javayms.pages.dev?id=371125140706201ss</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
