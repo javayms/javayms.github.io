@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的JSP+Servlet老年人健康管理与社交网站(java+mysql+jdbc+mysql+maven+tomcat)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/270925490706201qb/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的JSP+Servlet老年人健康管理与社交网站(java+mysql+jdbc+mysql+maven+tomcat) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/270925490706201qb/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的JSP+Servlet老年人健康管理与社交网站(java+mysql+jdbc+mysql+maven+tomcat)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified"></time>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tag"></i>
+                </span>
+                <time id="idText" itemprop="dateModified"></time>
+              </span>
+              <p id="browserWarningText" style="color:#FF0000;"></p>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Tomcat≥8</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>eclipse/idea/myeclipse/sts等均可配置运行</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/090925430706.jpg" alt="090925430706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/120925370706.jpg" alt="120925370706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/130925440706.jpg" alt="130925440706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/140925360706.jpg" alt="140925360706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/330925350706.jpg" alt="330925350706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/420925420706.jpg" alt="420925420706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/490925430706.jpg" alt="490925430706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/510925460706.jpg" alt="510925460706"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project30/580925420706.jpg" alt="580925420706"></p>
+<p>基于javaweb的JSP+Servlet老年人健康管理与社交网站(java+mysql+jdbc+mysql+maven+tomcat)</p>
+<p>老年人健康管理与社交网站</p>
+<p>老年人健康管理与社交网站是一个专为老年人设计的综合性平台，旨在满足老年人对健康监测、疾病管理及社交互动的需求。本系统采用传统Java Web技术开发，前端使用JSP，后端采用Servlet和DAO模式，数据库使用MySQL，通过Tomcat部署运行。</p>
+<p>系统具有以下核心功能：</p>
+<ol>
+<li>用户认证：包括注册、登录和注销功能</li>
+<li>健康管理：包括健康数据记录和查看功能</li>
+<li>社交互动：包括好友添加和消息发送与接收交流功能</li>
+<li>活动信息列表查看</li>
+</ol>
+<p>包含以下内容：</p>
+<ol>
+<li><p><strong>源代码</strong></p>
+<ul>
+<li><code>src/</code> 目录：包含所有Java源代码和JSP页面</li>
+<li><code>pom.xml</code>：Maven项目配置文件</li>
+</ul>
+</li>
+<li><p><strong>编译后的应用程序</strong></p>
+<ul>
+<li><code>elderly-health-social.war</code>：可直接部署到Tomcat的Web应用程序</li>
+</ul>
+</li>
+<li><p><strong>项目文档</strong></p>
+<ul>
+<li><code>docs/project_description.md</code>：项目说明文档</li>
+<li><code>docs/installation_guide.md</code>：安装配置文档</li>
+<li><code>docs/user_manual.md</code>：用户使用手册</li>
+<li><code>docs/database_schema.sql</code>：数据库结构脚本</li>
+<li><code>docs/todo.md</code>：项目开发计划和进度</li>
+</ul>
+</li>
+</ol>
+<p>本项目只有前台用户，没有后台管理员：<br>登录：<br>user1    123456<br>user2    123456</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除好友</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">deleteFriend</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 获取好友关系ID</span></span><br><span class="line">            String friendshipIdStr = request.getParameter(<span class="string">&quot;friendshipId&quot;</span>);</span><br><span class="line">            <span class="keyword">int</span> friendshipId = Integer.parseInt(friendshipIdStr);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 删除好友</span></span><br><span class="line">            <span class="keyword">boolean</span> success = friendshipService.deleteFriendship(friendshipId);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (success) &#123;</span><br><span class="line">                <span class="comment">// 删除成功，重定向到好友管理页面</span></span><br><span class="line">                response.sendRedirect(<span class="string">&quot;friends&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 删除失败，返回好友管理页面并显示错误信息</span></span><br><span class="line">                request.setAttribute(<span class="string">&quot;errorMsg&quot;</span>, <span class="string">&quot;删除好友失败&quot;</span>);</span><br><span class="line">                request.getRequestDispatcher(<span class="string">&quot;/friends.jsp&quot;</span>).forward(request, response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            request.setAttribute(<span class="string">&quot;errorMsg&quot;</span>, <span class="string">&quot;好友关系ID格式错误&quot;</span>);</span><br><span class="line">            request.getRequestDispatcher(<span class="string">&quot;/friends.jsp&quot;</span>).forward(request, response);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 消息管理Servlet</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//@WebServlet(&quot;/messages&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MessageServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MessageService messageService = <span class="keyword">new</span> MessageService();</span><br><span class="line">    <span class="keyword">private</span> UserService userService = <span class="keyword">new</span> UserService();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">            request.setAttribute(<span class="string">&quot;errorMsg&quot;</span>, <span class="string">&quot;接受好友请求失败&quot;</span>);</span><br><span class="line">            request.getRequestDispatcher(<span class="string">&quot;/friends.jsp&quot;</span>).forward(request, response);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        request.setAttribute(<span class="string">&quot;errorMsg&quot;</span>, <span class="string">&quot;好友关系ID格式错误&quot;</span>);</span><br><span class="line">        request.getRequestDispatcher(<span class="string">&quot;/friends.jsp&quot;</span>).forward(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 拒绝好友请求</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">rejectFriendRequest</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 获取好友关系ID</span></span><br><span class="line">        String friendshipIdStr = request.getParameter(<span class="string">&quot;friendshipId&quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> friendshipId = Integer.parseInt(friendshipIdStr);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 拒绝好友请求</span></span><br><span class="line">        <span class="keyword">boolean</span> success = friendshipService.rejectFriendRequest(friendshipId);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (success) &#123;</span><br><span class="line">            <span class="comment">// 拒绝成功，重定向到好友管理页面</span></span><br><span class="line">            response.sendRedirect(<span class="string">&quot;friends&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 拒绝失败，返回好友管理页面并显示错误信息</span></span><br><span class="line">            request.setAttribute(<span class="string">&quot;errorMsg&quot;</span>, <span class="string">&quot;拒绝好友请求失败&quot;</span>);</span><br><span class="line">            request.getRequestDispatcher(<span class="string">&quot;/friends.jsp&quot;</span>).forward(request, response);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        request.setAttribute(<span class="string">&quot;errorMsg&quot;</span>, <span class="string">&quot;好友关系ID格式错误&quot;</span>);</span><br><span class="line">        request.getRequestDispatcher(<span class="string">&quot;/friends.jsp&quot;</span>).forward(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除好友</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">deleteFriend</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 获取好友关系ID</span></span><br><span class="line">        String friendshipIdStr = request.getParameter(<span class="string">&quot;friendshipId&quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> friendshipId = Integer.parseInt(friendshipIdStr);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 删除好友</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">deleteFriend</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 获取好友关系ID</span></span><br><span class="line">            String friendshipIdStr = request.getParameter(<span class="string">&quot;friendshipId&quot;</span>);</span><br><span class="line">            <span class="keyword">int</span> friendshipId = Integer.parseInt(friendshipIdStr);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 删除好友</span></span><br><span class="line">            <span class="keyword">boolean</span> success = friendshipService.deleteFriendship(friendshipId);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (success) &#123;</span><br><span class="line">                <span class="comment">// 删除成功，重定向到好友管理页面</span></span><br><span class="line">                response.sendRedirect(<span class="string">&quot;friends&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 删除失败，返回好友管理页面并显示错误信息</span></span><br><span class="line">                request.setAttribute(<span class="string">&quot;errorMsg&quot;</span>, <span class="string">&quot;删除好友失败&quot;</span>);</span><br><span class="line">                request.getRequestDispatcher(<span class="string">&quot;/friends.jsp&quot;</span>).forward(request, response);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            request.setAttribute(<span class="string">&quot;errorMsg&quot;</span>, <span class="string">&quot;好友关系ID格式错误&quot;</span>);</span><br><span class="line">            request.getRequestDispatcher(<span class="string">&quot;/friends.jsp&quot;</span>).forward(request, response);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 消息管理Servlet</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// 设置请求和响应的字符编码</span></span><br><span class="line">    request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">    response.setContentType(<span class="string">&quot;text/html;charset=UTF-8&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 获取当前登录用户</span></span><br><span class="line">    HttpSession session = request.getSession();</span><br><span class="line">    User user = (User) session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 如果用户未登录，重定向到登录页面</span></span><br><span class="line">    <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">        response.sendRedirect(<span class="string">&quot;login&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 获取表单数据</span></span><br><span class="line">    String action = request.getParameter(<span class="string">&quot;action&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;send&quot;</span>.equals(action)) &#123;</span><br><span class="line">        <span class="comment">// 发送消息</span></span><br><span class="line">        sendMessage(request, response, user);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&quot;read&quot;</span>.equals(action)) &#123;</span><br><span class="line">        <span class="comment">// 标记消息为已读</span></span><br><span class="line">        markMessageAsRead(request, response);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&quot;delete&quot;</span>.equals(action)) &#123;</span><br><span class="line">        <span class="comment">// 删除消息</span></span><br><span class="line">        deleteMessage(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发送消息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(HttpServletRequest request, HttpServletResponse response, User user)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 获取接收者ID和消息内容</span></span><br><span class="line">        String receiverIdStr = request.getParameter(<span class="string">&quot;receiverId&quot;</span>);</span><br><span class="line">        String content = request.getParameter(<span class="string">&quot;content&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 验证消息内容</span></span><br><span class="line">        <span class="keyword">if</span> (content == <span class="keyword">null</span> || content.trim().isEmpty()) &#123;</span><br><span class="line">            request.setAttribute(<span class="string">&quot;errorMsg&quot;</span>, <span class="string">&quot;消息内容不能为空&quot;</span>);</span><br><span class="line">            request.getRequestDispatcher(<span class="string">&quot;/messages.jsp&quot;</span>).forward(request, response);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 创建消息对象</span></span><br><span class="line">        Message message = <span class="keyword">new</span> Message();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 消息管理Servlet</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//@WebServlet(&quot;/messages&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MessageServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MessageService messageService = <span class="keyword">new</span> MessageService();</span><br><span class="line">    <span class="keyword">private</span> UserService userService = <span class="keyword">new</span> UserService();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 设置请求和响应的字符编码</span></span><br><span class="line">        request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">        response.setContentType(<span class="string">&quot;text/html;charset=UTF-8&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取当前登录用户</span></span><br><span class="line">        HttpSession session = request.getSession();</span><br><span class="line">        User user = (User) session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 如果用户未登录，重定向到登录页面</span></span><br><span class="line">        <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">            response.sendRedirect(<span class="string">&quot;login&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取用户收到的消息</span></span><br><span class="line">        List&lt;Message&gt; receivedMessages = messageService.getReceivedMessages(user.getUserId());</span><br><span class="line">        request.setAttribute(<span class="string">&quot;receivedMessages&quot;</span>, receivedMessages);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取用户发送的消息</span></span><br><span class="line">        List&lt;Message&gt; sentMessages = messageService.getSentMessages(user.getUserId());</span><br><span class="line">        request.setAttribute(<span class="string">&quot;sentMessages&quot;</span>, sentMessages);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取所有用户，用于发送消息</span></span><br><span class="line">        List&lt;User&gt; allUsers = userService.getAllUsers();</span><br><span class="line">        request.setAttribute(<span class="string">&quot;allUsers&quot;</span>, allUsers);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 转发到消息管理页面</span></span><br><span class="line">        request.getRequestDispatcher(<span class="string">&quot;/messages.jsp&quot;</span>).forward(request, response);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 设置请求和响应的字符编码</span></span><br><span class="line">        request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">        response.setContentType(<span class="string">&quot;text/html;charset=UTF-8&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取当前登录用户</span></span><br><span class="line">        HttpSession session = request.getSession();</span><br><span class="line">        User user = (User) session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=109&price1=69&price2=69" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=270925490706201qb<br>https://javayms.pages.dev?id=270925490706201qb</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/JSP-Servlet/" rel="tag"><i class="fa fa-tag"></i> JSP+Servlet</a>
+			<a href="/tags/%E5%8D%9A%E5%AE%A2-%E8%AE%BA%E5%9D%9B/" rel="tag"><i class="fa fa-tag"></i> 博客  论坛</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
