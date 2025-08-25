@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot摄影工作室管理系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/252325042508201tn/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot摄影工作室管理系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/252325042508201tn/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot摄影工作室管理系统(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified"></time>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tag"></i>
+                </span>
+                <time id="idText" itemprop="dateModified"></time>
+              </span>
+              <p id="browserWarningText" style="color:#FF0000;"></p>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/392225582508.jpg" alt="392225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/402225582508.jpg" alt="402225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/412225582508.jpg" alt="412225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/422225582508.jpg" alt="422225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/432225582508.jpg" alt="432225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/442225582508.jpg" alt="442225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/452225582508.jpg" alt="452225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/472225582508.jpg" alt="472225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/482225582508.jpg" alt="482225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/492225582508.jpg" alt="492225582508"></p>
+<p>基于javaweb的SpringBoot摄影工作室管理系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； </p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue + elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：</p>
+</li>
+</ol>
+<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/front/index.html">http://localhost:8080/springbootrpj39/front/index.html</a></p>
+<p>后台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/admin/dist/index.html">http://localhost:8080/springbootrpj39/admin/dist/index.html</a></p>
+<p>管理员 abo 密码 abo</p>
+<p>用户：用户1 密码： 123456</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p> 用户管理控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/user”)</p>
+<p>@Scope(“prototype”)</p>
+<p>public class UserController {</p>
+<p>private static final Logger logger = LoggerFactory.getLogger(UserController.class);</p>
+<p>private ReturnResult returnResult = new ReturnResult();</p>
+<p>@Resource(name = “userService”)</p>
+<p>private IUserService userService;</p>
+<p>/**</p>
+<ul>
+<li><p>登录</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@param session</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “login”)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult login(TUser user, HttpSession session) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>user = userService.login(user);</p>
+<p>if (user != null) {</p>
+<p>user.setPassword(null);</p>
+<p>session.setAttribute(“user”, user);</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“登录失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>从session中获取用户信息</p>
+</li>
+<li><p>@param session</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“getUserInfo”)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getUserInfo(HttpSession session) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>TUser user = (TUser) session.getAttribute(“user”);</p>
+<p>if (user != null) {</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(user);</p>
+<p>} else {</p>
+<p>logger.info(“获取用户信息失败：用户未登录”);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>注册用户</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “register”)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult register(TUser user) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>if (userService.checkUserByName(user.getName())) {</p>
+<p>if (userService.register(user) &gt;= 0) {</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“注册失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>检测用户名是否存在</p>
+</li>
+<li><p>@param name</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “checkUserName”)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult checkUserName(String name) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>if (userService.checkUserByName(name)) {</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“检测用户名是否存在失败：” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>管理员查看所有的用户信息</p>
+</li>
+<li><p>@param session</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“getAllUserInfo”)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getAllUserInfo(HttpSession session,PageVO page,String name) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>if (session.getAttribute(“admin”) != null) {</p>
+<p>Map&lt;String, Object&gt; resultMap = new HashMap&lt;String, Object&gt;();</p>
+<p>StringBuffer sql = new StringBuffer(“SELECT DISTINCT * FROM t_user WHERE 1=1”);</p>
+<p>if(StringUtils.isNotBlank(name)){</p>
+<p>sql.append(“ AND name=”+name);</p>
+<p>List&lt;Map&lt;String, Object&gt;&gt; results = userService.selectPageBySQL(sql.toString(), page.getPage() - 1,</p>
+<p>page.getRows());</p>
+<p>if (!results.isEmpty() &amp;&amp; results != null) {</p>
+<p>int total = userService.selectCount(new TUser());</p>
+<p>int rows = page.getRows();</p>
+<p>rows = rows == 0 ? 10 : rows;</p>
+<p>resultMap.put(“total”, (total % rows != 0 ? (total / rows + 1) : (total / rows)));</p>
+<p>resultMap.put(“page”, page.getPage());</p>
+<p>resultMap.put(“records”, total);</p>
+<p>resultMap.put(“rows”, results);</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(resultMap);</p>
+<p>} else {</p>
+<p>logger.info(“获取所有的用户信息失败：管理员未登录”);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“获取所有的用户信息失败：” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>退出</p>
+</li>
+<li><p>@param session</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“logout”)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult logout(HttpSession session) {</p>
+<p>session.invalidate();</p>
+<p>return returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>/**</p>
+<ul>
+<li><p>修改密码</p>
+</li>
+<li><p>@param oldPassword</p>
+</li>
+<li><p>@param password</p>
+</li>
+<li><p>@param session</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“updatePassword”)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult updatePassword(TUser user) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>if (userService.updatePassword(user) &gt; 0) {</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“修改密码失败：” + e);</p>
+<p>return returnResult;</p>
+<p>拍摄景点管理控制层：</p>
+<p>@Controller</p>
+<p>@Scope(“prototype”)</p>
+<p>public class SpotsController {</p>
+<p>private static final Logger logger = LoggerFactory.getLogger(SpotsController.class);</p>
+<p>private ReturnResult returnResult = new ReturnResult();</p>
+<p>@Resource(name = “spotsService”)</p>
+<p>private ISpotsService spotsService;</p>
+<p>/**</p>
+<ul>
+<li><p>添加拍摄景点</p>
+</li>
+<li><p>@param spots</p>
+</li>
+<li><p>@param HttpServletRequest</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “addSpots”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult addSpots(TSpots spots, HttpServletRequest request) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>Map&lt;String, String&gt; map = OperationFileUtil.multiFileUpload(request,</p>
+<p>request.getServletContext().getRealPath(“/“) + “uploads\spots\“);</p>
+<p>String filePath = “”;</p>
+<p>for (Map.Entry&lt;String, String&gt; entry : map.entrySet()) {</p>
+<p>filePath = entry.getValue();</p>
+<p>filePath = filePath.replace(request.getServletContext().getRealPath(“/“), “/“);</p>
+<p>spots.setPath(filePath);</p>
+<p>spots.setCreatetime(new Date());</p>
+<p>spotsService.insert(spots);</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“新增spots失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>修改spots</p>
+</li>
+<li><p>@param spots</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “updateSpots”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult updateSpots(TSpots spots) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>spotsService.updateBySQL(“UPDATE t_spots SET name=’” + spots.getName() + “‘,content=’”+spots.getContent()+”‘, status=”+spots.getStatus()+” WHERE id=” + spots.getId());</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“修改spots失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>分页获取spots</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getSpotsListByPage”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getSpotsListByPage(PageVO page) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>Map&lt;String, Object&gt; resultMap = new HashMap&lt;String, Object&gt;();</p>
+<p>StringBuffer sql = new StringBuffer(“SELECT DISTINCT * FROM t_spots WHERE 1=1”);</p>
+<p>List&lt;Map&lt;String, Object&gt;&gt; results = spotsService.selectPageBySQL(sql.toString(), page.getPage() - 1,</p>
+<p>page.getRows());</p>
+<p>if (!results.isEmpty() &amp;&amp; results != null) {</p>
+<p>int total = spotsService.selectCount(new TSpots());</p>
+<p>int rows = page.getRows();</p>
+<p>rows = rows == 0 ? 10 : rows;</p>
+<p>resultMap.put(“total”, (total % rows != 0 ? (total / rows + 1) : (total / rows)));</p>
+<p>resultMap.put(“page”, page.getPage());</p>
+<p>resultMap.put(“records”, total);</p>
+<p>resultMap.put(“rows”, results);</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(resultMap);</p>
+<p>}catch (Exception e) {</p>
+<p>logger.error(“分页获取spots失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>根据获取id spots</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getSpotsById”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getSpotsById(Integer id) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(spotsService.selectByPrimaryKey(id));</p>
+<p>}catch (Exception e) {</p>
+<p>logger.error(“根据获取spots失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>获取所有启用的spots</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getAllSpots”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getAllSpots() {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(spotsService.getAllSpots());</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“获取所有启用spots失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>获取所有5条启用的spots</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getFiveSpots”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getFiveSpots() {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(spotsService.selectBySQL(“select * from t_spots  ORDER BY id DESC limit 0,5”));</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“获取所有5条启用的spots失败” + e);</p>
+<p>return returnResult;</p>
+<p>标签管理控制层： </p>
+<p>@Controller</p>
+<p>@Scope(“prototype”)</p>
+<p>public class LabelController {</p>
+<p>private static final Logger logger = LoggerFactory.getLogger(LabelController.class);</p>
+<p>private ReturnResult returnResult = new ReturnResult();</p>
+<p>@Resource(name = “labelService”)</p>
+<p>private ILabelService labelService;</p>
+<p>/**</p>
+<ul>
+<li><p>添加标签</p>
+</li>
+<li><p>@param Label</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “addLabel”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult addLabel(TLabel label) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>label.setCreatetime(new Date());</p>
+<p>label.setStatus(“0”);</p>
+<p>labelService.insert(label);</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“新增label失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>修改label</p>
+</li>
+<li><p>@param label</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “updateLabel”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult updateLabel(TLabel label) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>labelService.updateBySQL(“UPDATE t_label SET name=’” + label.getName() + “‘, status=”+label.getStatus()+” WHERE id=” + label.getId());</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“修改label失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>根据id获取label</p>
+</li>
+<li><p>@param label</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getLabelById”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getLabelById(Integer id) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(labelService.selectByPrimaryKey(id));</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“根据id获取label失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>分页获取label</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getLabelListByPage”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getLabelListByPage(PageVO page,String Status) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>Map&lt;String, Object&gt; resultMap = new HashMap&lt;String, Object&gt;();</p>
+<p>StringBuffer sql = new StringBuffer(“SELECT * FROM t_label WHERE 1=1”);</p>
+<p>StringBuffer countSql = new StringBuffer(“SELECT COUNT(*) AS total FROM t_label WHERE 1=1”);</p>
+<p>if(StringUtils.isNotBlank(Status)){</p>
+<p>sql.append(“ AND status=”+Status);</p>
+<p>countSql.append(“ AND status=”+Status);</p>
+<p>List&lt;Map&lt;String, Object&gt;&gt; results = labelService.selectPageBySQL(sql.toString(), page.getPage() - 1,</p>
+<p>page.getRows());</p>
+<p>if (!results.isEmpty() &amp;&amp; results != null) {</p>
+<p>int total =Integer.valueOf(labelService.selectBySQL(countSql.toString()).get(0).get(“total”).toString());</p>
+<p>int rows = page.getRows();</p>
+<p>rows = rows == 0 ? 10 : rows;</p>
+<p>resultMap.put(“total”, (total % rows != 0 ? (total / rows + 1) : (total / rows)));</p>
+<p>resultMap.put(“page”, page.getPage());</p>
+<p>resultMap.put(“records”, total);</p>
+<p>resultMap.put(“rows”, results);</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(resultMap);</p>
+<p>}catch (Exception e) {</p>
+<p>logger.error(“分页获取label失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>获取所有启用的label</p>
+</li>
+<li><p>@param label</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getAllLabel”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getAllLabel(){</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(labelService.getAllLabel());</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“获取所有启用的label” + e);</p>
+<p>return returnResult;</p>
+<p> 级别管理控制层：</p>
+<p>@Controller</p>
+<p>@Scope(“prototype”)</p>
+<p>public class LevelController {</p>
+<p>private static final Logger logger = LoggerFactory.getLogger(LevelController.class);</p>
+<p>private ReturnResult returnResult = new ReturnResult();</p>
+<p>@Resource(name = “levelService”)</p>
+<p>private ILevelService levelService;</p>
+<p>/**</p>
+<ul>
+<li><p>添加级别</p>
+</li>
+<li><p>@param level</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “addLevel”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult addLevel(TLevel level) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>level.setCreatetime(new Date());</p>
+<p>level.setStatus(“0”);</p>
+<p>levelService.insert(level);</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“新增level失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>修改level状态</p>
+</li>
+<li><p>@param level</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “updatelevelStatus”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult updatelevelStatus(TLevel level) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>levelService.updateBySQL(“UPDATE t_level SET status=” + level.getStatus() + “ WHERE id=” + level.getId());</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“更新level状态失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>修改level的name</p>
+</li>
+<li><p>@param level</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “updateLevel”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult updateLevel(TLevel level) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>levelService.updateBySQL(“UPDATE t_level SET name=’” + level.getName() + “‘, status=”+level.getStatus()+” WHERE id=” + level.getId());</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“修改level失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>根据id获取level</p>
+</li>
+<li><p>@param level</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getLevelById”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getLevelById(Integer id) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(levelService.selectByPrimaryKey(id));</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“根据id获取level失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>分页获取level</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getLevelListByPage”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getLevelListByPage(PageVO page,String Status) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>Map&lt;String, Object&gt; resultMap = new HashMap&lt;String, Object&gt;();</p>
+<p>StringBuffer sql = new StringBuffer(“SELECT * FROM t_level WHERE 1=1”);</p>
+<p>StringBuffer countSql = new StringBuffer(“SELECT COUNT(*) AS total FROM t_level WHERE 1=1”);</p>
+<p>if(StringUtils.isNotBlank(Status)){</p>
+<p>sql.append(“ AND status=”+Status);</p>
+<p>countSql.append(“ AND status=”+Status);</p>
+<p>List&lt;Map&lt;String, Object&gt;&gt; results = levelService.selectPageBySQL(sql.toString(), page.getPage() - 1,</p>
+<p>page.getRows());</p>
+<p>if (!results.isEmpty() &amp;&amp; results != null) {</p>
+<p>int total = Integer.valueOf(levelService.selectBySQL(countSql.toString()).get(0).get(“total”).toString());</p>
+<p>int rows = page.getRows();</p>
+<p>rows = rows == 0 ? 10 : rows;</p>
+<p>resultMap.put(“total”, (total % rows != 0 ? (total / rows + 1) : (total / rows)));</p>
+<p>resultMap.put(“page”, page.getPage());</p>
+<p>resultMap.put(“records”, total);</p>
+<p>resultMap.put(“rows”, results);</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(resultMap);</p>
+<p>}catch (Exception e) {</p>
+<p>logger.error(“分页获取level失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>获取所有启用的level</p>
+</li>
+<li><p>@param level</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getAllLevel”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getAllLevel(){</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(levelService.getAllLevel());</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“获取所有启用的level” + e);</p>
+<p>return returnResult;</p>
+<p> 预约管理控制层：</p>
+<p>@Controller</p>
+<p>@Scope(“prototype”)</p>
+<p>public class ScheduleController {</p>
+<p>private static final Logger logger = LoggerFactory.getLogger(ScheduleController.class);</p>
+<p>private ReturnResult returnResult = new ReturnResult();</p>
+<p>@Resource(name = “scheduleService”)</p>
+<p>private IScheduleService scheduleService;</p>
+<p>/**</p>
+<ul>
+<li><p>添加预约</p>
+</li>
+<li><p>@param schedule</p>
+</li>
+<li><p>@param session</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “addSchedule”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult addSchedule(TSchedule schedule, HttpSession session,String startdate,String enddate) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>schedule.setStart(DateFormater.stringToDate(startdate));</p>
+<p>schedule.setEnd(DateFormater.stringToDate(enddate));</p>
+<p>schedule.setCreatetime(new Date());</p>
+<p>TUser user = (TUser)session.getAttribute(“user”);</p>
+<p>schedule.setUserid(user.getId());</p>
+<p>if(scheduleService.insert(schedule)&gt;0){</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“新增schedule失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>修改schedule状态</p>
+</li>
+<li><p>@param schedule</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “updateScheduleStatus”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult updateScheduleStatus(TSchedule schedule,HttpSession session) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>session.getAttribute(“admin”);</p>
+<p>scheduleService.updateBySQL(“UPDATE t_schedule SET status=” + schedule.getStatus() + “ WHERE id=” + schedule.getId());</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“更新schedule状态失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>设置摄影师无档期或有预约</p>
+</li>
+<li><p>@param schedule</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “setSchedule”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult setSchedule(Integer photographerId,String createTimeRange,HttpSession session,String status) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>if(photographerId!=null&amp;&amp;StringUtils.isNotBlank(createTimeRange)){</p>
+<p>String start = createTimeRange.split(“ - “)[0];</p>
+<p>String end = createTimeRange.split(“ - “)[1];</p>
+<p>session.getAttribute(“admin”);</p>
+<p>TSchedule schedule = new TSchedule();</p>
+<p>schedule.setUserid(1);</p>
+<p>schedule.setCreatetime(new Date());</p>
+<p>schedule.setStatus(status);</p>
+<p>schedule.setStart(DateFormater.stringToDate(“yyyy/MM/dd”,start));</p>
+<p>schedule.setEnd(DateFormater.stringToDate(“yyyy/MM/dd”,end));</p>
+<p>schedule.setPhotographerid(photographerId);</p>
+<p>scheduleService.insert(schedule);</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS);</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“更新schedule状态失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>根据id获取schedule</p>
+</li>
+<li><p>@param schedule</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getScheduleById”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getScheduleById(Integer id) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(scheduleService.selectByPrimaryKey(id));</p>
+<p>} catch (Exception e) {</p>
+<p>logger.error(“根据id获取schedule失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>根据摄影师id获取schedule</p>
+</li>
+<li><p>@param schedule</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getScheduleByPhotographerId”, method = RequestMethod.GET)</p>
+<p>@ResponseBody</p>
+<p>public ScheduleVO getScheduleByPhotographerId(Integer photoer_id,String year,String month) {</p>
+<p>return scheduleService.getScheduleByPhotographerId( photoer_id, year, month);</p>
+<p>/**</p>
+<ul>
+<li><p>分页获取schedule</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getScheduleListByPage”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getScheduleListByPage(PageVO page,String photographerId,String start,String end) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>Map&lt;String, Object&gt; resultMap = new HashMap&lt;String, Object&gt;();</p>
+<p>StringBuffer sql = new StringBuffer(“SELECT a.createTime,a.<code>status</code>,a.id,a.<code>start</code>,a.<code>end</code>,b.<code>name</code>,b.tel,c.<code>name</code> AS photographer FROM t_schedule a, t_user b ,t_photographer c WHERE a.userId = b.id AND a.photographerId =c.id”);</p>
+<p>if(StringUtils.isNotBlank(photographerId)){</p>
+<p>sql.append(“ AND a.photographerId=”+photographerId);</p>
+<p>if(StringUtils.isNotBlank(start)&amp;&amp;StringUtils.isNotBlank(end)){</p>
+<p>sql.append(“ AND a.<code>start</code> BETWEEN ‘“+start+”‘ AND ‘“+end+”‘ OR a.<code>end</code> BETWEEN ‘“+start+”‘ AND ‘“+end+”‘“);</p>
+<p>sql.append(“ GROUP BY a.id ORDER BY a.createTime DESC”);</p>
+<p>List&lt;Map&lt;String, Object&gt;&gt; results = scheduleService.selectPageBySQL(sql.toString(), page.getPage() - 1,</p>
+<p>page.getRows());</p>
+<p>if (!results.isEmpty() &amp;&amp; results != null) {</p>
+<p>int total = scheduleService.selectCount(new TSchedule());</p>
+<p>int rows = page.getRows();</p>
+<p>rows = rows == 0 ? 10 : rows;</p>
+<p>resultMap.put(“total”, (total % rows != 0 ? (total / rows + 1) : (total / rows)));</p>
+<p>resultMap.put(“page”, page.getPage());</p>
+<p>resultMap.put(“records”, total);</p>
+<p>resultMap.put(“rows”, results);</p>
+<p>returnResult.setStatus(ReturnCodeType.SUCCESS).setData(resultMap);</p>
+<p>}catch (Exception e) {</p>
+<p>logger.error(“分页获取schedule失败” + e);</p>
+<p>return returnResult;</p>
+<p>/**</p>
+<ul>
+<li><p>根据用户获取schedule</p>
+</li>
+<li><p>@param schedule</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “getSchedule”, method = RequestMethod.GET)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult getSchedule(HttpSession session) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>TUser user = (TUser) session.getAttribute(“user”);</p>
+<p>return returnResult.setStatus(ReturnCodeType.SUCCESS).setData(scheduleService.selectBySQL(“SELECT DATE_FORMAT(a.<code>start</code>,’%Y-%m-%d’) AS start,DATE_FORMAT(a.<code>end</code>,’%Y-%m-%d’) AS end,b.name,a.<code>status</code>,a.id,a.photographerId FROM t_schedule a,t_photographer b WHERE a.photographerId = b.id AND a.userId=”+user.getId()));</p>
+<p>/**</p>
+<p>*删除</p>
+<ul>
+<li><p>@param schedule</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “deleteSchedule”, method = RequestMethod.GET)</p>
+<p>@ResponseBody</p>
+<p>public ReturnResult deleteSchedule(HttpSession session,Integer id) {</p>
+<p>returnResult.setStatus(ReturnCodeType.FAILURE);</p>
+<p>try {</p>
+<p>session.getAttribute(“user”);</p>
+<p>return returnResult.setStatus(ReturnCodeType.SUCCESS).setData(scheduleService.deleteByPrimaryKey(id));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>return returnResult;</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=252325042508201tn<br>https://javayms.pages.dev?id=252325042508201tn</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E6%91%84%E5%BD%B1/" rel="tag"><i class="fa fa-tag"></i> 摄影</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

@@ -1,0 +1,2770 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot学生宿舍信息系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/202325042508201tj/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot学生宿舍信息系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/202325042508201tj/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot学生宿舍信息系统(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified"></time>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tag"></i>
+                </span>
+                <time id="idText" itemprop="dateModified"></time>
+              </span>
+              <p id="browserWarningText" style="color:#FF0000;"></p>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/082225582508.jpg" alt="082225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/092225582508.jpg" alt="092225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/102225582508.jpg" alt="102225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/112225582508.jpg" alt="112225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/122225582508.jpg" alt="122225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/142225582508.jpg" alt="142225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/152225582508.jpg" alt="152225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/162225582508.jpg" alt="162225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/172225582508.jpg" alt="172225582508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/182225582508.jpg" alt="182225582508"></p>
+<p>基于javaweb的SpringBoot学生宿舍信息系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； </p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue + elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：</p>
+</li>
+</ol>
+<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/front/index.html">http://localhost:8080/springbootrpj39/front/index.html</a></p>
+<p>后台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/admin/dist/index.html">http://localhost:8080/springbootrpj39/admin/dist/index.html</a></p>
+<p>管理员 abo 密码 abo</p>
+<p>用户：用户1 密码： 123456</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>教师管理控制层： </p>
+<p>/**</p>
+<ul>
+<li>教师对应的控制器</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/teacher”)</p>
+<p>public class TeacherController {</p>
+<p>@Resource</p>
+<p>private TeacherService teacherService;</p>
+<p>@RequestMapping(value = “/viewAllocationInfo”)</p>
+<p>public String allocationList() {</p>
+<p>return “/teacher/allocation-list”;</p>
+<p>/**</p>
+<ul>
+<li><p>查询宿舍分配信息</p>
+</li>
+<li><p>查询条件：专业/年级</p>
+</li>
+<li><p>@param aiVo</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/allocation/list”)</p>
+<p>public DataGridViewResult findAllocationInfoList(AllocationInfoVo aiVo, HttpServletRequest request) {</p>
+<p>// 获取session中的专业和年级</p>
+<p>String dept = (String) request.getSession().getAttribute(“dept”);</p>
+<p>String grade = (String) request.getSession().getAttribute(“grade”);</p>
+<p>if (StringUtils.isNotBlank(dept)) {</p>
+<p>aiVo.setStudept(dept);</p>
+<p>if (StringUtils.isNotBlank(grade)) {</p>
+<p>aiVo.setStugrade(grade);</p>
+<p>System.out.println(aiVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(aiVo.getPage(), aiVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<AllocationInfo> list = teacherService.findAllocationInfoListByPage(aiVo);</AllocationInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<AllocationInfo> pageInfo = new PageInfo<AllocationInfo>(list);</AllocationInfo></AllocationInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>添加宿舍分配信息</p>
+</li>
+<li><p>@param ai</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/allocation/add”)</p>
+<p>public String addAllocationInfo(AllocationInfo ai) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>int result = teacherService.addAllocationInfo(ai);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “添加成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “添加失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>更改宿舍分配信息</p>
+</li>
+<li><p>@param ai</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/allocation/update”)</p>
+<p>public String updateAllocationInfo(AllocationInfo ai) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>int result = teacherService.updateAllocationInfo(ai);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “更改成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “更改失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>删除宿舍分配信息</p>
+</li>
+<li><p>@param stuid</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/allocation/delete”)</p>
+<p>public String deleteAllocationInfo(String stuid) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>int result = teacherService.deleteAllocationInfo(stuid);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “删除成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “删除失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>导出宿舍分配信息列表（excel格式）</p>
+</li>
+<li><p>@param request  用来获取缓存中的attribute</p>
+</li>
+<li><p>@param response 输出文件流</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/allocation/export.action”)</p>
+<p>public void exportAllocationInfoToExcel(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>response.reset();// 清除缓存</p>
+<p>String studept = (String) request.getSession().getAttribute(“dept”);</p>
+<p>String grade = (String) request.getSession().getAttribute(“grade”);</p>
+<p>System.out.println(“studept” + studept);</p>
+<p>System.out.println(“grade” + grade);</p>
+<p>// 查找宿舍分配信息列表</p>
+<p>List<AllocationInfo> list = teacherService.exportByDept(studept, grade);</AllocationInfo></p>
+<p>// 拼接excel表名</p>
+<p>StringBuffer filenamebuffer = new StringBuffer();</p>
+<p>if (StringUtils.isNotBlank(studept)) {</p>
+<p>filenamebuffer.append(studept);</p>
+<p>filenamebuffer.append(“-“);</p>
+<p>if (StringUtils.isNotBlank(grade)) {</p>
+<p>filenamebuffer.append(grade);</p>
+<p>filenamebuffer.append(“-“);</p>
+<p>filenamebuffer.append(“宿舍分配表”);</p>
+<p>String filename = filenamebuffer.toString();</p>
+<p>try {</p>
+<p>ExcelUtils.writeExcel(filename, response, list, AllocationInfo.class);</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“mag”, “导出成功！”);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“mag”, “导出失败！”);</p>
+<p>//        return JSON.toJSONString(map);</p>
+<p>@RequestMapping(value = “/viewStudentInfo”)</p>
+<p>public String studentList() {</p>
+<p>return “/teacher/student-list”;</p>
+<p>/**</p>
+<ul>
+<li><p>获取学生信息列表</p>
+</li>
+<li><p>@param si</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/student/list”)</p>
+<p>public DataGridViewResult findStudentInfoList(StudentInfoVo si, HttpServletRequest request) {</p>
+<p>// 获取教师所负责的专业和年级,年级对应学号</p>
+<p>String studept = (String) request.getSession().getAttribute(“dept”);</p>
+<p>String grade = (String) request.getSession().getAttribute(“grade”);</p>
+<p>if (StringUtils.isNotBlank(studept)) {</p>
+<p>si.setStudept(studept);</p>
+<p>// 如果学号为空，则教师负责的年级作为学号的前缀条件</p>
+<p>if (StringUtils.isBlank(si.getStuid())) {</p>
+<p>if (StringUtils.isNotBlank(grade)) {</p>
+<p>si.setStuid(grade);</p>
+<p>System.out.println(si);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(si.getPage(), si.getLimit());</p>
+<p>// 查询</p>
+<p>List<StudentInfo> list = teacherService.findStudentInfoListByPage(si);</StudentInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<StudentInfo> pageInfo = new PageInfo<StudentInfo>(list);</StudentInfo></StudentInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>添加学生信息</p>
+</li>
+<li><p>@param si</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/student/add”)</p>
+<p>public String addStudentInfo(StudentInfo si) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String grade = si.getStuid().substring(0, 4);</p>
+<p>si.setStugrade(grade);</p>
+<p>System.out.println(grade);</p>
+<p>int result = teacherService.addStudentInfo(si);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “添加成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “添加失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>更改学生信息</p>
+</li>
+<li><p>@param si</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/student/update”)</p>
+<p>public String updateStudentInfo(StudentInfo si) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>int result = teacherService.updateStudentInfo(si);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “更改成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “更改失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>删除学生信息</p>
+</li>
+<li><p>@param stuid</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/student/delete”)</p>
+<p>public String deleteaddStudentInfo(String stuid) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>int result = teacherService.deleteStudentInfo(stuid);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “删除成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “删除失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>导入学生信息</p>
+</li>
+<li><p>@param file excel表格</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/student/import.action”)</p>
+<p>public String importExcel(@RequestParam(“file”) MultipartFile file) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>try {</p>
+<p>List<StudentInfo> list = ExcelUtils.readExcel(“”, StudentInfo.class, file);</StudentInfo></p>
+<p>for (int i = 0; i &lt; list.size(); i++) {</p>
+<p>String grade = list.get(i).getStuid().substring(0, 4);</p>
+<p>list.get(i).setStugrade(grade);</p>
+<p>System.out.println(grade);</p>
+<p>boolean result = teacherService.batchInsert(list);</p>
+<p>if (result) {</p>
+<p>map.put(“code”, 200);</p>
+<p>map.put(“msg”, “导入成功！”);</p>
+<p>map.put(“data”, null);</p>
+<p>} else {</p>
+<p>map.put(“code”, 500);</p>
+<p>map.put(“msg”, “导入失败！”);</p>
+<p>map.put(“data”, null);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>map.put(“code”, 500);</p>
+<p>map.put(“msg”, “导入失败，请检查文件内容是否正确。”);</p>
+<p>map.put(“data”, null);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>查看卫生检查情况</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/viewCleanInfo”)</p>
+<p>public String viewCleanInfo() {</p>
+<p>return “/teacher/clean-list”;</p>
+<p>/**</p>
+<ul>
+<li><p>专业班级卫生检查信息</p>
+</li>
+<li><p>@param ciVo</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/clean/list”)</p>
+<p>public DataGridViewResult findCleanInfoListByPage(CleanInfoVo ciVo, HttpServletRequest request) {</p>
+<p>// 获取session中的专业和年级</p>
+<p>String dept = (String) request.getSession().getAttribute(“dept”);</p>
+<p>String grade = (String) request.getSession().getAttribute(“grade”);</p>
+<p>if (StringUtils.isNotBlank(dept)) {</p>
+<p>ciVo.setStudept(dept);</p>
+<p>if (StringUtils.isNotBlank(grade)) {</p>
+<p>ciVo.setStuid(grade);</p>
+<p>System.out.println(ciVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(ciVo.getPage(), ciVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<CleanInfoVo> list = teacherService.findCleanInfoListByPage(ciVo);</CleanInfoVo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<CleanInfoVo> pageInfo = new PageInfo<CleanInfoVo>(list);</CleanInfoVo></CleanInfoVo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>@RequestMapping(value = “/viewLeaveInfo”)</p>
+<p>public String viewLeaveInfo() {</p>
+<p>return “/teacher/leave-info”;</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/leave/list”)</p>
+<p>public DataGridViewResult findLeaveInfoByPage(LeaveInfoVo liVo, HttpServletRequest request) {</p>
+<p>// 专业和年级</p>
+<p>String dept = (String) request.getSession().getAttribute(“dept”);</p>
+<p>String grade = (String) request.getSession().getAttribute(“grade”);</p>
+<p>if (StringUtils.isNotBlank(dept)) {</p>
+<p>liVo.setStudept(dept);</p>
+<p>if (StringUtils.isNotBlank(grade)) {</p>
+<p>liVo.setStugrade(grade);</p>
+<p>System.out.println(liVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(liVo.getPage(), liVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<LeaveInfo> list = teacherService.findLeaveInfoListByPage(liVo);</LeaveInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<LeaveInfo> pageInfo = new PageInfo<LeaveInfo>(list);</LeaveInfo></LeaveInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/leave/delete”)</p>
+<p>public String batchDeleteLeaveInfo(HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String params = request.getParameter(“params”);</p>
+<p>try {</p>
+<p>if (StringUtils.isBlank(params)) {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “请选择要删除的行！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>boolean result = teacherService.batchDeleteLeaveInfo(params);</p>
+<p>if (result) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “删除成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “系统错误，请稍后再试！”);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “系统错误，请稍后再试！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>将学生去向信息导出到Excel中</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/leave/export.action”)</p>
+<p>public void exportLeaveInfoToExcel(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>response.reset();// 清除缓存</p>
+<p>String studept = (String) request.getSession().getAttribute(“dept”);</p>
+<p>String stugrade = (String) request.getSession().getAttribute(“grade”);</p>
+<p>// 查找学生登记信息</p>
+<p>List<LeaveInfo> list = teacherService.exportLeaveInfo(studept, stugrade);</LeaveInfo></p>
+<p>// 拼接excel表名</p>
+<p>StringBuffer filenamebuffer = new StringBuffer();</p>
+<p>if (StringUtils.isNotBlank(studept)) {</p>
+<p>filenamebuffer.append(studept);</p>
+<p>filenamebuffer.append(“-“);</p>
+<p>if (StringUtils.isNotBlank(stugrade)) {</p>
+<p>filenamebuffer.append(stugrade);</p>
+<p>filenamebuffer.append(“级-“);</p>
+<p>filenamebuffer.append(“节假日去向表”);</p>
+<p>String filename = filenamebuffer.toString();</p>
+<p>try {</p>
+<p>ExcelUtils.writeExcel(filename, response, list, LeaveInfo.class);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p>获取饼状图的数据</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/leave/echartsData”)</p>
+<p>public String getLeaveInfoEchartsData(HttpServletRequest request) {</p>
+<p>String studept = (String) request.getSession().getAttribute(“dept”);</p>
+<p>String stugrade = (String) request.getSession().getAttribute(“grade”);</p>
+<p>HashMap&lt;String, Object&gt; map = teacherService.getLeaveInfoEchartsData(studept, stugrade);</p>
+<p>String result = JSON.toJSONString(map);</p>
+<p>System.out.println(result);</p>
+<p>return result;</p>
+<p>/**</p>
+<ul>
+<li><p>留校管理</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/stayinManage”)</p>
+<p>public String stayinManege() {</p>
+<p>return “/teacher/stayin-manage”;</p>
+<p>/**</p>
+<ul>
+<li><p>留校申请列表</p>
+</li>
+<li><p>@param siVo</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/stayin/list”)</p>
+<p>public DataGridViewResult findStayInfoListByPage(StayInfoVo siVo, HttpServletRequest request) {</p>
+<p>String studept = (String) request.getSession().getAttribute(“dept”);</p>
+<p>String stugrade = (String) request.getSession().getAttribute(“grade”);</p>
+<p>if (StringUtils.isNotBlank(studept)) {</p>
+<p>siVo.setStudept(studept);</p>
+<p>if (StringUtils.isNotBlank(stugrade)) {</p>
+<p>siVo.setStugrade(stugrade);</p>
+<p>System.out.println(siVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(siVo.getPage(), siVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<StayInfo> list = teacherService.findStayInfoListByPage(siVo);</StayInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<StayInfo> pageInfo = new PageInfo<StayInfo>(list);</StayInfo></StayInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>审批学生留校申请</p>
+</li>
+<li><p>@param si</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/stayin/approve”)</p>
+<p>public String approveStayInfo(StayInfo si) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>System.out.println(si);</p>
+<p>int result = teacherService.approveStayInfo(si);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “审批成功”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “审批失败，请稍后再试！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>导出学生留校申请信息</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/stayin/export.action”)</p>
+<p>public void exportStayInfoToExcel(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>response.reset();// 清除缓存</p>
+<p>String studept = (String) request.getSession().getAttribute(“dept”);</p>
+<p>String stugrade = (String) request.getSession().getAttribute(“grade”);</p>
+<p>// 查找学生登记信息</p>
+<p>List<StayInfo> list = teacherService.exportStayInfo(studept, stugrade);</StayInfo></p>
+<p>// 拼接excel表名</p>
+<p>StringBuffer filenamebuffer = new StringBuffer();</p>
+<p>if (StringUtils.isNotBlank(studept)) {</p>
+<p>filenamebuffer.append(studept);</p>
+<p>filenamebuffer.append(“-“);</p>
+<p>if (StringUtils.isNotBlank(stugrade)) {</p>
+<p>filenamebuffer.append(stugrade);</p>
+<p>filenamebuffer.append(“级-“);</p>
+<p>filenamebuffer.append(“留校申请表”);</p>
+<p>String filename = filenamebuffer.toString();</p>
+<p>try {</p>
+<p>ExcelUtils.writeExcel(filename, response, list, StayInfo.class);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p>获取留校申请中的统计数据</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/stayin/echartsData”)</p>
+<p>public String getStayInfoEchartsData(HttpServletRequest request) {</p>
+<p>String studept = (String) request.getSession().getAttribute(“dept”);</p>
+<p>String stugrade = (String) request.getSession().getAttribute(“grade”);</p>
+<p>JSONObject data = teacherService.getStayInfoEchartsData(studept, stugrade);</p>
+<p>System.out.println(JSON.toJSONString(data));</p>
+<p>return JSON.toJSONString(data);</p>
+<p>@RequestMapping(value = “/backManage”)</p>
+<p>public String backManage() {</p>
+<p>return “/teacher/back-manage”;</p>
+<p>/**</p>
+<ul>
+<li><p>查找学生返校信息</p>
+</li>
+<li><p>@param bsVo</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/back/list”)</p>
+<p>public DataGridViewResult findBackToScInfoListByPage(BackToScInfoVo bsVo, HttpServletRequest request) {</p>
+<p>String studept = (String) request.getSession().getAttribute(“dept”);</p>
+<p>String stugrade = (String) request.getSession().getAttribute(“grade”);</p>
+<p>if (StringUtils.isNotBlank(studept)) {</p>
+<p>bsVo.setStudept(studept);</p>
+<p>if (StringUtils.isNotBlank(stugrade)) {</p>
+<p>bsVo.setStugrade(stugrade);</p>
+<p>System.out.println(bsVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(bsVo.getPage(), bsVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<BackToScInfo> list = teacherService.findBackToScInfoListByPage(bsVo);</BackToScInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<BackToScInfo> pageInfo = new PageInfo<BackToScInfo>(list);</BackToScInfo></BackToScInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>导出学生返校登记信息</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/back/export.action”)</p>
+<p>public void exportBackToScInfoToExcel(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>response.reset();// 清除缓存</p>
+<p>String studept = (String) request.getSession().getAttribute(“dept”);</p>
+<p>String stugrade = (String) request.getSession().getAttribute(“grade”);</p>
+<p>// 查找学生登记信息</p>
+<p>List<BackToScInfo> list = teacherService.exportBackToScInfo(studept, stugrade);</BackToScInfo></p>
+<p>// 拼接excel表名</p>
+<p>StringBuffer filenamebuffer = new StringBuffer();</p>
+<p>if (StringUtils.isNotBlank(studept)) {</p>
+<p>filenamebuffer.append(studept);</p>
+<p>filenamebuffer.append(“-“);</p>
+<p>if (StringUtils.isNotBlank(stugrade)) {</p>
+<p>filenamebuffer.append(stugrade);</p>
+<p>filenamebuffer.append(“级-“);</p>
+<p>filenamebuffer.append(“返校登记表”);</p>
+<p>String filename = filenamebuffer.toString();</p>
+<p>try {</p>
+<p>ExcelUtils.writeExcel(filename, response, list, BackToScInfo.class);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p>获取返校登记的统计数据</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/back/echartsData”)</p>
+<p>public String getBackToScInfoEchartsData(HttpServletRequest request) {</p>
+<p>String studept = (String) request.getSession().getAttribute(“dept”);</p>
+<p>String stugrade = (String) request.getSession().getAttribute(“grade”);</p>
+<p>JSONObject data = teacherService.getBackToScInfoEchartsData(studept, stugrade);</p>
+<p>System.out.println(JSON.toJSONString(data));</p>
+<p>return JSON.toJSONString(data);</p>
+<p>/**</p>
+<ul>
+<li><p>查看基本信息(老师/宿管员)</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/basic/info”)</p>
+<p>public String viewStudentInfo(HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String uid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>if (StringUtils.isNotBlank(uid)) {</p>
+<p>Users users = teacherService.findUsersByUid(uid);</p>
+<p>if (users != null) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“data”, users);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “系统错误：不存在该用户！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>更改基本信息</p>
+</li>
+<li><p>@param users</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/basic/update”)</p>
+<p>public String updateUsers(Users users) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>System.out.println(users);</p>
+<p>int result = teacherService.updateUsers(users);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “保存成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “保存失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>学生管理控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/student”)</p>
+<p>public class StudentController {</p>
+<p>@Resource</p>
+<p>private StudentService studentService;</p>
+<p>/**</p>
+<ul>
+<li><p>我的卫生检查记录界面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/viewMyCleanInfo”)</p>
+<p>public String viewMyCleanInfo() {</p>
+<p>return “/student/clean-list”;</p>
+<p>/**</p>
+<ul>
+<li><p>查询我的宿舍卫生检查记录</p>
+</li>
+<li><p>@param ciVo    分页信息</p>
+</li>
+<li><p>@param request 用于获取session中的uid</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/clean/list”)</p>
+<p>public DataGridViewResult findMyCleanInfoListByPage(CleanInfoVo ciVo, HttpServletRequest request) {</p>
+<p>// 获取学号</p>
+<p>String uid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>ciVo.setStuid(uid);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(ciVo.getPage(), ciVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<CleanInfo> list = studentService.findMyCleanInfoListByPage(ciVo);</CleanInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<CleanInfo> pageInfo = new PageInfo<CleanInfo>(list);</CleanInfo></CleanInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>我的报修界面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/viewMyRepairInfo”)</p>
+<p>public String viewMyRepairInfo() {</p>
+<p>return “/student/repair-list”;</p>
+<p>/**</p>
+<ul>
+<li><p>查询我的宿舍的报修记录</p>
+</li>
+<li><p>@param riVo    分页信息</p>
+</li>
+<li><p>@param request 用于获取session中的uid</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/repair/list”)</p>
+<p>public DataGridViewResult findMyRepairInfoListByPage(RepairInfoVo riVo, HttpServletRequest request) {</p>
+<p>// 获取学号</p>
+<p>String uid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>riVo.setStuid(uid);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(riVo.getPage(), riVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<RepairInfo> list = studentService.findMyRepairInfoListByPage(riVo);</RepairInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<RepairInfo> pageInfo = new PageInfo<RepairInfo>(list);</RepairInfo></RepairInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>提交报修单</p>
+</li>
+<li><p>@param ri</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/repair/add”)</p>
+<p>public String addRepairInfo(RepairInfo ri, HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>ri.setStuid(stuid);</p>
+<p>// 报修提交时间</p>
+<p>Date date = new Date();</p>
+<p>DateFormat format = new SimpleDateFormat(“yyyy-MM-dd”);</p>
+<p>ri.setSubtime(format.format(date));</p>
+<p>System.out.println(ri);</p>
+<p>// 去执行添加操作</p>
+<p>int result = studentService.addRepairInfo(ri);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “添加成功”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “添加失败”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>修改报修单</p>
+</li>
+<li><p>@param ri</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/repair/update”)</p>
+<p>public String updateRepairInfo(RepairInfo ri, HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>System.out.println(ri);</p>
+<p>// 判断这是不是自己的提交的报修单</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>if (!stuid.equals(ri.getStuid())) {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “只能修改自己提交的报修单！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>int result = studentService.updateRepairInfo(ri);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “修改成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “修改失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>我的宿舍界面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/viewMyDormInfo”)</p>
+<p>public String viewMyDormInfo() {</p>
+<p>return “/student/myDorm”;</p>
+<p>/**</p>
+<ul>
+<li><p>查看留言板</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/viewMessageBoard”)</p>
+<p>public String viewMessageBoard() {</p>
+<p>return “/student/messageboard”;</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/message/list”)</p>
+<p>public String findMessageListByPage(HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>try {</p>
+<p>// 获取id，用来查找所在宿舍区</p>
+<p>String uid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>// 获取当前页</p>
+<p>Integer curr = Integer.parseInt(request.getParameter(“curr”));</p>
+<p>// 获取页面size</p>
+<p>Integer limit = Integer.parseInt(request.getParameter(“limit”));</p>
+<p>// 获取信息类型</p>
+<p>Integer type = Integer.parseInt(request.getParameter(“type”));</p>
+<p>// 起始行数</p>
+<p>Integer start = (curr - 1) * limit;</p>
+<p>List<MessageBoard> list = studentService.findMessageListByPage(uid, start, limit, type);</MessageBoard></p>
+<p>// 总行数</p>
+<p>Integer count = studentService.findMessageCount(type);</p>
+<p>// 总页数</p>
+<p>Integer total = (count - 1) / limit + 1;</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“count”, count);</p>
+<p>map.put(“total”, total);</p>
+<p>map.put(“curr”, curr);</p>
+<p>map.put(“limit”, limit);</p>
+<p>map.put(“data”, list);</p>
+<p>System.out.println(JSON.toJSONString(map));</p>
+<p>return JSON.toJSONString(map);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “系统错误！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>查看我的留言</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “viewMyMessage”)</p>
+<p>public String viewMyMessage() {</p>
+<p>return “/student/my-message”;</p>
+<p>/**</p>
+<ul>
+<li><p>查看我的留言</p>
+</li>
+<li><p>@param mbVo</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/message/my”)</p>
+<p>public DataGridViewResult myMessage(MessageBoardVo mbVo, HttpServletRequest request) {</p>
+<p>String uname = (String) request.getSession().getAttribute(“uname”);</p>
+<p>mbVo.setAnnouncer(uname);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(mbVo.getPage(), mbVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<MessageBoard> list = studentService.findMyMessage(mbVo);</MessageBoard></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<MessageBoard> pageInfo = new PageInfo<MessageBoard>(list);</MessageBoard></MessageBoard></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>发布留言</p>
+</li>
+<li><p>@param mb</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/message/add”)</p>
+<p>public String addMessage(MessageBoard mb, HttpServletRequest request) {</p>
+<p>String uname = (String) request.getSession().getAttribute(“uname”);</p>
+<p>mb.setAnnouncer(uname);</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>int result = studentService.addMessage(mb);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “添加成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “添加失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>批量删除留言</p>
+</li>
+<li><p>@param request 获取前端传来的id数组</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/message/delete”)</p>
+<p>public String deleteMessage(HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String params = request.getParameter(“params”);</p>
+<p>System.out.println(params);</p>
+<p>try {</p>
+<p>if (StringUtils.isNotBlank(params)) {</p>
+<p>// 获取id数组</p>
+<p>JSONArray jsonArray = JSONArray.parseArray(params);</p>
+<p>List<Integer> list = new ArrayList&lt;&gt;();</Integer></p>
+<p>for (int i = 0; i &lt; jsonArray.size(); i++) {</p>
+<p>JSONObject obj = jsonArray.getJSONObject(i);</p>
+<p>Integer id = (Integer) obj.get(“id”);</p>
+<p>list.add(id);</p>
+<p>boolean result = studentService.deleteMessage(list);</p>
+<p>if (result) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “删除成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “删除失败！”);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “删除失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>查看学生基本信息</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/basic/info”)</p>
+<p>public String viewStudentInfo(HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>if (StringUtils.isNotBlank(stuid)) {</p>
+<p>StudentInfo si = studentService.findStudentInfoByStuid(stuid);</p>
+<p>if (si != null) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“data”, si);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “系统错误：不存在该用户！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>更改基本信息</p>
+</li>
+<li><p>@param si</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/basic/update”)</p>
+<p>public String updateStudentInfo(StudentInfo si) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>System.out.println(si);</p>
+<p>int result = studentService.updateStudentInfo(si);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “保存成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “保存失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>@RequestMapping(value = “/leave/register”)</p>
+<p>public String myLeaveInfo() {</p>
+<p>return “/student/leave-info”;</p>
+<p>/**</p>
+<ul>
+<li><p>查找我的离校登记记录</p>
+</li>
+<li><p>@param liVo</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/leave/list”)</p>
+<p>public DataGridViewResult findMyLeaveInfoByPage(LeaveInfoVo liVo, HttpServletRequest request) {</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>liVo.setStuid(stuid);</p>
+<p>System.out.println(liVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(liVo.getPage(), liVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<LeaveInfo> list = studentService.findMyLeaveInfoByPage(liVo);</LeaveInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<LeaveInfo> pageInfo = new PageInfo<LeaveInfo>(list);</LeaveInfo></LeaveInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>添加离校登记记录</p>
+</li>
+<li><p>@param li</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/leave/add”)</p>
+<p>public String addMyLeaveInfo(LeaveInfo li, HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>li.setStuid(stuid);</p>
+<p>System.out.println(li);</p>
+<p>int result = studentService.addMyLeaveInfo(li);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “登记成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “登记失败，请稍后再试！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>修改离校登记记录</p>
+</li>
+<li><p>@param li</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/leave/update”)</p>
+<p>public String updateMyLeaveInfo(LeaveInfo li) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>System.out.println(li);</p>
+<p>int result = studentService.updateMyLeaveInfo(li);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “更改成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “更改失败，请稍后再试！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>留校申请</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/stayin/apply”)</p>
+<p>public String myStayInfo() {</p>
+<p>return “/student/stayin-apply”;</p>
+<p>/**</p>
+<ul>
+<li><p>查看自己的留校申请</p>
+</li>
+<li><p>@param siVo</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/stayin/list”)</p>
+<p>public DataGridViewResult findMyStayInfoListByPage(StayInfoVo siVo, HttpServletRequest request) {</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>siVo.setStuid(stuid);</p>
+<p>System.out.println(siVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(siVo.getPage(), siVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<StayInfo> list = studentService.findMyStayInfoListByPage(siVo);</StayInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<StayInfo> pageInfo = new PageInfo<StayInfo>(list);</StayInfo></StayInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>上传图片</p>
+</li>
+<li><p>@param file</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/stayin/uploadImage”)</p>
+<p>public String uploadOpinionImage(MultipartFile file, HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>HashMap&lt;String, Object&gt; data = new HashMap&lt;&gt;();</p>
+<p>try {</p>
+<p>if (file != null) {</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>String originalFilename = file.getOriginalFilename();</p>
+<p>Date date = new Date();</p>
+<p>String fileName = date.getTime() + “-“ + originalFilename;</p>
+<p>// 类路径</p>
+<p>//                String classPath = ResourceUtils.getURL(“classpath:”).getPath();</p>
+<p>// windows系统设置</p>
+<p>String classPath = “D:/file”;</p>
+<p>// Mac系统设置</p>
+<p>//                String classPath = “/Users/hanmeng/Desktop/upload”;</p>
+<p>// 父路径</p>
+<p>String src = “/upload/stayin/“; // + stuid + “/“;</p>
+<p>File directory = new File(classPath, src);</p>
+<p>if (!directory.exists()) {</p>
+<p>directory.mkdir();</p>
+<p>// 文件名</p>
+<p>String imagePath = directory.getPath() + “/“ + fileName;</p>
+<p>System.out.println(imagePath);</p>
+<p>file.transferTo(new File(imagePath));</p>
+<p>data.put(“src”, src + fileName);</p>
+<p>map.put(“code”, 0);</p>
+<p>map.put(“msg”, “上传成功！”);</p>
+<p>map.put(“data”, data);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>} else {</p>
+<p>map.put(“code”, -1);</p>
+<p>map.put(“msg”, “请选择图片！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>map.put(“code”, -1);</p>
+<p>map.put(“msg”, “上传失败，请稍后重试！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>提交留校申请</p>
+</li>
+<li><p>@param si</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/stayin/add”)</p>
+<p>public String addStayInfo(StayInfo si, HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>si.setStuid(stuid);</p>
+<p>System.out.println(si);</p>
+<p>int result = studentService.addMyStayInfo(si);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “提交申请成功”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “提交申请失败，请稍后重试！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>修改留校申请信息</p>
+</li>
+<li><p>@param si</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/stayin/update”)</p>
+<p>public String updateMyStayInfo(StayInfo si) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>System.out.println(si);</p>
+<p>int result = studentService.updateMyStayInfo(si);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “修改成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “修改失败，请稍后再试！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>查看我的返校信息</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/viewMyBackInfo”)</p>
+<p>public String viewMyBackToScInfo() {</p>
+<p>return “/student/back-info”;</p>
+<p>/**</p>
+<ul>
+<li><p>查找我的返校登记记录</p>
+</li>
+<li><p>@param bsVo</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/back/list”)</p>
+<p>public DataGridViewResult findMyBackInfoByPage(BackToScInfoVo bsVo, HttpServletRequest request) {</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>bsVo.setStuid(stuid);</p>
+<p>System.out.println(bsVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(bsVo.getPage(), bsVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<BackToScInfo> list = studentService.findMyBackInfoByPage(bsVo);</BackToScInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<BackToScInfo> pageInfo = new PageInfo<BackToScInfo>(list);</BackToScInfo></BackToScInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>添加返校登记记录</p>
+</li>
+<li><p>@param bs</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/back/add”)</p>
+<p>public String addMyBackInfo(BackToScInfo bs, HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>bs.setStuid(stuid);</p>
+<p>System.out.println(bs);</p>
+<p>int result = studentService.addMyBackInfo(bs);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “提交成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “提交失败，请稍后再试！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>修改返校登记记录</p>
+</li>
+<li><p>@param bs</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/back/update”)</p>
+<p>public String updateMyBackInfo(BackToScInfo bs) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>System.out.println(bs);</p>
+<p>int result = studentService.updateMyBackInfo(bs);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “更改成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “更改失败，请稍后再试！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>密码设置</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/setting”)</p>
+<p>public String passwordSetting() {</p>
+<p>return “password-setting”;</p>
+<p>@RequestMapping(value = “/myDormitoryInfo”)</p>
+<p>public String viewMyDormitoryInfo() {</p>
+<p>return “/student/my-dormitory”;</p>
+<p>/**</p>
+<ul>
+<li><p>查看自己宿舍信息</p>
+</li>
+<li><p>@param aiVo</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/mydorm/list”)</p>
+<p>public DataGridViewResult findMyDormitoryInfoListByPage(AllocationInfoVo aiVo, HttpServletRequest request) {</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>aiVo.setStuid(stuid);</p>
+<p>System.out.println(aiVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(aiVo.getPage(), aiVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<AllocationInfo> list = studentService.findMyDormitoryInfoListByPage(aiVo);</AllocationInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<AllocationInfo> pageInfo = new PageInfo<AllocationInfo>(list);</AllocationInfo></AllocationInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>判断是否已经选择床位了</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/mydorm/isChoosed”)</p>
+<p>public String isChooseBed(HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>boolean status = studentService.isChooseBed(stuid);</p>
+<p>map.put(“status”, status);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>提交选择的床位号</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/mydorm/chooseBed”)</p>
+<p>public String chooseBed(HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>String bed = request.getParameter(“bed”);</p>
+<p>if (StringUtils.isNotBlank(bed)) {</p>
+<p>int bedNum = Integer.parseInt(bed);</p>
+<p>// 提交床位号</p>
+<p>int result = studentService.chooseBed(stuid, bedNum);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “选择成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “选择失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “床位号不能为空！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>查找已经选择了的床位</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/mydorm/alreadyBeds”)</p>
+<p>public String findAlreadyChooseBeds(HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String stuid = (String) request.getSession().getAttribute(“uid”);</p>
+<p>List<Integer> list = studentService.findAlreadyChooseBeds(stuid);</Integer></p>
+<p>map.put(“beds”, list);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>卫生检查管理控制层：</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/dm”)</p>
+<p>public class DorMController {</p>
+<p>@Resource</p>
+<p>private DorMService dormService;</p>
+<p>/**</p>
+<ul>
+<li><p>卫生检查列表</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/cleanList”)</p>
+<p>public String cleanList() {</p>
+<p>return “/dm/clean-list”;</p>
+<p>/**</p>
+<ul>
+<li><p>查看卫生检查情况</p>
+</li>
+<li><p>@param ciVo</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/clean/list”)</p>
+<p>public DataGridViewResult findCleanInfoList(CleanInfoVo ciVo, HttpServletRequest request) {</p>
+<p>// 获取宿管员管理的宿舍区和楼栋号，拼接成brcode</p>
+<p>String brarea = (String) request.getSession().getAttribute(“brarea”);</p>
+<p>String brbid = (String) request.getSession().getAttribute(“brbid”);</p>
+<p>String brcode = MyStringUtil.getBrcode(brarea, brbid, “”);</p>
+<p>if (StringUtils.isNotBlank(brcode)) {</p>
+<p>ciVo.setBrcode(brcode);</p>
+<p>System.out.println(ciVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(ciVo.getPage(), ciVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<CleanInfo> list = dormService.findCleanInfoListByPage(ciVo);</CleanInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<CleanInfo> pageInfo = new PageInfo<CleanInfo>(list);</CleanInfo></CleanInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>更改卫生检查信息</p>
+</li>
+<li><p>@param ci</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/clean/update”)</p>
+<p>public String updateCleanInfo(CleanInfo ci) {</p>
+<p>System.out.println(ci);</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>int result = dormService.updateCleanInfo(ci);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “更改成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “更改失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>删除卫生检查记录</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/clean/delete”)</p>
+<p>public String deleteCleanInfo(String id) {</p>
+<p>System.out.println(id);</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>int result = dormService.deleteCleanInfo(id);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “删除成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “删除失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>返回添加卫生检查记录页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/clean/add.html”)</p>
+<p>public String addCleanInfo() {</p>
+<p>return “/dm/clean-add”;</p>
+<p>/**</p>
+<ul>
+<li><p>批量添加卫生检查记录</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/clean/add”)</p>
+<p>public String batchAddCleanInfo(HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String params = request.getParameter(“params”);</p>
+<p>String checker = (String) request.getSession().getAttribute(“uname”);</p>
+<p>try {</p>
+<p>boolean result = dormService.batchInsertCleanInfo(params, checker);</p>
+<p>if (result) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “添加成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “添加失败！”);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “添加失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>学生报修列表</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/repairList”)</p>
+<p>public String viewRepairList() {</p>
+<p>return “/dm/repair-list”;</p>
+<p>/**</p>
+<ul>
+<li><p>查找该宿管员负责的楼栋下的报修信息</p>
+</li>
+<li><p>@param riVo</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/repair/list”)</p>
+<p>public DataGridViewResult findRepairInfoList(RepairInfoVo riVo, HttpServletRequest request) {</p>
+<p>// 拼接brcode</p>
+<p>String brarea = (String) request.getSession().getAttribute(“brarea”);</p>
+<p>String brbid = (String) request.getSession().getAttribute(“brbid”);</p>
+<p>if (StringUtils.isBlank(brarea)) {</p>
+<p>brarea = riVo.getBrarea();</p>
+<p>if (StringUtils.isBlank(brbid)) {</p>
+<p>brbid = riVo.getBrbid();</p>
+<p>String brcode = MyStringUtil.getBrcode(brarea, brbid, “”);</p>
+<p>if (StringUtils.isNotBlank(brcode)) {</p>
+<p>riVo.setBrcode(brcode);</p>
+<p>System.out.println(riVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(riVo.getPage(), riVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<RepairInfo> list = dormService.findRepairInfoListByPage(riVo);</RepairInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<RepairInfo> pageInfo = new PageInfo<RepairInfo>(list);</RepairInfo></RepairInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>查看报修详情</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/repair/detail.html”)</p>
+<p>public String repairDetail() {</p>
+<p>return “/dm/repair-detail”;</p>
+<p>/**</p>
+<ul>
+<li><p>导出报修数据</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/repair/export.action”)</p>
+<p>public void exportToExcel(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>response.reset();// 清除缓存</p>
+<p>// 获取宿管员管理的宿舍区和楼栋号，拼接成brcode</p>
+<p>String brarea = (String) request.getSession().getAttribute(“brarea”);</p>
+<p>String brbid = (String) request.getSession().getAttribute(“brbid”);</p>
+<p>String brcode = MyStringUtil.getBrcode(brarea, brbid, “”);</p>
+<p>String status = request.getParameter(“status”);</p>
+<p>System.out.println(“status” + status);</p>
+<p>System.out.println(“brcode” + brcode);</p>
+<p>// 根据条件查找报修列表</p>
+<p>List<RepairInfo> list = dormService.exportRepairInfo(brcode, status);</RepairInfo></p>
+<p>// 拼接excel表名</p>
+<p>StringBuffer filenamebuffer = new StringBuffer();</p>
+<p>if (StringUtils.isNotBlank(brcode)) {</p>
+<p>filenamebuffer.append(brcode);</p>
+<p>filenamebuffer.append(“-“);</p>
+<p>filenamebuffer.append(“报修表”);</p>
+<p>String filename = filenamebuffer.toString();</p>
+<p>try {</p>
+<p>ExcelUtils.writeExcel(filename, response, list, RepairInfo.class);</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “导出成功！”);</p>
+<p>System.out.println(JSON.toJSONString(map));</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “导出失败！”);</p>
+<p>//        return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>批量更改报修状态</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/repair/edit”)</p>
+<p>public String editRepairStatus(HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String params = request.getParameter(“params”);</p>
+<p>if (StringUtils.isNotBlank(params)) {</p>
+<p>boolean result = dormService.batchEditRepairStatus(params);</p>
+<p>if (result) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “更改成功！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “更改失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “更改失败！请选择要更改的行。”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>学生报修列表</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/buildroomList”)</p>
+<p>public String viewBuildRoomList() {</p>
+<p>return “/dm/buildroom-list”;</p>
+<p>/**</p>
+<ul>
+<li><p>查看宿舍信息</p>
+</li>
+<li><p>@param biVo</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/buildroom/list”)</p>
+<p>public DataGridViewResult findBuildRoomInfo(BuildRoomInfoVo biVo, HttpServletRequest request) {</p>
+<p>// 拼接brcode</p>
+<p>String brarea = (String) request.getSession().getAttribute(“brarea”);</p>
+<p>if (StringUtils.isBlank(brarea)) {</p>
+<p>brarea = biVo.getBrarea();</p>
+<p>/*</p>
+<ul>
+<li><p>如果管理员负责具体的一栋楼，则只能查询本栋楼有关的宿舍信息；</p>
+</li>
+<li><p>如果是负责一个区，则可以查询这个区下所有楼的宿舍信息</p>
+</li>
+<li><p>session中没有brbid说明是负责一个区的，此时按照用户输入的楼栋数来进行查询</p>
+</li>
+</ul>
+<p>*/</p>
+<p>String brbid = (String) request.getSession().getAttribute(“brbid”);</p>
+<p>if (StringUtils.isBlank(brbid)) {</p>
+<p>brbid = biVo.getBrbid();</p>
+<p>String brrid = biVo.getBrrid();</p>
+<p>String brcode = MyStringUtil.getBrcode(brarea, brbid, brrid);</p>
+<p>if (StringUtils.isNotBlank(brcode)) {</p>
+<p>biVo.setBrcode(brcode);</p>
+<p>System.out.println(biVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(biVo.getPage(), biVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<RepairInfo> list = dormService.findBuildRoomInfoListByPage(biVo);</RepairInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<RepairInfo> pageInfo = new PageInfo<RepairInfo>(list);</RepairInfo></RepairInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>单个添加宿舍信息</p>
+</li>
+<li><p>@param bi</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/buildroom/add”)</p>
+<p>public String addBuildRoomInfo(BuildRoomInfo bi) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>// 拼接brcode，如果brcode是空，说明宿舍信息错误了</p>
+<p>String brarea = bi.getBrarea();</p>
+<p>String brbid = bi.getBrbid();</p>
+<p>String brrid = bi.getBrrid();</p>
+<p>String brcode = MyStringUtil.getBrcode(brarea, brbid, brrid);</p>
+<p>if (StringUtils.isBlank(brcode)) {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “添加失败！宿舍信息错误！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>// 计算空余数</p>
+<p>Integer free = bi.getVolume() - bi.getPeople();</p>
+<p>if (free &lt; 0) {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “添加失败！入住数不能大于床位数！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>bi.setBrcode(brcode);</p>
+<p>bi.setFree(free);</p>
+<p>System.out.println(bi);</p>
+<p>List<BuildRoomInfo> list = new ArrayList&lt;&gt;();</BuildRoomInfo></p>
+<p>list.add(bi);</p>
+<p>boolean result = dormService.addBuildRoomInfo(list);</p>
+<p>if (result) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “添加成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “添加失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>导入宿舍信息</p>
+</li>
+<li><p>@param file excel表格</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/buildroom/import.action”)</p>
+<p>public String importExcel(@RequestParam(“file”) MultipartFile file) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>try {</p>
+<p>List<BuildRoomInfo> list = ExcelUtils.readExcel(“”, BuildRoomInfo.class, file);</BuildRoomInfo></p>
+<p>// 拼接brcode和计算空余数</p>
+<p>for (int i = 0; i &lt; list.size(); i++) {</p>
+<p>String brarea = list.get(i).getBrarea();</p>
+<p>String brbid = list.get(i).getBrbid();</p>
+<p>String brrid = list.get(i).getBrrid();</p>
+<p>String brcode = MyStringUtil.getBrcode(brarea, brbid, brrid);</p>
+<p>Integer free = list.get(i).getVolume() - list.get(i).getPeople();</p>
+<p>list.get(i).setBrcode(brcode);</p>
+<p>list.get(i).setFree(free);</p>
+<p>boolean result = dormService.addBuildRoomInfo(list);</p>
+<p>if (result) {</p>
+<p>map.put(“code”, 200);</p>
+<p>map.put(“msg”, “导入成功！”);</p>
+<p>map.put(“data”, null);</p>
+<p>} else {</p>
+<p>map.put(“code”, 500);</p>
+<p>map.put(“msg”, “导入失败！”);</p>
+<p>map.put(“data”, null);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>map.put(“code”, 500);</p>
+<p>map.put(“msg”, “导入失败！”);</p>
+<p>map.put(“data”, null);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>更改宿舍信息</p>
+</li>
+<li><p>@param bi</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/buildroom/update”)</p>
+<p>public String updateBuildRoomInfo(BuildRoomInfo bi) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>try {</p>
+<p>// 如果入住数小于等于床位数，则执行更新操作，否则返回提示</p>
+<p>Integer free = bi.getVolume() - bi.getPeople();</p>
+<p>if (free &gt;= 0) {</p>
+<p>bi.setFree(free);</p>
+<p>System.out.println(bi);</p>
+<p>int result = dormService.updateBuildRoomInfo(bi);</p>
+<p>// 返回值大于0表示成功执行了更改操作，小于0表示发生了异常</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “更改成功！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “更改失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “更改失败！入住数不能大于床位数！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “更改失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>删除宿舍信息</p>
+</li>
+<li><p>@param brcode</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/buildroom/delete”)</p>
+<p>public String deleteBuildRoomInfo(String brcode) {</p>
+<p>System.out.println(brcode);</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>int result = dormService.deleteBuildRoomInfo(brcode);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “删除成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “删除失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>@RequestMapping(value = “/messageList”)</p>
+<p>public String viewMessageBoard() {</p>
+<p>return “/dm/message-list”;</p>
+<p>/**</p>
+<ul>
+<li><p>公告管理、失物招领</p>
+</li>
+<li><p>@param mbVo</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/message/list”)</p>
+<p>public DataGridViewResult findMessageList(MessageBoardVo mbVo, HttpServletRequest request) {</p>
+<p>// 获取当前管理员的管理区域</p>
+<p>// 如果管理员负责众多楼栋，则按查询条件的宿舍区和楼栋来查，否则只能查他所负责的楼栋的公告信息</p>
+<p>String brarea = (String) request.getSession().getAttribute(“brarea”);</p>
+<p>String brbid = (String) request.getSession().getAttribute(“brbid”);</p>
+<p>if (StringUtils.isBlank(brarea)) {</p>
+<p>brarea = mbVo.getBrarea();</p>
+<p>if (StringUtils.isBlank(brbid)) {</p>
+<p>brbid = mbVo.getBrbid();</p>
+<p>String brcode = MyStringUtil.getBrcode(brarea, brbid, “”);</p>
+<p>mbVo.setBrcode(brcode);</p>
+<p>System.out.println(mbVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(mbVo.getPage(), mbVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<MessageBoard> list = dormService.findMessageListByPage(mbVo);</MessageBoard></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<MessageBoard> pageInfo = new PageInfo<MessageBoard>(list);</MessageBoard></MessageBoard></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>添加公告/失物招领信息</p>
+</li>
+<li><p>@param mb</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/message/add”)</p>
+<p>public String addMessage(MessageBoard mb, HttpServletRequest request) {</p>
+<p>// announcer是管理员的uname</p>
+<p>String uname = (String) request.getSession().getAttribute(“uname”);</p>
+<p>mb.setAnnouncer(uname);</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>int result = dormService.addMessage(mb);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “添加成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “添加失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>更新公告/失物招领</p>
+</li>
+<li><p>@param mb</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/message/update”)</p>
+<p>public String updateMessage(MessageBoard mb) {</p>
+<p>// 拼接brcode</p>
+<p>String brcode = MyStringUtil.getBrcode(mb.getBrarea(), mb.getBrbid(), “”);</p>
+<p>mb.setBrcode(brcode);</p>
+<p>System.out.println(mb);</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>int result = dormService.updateMessage(mb);</p>
+<p>if (result &gt; 0) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “更改成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “更改失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>批量删除公告/失物招领信息</p>
+</li>
+<li><p>@param request 获取前端传来的id数组</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/message/delete”)</p>
+<p>public String deleteMessage(HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String params = request.getParameter(“params”);</p>
+<p>System.out.println(params);</p>
+<p>try {</p>
+<p>if (StringUtils.isNotBlank(params)) {</p>
+<p>// 获取id数组</p>
+<p>JSONArray jsonArray = JSONArray.parseArray(params);</p>
+<p>List<Integer> list = new ArrayList&lt;&gt;();</Integer></p>
+<p>for (int i = 0; i &lt; jsonArray.size(); i++) {</p>
+<p>JSONObject obj = jsonArray.getJSONObject(i);</p>
+<p>Integer id = (Integer) obj.get(“id”);</p>
+<p>System.out.println(id);</p>
+<p>list.add(id);</p>
+<p>boolean result = dormService.deleteMessage(list);</p>
+<p>if (result) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “删除成功！”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “删除失败！”);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “删除失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>留校信息列表</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/stayinList”)</p>
+<p>public String viewStayInfoList() {</p>
+<p>return “/dm/stayin-list”;</p>
+<p>/**</p>
+<ul>
+<li><p>查找留校信息列表</p>
+</li>
+<li><p>@param stVo</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/stayin/list”)</p>
+<p>public DataGridViewResult findStayInfoListByPage(StayInfoVo stVo, HttpServletRequest request) {</p>
+<p>String brarea = (String) request.getSession().getAttribute(“brarea”);</p>
+<p>String brbid = (String) request.getSession().getAttribute(“brbid”);</p>
+<p>if (StringUtils.isNotBlank(brarea)) {</p>
+<p>stVo.setBrarea(brarea);</p>
+<p>if (StringUtils.isNotBlank(brbid)) {</p>
+<p>stVo.setBrbid(brbid);</p>
+<p>System.out.println(stVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(stVo.getPage(), stVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<StayInfo> list = dormService.findStayInfoListByPage(stVo);</StayInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<StayInfo> pageInfo = new PageInfo<StayInfo>(list);</StayInfo></StayInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>导出学生留校信息</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/stayin/export.action”)</p>
+<p>public void exportStayInfoToExcel(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>response.reset();// 清除缓存</p>
+<p>String brarea = (String) request.getSession().getAttribute(“brarea”);</p>
+<p>String brbid = (String) request.getSession().getAttribute(“brbid”);</p>
+<p>// 查找学生登记信息</p>
+<p>List<StayInfo> list = dormService.exportStayInfo(brarea, brbid);</StayInfo></p>
+<p>// 拼接excel表名</p>
+<p>StringBuffer filenamebuffer = new StringBuffer();</p>
+<p>if (StringUtils.isNotBlank(brarea)) {</p>
+<p>filenamebuffer.append(brarea);</p>
+<p>filenamebuffer.append(“-“);</p>
+<p>if (StringUtils.isNotBlank(brbid)) {</p>
+<p>filenamebuffer.append(brbid);</p>
+<p>filenamebuffer.append(“栋-“);</p>
+<p>filenamebuffer.append(“学生留校信息”);</p>
+<p>String filename = filenamebuffer.toString();</p>
+<p>try {</p>
+<p>ExcelUtils.writeExcel(filename, response, list, StayInfo.class);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>/**</p>
+<ul>
+<li><p>获取留校申请中的统计数据</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/stayin/echartsData”)</p>
+<p>public String getStayInfoEchartsData(HttpServletRequest request) {</p>
+<p>String brarea = (String) request.getSession().getAttribute(“brarea”);</p>
+<p>String brbid = (String) request.getSession().getAttribute(“brbid”);</p>
+<p>JSONObject data = dormService.getStayInfoEchartsData(brarea, brbid);</p>
+<p>System.out.println(JSON.toJSONString(data));</p>
+<p>return JSON.toJSONString(data);</p>
+<p>/**</p>
+<ul>
+<li><p>预分配宿舍界面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/allocation/pre”)</p>
+<p>public String preAllocateDorm() {</p>
+<p>return “/dm/pre-allocate”;</p>
+<p>/**</p>
+<ul>
+<li><p>查找空余寝室</p>
+</li>
+<li><p>@param biVo</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/room/list”)</p>
+<p>public DataGridViewResult getFreeRoomList(BuildRoomInfoVo biVo) {</p>
+<p>System.out.println(biVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(biVo.getPage(), biVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<BuildRoomInfo> list = dormService.findFreeRoomListByPage(biVo);</BuildRoomInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<BuildRoomInfo> pageInfo = new PageInfo<BuildRoomInfo>(list);</BuildRoomInfo></BuildRoomInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>查找未分配寝室的学生</p>
+</li>
+<li><p>@param siVo</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/student/list”)</p>
+<p>public DataGridViewResult getNotAllocateStudentList(StudentInfoVo siVo) {</p>
+<p>System.out.println(siVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(siVo.getPage(), siVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<StudentInfo> list = dormService.findNotAllocateStudentListByPage(siVo);</StudentInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<StudentInfo> pageInfo = new PageInfo<StudentInfo>(list);</StudentInfo></StudentInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/allocation/doAllocate”)</p>
+<p>public String doAllocate(HttpServletRequest request) {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>String room = request.getParameter(“room”);</p>
+<p>String student = request.getParameter(“student”);</p>
+<p>System.out.println(room);</p>
+<p>System.out.println(student);</p>
+<p>map.put(“msg”, “接受到数据”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>判断床位数够不够</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/allocation/isEnough”)</p>
+<p>public String judgeIsEnough() {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>boolean enough = dormService.judgeIsEnough();</p>
+<p>if (enough) {</p>
+<p>map.put(“success”, true);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “床位数不够，请先添加空余宿舍信息！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>全部分配</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/allocation/assignAll”)</p>
+<p>public String assignAll() {</p>
+<p>HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();</p>
+<p>boolean success = dormService.doAssignAll();</p>
+<p>if (success) {</p>
+<p>map.put(“success”, true);</p>
+<p>map.put(“msg”, “分配完毕，分配结果显示在当前页面下方。”);</p>
+<p>} else {</p>
+<p>map.put(“success”, false);</p>
+<p>map.put(“msg”, “分配失败！”);</p>
+<p>return JSON.toJSONString(map);</p>
+<p>/**</p>
+<ul>
+<li><p>显示分配结果</p>
+</li>
+<li><p>@param aiVo</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/allocation/result”)</p>
+<p>public DataGridViewResult viewAllocateResult(AllocationInfoVo aiVo) {</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(aiVo.getPage(), aiVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<AllocationInfo> list = dormService.viewAllocateResult(aiVo);</AllocationInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<AllocationInfo> pageInfo = new PageInfo<AllocationInfo>(list);</AllocationInfo></AllocationInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>宿舍分配列表</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/allocation/list”)</p>
+<p>public String allocationList() {</p>
+<p>return “/dm/allocation-list”;</p>
+<p>/**</p>
+<ul>
+<li><p>查询宿舍分配信息</p>
+</li>
+<li><p>查询条件：专业/年级</p>
+</li>
+<li><p>@param aiVo</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/allocation/info”)</p>
+<p>public DataGridViewResult findAllocationInfoList(AllocationInfoVo aiVo, HttpServletRequest request) {</p>
+<p>String brarea = (String) request.getSession().getAttribute(“brarea”);</p>
+<p>String brbid = (String) request.getSession().getAttribute(“brbid”);</p>
+<p>if (StringUtils.isNotBlank(brarea)) {</p>
+<p>aiVo.setBrarea(brarea);</p>
+<p>if (StringUtils.isNotBlank(brbid)) {</p>
+<p>aiVo.setBrbid(brbid);</p>
+<p>System.out.println(aiVo);</p>
+<p>// 设置分页信息</p>
+<p>PageHelper.startPage(aiVo.getPage(), aiVo.getLimit());</p>
+<p>// 查询</p>
+<p>List<AllocationInfo> list = dormService.findAllocationInfoListByPage(aiVo);</AllocationInfo></p>
+<p>// 创建分页对象</p>
+<p>PageInfo<AllocationInfo> pageInfo = new PageInfo<AllocationInfo>(list);</AllocationInfo></AllocationInfo></p>
+<p>// 按接口要求返回数据</p>
+<p>DataGridViewResult data = new DataGridViewResult(pageInfo.getTotal(), pageInfo.getList());</p>
+<p>return data;</p>
+<p>/**</p>
+<ul>
+<li><p>导出学生宿舍分配信息</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param response</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@ResponseBody</p>
+<p>@RequestMapping(value = “/allocation/export.action”)</p>
+<p>public void exportAllocationInfoToExcel(HttpServletRequest request, HttpServletResponse response) {</p>
+<p>response.reset();// 清除缓存</p>
+<p>String brarea = (String) request.getSession().getAttribute(“brarea”);</p>
+<p>String brbid = (String) request.getSession().getAttribute(“brbid”);</p>
+<p>// 查找宿舍分配信息</p>
+<p>List<AllocationInfo> list = dormService.exportAllocationInfo(brarea, brbid);</AllocationInfo></p>
+<p>// 拼接excel表名</p>
+<p>StringBuffer filenamebuffer = new StringBuffer();</p>
+<p>if (StringUtils.isNotBlank(brarea)) {</p>
+<p>filenamebuffer.append(brarea);</p>
+<p>filenamebuffer.append(“-“);</p>
+<p>if (StringUtils.isNotBlank(brbid)) {</p>
+<p>filenamebuffer.append(brbid);</p>
+<p>filenamebuffer.append(“栋-“);</p>
+<p>filenamebuffer.append(“学生宿舍分配名单”);</p>
+<p>String filename = filenamebuffer.toString();</p>
+<p>try {</p>
+<p>ExcelUtils.writeExcel(filename, response, list, AllocationInfo.class);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=202325042508201tj<br>https://javayms.pages.dev?id=202325042508201tj</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E5%AE%BF%E8%88%8D/" rel="tag"><i class="fa fa-tag"></i> 宿舍</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

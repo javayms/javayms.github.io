@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot作业管理系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/102325042508201ta/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot作业管理系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/102325042508201ta/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot作业管理系统(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified"></time>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tag"></i>
+                </span>
+                <time id="idText" itemprop="dateModified"></time>
+              </span>
+              <p id="browserWarningText" style="color:#FF0000;"></p>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/102225592508.jpg" alt="102225592508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/112225592508.jpg" alt="112225592508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/122225592508.jpg" alt="122225592508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/132225592508.jpg" alt="132225592508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/142225592508.jpg" alt="142225592508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/152225592508.jpg" alt="152225592508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/162225592508.jpg" alt="162225592508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/172225592508.jpg" alt="172225592508"></p>
+<p>基于javaweb的SpringBoot作业管理系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； </p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue + elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：</p>
+</li>
+</ol>
+<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/front/index.html">http://localhost:8080/springbootrpj39/front/index.html</a></p>
+<p>后台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/admin/dist/index.html">http://localhost:8080/springbootrpj39/admin/dist/index.html</a></p>
+<p>管理员 abo 密码 abo</p>
+<p>用户：用户1 密码： 123456</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>老师管理控制层：</p>
+<p>/**</p>
+<ul>
+<li><p>
+</p></li>
+<li><p>Title: TeacherInfoHandler</p>
+</li>
+<li><p></p>
+</li>
+<li><p>
+</p></li>
+<li><p>Description: 教师</p>
+</li>
+<li><p></p>
+
+</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>@SuppressWarnings(“all”)</p>
+<p>public class TeacherInfoHandler {</p>
+<p>@Autowired</p>
+<p>private TeacherInfoService teacherInfoService;</p>
+<p>private Logger logger = Logger.getLogger(TeacherInfoHandler.class);</p>
+<p>/**</p>
+<ul>
+<li><p>获取 验证教师信息</p>
+</li>
+<li><p>@param teacherAccount</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@throws Exception</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/validateTeacher”, method = RequestMethod.POST)</p>
+<p>public void queryTeacherExists(@RequestParam(value = “account”) String teacherAccount, HttpServletResponse response)</p>
+<p>throws Exception {</p>
+<p>logger.info(“获取教师 “ + teacherAccount + “ 的信息”);</p>
+<p>TeacherInfo teacherInfo = null;</p>
+<p>teacherInfo = teacherInfoService.getTeacherByAccount(teacherAccount);</p>
+<p>// 教师账户不存在</p>
+<p>if (teacherInfo == null) {</p>
+<p>response.getWriter().print(“1”);</p>
+<p>} else {</p>
+<p>response.getWriter().print(teacherInfo.getTeacherPwd());</p>
+<p>/**</p>
+<ul>
+<li><p>教师登录</p>
+</li>
+<li><p>@param teacherAccount</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/teacherlogin”, method = RequestMethod.POST)</p>
+<p>public String teacherLogin(@RequestParam(“teacherAccount”) String teacherAccount, HttpServletRequest request) {</p>
+<p>if (teacherAccount == null || “”.equals(teacherAccount)) {</p>
+<p>logger.error(“教师账号为空”);</p>
+<p>request.setAttribute(“error”, “登录信息有误”);</p>
+<p>return “/error”;</p>
+<p>logger.info(“教师  “ + teacherAccount + “ 登录”);</p>
+<p>// 获取当前登录教师</p>
+<p>TeacherInfo teacherInfo = teacherInfoService.getTeacherByAccount(teacherAccount);</p>
+<p>if (teacherInfo == null) {</p>
+<p>logger.error(“教师账号为空”);</p>
+<p>request.setAttribute(“error”, “账号不存在！”);</p>
+<p>return “/error”;</p>
+<p>String teacherPwd = request.getParameter(“teacherPwd”);</p>
+<p>if (!teacherInfo.getTeacherPwd().equals(teacherPwd)) {</p>
+<p>logger.error(“密码错误”);</p>
+<p>request.setAttribute(“error”, “密码错误！”);</p>
+<p>return “/error”;</p>
+<p>// 将当前登录教师 后台权限存入 Session</p>
+<p>request.getSession().setAttribute(“adminPower”, teacherInfo.getAdminPower());</p>
+<p>request.getSession().setAttribute(“loginTeacher”, teacherInfo);</p>
+<p>return “redirect:admin/index.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>教师查看自己的信息</p>
+</li>
+<li><p>@param teacherId</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/selfinfo/{teacherId}”)</p>
+<p>public ModelAndView loginTeacherSelf(@PathVariable(“teacherId”) Integer teacherId) {</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>logger.error(“教师 “ + teacherId + “ 查看自己的信息”);</p>
+<p>if (teacherId == null) {</p>
+<p>model.setViewName(“../error”);</p>
+<p>return model;</p>
+<p>} else {</p>
+<p>List<TeacherInfo> teachers = new ArrayList<TeacherInfo>();</TeacherInfo></TeacherInfo></p>
+<p>TeacherInfo teacher = teacherInfoService.getTeacherById(teacherId);</p>
+<p>teachers.add(teacher);</p>
+<p>model.addObject(“teachers”, teachers);</p>
+<p>model.setViewName(“/admin/teacher/teachers”);</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>教师退出登录</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/exitTeacher”)</p>
+<p>public void exitTeacher(HttpSession session, HttpServletResponse response) throws IOException {</p>
+<p>session.removeAttribute(“loginTeacher”);</p>
+<p>session.removeAttribute(“adminPower”);</p>
+<p>response.sendRedirect(“admin/login.jsp”);</p>
+<p>/**</p>
+<ul>
+<li><p>查询教师集合</p>
+</li>
+<li><p>@param startPage</p>
+</li>
+<li><p>@param pageShow</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/teachers”, method = RequestMethod.GET)</p>
+<p>public ModelAndView getTeachers(</p>
+<p>@RequestParam(value = “startPage”, required = false, defaultValue = “1”) Integer startPage, // 当前页码,默认第一页</p>
+<p>@RequestParam(value = “pageShow”, required = false, defaultValue = “10”) Integer pageShow /*</p>
+<ul>
+<li><p>每页显示数据量</p>
+</li>
+<li><p>，</p>
+</li>
+<li><p>默认10条</p>
+</li>
+</ul>
+<p>*/) {</p>
+<p>logger.info(“查询教师集合”);</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>model.setViewName(“admin/teacher/teachers”);</p>
+<p>List<TeacherInfo> teachers;</TeacherInfo></p>
+<p>Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();</p>
+<p>// 计算当前查询起始数据索引</p>
+<p>int startIndex = (startPage - 1) * pageShow;</p>
+<p>map.put(“startIndex”, startIndex);</p>
+<p>map.put(“pageShow”, pageShow);</p>
+<p>map.put(“teacher”, null);</p>
+<p>teachers = teacherInfoService.getTeachers(map);</p>
+<p>model.addObject(“teachers”, teachers);</p>
+<p>// 获取教师总量</p>
+<p>int teacherTotal = teacherInfoService.getTeacherTotal();</p>
+<p>// 计算总页数</p>
+<p>int pageTotal = 1;</p>
+<p>if (teacherTotal % pageShow == 0)</p>
+<p>pageTotal = teacherTotal / pageShow;</p>
+<p>else</p>
+<p>pageTotal = teacherTotal / pageShow + 1;</p>
+<p>model.addObject(“pageTotal”, pageTotal);</p>
+<p>model.addObject(“pageNow”, startPage);</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>预修改教师</p>
+</li>
+<li><p>@param teacherId</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/teacher/{teacherId}”, method = RequestMethod.GET)</p>
+<p>public ModelAndView preUpdateTeacher(@PathVariable(“teacherId”) Integer teacherId) {</p>
+<p>logger.info(“预修改教师处理”);</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>// 获取要修改教师</p>
+<p>TeacherInfo teacher = teacherInfoService.getTeacherById(teacherId);</p>
+<p>model.setViewName(“/admin/teacher/teacheredit”);</p>
+<p>model.addObject(“teacher”, teacher);</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>修改/添加 教师</p>
+</li>
+<li><p>@param teacherId</p>
+</li>
+<li><p>@param isUpdate</p>
+</li>
+<li><pre><code>       操作标识</code></pre>
+</li>
+<li><p>@param teacherName</p>
+</li>
+<li><p>@param teacherAccount</p>
+</li>
+<li><p>@param teacherPwd</p>
+</li>
+<li><p>@param adminPower</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/teacher/teacher”, method = RequestMethod.POST)</p>
+<p>public String isUpdateOrAddTeacher(@RequestParam(value = “teacherId”, required = false) Integer teacherId,</p>
+<p>@RequestParam(value = “isupdate”, required = false) Integer isUpdate,</p>
+<p>@RequestParam(“teacherName”) String teacherName, @RequestParam(“teacherAccount”) String teacherAccount,</p>
+<p>@RequestParam(“teacherPwd”) String teacherPwd, @RequestParam(“adminPower”) Integer adminPower) {</p>
+<p>TeacherInfo teacher = new TeacherInfo();</p>
+<p>teacher.setTeacherId(teacherId);</p>
+<p>teacher.setTeacherName(teacherName);</p>
+<p>teacher.setTeacherAccount(teacherAccount);</p>
+<p>teacher.setTeacherPwd(teacherPwd);</p>
+<p>teacher.setAdminPower(adminPower);</p>
+<p>if (isUpdate != null) { // 修改</p>
+<p>logger.info(“修改教师 “ + teacher + “ 的信息”);</p>
+<p>int row = teacherInfoService.isUpdateTeacherInfo(teacher);</p>
+<p>} else { // 添加</p>
+<p>logger.info(“添加教师 “ + teacher + “ 的信息”);</p>
+<p>int row = teacherInfoService.isAddTeacherInfo(teacher);</p>
+<p>return “redirect:/teachers”;</p>
+<p>/**</p>
+<ul>
+<li><p>删除教师</p>
+</li>
+<li><p>@param teacherId</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/teacher/{teacherId}”, method = RequestMethod.DELETE)</p>
+<p>public String isDelTeacher(@PathVariable(“teacherId”) Integer teacherId) {</p>
+<p>logger.info(“删除教师 “ + teacherId);</p>
+<p>int row = teacherInfoService.isDelTeacherInfo(teacherId);</p>
+<p>return “redirect:/teachers”;</p>
+<p>学生管理控制层：</p>
+<p>@Controller</p>
+<p>@SuppressWarnings(“all”)</p>
+<p>public class StudentInfoHandler {</p>
+<p>@Autowired</p>
+<p>private StudentInfoService studentInfoService;</p>
+<p>@Autowired</p>
+<p>private ClassInfoService classInfoService;</p>
+<p>@Autowired</p>
+<p>private ExamSubjectMiddleInfoService examSubjectMiddleInfoService;</p>
+<p>@Autowired</p>
+<p>private ExamHistoryPaperService examHistoryPaperService;</p>
+<p>@Autowired</p>
+<p>private ExamChooseInfoService examChooseInfoService;</p>
+<p>@Autowired</p>
+<p>private ExamSubjectMiddleInfo esm;</p>
+<p>@Autowired</p>
+<p>private ClassInfo classInfo;</p>
+<p>@Autowired</p>
+<p>private ExamPaperInfo examPaper;</p>
+<p>@Autowired</p>
+<p>private GradeInfo grade;</p>
+<p>@Autowired</p>
+<p>private StudentInfo student;</p>
+<p>@Autowired</p>
+<p>private ExamPaperInfoService examPaperInfoService;</p>
+<p>private Logger logger = Logger.getLogger(StudentInfoHandler.class);</p>
+<p>/**</p>
+<ul>
+<li><p>获取学生集合</p>
+</li>
+<li><p>@param studentId 学生编号</p>
+</li>
+<li><p>@param classId 班级编号</p>
+</li>
+<li><p>@param gradeId 系部编号</p>
+</li>
+<li><p>@param startPage 起始页 default=1</p>
+</li>
+<li><p>@param pageShow 页容量 default=10</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/students”)</p>
+<p>public ModelAndView getCourses(@RequestParam(value = “studentId”, required = false) Integer studentId,</p>
+<p>@RequestParam(value = “classId”, required = false) Integer classId,</p>
+<p>@RequestParam(value = “gradeId”, required = false) Integer gradeId,</p>
+<p>@RequestParam(value=”startPage”, required=false, defaultValue=”1”) Integer startPage,</p>
+<p>@RequestParam(value=”pageShow”, required=false, defaultValue=”10”) Integer pageShow ) {</p>
+<p>logger.info(“获取学生集合  classId=”+classId+”, gradeId=”+gradeId+”, startPage=”+startPage+”, pageShow=”+pageShow);</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>model.setViewName(“/admin/student/students”);</p>
+<p>//查询条件处理</p>
+<p>StudentInfo student = new StudentInfo();</p>
+<p>if (studentId != null)</p>
+<p>student.setStudentId(studentId);</p>
+<p>if (classId != null) {</p>
+<p>classInfo.setClassId(classId);</p>
+<p>student.setClassInfo(classInfo);</p>
+<p>if (gradeId != null) {</p>
+<p>grade.setGradeId(gradeId);</p>
+<p>student.setGrade(grade);</p>
+<p>Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();</p>
+<p>//计算当前查询起始数据索引</p>
+<p>int startIndex = (startPage-1) * pageShow;</p>
+<p>map.put(“student”, student);</p>
+<p>map.put(“startIndex”, startIndex);</p>
+<p>map.put(“pageShow”, pageShow);</p>
+<p>List<StudentInfo> students = studentInfoService.getStudents(map);</StudentInfo></p>
+<p>model.addObject(“students”, students);</p>
+<p>//获取学生总量</p>
+<p>int studentTotal = studentInfoService.getStudentTotal();</p>
+<p>//计算总页数</p>
+<p>int pageTotal = 1;</p>
+<p>if (studentTotal % pageShow == 0)</p>
+<p>pageTotal = studentTotal / pageShow;</p>
+<p>else</p>
+<p>pageTotal = studentTotal / pageShow + 1;</p>
+<p>model.addObject(“pageTotal”, pageTotal);</p>
+<p>model.addObject(“pageNow”, startPage);</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>根据编号获取学生信息</p>
+</li>
+<li><p>@param studentId</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/student/{studentId}”)</p>
+<p>public ModelAndView getCourseById(@PathVariable(“studentId”) Integer studentId) {</p>
+<p>logger.info(“获取学生 “ + studentId);</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>model.setViewName(“/admin/student/studentedit”);</p>
+<p>StudentInfo student = studentInfoService.getStudentById(studentId);</p>
+<p>model.addObject(“student”, student);</p>
+<p>List<ClassInfo> classes = classInfoService.getClasses(null);</ClassInfo></p>
+<p>model.addObject(“classes”, classes);</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>添加/修改学生信息</p>
+</li>
+<li><p>@param studentId</p>
+</li>
+<li><p>@param isUpdate 操作标识</p>
+</li>
+<li><p>@param studentName</p>
+</li>
+<li><p>@param studentAccount</p>
+</li>
+<li><p>@param studentPwd</p>
+</li>
+<li><p>@param classId</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/student/student”, method = RequestMethod.POST)</p>
+<p>public String isUpdateOrAddCourse(</p>
+<p>@RequestParam(value = “studentId”, required = false) Integer studentId,</p>
+<p>@RequestParam(value = “isupdate”, required = false) Integer isUpdate,</p>
+<p>@RequestParam(value = “studentName”, required = false) String studentName,</p>
+<p>@RequestParam(“studentAccount”) String studentAccount,</p>
+<p>@RequestParam(“studentPwd”) String studentPwd,</p>
+<p>@RequestParam(“classId”) Integer classId) {</p>
+<p>StudentInfo student = new StudentInfo();</p>
+<p>student.setStudentId(studentId);</p>
+<p>student.setStudentName(studentName);</p>
+<p>student.setStudentAccount(studentAccount);</p>
+<p>student.setStudentPwd(studentPwd);</p>
+<p>classInfo.setClassId(classId);</p>
+<p>student.setClassInfo(classInfo);</p>
+<p>if (isUpdate != null) {</p>
+<p>logger.info(“修改学生 “ + student + “ 的信息”);</p>
+<p>int row = studentInfoService.isUpdateStudent(student);</p>
+<p>} else {</p>
+<p>logger.info(“添加学生 “ + student + “ 的信息”);</p>
+<p>int row = studentInfoService.isAddStudent(student);</p>
+<p>return “redirect:/students”;</p>
+<p>/**</p>
+<ul>
+<li><p>删除学生</p>
+</li>
+<li><p>@param studentId</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/student/{studentId}”, method = RequestMethod.DELETE)</p>
+<p>public String isDelTeacher(@PathVariable(“studentId”) Integer studentId) {</p>
+<p>logger.info(“删除学生 “ + studentId);</p>
+<p>int row = studentInfoService.isDelStudent(studentId);</p>
+<p>return “redirect:/students”;</p>
+<p>/**</p>
+<ul>
+<li><p>预添加学生</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/preAddStudent”)</p>
+<p>public ModelAndView preAddStudent() {</p>
+<p>logger.info(“预添加学生信息”);</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>model.setViewName(“/admin/student/studentedit”);</p>
+<p>List<ClassInfo> classes = classInfoService.getClasses(null);</ClassInfo></p>
+<p>model.addObject(“classes”, classes);</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>学生考试登录验证</p>
+</li>
+<li><p>此处验证并不合理 登录验证实现如下：</p>
+</li>
+<li><p>  前台学生登录传入账户，后台根据账户获取学生密码</p>
+</li>
+<li><p>  返回学生密码，前台登录焦点离开密码框使用 JavaScript 判断</p>
+</li>
+<li><p>@param studentAccount 学生登录账户</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/validateLoginStudent”)</p>
+<p>public void validateLoginStudent(@RequestParam(“studentAccount”) String studentAccount,</p>
+<p>HttpServletResponse response) throws IOException {</p>
+<p>logger.info(“学生账户 “+studentAccount+”，尝试登录考试”);</p>
+<p>//获取需要登录的学生对象</p>
+<p>StudentInfo student = studentInfoService.getStudentByAccountAndPwd(studentAccount);</p>
+<p>if (student == null) {</p>
+<p>logger.error(“登录学生账户 “+studentAccount+” 不存在”);</p>
+<p>response.getWriter().print(“n”);</p>
+<p>} else {</p>
+<p>logger.error(“登录学生账户 “+studentAccount+” 存在”);</p>
+<p>response.getWriter().print(student.getStudentPwd());</p>
+<p>/**</p>
+<ul>
+<li><p>学生登录考试</p>
+</li>
+<li><p>@param student 登录学生</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/studentLogin”, method=RequestMethod.POST)</p>
+<p>public ModelAndView studentLogin(StudentInfo student, HttpServletRequest request) {</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>StudentInfo loginStudent = studentInfoService.getStudentByAccountAndPwd(student.getStudentAccount());</p>
+<p>logger.info(“学生 “+loginStudent+” 有效登录”);</p>
+<p>if(loginStudent == null || !student.getStudentPwd().equals(loginStudent.getStudentPwd())){</p>
+<p>model.setViewName(“reception/suc”);</p>
+<p>model.addObject(“success”, “密码错误”);</p>
+<p>return model;</p>
+<p>request.getSession().setAttribute(“loginStudent”, loginStudent);</p>
+<p>model.setViewName(“reception/suc”);</p>
+<p>model.addObject(“success”, “登录成功”);</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>退出登录</p>
+</li>
+<li><p>@param session</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/exit”)</p>
+<p>public String studentClearLogin(HttpSession session) {</p>
+<p>StudentInfo studnet = (StudentInfo) session.getAttribute(“loginStudent”);</p>
+<p>logger.info(“学生 “+studnet.getStudentName()+”, 编号 “+studnet.getStudentId()+” 退出登录”);</p>
+<p>session.removeAttribute(“loginStudent”);</p>
+<p>return “redirect:index.jsp”;</p>
+<p>/**</p>
+<ul>
+<li><p>学生注册 验证当前账户是否被占用</p>
+</li>
+<li><p>@param studentAccount 注册账户</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/validateAccount”)</p>
+<p>public void validateRegisterAccount(@RequestParam(“studentAccount”) String studentAccount,</p>
+<p>HttpServletResponse response) throws IOException {</p>
+<p>logger.info(“验证学生账户 “+studentAccount+”，是否已被注册”);</p>
+<p>StudentInfo student = studentInfoService.getStudentByAccountAndPwd(studentAccount);</p>
+<p>if (student == null) {</p>
+<p>logger.error(“注册学生账户 “+studentAccount+” 可以注册”);</p>
+<p>response.getWriter().print(“t”);</p>
+<p>} else {</p>
+<p>logger.error(“注册学生账户 “+studentAccount+” 已被注册”);</p>
+<p>response.getWriter().print(“f”);</p>
+<p>/**</p>
+<ul>
+<li><p>学生注册</p>
+</li>
+<li><p>@param studentName</p>
+</li>
+<li><p>@param studentAccount</p>
+</li>
+<li><p>@param studentPwd</p>
+</li>
+<li><p>@param classId</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/studentReg”, method=RequestMethod.POST)</p>
+<p>public void studentRegister(</p>
+<p>@RequestParam(“name”) String studentName,</p>
+<p>@RequestParam(“account”) String studentAccount,</p>
+<p>@RequestParam(“pwd”) String studentPwd,</p>
+<p>@RequestParam(“classId”) Integer classId,</p>
+<p>HttpServletResponse response) throws IOException {</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>student.setStudentName(studentName);</p>
+<p>student.setStudentAccount(studentAccount);</p>
+<p>student.setStudentPwd(studentPwd);</p>
+<p>classInfo.setClassId(classId);</p>
+<p>student.setClassInfo(classInfo);</p>
+<p>logger.info(“学生注册 “+student);</p>
+<p>int row = studentInfoService.isAddStudent(student);</p>
+<p>response.getWriter().print(“t”);</p>
+<p>/**</p>
+<ul>
+<li><p>预注册</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/preStudentReg”)</p>
+<p>public ModelAndView preStudentReg() {</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>model.setViewName(“reception/register”);</p>
+<p>model.addObject(“classs”, classInfoService.getClasses(null));</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>学生进入考试</p>
+</li>
+<li><p>@param classId 班级编号</p>
+</li>
+<li><p>@param examPaperId 试卷编号</p>
+</li>
+<li><p>@param studentId 考生编号</p>
+</li>
+<li><p>@param examTime 考试时间</p>
+</li>
+<li><p>@param beginTime 考试开始时间</p>
+</li>
+<li><p>@param gradeId 系部编号</p>
+</li>
+<li><p>@param session</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/begin”)</p>
+<p>public ModelAndView beginExam(</p>
+<p>@RequestParam(“classId”) Integer classId,</p>
+<p>@RequestParam(“examPaperId”) Integer examPaperId,</p>
+<p>@RequestParam(value=”studentId”, required=false) Integer studentId,</p>
+<p>@RequestParam(“examTime”) Integer examTime,</p>
+<p>@RequestParam(“beginTime”) String beginTime,</p>
+<p>@RequestParam(“gradeId”) Integer gradeId,</p>
+<p>HttpSession session) {</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>/*</p>
+<ul>
+<li><p>查询该考试当前进入的试卷是否已经在历史记录中存在</p>
+</li>
+<li><p>如果存在，则不能再次进入考试； 反之进入考试</p>
+</li>
+</ul>
+<p>*/</p>
+<p>Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();</p>
+<p>map.put(“studentId”, studentId);</p>
+<p>map.put(“examPaperId”, examPaperId);</p>
+<p>int count = examHistoryPaperService.getHistoryInfoWithIds(map);</p>
+<p>if(session.getAttribute(“loginStudent”) == null) {</p>
+<p>model.addObject(“error”, “请先登录后再操作”);</p>
+<p>model.setViewName(“error”);</p>
+<p>return model;</p>
+<p>} else if (count &gt;= 1) {</p>
+<p>model.addObject(“error”, “不能重复考试”);</p>
+<p>model.setViewName(“error”);</p>
+<p>return model;</p>
+<p>} else {</p>
+<p>logger.info(“学生 “+studentId+” 进入考试 班级 “+classId+” 试卷 “+examPaperId);</p>
+<p>model.setViewName(“/reception/exam”);</p>
+<p>ExamPaperInfo examPaper = new ExamPaperInfo();</p>
+<p>examPaper.setExamPaperId(examPaperId);</p>
+<p>esm.setExamPaper(examPaper);</p>
+<p>//获取试卷 试题集合</p>
+<p>List<ExamSubjectMiddleInfo> esms = examSubjectMiddleInfoService.getExamPaperWithSubject(esm);</ExamSubjectMiddleInfo></p>
+<p>logger.info(“考试试题总量 “+esms.size());</p>
+<p>//获取当前考生在当前试卷中已选答案记录</p>
+<p>Map&lt;String, Object&gt; choosedMap = new HashMap&lt;String, Object&gt;();</p>
+<p>choosedMap.put(“studentId”, studentId);</p>
+<p>choosedMap.put(“examPaperId”, examPaperId);</p>
+<p>List<ExamChooseInfo> chooses = examChooseInfoService.getChooseInfoWithSumScore(choosedMap);</ExamChooseInfo></p>
+<p>if (chooses == null || chooses.size() == 0) {</p>
+<p>model.addObject(“chooses”, null);</p>
+<p>} else {</p>
+<p>model.addObject(“chooses”, chooses);</p>
+<p>model.addObject(“esms”, esms);</p>
+<p>model.addObject(“sumSubject”, esms.size());</p>
+<p>model.addObject(“examPaperId”, examPaperId);</p>
+<p>model.addObject(“examTime”, examTime);</p>
+<p>model.addObject(“beginTime”, beginTime);</p>
+<p>model.addObject(“classId”, classId);</p>
+<p>model.addObject(“gradeId”, gradeId);</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>获取学生历史考试记录</p>
+</li>
+<li><p>@param studentId 学生编号</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/history/{studentId}”)</p>
+<p>public ModelAndView getExamHistoryInfo(@PathVariable(“studentId”) Integer studentId) {</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>if (studentId == null) {</p>
+<p>logger.error(“学生编号 为空”);</p>
+<p>model.setViewName(“error”);</p>
+<p>return model;</p>
+<p>logger.info(“学生 “+studentId+” 获取考试历史记录”);</p>
+<p>//获取历史考试信息记录集合</p>
+<p>List<ExamHistoryPaper> ehps = examHistoryPaperService.getExamHistoryToStudent(studentId);</ExamHistoryPaper></p>
+<p>model.addObject(“ehps”, ehps);</p>
+<p>model.setViewName(“/reception/examHistory”);</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>考生提交考试</p>
+</li>
+<li><p>@param studentId</p>
+</li>
+<li><p>@param examPaperId</p>
+</li>
+<li><p>@param classId</p>
+</li>
+<li><p>@param gradeId</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value=”/submit”, method={RequestMethod.POST, RequestMethod.GET})</p>
+<p>public String examSubmit(</p>
+<p>@RequestParam(“studentId”) Integer studentId,</p>
+<p>@RequestParam(“examPaperId”) Integer examPaperId,</p>
+<p>@RequestParam(“classId”) Integer classId,</p>
+<p>@RequestParam(“gradeId”) Integer gradeId) {</p>
+<p>logger.info(“学生 “+studentId+” 提交了试卷 “+examPaperId);</p>
+<p>//获取当前学生当前试卷所选择的全部答案</p>
+<p>Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();</p>
+<p>map.put(“studentId”, studentId);</p>
+<p>map.put(“examPaperId”, examPaperId);</p>
+<p>List<ExamChooseInfo> chooses = examChooseInfoService.getChooseInfoWithSumScore(map);</ExamChooseInfo></p>
+<p>logger.info(“学生 “+studentId+” 共选择了 “+chooses.size()+” 道题”);</p>
+<p>//总分记录</p>
+<p>int sumScore = 0;</p>
+<p>for (ExamChooseInfo choose : chooses) {</p>
+<p>SubjectInfo subject = choose.getSubject();</p>
+<p>String chooseResult = choose.getChooseResult();</p>
+<p>String rightResult = subject.getRightResult();</p>
+<p>if (chooseResult.equals(rightResult)) {    //答案正确</p>
+<p>sumScore += subject.getSubjectScore();</p>
+<p>logger.info(“学生 “+studentId+” 第 “+subject.getSubjectId()+” 选择正确答案 “+chooseResult+” 当前总分 “+sumScore);</p>
+<p>} else {</p>
+<p>logger.info(“学生 “+studentId+” 第 “+subject.getSubjectId()+” 答案选择错误 “+chooseResult+” 正确答案为 “+rightResult+” 当前总分 “+sumScore);</p>
+<p>/*</p>
+<ul>
+<li><p>首先判断当前记录是否已经添加过</p>
+</li>
+<li><p>防止当前学生点击提交后，系统倒计时再次进行提交</p>
+</li>
+</ul>
+<p>*/</p>
+<p>int count = examHistoryPaperService.getHistoryInfoWithIds(map);</p>
+<p>if (count == 0) {</p>
+<p>//添加到历史记录</p>
+<p>map.put(“examScore”, sumScore);</p>
+<p>int row = examHistoryPaperService.isAddExamHistory(map);</p>
+<p>logger.info(“学生 “+studentId+” 提交的试卷 “+examPaperId+” 已成功处理，并添加到历史记录中”);</p>
+<p>return “redirect:willexams?gradeId=”+gradeId+”&amp;classId=”+classId+”&amp;studentId=”+studentId;</p>
+<p>/**</p>
+<ul>
+<li><p>学生回顾试卷  –  后台教师查看也调用此方法</p>
+</li>
+<li><p>@param studentId</p>
+</li>
+<li><p>@param examPaperId</p>
+</li>
+<li><p>@param score</p>
+</li>
+<li><p>@param examPaperName</p>
+</li>
+<li><p>@param studentName  后台教师查看需传入学生姓名</p>
+</li>
+<li><p>@return</p>
+</li>
+<li><p>@throws UnsupportedEncodingException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/review”)</p>
+<p>public ModelAndView reViewExam(</p>
+<p>@RequestParam(“studentId”) Integer studentId,</p>
+<p>@RequestParam(“examPaperId”) Integer examPaperId,</p>
+<p>@RequestParam(“score”) Integer score,</p>
+<p>@RequestParam(“examPaperName”) String examPaperName,</p>
+<p>@RequestParam(value=”studentName”, required=false) String studentName) throws UnsupportedEncodingException {</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>if (studentId == null) {</p>
+<p>model.addObject(“error”, “请先登录后再操作”);</p>
+<p>model.setViewName(“error”);</p>
+<p>return model;</p>
+<p>} else {</p>
+<p>//获取当前试卷的试题集合  – 前台判断需要</p>
+<p>examPaper.setExamPaperId(examPaperId);</p>
+<p>esm.setExamPaper(examPaper);</p>
+<p>List<ExamSubjectMiddleInfo> esms = examSubjectMiddleInfoService.getExamPaperWithSubject(esm);</ExamSubjectMiddleInfo></p>
+<p>Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();</p>
+<p>map.put(“studentId”, studentId);</p>
+<p>map.put(“examPaperId”, examPaperId);</p>
+<p>//获取当前回顾试卷 试题、选择答案 信息</p>
+<p>List<ExamChooseInfo> reviews = examChooseInfoService.getChooseInfoWithExamSubject(map);</ExamChooseInfo></p>
+<p>logger.info(“学生 “+studentId+” 回顾试卷 “+examPaperId+” 试题数量 “+reviews.size());</p>
+<p>//设置试卷名称、试卷总分</p>
+<p>model.addObject(“examPaperName”, examPaperName);</p>
+<p>model.addObject(“score”, score);</p>
+<p>model.setViewName(“reception/review”);</p>
+<p>model.addObject(“views”, reviews);</p>
+<p>model.addObject(“esms”, esms);</p>
+<p>if (studentName != null) model.addObject(“studentName”, studentName);</p>
+<p>model.addObject(“ExamedPaper”, examPaperInfoService.getExamPaper(examPaperId));</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>学生查看自己信息</p>
+</li>
+<li><p>@param studentId</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/self/{studentId}”)</p>
+<p>public ModelAndView selfInfo(@PathVariable(“studentId”) Integer studentId) {</p>
+<p>StudentInfo stu = studentInfoService.getStudentById(studentId);</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>model.setViewName(“/reception/self”);</p>
+<p>model.addObject(“self”, stu);</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>学生修改密码</p>
+</li>
+<li><p>@param pwd</p>
+</li>
+<li><p>@param studentId</p>
+</li>
+<li><p>@param response</p>
+</li>
+<li><p>@throws IOException</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/reset/{pwd}/{studentId}”)</p>
+<p>public void isResetPwd(</p>
+<p>@PathVariable(“pwd”) String pwd,</p>
+<p>@PathVariable(“studentId”) Integer studentId,</p>
+<p>HttpServletResponse response) throws IOException {</p>
+<p>logger.info(“学生 “+studentId+” 修改密码”);</p>
+<p>student.setStudentId(studentId);</p>
+<p>student.setStudentPwd(pwd);</p>
+<p>int row = studentInfoService.isResetPwdWithStu(student);</p>
+<p>if (row &gt; 0) {</p>
+<p>response.getWriter().print(“t”);</p>
+<p>} else {</p>
+<p>response.getWriter().print(“f”);</p>
+<p>科目管理控制层：</p>
+<p>@Controller</p>
+<p>@SuppressWarnings(“all”)</p>
+<p>public class CourseInfoHandler {</p>
+<p>@Autowired</p>
+<p>private CourseInfoService courseInfoService;</p>
+<p>@Autowired</p>
+<p>private GradeInfoService gradeInfoService;</p>
+<p>private Logger logger = Logger.getLogger(CourseInfoHandler.class);</p>
+<p>/**</p>
+<ul>
+<li><p>获取科目信息</p>
+</li>
+<li><p>@param gradeId</p>
+</li>
+<li><pre><code>       系部编号</code></pre>
+</li>
+<li><p>@param division</p>
+</li>
+<li><pre><code>       分科情况</code></pre>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/courses”)</p>
+<p>public ModelAndView getCourses(@RequestParam(value = “gradeId”, required = false) Integer gradeId,</p>
+<p>@RequestParam(value = “division”, required = false) Integer division) {</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>model.setViewName(“/admin/course/courses”);</p>
+<p>CourseInfo course = new CourseInfo();</p>
+<p>if (gradeId != null)</p>
+<p>course.getGrade().setGradeId(gradeId);</p>
+<p>if (division != null)</p>
+<p>course.setDivision(division);</p>
+<p>List<CourseInfo> courses = courseInfoService.getCourses(course);</CourseInfo></p>
+<p>model.addObject(“courses”, courses);</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>根据科目编号获取学科信息</p>
+</li>
+<li><p>@param courseId</p>
+</li>
+<li><pre><code>       科目编号</code></pre>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/course/{courseId}”)</p>
+<p>public ModelAndView getCourseById(@PathVariable(“courseId”) Integer courseId) {</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>model.setViewName(“/admin/course/courseedit”);</p>
+<p>CourseInfo course = courseInfoService.getCourseById(courseId);</p>
+<p>model.addObject(“course”, course);</p>
+<p>/** 获取所有系部列表 */</p>
+<p>List<GradeInfo> grades = gradeInfoService.getGrades();</GradeInfo></p>
+<p>model.addObject(“grades”, grades);</p>
+<p>return model;</p>
+<p>/**</p>
+<ul>
+<li><p>添加/修改科目信息</p>
+</li>
+<li><p>@param courseId</p>
+</li>
+<li><pre><code>       科目编号</code></pre>
+</li>
+<li><p>@param isUpdate</p>
+</li>
+<li><pre><code>       标识是否为修改操作</code></pre>
+</li>
+<li><p>@param courseName</p>
+</li>
+<li><pre><code>       科目名称</code></pre>
+</li>
+<li><p>@param division</p>
+</li>
+<li><pre><code>       分科情况</code></pre>
+</li>
+<li><p>@param gradeId</p>
+</li>
+<li><pre><code>       系部编号</code></pre>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/course/course”, method = RequestMethod.POST)</p>
+<p>public String isUpdateOrAddCourse(@RequestParam(value = “courseId”, required = false) Integer courseId,</p>
+<p>@RequestParam(value = “isupdate”, required = false) Integer isUpdate,</p>
+<p>@RequestParam(“courseName”) String courseName, @RequestParam(“division”) Integer division,</p>
+<p>@RequestParam(“gradeId”) Integer gradeId) {</p>
+<p>CourseInfo course = new CourseInfo();</p>
+<p>course.setCourseId(courseId);</p>
+<p>course.setCourseName(courseName);</p>
+<p>course.setDivision(division);</p>
+<p>GradeInfo grade = new GradeInfo();</p>
+<p>grade.setGradeId(gradeId);</p>
+<p>course.setGrade(grade);</p>
+<p>// 修改</p>
+<p>if (isUpdate != null) {</p>
+<p>int row = courseInfoService.isUpdateCourse(course);</p>
+<p>// 添加</p>
+<p>else {</p>
+<p>int row = courseInfoService.isAddCourse(course);</p>
+<p>return “redirect:/courses”;</p>
+<p>/**</p>
+<ul>
+<li><p>删除科目</p>
+</li>
+<li><p>@param courseId</p>
+</li>
+<li><pre><code>       待删除科目编号</code></pre>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/course/{courseId}”, method = RequestMethod.DELETE)</p>
+<p>public String isDelTeacher(@PathVariable(“courseId”) Integer courseId) {</p>
+<p>int row = courseInfoService.isDelCourse(courseId);</p>
+<p>return “redirect:/courses”;</p>
+<p>/**</p>
+<ul>
+<li><p>预添加科目信息</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(“/preAddCourse”)</p>
+<p>public ModelAndView preAddCourse() {</p>
+<p>ModelAndView model = new ModelAndView();</p>
+<p>model.setViewName(“/admin/course/courseedit”);</p>
+<p>/** 获取系部集合 */</p>
+<p>List<GradeInfo> grades = gradeInfoService.getGrades();</GradeInfo></p>
+<p>model.addObject(“grades”, grades);</p>
+<p>return model;</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=102325042508201ta<br>https://javayms.pages.dev?id=102325042508201ta</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E4%BD%9C%E4%B8%9A/" rel="tag"><i class="fa fa-tag"></i> 作业</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

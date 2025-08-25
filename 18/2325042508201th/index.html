@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":0,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="基于javaweb的SpringBoot大学城水电管理系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:site_name" content="Java源码社">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/182325042508201th/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>基于javaweb的SpringBoot大学城水电管理系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Java源码社</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>联系站长</a>
+
+  </li>
+        <li class="menu-item menu-item-remote">
+
+    <a href="/remote/" rel="section"><i class="fa fa-link fa-fw"></i>远程说明</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索...书店、票、购物、图书、学生…" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/182325042508201th/">
+
+
+
+
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Java源码社">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+			<!--
+            /
+			-->
+			基于javaweb的SpringBoot大学城水电管理系统(java+springboot+mybaits+vue+elementui+mysql)
+            
+        </h1>
+
+        <div class="post-meta">
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time id="dateText" itemprop="dateModified"></time>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-tag"></i>
+                </span>
+                <time id="idText" itemprop="dateModified"></time>
+              </span>
+              <p id="browserWarningText" style="color:#FF0000;"></p>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span hidden>——————————DescriptionStart——————————</span></p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><p>Java≥8、MySQL≥5.7、Node.js≥14</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><p>后端：eclipse/idea/myeclipse/sts等均可配置运行<br>前端：WebStorm/VSCode/HBuilderX等均可</p>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f5f5f5;list-style: none;margin: 0.2em 0px 2px;font-size: 13px;display: inline-block;">❗没学过node.js的不要搞前后端分离项目</blockquote>
+
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>课程设计，大作业，毕业设计，项目练习，学习演示等</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/352325002508.jpg" alt="352325002508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/372325002508.jpg" alt="372325002508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/382325002508.jpg" alt="382325002508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/392325002508.jpg" alt="392325002508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/402325002508.jpg" alt="402325002508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/412325002508.jpg" alt="412325002508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/422325002508.jpg" alt="422325002508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/432325002508.jpg" alt="432325002508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/442325002508.jpg" alt="442325002508"></p>
+<p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project06/452325002508.jpg" alt="452325002508"></p>
+<p>基于javaweb的SpringBoot大学城水电管理系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>环境需要</p>
+<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
+<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
+<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； </p>
+<p>4.数据库：MySql 5.7/8.0版本均可；</p>
+<p>5.是否Maven项目：是；</p>
+<p>技术栈</p>
+<p>后端：SpringBoot+Mybaits</p>
+<p>前端：Vue + elementui</p>
+<p>使用说明</p>
+<p>项目运行：</p>
+<ol>
+<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
+</li>
+<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
+</li>
+<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
+</li>
+<li><p>运行项目，在浏览器中输入地址：</p>
+</li>
+</ol>
+<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/front/index.html">http://localhost:8080/springbootrpj39/front/index.html</a></p>
+<p>后台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/springbootrpj39/admin/dist/index.html">http://localhost:8080/springbootrpj39/admin/dist/index.html</a></p>
+<p>管理员 abo 密码 abo</p>
+<p>用户：用户1 密码： 123456</p>
+<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<p><span hidden>——————————CodeStart——————————</span></p>
+<p>系统管理员端的控制器: </p>
+<p>/**</p>
+<ul>
+<li>系统管理员端的控制器</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>@RequestMapping(value = “/admin”)</p>
+<p>public class AdminController {</p>
+<p>private Logger logger = LoggerFactory.getLogger(this.getClass());</p>
+<p>@Resource</p>
+<p>private RepairService repairService;</p>
+<p>@Resource</p>
+<p>private StudentService studentService;</p>
+<p>@Resource</p>
+<p>private AdminService adminService;</p>
+<p>@Resource</p>
+<p>private UrgentRepairService urgentRepairService;</p>
+<p>@Resource</p>
+<p>private MaintenanceService maintenanceService;</p>
+<p>@Resource</p>
+<p>private TechnicianService technicianService;</p>
+<p>@Resource</p>
+<p>private DoorDao doorDao;</p>
+<p>@RequestMapping(value = “/login”, method = RequestMethod.GET)</p>
+<p>public String login(Model model) {</p>
+<p>return “redirect:../student/login”;</p>
+<p>@RequestMapping(value = “/login”, method = RequestMethod.POST)</p>
+<p>@ResponseBody</p>
+<p>public LoginResult login(int id, String password, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {</p>
+<p>logger.info(“================admin login===================”);</p>
+<p>logger.info(“admin id: “+id);</p>
+<p>logger.info(“admin password: “+password);</p>
+<p>logger.info(“================admin login===================”);</p>
+<p>Admin admin = adminService.getAdminById(id);</p>
+<p>LoginResult loginResult = null;</p>
+<p>if(admin==null){</p>
+<p>logger.info(“admin null”);</p>
+<p>loginResult = new LoginResult(false);</p>
+<p>}else{</p>
+<p>String psw = admin.getPassword();</p>
+<p>logger.info(“admin password:”+psw);</p>
+<p>//密码正确</p>
+<p>if(psw.equals(password)){</p>
+<p>loginResult = new LoginResult(true);</p>
+<p>httpServletRequest.getSession().setAttribute(“ADMIN_ID”, id);</p>
+<p>httpServletResponse.addCookie(new Cookie(“ADMIN_ID”, String.valueOf(id)));</p>
+<p>}else{</p>
+<p>loginResult = new LoginResult(false);</p>
+<p>if(!loginResult.isSuccess()){</p>
+<p>loginResult.setReason(“invalid user”);</p>
+<p>logger.info(“LoginResult:”+loginResult);</p>
+<p>return loginResult;</p>
+<p>@RequestMapping(value = “/logout”, method = RequestMethod.GET)</p>
+<p>public String logout(HttpSession httpSession) {</p>
+<p>logger.info(“退出要移除的sessionId是:”+httpSession.getId());</p>
+<p>httpSession.removeAttribute(“ADMIN_ID”);</p>
+<p>return “redirect:../student/login”;</p>
+<p>@RequestMapping(value = “/dashboard”, method = RequestMethod.GET)</p>
+<p>public String dashboard(Model model, HttpServletRequest httpServletRequest) {</p>
+<p>List<Repair> repairs = repairService.getAllUnFinish();</Repair></p>
+<p>Student student;</p>
+<p>List<RepairInfoVo> repairInfoVos = new ArrayList&lt;&gt;();</RepairInfoVo></p>
+<p>for(Repair repair:repairs){</p>
+<p>student = studentService.getStudentById(repair.getStudentId());</p>
+<p>RepairInfoVo repairInfoVo = new RepairInfoVo(student, repair);</p>
+<p>repairInfoVo.setStatesInfo(RepairEnumCN.stateOf(repair.getStatus()).getStateInfo());</p>
+<p>repairInfoVos.add(repairInfoVo);</p>
+<p>model.addAttribute(“repairInfoVos”, repairInfoVos);</p>
+<p>return “/admin/dashboard”;</p>
+<p>@RequestMapping(value = “/repair/{repairId}/detail”, method = RequestMethod.GET)</p>
+<p>public String detailRepair(@PathVariable(“repairId”) int repairId, Model model) {</p>
+<p>Repair repair;</p>
+<p>repair = repairService.getRepairById(repairId);</p>
+<p>repair.setPicMD5(“/“ + repair.getPicMD5());</p>
+<p>RepairInfoVo repairInfoVo = new RepairInfoVo(repair);</p>
+<p>repairInfoVo.setStatesInfo(RepairEnumCN.stateOf(repair.getStatus()).getStateInfo());</p>
+<p>model.addAttribute(“repairInfoVo”, repairInfoVo);</p>
+<p>return “admin/detail”;</p>
+<p>@RequestMapping(value = “/repair/{repairId}/cancel”, method = RequestMethod.GET)</p>
+<p>public String cancelRepair(@PathVariable(“repairId”) int repairId) {</p>
+<p>repairService.cancelRepair(repairId);</p>
+<p>return “redirect:/admin/dashboard”;</p>
+<p>@RequestMapping(value = “/repair/{repairId}/confirm”, method = RequestMethod.GET)</p>
+<p>public String confirmRepair(@PathVariable(“repairId”) int repairId) {</p>
+<p>repairService.confirmRepair(repairId);</p>
+<p>return “redirect:/admin/dashboard”;</p>
+<p>@RequestMapping(value = “/repair/{repairId}/arrange”, method = RequestMethod.GET)</p>
+<p>public String arrangeRepair(@PathVariable(“repairId”) int repairId, Model model) {</p>
+<p>Repair repair = repairService.getRepairById(repairId);</p>
+<p>if (repair.getStatus() == RepairEnum.REPAIR_ARRANGED.getState())</p>
+<p>return “redirect:/admin/repair/“ + String.valueOf(repairId) + “/detail”;</p>
+<p>List<Technician> techniciens = technicianService.getAllTechnician();</Technician></p>
+<p>model.addAttribute(“repair”, repair);</p>
+<p>model.addAttribute(“techniciens”, techniciens);</p>
+<p>return “/admin/addArrange”;</p>
+<p>@RequestMapping(value = “/maintenance/{repairId}/add”, method = RequestMethod.POST)</p>
+<p>public String submitArrange(@PathVariable(“repairId”) int repairId, @RequestParam(“technicianId”) String technicianId) {</p>
+<p>// 解决表单提交时乱码的问题(JSP在表单提交时默认采用ISO-8859-1编码)</p>
+<p>try {</p>
+<p>technicianId = new String(technicianId.getBytes(“ISO-8859-1”), “utf8”);</p>
+<p>} catch (UnsupportedEncodingException e) {</p>
+<p>e.printStackTrace();</p>
+<p>repairService.arrangeRepair(repairId, Integer.valueOf(technicianId));</p>
+<p>return “redirect:/admin/dashboard”;</p>
+<p>@RequestMapping(value = “/finish”, method = RequestMethod.GET)</p>
+<p>public String finish(Model model) {</p>
+<p>List<Repair> repairs = repairService.getAllFinish();</Repair></p>
+<p>Student student;</p>
+<p>List<RepairInfoVo> repairInfoVos = new ArrayList&lt;&gt;();</RepairInfoVo></p>
+<p>for(Repair repair: repairs){</p>
+<p>student = studentService.getStudentById(repair.getStudentId());</p>
+<p>RepairInfoVo repairInfoVo = new RepairInfoVo(student, repair);</p>
+<p>repairInfoVo.setStatesInfo(RepairEnumCN.stateOf(repair.getStatus()).getStateInfo());</p>
+<p>repairInfoVos.add(repairInfoVo);</p>
+<p>model.addAttribute(“repairInfoVos”, repairInfoVos);</p>
+<p>return “/admin/finish”;</p>
+<p>@RequestMapping(value = “/urgent”, method = RequestMethod.GET)</p>
+<p>public String urgent(Model model) {</p>
+<p>List<UrgentRepair> urgentRepairs = urgentRepairService.getAllUrgentRepair();</UrgentRepair></p>
+<p>List<UrgentRepairResult> urgentRepairResults = new ArrayList<UrgentRepairResult>();</UrgentRepairResult></UrgentRepairResult></p>
+<p>Student student;</p>
+<p>Repair repair;</p>
+<p>for (UrgentRepair urgentRepair : urgentRepairs) {</p>
+<p>repair = repairService.getRepairById(urgentRepair.getRepairId());</p>
+<p>student = studentService.getStudentById(urgentRepair.getStudentId());</p>
+<p>urgentRepairResults.add(</p>
+<p>new UrgentRepairResult</p>
+<p>(urgentRepair.getId(),</p>
+<p>urgentRepair.getStatus(), UrgentRepairEnum.stateOf(urgentRepair.getStatus()).getStateInfo(),</p>
+<p>urgentRepair.getRepairId(), repair.getDetail(),</p>
+<p>urgentRepair.getStudentId(), student.getName(),</p>
+<p>new Timestamp(System.currentTimeMillis())));</p>
+<p>model.addAttribute(“list”, urgentRepairResults);</p>
+<p>return “/admin/urgent”;</p>
+<p>@RequestMapping(value = “/urgent/{repairId}/delete”, method = RequestMethod.GET)</p>
+<p>public String deleteUrgent(@PathVariable(“repairId”) int repairId) {</p>
+<p>urgentRepairService.checkUrgentRepair(repairId);</p>
+<p>return “redirect:/admin/urgent”;</p>
+<p>@RequestMapping(value = “/arrange”, method = RequestMethod.GET)</p>
+<p>public String arrange(Model model) {</p>
+<p>List<Maintenance> maintenances = maintenanceService.getAll();</Maintenance></p>
+<p>List<MaintenanceResult> maintenanceResults = new ArrayList<MaintenanceResult>();</MaintenanceResult></MaintenanceResult></p>
+<p>Repair repair;</p>
+<p>Technician technician;</p>
+<p>for (Maintenance maintenance : maintenances) {</p>
+<p>repair = repairService.getRepairById(maintenance.getRepairId());</p>
+<p>// 以下状态的报修单对应的维修记录就没必要显示了</p>
+<p>// 1. 被学生删除</p>
+<p>// 2. 学生同意取消</p>
+<p>// 3. 已经验收</p>
+<p>if (repair.getStatus() == RepairEnum.DELETED_BY_STUDENT.getState()</p>
+<p>|| repair.getStatus() == RepairEnum.CANCELED_AGREE.getState()</p>
+<p>|| repair.getStatus() == RepairEnum.CONFIRM.getState())</p>
+<p>continue;</p>
+<p>technician = technicianService.getById(maintenance.getTechnicianId());</p>
+<p>maintenanceResults.add(</p>
+<p>new MaintenanceResult(</p>
+<p>maintenance.getId(),</p>
+<p>maintenance.getRepairId(), repair.getDetail(),</p>
+<p>maintenance.getTechnicianId(), technician.getName(),</p>
+<p>new Timestamp(System.currentTimeMillis())</p>
+<p>);</p>
+<p>model.addAttribute(“list”, maintenanceResults);</p>
+<p>return “/admin/arrange”;</p>
+<p>@RequestMapping(value = “/arrange/{maintenanceId}/cancel”, method = RequestMethod.GET)</p>
+<p>public String cancelArrange(@PathVariable(“maintenanceId”) int maintenanceId) {</p>
+<p>Maintenance maintenance = maintenanceService.getById(maintenanceId);</p>
+<p>// 删除检修安排记录</p>
+<p>maintenanceService.cancelMaintenance(maintenanceId);</p>
+<p>// 同时也修改相应的维修单的状态</p>
+<p>repairService.unArrangeRepair(maintenance.getRepairId());</p>
+<p>return “redirect:/admin/arrange”;</p>
+<p>@RequestMapping(value = “/student”, method = RequestMethod.GET)</p>
+<p>public String student(Model model) {</p>
+<p>List<Student> students = studentService.getAll();</Student></p>
+<p>List<StudentResult> studentResults = new ArrayList<StudentResult>();</StudentResult></StudentResult></p>
+<p>for (Student student : students) {</p>
+<p>studentResults.add(new StudentResult(</p>
+<p>student.getId(), student.getName(), student.getPassword(),</p>
+<p>student.getSexual(), student.getSexual() == 0 ? “男” : “女”,</p>
+<p>student.getEmail(), student.getPhone(), student.getDoor())</p>
+<p>);</p>
+<p>model.addAttribute(“students”, studentResults);</p>
+<p>return “admin/student”;</p>
+<p>@RequestMapping(value = “/addstudent”, method = RequestMethod.GET)</p>
+<p>public String addStudent(Model model) {</p>
+<p>return “/admin/addStudent”;</p>
+<p>@RequestMapping(value = “/addstudent”, method = RequestMethod.POST)</p>
+<p>public String addStudent(@RequestParam(“name”) String name, @RequestParam(“email”) String email,</p>
+<p>@RequestParam(“password”) String password, @RequestParam(“sexual”) String sexual,</p>
+<p>@RequestParam(“phone”) String phone,@RequestParam(“door”) String door, Model model, HttpServletRequest httpServletRequest) {</p>
+<p>int sex = sexual.equals(“男”) ? 0 : 1;</p>
+<p>studentService.addStudent(System.currentTimeMillis()+””, name, password, sex, email, phone, door);</p>
+<p>Door door2 = doorDao.queryByName(door);</p>
+<p>if (door2==null) {</p>
+<p>Door doorObject = new Door();</p>
+<p>doorObject.setDate(new Date(System.currentTimeMillis()));</p>
+<p>doorObject.setId(System.currentTimeMillis()+””);</p>
+<p>doorObject.setName(door);</p>
+<p>doorObject.setPower(“100”);</p>
+<p>doorObject.setWater(“100”);</p>
+<p>doorDao.add(doorObject);</p>
+<p>return “redirect:/admin/student”;</p>
+<p>@RequestMapping(value = “/technician”, method = RequestMethod.GET)</p>
+<p>public String technician(Model model) {</p>
+<p>List<Technician> techniciens = technicianService.getAllTechnician();</Technician></p>
+<p>model.addAttribute(“techniciens”, techniciens);</p>
+<p>return “admin/technician”;</p>
+<p>/**</p>
+<ul>
+<li><p>添加维修人员 GET方法</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/addtechnician”, method = RequestMethod.GET)</p>
+<p>public String addTechnician(Model model) {</p>
+<p>return “/admin/addTechnician”;</p>
+<p>/**</p>
+<ul>
+<li><p>添加维修人员 POST方法</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/addtechnician”, method = RequestMethod.POST)</p>
+<p>public String addTechnician(@RequestParam(“name”) String name,@RequestParam(“number”) String number,@RequestParam(“phone”) String phone, Model model, HttpServletRequest httpServletRequest) {</p>
+<p>technicianService.addTechnician(name,number,phone);</p>
+<p>return “redirect:/admin/technician”;</p>
+<p>用户的web控制层:</p>
+<p>/**</p>
+<ul>
+<li>用户的web层</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>@CrossOrigin(origins = {“<a href="http://localhost:18084&quot;">http://localhost:18084&quot;</a>, “null”})</p>
+<p>@RequestMapping(“/student”)</p>
+<p>public class StudentController {</p>
+<p>private final Logger logger = LoggerFactory.getLogger(this.getClass());</p>
+<p>@Resource</p>
+<p>private StudentService studentService;</p>
+<p>@Resource</p>
+<p>private RepairService repairService;</p>
+<p>@Resource</p>
+<p>private UrgentRepairService urgentRepairService;</p>
+<p>@Resource</p>
+<p>private DoorDao doorDao;</p>
+<p>@RequestMapping(value = “/introduce”, method = RequestMethod.GET)</p>
+<p>public String index() {</p>
+<p>return “student/introduce”;</p>
+<p>/**</p>
+<ul>
+<li><p>登录的GET方法</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/login”, method = RequestMethod.GET)</p>
+<p>public String login() {</p>
+<p>return “student/login”;</p>
+<p>/**</p>
+<ul>
+<li><p>登录的POST方法</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@param password</p>
+</li>
+<li><p>@param httpSession</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/login”, method = RequestMethod.POST)</p>
+<p>public</p>
+<p>@ResponseBody</p>
+<p>LoginResult login(String id, String password, HttpSession httpSession, HttpServletResponse httpServletResponse) {</p>
+<p>LoginResult loginResult=null;</p>
+<p>String stuName = null;</p>
+<p>Student student = studentService.getStudentById(id);</p>
+<p>Spider spider = new Spider();</p>
+<p>try {</p>
+<p>//调用service将数据存入数据库中</p>
+<p>if(student==null){</p>
+<p>//                stuName = spider.getStudentName(id, password);</p>
+<p>//                student = new Student(id, stuName, password);</p>
+<p>//                System.out.println(stuName);</p>
+<p>//                studentService.addStudent(id, stuName, password, 0, “”, “”);</p>
+<p>loginResult = new LoginResult(true);</p>
+<p>loginResult.setReason(“invalid user”);</p>
+<p>}else{</p>
+<p>stuName = student.getName();</p>
+<p>// 密码正确</p>
+<p>if (student.getPassword().equals(password)) {</p>
+<p>loginResult = new LoginResult(true);</p>
+<p>} else {</p>
+<p>loginResult = new LoginResult(false);</p>
+<p>loginResult.setReason(“invalid user”);</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>if(loginResult.isSuccess()){</p>
+<p>// 登录成功后，为该学生生成session</p>
+<p>httpSession.setAttribute(StudentConst.STUDENT_ID, id);</p>
+<p>httpServletResponse.addCookie(new Cookie(StudentConst.STUDENT_ID, id));</p>
+<p>System.out.println(“StudentName:”+StudentConst.STUDENT_NAME);</p>
+<p>httpServletResponse.addCookie(new Cookie(StudentConst.STUDENT_NAME, stuName));</p>
+<p>logger.info(“*<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>“);</p>
+<p>logger.info(“登录: “ + String.valueOf(loginResult.isSuccess()) + “ id : “ + id + “ password : “ + password);</p>
+<p>logger.info(“*<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>“);</p>
+<p>return loginResult;</p>
+<p>/**</p>
+<ul>
+<li><p>退出的控制</p>
+</li>
+<li><p>@param httpSession</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/logout”, method = RequestMethod.GET)</p>
+<p>public String logout(HttpSession httpSession) {</p>
+<p>httpSession.removeAttribute(StudentConst.STUDENT_EMAIL);</p>
+<p>return “redirect:/student/login”;</p>
+<p>/**</p>
+<ul>
+<li><p>提交报修单的POST方法</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/commit”, method = RequestMethod.GET)</p>
+<p>public String commit(Model model) {</p>
+<p>return “/student/commit”;</p>
+<p>@RequestMapping(value = “/commit”, method = RequestMethod.POST)</p>
+<p>public String commit(@RequestParam(“detail”) String detail, @RequestParam(“place”) String place,</p>
+<p>@RequestParam(“file”) MultipartFile file, HttpServletRequest httpServletRequest) {</p>
+<p>String id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>Student student = studentService.getStudentById(id);</p>
+<p>String picMD5 = “”;</p>
+<p>logger.info(detail);</p>
+<p>logger.info(place);</p>
+<p>logger.info(picMD5);</p>
+<p>try {</p>
+<p>logger.info(file.getInputStream().toString());</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>if (file != null) {</p>
+<p>try {</p>
+<p>picMD5 = MD5.getMD5(id + String.valueOf(System.currentTimeMillis()) + file.getOriginalFilename());</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>// 往数据库中插入维修单记录</p>
+<p>repairService.submitRepair(detail, place, picMD5, student.getId());</p>
+<p>// 保存现场照片</p>
+<p>String path = httpServletRequest.getSession().getServletContext().getRealPath(“/“);</p>
+<p>System.out.println(“图片路径：” + path);</p>
+<p>String fileName = picMD5;</p>
+<p>File targetFile = new File(path, fileName);</p>
+<p>try {</p>
+<p>InputStream inputStream = file.getInputStream();</p>
+<p>OutputStream outputStream = new FileOutputStream(targetFile);</p>
+<p>byte[] buffer = new byte[2048];</p>
+<p>int len = 0;</p>
+<p>while ((len = inputStream.read(buffer)) != -1) {</p>
+<p>outputStream.write(buffer, 0, len);</p>
+<p>inputStream.close();</p>
+<p>outputStream.close();</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>} else {</p>
+<p>// 往数据库中插入维修单记录</p>
+<p>repairService.submitRepair(detail, place, picMD5, student.getId());</p>
+<p>return “redirect:/student/dashboard”;</p>
+<p>/**</p>
+<ul>
+<li><p>获取显示的主页面</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/dashboard”, method = RequestMethod.GET)</p>
+<p>public String board(Model model, HttpServletRequest httpServletRequest) {</p>
+<p>String id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>List<Repair> repairs = repairService.getRepqirByStudentId(id);</Repair></p>
+<p>List<RepairInfoVo> repairInfoVos = new ArrayList&lt;&gt;();</RepairInfoVo></p>
+<p>for(Repair repair: repairs){</p>
+<p>repair.setPicMD5(“/“+repair.getPicMD5());</p>
+<p>RepairInfoVo repairInfoVo = new RepairInfoVo(repair);</p>
+<p>repairInfoVo.setStatesInfo(RepairEnumCN.stateOf(repair.getStatus()).getStateInfo());</p>
+<p>repairInfoVos.add(repairInfoVo);</p>
+<p>model.addAttribute(“repairInfoVos”, repairInfoVos);</p>
+<p>return “/student/dashboard”;</p>
+<p>/**</p>
+<ul>
+<li><p>报修单详情</p>
+</li>
+<li><p>@param repairId</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/repair/{repairId}/detail”, method = RequestMethod.GET)</p>
+<p>public String detail(@PathVariable(“repairId”) int repairId, Model model) {</p>
+<p>Repair repair = repairService.getRepairById(repairId);</p>
+<p>repair.setPicMD5(“/“ + repair.getPicMD5());</p>
+<p>RepairInfoVo repairInfoVo = new RepairInfoVo(repair);</p>
+<p>repairInfoVo.setStatesInfo(RepairEnumCN.stateOf(repair.getStatus()).getStateInfo());</p>
+<p>model.addAttribute(“repairInfoVo”, repairInfoVo);</p>
+<p>return “student/detail”;</p>
+<p>/**</p>
+<ul>
+<li><p>删除报修单</p>
+</li>
+<li><p>@param repairId</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/repair/{repairId}/delete”, method = RequestMethod.GET)</p>
+<p>public String delete(@PathVariable(“repairId”) int repairId) {</p>
+<p>repairService.deleteRepair(repairId);</p>
+<p>return “redirect:/student/dashboard”;</p>
+<p>/**</p>
+<ul>
+<li><p>修改报修单</p>
+</li>
+<li><p>@param repairId</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/repair/{repairId}/update”, method = RequestMethod.GET)</p>
+<p>public String update(@PathVariable(“repairId”) int repairId, Model model) {</p>
+<p>Repair repair = repairService.getRepairById(repairId);</p>
+<p>model.addAttribute(“repair”, repair);</p>
+<p>return “/student/update”;</p>
+<p>/**</p>
+<ul>
+<li><p>修改报修单</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/repair/{repairId}/update”, method = RequestMethod.POST)</p>
+<p>public String update(@PathVariable(“repairId”) int repairId, @RequestParam(“detail”) String detail, @RequestParam(“place”) String place,</p>
+<p>@RequestParam(“file”) MultipartFile file, HttpServletRequest httpServletRequest) {</p>
+<p>String sno = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>int id = repairId;</p>
+<p>String picMD5 = “”;</p>
+<p>logger.info(detail);</p>
+<p>logger.info(place);</p>
+<p>logger.info(picMD5);</p>
+<p>if (file != null) {</p>
+<p>try {</p>
+<p>picMD5 = MD5.getMD5(sno + String.valueOf(System.currentTimeMillis()) + file.getOriginalFilename());</p>
+<p>} catch (Exception e) {</p>
+<p>e.printStackTrace();</p>
+<p>System.out.println(“*<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>****</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>“);</p>
+<p>// 保存现场照片</p>
+<p>String path = httpServletRequest.getSession().getServletContext().getRealPath(“/“);</p>
+<p>System.out.println(“图片路径：” + path);</p>
+<p>String fileName = picMD5;</p>
+<p>File targetFile = new File(path, fileName);</p>
+<p>try {</p>
+<p>OutputStream outputStream = new FileOutputStream(targetFile);</p>
+<p>InputStream inputStream = file.getInputStream();</p>
+<p>byte[] buffer = new byte[2048];</p>
+<p>int len = 0;</p>
+<p>while ((len = inputStream.read(buffer)) != -1) {</p>
+<p>outputStream.write(buffer, 0, len);</p>
+<p>inputStream.close();</p>
+<p>outputStream.close();</p>
+<p>} catch (IOException e) {</p>
+<p>e.printStackTrace();</p>
+<p>// 调用修改报修单接口</p>
+<p>repairService.changeRepair(id, detail, place, picMD5);</p>
+<p>return “redirect:/student/repair/“ + String.valueOf(id) + “/detail”;</p>
+<p>/**</p>
+<ul>
+<li><p>验收报修单</p>
+</li>
+<li><p>@param repairId</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/repair/{repairId}/acceptance”, method = RequestMethod.GET)</p>
+<p>public String acceptance(@PathVariable(“repairId”) int repairId) {</p>
+<p>repairService.Acceptance(repairId);</p>
+<p>return “redirect:/student/dashboard”;</p>
+<p>/**</p>
+<ul>
+<li><p>将报修单标记为催单</p>
+</li>
+<li><p>@param repairId</p>
+</li>
+<li><p>@param httpServletRequest</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/repair/{repairId}/urgent”, method = RequestMethod.GET)</p>
+<p>public String urgent(@PathVariable(“repairId”) int repairId, HttpServletRequest httpServletRequest) {</p>
+<p>String id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>Student student = studentService.getStudentById(id);</p>
+<p>urgentRepairService.submitUrgentRepair(repairId, student.getId());</p>
+<p>return “redirect:/student/urgent”;</p>
+<p>/**</p>
+<ul>
+<li><p>查看所有的催单</p>
+</li>
+<li><p>@param httpServletRequest</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/urgent”, method = RequestMethod.GET)</p>
+<p>public String showUrgent(HttpServletRequest httpServletRequest, Model model) {</p>
+<p>String id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>Student student = studentService.getStudentById(id);</p>
+<p>List<UrgentRepair> urgentRepairs = urgentRepairService.getAllUrgentRepairByStudentId(student.getId());</UrgentRepair></p>
+<p>List<StudentUrgentResult> studentUrgentResults = new ArrayList<StudentUrgentResult>();</StudentUrgentResult></StudentUrgentResult></p>
+<p>String detail = “”;</p>
+<p>for (UrgentRepair urgentRepair : urgentRepairs) {</p>
+<p>detail = repairService.getRepairById(urgentRepair.getRepairId()).getDetail();</p>
+<p>studentUrgentResults.add(new StudentUrgentResult(</p>
+<p>urgentRepair.getId(), urgentRepair.getStatus(), UrgentRepairEnum.stateOf(urgentRepair.getStatus()).getStateInfo(),</p>
+<p>urgentRepair.getRepairId(), detail, urgentRepair.getStudentId(), urgentRepair.getCreateTime()));</p>
+<p>model.addAttribute(“studentUrgentResults”, studentUrgentResults);</p>
+<p>return “student/urgent”;</p>
+<p>/**</p>
+<ul>
+<li><p>删除某条催单</p>
+</li>
+<li><p>@param repairId</p>
+</li>
+<li><p>@param httpServletRequest</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/urgent/{repairId}/delete”, method = RequestMethod.GET)</p>
+<p>public String deleteUrgent(@PathVariable(“repairId”) int repairId, HttpServletRequest httpServletRequest) {</p>
+<p>String id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>Student student = studentService.getStudentById(id);</p>
+<p>urgentRepairService.deleteUrgentRepair(repairId);</p>
+<p>return “redirect:/student/urgent”;</p>
+<p>/**</p>
+<ul>
+<li><p>重新提交某条催单</p>
+</li>
+<li><p>@param repairId</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/urgent/{repairId}/resubmit”, method = RequestMethod.GET)</p>
+<p>public String reSubmitUrgent(@PathVariable(“repairId”) int repairId) {</p>
+<p>urgentRepairService.reSubmit(repairId);</p>
+<p>return “redirect:/student/urgent”;</p>
+<p>/**</p>
+<ul>
+<li><p>获取所有待取消的报修单</p>
+</li>
+<li><p>@param httpServletRequest</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/tobecanceled”, method = RequestMethod.GET)</p>
+<p>public String toBeCanceled(HttpServletRequest httpServletRequest, Model model) {</p>
+<p>String id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>List<Repair> repairs = repairService.getAllToBeCanceledById(id);</Repair></p>
+<p>List<RepairInfoVo> repairInfoVos = new ArrayList&lt;&gt;();</RepairInfoVo></p>
+<p>for(Repair repair:repairs){</p>
+<p>repair.setPicMD5(“/“+repair.getPicMD5());</p>
+<p>RepairInfoVo repairInfoVo = new RepairInfoVo(repair);</p>
+<p>repairInfoVo.setStatesInfo(RepairEnumCN.stateOf(repair.getStatus()).getStateInfo());</p>
+<p>repairInfoVos.add(repairInfoVo);</p>
+<p>model.addAttribute(“repairInfoVos”, repairInfoVos);</p>
+<p>return “student/tobecanceled”;</p>
+<p>/**</p>
+<ul>
+<li><p>同意取消报修单</p>
+</li>
+<li><p>@param repairId</p>
+</li>
+<li><p>@param httpServletRequest</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/tobecanceled/{repairId}/agree”, method = RequestMethod.GET)</p>
+<p>public String agreeCanceled(@PathVariable(“repairId”) int repairId, HttpServletRequest httpServletRequest) {</p>
+<p>String id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>Student student = studentService.getStudentByEmail(id);</p>
+<p>repairService.agreeToBeCanceled(repairId);</p>
+<p>return “redirect:/student/tobecanceled”;</p>
+<p>/**</p>
+<ul>
+<li><p>拒绝取消报修单</p>
+</li>
+<li><p>@param repairId</p>
+</li>
+<li><p>@param httpServletRequest</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/tobecanceled/{repairId}/reject”, method = RequestMethod.GET)</p>
+<p>public String rejectCanceled(@PathVariable(“repairId”) int repairId, HttpServletRequest httpServletRequest) {</p>
+<p>String id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>repairService.rejectToBeCanceled(repairId);</p>
+<p>return “redirect:/student/tobecanceled”;</p>
+<p>/**</p>
+<ul>
+<li><p>获取个人信息的控制器</p>
+</li>
+<li><p>@param httpServletRequest</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/info”, method = RequestMethod.GET)</p>
+<p>public String infomation(HttpServletRequest httpServletRequest, Model model) {</p>
+<p>String id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>Student student = studentService.getStudentById(id);</p>
+<p>StudentResult studentResult = new StudentResult(</p>
+<p>student.getId(), student.getName(), student.getPassword(),</p>
+<p>student.getSexual(), student.getSexual() == 0 ? “男” : “女”,</p>
+<p>student.getEmail(), student.getPhone(), student.getDoor());</p>
+<p>model.addAttribute(“student”, studentResult);</p>
+<p>return “student/info”;</p>
+<p>/**</p>
+<ul>
+<li><p>修改密码的控制器</p>
+</li>
+<li><p>@param password</p>
+</li>
+<li><p>@param httpSession</p>
+</li>
+<li><p>@param httpServletResponse</p>
+</li>
+<li><p>@param httpServletRequest</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/changepassword”, method = RequestMethod.POST)</p>
+<p>public</p>
+<p>@ResponseBody</p>
+<p>LoginResult changePassword(String password, HttpSession httpSession, HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest) {</p>
+<p>String id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>Student student = studentService.getStudentByEmail(id);</p>
+<p>studentService.changePassword(student.getId(), password);</p>
+<p>return new LoginResult(true);</p>
+<p>/**</p>
+<ul>
+<li><p>修改其它资料</p>
+</li>
+<li><p>@param name</p>
+</li>
+<li><p>@param phone</p>
+</li>
+<li><p>@param sexual</p>
+</li>
+<li><p>@param httpSession</p>
+</li>
+<li><p>@param httpServletResponse</p>
+</li>
+<li><p>@param httpServletRequest</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/feelist”, method = RequestMethod.GET)</p>
+<p>public String feelist( Model model, HttpSession httpSession, HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest) {</p>
+<p>String id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>Student student = studentService.getStudentById(id);</p>
+<p>String doorName = student.getDoor();</p>
+<p>Door door = doorDao.queryByName(doorName);</p>
+<p>model.addAttribute(“fee”, door);</p>
+<p>return “student/feelist”;</p>
+<p>@RequestMapping(value = “/feeupload”, method = RequestMethod.GET)</p>
+<p>public String feeupload(Model model,HttpSession httpSession, HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest) {</p>
+<p>String id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>Student student = studentService.getStudentById(id);</p>
+<p>String doorName = student.getDoor();</p>
+<p>Door door = doorDao.queryByName(doorName);</p>
+<p>model.addAttribute(“feeup”, door);</p>
+<p>return “student/feeupload”;</p>
+<p>/**</p>
+<ul>
+<li><p>缴费</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@param httpSession</p>
+</li>
+<li><p>@param httpServletResponse</p>
+</li>
+<li><p>@param httpServletRequest</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/uploadfee”, method = RequestMethod.POST)</p>
+<p>public String uploadfee(String name, String water, String power,Model model,HttpSession httpSession, HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest) {</p>
+<p>String id = null;</p>
+<p>try {</p>
+<p>id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>} catch (NullPointerException e1) {</p>
+<p>return “student/login”;</p>
+<p>Student student = studentService.getStudentById(id);</p>
+<p>String doorName = student.getDoor();</p>
+<p>Door door = doorDao.queryByName(doorName);</p>
+<p>double waterInput = 0;</p>
+<p>double PowerInput = 0;</p>
+<p>double waterDB = 0;</p>
+<p>double powerDB = 0;</p>
+<p>try {</p>
+<p>waterInput = Double.parseDouble(water);</p>
+<p>} catch (NumberFormatException e) {</p>
+<p>waterInput = 0;</p>
+<p>try {</p>
+<p>PowerInput = Double.parseDouble(power);</p>
+<p>} catch (NumberFormatException e) {</p>
+<p>PowerInput = 0;</p>
+<p>try {</p>
+<p>waterDB = Double.parseDouble(door.getWater());</p>
+<p>} catch (NumberFormatException e) {</p>
+<p>waterDB = 0;</p>
+<p>try {</p>
+<p>powerDB = Double.parseDouble(door.getPower());</p>
+<p>} catch (NumberFormatException e) {</p>
+<p>powerDB = 0;</p>
+<p>door.setWater( waterDB+waterInput+””);</p>
+<p>door.setPower( powerDB+PowerInput+””);</p>
+<p>door.setDate(new Date(System.currentTimeMillis()));</p>
+<p>doorDao.update(door);</p>
+<p>model.addAttribute(“fee”, door);</p>
+<p>return “student/feelist”;</p>
+<p>/**</p>
+<ul>
+<li><p>修改其它资料</p>
+</li>
+<li><p>@param name</p>
+</li>
+<li><p>@param phone</p>
+</li>
+<li><p>@param sexual</p>
+</li>
+<li><p>@param httpSession</p>
+</li>
+<li><p>@param httpServletResponse</p>
+</li>
+<li><p>@param httpServletRequest</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestMapping(value = “/changeinfo”, method = RequestMethod.POST)</p>
+<p>public</p>
+<p>@ResponseBody</p>
+<p>LoginResult changeInfo(String name, String phone, String sexual, HttpSession httpSession, HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest) {</p>
+<p>String id = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_ID).toString();</p>
+<p>System.out.println(“name:”+name+”;phone:”+phone+”;sexual:”+sexual);</p>
+<p>Student student = studentService.getStudentByEmail(id);</p>
+<p>if(sexual.equals(“男”))</p>
+<p>sexual=”0”;</p>
+<p>}else{</p>
+<p>sexual=”1”;</p>
+<p>studentService.changeOtherInfo(student.getId(), Integer.valueOf(sexual), name, phone);</p>
+<p>httpServletResponse.addCookie(new Cookie(StudentConst.STUDENT_NAME, student.getName()));</p>
+<p>return new LoginResult(true);</p>
+<p>学生登录验证的拦截器: </p>
+<p>/**</p>
+<ul>
+<li>学生登录验证的拦截器</li>
+</ul>
+<p>*/</p>
+<p>public class StudentSessionInterceptor implements HandlerInterceptor {</p>
+<p>private Logger logger = LoggerFactory.getLogger(this.getClass());</p>
+<p>@Override</p>
+<p>public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {</p>
+<p>Object email = httpServletRequest.getSession().getAttribute(StudentConst.STUDENT_EMAIL);</p>
+<p>if (email == null) {</p>
+<p>logger.info(“用户尚未登录，将其重定向至登录页面”);</p>
+<p>httpServletResponse.sendRedirect(“/student/login”);</p>
+<p>return false;</p>
+<p>return true;</p>
+<p>@Override</p>
+<p>public void postHandle(HttpServletRequest hsr, HttpServletResponse hsr1, Object o, ModelAndView mav) throws Exception {</p>
+<p>@Override</p>
+<p>public void afterCompletion(HttpServletRequest hsr, HttpServletResponse hsr1, Object o, Exception excptn) throws Exception {</p>
+<p><span hidden>——————————PayStart——————————</span></p>
+<hr>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=182325042508201th<br>https://javayms.pages.dev?id=182325042508201th</p></blockquote>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E6%9C%AA%E5%88%86%E7%B1%BB/" rel="tag"><i class="fa fa-tag"></i> 未分类</a>
+
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt=""
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name"></p>
+  <div class="site-description" itemprop="description">购买方式见各详情页<b>底部</b><br>所有项目均可<b><a href="/remote">免费远程</a></b>搭建调试运行</div>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
