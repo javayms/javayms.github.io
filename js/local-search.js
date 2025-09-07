@@ -197,9 +197,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchText == '(' || searchText == ')' || searchText == '+' || searchText == '_' || searchText == ',' /*|| searchText.indexOf("【") > -1 || searchText.indexOf("】") > -1 || /^[0-9a-zA-Z]$/.test(searchText)*/) {
       return;
     }
-    let subIndex = searchText.indexOf("+mysql的");
-    if (subIndex > 0) {
-      searchText = searchText.substring(subIndex + 7);
+    let subIndex1 = searchText.indexOf("+mysql的");
+    if (subIndex1 > 0) {
+      searchText = searchText.substring(subIndex1 + 7);
+    }
+    let subIndex2 = searchText.indexOf("和mysql的");
+    if (subIndex2 > 0) {
+      searchText = searchText.substring(subIndex2 + 7);
     }
     //console.log("q2:" + searchText)
     let keywords = searchText.split(/[-\s]+/);

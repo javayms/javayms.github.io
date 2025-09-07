@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SSM家庭理财管理系统(java+ssm+bootstrap+highcharts+mysql)">
+<meta property="og:title" content="基于javaweb的SSM+Maven家庭理财管理系统(java+ssm+bootstrap+highcharts+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SSM家庭理财管理系统(java+ssm+bootstrap+highcharts+mysql) | Java源码社</title>
+  <title>基于javaweb的SSM+Maven家庭理财管理系统(java+ssm+bootstrap+highcharts+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SSM家庭理财管理系统(java+ssm+bootstrap+highcharts+mysql)
+			基于javaweb的SSM+Maven家庭理财管理系统(java+ssm+bootstrap+highcharts+mysql)
             
         </h1>
 
@@ -227,7 +227,7 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/250923571103.jpg" alt="250923571103"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/260923571103.jpg" alt="260923571103"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/270923571103.jpg" alt="270923571103"></p>
-<p>基于javaweb的SSM家庭理财管理系统(java+ssm+bootstrap+highcharts+mysql)</p>
+<p>基于javaweb的SSM+Maven家庭理财管理系统(java+ssm+bootstrap+highcharts+mysql)</p>
 <p>项目介绍</p>
 <p>SSM家庭理财管理系统,分为管理员与普通用户两种角色； 管理员角色包含以下功能： 收支管理：收入信息维护、支出信息维护； 财务管理：证券账户管理、持股管理、证券流水账管理； 报表管理：按时间收入报表、按时间支出报表、按类型报表； 用户报表：用户信息管理、修改用户信息、修改密码、安全退出；</p>
 <p>普通用户角色包含以下功能： 收支管理：收入信息维护、支出信息维护； 财务管理：证券账户管理、持股管理、证券流水账管理； 报表管理：按时间收入报表、按时间支出报表、按类型报表； 用户报表：修改用户信息、修改密码、安全退出；</p>
@@ -245,289 +245,24 @@
 <li>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，修改配置； 3. 将项目中db.properties配置文件中的数据库配置改为自己的用户名密码，然后运行； 4. 运行成功后，在浏览器中输入：<a target="_blank" rel="noopener" href="http://localhost:8080/ffms/index.do">http://localhost:8080/ffms/index.do</a> 管理员账号密码：admin/123456 普通用户账号密码：user/123456</li>
 </ol>
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>用户管理控制层： </p>
-<p>@Controller</p>
-<p>@RequestMapping(“/user”)</p>
-<p>public class UserController {</p>
-<p>@Autowired</p>
-<p>UserService userService;</p>
-<p>@RequestMapping(value = {“/list”})</p>
-<p>public String toUserList() {</p>
-<p>return “userList”;</p>
-<p>@RequestMapping(value = {“/add”})</p>
-<p>public ModelAndView toUserAdd() {</p>
-<p>ModelAndView mav = new ModelAndView();</p>
-<p>mav.setViewName(“userAdd”);</p>
-<p>return mav;</p>
-<p>@RequestMapping(value = {“/getUserList”})</p>
-<p>@ResponseBody</p>
-<p>public UserListStatus getUserList(@RequestBody UserListCombination userListCombination,HttpSession session) {</p>
-<p>UserListStatus uls = new UserListStatus();</p>
-<p>User user =(User) session.getAttribute(“user”);</p>
-<p>List<User> userList =userService.list(userListCombination,user.getFid());</User></p>
-<p>uls.setData(userList);</p>
-<p>uls.setCount(userService.getCountByUser(user.getFid()));</p>
-<p>return uls;</p>
-<p>@RequestMapping(value = {“/center”})</p>
-<p>public ModelAndView toUser(HttpSession session) {</p>
-<p>User user = (User) session.getAttribute(“user”);</p>
-<p>List<User> us = userService.list(user.getUid());</User></p>
-<p>ModelAndView mav = new ModelAndView();</p>
-<p>mav.setViewName(“user”);</p>
-<p>mav.addObject(“userInfo”, us.get(0));</p>
-<p>return mav;</p>
-<p>@RequestMapping(value = {“/userDelete”})</p>
-<p>@ResponseBody</p>
-<p>public String deleteUser(HttpSession session, @RequestBody User user) {</p>
-<p>userService.delete(user.getUid());</p>
-<p>return “redirect:list”;</p>
-<p>@RequestMapping(value = {“/Edit”})</p>
-<p>public String toUserEdit() {</p>
-<p>return “userEdit”;</p>
-<p>@RequestMapping(value = {“/userEdit”})</p>
-<p>@ResponseBody</p>
-<p>public UserListStatus editUser(@RequestBody User user, HttpSession session) {</p>
-<p>UserListStatus rs = new UserListStatus();</p>
-<p>userService.update(user);</p>
-<p>rs.setCode(200);</p>
-<p>rs.setMsg(“添加成功!”);</p>
-<p>// 要更新session中的用户的值</p>
-<p>List<User> us = userService.list(user.getUid());</User></p>
-<p>User newUser = us.get(0);</p>
-<p>newUser.setPassword(“”);</p>
-<p>session.setAttribute(“user”, newUser);</p>
-<p>rs.setData(us);</p>
-<p>return rs;</p>
-<p>@RequestMapping(value = {“/userAdd”})</p>
-<p>@ResponseBody</p>
-<p>public RegisterStatus addUser(@RequestBody User user) {</p>
-<p>// 封装返回的JSON数据</p>
-<p>RegisterStatus rs = new RegisterStatus();</p>
-<p>if (userService.isExists(user.getName())) {</p>
-<p>rs.setCode(405);</p>
-<p>rs.setInfo(“用户名已经存在！”);</p>
-<p>} else {</p>
-<p>userService.add(user);</p>
-<p>rs.setCode(200);</p>
-<p>rs.setInfo(“添加成功！”);</p>
-<p>return rs;</p>
-<p>/*.@RequestMapping(value={“/UserUpload”})</p>
-<p>public String upload(User user, HttpServletRequest request,Model model)throws Exception{</p>
-<p>System.out.println(request.getParameter(“name”));</p>
-<p>String sqlPath=null;</p>
-<p>String localPath=”D:\CuitJavaEEPractice\CuitJavaEEPractice\src\main\webapp\asset\avatar\“;</p>
-<p>String filename=null;</p>
-<p>if(!user.getAvatar().isEmpty()){</p>
-<p>String uuid= UUID.randomUUID().toString().replaceAll(“-“,””);</p>
-<p>String contentType=user.getAvatar().getContentType();</p>
-<p>String suffixName=contentType.substring(contentType.indexOf(“/“+1));</p>
-<p>filename=uuid+”.”+suffixName;</p>
-<p>System.out.println(filename);</p>
-<p>user.getAvatar().transferTo(newFile(localPath+filename));</p>
-<p>sqlPath=”/image/“+filename;</p>
-<p>user.setAvatar(sqlPath);</p>
-<p>userService.add(user);</p>
-<p>model.addAttribute(“user”,user);</p>
-<p>return “User”;</p>
-<p>}*/</p>
-<p> 登录管理控制层：</p>
-<p>@Controller</p>
-<p>@RequestMapping(“/login”)</p>
-<p>public class LoginController {</p>
-<p>@Autowired</p>
-<p>private LoginService loginService;</p>
-<p>/**</p>
-<ul>
-<li><p>登录界面</p>
-</li>
-<li><p>@return String</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = {“/log”})</p>
-<p>public String toLogin() {</p>
-<p>// 跳转到login.jsp页面。</p>
-<p>return “login”;</p>
-<p>/**</p>
-<ul>
-<li><p>注册界面</p>
-</li>
-<li><p>@return String</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = {“/reg”})</p>
-<p>public String toRegister() {</p>
-<p>// 跳转到login.jsp页面。</p>
-<p>return “register”;</p>
-<p>/**</p>
-<ul>
-<li><p>用户注销</p>
-</li>
-<li><p>@param session 用户会话</p>
-</li>
-<li><p>@return 返回到登录界面</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = {“/out”})</p>
-<p>public String doLogin(HttpSession session) {</p>
-<p>session.removeAttribute(“user”);</p>
-<p>return “redirect:log”;</p>
-<p>/**</p>
-<ul>
-<li><p>登录功能</p>
-</li>
-<li><p>@return String 登录结果</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = {“/do”})</p>
-<p>@ResponseBody</p>
-<p>public LoginStatus doLogin(HttpSession session, @RequestBody User user) {</p>
-<p>// 用户登录检查</p>
-<p>User loginUser = loginService.getUserByUsernameAndPassword(user);</p>
-<p>LoginStatus ls = new LoginStatus();</p>
-<p>if (loginUser != null) {</p>
-<p>// 登录成功：设置用户登录状态，并返回信息</p>
-<p>loginUser.setPassword(null);</p>
-<p>session.setAttribute(“user”, loginUser);</p>
-<p>ls.setCode(200);</p>
-<p>ls.setInfo(“登录成功!”);</p>
-<p>ls.setUser(loginUser);</p>
-<p>return ls;</p>
-<p>} else {</p>
-<p>// 登录失败：返回错误信息</p>
-<p>ls.setCode(502);</p>
-<p>ls.setInfo(“姓名或密码有误!”);</p>
-<p>return ls;</p>
-<p>@RequestMapping(value = {“/rDo”})</p>
-<p>@ResponseBody</p>
-<p>public RegisterStatus doLogin(HttpSession session, @RequestBody UserAndFamily userAndFamily) {</p>
-<p>RegisterStatus registerStatus = new RegisterStatus();</p>
-<p>// 首先判断用户是否存在</p>
-<p>User existUser = loginService.getUserByUsername(userAndFamily.getUser().getName());</p>
-<p>if (existUser != null) {</p>
-<p>registerStatus.setInfo(“姓名已经存在！”);</p>
-<p>registerStatus.setCode(400);</p>
-<p>return registerStatus;</p>
-<p>// 新用户注册</p>
-<p>loginService.addUserAndFamily(userAndFamily);</p>
-<p>registerStatus.setInfo(“登记家庭成功！”);</p>
-<p>registerStatus.setCode(200);</p>
-<p>return registerStatus;</p>
-<p>账单管理控制层： </p>
-<p>@Controller</p>
-<p>@RequestMapping(“/accountInfo”)</p>
-<p>public class AccountInfoController {</p>
-<p>@Autowired</p>
-<p>AccountInfoService accountInfoService;</p>
-<p>/**</p>
-<ul>
-<li>跳转到添加账单页面</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = {“/addInfo”})</p>
-<p>public String toAddAccount(Model model, HttpSession session) {</p>
-<p>User user = (User) session.getAttribute(“user”);</p>
-<p>model.addAttribute(“uid”, user.getUid());</p>
-<p>return “addAccount”;</p>
-<p>/**</p>
-<ul>
-<li>跳转到账单详情</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = {“/queryInfo”})</p>
-<p>public String toAccountInfo(int acid, Model model) {</p>
-<p>model.addAttribute(“acid”, acid);</p>
-<p>return “accountInfo”;</p>
-<p>/**</p>
-<ul>
-<li>跳转到账单修改页面</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = {“/modifyInfo”})</p>
-<p>public String toModifyInfo(int acid, Model model) {</p>
-<p>Account account = accountInfoService.queryAccountInfoById(acid);</p>
-<p>model.addAttribute(“account”, account);</p>
-<p>return “modifyInfo”;</p>
-<p>/**</p>
-<ul>
-<li>查询账单分类</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = {“/queryAccountType”})</p>
-<p>@ResponseBody</p>
-<p>public List<AccountType> queryAccountType() {</AccountType></p>
-<p>List<AccountType> list = accountInfoService.queryAccountType();</AccountType></p>
-<p>return list;</p>
-<p>/**</p>
-<ul>
-<li>查询账单</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = {“/queryAccount”})</p>
-<p>@ResponseBody</p>
-<p>public AccountAndIEType queryInfo(int acid) {</p>
-<p>Account account = accountInfoService.queryAccountInfoById(acid);</p>
-<p>int type = account.getTid();</p>
-<p>String name = accountInfoService.queryAccountTypeById(type);</p>
-<p>AccountAndIEType at = new AccountAndIEType();</p>
-<p>at.setAcid(account.getAcid());</p>
-<p>at.setAmount(account.getAmount());</p>
-<p>at.setDate(account.getDate());</p>
-<p>at.setIsExpose(account.getIsExpose());</p>
-<p>at.setRemarks(account.getRemarks());</p>
-<p>at.setIetype(account.getIetype());</p>
-<p>at.setTypeName(name);</p>
-<p>return at;</p>
-<p>/**</p>
-<ul>
-<li>保存账单信息</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = {“/saveAccount”})</p>
-<p>@ResponseBody</p>
-<p>public String addAccount(Account account) {</p>
-<p>account.setIsAvaliable(1);</p>
-<p>int count = accountInfoService.addAccount(account);</p>
-<p>if (count &gt;= 1) {</p>
-<p>return “success”;</p>
-<p>} else {</p>
-<p>return “error”;</p>
-<p>/**</p>
-<ul>
-<li>修改账单信息</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = {“/modifyAccount”})</p>
-<p>@ResponseBody</p>
-<p>public String modifyInfo(Account account) {</p>
-<p>int count = accountInfoService.modifyAccount(account);</p>
-<p>if (count == 1) {</p>
-<p>return “success”;</p>
-<p>} else {</p>
-<p>return “error”;</p>
-<p>/**</p>
-<ul>
-<li>删除账单</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(value = {“/deleteAccount”})</p>
-<p>@ResponseBody</p>
-<p>public String deleteInfo(@RequestBody Account account) throws JsonProcessingException {</p>
-<p>int count = accountInfoService.deleteAccount(account.getAcid());</p>
-<p>ObjectMapper objectMapper = new ObjectMapper();</p>
-<p>if (count == 1) {</p>
-<p>Map&lt;String, String&gt; msg = new HashMap&lt;&gt;();</p>
-<p>msg.put(“code”, “200”);</p>
-<p>msg.put(“msg”, “success”);</p>
-<p>return objectMapper.writeValueAsString(msg);</p>
-<p>} else {</p>
-<p>Map&lt;String, String&gt; msg = new HashMap&lt;&gt;();</p>
-<p>msg.put(“code”, “500”);</p>
-<p>msg.put(“msg”, “error”);</p>
-<p>return objectMapper.writeValueAsString(msg);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 收入Controller层</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TradeController</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	<span class="keyword">private</span> TradeService tradeService;</span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	<span class="keyword">private</span> DatadicService datadicService;</span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	<span class="keyword">private</span> UserService userService;</span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	<span class="keyword">private</span> SharesService sharesService;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@InitBinder</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBinder</span><span class="params">(WebDataBinder binder)</span> </span>&#123;</span><br><span class="line">		SimpleDateFormat dateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">		dateFormat.setLenient(<span class="keyword">false</span>);</span><br><span class="line">		binder.registerCustomEditor(Date.class, <span class="keyword">new</span> CustomDateEditor(dateFormat, <span class="keyword">true</span>)); <span class="comment">// true:允许输入空值，false:不能为空值</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 收入信息管理页面</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">	map.put(<span class="string">&quot;searchStarttime&quot;</span>, s_security.getSearchStarttime());</span><br><span class="line">	map.put(<span class="string">&quot;searchEndtime&quot;</span>, s_security.getSearchEndtime());</span><br><span class="line">	map.put(<span class="string">&quot;roleid&quot;</span>, s_security.getRoleid());</span><br><span class="line">	map.put(<span class="string">&quot;userid&quot;</span>, s_security.getUserid());</span><br><span class="line">	map.put(<span class="string">&quot;start&quot;</span>, pageBean.getStart());</span><br><span class="line">	map.put(<span class="string">&quot;size&quot;</span>, pageBean.getPageSize());</span><br><span class="line">	List&lt;Security&gt; securityList = securityService.findSecurity(map);</span><br><span class="line">	Long total = securityService.getTotalSecurity(map);</span><br><span class="line">	JSONObject result = <span class="keyword">new</span> JSONObject();</span><br><span class="line">	JSONArray jsonArray = JSONArray.fromObject(securityList);</span><br><span class="line">	result.put(<span class="string">&quot;rows&quot;</span>, jsonArray);</span><br><span class="line">	result.put(<span class="string">&quot;total&quot;</span>, total);</span><br><span class="line">	ResponseUtil.write(response, result);</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加与修改证券信息</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> security</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/securitysave.do&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">save</span><span class="params">(Security security, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> resultTotal = <span class="number">0</span>; <span class="comment">// 操作的记录条数</span></span><br><span class="line">	JSONObject result = <span class="keyword">new</span> JSONObject();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span> (security.getId() == <span class="keyword">null</span>) &#123;</span><br><span class="line">		resultTotal = securityService.addSecurity(security);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		resultTotal = securityService.updateSecurity(security);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (resultTotal &gt; <span class="number">0</span>) &#123; <span class="comment">// 执行成功</span></span><br><span class="line">		result.put(<span class="string">&quot;errres&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">		result.put(<span class="string">&quot;errmsg&quot;</span>, <span class="string">&quot;数据保存成功！&quot;</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		result.put(<span class="string">&quot;errres&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">		result.put(<span class="string">&quot;errmsg&quot;</span>, <span class="string">&quot;数据保存失败&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	ResponseUtil.write(response, result);</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!basepath.matches(regex) &amp;&amp; !basepath.matches(regex1)) &#123;</span><br><span class="line">            result.put(<span class="string">&quot;errres&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">            result.put(<span class="string">&quot;errmsg&quot;</span>, <span class="string">&quot;备份路径不正确！&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            File file = <span class="keyword">new</span> File(basepath);</span><br><span class="line">            <span class="keyword">if</span> (file.exists() == <span class="keyword">false</span>) &#123;</span><br><span class="line">                file.mkdir();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            String filepath = basepath + <span class="string">&quot;\\&quot;</span> + DateUtil.getCurrentDateCustomFormat(<span class="string">&quot;yyyyMMddHHmmss&quot;</span>) + <span class="string">&quot;.sql&quot;</span>;</span><br><span class="line">            File files = <span class="keyword">new</span> File(filepath);</span><br><span class="line">            <span class="keyword">if</span> (files.exists() == <span class="keyword">false</span>) &#123;</span><br><span class="line">                file.createNewFile();</span><br><span class="line">            &#125;</span><br><span class="line">            FileOutputStream fout = <span class="keyword">new</span> FileOutputStream(filepath);</span><br><span class="line"></span><br><span class="line">            OutputStreamWriter writer = <span class="keyword">new</span> OutputStreamWriter(fout, <span class="string">&quot;utf8&quot;</span>);</span><br><span class="line">            writer.write(outStr);</span><br><span class="line">            writer.flush();</span><br><span class="line">            in.close();</span><br><span class="line">            xx.close();</span><br><span class="line">            br.close();</span><br><span class="line">            writer.close();</span><br><span class="line">            fout.close();</span><br><span class="line"></span><br><span class="line">            databack.setUserid(userid);</span><br><span class="line">            databack.setFilename(DateUtil.getCurrentDateCustomFormat(<span class="string">&quot;yyyyMMddHHmmss&quot;</span>) + <span class="string">&quot;.sql&quot;</span>);</span><br><span class="line">            databack.setTime(DateUtil.getCurrentDateCustomFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>));</span><br><span class="line">            databack.setLocation(filepath);</span><br><span class="line">            databack.setDataid(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (save(databack)) &#123;</span><br><span class="line">                result.put(<span class="string">&quot;errres&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">                result.put(<span class="string">&quot;errmsg&quot;</span>, <span class="string">&quot;数据备份成功！&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                result.put(<span class="string">&quot;errres&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">                result.put(<span class="string">&quot;errmsg&quot;</span>, <span class="string">&quot;数据备份失败&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;异常&quot;</span>);</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        result.put(<span class="string">&quot;errres&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">        result.put(<span class="string">&quot;errmsg&quot;</span>, <span class="string">&quot;数据备份失败&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    ResponseUtil.write(response, result);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">    ResponseUtil.write(response, result);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 清空数据库操作记录</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> ids</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/datainit.do&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">datainit</span><span class="params">(<span class="meta">@RequestParam(value = &quot;userid&quot;)</span> Integer userid, Database datainit, HttpServletResponse response)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    JSONObject result = <span class="keyword">new</span> JSONObject();</span><br><span class="line">    String[] tables = &#123;<span class="string">&quot;t_income&quot;</span>, <span class="string">&quot;t_pay&quot;</span>, <span class="string">&quot;t_security&quot;</span>, <span class="string">&quot;t_shares&quot;</span>, <span class="string">&quot;t_trade&quot;</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tables.length; i++) &#123;</span><br><span class="line">        databaseService.truncateTable(tables[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    datainit.setUserid(userid);</span><br><span class="line">    datainit.setTime(DateUtil.getCurrentDateCustomFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>));</span><br><span class="line">    datainit.setDataid(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (save(datainit)) &#123;</span><br><span class="line">        result.put(<span class="string">&quot;errres&quot;</span>, <span class="keyword">true</span>);</span><br><span class="line">        result.put(<span class="string">&quot;errmsg&quot;</span>, <span class="string">&quot;数据库初始化成功！&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        result.put(<span class="string">&quot;errres&quot;</span>, <span class="keyword">false</span>);</span><br><span class="line">        result.put(<span class="string">&quot;errmsg&quot;</span>, <span class="string">&quot;数据库初始化失败&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    ResponseUtil.write(response, result);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 清空数据库操作记录</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> ids</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 证券Controller层</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecurityController</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	<span class="keyword">private</span> SecurityService securityService;</span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	<span class="keyword">private</span> DatadicService datadicService;</span><br><span class="line">    </span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">	<span class="keyword">private</span> UserService userService;</span><br><span class="line">	<span class="meta">@InitBinder</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBinder</span><span class="params">(WebDataBinder binder)</span> </span>&#123;</span><br><span class="line">		SimpleDateFormat dateFormat = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm&quot;</span>);</span><br><span class="line">		dateFormat.setLenient(<span class="keyword">false</span>);</span><br><span class="line">		binder.registerCustomEditor(Date.class, <span class="keyword">new</span> CustomDateEditor(dateFormat, <span class="keyword">true</span>)); <span class="comment">// true:允许输入空值，false:不能为空值</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 证券信息管理页面</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">	JSONArray incomeArray,obj;</span><br><span class="line">	JSONObject result;</span><br><span class="line">	</span><br><span class="line">	JSONArray outerobj = <span class="keyword">new</span> JSONArray();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;incomers.size();i++)&#123;</span><br><span class="line">		curincomer = incomers.get(i).getIncomer();</span><br><span class="line">		incomeArray = <span class="keyword">new</span> JSONArray();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; incomeList.size(); j++) &#123;</span><br><span class="line">			obj = <span class="keyword">new</span> JSONArray();</span><br><span class="line">			<span class="keyword">if</span>(incomeList.get(j).getIncomer().equals(curincomer))&#123;</span><br><span class="line">				obj.add(incomeList.get(j).getIncometime());</span><br><span class="line">				obj.add(incomeList.get(j).getMoney());</span><br><span class="line">				incomeArray.add(obj);</span><br><span class="line">			&#125;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="keyword">if</span>(incomeArray.size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			result = <span class="keyword">new</span> JSONObject();</span><br><span class="line">			result.put(<span class="string">&quot;name&quot;</span>, curincomer);</span><br><span class="line">			result.put(<span class="string">&quot;data&quot;</span>, incomeArray);</span><br><span class="line">			outerobj.add(result);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	ResponseUtil.write(response, outerobj);</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * （时间-金额）支出曲线页面</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/payTimeManage.do&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">payTimeManage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">&quot;payTimeManage&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * （时间-金额）生成支出曲线</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> s_pay</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/producePayTime.do&quot;)</span></span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
 <iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=79&price2=79" style="height: 260px;" frameborder="0"></iframe>
@@ -541,7 +276,7 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-			<a href="/tags/SSM/" rel="tag"><i class="fa fa-tag"></i> SSM</a>
+			<a href="/tags/SSM-Maven/" rel="tag"><i class="fa fa-tag"></i> SSM+Maven</a>
 			<a href="/tags/%E8%B4%A2%E5%8A%A1/" rel="tag"><i class="fa fa-tag"></i> 财务</a>
 
           </div>
