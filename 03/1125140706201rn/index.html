@@ -265,6 +265,367 @@
 <p>用户：用户1 密码： 123456</p>
 <p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
+<p>/**</p>
+<ul>
+<li><p>查询所有角色表的id和roleName</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/findRoles”)</p>
+<p>@ResponseBody</p>
+<p>public List&lt;Map&lt;String, Object&gt;&gt; findRoles(@Nullable Integer id) {</p>
+<p>return roleService.findRoles(id);</p>
+<p>/**</p>
+<ul>
+<li><p>动态查询t_role表</p>
+</li>
+<li><p>@param roleQuery</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/roleList”)</p>
+<p>@ResponseBody</p>
+<p>public Map&lt;String, Object&gt; selectByParams(RoleQuery roleQuery) {</p>
+<p>return roleService.findRoleList(roleQuery);</p>
+<p>/**</p>
+<ul>
+<li><p>角色视图首页</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/index”)</p>
+<p>public String toRolePage() {</p>
+<p>return “role/role”;</p>
+<p>/**</p>
+<ul>
+<li><p>新增/修改公用页面</p>
+</li>
+<li><p>@param roleId</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/toAddAndUpdatePage”)</p>
+<p>public String toAddAndUpdatePage(@Nullable Integer roleId, Model model) {</p>
+<p>// 修改</p>
+<p>if (roleId != null) {</p>
+<p>Role role = roleService.selectByPrimaryKey(roleId);</p>
+<p>AssertUtil.isTrue(role == null, “角色不存在”);</p>
+<p>model.addAttribute(“role”, role);</p>
+<p>return “role/addAndUpdateRole”;</p>
+<p>/**</p>
+<ul>
+<li><p>新增角色</p>
+</li>
+<li><p>@param role</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestCode(“601001”)</p>
+<p>@PostMapping(“/addRole”)</p>
+<p>@ResponseBody</p>
+<p>public ResultInfo addRole(Role role) {</p>
+<p>roleService.addRole(role);</p>
+<p>resultInfo.setAll(200, “新增角色成功”, null);</p>
+<p>return resultInfo;</p>
+<p>/**</p>
+<ul>
+<li><p>修改角色信息</p>
+</li>
+<li><p>@param role</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestCode(“601003”)</p>
+<p>@PostMapping(“/updateRole”)</p>
+<p>@ResponseBody</p>
+<p>public ResultInfo updateRole(Role role) {</p>
+<p>roleService.updateRole(role);</p>
+<p>resultInfo.setAll(200, “修改角色成功”, null);</p>
+<p>return resultInfo;</p>
+<p>/**</p>
+<ul>
+<li><p>批量删除角色</p>
+</li>
+<li><p>@param ids</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@RequestCode(“601004”)</p>
+<p>@PostMapping(“/deleteRole”)</p>
+<p>@ResponseBody</p>
+<p>public ResultInfo updateRole(@RequestParam(“ids”) Integer[] ids) {</p>
+<p>roleService.deleteRoles(ids);</p>
+<p>resultInfo.setAll(200, “删除角色成功”, null);</p>
+<p>return resultInfo;</p>
+<p> 登录管理控制层：</p>
+<p>/**</p>
+<ul>
+<li>登录控制器</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/login”)</p>
+<p>public class LoginController {</p>
+<p>@Autowired</p>
+<p>private IndexController indexController;</p>
+<p>@Autowired</p>
+<p>private LoginServiceI loginServiceI;</p>
+<p>/**</p>
+<ul>
+<li><p>入口，跳转登录页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/toLogin”)</p>
+<p>public String toLogin() {</p>
+<p>return “login/login”;</p>
+<p>/**</p>
+<ul>
+<li><p>默认入口，如果登录则跳转到indnex.jsp，如果没登录则跳转登录页面</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@param session</p>
+</li>
+<li><p>@param model</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“”)</p>
+<p>public String login(User user, HttpSession session, Model model) {</p>
+<p>UserExpand info = loginServiceI.getUserLoginInfo(user);</p>
+<p>if (null != info) {</p>
+<p>session.setAttribute(“LOGIN_USER”, info);</p>
+<p>return “redirect:/index”;</p>
+<p>model.addAttribute(“msg”, “error”);</p>
+<p>return “login/login”;</p>
+<p>/**</p>
+<ul>
+<li><p>登出</p>
+</li>
+<li><p>@param session</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/logout”)</p>
+<p>@ResponseBody</p>
+<p>public Boolean logout(HttpSession session) {</p>
+<p>session.removeAttribute(“LOGIN_USER”);</p>
+<p>return true;</p>
+<p>用户管理控制层：</p>
+<p>/**</p>
+<ul>
+<li>User控制器类</li>
+</ul>
+<p>*/</p>
+<p>@Controller</p>
+<p>@RequestMapping(“/user”)</p>
+<p>public class UserController extends BaseController {</p>
+<p>private Logger logger = LoggerFactory.getLogger(UserController.class);</p>
+<p>@Autowired</p>
+<p>private UserService userService;</p>
+<p>@Autowired</p>
+<p>private ResultInfo resultInfo;</p>
+<p>/**</p>
+<ul>
+<li><p>登录</p>
+</li>
+<li><p>@param userName</p>
+</li>
+<li><p>@param password</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/login”)</p>
+<p>@ResponseBody</p>
+<p>public ResultInfo findUserByName(@Nullable String userName,@Nullable String password) {</p>
+<p>Map&lt;String, String&gt; user = userService.findUserByName(userName, password);</p>
+<p>// 将结果封装到ResultInfo中</p>
+<p>resultInfo.setAll(200, “登陆成功”, user);</p>
+<p>logger.info(“user：{}”,user);</p>
+<p>logger.info(“resultInfo:{}”,resultInfo);</p>
+<p>return resultInfo;</p>
+<p>@GetMapping(“/toUpdateCurrentPage”)</p>
+<p>public String toUpdateCurrentPage(HttpServletRequest request, Model model) {</p>
+<p>// 获取userId</p>
+<p>int userId = LoginUserUtil.releaseUserIdFromCookie(request);</p>
+<p>model.addAttribute(“userModel”, userService.selectByPrimaryKey(userId));</p>
+<p>return “user/addAndUpdateUser”;</p>
+<p>/**</p>
+<ul>
+<li><p>跳转到修改密码页面</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/updatePWDPage”)</p>
+<p>public String updatePasswordPage() {</p>
+<p>return “user/password”;</p>
+<p>/**</p>
+<ul>
+<li><p>修改密码操作</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@param oldPWD</p>
+</li>
+<li><p>@param newPWD</p>
+</li>
+<li><p>@param checkPWD</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/updatePWD”)</p>
+<p>@ResponseBody</p>
+<p>public ResultInfo updatePassword(HttpServletRequest request</p>
+<p>,String oldPWD,String newPWD,String checkPWD) {</p>
+<p>int userId = LoginUserUtil.releaseUserIdFromCookie(request);</p>
+<p>userService.updatePassword(userId, oldPWD, newPWD, checkPWD);</p>
+<p>resultInfo.setAll(200, “修改成功”, null);</p>
+<p>logger.info(“resultInfo:{}”,resultInfo);</p>
+<p>return resultInfo;</p>
+<p>/**</p>
+<ul>
+<li><p>登出操作</p>
+</li>
+<li><p>@param request</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/logout”)</p>
+<p>public String logout(HttpServletRequest request) {</p>
+<p>// 获取userId</p>
+<p>int userId = LoginUserUtil.releaseUserIdFromCookie(request);</p>
+<p>// 登录状态</p>
+<p>if (userId != -1) {</p>
+<p>// 删除session，回到登录页面</p>
+<p>if (request.getSession().getAttribute(“user”) != null) {</p>
+<p>// 不为空则删除session</p>
+<p>request.getSession().removeAttribute(“user”);</p>
+<p>return “redirect:/index”;</p>
+<p>// *<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>//                               以下为用户权限管理相关操作</p>
+<p>// *<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>/**</p>
+<ul>
+<li><p>查询用户列表数据</p>
+</li>
+<li><p>@param userQuery</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/userList”)</p>
+<p>@ResponseBody</p>
+<p>public Map&lt;String, Object&gt; selectByParams(UserQuery userQuery) {</p>
+<p>return userService.selectByParams(userQuery);</p>
+<p>/**</p>
+<ul>
+<li><p>跳转到用户管理首页</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/index”)</p>
+<p>public String index() {</p>
+<p>return “user/user”;</p>
+<p>/**</p>
+<ul>
+<li><p>跳转到用户管理新增/修改页面</p>
+</li>
+<li><p>@param id</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@GetMapping(“/toAddUserPage”)</p>
+<p>public String toAddUserPage(@Nullable Integer id, Model model) {</p>
+<p>// id不为null表示访问的是修改页面</p>
+<p>if (id != null) {</p>
+<p>model.addAttribute(“userModel”,userService.selectByPrimaryKey(id));</p>
+<p>return “user/addAndUpdateUser”;</p>
+<p>/**</p>
+<ul>
+<li><p>新增用户</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@param roleIds</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/addUser”)</p>
+<p>@ResponseBody</p>
+<p>public ResultInfo addUser(User user, @RequestParam(“roleIds”) Integer[] roleIds) {</p>
+<p>userService.addUser(user, roleIds);</p>
+<p>resultInfo.setAll(200, “新增用户成功”, null);</p>
+<p>return resultInfo;</p>
+<p>/**</p>
+<ul>
+<li><p>修改用户信息</p>
+</li>
+<li><p>@param user</p>
+</li>
+<li><p>@param roleIds</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/updateUser”)</p>
+<p>@ResponseBody</p>
+<p>public ResultInfo updateUser(User user, @RequestParam(“roleIds”) Integer[] roleIds) {</p>
+<p>userService.updateUser(user, roleIds);</p>
+<p>resultInfo.setAll(200, “修改用户成功”, null);</p>
+<p>return resultInfo;</p>
+<p>/**</p>
+<ul>
+<li><p>批量删除用户</p>
+</li>
+<li><p>@param ids</p>
+</li>
+<li><p>@return</p>
+</li>
+</ul>
+<p>*/</p>
+<p>@PostMapping(“/deleteUsers”)</p>
+<p>@ResponseBody</p>
+<p>public ResultInfo deleteUsers(@RequestParam(“ids”) Integer[] ids) {</p>
+<p>userService.deleteUsers(ids);</p>
+<p>resultInfo.setAll(200, “删除用户成功”, null);</p>
+<p>return resultInfo;</p>
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
 <iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
