@@ -231,286 +231,30 @@
 <p>Jdk1.8 + mysql + Eclispe（IntelliJ IDEA,Eclispe,MyEclispe,Sts都支持）</p>
 <p>项目技术：</p>
 <p>HTML +Springboot+ SpringMVC + MyBatis + ThymeLeaf + JavaScript + JQuery + Ajax + maven等等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">管理员：</span><br><span class="line">admin   123456</span><br><span class="line"></span><br><span class="line">学生：</span><br><span class="line">2088124	123456</span><br><span class="line">2088125	123456</span><br><span class="line">2088126	123456</span><br><span class="line">2088127	123456</span><br><span class="line">2088128	123456</span><br><span class="line">2088129	123456</span><br><span class="line">2088130	123456</span><br><span class="line">2088131	123456</span><br><span class="line">2088132	123456</span><br><span class="line">2088133	123456</span><br><span class="line">2088134	123456</span><br><span class="line">2088135	123456</span><br><span class="line">2088136	123456</span><br></pre></td></tr></table></figure>
+
+
+
+
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>登录控制层：</p>
-<p>@Controller</p>
-<p>public class LoginController {</p>
-<p>private LoginService loginService;</p>
-<p>@Autowired</p>
-<p>public void setLoginService(LoginService loginService) {</p>
-<p>this.loginService = loginService;</p>
-<p>@RequestMapping(value = {“/“, “/login.html”})</p>
-<p>public String toLogin(HttpServletRequest request) {</p>
-<p>request.getSession().invalidate();</p>
-<p>return “index”;</p>
-<p>@RequestMapping(“/logout.html”)</p>
-<p>public String logout(HttpServletRequest request) {</p>
-<p>request.getSession().invalidate();</p>
-<p>return “redirect:/login.html”;</p>
-<p>//负责处理loginCheck.html请求</p>
-<p>//请求参数会根据参数名称默认契约自动绑定到相应方法的入参中</p>
-<p>@RequestMapping(value = “/api/loginCheck”, method = RequestMethod.POST)</p>
-<p>public @ResponseBody</p>
-<p>Object loginCheck(HttpServletRequest request) {</p>
-<p>long id = Long.parseLong(request.getParameter(“id”));</p>
-<p>String passwd = request.getParameter(“passwd”);</p>
-<p>boolean isReader = loginService.hasMatchReader(id, passwd);</p>
-<p>boolean isAdmin = loginService.hasMatchAdmin(id, passwd);</p>
-<p>HashMap&lt;String, String&gt; res = new HashMap&lt;&gt;();</p>
-<p>if (isAdmin) {</p>
-<p>Admin admin = new Admin();</p>
-<p>admin.setAdminId(id);</p>
-<p>admin.setPassword(passwd);</p>
-<p>String username = loginService.getAdminUsername(id);</p>
-<p>admin.setUsername(username);</p>
-<p>request.getSession().setAttribute(“admin”, admin);</p>
-<p>res.put(“stateCode”, “1”);</p>
-<p>res.put(“msg”, “管理员登陆成功！”);</p>
-<p>} else if (isReader) {</p>
-<p>ReaderCard readerCard = loginService.findReaderCardByReaderId(id);</p>
-<p>request.getSession().setAttribute(“readercard”, readerCard);</p>
-<p>res.put(“stateCode”, “2”);</p>
-<p>res.put(“msg”, “读者登陆成功！”);</p>
-<p>} else {</p>
-<p>res.put(“stateCode”, “0”);</p>
-<p>res.put(“msg”, “账号或密码错误！”);</p>
-<p>return res;</p>
-<p>@RequestMapping(“/admin_main.html”)</p>
-<p>public ModelAndView toAdminMain(HttpServletResponse response) {</p>
-<p>return new ModelAndView(“admin_main”);</p>
-<p>@RequestMapping(“/reader_main.html”)</p>
-<p>public ModelAndView toReaderMain(HttpServletResponse response) {</p>
-<p>return new ModelAndView(“reader_main”);</p>
-<p>@RequestMapping(“/admin_repasswd.html”)</p>
-<p>public ModelAndView reAdminPasswd() {</p>
-<p>return new ModelAndView(“admin_repasswd”);</p>
-<p>@RequestMapping(“/admin_repasswd_do”)</p>
-<p>public String reAdminPasswdDo(HttpServletRequest request, String oldPasswd, String newPasswd, String reNewPasswd, RedirectAttributes redirectAttributes) {</p>
-<p>Admin admin = (Admin) request.getSession().getAttribute(“admin”);</p>
-<p>long id = admin.getAdminId();</p>
-<p>String password = loginService.getAdminPassword(id);</p>
-<p>if (password.equals(oldPasswd)) {</p>
-<p>if (loginService.adminRePassword(id, newPasswd)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “密码修改成功！”);</p>
-<p>return “redirect:/admin_repasswd.html”;</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “密码修改失败！”);</p>
-<p>return “redirect:/admin_repasswd.html”;</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “旧密码错误！”);</p>
-<p>return “redirect:/admin_repasswd.html”;</p>
-<p>@RequestMapping(“/reader_repasswd.html”)</p>
-<p>public ModelAndView reReaderPasswd() {</p>
-<p>return new ModelAndView(“reader_repasswd”);</p>
-<p>@RequestMapping(“/reader_repasswd_do”)</p>
-<p>public String reReaderPasswdDo(HttpServletRequest request, String oldPasswd, String newPasswd, String reNewPasswd, RedirectAttributes redirectAttributes) {</p>
-<p>ReaderCard reader = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>long id = reader.getReaderId();</p>
-<p>String password = loginService.getReaderPassword(id);</p>
-<p>if (password.equals(oldPasswd)) {</p>
-<p>if (loginService.readerRePassword(id, newPasswd)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “密码修改成功！”);</p>
-<p>return “redirect:/reader_repasswd.html”;</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “密码修改失败！”);</p>
-<p>return “redirect:/reader_repasswd.html”;</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “旧密码错误！”);</p>
-<p>return “redirect:/reader_repasswd.html”;</p>
-<p>//配置404页面</p>
-<p>@RequestMapping(“*”)</p>
-<p>public String notFind() {</p>
-<p>return “404”;</p>
-<p>图书管理控制层：</p>
-<p>@Controller</p>
-<p>public class BookController {</p>
-<p>@Autowired</p>
-<p>private BookService bookService;</p>
-<p>@Autowired</p>
-<p>private LendService lendService;</p>
-<p>private Date getDate(String pubstr) {</p>
-<p>try {</p>
-<p>SimpleDateFormat df = new SimpleDateFormat(“yyyy-MM-dd”);</p>
-<p>return df.parse(pubstr);</p>
-<p>} catch (ParseException e) {</p>
-<p>e.printStackTrace();</p>
-<p>return new Date();</p>
-<p>@RequestMapping(“/queryBook.html”)</p>
-<p>public ModelAndView queryBookDo(String searchWord) {</p>
-<p>if (bookService.matchBook(searchWord)) {</p>
-<p>ArrayList<Book> books = bookService.queryBook(searchWord);</Book></p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_books”);</p>
-<p>modelAndView.addObject(“books”, books);</p>
-<p>return modelAndView;</p>
-<p>} else {</p>
-<p>return new ModelAndView(“admin_books”, “error”, “没有匹配的图书”);</p>
-<p>@RequestMapping(“/reader_querybook_do.html”)</p>
-<p>public ModelAndView readerQueryBookDo(String searchWord) {</p>
-<p>if (bookService.matchBook(searchWord)) {</p>
-<p>ArrayList<Book> books = bookService.queryBook(searchWord);</Book></p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_books”);</p>
-<p>modelAndView.addObject(“books”, books);</p>
-<p>return modelAndView;</p>
-<p>} else {</p>
-<p>return new ModelAndView(“reader_books”, “error”, “没有匹配的图书”);</p>
-<p>@RequestMapping(“/admin_books.html”)</p>
-<p>public ModelAndView adminBooks() {</p>
-<p>ArrayList<Book> books = bookService.getAllBooks();</Book></p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_books”);</p>
-<p>modelAndView.addObject(“books”, books);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/book_add.html”)</p>
-<p>public ModelAndView addBook() {</p>
-<p>return new ModelAndView(“admin_book_add”);</p>
-<p>@RequestMapping(“/book_add_do.html”)</p>
-<p>public String addBookDo(@RequestParam(value = “pubstr”) String pubstr, Book book, RedirectAttributes redirectAttributes) {</p>
-<p>book.setPubdate(getDate(pubstr));</p>
-<p>if (bookService.addBook(book)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “图书添加成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “图书添加失败！”);</p>
-<p>return “redirect:/admin_books.html”;</p>
-<p>@RequestMapping(“/updatebook.html”)</p>
-<p>public ModelAndView bookEdit(HttpServletRequest request) {</p>
-<p>long bookId = Long.parseLong(request.getParameter(“bookId”));</p>
-<p>Book book = bookService.getBook(bookId);</p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_book_edit”);</p>
-<p>modelAndView.addObject(“detail”, book);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/book_edit_do.html”)</p>
-<p>public String bookEditDo(@RequestParam(value = “pubstr”) String pubstr, Book book, RedirectAttributes redirectAttributes) {</p>
-<p>book.setPubdate(getDate(pubstr));</p>
-<p>if (bookService.editBook(book)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “图书修改成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “图书修改失败！”);</p>
-<p>return “redirect:/admin_books.html”;</p>
-<p>@RequestMapping(“/admin_book_detail.html”)</p>
-<p>public ModelAndView adminBookDetail(HttpServletRequest request) {</p>
-<p>long bookId = Long.parseLong(request.getParameter(“bookId”));</p>
-<p>Book book = bookService.getBook(bookId);</p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_book_detail”);</p>
-<p>modelAndView.addObject(“detail”, book);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/reader_book_detail.html”)</p>
-<p>public ModelAndView readerBookDetail(HttpServletRequest request) {</p>
-<p>long bookId = Long.parseLong(request.getParameter(“bookId”));</p>
-<p>Book book = bookService.getBook(bookId);</p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_book_detail”);</p>
-<p>modelAndView.addObject(“detail”, book);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“/admin_header.html”)</p>
-<p>public ModelAndView admin_header() {</p>
-<p>return new ModelAndView(“admin_header”);</p>
-<p>@RequestMapping(“/reader_header.html”)</p>
-<p>public ModelAndView reader_header() {</p>
-<p>return new ModelAndView(“reader_header”);</p>
-<p>@RequestMapping(“/reader_books.html”)</p>
-<p>public ModelAndView readerBooks(HttpServletRequest request) {</p>
-<p>ArrayList<Book> books = bookService.getAllBooks();</Book></p>
-<p>ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>ArrayList<Lend> myAllLendList = lendService.myLendList(readerCard.getReaderId());</Lend></p>
-<p>ArrayList<Long> myLendList = new ArrayList&lt;&gt;();</Long></p>
-<p>for (Lend lend : myAllLendList) {</p>
-<p>// 是否已归还</p>
-<p>if (lend.getBackDate() == null) {</p>
-<p>myLendList.add(lend.getBookId());</p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_books”);</p>
-<p>modelAndView.addObject(“books”, books);</p>
-<p>modelAndView.addObject(“myLendList”, myLendList);</p>
-<p>return modelAndView;</p>
-<p>读者管理控制层：</p>
-<p>@Controller</p>
-<p>public class ReaderController {</p>
-<p>@Autowired</p>
-<p>private ReaderInfoService readerInfoService;</p>
-<p>@Autowired</p>
-<p>private LoginService loginService;</p>
-<p>@Autowired</p>
-<p>private ReaderCardService readerCardService;</p>
-<p>private ReaderInfo getReaderInfo(long readerId, String name, String sex, String birth, String address, String phone) {</p>
-<p>ReaderInfo readerInfo = new ReaderInfo();</p>
-<p>Date date = new Date();</p>
-<p>try {</p>
-<p>SimpleDateFormat df = new SimpleDateFormat(“yyyy-MM-dd”);</p>
-<p>date = df.parse(birth);</p>
-<p>} catch (ParseException e) {</p>
-<p>e.printStackTrace();</p>
-<p>readerInfo.setAddress(address);</p>
-<p>readerInfo.setName(name);</p>
-<p>readerInfo.setReaderId(readerId);</p>
-<p>readerInfo.setPhone(phone);</p>
-<p>readerInfo.setSex(sex);</p>
-<p>readerInfo.setBirth(date);</p>
-<p>return readerInfo;</p>
-<p>@RequestMapping(“allreaders.html”)</p>
-<p>public ModelAndView allBooks() {</p>
-<p>ArrayList<ReaderInfo> readers = readerInfoService.readerInfos();</ReaderInfo></p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_readers”);</p>
-<p>modelAndView.addObject(“readers”, readers);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“reader_delete.html”)</p>
-<p>public String readerDelete(HttpServletRequest request, RedirectAttributes redirectAttributes) {</p>
-<p>long readerId = Long.parseLong(request.getParameter(“readerId”));</p>
-<p>if (readerInfoService.deleteReaderInfo(readerId) &amp;&amp; readerCardService.deleteReaderCard(readerId)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “删除成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “删除失败！”);</p>
-<p>return “redirect:/allreaders.html”;</p>
-<p>@RequestMapping(“/reader_info.html”)</p>
-<p>public ModelAndView toReaderInfo(HttpServletRequest request) {</p>
-<p>ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>ReaderInfo readerInfo = readerInfoService.getReaderInfo(readerCard.getReaderId());</p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_info”);</p>
-<p>modelAndView.addObject(“readerinfo”, readerInfo);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“reader_edit.html”)</p>
-<p>public ModelAndView readerInfoEdit(HttpServletRequest request) {</p>
-<p>long readerId = Long.parseLong(request.getParameter(“readerId”));</p>
-<p>ReaderInfo readerInfo = readerInfoService.getReaderInfo(readerId);</p>
-<p>ModelAndView modelAndView = new ModelAndView(“admin_reader_edit”);</p>
-<p>modelAndView.addObject(“readerInfo”, readerInfo);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“reader_edit_do.html”)</p>
-<p>public String readerInfoEditDo(HttpServletRequest request, String name, String sex, String birth, String address, String phone, RedirectAttributes redirectAttributes) {</p>
-<p>long readerId = Long.parseLong(request.getParameter(“readerId”));</p>
-<p>ReaderInfo readerInfo = getReaderInfo(readerId, name, sex, birth, address, phone);</p>
-<p>if (readerInfoService.editReaderInfo(readerInfo) &amp;&amp; readerInfoService.editReaderCard(readerInfo)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “读者信息修改成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “读者信息修改失败！”);</p>
-<p>return “redirect:/allreaders.html”;</p>
-<p>@RequestMapping(“reader_add.html”)</p>
-<p>public ModelAndView readerInfoAdd() {</p>
-<p>return new ModelAndView(“admin_reader_add”);</p>
-<p>@RequestMapping(“reader_add_do.html”)</p>
-<p>public String readerInfoAddDo(String name, String sex, String birth, String address, String phone, String password, RedirectAttributes redirectAttributes) {</p>
-<p>ReaderInfo readerInfo = getReaderInfo(0, name, sex, birth, address, phone);</p>
-<p>long readerId = readerInfoService.addReaderInfo(readerInfo);</p>
-<p>readerInfo.setReaderId(readerId);</p>
-<p>if (readerId &gt; 0 &amp;&amp; readerCardService.addReaderCard(readerInfo, password)) {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “添加读者信息成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “添加读者信息失败！”);</p>
-<p>return “redirect:/allreaders.html”;</p>
-<p>@RequestMapping(“reader_info_edit.html”)</p>
-<p>public ModelAndView readerInfoEditReader(HttpServletRequest request) {</p>
-<p>ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>ReaderInfo readerInfo = readerInfoService.getReaderInfo(readerCard.getReaderId());</p>
-<p>ModelAndView modelAndView = new ModelAndView(“reader_info_edit”);</p>
-<p>modelAndView.addObject(“readerinfo”, readerInfo);</p>
-<p>return modelAndView;</p>
-<p>@RequestMapping(“reader_edit_do_r.html”)</p>
-<p>public String readerInfoEditDoReader(HttpServletRequest request, String name, String sex, String birth, String address, String phone, RedirectAttributes redirectAttributes) {</p>
-<p>ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute(“readercard”);</p>
-<p>ReaderInfo readerInfo = getReaderInfo(readerCard.getReaderId(), name, sex, birth, address, phone);</p>
-<p>if (readerInfoService.editReaderInfo(readerInfo) &amp;&amp; readerInfoService.editReaderCard(readerInfo)) {</p>
-<p>ReaderCard readerCardNew = loginService.findReaderCardByReaderId(readerCard.getReaderId());</p>
-<p>request.getSession().setAttribute(“readercard”, readerCardNew);</p>
-<p>redirectAttributes.addFlashAttribute(“succ”, “信息修改成功！”);</p>
-<p>} else {</p>
-<p>redirectAttributes.addFlashAttribute(“error”, “信息修改失败！”);</p>
-<p>return “redirect:/reader_info.html”;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/books/update&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">updateBooks</span><span class="params">(Book book,RedirectAttributes attributes)</span></span>&#123;</span><br><span class="line">        adminBookService.updateBook(book);</span><br><span class="line">        attributes.addFlashAttribute(<span class="string">&quot;message&quot;</span>, <span class="string">&quot;修改书籍成功！！！&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/admin/books&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/books/&#123;id&#125;/delete&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">deleteBooks</span><span class="params">(<span class="meta">@PathVariable</span> Integer id,RedirectAttributes attributes)</span></span>&#123;</span><br><span class="line">        adminBookService.deleteBookById(id);</span><br><span class="line">        attributes.addFlashAttribute(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;删除书籍成功&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/admin/books&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookBorrowController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BorrowService borrowService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ReturnService returnService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/borrow&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toMyBorrow</span><span class="params">(HttpSession session,</span></span></span><br><span class="line"><span class="function"><span class="params">                             Model model,</span></span></span><br><span class="line"><span class="function"><span class="params">                             <span class="meta">@RequestParam(value = &quot;pageNum&quot;,defaultValue = &quot;1&quot;)</span>Integer pageNum)</span></span>&#123;</span><br><span class="line">        User user = (User)session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &#123;&quot;/&quot;,&quot;/index&quot;&#125;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toIndex</span><span class="params">(HttpServletRequest request, HttpSession session, Model model)</span></span>&#123;</span><br><span class="line">        User user = (User)session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">        User userById = userService.findUserById(user.getId());</span><br><span class="line">        model.addAttribute(<span class="string">&quot;userMessage&quot;</span>,userById);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginInterceptor</span> <span class="keyword">extends</span> <span class="title">HandlerInterceptorAdapter</span>  </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                             HttpServletResponse response,</span></span></span><br><span class="line"><span class="function"><span class="params">                             Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (request.getSession().getAttribute(<span class="string">&quot;user&quot;</span>) == <span class="keyword">null</span>) &#123;</span><br><span class="line">            response.sendRedirect(<span class="string">&quot;/toLogin&quot;</span>);</span><br><span class="line">            <span class="comment">//request.setAttribute(&quot;msg&quot;,&quot;没有权限，请登录&quot;);</span></span><br><span class="line">            <span class="comment">//request.getRequestDispatcher(&quot;/index.html&quot;).forward(request,response);</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/students/input&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toAddStu</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    model.addAttribute(<span class="string">&quot;students&quot;</span>,<span class="keyword">new</span> User());</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;admin/student-input&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PostMapping(&quot;/students/add&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addStu</span><span class="params">(<span class="meta">@Valid</span> User user, RedirectAttributes attributes)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;前端传过来的user：&quot;</span> + user);</span><br><span class="line">    <span class="keyword">if</span> (adminUserService.getUserByUsername(user.getUsername())!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        attributes.addFlashAttribute(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;该用户名已被注册，请重试，建议使用学号&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/admin/students/input&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(adminUserService.getUserByStuid(user.getStuid())!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        attributes.addFlashAttribute(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;请检查你的学号是否是你自己的&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/admin/students/input&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    adminUserService.insertUser(user);</span><br><span class="line">    attributes.addFlashAttribute(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;添加成功！！！&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/admin/students&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&quot;/students/&#123;id&#125;/update&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toUpdateStu</span><span class="params">(<span class="meta">@PathVariable</span> Integer id,Model model)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;toUpdateStu的id：&quot;</span> + id);</span><br><span class="line">    User userById = adminUserService.getUserById(id);</span><br><span class="line">    System.out.println(<span class="string">&quot;userById： &quot;</span>+ userById);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;students&quot;</span>,userById);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;admin/student-input&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PostMapping(&quot;/students/update&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">updateStu</span><span class="params">(User user,RedirectAttributes attributes)</span></span>&#123;</span><br><span class="line">    adminUserService.updateUser(user);</span><br><span class="line">    attributes.addFlashAttribute(<span class="string">&quot;message&quot;</span>, <span class="string">&quot;修改成功！！！&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/admin/students&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&quot;/students/&#123;id&#125;/delete&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">deleteBooks</span><span class="params">(<span class="meta">@PathVariable</span> Integer id,RedirectAttributes attributes)</span></span>&#123;</span><br><span class="line">    adminUserService.deleteUserById(id);</span><br><span class="line">    attributes.addFlashAttribute(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;删除用户成功&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/admin/books&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookBorrowController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BorrowService borrowService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ReturnService returnService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/borrow&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toMyBorrow</span><span class="params">(HttpSession session,</span></span></span><br><span class="line"><span class="function"><span class="params">                             Model model,</span></span></span><br><span class="line"><span class="function"><span class="params">                             <span class="meta">@RequestParam(value = &quot;pageNum&quot;,defaultValue = &quot;1&quot;)</span>Integer pageNum)</span></span>&#123;</span><br><span class="line">        User user = (User)session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">        User userById = userService.findUserById(user.getId());</span><br><span class="line">        model.addAttribute(<span class="string">&quot;userMessage&quot;</span>,userById);</span><br><span class="line">        PageHelper.startPage(pageNum,<span class="number">6</span>);</span><br><span class="line">        List&lt;Book&gt; bookByBorrow = borrowService.findBookByBorrow(user.getStuid());</span><br><span class="line">        PageInfo&lt;Book&gt; bookPageInfo = <span class="keyword">new</span> PageInfo&lt;&gt;(bookByBorrow);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;pageInfo&quot;</span>,bookPageInfo);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;borrow&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/borrow/search&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">searchBooks</span><span class="params">(<span class="meta">@RequestParam(value = &quot;pageNum&quot;,defaultValue = &quot;1&quot;)</span> Integer pageNum,</span></span></span><br><span class="line"><span class="function"><span class="params">                              Model model, SearchBooks searchBooks)</span></span>&#123;</span><br><span class="line">        PageHelper.startPage(pageNum,<span class="number">6</span>);</span><br><span class="line">        PageInfo&lt;Book&gt; booklist = borrowService.findBookList(pageNum,<span class="number">6</span>,searchBooks);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;pageInfo&quot;</span>,booklist);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;borrow :: bookList&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/borrow/&#123;bookId&#125;/return&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">borrowBook</span><span class="params">(<span class="meta">@PathVariable</span> Integer bookId, RedirectAttributes attributes, HttpSession session)</span> </span>&#123;</span><br><span class="line">        User user = (User) session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">        System.out.println(bookId);</span><br><span class="line">        Integer stuId = user.getStuid();</span><br><span class="line">        List&lt;Book&gt; bookByBorrow = borrowService.findBookByBorrow(stuId);</span><br><span class="line">        returnService.deleteBorrow(bookId,stuId);</span><br><span class="line">        returnService.updateReturnBook(bookId);</span><br><span class="line">        attributes.addFlashAttribute(<span class="string">&quot;message&quot;</span>, <span class="string">&quot;恭喜您，还书成功&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/borrow&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">    PageInfo&lt;Book&gt; bookPageInfo = <span class="keyword">new</span> PageInfo&lt;&gt;(allBook);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;pageInfo&quot;</span>,bookPageInfo);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;admin/book&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PostMapping(&quot;/books/search&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">searchBooks</span><span class="params">(<span class="meta">@RequestParam(value = &quot;pageNum&quot;,defaultValue = &quot;1&quot;)</span> Integer pageNum,</span></span></span><br><span class="line"><span class="function"><span class="params">                          Model model, SearchBooks searchBooks)</span></span>&#123;</span><br><span class="line">    PageHelper.startPage(pageNum,<span class="number">6</span>);</span><br><span class="line">    PageInfo&lt;Book&gt; booklist = adminBookService.findBookList(pageNum,<span class="number">6</span>,searchBooks);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;pageInfo&quot;</span>,booklist);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;admin/book :: bookList&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&quot;/books/input&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toAddBooks</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    model.addAttribute(<span class="string">&quot;books&quot;</span>,<span class="keyword">new</span> Book());</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;admin/book-input&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PostMapping(&quot;/books/add&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addBooks</span><span class="params">(<span class="meta">@Valid</span> Book book, RedirectAttributes attributes)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (adminBookService.findBookByName(book.getName())!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        attributes.addFlashAttribute(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;该图书在管中已被添加：请添加其他书籍&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/admin/books/input&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    adminBookService.insertBook(book);</span><br><span class="line">    attributes.addFlashAttribute(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;添加书籍成功！！！&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/admin/books&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&quot;/books/&#123;id&#125;/update&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toUpdateBooks</span><span class="params">(<span class="meta">@PathVariable</span> Integer id, Model model)</span></span>&#123;</span><br><span class="line">    Book bookById = adminBookService.findBookById(id);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;books&quot;</span>,bookById);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;admin/book-input&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PostMapping(&quot;/books/update&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">updateBooks</span><span class="params">(Book book,RedirectAttributes attributes)</span></span>&#123;</span><br><span class="line">    adminBookService.updateBook(book);</span><br><span class="line">    attributes.addFlashAttribute(<span class="string">&quot;message&quot;</span>, <span class="string">&quot;修改书籍成功！！！&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/admin/books&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BookService bookService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BorrowService borrowService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/books&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toBookList</span><span class="params">(Model model, <span class="meta">@RequestParam(defaultValue = &quot;1&quot;,value = &quot;pageNum&quot;)</span> Integer pageNum, HttpSession session)</span></span>&#123;</span><br><span class="line">        PageHelper.startPage(pageNum,<span class="number">6</span>);</span><br><span class="line">        List&lt;Book&gt; allBook = bookService.getAllBook();</span><br><span class="line">        PageInfo&lt;Book&gt; bookPageInfo = <span class="keyword">new</span> PageInfo&lt;&gt;(allBook);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;pageInfo&quot;</span>,bookPageInfo);</span><br><span class="line">        User user = (User)session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">        User userById = userService.findUserById(user.getId());</span><br><span class="line">        model.addAttribute(<span class="string">&quot;userMessage&quot;</span>,userById);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;book&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/books/search&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">searchBooks</span><span class="params">(<span class="meta">@RequestParam(value = &quot;pageNum&quot;,defaultValue = &quot;1&quot;)</span> Integer pageNum,</span></span></span><br><span class="line"><span class="function"><span class="params">                              Model model, SearchBooks searchBooks)</span></span>&#123;</span><br><span class="line">        PageHelper.startPage(pageNum,<span class="number">6</span>);</span><br><span class="line">        PageInfo&lt;Book&gt; booklist = bookService.findBookList(pageNum,<span class="number">6</span>,searchBooks);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;pageInfo&quot;</span>,booklist);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;book :: bookList&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/books/&#123;bookId&#125;/borrow&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">borrowBook</span><span class="params">(<span class="meta">@PathVariable</span> Integer bookId, RedirectAttributes attributes,HttpSession session)</span> </span>&#123;</span><br><span class="line">        User user = (User) session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">        Integer stuId = user.getStuid();</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
 <iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>

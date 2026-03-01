@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot网上电商项目(前后端分离+java+vue+springboot+ssm+mysql+maven+redis)">
+<meta property="og:title" content="基于javaweb的SpringBoot网上电商项目(前后端分离+java+vue+springboot+ssm+mysql+maven)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot网上电商项目(前后端分离+java+vue+springboot+ssm+mysql+maven+redis) | Java源码社</title>
+  <title>基于javaweb的SpringBoot网上电商项目(前后端分离+java+vue+springboot+ssm+mysql+maven) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot网上电商项目(前后端分离+java+vue+springboot+ssm+mysql+maven+redis)
+			基于javaweb的SpringBoot网上电商项目(前后端分离+java+vue+springboot+ssm+mysql+maven)
             
         </h1>
 
@@ -228,12 +228,11 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/090123062402.jpg" alt="090123062402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/110123062402.jpg" alt="110123062402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project23/120123062402.jpg" alt="120123062402"></p>
-<p>基于javaweb的SpringBoot网上电商项目(前后端分离+java+vue+springboot+ssm+mysql+maven+redis)</p>
+<p>基于javaweb的SpringBoot网上电商项目(前后端分离+java+vue+springboot+ssm+mysql+maven)</p>
 <p>一、项目简述</p>
 <p>本系统功能包括： 一款基于Springboot+Vue的电商项目，前后端分离项目，前台后台都有，前台商品展示购买，购物车分类，订 单查询等等，后台商品管理，订单管理，信息维护，用户管理等等。</p>
 <p>二、项目运行</p>
-<p>环境配置： Jdk1.8 + Mysql + HBuilderX (Webstorm也 行)+ Eclispe (IntelliJ IDEA,Eclispe,MyEclispe,Sts都支 持)。</p>
-<p>项目技术： Springboot + Maven + Mybatis + Vue + Redis, B/S 模式+ Maven等等，附带支付宝沙箱环境以及支付环节代码。<br><span hidden>——————————CodeStart——————————</span></p>
+<p>项目技术： Springboot + Maven + Mybatis + Vue, B/S 模式+ Maven等等<br><span hidden>——————————CodeStart——————————</span></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@email</span> qiudb.top@aliyun.com</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 数据分析，商品数量，订单数量等分析业务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@CrossOrigin</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OverViewController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> OrderService orderService;</span><br><span class="line">    <span class="keyword">final</span> ProductService productService;</span><br><span class="line">    <span class="keyword">final</span> ReturnGoodsService returnGoodsService;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OverViewController</span><span class="params">(OrderService orderService,ProductService productService,ReturnGoodsService returnGoodsService)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.orderService = orderService;</span><br><span class="line">        <span class="keyword">this</span>.productService = productService;</span><br><span class="line">        <span class="keyword">this</span>.returnGoodsService = returnGoodsService;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/view/dataInfo&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> CommonResult <span class="title">dataInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Map&lt;String, Object&gt; resultMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        Map&lt;String, Object&gt; productMap = productService.productOverview();</span><br><span class="line">        Map&lt;String, Object&gt; orderMap = orderService.orderOverview();</span><br><span class="line">        Map&lt;String, Object&gt; returnGoodsMap = returnGoodsService.returnGoodsOverview();</span><br><span class="line">        <span class="keyword">if</span>(productMap!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            resultMap.putAll(productMap);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(orderMap!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            resultMap.putAll(orderMap);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(returnGoodsMap!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            resultMap.putAll(returnGoodsMap);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(resultMap.size()!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> CommonResult.success(<span class="string">&quot;查询成功&quot;</span>,resultMap);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> CommonResult.error(<span class="string">&quot;查询失败&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/view/orderChartDATE&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> CommonResult <span class="title">orderChartDATE</span><span class="params">(String startTime,String endTime)</span> </span>&#123;</span><br><span class="line">        Map&lt;String, Object&gt; data = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; lineData = orderService.selectChartDATE(startTime,endTime);</span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; ringData = orderService.selectProductTypeChart(startTime, endTime);</span><br></pre></td></tr></table></figure>
 
 
