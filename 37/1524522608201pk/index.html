@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot驾校预约学习系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:title" content="基于javaweb的SpringBoot驾校预约学习系统(java+springboot+maven+mybaits+vue+elementui+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot驾校预约学习系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  <title>基于javaweb的SpringBoot驾校预约学习系统(java+springboot+maven+mybaits+vue+elementui+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot驾校预约学习系统(java+springboot+mybaits+vue+elementui+mysql)
+			基于javaweb的SpringBoot驾校预约学习系统(java+springboot+maven+mybaits+vue+elementui+mysql)
             
         </h1>
 
@@ -233,427 +233,38 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/441524112608.jpg" alt="441524112608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/451524112608.jpg" alt="451524112608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/461524112608.jpg" alt="461524112608"></p>
-<p>基于javaweb的SpringBoot驾校预约学习系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>基于javaweb的SpringBoot驾校预约学习系统(java+springboot+maven+mybaits+vue+elementui+mysql)</p>
 <p>项目介绍</p>
 <p>基于Springboot+vue实现的驾校预约学习系统</p>
 <p>系统包含用户、教练、管理员三个角色</p>
 <p>用户：登录、注册、主页、查看考试信息（进行考试）、查看教练信息、教练预约、查看学习资料、收藏学习资料、留言板、公告信息查看、个人中心、考试记录、错题本等功能</p>
 <p>教练：登录、个人中心、公告信息管理、教练预约管理、留言板管理、学习资料管理、试卷管理、试题管理等功能</p>
 <p>管理员：登录、个人中心、教练管理、用户管理、公告信息管理、教练预约管理、留言板管理、学习资料管理、试卷管理、试题管理、考试管理、基础数据管理、系统管理等功能</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
-<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
-<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
-<p>4.数据库：MySql 5.7/8.0版本均可；</p>
-<p>5.是否Maven项目：是；</p>
-<p>技术栈</p>
-<p>后端：SpringBoot+Mybaits</p>
-<p>前端：Vue+elementui</p>
-<p>使用说明</p>
-<p>项目运行：</p>
-<ol>
-<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
-</li>
-<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
-</li>
-<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
-</li>
-<li><p>运行项目，在浏览器中输入地址：</p>
-</li>
-</ol>
-<p>前台地址：</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:8080/jiaxiaoyuyuexuexixitong/front/index.html">http://localhost:8080/jiaxiaoyuyuexuexixitong/front/index.html</a></p>
-<p>用户账户:a1 密码：123456</p>
-<p>后台登录页面</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:8080/jiaxiaoyuyuexuexixitong/admin/dist/index.html">http://localhost:8080/jiaxiaoyuyuexuexixitong/admin/dist/index.html</a></p>
-<p>管理员账户:admin 密码：admin</p>
-<p>用户账户:a1 密码：123456</p>
-<p>教练账户:a1 密码：123456</p>
-<p>文档介绍展示：</p>
-<p>首页展示：</p>
-<p>教练信息展示：</p>
-<p>考试信息展示：</p>
-<p>测试试卷展示：</p>
-<p>教练信息展示：</p>
-<p>教练管理展示列表：</p>
-<p>用户管理列表展示：</p>
-<p>教练预约管理列表展示：</p>
-<p>学习资料管理展示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">管理员				账户:admin 		密码：123456</span><br><span class="line">教练				账户:a1 		密码：123456</span><br><span class="line">教练				账户:a2 		密码：123456</span><br><span class="line">教练				账户:a3 		密码：123456</span><br><span class="line">用户				账户:a1 		密码：123456</span><br><span class="line">用户				账户:a2 		密码：123456</span><br><span class="line">用户				账户:a3 		密码：123456</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>用户管理控制器:</p>
-<p>/**</p>
-<ul>
-<li>用户管理控制器</li>
-</ul>
-<p>*/</p>
-<p>@RestController</p>
-<p>@RequestMapping(“user”)</p>
-<p>public class UserController {</p>
-<p>@Autowired</p>
-<p>private UserService userService;</p>
-<p>/*</p>
-<ul>
-<li>加载用户列表返回DataGridView</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“loadAllUser”)</p>
-<p>public DataGridView loadAllmeenu(UserVo userVo) {</p>
-<p>return this.userService.queryAllUser(userVo);</p>
-<p>/*</p>
-<ul>
-<li>注册用户–查询用户名是否存在</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“queryLoginName”)</p>
-<p>public ResultObj queryLoginName(UserVo userVo) {</p>
-<p>Integer count = this.userService.queryLoginName(userVo.getLoginname());</p>
-<p>if (count != 0) {</p>
-<p>return ResultObj.USER_EXIST;</p>
-<p>return null;</p>
-<p>/*</p>
-<ul>
-<li>注册用户</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“signup”)</p>
-<p>public ResultObj signup(UserVo userVo) {</p>
-<p>try {</p>
-<p>String code = WebUtils.getHttpSession().getAttribute(“code”).toString();</p>
-<p>if (userVo.getCode().toLowerCase().equals(code)) {</p>
-<p>this.userService.signUpUser(userVo);</p>
-<p>return ResultObj.SIGNUP_SUCCESS;</p>
-<p>} else {</p>
-<p>return ResultObj.USER_SIGNUP_CODE_ERROR_MSG;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.SIGNUP_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>添加用户</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“addUser”)</p>
-<p>public ResultObj addUser(UserVo userVo) {</p>
-<p>try {</p>
-<p>this.userService.addUser(userVo);</p>
-<p>return ResultObj.ADD_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.ADD_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>修改用户</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“updateUser”)</p>
-<p>public ResultObj updateUser(UserVo userVo) {</p>
-<p>try {</p>
-<p>this.userService.updateUser(userVo);</p>
-<p>return ResultObj.UPDATE_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.UPDATE_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>删除用户</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“deleteUser”)</p>
-<p>public ResultObj deleteUser(UserVo userVo) {</p>
-<p>System.out.println(userVo);</p>
-<p>System.out.println(userVo.getUserid());</p>
-<p>try {</p>
-<p>this.userService.deleteUser(userVo.getUserid());</p>
-<p>return ResultObj.DELETE_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.DELETE_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>批量删除用户</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“deleteBatchUser”)</p>
-<p>public ResultObj deleteBatchUser(UserVo userVo) {</p>
-<p>try {</p>
-<p>this.userService.deleteBatchUser(userVo.getIds());</p>
-<p>return ResultObj.DELETE_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.DELETE_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>重置用户密码</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“resetUserPwd”)</p>
-<p>public ResultObj resetUserPwd(UserVo userVo) {</p>
-<p>try {</p>
-<p>this.userService.resetUserPwd(userVo.getUserid());</p>
-<p>return ResultObj.RESET_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.RESET_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>加载用户管理分配的分配角色的数据</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“initUserRole”)</p>
-<p>public DataGridView initUserRole(UserVo userVo) {</p>
-<p>return this.userService.queryUserRole(userVo.getUserid());</p>
-<p>/*</p>
-<ul>
-<li>保存用户和角色的关系</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“saveUserRole”)</p>
-<p>public ResultObj saveUserRole(UserVo userVo) {</p>
-<p>try {</p>
-<p>this.userService.saveUserRole(userVo);</p>
-<p>return ResultObj.DISPATCH_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.DISPATCH_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>修改个人信息</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“updateUserInfo”)</p>
-<p>public ResultObj updateUserInfo(UserVo userVo) {</p>
-<p>try {</p>
-<p>String headimg = userVo.getHeadimg();</p>
-<p>if (headimg.endsWith(SysConstast.FILE_UPLOAD_TEMP)) {</p>
-<p>String filePath = AppFileUtils.updateFileName(headimg, SysConstast.FILE_UPLOAD_TEMP);</p>
-<p>userVo.setHeadimg(filePath);</p>
-<p>// 把原来的删除</p>
-<p>User user = this.userService.queryUserInfo(userVo.getUserid());</p>
-<p>AppFileUtils.removeFileByPath(user.getHeadimg());</p>
-<p>this.userService.updateUserInfo(userVo);</p>
-<p>return ResultObj.UPDATE_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.UPDATE_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>查询个人信息</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“queryUserInfo”)</p>
-<p>public User queryUserInfo() {</p>
-<p>User user = (User) WebUtils.getHttpSession().getAttribute(“user”);</p>
-<p>user = this.userService.queryUserInfo(user.getUserid());</p>
-<p>return user;</p>
-<p>/*</p>
-<ul>
-<li>查询密码</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“queryPwd”)</p>
-<p>public ResultObj queryPwd(UserVo userVo) {</p>
-<p>User user = (User) WebUtils.getHttpSession().getAttribute(“user”);</p>
-<p>user = this.userService.queryUserInfo(user.getUserid());</p>
-<p>// 生成密文</p>
-<p>String pwd = DigestUtils.md5DigestAsHex(userVo.getPwd().getBytes());</p>
-<p>userVo.setPwd(pwd);</p>
-<p>if (userVo.getPwd().equals(user.getPwd())) {</p>
-<p>return ResultObj.PWD_SUCCESS;</p>
-<p>} else {</p>
-<p>return ResultObj.PWD_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>更改密码之查询密码</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“updatePwd”)</p>
-<p>public ResultObj updatePwd(UserVo userVo) {</p>
-<p>try {</p>
-<p>User user = (User) WebUtils.getHttpSession().getAttribute(“user”);</p>
-<p>// 生成密文</p>
-<p>String pwd = DigestUtils.md5DigestAsHex(userVo.getPwd().getBytes());</p>
-<p>userVo.setUserid(user.getUserid());</p>
-<p>userVo.setPwd(pwd);</p>
-<p>// 修改密码</p>
-<p>this.userService.updateUser(userVo);</p>
-<p>return ResultObj.UPDATE_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>return ResultObj.UPDATE_ERROR;</p>
-<p>角色管理控制器: </p>
-<p>/**</p>
-<ul>
-<li>角色管理控制器</li>
-</ul>
-<p>*/</p>
-<p>@RestController</p>
-<p>@RequestMapping(“role”)</p>
-<p>public class RoleController {</p>
-<p>@Autowired</p>
-<p>private RoleService roleService;</p>
-<p>/*</p>
-<ul>
-<li>加载角色列表返回DataGridView</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“loadAllRole”)</p>
-<p>public DataGridView loadAllmeenu(RoleVo roleVo) {</p>
-<p>return this.roleService.queryAllRole(roleVo);</p>
-<p>/*</p>
-<ul>
-<li>添加角色</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“addRole”)</p>
-<p>public ResultObj addRole(RoleVo roleVo) {</p>
-<p>try {</p>
-<p>this.roleService.addRole(roleVo);</p>
-<p>return ResultObj.ADD_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.ADD_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>修改角色</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“updateRole”)</p>
-<p>public ResultObj updateRole(RoleVo roleVo) {</p>
-<p>try {</p>
-<p>this.roleService.updateRole(roleVo);</p>
-<p>return ResultObj.UPDATE_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.UPDATE_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>删除角色</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“deleteRole”)</p>
-<p>public ResultObj deleteRole(RoleVo roleVo) {</p>
-<p>try {</p>
-<p>this.roleService.deleteRole(roleVo.getRoleid());</p>
-<p>return ResultObj.DELETE_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.DELETE_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>批量删除角色</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“deleteBatchRole”)</p>
-<p>public ResultObj deleteBatchRole(RoleVo roleVo) {</p>
-<p>try {</p>
-<p>this.roleService.deleteBatchRole(roleVo.getIds());</p>
-<p>return ResultObj.DELETE_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.DELETE_ERROR;</p>
-<p>/*</p>
-<ul>
-<li>加载角色管理分配菜单的JSON</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“initRoleMenuTreeJson”)</p>
-<p>public DataGridView initRoleMenuTreeJson(Integer roleid) {</p>
-<p>System.out.println(roleid);</p>
-<p>return this.roleService.initRoleMenuTreeJson(roleid);</p>
-<p>/*</p>
-<ul>
-<li>保存角色与菜单的关系</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“saveRoleMenu”)</p>
-<p>public ResultObj saveRoleMenu(RoleVo roleVo) {</p>
-<p>try {</p>
-<p>this.roleService.saveRoleMenu(roleVo);</p>
-<p>return ResultObj.DISPATCH_SUCCESS;</p>
-<p>} catch (Exception e) {</p>
-<p>e.printStackTrace();</p>
-<p>return ResultObj.DISPATCH_ERROR;</p>
-<p>用户登录控制器:</p>
-<p>/*</p>
-<ul>
-<li>用户登录控制器</li>
-</ul>
-<p>*/</p>
-<p>@Controller</p>
-<p>@RequestMapping(“login”)</p>
-<p>public class LoginController {</p>
-<p>@Autowired</p>
-<p>private UserService userService;</p>
-<p>@Autowired</p>
-<p>private LogInfoService logInfoService;</p>
-<p>/*</p>
-<ul>
-<li>跳转到登录页面</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“toLogin”)</p>
-<p>public String tologin() {</p>
-<p>return “system/main/login”;</p>
-<p>/*</p>
-<ul>
-<li>登录方法</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“login”)</p>
-<p>public String login(UserVo userVo, Model model) {</p>
-<p>// 最外层的if是判断session是否为空 为空就跳转到登录界面</p>
-<p>// uservo不可能为空的，只是里面的属性可能为空 所以要判断session是否为空 就要判断里面的属性 而不是判断userVo本身 (坑!)</p>
-<p>if (null != userVo.getLoginname()) {</p>
-<p>//            String code = WebUtils.getHttpSession().getAttribute(“code”).toString();</p>
-<p>//            if (userVo.getCode().toLowerCase().equals(code)) {</p>
-<p>User user = this.userService.login(userVo);</p>
-<p>if (null != user) {</p>
-<p>// 放入session</p>
-<p>WebUtils.getHttpSession().setAttribute(“user”, user);</p>
-<p>WebUtils.getHttpSession().setMaxInactiveInterval(240 * 60);</p>
-<p>// 记录登录日志 向sys_login_log插入数据</p>
-<p>LogInfoVo logInfoVo = new LogInfoVo();</p>
-<p>logInfoVo.setLoginname(user.getRealname() + “-“ + user.getLoginname());</p>
-<p>logInfoVo.setLogintime(new Date());</p>
-<p>// 外网Ip:WebUtils.getHttpServletRequest().getRemoteAddr()</p>
-<p>// 内网ip:</p>
-<p>InetAddress addr;</p>
-<p>try {</p>
-<p>addr = (InetAddress) InetAddress.getLocalHost();</p>
-<p>logInfoVo.setLoginip(addr.getHostAddress().toString());// 获取Id地址</p>
-<p>} catch (UnknownHostException e) {</p>
-<p>e.printStackTrace();</p>
-<p>// 添加</p>
-<p>logInfoService.addLogInfo(logInfoVo);</p>
-<p>return “system/main/index”;</p>
-<p>} else {</p>
-<p>model.addAttribute(“error”, SysConstast.USER_LOGIN_ERROR_MSG);</p>
-<p>return “system/main/login”;</p>
-<p>//            } else {</p>
-<p>//                model.addAttribute(“error”, SysConstast.USER_LOGIN_CODE_ERROR_MSG);</p>
-<p>//                return “system/main/login”;</p>
-<p>//            }</p>
-<p>} else {</p>
-<p>return “system/main/login”;</p>
-<p>};</p>
-<p>/**</p>
-<ul>
-<li><p>得到登录验证码</p>
-</li>
-<li><p>@throws IOException</p>
-</li>
-</ul>
-<p>*/</p>
-<p>@RequestMapping(“getCode”)</p>
-<p>public void getCode(HttpServletResponse response, HttpSession session) throws IOException {</p>
-<p>// 定义图形验证码的长和宽</p>
-<p>LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(116, 36, 4, 50);</p>
-<p>Console.log(lineCaptcha.getCode());</p>
-<p>session.setAttribute(“code”, lineCaptcha.getCode());</p>
-<p>ServletOutputStream outputStream = response.getOutputStream();</p>
-<p>ImageIO.write(lineCaptcha.getImage(), “JPEG”, outputStream);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;表中有相同数据&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 后端修改</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/examinationUpdate&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">examinationUpdate</span><span class="params">(<span class="meta">@RequestBody</span> ExampapertopicEntity exampapertopic, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    logger.debug(<span class="string">&quot;update方法:,,Controller:&#123;&#125;,,exampapertopic:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),exampapertopic.toString());</span><br><span class="line"></span><br><span class="line">    String role = String.valueOf(request.getSession().getAttribute(<span class="string">&quot;role&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据字段查询是否有相同数据</span></span><br><span class="line">    Wrapper&lt;ExampapertopicEntity&gt; queryWrapper = <span class="keyword">new</span> EntityWrapper&lt;ExampapertopicEntity&gt;()</span><br><span class="line">        .notIn(<span class="string">&quot;id&quot;</span>,exampapertopic.getId())</span><br><span class="line">        .andNew()</span><br><span class="line">        .eq(<span class="string">&quot;exampaper_id&quot;</span>, exampapertopic.getExampaperId())</span><br><span class="line">        .eq(<span class="string">&quot;examquestion_id&quot;</span>, exampapertopic.getExamquestionId())</span><br><span class="line">        .eq(<span class="string">&quot;exampapertopic_number&quot;</span>, exampapertopic.getExampapertopicNumber())</span><br><span class="line">        ;</span><br><span class="line">    logger.info(<span class="string">&quot;sql语句:&quot;</span>+queryWrapper.getSqlSegment());</span><br><span class="line">    ExampapertopicEntity exampapertopicEntity = exampapertopicService.selectOne(queryWrapper);</span><br><span class="line">    <span class="keyword">if</span>(exampapertopicEntity==<span class="keyword">null</span>)&#123;</span><br><span class="line">        ExampapertopicEntity exampapertopicEntity1 = exampapertopicService.selectById(exampapertopic.getId());</span><br><span class="line">        <span class="keyword">if</span>(exampapertopic.getExampaperId() == <span class="keyword">null</span>)&#123;</span><br><span class="line">          <span class="keyword">return</span> R.error(<span class="string">&quot;修改时数据未获取到&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(exampapertopicEntity1.getExampapertopicNumber()!=exampapertopic.getExampapertopicNumber())&#123;</span><br><span class="line">            ExampaperEntity exampaperEntity = exampaperService.selectById(exampapertopic.getExampaperId());</span><br><span class="line">            exampaperEntity.setExampaperMyscore((exampaperEntity.getExampaperMyscore()-exampapertopicEntity1.getExampapertopicNumber())+exampapertopic.getExampapertopicNumber());</span><br><span class="line">            exampaperService.updateById(exampaperEntity);</span><br><span class="line">        &#125;</span><br><span class="line">        exampapertopicService.updateById(exampapertopic);<span class="comment">//根据id更新</span></span><br><span class="line">        <span class="keyword">return</span> R.ok();</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;表中有相同数据&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 删除</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/examinationDelete&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">examinationDelete</span><span class="params">(<span class="meta">@RequestBody</span> Integer[] ids)</span></span>&#123;</span><br><span class="line">    logger.debug(<span class="string">&quot;delete:,,Controller:&#123;&#125;,,ids:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),ids.toString());</span><br><span class="line">    List&lt;ExampapertopicEntity&gt; exampapertopicEntities = exampapertopicService.selectBatchIds(Arrays.asList(ids));</span><br><span class="line">    ExampaperEntity exampaperEntity1 = exampaperService.selectById(exampapertopicEntities.get(<span class="number">0</span>).getExampaperId());</span><br><span class="line">    <span class="keyword">for</span> (ExampapertopicEntity topic:exampapertopicEntities) &#123;</span><br><span class="line">        exampaperEntity1.setExampaperMyscore(exampaperEntity1.getExampaperMyscore()-topic.getExampapertopicNumber());</span><br><span class="line">    &#125;</span><br><span class="line">    exampaperService.updateById(exampaperEntity1);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">    logger.debug(<span class="string">&quot;page方法:,,Controller:&#123;&#125;,,params:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),JSONObject.toJSONString(params));</span><br><span class="line">    String role = String.valueOf(request.getSession().getAttribute(<span class="string">&quot;role&quot;</span>));</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">false</span>)</span><br><span class="line">        <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;永不会进入&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;用户&quot;</span>.equals(role))</span><br><span class="line">        params.put(<span class="string">&quot;yonghuId&quot;</span>,request.getSession().getAttribute(<span class="string">&quot;userId&quot;</span>));</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;教练&quot;</span>.equals(role))</span><br><span class="line">        params.put(<span class="string">&quot;jiaolianId&quot;</span>,request.getSession().getAttribute(<span class="string">&quot;userId&quot;</span>));</span><br><span class="line">    CommonUtil.checkMap(params);</span><br><span class="line">    PageUtils page = examrecordService.queryPage(params);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//字典表数据转换</span></span><br><span class="line">    List&lt;ExamrecordView&gt; list =(List&lt;ExamrecordView&gt;)page.getList();</span><br><span class="line">    <span class="keyword">for</span>(ExamrecordView c:list)&#123;</span><br><span class="line">        <span class="comment">//修改对应字典表字段</span></span><br><span class="line">        dictionaryService.dictionaryConvert(c, request);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 后端详情</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">info</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    logger.debug(<span class="string">&quot;info方法:,,Controller:&#123;&#125;,,id:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),id);</span><br><span class="line">    ExamrecordEntity examrecord = examrecordService.selectById(id);</span><br><span class="line">    <span class="keyword">if</span>(examrecord !=<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="comment">//entity转view</span></span><br><span class="line">        ExamrecordView view = <span class="keyword">new</span> ExamrecordView();</span><br><span class="line">        BeanUtils.copyProperties( examrecord , view );<span class="comment">//把实体数据重构到view中</span></span><br><span class="line">        <span class="comment">//级联表 用户</span></span><br><span class="line">        <span class="comment">//级联表</span></span><br><span class="line">        YonghuEntity yonghu = yonghuService.selectById(examrecord.getYonghuId());</span><br><span class="line">        <span class="keyword">if</span>(yonghu != <span class="keyword">null</span>)&#123;</span><br><span class="line">        BeanUtils.copyProperties( yonghu , view ,<span class="keyword">new</span> String[]&#123; <span class="string">&quot;id&quot;</span>, <span class="string">&quot;createTime&quot;</span>, <span class="string">&quot;insertTime&quot;</span>, <span class="string">&quot;updateTime&quot;</span>, <span class="string">&quot;yonghuId&quot;</span>&#125;);<span class="comment">//把级联的数据添加到view中,并排除id和创建时间字段,当前表的级联注册表</span></span><br><span class="line">        view.setYonghuId(yonghu.getId());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//级联表 试卷</span></span><br><span class="line">        <span class="comment">//级联表</span></span><br><span class="line">        ExampaperEntity exampaper = exampaperService.selectById(examrecord.getExampaperId());</span><br><span class="line">        <span class="keyword">if</span>(exampaper != <span class="keyword">null</span>)&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 重置密码</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@GetMapping(value = &quot;/resetPassword&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">resetPassword</span><span class="params">(Integer  id, HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">       YonghuEntity yonghu = yonghuService.selectById(id);</span><br><span class="line">       yonghu.setPassword(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line">       yonghuService.updateById(yonghu);</span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 修改密码</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(value = &quot;/updatePassword&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">updatePassword</span><span class="params">(String  oldPassword, String  newPassword, HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">       YonghuEntity yonghu = yonghuService.selectById((Integer)request.getSession().getAttribute(<span class="string">&quot;userId&quot;</span>));</span><br><span class="line">	<span class="keyword">if</span>(newPassword == <span class="keyword">null</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> R.error(<span class="string">&quot;新密码不能为空&quot;</span>) ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(!oldPassword.equals(yonghu.getPassword()))&#123;</span><br><span class="line">		<span class="keyword">return</span> R.error(<span class="string">&quot;原密码输入错误&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(newPassword.equals(yonghu.getPassword()))&#123;</span><br><span class="line">		<span class="keyword">return</span> R.error(<span class="string">&quot;新密码不能和原密码一致&quot;</span>) ;</span><br><span class="line">	&#125;</span><br><span class="line">       yonghu.setPassword(newPassword);</span><br><span class="line">	yonghuService.updateById(yonghu);</span><br><span class="line">	<span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 忘记密码</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@IgnoreAuth</span></span><br><span class="line">   <span class="meta">@RequestMapping(value = &quot;/resetPass&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">resetPass</span><span class="params">(String username, HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">       YonghuEntity yonghu = yonghuService.selectOne(<span class="keyword">new</span> EntityWrapper&lt;YonghuEntity&gt;().eq(<span class="string">&quot;username&quot;</span>, username));</span><br><span class="line">       <span class="keyword">if</span>(yonghu!=<span class="keyword">null</span>)&#123;</span><br><span class="line">           yonghu.setPassword(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line">           yonghuService.updateById(yonghu);</span><br><span class="line">           <span class="keyword">return</span> R.ok();</span><br><span class="line">       &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          <span class="keyword">return</span> R.error(<span class="string">&quot;账号不存在&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">//修改对应字典表字段</span></span><br><span class="line">        dictionaryService.dictionaryConvert(c, request);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 后端详情</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">info</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    logger.debug(<span class="string">&quot;info方法:,,Controller:&#123;&#125;,,id:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),id);</span><br><span class="line">    ExamrewrongquestionEntity examrewrongquestion = examrewrongquestionService.selectById(id);</span><br><span class="line">    <span class="keyword">if</span>(examrewrongquestion !=<span class="keyword">null</span>)&#123;</span><br><span class="line">        <span class="comment">//entity转view</span></span><br><span class="line">        ExamrewrongquestionView view = <span class="keyword">new</span> ExamrewrongquestionView();</span><br><span class="line">        BeanUtils.copyProperties( examrewrongquestion , view );<span class="comment">//把实体数据重构到view中</span></span><br><span class="line">        <span class="comment">//级联表 用户</span></span><br><span class="line">        <span class="comment">//级联表</span></span><br><span class="line">        YonghuEntity yonghu = yonghuService.selectById(examrewrongquestion.getYonghuId());</span><br><span class="line">        <span class="keyword">if</span>(yonghu != <span class="keyword">null</span>)&#123;</span><br><span class="line">        BeanUtils.copyProperties( yonghu , view ,<span class="keyword">new</span> String[]&#123; <span class="string">&quot;id&quot;</span>, <span class="string">&quot;createTime&quot;</span>, <span class="string">&quot;insertTime&quot;</span>, <span class="string">&quot;updateTime&quot;</span>, <span class="string">&quot;yonghuId&quot;</span>&#125;);<span class="comment">//把级联的数据添加到view中,并排除id和创建时间字段,当前表的级联注册表</span></span><br><span class="line">        view.setYonghuId(yonghu.getId());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//级联表 试卷</span></span><br><span class="line">        <span class="comment">//级联表</span></span><br><span class="line">        ExampaperEntity exampaper = exampaperService.selectById(examrewrongquestion.getExampaperId());</span><br><span class="line">        <span class="keyword">if</span>(exampaper != <span class="keyword">null</span>)&#123;</span><br><span class="line">        BeanUtils.copyProperties( exampaper , view ,<span class="keyword">new</span> String[]&#123; <span class="string">&quot;id&quot;</span>, <span class="string">&quot;createTime&quot;</span>, <span class="string">&quot;insertTime&quot;</span>, <span class="string">&quot;updateTime&quot;</span>, <span class="string">&quot;yonghuId&quot;</span>&#125;);<span class="comment">//把级联的数据添加到view中,并排除id和创建时间字段,当前表的级联注册表</span></span><br><span class="line">        view.setExampaperId(exampaper.getId());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//级联表 试题表</span></span><br><span class="line">        <span class="comment">//级联表</span></span><br><span class="line">        ExamquestionEntity examquestion = examquestionService.selectById(examrewrongquestion.getExamquestionId());</span><br><span class="line">        <span class="keyword">if</span>(examquestion != <span class="keyword">null</span>)&#123;</span><br><span class="line">        BeanUtils.copyProperties( examquestion , view ,<span class="keyword">new</span> String[]&#123; <span class="string">&quot;id&quot;</span>, <span class="string">&quot;createTime&quot;</span>, <span class="string">&quot;insertTime&quot;</span>, <span class="string">&quot;updateTime&quot;</span>, <span class="string">&quot;yonghuId&quot;</span>&#125;);<span class="comment">//把级联的数据添加到view中,并排除id和创建时间字段,当前表的级联注册表</span></span><br><span class="line">        view.setExamquestionId(examquestion.getId());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//修改对应字典表字段</span></span><br><span class="line">        dictionaryService.dictionaryConvert(view, request);</span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, view);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 删除</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Integer[] ids, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    logger.debug(<span class="string">&quot;delete:,,Controller:&#123;&#125;,,ids:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),ids.toString());</span><br><span class="line">    List&lt;ExamredetailsEntity&gt; oldExamredetailsList =examredetailsService.selectBatchIds(Arrays.asList(ids));<span class="comment">//要删除的数据</span></span><br><span class="line">    examredetailsService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 批量上传</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/batchInsert&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">save</span><span class="params">( String fileName, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    logger.debug(<span class="string">&quot;batchInsert方法:,,Controller:&#123;&#125;,,fileName:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),fileName);</span><br><span class="line">    Integer yonghuId = Integer.valueOf(String.valueOf(request.getSession().getAttribute(<span class="string">&quot;userId&quot;</span>)));</span><br><span class="line">    SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">    <span class="comment">//.eq(&quot;time&quot;, new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).format(new Date()))</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        List&lt;ExamredetailsEntity&gt; examredetailsList = <span class="keyword">new</span> ArrayList&lt;&gt;();<span class="comment">//上传的东西</span></span><br><span class="line">        Map&lt;String, List&lt;String&gt;&gt; seachFields= <span class="keyword">new</span> HashMap&lt;&gt;();<span class="comment">//要查询的字段</span></span><br><span class="line">        Date date = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="keyword">int</span> lastIndexOf = fileName.lastIndexOf(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(lastIndexOf == -<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;该文件没有后缀&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            String suffix = fileName.substring(lastIndexOf);</span><br><span class="line">            <span class="keyword">if</span>(!<span class="string">&quot;.xls&quot;</span>.equals(suffix))&#123;</span><br><span class="line">                <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;只支持后缀为xls的excel文件&quot;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                URL resource = <span class="keyword">this</span>.getClass().getClassLoader().getResource(<span class="string">&quot;static/upload/&quot;</span> + fileName);<span class="comment">//获取文件路径</span></span><br><span class="line">                File file = <span class="keyword">new</span> File(resource.getFile());</span><br><span class="line">                <span class="keyword">if</span>(!file.exists())&#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">        BeanUtils.copyProperties( yonghu , view ,<span class="keyword">new</span> String[]&#123; <span class="string">&quot;id&quot;</span>, <span class="string">&quot;createTime&quot;</span>, <span class="string">&quot;insertTime&quot;</span>, <span class="string">&quot;updateTime&quot;</span>, <span class="string">&quot;yonghuId&quot;</span>&#125;);<span class="comment">//把级联的数据添加到view中,并排除id和创建时间字段,当前表的级联注册表</span></span><br><span class="line">        view.setYonghuId(yonghu.getId());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//修改对应字典表字段</span></span><br><span class="line">        dictionaryService.dictionaryConvert(view, request);</span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, view);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;查不到数据&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 后端保存</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/save&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">save</span><span class="params">(<span class="meta">@RequestBody</span> ZiliaoLiuyanEntity ziliaoLiuyan, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    logger.debug(<span class="string">&quot;save方法:,,Controller:&#123;&#125;,,ziliaoLiuyan:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),ziliaoLiuyan.toString());</span><br><span class="line"></span><br><span class="line">    String role = String.valueOf(request.getSession().getAttribute(<span class="string">&quot;role&quot;</span>));</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">false</span>)</span><br><span class="line">        <span class="keyword">return</span> R.error(<span class="number">511</span>,<span class="string">&quot;永远不会进入&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">&quot;用户&quot;</span>.equals(role))</span><br><span class="line">        ziliaoLiuyan.setYonghuId(Integer.valueOf(String.valueOf(request.getSession().getAttribute(<span class="string">&quot;userId&quot;</span>))));</span><br><span class="line"></span><br><span class="line">    ziliaoLiuyan.setCreateTime(<span class="keyword">new</span> Date());</span><br><span class="line">    ziliaoLiuyan.setInsertTime(<span class="keyword">new</span> Date());</span><br><span class="line">    ziliaoLiuyanService.insert(ziliaoLiuyan);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> R.ok();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 后端修改</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/update&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> ZiliaoLiuyanEntity ziliaoLiuyan, HttpServletRequest request)</span> <span class="keyword">throws</span> NoSuchFieldException, ClassNotFoundException, IllegalAccessException, InstantiationException </span>&#123;</span><br><span class="line">    logger.debug(<span class="string">&quot;update方法:,,Controller:&#123;&#125;,,ziliaoLiuyan:&#123;&#125;&quot;</span>,<span class="keyword">this</span>.getClass().getName(),ziliaoLiuyan.toString());</span><br><span class="line">    ZiliaoLiuyanEntity oldZiliaoLiuyanEntity = ziliaoLiuyanService.selectById(ziliaoLiuyan.getId());<span class="comment">//查询原先数据</span></span><br><span class="line"></span><br><span class="line">    String role = String.valueOf(request.getSession().getAttribute(<span class="string">&quot;role&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
-<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=89&price2=79" style="height: 260px;" frameborder="0"></iframe>
 <blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=371524522608201pk<br>https://javayms.pages.dev?id=371524522608201pk</p></blockquote>
     </div>
 
@@ -666,6 +277,7 @@
           <div class="post-tags">
 			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
 			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
 			<a href="/tags/%E9%A2%84%E7%BA%A6/" rel="tag"><i class="fa fa-tag"></i> 预约</a>
 			<a href="/tags/%E9%A9%BE%E6%A0%A1/" rel="tag"><i class="fa fa-tag"></i> 驾校</a>
 

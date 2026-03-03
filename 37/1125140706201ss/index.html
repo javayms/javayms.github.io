@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot非物质文化系统(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:title" content="基于javaweb的SpringBoot非物质文化系统(java+springboot+Maven+mybaits+vue+elementui+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot非物质文化系统(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  <title>基于javaweb的SpringBoot非物质文化系统(java+springboot+Maven+mybaits+vue+elementui+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot非物质文化系统(java+springboot+mybaits+vue+elementui+mysql)
+			基于javaweb的SpringBoot非物质文化系统(java+springboot+Maven+mybaits+vue+elementui+mysql)
             
         </h1>
 
@@ -233,261 +233,37 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/481025560706.jpg" alt="481025560706"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/491025560706.jpg" alt="491025560706"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project24/501025560706.jpg" alt="501025560706"></p>
-<p>基于javaweb的SpringBoot非物质文化系统(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>基于javaweb的SpringBoot非物质文化系统(java+springboot+Maven+mybaits+vue+elementui+mysql)</p>
 <p>项目介绍</p>
 <p>基于Springboot+vue甘肃非物质文化网站的设计与开发</p>
 <p>本系统分为前后台，包含管理员、用户两种角色，前台为用户登录，后台为管理员、用户分别登录。</p>
 <p>前台主要功能：首页、商品信息、传承人展示、非物质文化展览、用户个人中心、我的订单、我的地址、我的收藏、购物车、客服等功能；</p>
 <p>后台管理员主要功能：首页、个人中心、用户管理、商品分类管理、申请管理、商品信息管理、商品评价管理、系统管理、订单管理等。</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
-<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
-<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； </p>
-<p>4.数据库：MySql 5.7/8.0版本均可；</p>
-<p>5.是否Maven项目：是；</p>
-<p>技术栈</p>
-<p>后端：SpringBoot+Mybaits</p>
-<p>前端：Vue+elementui</p>
-<p>使用说明</p>
-<p>项目运行：</p>
-<ol>
-<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
-</li>
-<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
-</li>
-<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
-</li>
-<li><p>运行项目，在浏览器中输入地址：</p>
-</li>
-</ol>
-<p>前台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/feiwuzhiwenhua/front/pages/login/login.html">http://localhost:8080/feiwuzhiwenhua/front/pages/login/login.html</a> </p>
-<p>后台地址：<a target="_blank" rel="noopener" href="http://localhost:8080/feiwuzhiwenhua/admin/dist/index.html#/login">http://localhost:8080/feiwuzhiwenhua/admin/dist/index.html#/login</a></p>
-<p>管理员 admin 密码：admin </p>
-<p>用户：用户1 密码： 123456</p>
-<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">管理员：</span><br><span class="line">admin   123456</span><br><span class="line"></span><br><span class="line">用户：</span><br><span class="line">用户1	123456</span><br><span class="line">用户2	123456</span><br><span class="line">用户3	123456</span><br><span class="line">用户4	123456</span><br><span class="line">用户5	123456</span><br><span class="line">用户6	123456</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>登录页面展示：</p>
-<p>用户页面展示：</p>
-<p>商品列表展示： </p>
-<p> 尚品佳管理页面展示：</p>
-<p>用户注册页面展示：</p>
-<p>商品介绍信息展示：</p>
-<p> 个人介绍信息展示：</p>
-<p>收货地址页面展示： </p>
-<p>用户信息服务：</p>
-<p>@WebServlet(“/toUserInfoServlet”)</p>
-<p>public class ToUserInfoServlet extends HttpServlet {</p>
-<p>protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p>
-<p>HttpSession session = request.getSession();</p>
-<p>User user = (User) session.getAttribute(“name”);</p>
-<p>if (user != null) {</p>
-<p>UserService service = new UserServiceImpl();</p>
-<p>User newUser = service.findUserByUserId(user.getUser_id());</p>
-<p>CategoryService service1 = new CategoryServiceImpl();</p>
-<p>List<Category> flist = service1.findCategoryListByName(“father”);</Category></p>
-<p>List<Category> clist = service1.findCategoryListByName(“child”);</Category></p>
-<p>request.setAttribute(“flist”,flist);</p>
-<p>request.setAttribute(“clist”,clist);</p>
-<p>request.setAttribute(“user”,newUser);</p>
-<p>//查看该用户的各种订单数量</p>
-<p>OrderService service2 = new OrderServiceImpl();</p>
-<p>List<Order> orders = service2.findOrderByUserId(user.getUser_id());</Order></p>
-<p>int a1 = 0;</p>
-<p>int a2 = 0;</p>
-<p>int a3 = 0;</p>
-<p>int a4 = 0;</p>
-<p>for (Order o:orders) {</p>
-<p>if (“0”.equals(o.getIs_pay()) &amp;&amp; “0”.equals(o.getIs_ship()) &amp;&amp; “0”.equals(o.getIs_receipt())) {</p>
-<p>a1++;</p>
-<p>if (“1”.equals(o.getIs_pay()) &amp;&amp; “0”.equals(o.getIs_ship()) &amp;&amp; “0”.equals(o.getIs_receipt())) {</p>
-<p>a2++;</p>
-<p>if (“1”.equals(o.getIs_pay()) &amp;&amp; “1”.equals(o.getIs_ship()) &amp;&amp; “0”.equals(o.getIs_receipt())) {</p>
-<p>a3++;</p>
-<p>if (“1”.equals(o.getIs_pay()) &amp;&amp; “1”.equals(o.getIs_ship()) &amp;&amp; “1”.equals(o.getIs_receipt())) {</p>
-<p>a4++;</p>
-<p>request.setAttribute(“a1”,a1);</p>
-<p>request.setAttribute(“a2”,a2);</p>
-<p>request.setAttribute(“a3”,a3);</p>
-<p>request.setAttribute(“a4”,a4);</p>
-<p>request.getRequestDispatcher(“mygxin.jsp”).forward(request, response);</p>
-<p>}else {</p>
-<p>response.sendRedirect(“login.jsp”);</p>
-<p>protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p>
-<p>doPost(request,response);</p>
-<p>购物车数量信息：</p>
-<p>@WebServlet(“/selectProductList”)</p>
-<p>public class SelectProductList extends HttpServlet {</p>
-<p>protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p>
-<p>//查询购物车数量</p>
-<p>HttpSession session = request.getSession();</p>
-<p>User user = (User) session.getAttribute(“name”);</p>
-<p>String cartCount = “0”;</p>
-<p>CartService service1 = new CartServiceImpl();</p>
-<p>if (user != null) {</p>
-<p>cartCount = String.valueOf(service1.findCartCountByUserId(user.getUser_id()));</p>
-<p>}else {</p>
-<p>cartCount = “?”;</p>
-<p>request.setAttribute(“cartCount”,cartCount);</p>
-<p>String cid = request.getParameter(“cid”);</p>
-<p>if (cid != null &amp;&amp; !cid.trim().equals(“”)) {</p>
-<p>ProductService service = new ProductServiceImpl();</p>
-<p>List<Product> list = service.findProductByCategoryCid(Integer.valueOf(cid));</Product></p>
-<p>request.setAttribute(“productList”,list);</p>
-<p>CategoryService service2 = new CategoryServiceImpl();</p>
-<p>Category c = service2.findCategoryByCid(Integer.valueOf(cid));</p>
-<p>System.out.println(c.getCategory_name());</p>
-<p>request.setAttribute(“childC”,c);</p>
-<p>Category f = service2.findCategoryByCid(c.getCategory_parentid());</p>
-<p>System.out.println(f.getCategory_name());</p>
-<p>request.setAttribute(“fatherC”,f);</p>
-<p>List<Category> flist =  service2.findCategoryListByName(“father”);</Category></p>
-<p>request.setAttribute(“flist”, flist);</p>
-<p>List<Category> clist =  service2.findCategoryListByName(“child”);</Category></p>
-<p>request.setAttribute(“clist”, clist);</p>
-<p>//没实现分类添加图片</p>
-<p>if (f.getCategory_id() == 1) {</p>
-<p>request.setAttribute(“link”, “images/temp/banner1.jpg”);</p>
-<p>}else if (f.getCategory_id() == 2){</p>
-<p>request.setAttribute(“link”, “images/temp/bzbig.jpg”);</p>
-<p>}else if (f.getCategory_id() == 3){</p>
-<p>request.setAttribute(“link”, “images/temp/banner2.jpg”);</p>
-<p>}else if (f.getCategory_id() == 4){</p>
-<p>request.setAttribute(“link”, “images/temp/perfume_Banner.jpg”);</p>
-<p>}else if (f.getCategory_id() == 5){</p>
-<p>request.setAttribute(“link”, “img/idea1.jpg”);</p>
-<p>}else {</p>
-<p>request.setAttribute(“link”, “img/banner1.jpg”);</p>
-<p>request.getRequestDispatcher(“productlist.jsp”).forward(request, response);</p>
-<p>}else {</p>
-<p>//有fid</p>
-<p>String fid = request.getParameter(“fid”);</p>
-<p>CategoryService service2 = new CategoryServiceImpl();</p>
-<p>Category f = service2.findCategoryByCid(Integer.valueOf(fid));</p>
-<p>request.setAttribute(“fatherC”,f);</p>
-<p>List<Category> flist =  service2.findCategoryListByName(“father”);</Category></p>
-<p>request.setAttribute(“flist”, flist);</p>
-<p>List<Category> clist =  service2.findCategoryListByName(“child”);</Category></p>
-<p>request.setAttribute(“clist”, clist);</p>
-<p>//没实现分类添加图片</p>
-<p>if (f.getCategory_id() == 1) {</p>
-<p>request.setAttribute(“link”, “images/temp/banner1.jpg”);</p>
-<p>}else if (f.getCategory_id() == 2){</p>
-<p>request.setAttribute(“link”, “images/temp/bzbig.jpg”);</p>
-<p>}else if (f.getCategory_id() == 3){</p>
-<p>request.setAttribute(“link”, “images/temp/banner2.jpg”);</p>
-<p>}else if (f.getCategory_id() == 4){</p>
-<p>request.setAttribute(“link”, “images/temp/perfume_Banner.jpg”);</p>
-<p>}else if (f.getCategory_id() == 5){</p>
-<p>request.setAttribute(“link”, “img/idea1.jpg”);</p>
-<p>}else {</p>
-<p>request.setAttribute(“link”, “img/banner1.jpg”);</p>
-<p>ProductService service = new ProductServiceImpl();</p>
-<p>List<Product> list = service.findProductByCategoryFid(Integer.valueOf(fid));</Product></p>
-<p>request.setAttribute(“productList”,list);</p>
-<p>request.getRequestDispatcher(“productlist.jsp”).forward(request, response);</p>
-<p>protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p>
-<p>doPost(request,response);</p>
-<p>订单信息业务：</p>
-<p>@WebServlet(“/toOrderServlet”)</p>
-<p>public class ToOrderServlet extends HttpServlet {</p>
-<p>protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p>
-<p>//判断是否登录</p>
-<p>HttpSession session = request.getSession();</p>
-<p>User user = (User) session.getAttribute(“name”);</p>
-<p>if (user != null) {</p>
-<p>//判断是否有参数uid</p>
-<p>String uid = request.getParameter(“uid”);</p>
-<p>if (uid == null) {</p>
-<p>//我的订单中心进入，无需添加商品</p>
-<p>CategoryService service1 = new CategoryServiceImpl();</p>
-<p>List<Category> flist = service1.findCategoryListByName(“father”);</Category></p>
-<p>List<Category> clist = service1.findCategoryListByName(“child”);</Category></p>
-<p>request.setAttribute(“flist”,flist);</p>
-<p>request.setAttribute(“clist”,clist);</p>
-<p>AddressService service = new AddressServiceImpl();</p>
-<p>List<Address> addresses = service.findAddressByUserId(user.getUser_id());</Address></p>
-<p>request.setAttribute(“address”,addresses);</p>
-<p>//计算商品价格</p>
-<p>String pid = request.getParameter(“pid”);</p>
-<p>String oid = request.getParameter(“oid”);</p>
-<p>String count = request.getParameter(“count”);</p>
-<p>ProductService service2 = new ProductServiceImpl();</p>
-<p>Product p = service2.findProductById(Integer.valueOf(pid));</p>
-<p>int price = p.getProduct_price();</p>
-<p>int totalPrice = price*Integer.valueOf(count);</p>
-<p>request.setAttribute(“price”,price);</p>
-<p>request.setAttribute(“count”,count);</p>
-<p>request.setAttribute(“product”,p);</p>
-<p>request.setAttribute(“totalPrice”,totalPrice);</p>
-<p>//查询购物车数量</p>
-<p>String cartCount = “0”;</p>
-<p>CartService service3 = new CartServiceImpl();</p>
-<p>if (user != null) {</p>
-<p>cartCount = String.valueOf(service3.findCartCountByUserId(user.getUser_id()));</p>
-<p>}else {</p>
-<p>cartCount = “?”;</p>
-<p>request.setAttribute(“cartCount”,cartCount);</p>
-<p>OrderService service4 = new OrderServiceImpl();</p>
-<p>Order o = service4.findOrderById(oid);</p>
-<p>request.setAttribute(“order”,o);</p>
-<p>}else {</p>
-<p>CategoryService service1 = new CategoryServiceImpl();</p>
-<p>List<Category> flist = service1.findCategoryListByName(“father”);</Category></p>
-<p>List<Category> clist = service1.findCategoryListByName(“child”);</Category></p>
-<p>request.setAttribute(“flist”,flist);</p>
-<p>request.setAttribute(“clist”,clist);</p>
-<p>AddressService service = new AddressServiceImpl();</p>
-<p>List<Address> addresses = service.findAddressByUserId(user.getUser_id());</Address></p>
-<p>request.setAttribute(“address”,addresses);</p>
-<p>//计算商品价格</p>
-<p>String pid = request.getParameter(“pid”);</p>
-<p>String count = request.getParameter(“count”);</p>
-<p>ProductService service2 = new ProductServiceImpl();</p>
-<p>Product p = service2.findProductById(Integer.valueOf(pid));</p>
-<p>int price = p.getProduct_price();</p>
-<p>int totalPrice = price*Integer.valueOf(count);</p>
-<p>request.setAttribute(“price”,price);</p>
-<p>request.setAttribute(“count”,count);</p>
-<p>request.setAttribute(“product”,p);</p>
-<p>request.setAttribute(“totalPrice”,totalPrice);</p>
-<p>//查询购物车数量</p>
-<p>String cartCount = “0”;</p>
-<p>CartService service3 = new CartServiceImpl();</p>
-<p>if (user != null) {</p>
-<p>cartCount = String.valueOf(service3.findCartCountByUserId(user.getUser_id()));</p>
-<p>}else {</p>
-<p>cartCount = “?”;</p>
-<p>request.setAttribute(“cartCount”,cartCount);</p>
-<p>//添加此订单为待支付订单</p>
-<p>//添加此订单的订单列表</p>
-<p>//查询该订单中商品及数量</p>
-<p>int product_quantity = Integer.valueOf(count);</p>
-<p>int product_id = p.getProduct_id();</p>
-<p>Order order = new Order(System.currentTimeMillis() +””+ user.getUser_id(),user.getUser_id(),totalPrice,new Date(),”0”,”0”,”0”,product_id,product_quantity);</p>
-<p>ProductService service5 = new ProductServiceImpl();</p>
-<p>Product product = service5.findProductById(product_id);</p>
-<p>order.setProduct_name(product.getProduct_name());</p>
-<p>order.setProduct_photo(product.getProduct_photo());</p>
-<p>order.setProduct_price(product.getProduct_price());</p>
-<p>request.setAttribute(“order”,order);</p>
-<p>OrderService service4 = new OrderServiceImpl();</p>
-<p>service4.addOrder(order);</p>
-<p>//            String product_quantity = count;</p>
-<p>//            String order_id = order.getOrder_id();</p>
-<p>//            int product_id = p.getProduct_id();</p>
-<p>//</p>
-<p>//            OrderList orderList = new OrderList(order_id,product_id,product_quantity);</p>
-<p>//</p>
-<p>//            OrderListService service5 = new OrderListServiceImpl();</p>
-<p>//            service5.addOrderList(orderList);</p>
-<p>request.getRequestDispatcher(“order.jsp”).forward(request, response);</p>
-<p>}else {</p>
-<p>response.sendRedirect(“login.jsp”);</p>
-<p>protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {</p>
-<p>doPost(request,response);</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">       <span class="comment">//ValidatorUtils.validateEntity(shangpinpingjia);</span></span><br><span class="line">       shangpinpingjiaService.updateById(shangpinpingjia);<span class="comment">//全部更新</span></span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 删除</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Long[] ids)</span></span>&#123;</span><br><span class="line">       shangpinpingjiaService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 提醒接口</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/remind/&#123;columnName&#125;/&#123;type&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">remindCount</span><span class="params">(<span class="meta">@PathVariable(&quot;columnName&quot;)</span> String columnName, HttpServletRequest request, </span></span></span><br><span class="line"><span class="function"><span class="params">					 <span class="meta">@PathVariable(&quot;type&quot;)</span> String type,<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; map)</span> </span>&#123;</span><br><span class="line">	map.put(<span class="string">&quot;column&quot;</span>, columnName);</span><br><span class="line">	map.put(<span class="string">&quot;type&quot;</span>, type);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(type.equals(<span class="string">&quot;2&quot;</span>)) &#123;</span><br><span class="line">		SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line">		Calendar c = Calendar.getInstance();</span><br><span class="line">		Date remindStartDate = <span class="keyword">null</span>;</span><br><span class="line">		Date remindEndDate = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			Integer remindStart = Integer.parseInt(map.get(<span class="string">&quot;remindstart&quot;</span>).toString());</span><br><span class="line">			c.setTime(<span class="keyword">new</span> Date()); </span><br><span class="line">			c.add(Calendar.DAY_OF_MONTH,remindStart);</span><br><span class="line">			remindStartDate = c.getTime();</span><br><span class="line">			map.put(<span class="string">&quot;remindstart&quot;</span>, sdf.format(remindStartDate));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			Integer remindEnd = Integer.parseInt(map.get(<span class="string">&quot;remindend&quot;</span>).toString());</span><br><span class="line">			c.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">			c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">			remindEndDate = c.getTime();</span><br><span class="line">			map.put(<span class="string">&quot;remindend&quot;</span>, sdf.format(remindEndDate));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	Wrapper&lt;ShangpinpingjiaEntity&gt; wrapper = <span class="keyword">new</span> EntityWrapper&lt;ShangpinpingjiaEntity&gt;();</span><br><span class="line">	<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">		wrapper.ge(columnName, map.get(<span class="string">&quot;remindstart&quot;</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">		wrapper.le(columnName, map.get(<span class="string">&quot;remindend&quot;</span>));</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 前端保存</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/add&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">add</span><span class="params">(<span class="meta">@RequestBody</span> StoreupEntity storeup, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">   	storeup.setId(<span class="keyword">new</span> Date().getTime()+<span class="keyword">new</span> Double(Math.floor(Math.random()*<span class="number">1000</span>)).longValue());</span><br><span class="line">   	<span class="comment">//ValidatorUtils.validateEntity(storeup);</span></span><br><span class="line">   	storeup.setUserid((Long)request.getSession().getAttribute(<span class="string">&quot;userId&quot;</span>));</span><br><span class="line">       storeupService.insert(storeup);</span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 修改</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/update&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> StoreupEntity storeup, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">       <span class="comment">//ValidatorUtils.validateEntity(storeup);</span></span><br><span class="line">       storeupService.updateById(storeup);<span class="comment">//全部更新</span></span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 删除</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Long[] ids)</span></span>&#123;</span><br><span class="line">       storeupService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 提醒接口</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/remind/&#123;columnName&#125;/&#123;type&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">remindCount</span><span class="params">(<span class="meta">@PathVariable(&quot;columnName&quot;)</span> String columnName, HttpServletRequest request, </span></span></span><br><span class="line"><span class="function"><span class="params">					 <span class="meta">@PathVariable(&quot;type&quot;)</span> String type,<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; map)</span> </span>&#123;</span><br><span class="line">	map.put(<span class="string">&quot;column&quot;</span>, columnName);</span><br><span class="line">	map.put(<span class="string">&quot;type&quot;</span>, type);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(type.equals(<span class="string">&quot;2&quot;</span>)) &#123;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">		<span class="keyword">int</span> count = addressService.selectCount(wrapper);</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 客服聊天表</span></span><br><span class="line"><span class="comment"> * 后端接口</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"> * 后端接口</span><br><span class="line"> * <span class="meta">@email</span> </span><br><span class="line"> */</span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/orders&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrdersController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> OrdersService ordersService;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 后端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">page</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,OrdersEntity orders, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">    	<span class="keyword">if</span>(!request.getSession().getAttribute(<span class="string">&quot;role&quot;</span>).toString().equals(<span class="string">&quot;管理员&quot;</span>)) &#123;</span><br><span class="line">    		orders.setUserid((Long)request.getSession().getAttribute(<span class="string">&quot;userId&quot;</span>));</span><br><span class="line">    	&#125;</span><br><span class="line">        EntityWrapper&lt;OrdersEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;OrdersEntity&gt;();</span><br><span class="line">		PageUtils page = ordersService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, orders), params), params));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 前端列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/list&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; params,OrdersEntity orders, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">        EntityWrapper&lt;OrdersEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;OrdersEntity&gt;();</span><br><span class="line">		PageUtils page = ordersService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, orders), params), params));</span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 列表</span></span><br><span class="line"><span class="comment">     */</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> NewsEntity news, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">       <span class="comment">//ValidatorUtils.validateEntity(news);</span></span><br><span class="line">       newsService.updateById(news);<span class="comment">//全部更新</span></span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 删除</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Long[] ids)</span></span>&#123;</span><br><span class="line">       newsService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 提醒接口</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/remind/&#123;columnName&#125;/&#123;type&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">remindCount</span><span class="params">(<span class="meta">@PathVariable(&quot;columnName&quot;)</span> String columnName, HttpServletRequest request, </span></span></span><br><span class="line"><span class="function"><span class="params">					 <span class="meta">@PathVariable(&quot;type&quot;)</span> String type,<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; map)</span> </span>&#123;</span><br><span class="line">	map.put(<span class="string">&quot;column&quot;</span>, columnName);</span><br><span class="line">	map.put(<span class="string">&quot;type&quot;</span>, type);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(type.equals(<span class="string">&quot;2&quot;</span>)) &#123;</span><br><span class="line">		SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line">		Calendar c = Calendar.getInstance();</span><br><span class="line">		Date remindStartDate = <span class="keyword">null</span>;</span><br><span class="line">		Date remindEndDate = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			Integer remindStart = Integer.parseInt(map.get(<span class="string">&quot;remindstart&quot;</span>).toString());</span><br><span class="line">			c.setTime(<span class="keyword">new</span> Date()); </span><br><span class="line">			c.add(Calendar.DAY_OF_MONTH,remindStart);</span><br><span class="line">			remindStartDate = c.getTime();</span><br><span class="line">			map.put(<span class="string">&quot;remindstart&quot;</span>, sdf.format(remindStartDate));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			Integer remindEnd = Integer.parseInt(map.get(<span class="string">&quot;remindend&quot;</span>).toString());</span><br><span class="line">			c.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">			c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">			remindEndDate = c.getTime();</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, result);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 商品信息</span></span><br><span class="line"><span class="comment"> * 后端接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@email</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/shangpinxinxi&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShangpinxinxiController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ShangpinxinxiService shangpinxinxiService;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
-<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=89&price2=79" style="height: 260px;" frameborder="0"></iframe>
 <blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=371125140706201ss<br>https://javayms.pages.dev?id=371125140706201ss</p></blockquote>
     </div>
 
@@ -500,6 +276,7 @@
           <div class="post-tags">
 			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
 			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
 			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
 
           </div>
