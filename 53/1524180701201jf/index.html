@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot汽车零件商城系统(java+springboot+elementui+vue+mysql)">
+<meta property="og:title" content="基于javaweb的SpringBoot汽车零件商城系统(java+springboot+maven+elementui+vue+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot汽车零件商城系统(java+springboot+elementui+vue+mysql) | Java源码社</title>
+  <title>基于javaweb的SpringBoot汽车零件商城系统(java+springboot+maven+elementui+vue+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot汽车零件商城系统(java+springboot+elementui+vue+mysql)
+			基于javaweb的SpringBoot汽车零件商城系统(java+springboot+maven+elementui+vue+mysql)
             
         </h1>
 
@@ -229,436 +229,37 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/271324590701.jpg" alt="271324590701"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/281324590701.jpg" alt="281324590701"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project25/291324590701.jpg" alt="291324590701"></p>
-<p>基于javaweb的SpringBoot汽车零件商城系统(java+springboot+elementui+vue+mysql)</p>
+<p>基于javaweb的SpringBoot汽车零件商城系统(java+springboot+maven+elementui+vue+mysql)</p>
 <p>项目介绍</p>
 <p>本项目分为前后台，前台为普通用户角色，后台为管理员角色；</p>
 <p>管理员角色包含以下功能：</p>
 <p>人员管理,修改个人信息,图片管理,图表管理,管理员登录,订单管理,配件管理等功能。</p>
 <p>用户角色包含以下功能：</p>
 <p>修改个人信息,提交付款,查看商品详情,查看我的订单,查看购物车,查看首页,用户登录,确认订单等功能。</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
-<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
-<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
-<p>4.是否Maven项目: 否；查看源码目录中是否包含pom.xml；若包含，则为maven项目，否则为非maven项目</p>
-<p>5.数据库：MySql 5.7、8.0等版本均可；</p>
 <p>技术栈</p>
 <p>java+Springboot+ElementUI+Vue+Mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">管理员：</span><br><span class="line">admin   123456</span><br><span class="line"></span><br><span class="line">用户：</span><br><span class="line">user1   123456</span><br><span class="line"></span><br><span class="line">后端启动类：StartApplication</span><br><span class="line">前端管理员端启动命令：npm run serve</span><br><span class="line">前端用户端启动命令：npm run serve</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>购物车管理控制层：</p>
-<p>@Controller@RequestMapping(“/cart”)publicclassCartController {</p>
-<p>@Autowiredprivate ICartService cartService;</p>
-<p>@Autowiredprivate IGoodsService goodsService;</p>
-<p>@Autowiredprivate IAddressService addressService;</p>
-<p>@RequestMapping(“addCart”)@ResponseBodypublic String addToCart(Integer goodsId,Integer num,HttpServletRequest request){</p>
-<p>HttpSessionsession= request.getSession();</p>
-<p>Users user=(Users) session.getAttribute(“user”);</p>
-<p>Cartcart= cartService.findCartByUserId(user.getUserId(), goodsId);</p>
-<p>if(cart!=null){</p>
-<p>cart.setCartNum(cart.getCartNum()+num);</p>
-<p>cartService.updateCart(cart);</p>
-<p>}else{</p>
-<p>Goodsgoods= goodsService.findById(goodsId);</p>
-<p>Cart c=newCart(goods, num, goods.getGoodsPrice(), user);</p>
-<p>cartService.addGoodsToCart(c);</p>
-<p>return”success”;</p>
-<p>@RequestMapping(“findCartByUser”)@ResponseBodypublic List<Cart> findCartByUser(HttpServletRequest request){</Cart></p>
-<p>HttpSessionsession= request.getSession();</p>
-<p>Users user=(Users) session.getAttribute(“user”);</p>
-<p>List<Cart> list = cartService.findCartByUserId(user.getUserId());</Cart></p>
-<p>return list;</p>
-<p>@RequestMapping(“deleteCart”)@ResponseBodypublic String deleteCart(Integer cartId){</p>
-<p>Integerrs= cartService.deleteCart(cartId);</p>
-<p>if(rs&gt;0){</p>
-<p>return”success”;</p>
-<p>}else{</p>
-<p>return”fail”;</p>
-<p>@RequestMapping(“reduceCartNum”)@ResponseBodypublic String reduceCartNum(Integer cartId){</p>
-<p>Cartcart= cartService.findCartById(cartId);</p>
-<p>cart.setCartNum(cart.getCartNum()-1);</p>
-<p>Integerrs= cartService.updateCart(cart);</p>
-<p>if(rs&gt;0){</p>
-<p>return”success”;</p>
-<p>}else{</p>
-<p>return”fail”;</p>
-<p>@RequestMapping(“addCartNum”)@ResponseBodypublic String addCartNum(Integer cartId){</p>
-<p>Cartcart= cartService.findCartById(cartId);</p>
-<p>cart.setCartNum(cart.getCartNum()+1);</p>
-<p>Integerrs= cartService.updateCart(cart);</p>
-<p>if(rs&gt;0){</p>
-<p>return”success”;</p>
-<p>}else{</p>
-<p>return”fail”;</p>
-<p>@RequestMapping(“preOrder”)public String preOrder(Integer[] goodslist,Model model,HttpServletRequest request){</p>
-<p>List<Cart> cartList=newArrayList<Cart>();</Cart></Cart></p>
-<p>for (Integer i : goodslist) {</p>
-<p>Cartcart= cartService.findCartById(i);</p>
-<p>cartList.add(cart);</p>
-<p>model.addAttribute(“cartList”, cartList);</p>
-<p>HttpSessionsession= request.getSession();</p>
-<p>Usersuser= (Users) session.getAttribute(“user”);</p>
-<p>List<Address> addrList = addressService.findAddressByUserId(user.getUserId());</Address></p>
-<p>model.addAttribute(“addrList”, addrList);</p>
-<p>return”userview/confirm_order”;</p>
-<p>订单管理控制层：</p>
-<p>@Controller@RequestMapping(“/order”)publicclassOrderController {</p>
-<p>@Autowiredprivate ICartService cartService;</p>
-<p>@Autowiredprivate IGoodsService goodsService;</p>
-<p>@Autowiredprivate IOrderService orderService;</p>
-<p>@Autowiredprivate IAddressService addressService;</p>
-<p>@Autowiredprivate IGuessService guessService;</p>
-<p>@RequestMapping(“takeOrder”)public String takeOrder(Integer[] goodslist,Integer addr,Model model,HttpServletRequest request){</p>
-<p>List<Cart> cartList=newArrayList<Cart>();</Cart></Cart></p>
-<p>List<OrderDetail> detailList=newArrayList<OrderDetail>();</OrderDetail></OrderDetail></p>
-<p>Double totalPrice=0D;</p>
-<p>for (Integer i : goodslist) {</p>
-<p>Cartcart= cartService.findCartById(i);</p>
-<p>totalPrice+=cart.getCartNum()*cart.getCartGoods().getGoodsPrice();</p>
-<p>cartList.add(cart);</p>
-<p>OrderDetail detail=newOrderDetail(cart.getCartGoods(), cart.getCartGoods().getGoodsPrice()*cart.getCartNum(), cart.getCartNum());</p>
-<p>detailList.add(detail);</p>
-<p>HttpSessionsession= request.getSession();</p>
-<p>Users user=(Users) session.getAttribute(“user”);</p>
-<p>Date orderDate=newDate();</p>
-<p>Addressaddress= addressService.findAddresById(addr);</p>
-<p>String a=address.getAddrProvince()+address.getAddrCity()+address.getAddrArea()+address.getAddrDetail();</p>
-<p>Order order=newOrder(user, orderDate, totalPrice, 1, address.getAddrNickname(), address.getAddrPhone(), a);</p>
-<p>order.setDetailList(detailList);</p>
-<p>OrdertakeOrder= orderService.takeOrder(order);</p>
-<p>for (Cart c : cartList) {</p>
-<p>Goodsgoods= goodsService.findById(c.getCartGoods().getGoodsId());</p>
-<p>goods.setGoodsNum(goods.getGoodsNum()-c.getCartNum());</p>
-<p>goods.setGoodsVolume(goods.getGoodsVolume()+c.getCartNum());</p>
-<p>goodsService.update(goods);</p>
-<p>cartService.deleteCart(c.getCartId());</p>
-<p>model.addAttribute(“order”,takeOrder);</p>
-<p>List<Guess> guessList = guessService.findGuessGoodsByUserId(user.getUserId(), 4);</Guess></p>
-<p>model.addAttribute(“guessList”, guessList);</p>
-<p>return”userview/takeorder”;</p>
-<p>@RequestMapping(“findReadPayOrder”)@ResponseBodypublic List<Order> findReadyPayOrder(HttpServletRequest request){</Order></p>
-<p>HttpSessionsession= request.getSession();</p>
-<p>Users user=(Users) session.getAttribute(“user”);</p>
-<p>List<Order> orderList = orderService.findOrdersByUserIdAndState(user.getUserId(), 1);</Order></p>
-<p>return orderList;</p>
-<p>@RequestMapping(“findReadyToDeliverOrder”)@ResponseBodypublic List<Order> findReadyToDeliverOrder(HttpServletRequest request){</Order></p>
-<p>HttpSessionsession= request.getSession();</p>
-<p>Usersuser= (Users) session.getAttribute(“user”);</p>
-<p>List<Order> orderList = orderService.findOrdersByUserIdAndState(user.getUserId(), 2);</Order></p>
-<p>return orderList;</p>
-<p>@RequestMapping(“findReadyToReceiveOrder”)@ResponseBodypublic List<Order> findReadToReceiveOrder(HttpServletRequest request){</Order></p>
-<p>HttpSessionsession= request.getSession();</p>
-<p>Usersuser= (Users) session.getAttribute(“user”);</p>
-<p>List<Order> orderList = orderService.findOrdersByUserIdAndState(user.getUserId(), 3);</Order></p>
-<p>return orderList;</p>
-<p>@RequestMapping(“findReadyToEvaluateOrder”)@ResponseBodypublic List<Order> findReadyToEvaluateOrder(HttpServletRequest request){</Order></p>
-<p>HttpSessionsession= request.getSession();</p>
-<p>Usersuser= (Users) session.getAttribute(“user”);</p>
-<p>List<Order> orderList = orderService.findOrdersByUserIdAndState(user.getUserId(), 4);</Order></p>
-<p>return orderList;</p>
-<p>@RequestMapping(“findFinishOrder”)@ResponseBodypublic List<Order> findFinishOrder(HttpServletRequest request){</Order></p>
-<p>HttpSessionsession= request.getSession();</p>
-<p>Usersuser= (Users) session.getAttribute(“user”);</p>
-<p>List<Order> orderList = orderService.findOrdersByUserIdAndState(user.getUserId(), 5);</Order></p>
-<p>return orderList;</p>
-<p>@RequestMapping(“receiveOrder”)@ResponseBodypublic String receiveOrder(String orderId){</p>
-<p>Integerrs= orderService.receiveOrder(orderId);</p>
-<p>if(rs&gt;0){</p>
-<p>return”success”;</p>
-<p>}else{</p>
-<p>return”fail”;</p>
-<p>@RequestMapping(“deleteOrder”)@ResponseBodypublic String deleteOrder(String orderId){</p>
-<p>Integerrs= orderService.deleteOrder(orderId);</p>
-<p>if(rs&gt;0){</p>
-<p>return”success”;</p>
-<p>}else{</p>
-<p>return”fail”;</p>
-<p>@RequestMapping(“findOrderBySplitPage”)@ResponseBodypublic JSONObject findOrderBySplitPage(Integer page,Integer limit,OrderSearchVO vo){</p>
-<p>if(vo!=null){</p>
-<p>System.out.println(vo.getOrderState()+”========================”);</p>
-<p>PageInfo<Order> info = orderService.findOrdersBySplitPage(page, limit,vo);</Order></p>
-<p>JSONObject obj=newJSONObject();</p>
-<p>obj.put(“msg”, “”);</p>
-<p>obj.put(“code”, 0);</p>
-<p>obj.put(“count”, info.getTotal());</p>
-<p>obj.put(“data”, info.getList());</p>
-<p>return obj;</p>
-<p>@RequestMapping(“updateOrder”)@ResponseBodypublic String updateOrder(Order order){</p>
-<p>Integerrs= orderService.updateOrder(order);</p>
-<p>if(rs&gt;0){</p>
-<p>return”success”;</p>
-<p>}else{</p>
-<p>return”fail”;</p>
-<p>@RequestMapping(“deliverOrder”)@ResponseBodypublic String deliverOrder(String orderId,String expressNo){</p>
-<p>if(!expressNo.trim().equals(“”)){</p>
-<p>Integerrs= orderService.deliverOrder(orderId, expressNo);</p>
-<p>if(rs&gt;0){</p>
-<p>return”success”;</p>
-<p>}else{</p>
-<p>return”fail”;</p>
-<p>}else{</p>
-<p>return”fail”;</p>
-<p>@RequestMapping(“findOrderById”)@ResponseBodypublic Order findOrderById(String orderId){</p>
-<p>Orderorder= orderService.findOrderById(orderId);</p>
-<p>return order;</p>
-<p>@RequestMapping(“findTotalOrder”)@ResponseBodypublic JSONObject findOrderTotalMoney(){</p>
-<p>List<OrderVO> list = orderService.findTotalMoneyByMonth(6);</OrderVO></p>
-<p>String[] month=newString[6];</p>
-<p>Long[] total=newLong[6];</p>
-<p>Integer[] sheets=newInteger[6];</p>
-<p>for(int i=0;i&lt;list.size();i++){</p>
-<p>month[i]=list.get(i).getOrderMonth();</p>
-<p>total[i]=list.get(i).getTotalMoney();</p>
-<p>sheets[i]=list.get(i).getSheets();</p>
-<p>JSONObject obj=newJSONObject();</p>
-<p>obj.put(“month”, month);</p>
-<p>obj.put(“total”, total);</p>
-<p>obj.put(“sheets”, sheets);</p>
-<p>return obj;</p>
-<p>@RequestMapping(“findToDo”)@ResponseBodypublic JSONObject findToDo(){</p>
-<p>IntegertotalOrder= orderService.findTotalOrder();</p>
-<p>IntegertotalDediver= orderService.findTotalDeliverOrder();</p>
-<p>JSONObject obj=newJSONObject();</p>
-<p>obj.put(“total”, totalOrder);</p>
-<p>obj.put(“deliver”, totalDediver);</p>
-<p>return obj;</p>
-<p>@RequestMapping(“toPay”)@ResponseBodypublic JSONObject toPayFor(String orderId,HttpServletResponse response){</p>
-<p>Orderout_trade_no= orderService.findOrderById(orderId);</p>
-<p>Integerrs= orderService.payForOrder(orderId);</p>
-<p>if(rs&gt;0){</p>
-<p>System.out.println(“同步通知支付成功”);</p>
-<p>JSONObject obj=newJSONObject();</p>
-<p>obj.put(“result”, “paysuccess”);</p>
-<p>return obj;</p>
-<p>/**</p>
-<p>AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, “json”, AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);</p>
-<p>//设置请求参数</p>
-<p>AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();</p>
-<p>alipayRequest.setReturnUrl(AlipayConfig.return_url);</p>
-<p>alipayRequest.setNotifyUrl(AlipayConfig.notify_url);</p>
-<p>Order order = orderService.findOrderById(orderId);</p>
-<p>//商户订单号，商户网站订单系统中唯一订单号，必填</p>
-<p>String out_trade_no=null;</p>
-<p>//付款金额，必填</p>
-<p>String total_amount=null;</p>
-<p>//订单名称，必填</p>
-<p>String subject=null;</p>
-<p>try {</p>
-<p>out_trade_no = new String(orderId.getBytes(“ISO-8859-1”),”UTF-8”);</p>
-<p>total_amount = new String((order.getOrderPrice()+””).getBytes(“ISO-8859-1”),”UTF-8”);</p>
-<p>subject = new String(“我的商城”);</p>
-<p>} catch (UnsupportedEncodingException e1) {</p>
-<p>e1.printStackTrace();</p>
-<p>//商品描述，可空</p>
-<p>List<OrderDetail> detailList = order.getDetailList();</OrderDetail></p>
-<p>String body = null;</p>
-<p>for (OrderDetail o : detailList) {</p>
-<p>body=body+o.getDetailGoods().getGoodsName()+”,”;</p>
-<p>body=body.substring(0, body.length()-1)+”等商品”;</p>
-<p>alipayRequest.setBizContent(“{&quot;out_trade_no&quot;:&quot;“+ out_trade_no +”&quot;,”</p>
-<ul>
-<li><p>“&quot;total_amount&quot;:&quot;“+ total_amount +”&quot;,”</p>
-</li>
-<li><p>“&quot;subject&quot;:&quot;“+ subject +”&quot;,”</p>
-</li>
-<li><p>“&quot;body&quot;:&quot;“+ body +”&quot;,”</p>
-</li>
-<li><p>“&quot;product_code&quot;:&quot;FAST_INSTANT_TRADE_PAY&quot;}”);</p>
-</li>
-</ul>
-<p>//请求</p>
-<p>try {</p>
-<p>String result = alipayClient.pageExecute(alipayRequest).getBody();</p>
-<p>//输出</p>
-<p>response.setContentType(“text/html; charset=utf-8”);</p>
-<p>PrintWriter out = response.getWriter();</p>
-<p>out.print(result);</p>
-<p>} catch (AlipayApiException | IOException e) {</p>
-<p>e.printStackTrace();</p>
-<p>return null;**/</p>
-<p>@RequestMapping(“notify_url”)publicvoidnotifyUrl(HttpServletRequest request,HttpServletResponse response){</p>
-<p>Map&lt;String,String&gt; params = newHashMap&lt;String,String&gt;();</p>
-<p>Map&lt;String,String[]&gt; requestParams = request.getParameterMap();</p>
-<p>for (Iterator<String> iter = requestParams.keySet().iterator(); iter.hasNext();) {</String></p>
-<p>Stringname= (String) iter.next();</p>
-<p>String[] values = (String[]) requestParams.get(name);</p>
-<p>StringvalueStr=””;</p>
-<p>for (inti=0; i &lt; values.length; i++) {</p>
-<p>valueStr = (i == values.length - 1) ? valueStr + values[i]</p>
-<p>: valueStr + values[i] + “,”;</p>
-<p>//乱码解决，这段代码在出现乱码时使用try {</p>
-<p>valueStr = newString(valueStr.getBytes(“ISO-8859-1”), “utf-8”);</p>
-<p>} catch (UnsupportedEncodingException e) {</p>
-<p>e.printStackTrace();</p>
-<p>params.put(name, valueStr);</p>
-<p>boolean signVerified=false;</p>
-<p>try {</p>
-<p>signVerified = AlipaySignature.rsaCheckV1(params, AlipayConfig.alipay_public_key, AlipayConfig.charset, AlipayConfig.sign_type);</p>
-<p>} catch (AlipayApiException e1) {</p>
-<p>e1.printStackTrace();</p>
-<p>} //调用SDK验证签名//——请在这里编写您的程序（以下代码仅作参考）——/* 实际验证过程建议商户务必添加以下校验：</p>
-<p>1、需要验证该通知数据中的out_trade_no是否为商户系统中创建的订单号，</p>
-<p>2、判断total_amount是否确实为该订单的实际金额（即商户订单创建时的金额），</p>
-<p>3、校验通知中的seller_id（或者seller_email) 是否为out_trade_no这笔单据的对应的操作方（有的时候，一个商户可能有多个seller_id/seller_email）</p>
-<p>4、验证app_id是否为该商户本身。</p>
-<p>*/</p>
-<p>PrintWriter out=null;</p>
-<p>try {</p>
-<p>out = response.getWriter();</p>
-<p>} catch (IOException e) {</p>
-<p>e.printStackTrace();</p>
-<p>if(signVerified) {//验证成功//商户订单号</p>
-<p>String out_trade_no=””;</p>
-<p>//交易状态</p>
-<p>String trade_status=””;</p>
-<p>try {</p>
-<p>out_trade_no = newString(request.getParameter(“out_trade_no”).getBytes(“ISO-8859-1”),”UTF-8”);</p>
-<p>//支付宝交易号Stringtrade_no=newString(request.getParameter(“trade_no”).getBytes(“ISO-8859-1”),”UTF-8”);</p>
-<p>trade_status = newString(request.getParameter(“trade_status”).getBytes(“ISO-8859-1”),”UTF-8”);</p>
-<p>} catch (UnsupportedEncodingException e) {</p>
-<p>e.printStackTrace();</p>
-<p>if(trade_status.equals(“TRADE_FINISHED”)||trade_status.equals(“TRADE_SUCCESS”)){</p>
-<p>//判断该笔订单是否在商户网站中已经做过处理//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序//如果有做过处理，不执行商户的业务程序Integerrs= orderService.payForOrder(out_trade_no);</p>
-<p>if(rs&gt;0){</p>
-<p>System.out.println(“异步通知支付成功”);</p>
-<p>//注意：//付款完成后，支付宝系统发送该交易状态通知</p>
-<p>out.println(“success”);</p>
-<p>}else {//验证失败</p>
-<p>out.println(“fail”);</p>
-<p>//调试用，写文本函数记录程序运行情况是否正常//String sWord = AlipaySignature.getSignCheckContentV1(params);//AlipayConfig.logResult(sWord);</p>
-<p>@RequestMapping(“return_url”)public String returnUrl(String out_trade_no){</p>
-<p>Integerrs= orderService.payForOrder(out_trade_no);</p>
-<p>if(rs&gt;0){</p>
-<p>System.out.println(“同步通知支付成功”);</p>
-<p>return”paysuccess”;</p>
-<p>商品管理控制层：</p>
-<p>@Controller@RequestMapping(“/goods”)publicclassGoodsController {</p>
-<p>@Autowiredprivate IGoodsService goodsService;</p>
-<p>@Autowiredprivate IGuessService guessService;</p>
-<p>@Autowiredprivate IEvaluateService evaluateService;</p>
-<p>@RequestMapping(“findAll”)public String findAllGoods(Model model){</p>
-<p>List<Goods> list = goodsService.findAll();</Goods></p>
-<p>model.addAttribute(“goodsList”, list);</p>
-<p>return”list”;</p>
-<p>@RequestMapping(“/findGoodsDiscounts”)@ResponseBodypublic JSONObject findGoodsDiscounts(){</p>
-<p>PageInfo<Goods> info = goodsService.findGoodsDiscounts();</Goods></p>
-<p>JSONObjectobj=newJSONObject();</p>
-<p>obj.put(“msg”, “”);</p>
-<p>obj.put(“code”, 0);</p>
-<p>obj.put(“count”, info.getTotal());</p>
-<p>obj.put(“data”, info.getList());</p>
-<p>return obj;</p>
-<p>@RequestMapping(“{goodsId}”)public String findAllGoods(@PathVariable(“goodsId”)Integer goodsId,Model model){</p>
-<p>Goodsgoods= goodsService.findById(goodsId);</p>
-<p>List<Evaluate> evaList = evaluateService.findEvaluateByGoodsId(goodsId);</Evaluate></p>
-<p>model.addAttribute(“goods”, goods);</p>
-<p>model.addAttribute(“evaList”, evaList);</p>
-<p>return”detail”;</p>
-<p>@RequestMapping(“preUpdate”)public String preUpdate(Integer goodsId,Model model){</p>
-<p>Goodsgoods= goodsService.findById(goodsId);</p>
-<p>model.addAttribute(“goods”, goods);</p>
-<p>return”update”;</p>
-<p>@RequestMapping(“findBySplitPage”)@ResponseBodypublic JSONObject findBySplitPage(Integer page,Integer limit,String keyword){</p>
-<p>PageInfo<Goods> info = goodsService.findBySplitPage(page, limit,keyword);</Goods></p>
-<p>JSONObject obj=newJSONObject();</p>
-<p>obj.put(“msg”, “”);</p>
-<p>obj.put(“code”, 0);</p>
-<p>obj.put(“count”, info.getTotal());</p>
-<p>obj.put(“data”, info.getList());</p>
-<p>return obj;</p>
-<p>@RequestMapping(“findGoodsByType”)@ResponseBodypublic List<Goods> findGoodsByType(Integer typeId){</Goods></p>
-<p>List<Goods> list = goodsService.findGoodsByType(typeId);</Goods></p>
-<p>return list;</p>
-<p>@RequestMapping(“detail”)public String findGoodsDetail(Integer goodsId,Model model,HttpServletRequest request){</p>
-<p>Goodsgoods= goodsService.findById(goodsId);</p>
-<p>model.addAttribute(“goods”,goods);</p>
-<p>model.addAttribute(“evaList”, goods.getEvaList());</p>
-<p>HttpSessionsession= request.getSession();</p>
-<p>Users user=(Users) session.getAttribute(“user”);</p>
-<p>if(user!=null){</p>
-<p>Guessguess= guessService.findGuessByUserId(user.getUserId(), goods.getGoodsId());</p>
-<p>if(guess!=null){</p>
-<p>guess.setGuessNum(guess.getGuessNum()+1);</p>
-<p>guessService.updateGuess(guess);</p>
-<p>}else{</p>
-<p>Guess g=newGuess(goods, 1, -1, user);</p>
-<p>guessService.addGuess(g);</p>
-<p>return”userview/product_detail”;</p>
-<p>@RequestMapping(“findHotGoods”)@ResponseBodypublic List<Goods> findHotGoods(){</Goods></p>
-<p>return goodsService.findHotGoods(4);</p>
-<p>@RequestMapping(“search”)public ModelAndView searchGoodsByName(String keyWord){</p>
-<p>ModelAndView mv=newModelAndView();</p>
-<p>List<Goods> list = goodsService.findGoodsLikeName(keyWord);</Goods></p>
-<p>mv.addObject(“searchList”,list);</p>
-<p>mv.setViewName(“userview/search”);</p>
-<p>return mv;</p>
-<p>@RequestMapping(“searchPre”)@ResponseBodypublic List<Goods> searchPreGoods(String keyword){</Goods></p>
-<p>List<Goods> list = goodsService.findGoodsLikeName(keyword);</Goods></p>
-<p>return list;</p>
-<p>@RequestMapping(“delete”)@ResponseBodypublic String deleteGoods(Integer goodsId){</p>
-<p>Integerrs= goodsService.deleteGoods(goodsId);</p>
-<p>if(rs&gt;0){</p>
-<p>return”success”;</p>
-<p>}else{</p>
-<p>return”fail”;</p>
-<p>@RequestMapping(“updateGoods”)@ResponseBodypublic String updateGoods(Goods goods){</p>
-<p>Integerrs= goodsService.update(goods);</p>
-<p>if(rs&gt;0){</p>
-<p>return”success”;</p>
-<p>}else{</p>
-<p>return”fail”;</p>
-<p>@RequestMapping(“batchDelete”)@ResponseBodypublic String batchDelete(String batchId){</p>
-<p>Integer rs=0;</p>
-<p>String[] id = batchId.split(“,”);</p>
-<p>for (String s : id) {</p>
-<p>IntegergoodsId= Integer.valueOf(s);</p>
-<p>rs = goodsService.deleteGoods(goodsId);</p>
-<p>if(rs&gt;0){</p>
-<p>return”success”;</p>
-<p>}else{</p>
-<p>return”fail”;</p>
-<p>@RequestMapping(value=”uploadImg”,method={RequestMethod.POST})@ResponseBodypublic Object uploadGoodsImg(@PathVariable(value=”file”)MultipartFile file,HttpServletRequest request){</p>
-<p>Stringstr= file.getOriginalFilename();</p>
-<p>String name=UUIDUtil.getUUID()+str.substring(str.lastIndexOf(“.”));</p>
-<p>String path=request.getSession().getServletContext().getRealPath(“/upload”)+”/“+name;</p>
-<p>try {</p>
-<p>file.transferTo(newFile(path));</p>
-<p>} catch (IllegalStateException | IOException e) {</p>
-<p>e.printStackTrace();</p>
-<p>JSONObject obj=newJSONObject();</p>
-<p>obj.put(“src”, name);</p>
-<p>return obj;</p>
-<p>@RequestMapping(“addGoods”)@ResponseBodypublic String addGoods(Goods goods){</p>
-<p>Integerrs= goodsService.addGoods(goods);</p>
-<p>if(rs&gt;0){</p>
-<p>return”success”;</p>
-<p>}else{</p>
-<p>return”fail”;</p>
-<p>@RequestMapping(“findGoodsByVolume”)@ResponseBodypublic JSONObject findGoodsByVolume(){</p>
-<p>List<Goods> goodsList = goodsService.findGoodsByVolume(5);</Goods></p>
-<p>String[] name=newString[5];</p>
-<p>Integer[] volume=newInteger[5];</p>
-<p>for(int i=0;i&lt;goodsList.size();i++){</p>
-<p>name[i]=goodsList.get(i).getGoodsName();</p>
-<p>volume[i]=goodsList.get(i).getGoodsVolume();</p>
-<p>JSONObject obj=newJSONObject();</p>
-<p>obj.put(“name”, name);</p>
-<p>obj.put(“volume”, volume);</p>
-<p>return obj;</p>
-<p>@RequestMapping(“chaozan”)@ResponseBodypublic JSONObject chaozan(Integer goodsId,HttpServletRequest request){</p>
-<p>HttpSessionsession= request.getSession();</p>
-<p>Users user=(Users) session.getAttribute(“user”);</p>
-<p>Integerrs= goodsService.chaozan(user.getUserId(),goodsId);</p>
-<p>Goodsgoods= goodsService.findById(goodsId);</p>
-<p>JSONObject obj=newJSONObject();</p>
-<p>if(rs&gt;0){</p>
-<p>obj.put(“goodzan”, goods.getGoodsZan());</p>
-<p>obj.put(“result”, “success”);</p>
-<p>}else{</p>
-<p>obj.put(“result”, “fail”);</p>
-<p>return obj;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">        List&lt;MsslyyWallet&gt; list = msslyyWalletService.list();</span><br><span class="line">        <span class="keyword">return</span> Result.success(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;分页&quot;,notes = &quot;&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; findPage(<span class="meta">@RequestParam(required = false, defaultValue = &quot;&quot;)</span> String name,</span><br><span class="line">                                                <span class="meta">@RequestParam(required = false, defaultValue = &quot;1&quot;)</span> Integer pageNum,</span><br><span class="line">                                                <span class="meta">@RequestParam(required = false, defaultValue = &quot;10&quot;)</span> Integer pageSize) &#123;</span><br><span class="line">        LambdaQueryWrapper&lt;MsslyyWallet&gt; query = Wrappers.&lt;MsslyyWallet&gt;lambdaQuery().orderByDesc(MsslyyWallet::getId);</span><br><span class="line">        <span class="keyword">if</span> (StrUtil.isNotBlank(name)) &#123;</span><br><span class="line">            query.like(MsslyyWallet::getUserId, name);</span><br><span class="line">        &#125;</span><br><span class="line">        IPage&lt;MsslyyWallet&gt; page = msslyyWalletService.page(<span class="keyword">new</span> Page&lt;&gt;(pageNum, pageSize), query);</span><br><span class="line">        <span class="keyword">return</span> Result.success(page);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/api/msslyyLabel&quot;)</span></span><br><span class="line"><span class="meta">@Api(tags = &quot;标签表&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MsslyyLabelController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> MsslyyLabelService msslyyLabelService;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> HttpServletRequest request;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String token = request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">        String username = JWT.decode(token).getAudience().get(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;查询全部&quot;,notes = &quot;&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; findAll() &#123;</span><br><span class="line">        List&lt;MsslyyOrderDetail&gt; list = msslyyOrderDetailService.list();</span><br><span class="line">        <span class="keyword">return</span> Result.success(list);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;分页&quot;,notes = &quot;&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; findPage(<span class="meta">@RequestParam(required = false, defaultValue = &quot;&quot;)</span> String name,</span><br><span class="line">                                                <span class="meta">@RequestParam(required = false, defaultValue = &quot;1&quot;)</span> Integer pageNum,</span><br><span class="line">                                                <span class="meta">@RequestParam(required = false, defaultValue = &quot;10&quot;)</span> Integer pageSize) &#123;</span><br><span class="line">        LambdaQueryWrapper&lt;MsslyyOrderDetail&gt; query = Wrappers.&lt;MsslyyOrderDetail&gt;lambdaQuery().orderByDesc(MsslyyOrderDetail::getId);</span><br><span class="line">        <span class="keyword">if</span> (StrUtil.isNotBlank(name)) &#123;</span><br><span class="line">            query.like(MsslyyOrderDetail::getGoodId, name);</span><br><span class="line">        &#125;</span><br><span class="line">        IPage&lt;MsslyyOrderDetail&gt; page = msslyyOrderDetailService.page(<span class="keyword">new</span> Page&lt;&gt;(pageNum, pageSize), query);</span><br><span class="line">        <span class="keyword">return</span> Result.success(page);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/api/msslyyPublisher&quot;)</span></span><br><span class="line"><span class="meta">@Api(tags = &quot;出版社分类表&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MsslyyPublisherController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> MsslyyPublisherService msslyyPublisherService;</span><br><span class="line">    <span class="meta">@Resource</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@ApiOperation(value = &quot;删除权限&quot;,notes = &quot;&quot;)</span></span><br><span class="line">    <span class="meta">@DeleteMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; delete(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">        Permission permission = permissionService.getById(id);</span><br><span class="line">        logService.log(StrUtil.format(<span class="string">&quot;删除权限菜单：&#123;&#125;&quot;</span>, permission.getName()));</span><br><span class="line">        permissionService.delete(id);</span><br><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;根据id查询&quot;,notes = &quot;&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result&lt;Permission&gt; <span class="title">findById</span><span class="params">(<span class="meta">@PathVariable</span> Long id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Result.success(permissionService.getById(id));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;查询全部&quot;,notes = &quot;&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;List&lt;Permission&gt;&gt; findAll() &#123;</span><br><span class="line">        <span class="keyword">return</span> Result.success(permissionService.list());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;分页&quot;,notes = &quot;&quot;)</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/page&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;IPage&lt;Permission&gt;&gt; findPage(<span class="meta">@RequestParam(required = false, defaultValue = &quot;&quot;)</span> String name,</span><br><span class="line">                                              <span class="meta">@RequestParam(required = false, defaultValue = &quot;1&quot;)</span> Integer pageNum,</span><br><span class="line">                                              <span class="meta">@RequestParam(required = false, defaultValue = &quot;10&quot;)</span> Integer pageSize) &#123;</span><br><span class="line">        <span class="keyword">return</span> Result.success(permissionService.page(<span class="keyword">new</span> Page&lt;&gt;(pageNum, pageSize), Wrappers.&lt;Permission&gt;lambdaQuery().like(Permission::getName, name)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;根据角色id查询&quot;,notes = &quot;&quot;)</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/getByRoles&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;List&lt;Permission&gt;&gt; getByRoles(<span class="meta">@RequestBody</span> List&lt;Role&gt; roles) &#123;</span><br><span class="line">        <span class="keyword">return</span> Result.success(permissionService.getByRoles(roles));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">        System.out.println(avatar);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (StrUtil.isNotEmpty(avatar)) &#123;</span><br><span class="line">                response.addHeader(<span class="string">&quot;Content-Disposition&quot;</span>, <span class="string">&quot;attachment;filename=&quot;</span> + URLEncoder.encode(avatar, <span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">                response.setContentType(<span class="string">&quot;application/octet-stream&quot;</span>);</span><br><span class="line">                <span class="keyword">byte</span>[] bytes = FileUtil.readBytes(basePath + avatar);</span><br><span class="line">                os = response.getOutputStream();</span><br><span class="line">                os.write(bytes);</span><br><span class="line">                os.flush();</span><br><span class="line">                os.close();</span><br><span class="line">                System.out.println(<span class="string">&quot;文件下载&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;文件下载失败&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/api/msslyyAddressMessaget&quot;)</span></span><br><span class="line"><span class="meta">@Api(tags = &quot;收货地址表&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MsslyyAddressMessagetController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> MsslyyAddressMessagetService msslyyAddressMessagetService;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> HttpServletRequest request;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">    String token = request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    String username = JWT.decode(token).getAudience().get(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> userService.getOne(Wrappers.&lt;User&gt;lambdaQuery().eq(User::getUsername, username));</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@GetMapping(&quot;/add/&#123;goodId&#125;/&#123;userId&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; add(<span class="meta">@PathVariable</span> Long goodId,<span class="meta">@PathVariable</span> Long userId) &#123;</span><br><span class="line">    <span class="keyword">int</span> i = msslyyWishlistService.addWishList(goodId, userId);</span><br><span class="line">    <span class="keyword">return</span> Result.success(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;新增收藏&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; save(<span class="meta">@RequestBody</span> MsslyyWishlist msslyyWishlist) &#123;</span><br><span class="line">    msslyyWishlistService.save(msslyyWishlist);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;更新收藏&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@PutMapping</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; update(<span class="meta">@RequestBody</span> MsslyyWishlist msslyyWishlist) &#123;</span><br><span class="line">    msslyyWishlistService.updateById(msslyyWishlist);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;删除收藏&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@DeleteMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; delete(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">    msslyyWishlistService.removeById(id);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;根据id查询&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; findById(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">    <span class="keyword">return</span> Result.success(msslyyWishlistService.getById(id));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;查询全部&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; findAll() &#123;</span><br><span class="line">    List&lt;MsslyyWishlist&gt; list = msslyyWishlistService.list();</span><br><span class="line">    <span class="keyword">return</span> Result.success(list);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;分页&quot;,notes = &quot;&quot;)</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/page&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;?&gt; findPage(<span class="meta">@RequestParam(required = false, defaultValue = &quot;&quot;)</span> String name,</span><br><span class="line">                                            <span class="meta">@RequestParam(required = false, defaultValue = &quot;1&quot;)</span> Integer pageNum,</span><br><span class="line">                                            <span class="meta">@RequestParam(required = false, defaultValue = &quot;10&quot;)</span> Integer pageSize) &#123;</span><br><span class="line">    LambdaQueryWrapper&lt;MsslyyWishlist&gt; query = Wrappers.&lt;MsslyyWishlist&gt;lambdaQuery().orderByDesc(MsslyyWishlist::getId);</span><br><span class="line">    <span class="keyword">if</span> (StrUtil.isNotBlank(name)) &#123;</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
-<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=139&price1=99&price2=99" style="height: 260px;" frameborder="0"></iframe>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=99&price2=89" style="height: 260px;" frameborder="0"></iframe>
 <blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=531524180701201jf<br>https://javayms.pages.dev?id=531524180701201jf</p></blockquote>
     </div>
 
@@ -671,6 +272,7 @@
           <div class="post-tags">
 			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
 			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
 			<a href="/tags/%E8%B4%AD%E7%89%A9/" rel="tag"><i class="fa fa-tag"></i> 购物</a>
 
           </div>

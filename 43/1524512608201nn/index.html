@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot大学生租房平台(java+springboot+mybaits+vue+elementui+mysql)">
+<meta property="og:title" content="基于javaweb的SpringBoot大学生租房平台(java+springboot-maven+mybaits+vue+elementui+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot大学生租房平台(java+springboot+mybaits+vue+elementui+mysql) | Java源码社</title>
+  <title>基于javaweb的SpringBoot大学生租房平台(java+springboot-maven+mybaits+vue+elementui+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot大学生租房平台(java+springboot+mybaits+vue+elementui+mysql)
+			基于javaweb的SpringBoot大学生租房平台(java+springboot-maven+mybaits+vue+elementui+mysql)
             
         </h1>
 
@@ -233,193 +233,38 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/081524142608.jpg" alt="081524142608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/091524142608.jpg" alt="091524142608"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project26/101524142608.jpg" alt="101524142608"></p>
-<p>基于javaweb的SpringBoot大学生租房平台(java+springboot+mybaits+vue+elementui+mysql)</p>
+<p>基于javaweb的SpringBoot大学生租房平台(java+springboot-maven+mybaits+vue+elementui+mysql)</p>
 <p>项目介绍</p>
 <p>基于Springboot + vue实现的大学生租房平台</p>
 <p>系统包含用户、房东、管理员三个角色，本项目分为前后台；</p>
 <p>管理员管理房东和用户，对房东提交的信息审批信息进行审核，审核房东发布的房源信息。</p>
 <p>房东提交信息审批信息，发布房源信息，审核用户租房订单。</p>
 <p>用户收藏房屋，租用房屋，支付租房订单。</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。</p>
-<p>2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA;</p>
-<p>3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；</p>
-<p>4.数据库：MySql 5.7/8.0版本均可；</p>
-<p>5.是否Maven项目：是；</p>
 <p>技术栈</p>
 <p>后端：SpringBoot+Mybaits</p>
 <p>前端：Vue + elementui</p>
-<p>使用说明</p>
-<p>项目运行：</p>
-<ol>
-<li><p>使用Navicat或者其它工具，在mysql中创建对应sql文件名称的数据库，并导入项目的sql文件；</p>
-</li>
-<li><p>使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令；</p>
-</li>
-<li><p>将项目中application.yml配置文件中的数据库配置改为自己的配置;</p>
-</li>
-<li><p>运行项目，在浏览器中输入地址：</p>
-</li>
-</ol>
-<p>前台地址：</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:8080/springbootjeb55/front/index.html">http://localhost:8080/springbootjeb55/front/index.html</a></p>
-<p>用户：用户1 密码：123456</p>
-<p>房东：房东1 密码：123456</p>
-<p>后台登录页面</p>
-<p><a target="_blank" rel="noopener" href="http://localhost:8080/springbootjeb55/admin/dist/index.html">http://localhost:8080/springbootjeb55/admin/dist/index.html</a></p>
-<p>管理员 abo 密码 abo</p>
-<p>用户：用户1 密码：123456</p>
-<p>房东：房东1 密码：123456</p>
-<p>注意项目文件路径中不能含有中文、空格、特殊字符等，否则图片会上传不成功。</p>
-<p>文档结构展示：</p>
-<p>首页展示页面：</p>
-<p> 房屋信息展示：</p>
-<p>房源信息展示页面：</p>
-<p>房源信息列表：</p>
-<p> 后台用户管理展示：</p>
-<p>订单信息管理：</p>
-<p>信息审批管理展示：</p>
-<p>房源信息管理展示：</p>
-<p>房东管理控制层：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">管理员：</span><br><span class="line">admin	123456</span><br><span class="line"></span><br><span class="line">用户：</span><br><span class="line">用户1	123456</span><br><span class="line">用户2	123456</span><br><span class="line">用户3	123456</span><br><span class="line">用户4	123456</span><br><span class="line">用户5	123456</span><br><span class="line">用户6	123456</span><br><span class="line"></span><br><span class="line">房东：</span><br><span class="line">房东1	123456</span><br><span class="line">房东2	123456</span><br><span class="line">房东3	123456</span><br><span class="line">房东4	123456</span><br><span class="line">房东5	123456</span><br><span class="line">房东6	123456</span><br><span class="line"></span><br><span class="line">后端启动类：StartApplication</span><br><span class="line">前端启动命令：npm run serve</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————CodeStart——————————</span></p>
-<p>用户管理控制层：</p>
-<p>@Controller</p>
-<p>public class UserController {</p>
-<p>@Autowired</p>
-<p>private UserService userService;</p>
-<p>@RequestMapping(“/login”)</p>
-<p>public String userList() throws Exception{</p>
-<p>return “login”;</p>
-<p>@RequestMapping(“/logincheck”)</p>
-<p>public String login(User user,Model model,HttpSession httpSession) throws Exception{</p>
-<p>User user1=userService.login(user);</p>
-<p>if(user1!=null){</p>
-<p>httpSession.setAttribute(“user”, user1);</p>
-<p>if(user1.getType().equals(“zuke”)){</p>
-<p>return “zuke/main”;</p>
-<p>else{</p>
-<p>return “admin/main1”;</p>
-<p>}else{</p>
-<p>String error=”error”;</p>
-<p>model.addAttribute(“error”, error);</p>
-<p>return “login”;</p>
-<p>@RequestMapping(“/toindex”)</p>
-<p>public String toindex(Model model) throws Exception{</p>
-<p>return “admin/index”;</p>
-<p>租赁管理控制层：</p>
-<p>@Controller</p>
-<p>@RequestMapping(“/zulist”)</p>
-<p>public class ZulistController {</p>
-<p>@Autowired</p>
-<p>private ZulistService zulistService;</p>
-<p>@Autowired</p>
-<p>private UserlistService userlistService;</p>
-<p>//跳到增添合同的页面</p>
-<p>@RequestMapping(“/toaddhetong”)</p>
-<p>public String toaddhetong(Model model,String house_id){</p>
-<p>Hetong hetong=new Hetong();</p>
-<p>hetong.setHouse_id(house_id);</p>
-<p>model.addAttribute(“hetong”, hetong);</p>
-<p>model.addAttribute(“mainPage”, “addhetong.jsp”);</p>
-<p>return “admin/main1”;</p>
-<p>//管理员查看所有在租列表</p>
-<p>@RequestMapping(“/findzulist”)</p>
-<p>public String findzulist(Model model,@RequestParam(required=false,defaultValue=”1”) Integer page,</p>
-<p>@RequestParam(required=false,defaultValue=”6”) Integer pageSize) throws Exception{</p>
-<p>PageHelper.startPage(page, pageSize);</p>
-<p>List<Zulist> zulist=zulistService.findzuuserlist();</Zulist></p>
-<p>PageInfo<Zulist> p=new PageInfo<Zulist>(zulist);</Zulist></Zulist></p>
-<p>model.addAttribute(“p”, p);</p>
-<p>model.addAttribute(“zulist”, zulist);</p>
-<p>model.addAttribute(“mainPage”, “zulist.jsp”);</p>
-<p>return “admin/main1”;</p>
-<p>//查看我的在租列表</p>
-<p>@RequestMapping(“/myzulist”)</p>
-<p>public String myzulist(Model model,HttpSession httpSession,@RequestParam(required=false,defaultValue=”1”) Integer page,</p>
-<p>@RequestParam(required=false,defaultValue=”6”) Integer pageSize) throws Exception{</p>
-<p>User user1= (User) httpSession.getAttribute(“user”);</p>
-<p>Userlist userlist=userlistService.findhasuserlist(user1.getId());</p>
-<p>PageHelper.startPage(page, pageSize);</p>
-<p>List<Userlist> list=userlistService.getUserzuList(userlist.getId());</Userlist></p>
-<p>PageInfo<Userlist> p=new PageInfo<Userlist>(list);</Userlist></Userlist></p>
-<p>model.addAttribute(“userlistzu”, list);</p>
-<p>model.addAttribute(“p”, p);</p>
-<p>model.addAttribute(“mainPage”, “myzulist.jsp”);</p>
-<p>return “zuke/main”;</p>
-<p>房屋管理控制层：</p>
-<p>@Controller</p>
-<p>public class HoustlistController {</p>
-<p>@Autowired</p>
-<p>private HouselistService houselistService;</p>
-<p>@RequestMapping(“/houselist”)</p>
-<p>public String houselist(Model model ,@RequestParam(required=false,defaultValue=”1”) Integer page,</p>
-<p>@RequestParam(required=false,defaultValue=”6”) Integer pageSize){</p>
-<p>PageHelper.startPage(page, pageSize);</p>
-<p>List<Houselist> houselist=houselistService.selectAll();</Houselist></p>
-<p>PageInfo<Houselist> p=new PageInfo<Houselist>(houselist);</Houselist></Houselist></p>
-<p>model.addAttribute(“p”, p);</p>
-<p>model.addAttribute(“houselist”,houselist);</p>
-<p>model.addAttribute(“mainPage”,”houselist.jsp”);</p>
-<p>return “zuke/main”;</p>
-<p>@RequestMapping(“/ahouselist”)</p>
-<p>public String ahouselist(Model model ,@RequestParam(required=false,defaultValue=”1”) Integer page,</p>
-<p>@RequestParam(required=false,defaultValue=”6”) Integer pageSize){</p>
-<p>PageHelper.startPage(page, pageSize);</p>
-<p>List<Houselist> houselist=houselistService.selectAll();</Houselist></p>
-<p>PageInfo<Houselist> p=new PageInfo<Houselist>(houselist);</Houselist></Houselist></p>
-<p>model.addAttribute(“p”, p);</p>
-<p>model.addAttribute(“houselist”,houselist);</p>
-<p>model.addAttribute(“mainPage”,”ahouselist.jsp”);</p>
-<p>return “admin/main1”;</p>
-<p>@RequestMapping(“/addhouse”)</p>
-<p>public String addhouse(Model model ,Houselist houselist){</p>
-<p>String houseid=houselist.getHouseid();</p>
-<p>Houselist houselist1=houselistService.findhouseid(houseid);</p>
-<p>if(houselist1!=null){</p>
-<p>model.addAttribute(“error”,”该房屋id已存在”);</p>
-<p>model.addAttribute(“houselist”,houselist);</p>
-<p>model.addAttribute(“mainPage”,”addhouse.jsp”);</p>
-<p>return “admin/main1”;</p>
-<p>}else{</p>
-<p>model.addAttribute(“error”,”添加成功”);</p>
-<p>houselistService.inserthouse(houselist);</p>
-<p>model.addAttribute(“houselist”,houselist);</p>
-<p>model.addAttribute(“mainPage”,”addhouse.jsp”);</p>
-<p>return “admin/main1”;</p>
-<p>@RequestMapping(“/toaddhouse”)</p>
-<p>public String toaddhoust(Model model){</p>
-<p>model.addAttribute(“mainPage”,”addhouse.jsp”);</p>
-<p>return “admin/main1”;</p>
-<p>@RequestMapping(“/deletehouse”)</p>
-<p>public String deletehouse(Integer id){</p>
-<p>houselistService.deletehouse(id);</p>
-<p>return “redirect:ahouselist.action”;</p>
-<p>@RequestMapping(“/toahouselist”)</p>
-<p>public String toahouselist(){</p>
-<p>return “ahouselist.action”;</p>
-<p>@RequestMapping(“/findid”)</p>
-<p>public String findid(Integer id,Model model){</p>
-<p>Houselist list=houselistService.findid(id);</p>
-<p>model.addAttribute(“houselist”,list);</p>
-<p>model.addAttribute(“mainPage”, “changehouse.jsp”);</p>
-<p>return “admin/main1”;</p>
-<p>@RequestMapping(“/findhouseidupdate”)</p>
-<p>public String findhouseidupdate(Houselist houselist,Model model){</p>
-<p>Houselist list=houselistService.findhouseidupdate(houselist);</p>
-<p>if(list!=null){</p>
-<p>model.addAttribute(“houselist”,houselist);</p>
-<p>model.addAttribute(“mainPage”, “changehouse.jsp”);</p>
-<p>model.addAttribute(“error”,”该房屋id已存在”);</p>
-<p>return “admin/main1”;</p>
-<p>else{</p>
-<p>houselistService.updatehouse(houselist);</p>
-<p>model.addAttribute(“houselist”,houselist);</p>
-<p>model.addAttribute(“mainPage”, “changehouse.jsp”);</p>
-<p>model.addAttribute(“error”,”更新成功”);</p>
-<p>return “admin/main1”;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">			<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				Integer remindEnd = Integer.parseInt(map.get(<span class="string">&quot;remindend&quot;</span>).toString());</span><br><span class="line">				c.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">				c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">				remindEndDate = c.getTime();</span><br><span class="line">				map.put(<span class="string">&quot;remindend&quot;</span>, sdf.format(remindEndDate));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		Wrapper&lt;YonghuEntity&gt; wrapper = <span class="keyword">new</span> EntityWrapper&lt;YonghuEntity&gt;();</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.ge(columnName, map.get(<span class="string">&quot;remindstart&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			wrapper.le(columnName, map.get(<span class="string">&quot;remindend&quot;</span>));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> count = yonghuService.selectCount(wrapper);</span><br><span class="line">		<span class="keyword">return</span> R.ok().put(<span class="string">&quot;count&quot;</span>, count);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 修改</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/update&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> StoreupEntity storeup, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">       <span class="comment">//ValidatorUtils.validateEntity(storeup);</span></span><br><span class="line">       storeupService.updateById(storeup);<span class="comment">//全部更新</span></span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 删除</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/delete&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">delete</span><span class="params">(<span class="meta">@RequestBody</span> Long[] ids)</span></span>&#123;</span><br><span class="line">       storeupService.deleteBatchIds(Arrays.asList(ids));</span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 提醒接口</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/remind/&#123;columnName&#125;/&#123;type&#125;&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">remindCount</span><span class="params">(<span class="meta">@PathVariable(&quot;columnName&quot;)</span> String columnName, HttpServletRequest request, </span></span></span><br><span class="line"><span class="function"><span class="params">					 <span class="meta">@PathVariable(&quot;type&quot;)</span> String type,<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; map)</span> </span>&#123;</span><br><span class="line">	map.put(<span class="string">&quot;column&quot;</span>, columnName);</span><br><span class="line">	map.put(<span class="string">&quot;type&quot;</span>, type);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(type.equals(<span class="string">&quot;2&quot;</span>)) &#123;</span><br><span class="line">		SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line">		Calendar c = Calendar.getInstance();</span><br><span class="line">		Date remindStartDate = <span class="keyword">null</span>;</span><br><span class="line">		Date remindEndDate = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindstart&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			Integer remindStart = Integer.parseInt(map.get(<span class="string">&quot;remindstart&quot;</span>).toString());</span><br><span class="line">			c.setTime(<span class="keyword">new</span> Date()); </span><br><span class="line">			c.add(Calendar.DAY_OF_MONTH,remindStart);</span><br><span class="line">			remindStartDate = c.getTime();</span><br><span class="line">			map.put(<span class="string">&quot;remindstart&quot;</span>, sdf.format(remindStartDate));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(map.get(<span class="string">&quot;remindend&quot;</span>)!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			Integer remindEnd = Integer.parseInt(map.get(<span class="string">&quot;remindend&quot;</span>).toString());</span><br><span class="line">			c.setTime(<span class="keyword">new</span> Date());</span><br><span class="line">			c.add(Calendar.DAY_OF_MONTH,remindEnd);</span><br><span class="line">			remindEndDate = c.getTime();</span><br><span class="line">			map.put(<span class="string">&quot;remindend&quot;</span>, sdf.format(remindEndDate));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 登录</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@IgnoreAuth</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/login&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">login</span><span class="params">(String username, String password, String captcha, HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">	FangdongEntity user = fangdongService.selectOne(<span class="keyword">new</span> EntityWrapper&lt;FangdongEntity&gt;().eq(<span class="string">&quot;fangdongzhanghao&quot;</span>, username));</span><br><span class="line">	<span class="keyword">if</span>(user==<span class="keyword">null</span> || !user.getMima().equals(password)) &#123;</span><br><span class="line">		<span class="keyword">return</span> R.error(<span class="string">&quot;账号或密码不正确&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	String token = tokenService.generateToken(user.getId(), username,<span class="string">&quot;fangdong&quot;</span>,  <span class="string">&quot;房东&quot;</span> );</span><br><span class="line">	<span class="keyword">return</span> R.ok().put(<span class="string">&quot;token&quot;</span>, token);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 注册</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">@IgnoreAuth</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/register&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">register</span><span class="params">(<span class="meta">@RequestBody</span> FangdongEntity fangdong)</span></span>&#123;</span><br><span class="line">   	<span class="comment">//ValidatorUtils.validateEntity(fangdong);</span></span><br><span class="line">   	FangdongEntity user = fangdongService.selectOne(<span class="keyword">new</span> EntityWrapper&lt;FangdongEntity&gt;().eq(<span class="string">&quot;fangdongzhanghao&quot;</span>, fangdong.getFangdongzhanghao()));</span><br><span class="line">	<span class="keyword">if</span>(user!=<span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> R.error(<span class="string">&quot;注册用户已存在&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	Long uId = <span class="keyword">new</span> Date().getTime();</span><br><span class="line">	fangdong.setId(uId);</span><br><span class="line">       fangdongService.insert(fangdong);</span><br><span class="line">       <span class="keyword">return</span> R.ok();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 退出</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/logout&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">logout</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">	request.getSession().invalidate();</span><br><span class="line">	<span class="keyword">return</span> R.ok(<span class="string">&quot;退出成功&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 获取用户的session用户信息</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/session&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">getCurrUser</span><span class="params">(HttpServletRequest request)</span></span>&#123;</span><br><span class="line">   	Long id = (Long)request.getSession().getAttribute(<span class="string">&quot;userId&quot;</span>);</span><br><span class="line">       FangdongEntity user = fangdongService.selectById(id);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, user);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">   	&#125;</span><br><span class="line">       EntityWrapper&lt;StoreupEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;StoreupEntity&gt;();</span><br><span class="line">	PageUtils page = storeupService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, storeup), params), params));</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, page);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 列表</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/lists&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">list</span><span class="params">( StoreupEntity storeup)</span></span>&#123;</span><br><span class="line">      	EntityWrapper&lt;StoreupEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt;StoreupEntity&gt;();</span><br><span class="line">     	ew.allEq(MPUtil.allEQMapPre( storeup, <span class="string">&quot;storeup&quot;</span>)); </span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, storeupService.selectListView(ew));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 查询</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/query&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">query</span><span class="params">(StoreupEntity storeup)</span></span>&#123;</span><br><span class="line">       EntityWrapper&lt; StoreupEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt; StoreupEntity&gt;();</span><br><span class="line">		ew.allEq(MPUtil.allEQMapPre( storeup, <span class="string">&quot;storeup&quot;</span>)); </span><br><span class="line">	StoreupView storeupView =  storeupService.selectView(ew);</span><br><span class="line">	<span class="keyword">return</span> R.ok(<span class="string">&quot;查询收藏表成功&quot;</span>).put(<span class="string">&quot;data&quot;</span>, storeupView);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 后端详情</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> R <span class="title">info</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id)</span></span>&#123;</span><br><span class="line">       StoreupEntity storeup = storeupService.selectById(id);</span><br><span class="line">       <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, storeup);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 前端详情</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/detail/&#123;id&#125;&quot;)</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> R <span class="title">query</span><span class="params">(StoreupEntity storeup)</span></span>&#123;</span><br><span class="line">      EntityWrapper&lt; StoreupEntity&gt; ew = <span class="keyword">new</span> EntityWrapper&lt; StoreupEntity&gt;();</span><br><span class="line">	ew.allEq(MPUtil.allEQMapPre( storeup, <span class="string">&quot;storeup&quot;</span>)); </span><br><span class="line">StoreupView storeupView =  storeupService.selectView(ew);</span><br><span class="line"><span class="keyword">return</span> R.ok(<span class="string">&quot;查询收藏表成功&quot;</span>).put(<span class="string">&quot;data&quot;</span>, storeupView);</span><br><span class="line">  &#125;</span><br><span class="line">	</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 后端详情</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/info/&#123;id&#125;&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> R <span class="title">info</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id)</span></span>&#123;</span><br><span class="line">      StoreupEntity storeup = storeupService.selectById(id);</span><br><span class="line">      <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, storeup);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 前端详情</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/detail/&#123;id&#125;&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> R <span class="title">detail</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id)</span></span>&#123;</span><br><span class="line">      StoreupEntity storeup = storeupService.selectById(id);</span><br><span class="line">      <span class="keyword">return</span> R.ok().put(<span class="string">&quot;data&quot;</span>, storeup);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 后端保存</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/save&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> R <span class="title">save</span><span class="params">(<span class="meta">@RequestBody</span> StoreupEntity storeup, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">  	storeup.setId(<span class="keyword">new</span> Date().getTime()+<span class="keyword">new</span> Double(Math.floor(Math.random()*<span class="number">1000</span>)).longValue());</span><br><span class="line">  	<span class="comment">//ValidatorUtils.validateEntity(storeup);</span></span><br><span class="line">  	storeup.setUserid((Long)request.getSession().getAttribute(<span class="string">&quot;userId&quot;</span>));</span><br><span class="line">      storeupService.insert(storeup);</span><br><span class="line">      <span class="keyword">return</span> R.ok();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 前端保存</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/add&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> R <span class="title">add</span><span class="params">(<span class="meta">@RequestBody</span> StoreupEntity storeup, HttpServletRequest request)</span></span>&#123;</span><br><span class="line">  	storeup.setId(<span class="keyword">new</span> Date().getTime()+<span class="keyword">new</span> Double(Math.floor(Math.random()*<span class="number">1000</span>)).longValue());</span><br></pre></td></tr></table></figure>
+
+
 <p><span hidden>——————————PayStart——————————</span></p>
 <hr>
-<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=129&price1=89&price2=89" style="height: 260px;" frameborder="0"></iframe>
+<iframe id="source-code" name="content_iframe" marginwidth="0" marginheight="0" width="100%" src="/include/pay.html?auto=false&price0=119&price1=89&price2=79" style="height: 260px;" frameborder="0"></iframe>
 <blockquote style="background: #f5f5f5;border-left: 3px solid #f57e42;list-style: none;margin: 0.2em 0px 2px;font-size: 12px;"><p>项目链接：<br>https://javayms.github.io?id=431524512608201nn<br>https://javayms.pages.dev?id=431524512608201nn</p></blockquote>
     </div>
 
@@ -432,6 +277,7 @@
           <div class="post-tags">
 			<a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
 			<a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB-vue/" rel="tag"><i class="fa fa-tag"></i> 前后端分离 | vue</a>
+			<a href="/tags/%E6%9C%89%E6%96%87%E6%A1%A3/" rel="tag"><i class="fa fa-tag"></i> 有文档</a>
 			<a href="/tags/%E7%A7%9F%E6%88%BF/" rel="tag"><i class="fa fa-tag"></i> 租房</a>
 
           </div>
