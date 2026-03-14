@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot个人博客系统(java+springboot+springsecurity+thymeleaf+html+mysql+maven+redis)">
+<meta property="og:title" content="基于javaweb的SpringBoot个人博客系统(java+springboot+thymeleaf+html+mysql+maven)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot个人博客系统(java+springboot+springsecurity+thymeleaf+html+mysql+maven+redis) | Java源码社</title>
+  <title>基于javaweb的SpringBoot个人博客系统(java+springboot+thymeleaf+html+mysql+maven) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot个人博客系统(java+springboot+springsecurity+thymeleaf+html+mysql+maven+redis)
+			基于javaweb的SpringBoot个人博客系统(java+springboot+thymeleaf+html+mysql+maven)
             
         </h1>
 
@@ -228,17 +228,17 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/090023502402.jpg" alt="090023502402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/100023502402.jpg" alt="100023502402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/110023502402.jpg" alt="110023502402"></p>
-<p>基于javaweb的SpringBoot个人博客系统(java+springboot+springsecurity+thymeleaf+html+mysql+maven+redis)</p>
+<p>基于javaweb的SpringBoot个人博客系统(java+springboot+thymeleaf+html+mysql+maven)</p>
 <p>项目介绍</p>
-<p>本系统是一个个人博客的管理系统，用户可以注册账号并登陆系统查看发布的文章并进行阅读评论等 本系统主要有三种用户： 1、游客角色主要功能： 没有登陆的用户，可以查询文章，但是无法进行评论，系统中的所有文章可以通过内容搜索，可以通过分类搜索也可以通过标签就行搜索 2、注册用户主要功能 可以对所有的文章进行阅读以及评论等功能，可以对文章进行赞赏（支付宝或者微信付钱） 3、管理员主要功能： 拥有注册用户的所有权限，管理分类以及发布文章和管理标签等，友链管理，时间轴管理等</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS；  4.数据库：MySql 5.7版本； 5.是否Maven项目：是；</p>
+<p>本系统是一个个人博客的管理系统，用户可以注册账号并登陆系统查看发布的文章并进行阅读评论等 本系统主要有三种用户：</p>
+<p>1、游客角色主要功能： 没有登陆的用户，可以查询文章，但是无法进行评论，系统中的所有文章可以通过内容搜索，可以通过分类搜索也可以通过标签就行搜索 </p>
+<p>2、注册用户主要功能 可以对所有的文章进行阅读以及评论等功能，可以对文章进行赞赏</p>
+<p>3、管理员主要功能： 拥有注册用户的所有权限，管理分类以及发布文章和管理标签等，友链管理，时间轴管理等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">管理员：</span><br><span class="line">admin@qq.com	123456</span><br><span class="line"></span><br><span class="line">普通用户</span><br><span class="line">user1@qq.com	123456</span><br><span class="line">user2@qq.com	123456</span><br><span class="line">user3@qq.com	123456</span><br><span class="line">user4@qq.com	123456</span><br></pre></td></tr></table></figure>
+
+
 <p>技术栈</p>
-<p>SpringBoot+SpringSecurity+Mybatis+Mysql+Redis+Thymeleaf+JQuery</p>
-<p>使用说明</p>
-<ol>
-<li>使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中application.yml配置文件中的数据库配置改为自己的配置; 4. 运行项目，项目运行成功后，访问地址localhost:8080 管理员账号密码：zhangpeng98aliyun.com/mt2680324 用户账号密码：zhangpengaliyun.com/mt2680324</li>
-</ol>
+<p>SpringBoot+Mybatis+Mysql+Thymeleaf+JQuery</p>
 <p><span hidden>——————————CodeStart——————————</span></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> BlogService blogService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> TypeService typeService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> TagService tagService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/showAll&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ModelAndView <span class="title">showAll</span><span class="params">(<span class="meta">@RequestParam(name = &quot;pageNum&quot;, required = false, defaultValue = &quot;1&quot;)</span> Integer pageNum,</span></span></span><br><span class="line"><span class="function"><span class="params">                            <span class="meta">@RequestParam(name = &quot;pageSize&quot;, required = false, defaultValue = &quot;5&quot;)</span> Integer pageSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                            <span class="meta">@RequestParam(name = &quot;title&quot;, required = false, defaultValue = &quot;&quot;)</span> String title,</span></span></span><br><span class="line"><span class="function"><span class="params">                            <span class="meta">@RequestParam(name = &quot;typeId&quot;, required = false, defaultValue = &quot;0&quot;)</span> Integer typeId,</span></span></span><br><span class="line"><span class="function"><span class="params">                            <span class="meta">@RequestParam(name = &quot;recommend&quot;, required = false, defaultValue = &quot;false&quot;)</span> Boolean recommend)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (recommend == <span class="keyword">false</span>) &#123;</span><br><span class="line">        recommend = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ModelAndView mv = <span class="keyword">new</span> ModelAndView ();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//展示所有博客前查询所有类别</span></span><br><span class="line">    List&lt;Type&gt; types = typeService.selectAll ();</span><br><span class="line">    mv.addObject (<span class="string">&quot;types&quot;</span>, types);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//调用业务层方法</span></span><br><span class="line">    List&lt;Blog&gt; blogs = blogService.selectAll (pageNum, pageSize, title, typeId, recommend);</span><br><span class="line">    PageInfo&lt;Blog&gt; pageInfo = <span class="keyword">new</span> PageInfo&lt;&gt; (blogs, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    mv.addObject (<span class="string">&quot;pageInfo&quot;</span>, pageInfo);</span><br><span class="line">    mv.addObject (<span class="string">&quot;title&quot;</span>, title);</span><br><span class="line">    mv.addObject (<span class="string">&quot;typeId&quot;</span>, typeId);</span><br><span class="line">    mv.addObject (<span class="string">&quot;recommend&quot;</span>, recommend);</span><br><span class="line"></span><br><span class="line">    mv.setViewName (<span class="string">&quot;admin/blogs&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> mv;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/showAll/search&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">search</span><span class="params">(<span class="meta">@RequestParam(name = &quot;pageNum&quot;, required = false, defaultValue = &quot;1&quot;)</span> Integer pageNum,</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="meta">@RequestParam(name = &quot;pageSize&quot;, required = false, defaultValue = &quot;5&quot;)</span> Integer pageSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="meta">@RequestParam(name = &quot;title&quot;, required = false, defaultValue = &quot;&quot;)</span> String title,</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="meta">@RequestParam(name = &quot;typeId&quot;, required = false, defaultValue = &quot;0&quot;)</span> Integer typeId,</span></span></span><br><span class="line"><span class="function"><span class="params">                     <span class="meta">@RequestParam(name = &quot;recommend&quot;, required = false, defaultValue = &quot;false&quot;)</span> Boolean recommend,</span></span></span><br><span class="line"><span class="function"><span class="params">                     Model model)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (recommend == <span class="keyword">false</span>) &#123;</span><br></pre></td></tr></table></figure>
 

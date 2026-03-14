@@ -21,7 +21,7 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="基于javaweb的SpringBoot校园宿舍管理系统(java+springboot+vue+maven+redis+mysql)">
+<meta property="og:title" content="基于javaweb的SpringBoot校园宿舍管理系统(java+springboot+vue+maven+mysql)">
 <meta property="og:site_name" content="Java源码社">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
@@ -39,7 +39,7 @@
   };
 </script>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>基于javaweb的SpringBoot校园宿舍管理系统(java+springboot+vue+maven+redis+mysql) | Java源码社</title>
+  <title>基于javaweb的SpringBoot校园宿舍管理系统(java+springboot+vue+maven+mysql) | Java源码社</title>
   
 
 
@@ -188,7 +188,7 @@
 			<!--
             /
 			-->
-			基于javaweb的SpringBoot校园宿舍管理系统(java+springboot+vue+maven+redis+mysql)
+			基于javaweb的SpringBoot校园宿舍管理系统(java+springboot+vue+maven+mysql)
             
         </h1>
 
@@ -229,21 +229,15 @@
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/570023512402.jpg" alt="570023512402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/580023512402.jpg" alt="580023512402"></p>
 <p><img src="https://yms-1257401191.cos.ap-nanjing.myqcloud.com/project22/590023512402.jpg" alt="590023512402"></p>
-<p>基于javaweb的SpringBoot校园宿舍管理系统(java+springboot+vue+maven+redis+mysql)</p>
+<p>基于javaweb的SpringBoot校园宿舍管理系统(java+springboot+vue+maven+mysql)</p>
 <p>项目介绍</p>
 <p>这个项目是一个基于SpringBoot+Vue的校园宿舍管理系统，前后端分离。 主要有超级管理员和宿舍管理员两种角色；</p>
 <p>超级管理员权限包括： 首页； 学生宿舍管理：宿舍管理、学生管理、班级管理、宿舍楼管理； 记录：维修记录、晚归记录、请假记录； 系统管理：用户管理、角色管理、菜单管理、日志管理等。</p>
 <p>宿舍管理员权限包括： 首页； 学生宿舍管理：宿舍管理、学生管理、班级管理； 记录：维修记录、晚归记录、请假记录；</p>
-<p>环境需要</p>
-<p>1.运行环境：最好是java jdk 1.8，我们在这个平台上运行的。其他版本理论上也可以。 2.IDE环境：IDEA，Eclipse,Myeclipse都可以。推荐IDEA; 3.硬件环境：windows 7/8/10 1G内存以上；或者 Mac OS； 4.数据库：MySql 5.7/8.0版本均可； 5.是否Maven项目：是；</p>
-<p>技术栈</p>
-<p>1.后端：SpringBoot+Mysql+redis 2.前端：Vue</p>
-<p>使用说明</p>
-<p>后端项目运行： 1. 使用Navicat或者其它工具，在mysql中创建对应名称的数据库，并导入项目的sql文件； 2. 使用IDEA/Eclipse/MyEclipse导入项目，导入成功后请执行maven clean;maven install命令，然后运行； 3. 将项目中application-dev.yaml配置文件中的数据库配置改为自己的配置; 4. 运行项目，控制台提示运行成功后再去运行前端项目；</p>
-<p>前端项目运行:</p>
-<ol>
-<li>安装好node环境 2. 在dms目录下运行 npm install 安装所需要的包 3. 在dms目录下运行 npm run dev 4. 运行成功后，在浏览器中访问<a href="http://localhost:8087，登录账号即可">http://localhost:8087，登录账号即可</a></li>
-</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">后端启动类：StartApplication</span><br><span class="line">前端启动命令：npm run serve</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">超级管理员</span><br><span class="line">admin	123456</span><br><span class="line"></span><br><span class="line">系统管理员</span><br><span class="line">hzvtc	123456</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">宿管</span><br><span class="line">279a797a	123456</span><br><span class="line">3a6a3de4	123456</span><br><span class="line">8cc3a7e6	123456</span><br><span class="line">f4c639a9	123456</span><br><span class="line">8790f28c	123456</span><br><span class="line">0b748652	123456</span><br></pre></td></tr></table></figure>
+
+
+
 <p><span hidden>——————————CodeStart——————————</span></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@PostMapping(&quot;/save&quot;)</span></span><br><span class="line">    <span class="meta">@RequirePermission(permissions = &#123;&quot;leave:save&quot;&#125;)</span></span><br><span class="line">    <span class="meta">@Log</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; save(<span class="meta">@RequestBody</span> <span class="meta">@Validated</span> Leave leave) &#123;</span><br><span class="line">        leaveService.save(leave);</span><br><span class="line">        <span class="keyword">return</span> Result.ok(<span class="string">&quot;添加成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/list&quot;)</span></span><br><span class="line">    <span class="meta">@RequirePermission(permissions = &#123;&quot;leave:list&quot;&#125;)</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;PageInfo&lt;Leave&gt;&gt; list(<span class="meta">@RequestBody</span> ListQuery&lt;Leave&gt; listQuery,</span><br><span class="line">                       <span class="meta">@RequestHeader(Constant.HEADER_TOKEN)</span> String token) &#123;</span><br><span class="line">        SystemUser user = redisUtil.exchange(token).get();</span><br><span class="line">        PageInfo&lt;Leave&gt; pageInfo = leaveService.list(listQuery, user.getBuildingId());</span><br><span class="line">        <span class="keyword">return</span> Result.&lt;PageInfo&lt;Leave&gt;&gt;ok().add(pageInfo);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/update/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="meta">@RequirePermission(permissions = &#123;&quot;leave:update&quot;&#125;)</span></span><br><span class="line">    <span class="meta">@Log</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; update(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">        leaveService.update(id);</span><br><span class="line">        <span class="keyword">return</span> Result.ok(<span class="string">&quot;更新成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/delete/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="meta">@RequirePermission(permissions = &#123;&quot;leave:delete&quot;&#125;)</span></span><br><span class="line">    <span class="meta">@Log</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;?&gt; delete(<span class="meta">@PathVariable</span> Long id) &#123;</span><br><span class="line">        leaveService.delete(id);</span><br><span class="line">        <span class="keyword">return</span> Result.ok(<span class="string">&quot;删除成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/query/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="meta">@RequirePermission(permissions = &#123;&quot;leave:query&quot;&#125;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Result&lt;Leave&gt; <span class="title">query</span><span class="params">(<span class="meta">@PathVariable</span> Long id)</span> </span>&#123;</span><br><span class="line">        Leave leave = leaveService.query(id);</span><br><span class="line">        <span class="keyword">return</span> Result.&lt;Leave&gt;ok().add(leave);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">package</span> com.hzvtc.myproject.controller;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
